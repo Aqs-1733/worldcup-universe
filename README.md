@@ -1,210 +1,185 @@
-# WorldCup AI Universe
+# worldcup-universe
 
-中文名称：世界杯AI数字球迷生态系统。
+PHP + MySQL 版 2026 世界杯球迷信息系统。项目保留原来的世界杯首页、赛程、球队、球员、新闻、球迷偏好、智能解说、生图入口、视觉入口和后台管理，但技术栈已切换为老师要求的 PHP + MySQL，不使用 SQLite。
 
-这是一个世界杯智能球迷平台，包含 FastAPI 后端、React 前端、SQLAlchemy 数据层、LangGraph 多 Agent 路由、ChromaDB RAG、新闻可信度规则分析、OpenCV 启发式视觉分析、PNG 海报生成和球迷画像推荐。项目默认不依赖外网模型即可启动；配置 ARK 后，部分问答、创作和解释能力会获得大模型增强。
+## 功能
 
-## 给别人直接运行
+- 账号密码登录、注册、用户名和邮箱唯一校验。
+- 用户首次登录问卷：支持球队多选、支持球员多选、屏蔽球队、推送偏好，也支持跳过；填过或跳过后不再强制弹出。
+- 首页赛事中控台：赛程、晋级关系、积分图表、球队、球员、新闻、项目团队。
+- 国家探索：参赛球队国家、主办城市、场馆、地图、语言、货币、旅行和文化摘要。
+- 球队和球员页面：中文名 / 原名并列，球队和球员显示国旗，球员按知名度、出场和进球排序。
+- 新闻中心：从真实 RSS 来源抓取，按比赛内容、战术分析、球队动态、球迷内容、娱乐内容、二创内容等多标签分类，保留来源链接和原文版本；配置 ARK 后自动中文翻译和归纳。
+- 世界杯中心：比赛、积分榜和对战图从 MySQL 读取，未同步或未开始的比赛不预测比分。
+- 智能解说：支持用户自定义语气、自主输入球队，勾选后才调用图片生成，节省图片额度。
+- 视觉分析入口：支持图片上传记录，后续可接视觉模型。
+- 后台管理：团队成员、球队、球员、赛程、新闻、发布内容、留言管理。
+- MySQL 表数量超过 10 张，见 `database/schema.sql`。
 
-Windows 用户拿到仓库后，按下面三步即可启动网站：
+
+## 课程作业留存
+
+老师要求的个人作业 1/2/3 和团队 1-6 阶段不放进网站页面，全部单独放在文档目录，便于按阶段独立提交：
+
+- 总映射：`docs/coursework-traceability.md`。
+- 团队文档：`docs/requirements.md`、`docs/design.md`、`docs/implementation.md`、`docs/user-manual.md`、`docs/deployment.md`、`docs/presentation-outline.md`。
+- 个人作业模板和软件下载指导：`docs/coursework/`。
+- 网站本体只保留世界杯、球队国家、旅行文化、新闻、智能客服/解说、后台管理等业务内容。
+
+## 环境要求
+
+- PHP 8.1+，需要启用 `pdo_mysql`、`mbstring`、`curl`、`simplexml`、`dom`。
+- MySQL 8.0+。
+- Git。
+
+本机如果 `php -v` 或 `mysql --version` 不能执行，先安装 PHP 和 MySQL，或者用 phpStudy / XAMPP / Laragon 这类集成环境。
+
+## 启动
 
 ```powershell
-git clone https://github.com/Aqs-1733/worldcup-ai-universe.git
-cd worldcup-ai-universe
-.\RUN_WEBSITE.bat
+cd D:\worldcup-universe
+Copy-Item .env.example .env
 ```
 
-脚本会自动：
-
-- 从 `.env.example` 复制出本地 `.env`。
-- 从 `frontend/.env.example` 复制出本地 `frontend/.env`。
-- 安装后端依赖 `uv sync`。
-- 安装前端依赖 `pnpm install`。
-- 启动 FastAPI 后端和 Vite 前端。
-- 打开网站入口 `http://127.0.0.1:5173`。
-
-如果第一次运行正在安装依赖，浏览器可能先显示打不开，等两个终端窗口安装完成后刷新页面即可。
-
-必须先安装：
-
-- Git
-- Python 3.12+
-- Node.js 20+
-- uv
-- pnpm
-
-常用测试命令：
+编辑 `.env`，填好 MySQL 账号密码。然后建库和初始化：
 
 ```powershell
-cd worldcup-ai-universe
-uv run pytest -q
-
-cd frontend
-pnpm build
+php scripts/install.php
+php scripts/import_collected_data.php
+php scripts/fill_player_name_transliterations.php
+php scripts/sync_country_profiles.php
+php scripts/sync_news.php
+php -S 127.0.0.1:8080 -t public public/index.php
 ```
 
-不配置 API Key 也能打开网站、看页面、跑数据库初始化、基础赛程/球队/球员/本地分析功能。若要启用真实 AI 问答、新闻翻译、AI 生图，把自己的火山方舟配置写入本地 `.env`，不要提交 `.env` 到 GitHub：
+如果你本机 PHP 在 XAMPP 里，但没有加入 PATH，用：
+
+```powershell
+D:\XAMPP\php\php.exe scripts\install.php
+D:\XAMPP\php\php.exe scripts\import_collected_data.php
+D:\XAMPP\php\php.exe scripts\fill_player_name_transliterations.php
+D:\XAMPP\php\php.exe scripts\sync_country_profiles.php
+D:\XAMPP\php\php.exe scripts\sync_news.php
+D:\XAMPP\php\php.exe -S 127.0.0.1:8080 -t public public/index.php
+```
+
+打开：
+
+```text
+http://127.0.0.1:8080
+```
+
+默认管理员来自 `.env`：
+
+```text
+用户名：admin
+密码：ChangeMe2026!
+```
+
+正式演示前建议把 `.env` 里的 `ADMIN_PASSWORD` 改掉，再运行 `php scripts/install.php`。
+
+## ARK 配置
+
+不要把真实密钥提交到 GitHub。只在本地 `.env` 填：
 
 ```env
 ARK_API_KEY=你的火山方舟Key
 ARK_OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
-ARK_MODEL=doubao-seed-2-1-pro-260628
-ARK_IMAGE_MODEL=doubao-seedream-4-5-251128
+ARK_MODEL=你的文本模型ID
 ARK_IMAGE_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
-ARK_IMAGE_SIZE=2K
-ARK_IMAGE_RESPONSE_FORMAT=b64_json
+ARK_IMAGE_MODEL=你的Seedream 4.5模型ID或Endpoint ID
+ARK_IMAGE_SIZE=1024x1024
+ARK_IMAGE_RESPONSE_FORMAT=url
 ```
 
-## 真实技术架构
+图片生成请求路径是：
 
-- 后端：Python 3.12、FastAPI、SQLAlchemy、SQLite，PostgreSQL 可通过 SQLAlchemy URL 切换并自行安装驱动。
-- AI 编排：LangGraph 负责 Agent 路由；LangChain ChatOpenAI 通过 ARK OpenAI 兼容 Chat Completions 调用。
-- RAG：ChromaDB 持久化到 `storage/chroma`，默认使用确定性 hashing embedding，不下载大型模型，不使用随机向量。
-- 新闻：内置缓存新闻 + 可选联网刷新；可信度基于来源权重、发布时间、URL、相似报道和高风险表达等规则。
-- 视觉：默认 OpenCV 颜色、国旗色带、球场区域和阵型候选点启发式分析；YOLO、CLIP、ARK 视觉均为可选增强。
-- 前端：React、Vite、TypeScript、TailwindCSS、ECharts、D3、TanStack Query。
+```text
+POST https://ark.cn-beijing.volces.com/api/v3/images/generations
+```
 
-## 环境配置
+只有在 智能解说页勾选“同时生成图片”时才会调用图片生成，避免浪费额度。
 
-复制样例文件：
+## 真实数据同步
+
+初始化只建立表、基础标签、来源和管理员，不伪造世界杯赛果。老师验收用的完整数据导入脚本是：
 
 ```powershell
-Copy-Item .env.example .env
+php scripts/import_collected_data.php
 ```
 
-`.env` 已在 `.gitignore` 中，不应提交。支持的主要变量：
+如果使用 XAMPP：
+
+```powershell
+D:\XAMPP\php\php.exe scripts\import_collected_data.php
+```
+
+导入脚本会读取 `storage/imports/worldcup2026_complete_collection_kit`，把采集包里的 CSV/JSON 原始记录、球队、球员、赛程、赛果、阵容、事件、统计和校验结果全部写入 MySQL。当前完整导入结果：
+
+- 48 支球队。
+- 1248 名最终注册球员，每队 26 人。
+- 104 场比赛，阶段为小组赛 72 场、32 强 16 场、16 强 8 场、四分之一决赛 4 场、半决赛 2 场、季军赛 1 场、决赛 1 场。
+- 116341 条原始 CSV/JSON 记录入库。
+- 9 项自动校验全部通过，包含 Pochih/FIFA 与 Alamyy 赛果交叉检查 `0 mismatch`。
+- 全部球员都保留英文/原始姓名；源数据缺中文名时，可运行 `scripts/fill_player_name_transliterations.php` 用中文音译补齐展示名。
+
+核心数据来源：
+
+- FIFA 官方球队、赛程、积分页面。
+- Pochih WorldCup2026 赛程和官方名单快照。
+- Mominullptr FIFA World Cup 2026 Dataset。
+- Alamyy Worldcup26 比赛赛果和来源链接。
+- EbEmad FIFA-Data-Wc-2026 球员补充字段。
+- BBC Sport、ESPN、The Guardian、CBS Sports、The New York Times、Sky Sports 等 RSS 新闻源。
+
+新闻仍可联网刷新：
+
+```powershell
+php scripts/sync_news.php
+```
+
+如果网络或来源失败，脚本会记录错误，不会填本地假数据。外文新闻翻译依赖 `ARK_API_KEY` 和 `ARK_MODEL`，没配置时保留原文并标记待翻译。
+
+新闻刷新会在抓取 RSS 时同步翻译标题和摘要，不需要单独手动翻译。默认适合课堂演示：每个来源 1 条、单篇网页正文抓取 2 秒、ARK 单篇翻译 30 秒，失败时再尝试 MyMemory 单条翻译 6 秒。智能解说和生图仍走 ARK；需要更多新闻或切换翻译策略时可在 `.env` 调整：
 
 ```env
-APP_ENV=development
-DATABASE_URL=sqlite:///./storage/worldcup_ai.db
-ARK_API_KEY=
-ARK_OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
-ARK_MODEL=doubao-seed-2-1-pro-260628
-LANGCHAIN_API_KEY=
-LANGCHAIN_PROJECT=WorldCup-AI-Universe
-LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
-LANGSMITH_API_KEY=
-LANGSMITH_PROJECT=WorldCup-AI-Universe
-LANGSMITH_ENDPOINT=https://api.smith.langchain.com
+NEWS_MAX_PER_SOURCE=10
+NEWS_RSS_TIMEOUT=5
+NEWS_ARTICLE_TIMEOUT=5
+NEWS_TRANSLATE_TIMEOUT=12
+NEWS_ARK_TRANSLATE_TIMEOUT=30
+NEWS_TRANSLATION_PROVIDER=auto
 ```
 
-ARK 使用 OpenAI 兼容 Chat Completions，实际请求路径由 SDK 拼到 `/api/v3/chat/completions`。不配置 `ARK_API_KEY` 时，接口返回 `model_mode: "local"`，并在需要时提供 `fallback_reason`。
+如果数据库里已有旧的未翻译新闻，可临时运行 `php scripts/translate_news.php` 补历史数据；正常使用只需要点击页面里的“联网刷新”。
 
-## 安装方法
+`scripts/sync_worldcup.php` 保留为在线同步入口；课程验收建议优先使用 `scripts/import_collected_data.php`，因为它会导入采集包并写入数据质量检查表。
 
-后端：
+如果火山方舟域名在本机 DNS 下解析失败，可以在 `.env` 里配置：
+
+```env
+ARK_DNS_FALLBACK_IP=方舟域名解析IP
+NO_PROXY=127.0.0.1,localhost,::1,ark.cn-beijing.volces.com
+```
+
+程序会对 `ark.cn-beijing.volces.com` 使用 DNS fallback，同时保留 HTTPS 主机名校验。
+
+## GitHub 提交
 
 ```powershell
-cd D:\Project114514
-uv sync
+cd D:\worldcup-universe
+git status
+git add .
+git commit -m "Rebuild worldcup system with PHP MySQL"
+git push origin codex/php-mysql-rebuild
 ```
 
-前端：
+如果要推到主分支：
 
 ```powershell
-cd D:\Project114514\frontend
-pnpm install
+git checkout main
+git merge codex/php-mysql-rebuild
+git push origin main
 ```
 
-项目级 `frontend/.npmrc` 使用公共 npm registry。若当前网络无法解析 npm registry，而 Windows 系统代理类似 `127.0.0.1:7897` 已开启，可只对本次命令注入代理：
-
-```powershell
-$env:HTTP_PROXY="http://127.0.0.1:7897"
-$env:HTTPS_PROXY="http://127.0.0.1:7897"
-$env:NO_PROXY="127.0.0.1,localhost,::1"
-pnpm install
-```
-
-pnpm 11 会阻止未知依赖执行 postinstall。本项目仅允许 Vite 必需的 `esbuild` 构建脚本，配置位于 `frontend/pnpm-workspace.yaml`。
-
-## 后端启动
-
-```powershell
-cd D:\Project114514
-uv run python backend/main.py
-```
-
-访问：
-
-- `http://127.0.0.1:8000/api/health`
-- `http://127.0.0.1:8000/docs`
-
-## 前端启动
-
-```powershell
-cd D:\Project114514\frontend
-pnpm dev
-```
-
-访问 `http://127.0.0.1:5173`。开发环境通过 Vite proxy 转发 `/api` 和 `/static` 到 `http://127.0.0.1:8000`。如果 8000 被占用，可指定：
-
-```powershell
-$env:VITE_BACKEND_ORIGIN="http://127.0.0.1:8002"
-pnpm dev
-```
-
-也可以运行根目录 `start.bat`，它会检查 `uv`、`pnpm`，并打开前后端两个窗口。若 8000 已被占用，脚本会自动把后端切到 8002，并同步设置前端代理。
-
-## 测试方法
-
-后端离线测试不调用真实 ARK 或新闻网站：
-
-```powershell
-uv run pytest -q
-uv run ruff check backend tests scripts
-uv run python -m compileall backend tests scripts
-```
-
-启动后端后执行冒烟测试：
-
-```powershell
-$env:PYTHONIOENCODING="utf-8"
-uv run python scripts/smoke_test.py
-```
-
-PowerShell 5.1 若显示中文乱码，先执行：
-
-```powershell
-chcp 65001
-$OutputEncoding = [System.Text.Encoding]::UTF8
-```
-
-乱码通常是终端显示编码问题，不代表数据库或 JSON 被破坏。
-
-## 接口说明
-
-常用接口：
-
-- `POST /api/chat`
-- `GET /api/teams`
-- `GET /api/players`
-- `GET /api/worldcup/matches`
-- `GET /api/worldcup/standings`
-- `POST /api/news/refresh`
-- `POST /api/news/analyze`
-- `POST /api/users`
-- `GET /api/users/{id}/daily`
-- `POST /api/vision/analyze`
-- `POST /api/generation`
-
-详细接口也可在启动后查看 Swagger。
-
-## 功能说明
-
-- AI 足球大脑：按问题路由到 Football、Team、Player、News、Prediction、Vision、Generation Agent。
-- Prediction Agent：本地算法先计算概率，ARK 只做解释，不改写概率；ARK 失败时返回本地完整答案。
-- 球迷画像：保存支持球队、球员、竞争球队和内容偏好，重复用户名会更新同一画像。
-- 世界杯中心：内置 48 支球队、69 名球员、104 场初始化赛程、12 组积分榜和世界杯历史数据。
-- 新闻中心：可联网刷新 BBC Sport、ESPN、FIFA、新华社体育、央视体育等来源；网络失败时仍可读取缓存新闻。
-- 视觉分析：限制 JPG/PNG/WebP、验证 MIME、限制文件大小，并使用随机运行时文件名。
-- AIGC：生成可访问的 PNG 海报 URL、朋友圈文案、宣传图 Prompt、视频脚本和口号。
-
-## 已实现能力
-
-- 离线启动和离线测试。
-- SQLite 表：`teams`、`players`、`matches`、`standings`、`news`、`users`、`history`、`recommendations`、`chat_history`。
-- 数据初始化幂等。
-- RAG collection 持久化和真实来源返回。
-- 本地 smoke test 使用 `trust_env=False`，不会误走系统代理。
-- FastAPI JSON 使用 UTF-8，文件读写显式使用 UTF-8。
-- 、
+`.env` 不会提交，密钥和数据库密码不要发到仓库。
