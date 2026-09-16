@@ -10,7 +10,7 @@
     </div>
     <div class="hero-actions">
       <a class="primary-button" href="<?= e(url('/worldcup')) ?>">看赛程</a>
-      <a class="ghost-button" href="<?= e(url('/ai-studio')) ?>">AI 创作</a>
+      <a class="ghost-button" href="<?= e(url('/commentary')) ?>">智能解说</a>
     </div>
   </div>
 
@@ -78,7 +78,7 @@
     </div>
     <div class="match-list">
       <?php foreach (array_slice($matches, 0, 6) as $match): ?>
-        <article class="match-row">
+        <a class="match-row" href="<?= e(url('/matches/' . $match['id'])) ?>">
           <time><?= e(date_label($match['starts_at'])) ?></time>
           <div class="versus">
             <span><?= team_name_html($match['home_flag_url'] ?? null, $match['home_flag'] ?? null, $match['home_name_cn'] ?? null, $match['home_team_name'] ?: ($match['home_name_original'] ?? null)) ?></span>
@@ -86,7 +86,7 @@
             <span><?= team_name_html($match['away_flag_url'] ?? null, $match['away_flag'] ?? null, $match['away_name_cn'] ?? null, $match['away_team_name'] ?: ($match['away_name_original'] ?? null)) ?></span>
           </div>
           <small><?= e($match['stage']) ?> · <?= e($match['status']) ?></small>
-        </article>
+        </a>
       <?php endforeach; ?>
       <?php if (!$matches): ?><div class="data-empty">还没有赛事数据，运行同步脚本后显示。</div><?php endif; ?>
     </div>
@@ -118,9 +118,9 @@
       ['/players', '球员库', '中文名 / 原名，按知名度排序'],
       ['/news', '新闻中心', '多来源抓取、中文归纳、来源标注'],
       ['/fan-space', '球迷空间', '支持球队、支持球员、屏蔽球队'],
-      ['/ai-studio', 'AI 创作', '语气自定义，勾选生成图片'],
+      ['/commentary', '智能解说', '客服问答、赛事解读和图片生成'],
       ['/admin', '后台管理', '编辑资料、发布内容、维护数据'],
-      ['/coursework', '课程交付', '按老师 1/2/3 阶段留存证据'],
+      ['/countries', '国家探索', '球队国家、主办城市和旅行文化'],
     ];
   ?>
   <?php foreach ($modules as [$link, $name, $desc]): ?>
@@ -129,6 +129,30 @@
       <small><?= e($desc) ?></small>
     </a>
   <?php endforeach; ?>
+</section>
+
+
+<section class="panel reveal">
+  <div class="section-head">
+    <div><span class="kicker">COUNTRY TOUR</span><h2>球队国家与旅行文化</h2></div>
+    <a class="mini-link" href="<?= e(url('/countries')) ?>">全部</a>
+  </div>
+  <div class="country-grid mini-country-grid">
+    <?php foreach (($countries ?? []) as $country): ?>
+      <?php $flag = 'https://flagcdn.com/w80/' . strtolower((string) $country['country_code']) . '.png'; ?>
+      <article class="country-card">
+        <div class="country-card-head">
+          <?= flag_html($flag, null, (string) $country['country_name_cn']) ?>
+          <div>
+            <h3><?= e(display_name($country['country_name_cn'], $country['country_name_original'])) ?></h3>
+            <small><?= e($country['capital'] ?: '首都待同步') ?> · <?= e($country['region'] ?: '地区待同步') ?></small>
+          </div>
+        </div>
+        <p><?= e(mb_strimwidth((string) ($country['travel_summary'] ?: ''), 0, 120, '...')) ?></p>
+      </article>
+    <?php endforeach; ?>
+    <?php if (empty($countries)): ?><div class="data-empty">运行国家资料同步脚本后显示球队国家旅行文化。</div><?php endif; ?>
+  </div>
 </section>
 
 <section class="dashboard-grid">

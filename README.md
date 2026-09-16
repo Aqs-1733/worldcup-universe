@@ -1,30 +1,30 @@
-# worldcup-ai-universe
+# worldcup-universe
 
-PHP + MySQL 版 2026 世界杯球迷信息系统。项目保留原来的世界杯首页、赛程、球队、球员、新闻、球迷偏好、AI 创作、生图入口、视觉入口和后台管理，但技术栈已切换为老师要求的 PHP + MySQL，不使用 SQLite。
+PHP + MySQL 版 2026 世界杯球迷信息系统。项目保留原来的世界杯首页、赛程、球队、球员、新闻、球迷偏好、智能解说、生图入口、视觉入口和后台管理，但技术栈已切换为老师要求的 PHP + MySQL，不使用 SQLite。
 
 ## 功能
 
 - 账号密码登录、注册、用户名和邮箱唯一校验。
 - 用户首次登录问卷：支持球队多选、支持球员多选、屏蔽球队、推送偏好，也支持跳过；填过或跳过后不再强制弹出。
 - 首页赛事中控台：赛程、晋级关系、积分图表、球队、球员、新闻、项目团队。
+- 国家探索：参赛球队国家、主办城市、场馆、地图、语言、货币、旅行和文化摘要。
 - 球队和球员页面：中文名 / 原名并列，球队和球员显示国旗，球员按知名度、出场和进球排序。
 - 新闻中心：从真实 RSS 来源抓取，按比赛内容、战术分析、球队动态、球迷内容、娱乐内容、二创内容等多标签分类，保留来源链接和原文版本；配置 ARK 后自动中文翻译和归纳。
 - 世界杯中心：比赛、积分榜和对战图从 MySQL 读取，未同步或未开始的比赛不预测比分。
-- AI 创作：支持用户自定义语气、自主输入球队，勾选后才调用图片生成，节省图片额度。
+- 智能解说：支持用户自定义语气、自主输入球队，勾选后才调用图片生成，节省图片额度。
 - 视觉分析入口：支持图片上传记录，后续可接视觉模型。
 - 后台管理：团队成员、球队、球员、赛程、新闻、发布内容、留言管理。
 - MySQL 表数量超过 10 张，见 `database/schema.sql`。
 
 
-## 课程要求留存
+## 课程作业留存
 
-老师图片里的阶段要求已经整理到项目内，便于个人作业 1/2/3 和团队作业 1-6 后续分别提交：
+老师要求的个人作业 1/2/3 和团队 1-6 阶段不放进网站页面，全部单独放在文档目录，便于按阶段独立提交：
 
-- 页面入口：`/coursework`。
 - 总映射：`docs/coursework-traceability.md`。
 - 团队文档：`docs/requirements.md`、`docs/design.md`、`docs/implementation.md`、`docs/user-manual.md`、`docs/deployment.md`、`docs/presentation-outline.md`。
-- 个人作业模板：`docs/coursework/`，只保留要求和证据位，不伪造成已完成；后续按个人学号姓名补截图打包。
-- 后台维护：`/admin/coursework_artifacts` 可编辑每个阶段的状态、证据路径和备注。
+- 个人作业模板和软件下载指导：`docs/coursework/`。
+- 网站本体只保留世界杯、球队国家、旅行文化、新闻、智能客服/解说、后台管理等业务内容。
 
 ## 环境要求
 
@@ -37,7 +37,7 @@ PHP + MySQL 版 2026 世界杯球迷信息系统。项目保留原来的世界�
 ## 启动
 
 ```powershell
-cd D:\worldcup-ai-universe
+cd D:\worldcup-universe
 Copy-Item .env.example .env
 ```
 
@@ -47,6 +47,7 @@ Copy-Item .env.example .env
 php scripts/install.php
 php scripts/import_collected_data.php
 php scripts/fill_player_name_transliterations.php
+php scripts/sync_country_profiles.php
 php scripts/sync_news.php
 php -S 127.0.0.1:8080 -t public public/index.php
 ```
@@ -57,6 +58,7 @@ php -S 127.0.0.1:8080 -t public public/index.php
 D:\XAMPP\php\php.exe scripts\install.php
 D:\XAMPP\php\php.exe scripts\import_collected_data.php
 D:\XAMPP\php\php.exe scripts\fill_player_name_transliterations.php
+D:\XAMPP\php\php.exe scripts\sync_country_profiles.php
 D:\XAMPP\php\php.exe scripts\sync_news.php
 D:\XAMPP\php\php.exe -S 127.0.0.1:8080 -t public public/index.php
 ```
@@ -96,7 +98,7 @@ ARK_IMAGE_RESPONSE_FORMAT=url
 POST https://ark.cn-beijing.volces.com/api/v3/images/generations
 ```
 
-只有在 AI 创作页勾选“同时生成图片”时才会调用图片生成，避免浪费额度。
+只有在 智能解说页勾选“同时生成图片”时才会调用图片生成，避免浪费额度。
 
 ## 真实数据同步
 
@@ -138,10 +140,11 @@ php scripts/sync_news.php
 
 如果网络或来源失败，脚本会记录错误，不会填本地假数据。外文新闻翻译依赖 `ARK_API_KEY` 和 `ARK_MODEL`，没配置时保留原文并标记待翻译。
 
-新闻刷新会在抓取 RSS 时同步翻译标题和摘要，不需要单独手动翻译。默认适合课堂演示：每个来源 1 条、单篇网页正文抓取 2 秒、ARK 单篇翻译 30 秒，失败时再尝试 MyMemory 单条翻译 6 秒。AI 创作和生图仍走 ARK；需要更多新闻或切换翻译策略时可在 `.env` 调整：
+新闻刷新会在抓取 RSS 时同步翻译标题和摘要，不需要单独手动翻译。默认适合课堂演示：每个来源 1 条、单篇网页正文抓取 2 秒、ARK 单篇翻译 30 秒，失败时再尝试 MyMemory 单条翻译 6 秒。智能解说和生图仍走 ARK；需要更多新闻或切换翻译策略时可在 `.env` 调整：
 
 ```env
 NEWS_MAX_PER_SOURCE=10
+NEWS_RSS_TIMEOUT=5
 NEWS_ARTICLE_TIMEOUT=5
 NEWS_TRANSLATE_TIMEOUT=12
 NEWS_ARK_TRANSLATE_TIMEOUT=30
@@ -164,7 +167,7 @@ NO_PROXY=127.0.0.1,localhost,::1,ark.cn-beijing.volces.com
 ## GitHub 提交
 
 ```powershell
-cd D:\worldcup-ai-universe
+cd D:\worldcup-universe
 git status
 git add .
 git commit -m "Rebuild worldcup system with PHP MySQL"

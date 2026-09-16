@@ -27,7 +27,8 @@ final class NewsSyncService
 
         foreach ($sources as $source) {
             try {
-                $xmlBody = $this->http->get((string) $source['rss_url']);
+                $rssTimeout = max(2, (int) env('NEWS_RSS_TIMEOUT', 5));
+                $xmlBody = $this->http->get((string) $source['rss_url'], ['Accept' => 'application/rss+xml, application/xml, text/xml'], $rssTimeout);
                 $xml = @simplexml_load_string($xmlBody, 'SimpleXMLElement', LIBXML_NOCDATA);
                 if (!$xml) {
                     throw new \RuntimeException('RSS parse failed.');

@@ -1,7 +1,7 @@
 # 验收命令
 
 ```powershell
-cd D:\worldcup-ai-universe
+cd D:\worldcup-universe
 php -v
 mysql --version
 php scripts/install.php

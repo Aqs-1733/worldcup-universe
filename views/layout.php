@@ -12,9 +12,10 @@ $nav = [
     '/players' => '球员',
     '/news' => '新闻',
     '/fan-space' => '球迷空间',
-    '/ai-studio' => 'AI 创作',
+    '/countries' => '国家探索',
+    '/search' => '搜索',
+    '/commentary' => '智能解说',
     '/vision' => '视觉',
-    '/coursework' => '课程交付',
 ];
 ?>
 <!doctype html>
@@ -28,6 +29,9 @@ $nav = [
 </head>
 <body>
   <div class="field-lights" aria-hidden="true"></div>
+  <div class="stadium-orbs" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
   <header class="site-header">
     <a class="brand" href="<?= e(url('/')) ?>">
       <span class="brand-mark">🏆</span>

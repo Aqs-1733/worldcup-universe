@@ -4,7 +4,7 @@
 
 - PHP 8.1+，启用 `pdo_mysql`、`curl`、`simplexml`、`dom`、`mbstring`。
 - MySQL 8.0+ 或 XAMPP MariaDB/MySQL。
-- 推荐本机路径：`D:\worldcup-ai-universe`。
+- 推荐本机路径：`D:\worldcup-universe`。
 
 ## 2. 配置
 
@@ -13,7 +13,7 @@
 ## 3. 初始化数据库
 
 ```powershell
-cd D:\worldcup-ai-universe
+cd D:\worldcup-universe
 D:\XAMPP\php\php.exe scripts\install.php
 D:\XAMPP\php\php.exe scripts\import_collected_data.php
 D:\XAMPP\php\php.exe scripts\fill_player_name_transliterations.php
@@ -30,6 +30,6 @@ D:\XAMPP\php\php.exe -S 127.0.0.1:8080 -t public public/index.php
 
 ## 5. 验证
 
-- 首页、赛程、球队、球员、新闻、AI、课程交付页面返回 200。
+- 首页、赛程、球队、球员、新闻、国家探索、智能解说、后台页面返回 200；课程作业文档不进入网站。
 - `/admin` 登录后可进入后台。
-- MySQL 中球队、球员、比赛、新闻、课程交付清单均有数据。
+- MySQL 中球队、球员、比赛、新闻、国家资料、来源文件和校验结果均有数据。

@@ -35,6 +35,7 @@ final class PageController
             'standings' => $this->repo->standings(),
             'posts' => $this->repo->adminPosts(),
             'qualityChecks' => $this->repo->qualityChecks(),
+            'countries' => array_slice($this->repo->countryProfiles(), 0, 6),
         ]);
     }
 
@@ -93,16 +94,35 @@ final class PageController
         return View::render('worldcup', [
             'title' => '赛程与积分',
             'matches' => $this->repo->matches(140),
+            'groupMatches' => $this->repo->groupMatches(),
             'standings' => $this->repo->standings(),
         ]);
     }
 
-    public function coursework(): string
+    public function match(string $id): string
     {
-        return View::render('coursework', [
-            'title' => '课程交付',
-            'counts' => $this->repo->counts(),
-            'artifacts' => $this->repo->courseworkArtifacts(),
+        $match = $this->repo->match((int) $id);
+        if (!$match) {
+            http_response_code(404);
+            return View::render('errors/404', ['title' => '比赛不存在']);
+        }
+
+        return View::render('match', [
+            'title' => '比赛详情',
+            'match' => $match,
+            'stats' => $this->repo->matchStats((int) $match['id']),
+            'events' => $this->repo->matchEvents((int) $match['id']),
+            'lineups' => $this->repo->matchLineups((int) $match['id']),
+        ]);
+    }
+
+    public function countries(): string
+    {
+        return View::render('countries', [
+            'title' => '国家探索',
+            'countries' => $this->repo->countryProfiles(),
+            'venues' => $this->repo->venues(),
+            'teams' => $this->repo->teams(null, 120),
         ]);
     }
 
@@ -134,6 +154,14 @@ final class PageController
 
     public function refreshNewsApi(): string
     {
+        if (empty($_GET['run'])) {
+            return Response::json([
+                'ok' => true,
+                'summary' => ['fetched' => 0, 'inserted' => 0, 'translated' => 0, 'failed' => 0, 'errors' => []],
+                'message' => '页面自动轮询已停用；点击“联网刷新”或带 run=1 才会抓取新闻。',
+            ]);
+        }
+
         try {
             $summary = (new NewsSyncService())->sync(2);
             return Response::json(['ok' => true, 'summary' => $summary]);
@@ -152,6 +180,39 @@ final class PageController
         return View::render('news_show', [
             'title' => $article['title_cn'] ?: $article['title_original'],
             'article' => $article,
+        ]);
+    }
+
+    public function search(): string
+    {
+        $q = trim((string) ($_GET['q'] ?? ''));
+        $smart = !empty($_GET['smart']);
+        $results = $q === '' ? ['teams' => [], 'players' => [], 'matches' => [], 'news' => [], 'countries' => []] : $this->repo->search($q);
+        $summary = null;
+        $error = null;
+
+        if ($q !== '' && $smart) {
+            try {
+                $summary = (new ArkClient())->chat(
+                    "请基于下面数据库搜索命中结果，用中文给用户做一段简短的世界杯解说式总结，不要编造未给出的信息。\n关键词：{$q}\n结果JSON：" . json_encode($results, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+                    '像赛事解说一样清楚、简洁',
+                    null,
+                    45,
+                    500,
+                    0.25
+                );
+            } catch (\Throwable $exception) {
+                $error = $exception->getMessage();
+            }
+        }
+
+        return View::render('search', [
+            'title' => '智能搜索',
+            'q' => $q,
+            'smart' => $smart,
+            'results' => $results,
+            'summary' => $summary,
+            'error' => $error,
         ]);
     }
 
@@ -219,17 +280,19 @@ final class PageController
         redirect('/');
     }
 
-    public function aiStudio(): string
+
+
+    public function commentary(): string
     {
-        return View::render('ai_studio', [
-            'title' => 'AI 创作',
+        return View::render('commentary', [
+            'title' => '智能解说',
             'textReady' => (new ArkClient())->textReady(),
             'imageReady' => (new ArkClient())->imageReady(),
             'question' => (string) ($_GET['q'] ?? ''),
         ]);
     }
 
-    public function aiStudioPost(): string
+    public function commentaryPost(): string
     {
         Csrf::requireValid();
         $ark = new ArkClient();
@@ -281,8 +344,8 @@ final class PageController
             ]);
         }
 
-        return View::render('ai_studio', [
-            'title' => 'AI 创作',
+        return View::render('commentary', [
+            'title' => '智能解说',
             'textReady' => $ark->textReady(),
             'imageReady' => $ark->imageReady(),
             'question' => $prompt,

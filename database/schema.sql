@@ -1,8 +1,8 @@
-CREATE DATABASE IF NOT EXISTS `worldcup_ai_universe`
+CREATE DATABASE IF NOT EXISTS `worldcup_universe`
   DEFAULT CHARACTER SET utf8mb4
   DEFAULT COLLATE utf8mb4_unicode_ci;
 
-USE `worldcup_ai_universe`;
+USE `worldcup_universe`;
 
 CREATE TABLE IF NOT EXISTS roles (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -83,6 +83,30 @@ CREATE TABLE IF NOT EXISTS teams (
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   INDEX idx_teams_group (group_name),
   INDEX idx_teams_code (code)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS country_profiles (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  country_code CHAR(2) NOT NULL UNIQUE,
+  country_name_cn VARCHAR(120) NULL,
+  country_name_original VARCHAR(160) NOT NULL,
+  capital VARCHAR(180) NULL,
+  region VARCHAR(120) NULL,
+  subregion VARCHAR(120) NULL,
+  languages VARCHAR(300) NULL,
+  currencies VARCHAR(300) NULL,
+  population BIGINT UNSIGNED NULL,
+  area_km2 DECIMAL(12,2) NULL,
+  map_url VARCHAR(900) NULL,
+  fifa_team_count INT NOT NULL DEFAULT 0,
+  travel_summary TEXT NULL,
+  culture_summary TEXT NULL,
+  source_url VARCHAR(900) NULL,
+  source_synced_at DATETIME NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_country_profiles_name (country_name_original),
+  INDEX idx_country_profiles_region (region)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS tournament_stages (
@@ -438,22 +462,6 @@ CREATE TABLE IF NOT EXISTS admin_posts (
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   CONSTRAINT fk_admin_posts_author FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS coursework_artifacts (
-  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  artifact_key VARCHAR(100) NOT NULL UNIQUE,
-  stage ENUM('个人作业','团队作业','课程设计') NOT NULL,
-  title VARCHAR(180) NOT NULL,
-  requirement_summary TEXT NOT NULL,
-  evidence_path VARCHAR(500) NULL,
-  status ENUM('todo','ready','done') NOT NULL DEFAULT 'todo',
-  sort_order INT NOT NULL DEFAULT 0,
-  notes TEXT NULL,
-  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  INDEX idx_coursework_stage_status (stage, status),
-  INDEX idx_coursework_sort (sort_order)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS ai_generations (

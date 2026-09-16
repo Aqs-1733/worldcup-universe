@@ -19,7 +19,7 @@ final class AppRepository
     /** @return array<string, int> */
     public function counts(): array
     {
-        $tables = ['teams', 'players', 'matches', 'news_articles', 'comments', 'users', 'team_members', 'admin_posts', 'coursework_artifacts', 'source_files', 'source_records', 'data_quality_checks'];
+        $tables = ['teams', 'players', 'matches', 'news_articles', 'comments', 'users', 'team_members', 'admin_posts', 'country_profiles', 'source_files', 'source_records', 'data_quality_checks'];
         $counts = [];
         foreach ($tables as $table) {
             try {
@@ -66,23 +66,39 @@ final class AppRepository
         return $stmt->fetchAll();
     }
 
-    /** @return array<string, array<int, array<string, mixed>>> */
-    public function courseworkArtifacts(): array
+    /** @return array<int, array<string, mixed>> */
+    /** @return array<int, array<string, mixed>> */
+    public function countryProfiles(): array
     {
         try {
-            $rows = $this->pdo->query('SELECT * FROM coursework_artifacts ORDER BY sort_order, id')->fetchAll();
+            return $this->pdo->query(
+                'SELECT cp.*, COALESCE(t.team_count, 0) AS team_count, t.team_names
+                 FROM country_profiles cp
+                 LEFT JOIN (
+                    SELECT country_code, COUNT(id) AS team_count, GROUP_CONCAT(name_cn ORDER BY name_cn SEPARATOR "、") AS team_names
+                    FROM teams
+                    GROUP BY country_code
+                 ) t ON t.country_code = cp.country_code
+                 ORDER BY COALESCE(cp.fifa_team_count, 0) DESC, cp.country_name_cn, cp.country_name_original'
+            )->fetchAll();
         } catch (\Throwable) {
             return [];
         }
-
-        $grouped = [];
-        foreach ($rows as $row) {
-            $grouped[(string) $row['stage']][] = $row;
-        }
-        return $grouped;
     }
 
     /** @return array<int, array<string, mixed>> */
+    public function venues(int $limit = 80): array
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT v.*, COALESCE(v.country_code, '') AS country, COALESCE(v.city_cn, v.city_original, '') AS city, COALESCE(v.name_cn, v.name_original) AS name FROM venues v ORDER BY v.country_code, COALESCE(v.city_cn, v.city_original), COALESCE(v.name_cn, v.name_original) LIMIT ?");
+            $stmt->bindValue(1, $limit, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (\Throwable) {
+            return [];
+        }
+    }
+
     public function teams(?string $query = null, int $limit = 200): array
     {
         $sql = 'SELECT t.*, COUNT(p.id) AS player_count
@@ -613,7 +629,7 @@ final class AppRepository
     /** @return array<int, array<string, mixed>> */
     public function tableRows(string $table, int $limit = 80): array
     {
-        $allowed = ['teams', 'players', 'matches', 'news_articles', 'team_members', 'admin_posts', 'comments', 'coursework_artifacts', 'source_files', 'data_quality_checks', 'player_statistics', 'match_lineups', 'match_events'];
+        $allowed = ['teams', 'players', 'matches', 'news_articles', 'team_members', 'admin_posts', 'comments', 'country_profiles', 'source_files', 'data_quality_checks', 'player_statistics', 'match_lineups', 'match_events'];
         if (!in_array($table, $allowed, true)) {
             return [];
         }
@@ -625,7 +641,7 @@ final class AppRepository
         $allowed = [
             'team_members' => ['name', 'student_no', 'role_name', 'bio', 'photo_url', 'sort_order', 'is_visible'],
             'admin_posts' => ['title', 'body', 'post_type', 'status', 'published_at'],
-            'coursework_artifacts' => ['artifact_key', 'stage', 'title', 'requirement_summary', 'evidence_path', 'status', 'sort_order', 'notes'],
+            'country_profiles' => ['country_code', 'country_name_cn', 'country_name_original', 'capital', 'region', 'subregion', 'languages', 'currencies', 'population', 'area_km2', 'map_url', 'travel_summary', 'culture_summary', 'source_url'],
             'teams' => ['code', 'name_cn', 'name_original', 'country_code', 'flag_emoji', 'flag_url', 'confederation', 'group_name', 'coach_name', 'world_ranking', 'profile', 'source_url'],
             'players' => ['team_id', 'name_cn', 'name_original', 'position', 'shirt_number', 'birth_date', 'age', 'club', 'caps', 'goals', 'height_cm', 'photo_url', 'popularity_score', 'source_url'],
             'matches' => ['stage', 'group_name', 'home_team_id', 'away_team_id', 'home_team_name', 'away_team_name', 'home_score', 'away_score', 'status', 'starts_at', 'source_url'],
@@ -671,7 +687,7 @@ final class AppRepository
             'matches' => ['stage' => 'World Cup', 'status' => 'unknown'],
             'news_articles' => ['source_name' => '手工录入', 'title_original' => $payload['title_cn'] ?? 'Untitled', 'language_code' => 'zh-CN', 'credibility_score' => 80, 'translation_status' => 'none'],
             'admin_posts' => ['post_type' => 'announcement', 'status' => 'published'],
-            'coursework_artifacts' => ['stage' => '团队作业', 'status' => 'todo', 'sort_order' => 0],
+            'country_profiles' => ['country_name_original' => $payload['country_name_cn'] ?? 'Country'],
         ][$table] ?? [];
 
         foreach ($defaults as $key => $value) {
@@ -684,11 +700,148 @@ final class AppRepository
 
     public function deleteRow(string $table, int $id): void
     {
-        $allowed = ['teams', 'players', 'matches', 'news_articles', 'team_members', 'admin_posts', 'comments', 'coursework_artifacts'];
+        $allowed = ['teams', 'players', 'matches', 'news_articles', 'team_members', 'admin_posts', 'comments', 'country_profiles'];
         if (!in_array($table, $allowed, true)) {
             return;
         }
         $this->pdo->prepare("DELETE FROM {$table} WHERE id = ?")->execute([$id]);
+    }
+
+    public function match(int $id): ?array
+    {
+        $stmt = $this->pdo->prepare(
+            'SELECT m.*,
+                    ht.name_cn AS home_name_cn, ht.name_original AS home_name_original, ht.flag_emoji AS home_flag, ht.flag_url AS home_flag_url, ht.code AS home_code,
+                    at.name_cn AS away_name_cn, at.name_original AS away_name_original, at.flag_emoji AS away_flag, at.flag_url AS away_flag_url, at.code AS away_code,
+                    v.name_cn AS venue_name_cn, v.name_original AS venue_name_original, COALESCE(v.city_cn, v.city_original) AS venue_city, v.country_code AS venue_country, v.capacity AS venue_capacity
+             FROM matches m
+             LEFT JOIN teams ht ON ht.id = m.home_team_id
+             LEFT JOIN teams at ON at.id = m.away_team_id
+             LEFT JOIN venues v ON v.id = m.venue_id
+             WHERE m.id = ?
+             LIMIT 1'
+        );
+        $stmt->execute([$id]);
+        $row = $stmt->fetch();
+        return $row ?: null;
+    }
+
+    /** @return array<int, array<string, mixed>> */
+    public function matchStats(int $matchId): array
+    {
+        $stmt = $this->pdo->prepare(
+            'SELECT ms.*, t.name_cn, t.name_original, t.flag_url, t.flag_emoji, t.code
+             FROM match_stats ms
+             LEFT JOIN teams t ON t.id = ms.team_id
+             WHERE ms.match_id = ?
+             ORDER BY ms.id'
+        );
+        $stmt->execute([$matchId]);
+        return $stmt->fetchAll();
+    }
+
+    /** @return array<int, array<string, mixed>> */
+    public function matchEvents(int $matchId): array
+    {
+        $stmt = $this->pdo->prepare(
+            'SELECT me.*, t.name_cn AS team_name_cn, t.name_original AS team_name_original, t.flag_url, t.flag_emoji,
+                    p.name_cn AS player_name_cn, p.name_original AS player_name_original
+             FROM match_events me
+             LEFT JOIN teams t ON t.id = me.team_id
+             LEFT JOIN players p ON p.id = me.player_id
+             WHERE me.match_id = ?
+             ORDER BY COALESCE(me.minute, 999), me.id'
+        );
+        $stmt->execute([$matchId]);
+        return $stmt->fetchAll();
+    }
+
+    /** @return array<string, array<int, array<string, mixed>>> */
+    public function matchLineups(int $matchId): array
+    {
+        $stmt = $this->pdo->prepare(
+            'SELECT ml.*, t.name_cn AS team_name_cn, t.name_original AS team_name_original, t.flag_url, t.flag_emoji,
+                    p.name_cn AS player_name_cn, p.name_original AS player_name_original, p.position, p.shirt_number
+             FROM match_lineups ml
+             LEFT JOIN teams t ON t.id = ml.team_id
+             LEFT JOIN players p ON p.id = ml.player_id
+             WHERE ml.match_id = ?
+             ORDER BY t.name_cn, ml.is_starting_xi DESC, COALESCE(p.shirt_number, 999), p.name_original'
+        );
+        $stmt->execute([$matchId]);
+        $groups = [];
+        foreach ($stmt->fetchAll() as $row) {
+            $groups[(string) ($row['team_name_cn'] ?: $row['team_name_original'] ?: '球队待同步')][] = $row;
+        }
+        return $groups;
+    }
+
+    /** @return array<string, array<int, array<string, mixed>>> */
+    public function groupMatches(): array
+    {
+        $groups = [];
+        foreach ($this->matches(160) as $match) {
+            if ($match['stage'] !== '小组赛') {
+                continue;
+            }
+            $groups[(string) ($match['group_name'] ?: '未分组')][] = $match;
+        }
+        ksort($groups);
+        return $groups;
+    }
+
+    /** @return array<string, array<int, array<string, mixed>>> */
+    public function search(string $query): array
+    {
+        $query = trim($query);
+        if ($query === '') {
+            return ['teams' => [], 'players' => [], 'matches' => [], 'news' => [], 'countries' => []];
+        }
+        $like = '%' . $query . '%';
+
+        $teams = $this->pdo->prepare('SELECT * FROM teams WHERE name_cn LIKE ? OR name_original LIKE ? OR code LIKE ? ORDER BY name_cn LIMIT 12');
+        $teams->execute([$like, $like, $like]);
+
+        $players = $this->pdo->prepare(
+            'SELECT p.*, t.name_cn AS team_name_cn, t.flag_url, t.flag_emoji
+             FROM players p
+             LEFT JOIN teams t ON t.id = p.team_id
+             WHERE p.name_cn LIKE ? OR p.name_original LIKE ? OR p.club LIKE ?
+             ORDER BY p.popularity_score DESC, p.name_original LIMIT 16'
+        );
+        $players->execute([$like, $like, $like]);
+
+        $matches = $this->pdo->prepare(
+            'SELECT m.*, ht.name_cn AS home_name_cn, at.name_cn AS away_name_cn, ht.flag_url AS home_flag_url, at.flag_url AS away_flag_url, ht.flag_emoji AS home_flag, at.flag_emoji AS away_flag
+             FROM matches m
+             LEFT JOIN teams ht ON ht.id = m.home_team_id
+             LEFT JOIN teams at ON at.id = m.away_team_id
+             WHERE m.stage LIKE ? OR m.group_name LIKE ? OR ht.name_cn LIKE ? OR at.name_cn LIKE ? OR m.home_team_name LIKE ? OR m.away_team_name LIKE ?
+             ORDER BY COALESCE(m.starts_at, "2099-12-31") LIMIT 16'
+        );
+        $matches->execute([$like, $like, $like, $like, $like, $like]);
+
+        $news = $this->pdo->prepare(
+            'SELECT * FROM news_articles
+             WHERE title_cn LIKE ? OR title_original LIKE ? OR summary_cn LIKE ? OR summary_original LIKE ? OR source_name LIKE ?
+             ORDER BY COALESCE(published_at, created_at) DESC LIMIT 12'
+        );
+        $news->execute([$like, $like, $like, $like, $like]);
+
+        $countries = $this->pdo->prepare(
+            'SELECT * FROM country_profiles
+             WHERE country_name_cn LIKE ? OR country_name_original LIKE ? OR capital LIKE ? OR region LIKE ? OR travel_summary LIKE ? OR culture_summary LIKE ?
+             ORDER BY country_name_cn LIMIT 12'
+        );
+        $countries->execute([$like, $like, $like, $like, $like, $like]);
+
+        return [
+            'teams' => $teams->fetchAll(),
+            'players' => $players->fetchAll(),
+            'matches' => $matches->fetchAll(),
+            'news' => $news->fetchAll(),
+            'countries' => $countries->fetchAll(),
+        ];
     }
 
     /** @return array<int, int> */

@@ -39,7 +39,7 @@
     });
   });
 
-  document.querySelectorAll('.module-card, .team-card, .player-card, .news-card').forEach((card) => {
+  document.querySelectorAll('.module-card, .team-card, .player-card, .news-card, .country-card, .travel-card').forEach((card) => {
     card.addEventListener('mousemove', (event) => {
       const rect = card.getBoundingClientRect();
       card.style.setProperty('--mx', `${event.clientX - rect.left}px`);
@@ -47,17 +47,4 @@
     });
   });
 
-  if (document.querySelector('[data-news-auto-refresh]')) {
-    setInterval(async () => {
-      try {
-        const response = await fetch('/api/news/refresh', { headers: { 'Accept': 'application/json' } });
-        const data = await response.json();
-        if (data.ok && data.summary && (Number(data.summary.inserted) > 0 || Number(data.summary.translated) > 0)) {
-          location.reload();
-        }
-      } catch (_) {
-        // Keep the page readable when a source is temporarily unavailable.
-      }
-    }, 120000);
-  }
 })();

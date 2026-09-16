@@ -20,7 +20,7 @@ final class AdminController
         'news_articles' => '新闻',
         'admin_posts' => '发布内容',
         'comments' => '留言',
-        'coursework_artifacts' => '课程交付',
+        'country_profiles' => '国家探索',
         'source_files' => '来源文件',
         'data_quality_checks' => '数据校验',
         'player_statistics' => '球员统计',

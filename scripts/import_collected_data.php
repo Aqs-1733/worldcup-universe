@@ -1286,7 +1286,7 @@ final class CollectedWorldCupImporter
             'pochih_rosters' => 'https://raw.githubusercontent.com/pochih/worldcup2026/master/data/rosters.json',
             'alamyy' => 'https://github.com/Alamyy/Worldcup26',
             'ebemad' => 'https://github.com/EbEmad/FIFA-Data-Wc-2026',
-        ][$key] ?? 'https://github.com/Aqs-1733/worldcup-ai-universe';
+        ][$key] ?? 'https://github.com/Aqs-1733/worldcup-universe';
     }
 
     private function sourceUrlForPath(string $path): ?string

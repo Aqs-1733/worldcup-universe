@@ -1,4 +1,4 @@
-<section class="page-title reveal" data-news-auto-refresh>
+<section class="page-title reveal">
   <div><span class="kicker">NEWS</span><h1>新闻</h1></div>
   <form method="post" action="<?= e(url('/news/refresh')) ?>">
     <?= csrf_field() ?>

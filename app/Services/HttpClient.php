@@ -31,7 +31,7 @@ final class HttpClient
     private function request(string $method, string $url, ?string $body, array $headers, int $timeout): string
     {
         $headerLines = [];
-        $headers['User-Agent'] ??= (string) env('SYNC_USER_AGENT', 'worldcup-ai-universe/1.0');
+        $headers['User-Agent'] ??= (string) env('SYNC_USER_AGENT', 'worldcup-universe/1.0');
         foreach ($headers as $key => $value) {
             $headerLines[] = "{$key}: {$value}";
         }
@@ -42,6 +42,7 @@ final class HttpClient
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_TIMEOUT => $timeout,
+                CURLOPT_CONNECTTIMEOUT => min(5, max(1, $timeout)),
                 CURLOPT_CUSTOMREQUEST => $method,
                 CURLOPT_HTTPHEADER => $headerLines,
             ]);

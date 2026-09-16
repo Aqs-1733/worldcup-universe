@@ -19,7 +19,7 @@ final class Database
 
         $host = (string) env('DB_HOST', '127.0.0.1');
         $port = (string) env('DB_PORT', '3306');
-        $database = (string) env('DB_DATABASE', 'worldcup_ai_universe');
+        $database = (string) env('DB_DATABASE', 'worldcup_universe');
         $charset = (string) env('DB_CHARSET', 'utf8mb4');
         $username = (string) env('DB_USERNAME', 'root');
         $password = (string) env('DB_PASSWORD', '');

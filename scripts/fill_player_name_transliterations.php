@@ -45,7 +45,7 @@ $quality->execute([
     (string) $missing,
     $missing === 0 ? 'pass' : 'warn',
     "源数据已有中文名优先保留；本次自动音译补全 {$generated} 条，规范化 {$updated} 条，英文原名仍保留在 name_original。",
-    'https://github.com/Aqs-1733/worldcup-ai-universe',
+    'https://github.com/Aqs-1733/worldcup-universe',
 ]);
 
 echo json_encode([
