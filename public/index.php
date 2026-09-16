@@ -27,6 +27,7 @@ $router->get('/players', [PageController::class, 'players']);
 $router->get('/players/{id}', [PageController::class, 'player']);
 $router->get('/worldcup', [PageController::class, 'worldcup']);
 $router->get('/news', [PageController::class, 'news']);
+$router->get('/coursework', [PageController::class, 'coursework']);
 $router->post('/news/refresh', [PageController::class, 'refreshNews']);
 $router->get('/api/news/refresh', [PageController::class, 'refreshNewsApi']);
 $router->get('/news/{id}', [PageController::class, 'newsShow']);

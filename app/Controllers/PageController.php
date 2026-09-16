@@ -97,6 +97,15 @@ final class PageController
         ]);
     }
 
+    public function coursework(): string
+    {
+        return View::render('coursework', [
+            'title' => '课程交付',
+            'counts' => $this->repo->counts(),
+            'artifacts' => $this->repo->courseworkArtifacts(),
+        ]);
+    }
+
     public function news(): string
     {
         return View::render('news', [
@@ -116,7 +125,7 @@ final class PageController
         Csrf::requireValid();
         try {
             $summary = (new NewsSyncService())->sync();
-            Flash::set('success', "联网刷新完成：读取 {$summary['fetched']} 条，写入/更新 {$summary['inserted']} 条，失败源 {$summary['failed']} 个。");
+            Flash::set('success', "联网刷新完成：读取 {$summary['fetched']} 条，写入/更新 {$summary['inserted']} 条，当场翻译 {$summary['translated']} 条，失败源 {$summary['failed']} 个。");
         } catch (\Throwable $error) {
             Flash::set('error', '联网刷新失败：' . $error->getMessage());
         }
@@ -126,7 +135,7 @@ final class PageController
     public function refreshNewsApi(): string
     {
         try {
-            $summary = (new NewsSyncService())->sync(6);
+            $summary = (new NewsSyncService())->sync(2);
             return Response::json(['ok' => true, 'summary' => $summary]);
         } catch (\Throwable $error) {
             return Response::json(['ok' => false, 'message' => $error->getMessage()], 500);

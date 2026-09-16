@@ -22,7 +22,7 @@ final class ArkClient
         return (bool) env('ARK_API_KEY') && (bool) env('ARK_IMAGE_MODEL');
     }
 
-    public function chat(string $prompt, string $tone = '中立', ?string $team = null, int $timeout = 90): string
+    public function chat(string $prompt, string $tone = '中立', ?string $team = null, int $timeout = 90, ?int $maxTokens = null, float $temperature = 0.4): string
     {
         if (!$this->textReady()) {
             throw new RuntimeException('未配置 ARK 文本模型：请在 .env 设置 ARK_API_KEY 和 ARK_MODEL。');
@@ -34,14 +34,19 @@ final class ArkClient
         }
         $system .= ' 语气要求：' . $tone . '。';
 
-        $json = $this->http->postJson($this->endpoint('/chat/completions'), [
+        $payload = [
             'model' => (string) env('ARK_MODEL'),
             'messages' => [
                 ['role' => 'system', 'content' => $system],
                 ['role' => 'user', 'content' => $prompt],
             ],
-            'temperature' => 0.4,
-        ], $this->headers(), $timeout);
+            'temperature' => $temperature,
+        ];
+        if ($maxTokens !== null) {
+            $payload['max_tokens'] = $maxTokens;
+        }
+
+        $json = $this->http->postJson($this->endpoint('/chat/completions'), $payload, $this->headers(), $timeout);
 
         return (string) ($json['choices'][0]['message']['content'] ?? '');
     }

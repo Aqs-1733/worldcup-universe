@@ -14,6 +14,7 @@ $nav = [
     '/fan-space' => '球迷空间',
     '/ai-studio' => 'AI 创作',
     '/vision' => '视觉',
+    '/coursework' => '课程交付',
 ];
 ?>
 <!doctype html>

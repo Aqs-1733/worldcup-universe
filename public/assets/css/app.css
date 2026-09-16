@@ -489,3 +489,37 @@ p { color: var(--muted); }
   .versus { grid-template-columns: 1fr; }
   .bar-line { grid-template-columns: 1fr; }
 }
+
+.compact-modules { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.static-card { cursor: default; }
+.timeline-list { display: grid; gap: 1rem; }
+.timeline-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+}
+.timeline-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--muted);
+}
+.timeline-card.status-ready::before, .timeline-card.status-done::before { background: var(--green); }
+.timeline-card.status-todo::before { background: var(--gold); }
+.timeline-top { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; }
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 200, 74, .4);
+  border-radius: 999px;
+  padding: .15rem .55rem;
+  color: var(--gold);
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.status-ready .status-pill, .status-done .status-pill { color: var(--green); border-color: rgba(24, 216, 137, .45); }

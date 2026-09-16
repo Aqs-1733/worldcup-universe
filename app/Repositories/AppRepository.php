@@ -19,7 +19,7 @@ final class AppRepository
     /** @return array<string, int> */
     public function counts(): array
     {
-        $tables = ['teams', 'players', 'matches', 'news_articles', 'comments', 'users', 'team_members', 'source_files', 'source_records', 'data_quality_checks'];
+        $tables = ['teams', 'players', 'matches', 'news_articles', 'comments', 'users', 'team_members', 'admin_posts', 'coursework_artifacts', 'source_files', 'source_records', 'data_quality_checks'];
         $counts = [];
         foreach ($tables as $table) {
             try {
@@ -64,6 +64,22 @@ final class AppRepository
         $stmt->bindValue(1, $limit, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    /** @return array<string, array<int, array<string, mixed>>> */
+    public function courseworkArtifacts(): array
+    {
+        try {
+            $rows = $this->pdo->query('SELECT * FROM coursework_artifacts ORDER BY sort_order, id')->fetchAll();
+        } catch (\Throwable) {
+            return [];
+        }
+
+        $grouped = [];
+        foreach ($rows as $row) {
+            $grouped[(string) $row['stage']][] = $row;
+        }
+        return $grouped;
     }
 
     /** @return array<int, array<string, mixed>> */
@@ -597,7 +613,7 @@ final class AppRepository
     /** @return array<int, array<string, mixed>> */
     public function tableRows(string $table, int $limit = 80): array
     {
-        $allowed = ['teams', 'players', 'matches', 'news_articles', 'team_members', 'admin_posts', 'comments', 'source_files', 'data_quality_checks', 'player_statistics', 'match_lineups', 'match_events'];
+        $allowed = ['teams', 'players', 'matches', 'news_articles', 'team_members', 'admin_posts', 'comments', 'coursework_artifacts', 'source_files', 'data_quality_checks', 'player_statistics', 'match_lineups', 'match_events'];
         if (!in_array($table, $allowed, true)) {
             return [];
         }
@@ -609,6 +625,7 @@ final class AppRepository
         $allowed = [
             'team_members' => ['name', 'student_no', 'role_name', 'bio', 'photo_url', 'sort_order', 'is_visible'],
             'admin_posts' => ['title', 'body', 'post_type', 'status', 'published_at'],
+            'coursework_artifacts' => ['artifact_key', 'stage', 'title', 'requirement_summary', 'evidence_path', 'status', 'sort_order', 'notes'],
             'teams' => ['code', 'name_cn', 'name_original', 'country_code', 'flag_emoji', 'flag_url', 'confederation', 'group_name', 'coach_name', 'world_ranking', 'profile', 'source_url'],
             'players' => ['team_id', 'name_cn', 'name_original', 'position', 'shirt_number', 'birth_date', 'age', 'club', 'caps', 'goals', 'height_cm', 'photo_url', 'popularity_score', 'source_url'],
             'matches' => ['stage', 'group_name', 'home_team_id', 'away_team_id', 'home_team_name', 'away_team_name', 'home_score', 'away_score', 'status', 'starts_at', 'source_url'],
@@ -654,6 +671,7 @@ final class AppRepository
             'matches' => ['stage' => 'World Cup', 'status' => 'unknown'],
             'news_articles' => ['source_name' => '手工录入', 'title_original' => $payload['title_cn'] ?? 'Untitled', 'language_code' => 'zh-CN', 'credibility_score' => 80, 'translation_status' => 'none'],
             'admin_posts' => ['post_type' => 'announcement', 'status' => 'published'],
+            'coursework_artifacts' => ['stage' => '团队作业', 'status' => 'todo', 'sort_order' => 0],
         ][$table] ?? [];
 
         foreach ($defaults as $key => $value) {
@@ -666,7 +684,7 @@ final class AppRepository
 
     public function deleteRow(string $table, int $id): void
     {
-        $allowed = ['teams', 'players', 'matches', 'news_articles', 'team_members', 'admin_posts', 'comments'];
+        $allowed = ['teams', 'players', 'matches', 'news_articles', 'team_members', 'admin_posts', 'comments', 'coursework_artifacts'];
         if (!in_array($table, $allowed, true)) {
             return;
         }

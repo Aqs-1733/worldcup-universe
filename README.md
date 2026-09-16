@@ -15,6 +15,17 @@ PHP + MySQL 版 2026 世界杯球迷信息系统。项目保留原来的世界�
 - 后台管理：团队成员、球队、球员、赛程、新闻、发布内容、留言管理。
 - MySQL 表数量超过 10 张，见 `database/schema.sql`。
 
+
+## 课程要求留存
+
+老师图片里的阶段要求已经整理到项目内，便于个人作业 1/2/3 和团队作业 1-6 后续分别提交：
+
+- 页面入口：`/coursework`。
+- 总映射：`docs/coursework-traceability.md`。
+- 团队文档：`docs/requirements.md`、`docs/design.md`、`docs/implementation.md`、`docs/user-manual.md`、`docs/deployment.md`、`docs/presentation-outline.md`。
+- 个人作业模板：`docs/coursework/`，只保留要求和证据位，不伪造成已完成；后续按个人学号姓名补截图打包。
+- 后台维护：`/admin/coursework_artifacts` 可编辑每个阶段的状态、证据路径和备注。
+
 ## 环境要求
 
 - PHP 8.1+，需要启用 `pdo_mysql`、`mbstring`、`curl`、`simplexml`、`dom`。
@@ -117,7 +128,7 @@ D:\XAMPP\php\php.exe scripts\import_collected_data.php
 - Mominullptr FIFA World Cup 2026 Dataset。
 - Alamyy Worldcup26 比赛赛果和来源链接。
 - EbEmad FIFA-Data-Wc-2026 球员补充字段。
-- BBC Sport、ESPN、The Guardian、Sky Sports、新华社体育等 RSS 新闻源。
+- BBC Sport、ESPN、The Guardian、CBS Sports、The New York Times、Sky Sports 等 RSS 新闻源。
 
 新闻仍可联网刷新：
 
@@ -126,6 +137,18 @@ php scripts/sync_news.php
 ```
 
 如果网络或来源失败，脚本会记录错误，不会填本地假数据。外文新闻翻译依赖 `ARK_API_KEY` 和 `ARK_MODEL`，没配置时保留原文并标记待翻译。
+
+新闻刷新会在抓取 RSS 时同步翻译标题和摘要，不需要单独手动翻译。默认适合课堂演示：每个来源 1 条、单篇网页正文抓取 2 秒、ARK 单篇翻译 30 秒，失败时再尝试 MyMemory 单条翻译 6 秒。AI 创作和生图仍走 ARK；需要更多新闻或切换翻译策略时可在 `.env` 调整：
+
+```env
+NEWS_MAX_PER_SOURCE=10
+NEWS_ARTICLE_TIMEOUT=5
+NEWS_TRANSLATE_TIMEOUT=12
+NEWS_ARK_TRANSLATE_TIMEOUT=30
+NEWS_TRANSLATION_PROVIDER=auto
+```
+
+如果数据库里已有旧的未翻译新闻，可临时运行 `php scripts/translate_news.php` 补历史数据；正常使用只需要点击页面里的“联网刷新”。
 
 `scripts/sync_worldcup.php` 保留为在线同步入口；课程验收建议优先使用 `scripts/import_collected_data.php`，因为它会导入采集包并写入数据质量检查表。
 

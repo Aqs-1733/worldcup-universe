@@ -356,7 +356,7 @@ CREATE TABLE IF NOT EXISTS news_articles (
   published_at DATETIME NULL,
   fetched_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   credibility_score TINYINT UNSIGNED NOT NULL DEFAULT 80,
-  translation_status ENUM('none','translated','failed') NOT NULL DEFAULT 'none',
+  translation_status ENUM('none','pending','translated','failed') NOT NULL DEFAULT 'none',
   raw_payload_json JSON NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -438,6 +438,22 @@ CREATE TABLE IF NOT EXISTS admin_posts (
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   CONSTRAINT fk_admin_posts_author FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS coursework_artifacts (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  artifact_key VARCHAR(100) NOT NULL UNIQUE,
+  stage ENUM('个人作业','团队作业','课程设计') NOT NULL,
+  title VARCHAR(180) NOT NULL,
+  requirement_summary TEXT NOT NULL,
+  evidence_path VARCHAR(500) NULL,
+  status ENUM('todo','ready','done') NOT NULL DEFAULT 'todo',
+  sort_order INT NOT NULL DEFAULT 0,
+  notes TEXT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_coursework_stage_status (stage, status),
+  INDEX idx_coursework_sort (sort_order)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS ai_generations (

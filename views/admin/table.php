@@ -17,11 +17,12 @@
         'news_articles' => ['source_name' => '来源名', 'source_url' => '来源URL', 'title_cn' => '中文标题', 'title_original' => '原文标题', 'summary_cn' => '中文摘要', 'summary_original' => '原文摘要', 'content_cn' => '中文正文', 'content_original' => '原文正文', 'language_code' => '语言', 'published_at' => '发布时间', 'credibility_score' => '可信度', 'translation_status' => '翻译状态'],
         'admin_posts' => ['title' => '标题', 'body' => '正文', 'post_type' => '类型', 'status' => '状态', 'published_at' => '发布时间'],
         'comments' => ['status' => '状态'],
+        'coursework_artifacts' => ['artifact_key' => '键名', 'stage' => '阶段', 'title' => '标题', 'requirement_summary' => '要求摘要', 'evidence_path' => '证据路径', 'status' => '状态(todo/ready/done)', 'sort_order' => '排序', 'notes' => '备注'],
       ][$table] ?? [];
     ?>
     <?php foreach ($fields as $field => $labelText): ?>
       <label><?= e($labelText) ?>
-        <?php if (in_array($field, ['bio', 'profile', 'summary_cn', 'summary_original', 'content_cn', 'content_original', 'body'], true)): ?>
+        <?php if (in_array($field, ['bio', 'profile', 'summary_cn', 'summary_original', 'content_cn', 'content_original', 'body', 'requirement_summary', 'notes'], true)): ?>
           <textarea name="<?= e($field) ?>" rows="4"></textarea>
         <?php else: ?>
           <input name="<?= e($field) ?>">

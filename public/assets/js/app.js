@@ -52,7 +52,7 @@
       try {
         const response = await fetch('/api/news/refresh', { headers: { 'Accept': 'application/json' } });
         const data = await response.json();
-        if (data.ok && data.summary && Number(data.summary.inserted) > 0) {
+        if (data.ok && data.summary && (Number(data.summary.inserted) > 0 || Number(data.summary.translated) > 0)) {
           location.reload();
         }
       } catch (_) {

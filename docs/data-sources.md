@@ -18,4 +18,4 @@
 
 ## 新闻
 
-新闻源在 `news_sources` 表中维护，默认包含 BBC Sport、ESPN、The Guardian、Sky Sports 和新华社体育 RSS。新闻支持多标签分类，标题、摘要和正文翻译依赖 ARK 文本模型。
+新闻源在 `news_sources` 表中维护，默认包含 BBC Sport、ESPN、The Guardian、CBS Sports、The New York Times 和 Sky Sports RSS。新闻刷新时会同步翻译标题和摘要，支持多标签分类；默认先用 ARK 轻量批量翻译，失败时再尝试 MyMemory 在线翻译，AI 创作和生图仍使用 ARK。
