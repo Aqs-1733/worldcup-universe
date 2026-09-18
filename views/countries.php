@@ -13,9 +13,29 @@
       <span>Interactive Globe</span>
       <b><?= e((string) count($countries)) ?>/<?= e((string) count($teams)) ?></b>
     </div>
-    <div class="globe-sphere" data-globe-sphere>
+    <div class="globe-sphere globe-sphere-clean" data-globe-sphere>
+      <div class="globe-map" data-globe-map aria-hidden="true">
+        <svg viewBox="0 0 360 180" role="img" aria-label="世界大洲轮廓">
+          <g class="continent-layer">
+            <path class="globe-continent north-america" d="M36 45c19-22 55-26 83-14 15 6 27 18 24 30-4 14-23 10-32 20-10 10-5 26-20 29-18 4-27-13-41-17-15-5-35 2-42-10-7-13 12-26 28-38Z"/>
+            <path class="globe-continent south-america" d="M116 94c16 8 24 23 21 40-2 14-11 22-18 34-5 9-2 22-13 27-10-12-18-28-19-45-2-24 8-44 29-56Z"/>
+            <path class="globe-continent europe" d="M169 46c18-13 44-12 59 1 12 10 5 23-10 25-18 3-44-2-49-26Z"/>
+            <path class="globe-continent africa" d="M191 77c22-5 45 7 50 31 5 23-8 44-26 60-17-14-30-37-31-61 0-12 2-22 7-30Z"/>
+            <path class="globe-continent asia" d="M231 45c40-21 91-12 114 16 11 14 4 30-13 33-17 4-27-9-43-7-18 2-29 20-47 13-19-8-29-34-11-55Z"/>
+            <path class="globe-continent oceania" d="M293 124c19-8 41-4 53 9 9 10 4 20-10 20-20 0-39-8-43-29Z"/>
+          </g>
+          <g class="continent-layer duplicate" transform="translate(360 0)">
+            <path class="globe-continent north-america" d="M36 45c19-22 55-26 83-14 15 6 27 18 24 30-4 14-23 10-32 20-10 10-5 26-20 29-18 4-27-13-41-17-15-5-35 2-42-10-7-13 12-26 28-38Z"/>
+            <path class="globe-continent south-america" d="M116 94c16 8 24 23 21 40-2 14-11 22-18 34-5 9-2 22-13 27-10-12-18-28-19-45-2-24 8-44 29-56Z"/>
+            <path class="globe-continent europe" d="M169 46c18-13 44-12 59 1 12 10 5 23-10 25-18 3-44-2-49-26Z"/>
+            <path class="globe-continent africa" d="M191 77c22-5 45 7 50 31 5 23-8 44-26 60-17-14-30-37-31-61 0-12 2-22 7-30Z"/>
+            <path class="globe-continent asia" d="M231 45c40-21 91-12 114 16 11 14 4 30-13 33-17 4-27-9-43-7-18 2-29 20-47 13-19-8-29-34-11-55Z"/>
+            <path class="globe-continent oceania" d="M293 124c19-8 41-4 53 9 9 10 4 20-10 20-20 0-39-8-43-29Z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="globe-active-marker" data-globe-active-marker hidden></div>
       <div class="globe-shine"></div>
-      <div class="globe-marker-layer" data-globe-markers></div>
     </div>
     <div class="globe-readout" data-globe-readout>
       <span>点击下面国家卡片</span>
@@ -86,4 +106,3 @@
     <?php endif; ?>
   </div>
 </section>
-

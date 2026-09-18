@@ -10,55 +10,18 @@ if (PHP_SAPI === 'cli-server') {
     }
 }
 
-require dirname(__DIR__) . '/app/bootstrap.php';
-
-use App\Controllers\AdminController;
-use App\Controllers\AuthController;
-use App\Controllers\PageController;
-use App\Core\Router;
-use App\Core\View;
-
-$router = new Router();
-
-$router->get('/', [PageController::class, 'home']);
-$router->get('/teams', [PageController::class, 'teams']);
-$router->get('/teams/{id}', [PageController::class, 'team']);
-$router->get('/players', [PageController::class, 'players']);
-$router->get('/players/{id}', [PageController::class, 'player']);
-$router->get('/worldcup', [PageController::class, 'worldcup']);
-$router->get('/matches/{id}', [PageController::class, 'match']);
-$router->get('/news', [PageController::class, 'news']);
-$router->get('/countries', [PageController::class, 'countries']);
-$router->get('/search', [PageController::class, 'search']);
-$router->post('/news/refresh', [PageController::class, 'refreshNews']);
-$router->get('/api/news/refresh', [PageController::class, 'refreshNewsApi']);
-$router->get('/news/{id}', [PageController::class, 'newsShow']);
-$router->get('/fan-space', [PageController::class, 'fanSpace']);
-$router->post('/fan-space', [PageController::class, 'saveFanSpace']);
-$router->get('/onboarding', [PageController::class, 'onboarding']);
-$router->post('/onboarding', [PageController::class, 'saveOnboarding']);
-$router->get('/commentary', [PageController::class, 'commentary']);
-$router->post('/commentary', [PageController::class, 'commentaryPost']);
-$router->get('/vision', [PageController::class, 'vision']);
-$router->post('/vision', [PageController::class, 'visionPost']);
-
-$router->get('/login', [AuthController::class, 'login']);
-$router->post('/login', [AuthController::class, 'loginPost']);
-$router->get('/register', [AuthController::class, 'register']);
-$router->post('/register', [AuthController::class, 'registerPost']);
-$router->post('/logout', [AuthController::class, 'logout']);
-
-$router->get('/admin', [AdminController::class, 'dashboard']);
-$router->get('/admin/{table}', [AdminController::class, 'table']);
-$router->post('/admin/{table}/save', [AdminController::class, 'save']);
-$router->post('/admin/{table}/delete', [AdminController::class, 'delete']);
-
-try {
-    echo $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
-} catch (Throwable $error) {
+$vendorAutoload = dirname(__DIR__) . '/vendor/autoload.php';
+$yiiBootstrap = dirname(__DIR__) . '/vendor/yiisoft/yii2/Yii.php';
+if (!is_file($vendorAutoload) || !is_file($yiiBootstrap)) {
     http_response_code(500);
-    echo View::render('errors/runtime', [
-        'title' => '运行环境未就绪',
-        'error' => $error,
-    ]);
+    echo 'Yii2 vendor dependencies are missing. Run: D:\\XAMPP\\php\\php.exe -d extension=zip $env:TEMP\\composer.phar install';
+    exit;
 }
+
+require $vendorAutoload;
+require $yiiBootstrap;
+require dirname(__DIR__) . '/app/bootstrap.php';
+header('X-Backend: Yii2');
+
+$config = require dirname(__DIR__) . '/config/web.php';
+(new yii\web\Application($config))->run();

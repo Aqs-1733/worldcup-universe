@@ -1,6 +1,6 @@
 # worldcup-universe
 
-PHP + MySQL 版 2026 世界杯球迷信息系统。项目保留原来的世界杯首页、赛程、球队、球员、新闻、球迷偏好、智能解说、生图入口、视觉入口和后台管理，但技术栈已切换为老师要求的 PHP + MySQL，不使用 SQLite。
+Yii2 + PHP + MySQL 版 2026 世界杯球迷信息系统。项目保留原来的世界杯首页、赛程、球队、球员、新闻、球迷偏好、智能解说、生图入口、视觉入口和后台管理，但技术栈已切换为老师要求的 PHP + MySQL，不使用 SQLite。
 
 ## 功能
 
@@ -28,7 +28,7 @@ PHP + MySQL 版 2026 世界杯球迷信息系统。项目保留原来的世界�
 
 ## 环境要求
 
-- PHP 8.1+，需要启用 `pdo_mysql`、`mbstring`、`curl`、`simplexml`、`dom`。
+- PHP 8.1+，需要启用 `pdo_mysql`、`mbstring`、`curl`、`simplexml`、`dom`。Composer 安装 Yii2 依赖时需要临时启用 `zip`，XAMPP 可用 `D:\XAMPP\php\php.exe -d extension=zip`。
 - MySQL 8.0+。
 - Git。
 
@@ -41,13 +41,22 @@ cd D:\worldcup-universe
 Copy-Item .env.example .env
 ```
 
-编辑 `.env`，填好 MySQL 账号密码。然后建库和初始化：
+
+第一次拉取项目时先准备 Yii2 依赖：
+
+```powershell
+$composer = "$env:TEMP\composer.phar"
+if (!(Test-Path $composer)) { Invoke-WebRequest https://getcomposer.org/composer-stable.phar -OutFile $composer }
+D:\XAMPP\php\php.exe -d extension=zip $composer install
+```
+编辑 .env，填好 MySQL 账号密码。然后建库和初始化：
 
 ```powershell
 php scripts/install.php
 php scripts/import_collected_data.php
 php scripts/fill_player_name_transliterations.php
 php scripts/sync_country_profiles.php
+php scripts/fill_derived_data.php
 php scripts/sync_news.php
 php -S 127.0.0.1:8080 -t public public/index.php
 ```
@@ -59,6 +68,7 @@ D:\XAMPP\php\php.exe scripts\install.php
 D:\XAMPP\php\php.exe scripts\import_collected_data.php
 D:\XAMPP\php\php.exe scripts\fill_player_name_transliterations.php
 D:\XAMPP\php\php.exe scripts\sync_country_profiles.php
+D:\XAMPP\php\php.exe scripts\fill_derived_data.php
 D:\XAMPP\php\php.exe scripts\sync_news.php
 D:\XAMPP\php\php.exe -S 127.0.0.1:8080 -t public public/index.php
 ```
@@ -120,8 +130,8 @@ D:\XAMPP\php\php.exe scripts\import_collected_data.php
 - 1248 名最终注册球员，每队 26 人。
 - 104 场比赛，阶段为小组赛 72 场、32 强 16 场、16 强 8 场、四分之一决赛 4 场、半决赛 2 场、季军赛 1 场、决赛 1 场。
 - 116341 条原始 CSV/JSON 记录入库。
-- 9 项自动校验全部通过，包含 Pochih/FIFA 与 Alamyy 赛果交叉检查 `0 mismatch`。
-- 全部球员都保留英文/原始姓名；源数据缺中文名时，可运行 `scripts/fill_player_name_transliterations.php` 用中文音译补齐展示名。
+- 13 项自动校验全部通过，包含 Pochih/FIFA 与 Alamyy 赛果交叉检查 `0 mismatch`。
+- 全部球员都保留英文/原始姓名；源数据缺中文名时，可运行 `scripts/fill_player_name_transliterations.php` 用中文音译补齐展示名；`scripts/fill_derived_data.php` 会按 2026-06-11 开幕日从出生日期推导年龄，并校验 Yii2 后端和国家坐标完整度。
 
 核心数据来源：
 
@@ -183,3 +193,7 @@ git push origin main
 ```
 
 `.env` 不会提交，密钥和数据库密码不要发到仓库。
+
+## Yii2 后端说明
+
+当前入口 public/index.php 已经改为 Yii2 Application，Yii2 路由位于 config/web.php，Yii2 控制器位于 controllers/。原来的数据库仓库、同步服务和视图作为业务层继续复用，便于保持页面和数据不丢失，同时满足后端框架切换到 Yii2 的课程要求。

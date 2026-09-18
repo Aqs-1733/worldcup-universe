@@ -19,6 +19,12 @@
     setTimeout(() => chart.classList.add('active'), 180);
   });
 
+
+  document.querySelectorAll('.panel, .page-title, .card-grid > *, .match-list > *, .news-list > *, .travel-grid > *, .country-grid > *, .group-card, .team-chip, .quality-chip, tbody tr').forEach((node, index) => {
+    node.classList.add('motion-item');
+    node.style.setProperty('--stagger', `${Math.min(index % 12, 11) * 45}ms`);
+  });
+
   document.querySelectorAll('[data-filter-input]').forEach((input) => {
     input.addEventListener('input', () => {
       const target = document.querySelector(input.dataset.filterTarget);
@@ -48,10 +54,12 @@
   });
 
   const globe = document.querySelector('[data-country-globe]');
-  const markerLayer = document.querySelector('[data-globe-markers]');
+  const sphere = document.querySelector('[data-globe-sphere]');
+  const globeMap = document.querySelector('[data-globe-map]');
+  const activeMarker = document.querySelector('[data-globe-active-marker]');
   const readout = document.querySelector('[data-globe-readout]');
   const countryCards = Array.from(document.querySelectorAll('[data-country-card]'));
-  if (globe && markerLayer && readout && countryCards.length) {
+  if (globe && sphere && globeMap && activeMarker && readout && countryCards.length) {
     const points = countryCards
       .map((card) => ({
         card,
@@ -65,24 +73,12 @@
       }))
       .filter((point) => Number.isFinite(point.lat) && Number.isFinite(point.lng));
 
-    const markers = new Map();
-    points.forEach((point) => {
-      const marker = document.createElement('button');
-      marker.type = 'button';
-      marker.className = 'globe-marker';
-      marker.title = point.name;
-      marker.dataset.code = point.code;
-      marker.addEventListener('click', () => selectCountry(point, true));
-      markerLayer.appendChild(marker);
-      markers.set(point.code, marker);
-    });
-
-    let centerLat = 18;
+    let centerLat = 14;
     let centerLng = 0;
     let targetLat = centerLat;
     let targetLng = centerLng;
     let focusedUntil = 0;
-    let activeCode = '';
+    let activePoint = null;
     const escapeHtml = (value) => String(value)
       .replaceAll('&', '&amp;')
       .replaceAll('<', '&lt;')
@@ -98,6 +94,14 @@
     };
 
     const renderReadout = (point) => {
+      if (!point) {
+        readout.innerHTML = `
+          <span>ROTATING EARTH</span>
+          <strong>点击国家卡片定位</strong>
+          <small>平时只显示可旋转地球；选择国家后显示唯一定位点。</small>
+        `;
+        return;
+      }
       const safeFlag = escapeHtml(point.flag);
       readout.innerHTML = `
         <span>${escapeHtml(point.code)}</span>
@@ -107,12 +111,12 @@
     };
 
     const selectCountry = (point, scroll) => {
-      activeCode = point.code;
+      activePoint = point;
       targetLat = Math.max(-58, Math.min(58, point.lat));
       targetLng = normalizeLng(point.lng);
-      focusedUntil = performance.now() + 8500;
+      focusedUntil = performance.now() + 9000;
+      activeMarker.hidden = false;
       countryCards.forEach((card) => card.classList.toggle('active', card.dataset.code === point.code));
-      markers.forEach((marker, code) => marker.classList.toggle('active', code === point.code));
       renderReadout(point);
       if (scroll) {
         point.card.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -134,7 +138,7 @@
       });
     });
 
-    const project = (point, radius, now) => {
+    const project = (point, radius) => {
       const rad = Math.PI / 180;
       const phi = point.lat * rad;
       const lambda = (point.lng - centerLng) * rad;
@@ -142,32 +146,33 @@
       const cosc = Math.sin(phi0) * Math.sin(phi) + Math.cos(phi0) * Math.cos(phi) * Math.cos(lambda);
       const x = radius * Math.cos(phi) * Math.sin(lambda);
       const y = -radius * (Math.cos(phi0) * Math.sin(phi) - Math.sin(phi0) * Math.cos(phi) * Math.cos(lambda));
-      return { x, y, visible: cosc > -0.08, depth: Math.max(0, cosc) };
+      return { x, y, visible: cosc > -0.02, depth: Math.max(0, cosc) };
     };
 
     const tick = (now) => {
       if (now > focusedUntil) {
-        targetLng += 0.035;
-        targetLat = 12 + Math.sin(now / 3400) * 6;
+        targetLng += 0.032;
+        targetLat = 8 + Math.sin(now / 4200) * 7;
       }
-      centerLat += (targetLat - centerLat) * 0.04;
-      centerLng += (targetLng - centerLng) * 0.04;
-      const rect = markerLayer.getBoundingClientRect();
-      const radius = Math.min(rect.width, rect.height) * 0.43;
-      points.forEach((point) => {
-        const marker = markers.get(point.code);
-        if (!marker) return;
-        const projected = project(point, radius, now);
-        marker.style.setProperty('--x', `${projected.x}px`);
-        marker.style.setProperty('--y', `${projected.y}px`);
-        marker.style.setProperty('--opacity', projected.visible ? String(0.28 + projected.depth * 0.72) : '0');
-        marker.style.setProperty('--scale', point.code === activeCode ? '1.45' : String(0.62 + projected.depth * 0.58));
-        marker.hidden = !projected.visible && point.code !== activeCode;
-      });
+      centerLat += (targetLat - centerLat) * 0.035;
+      centerLng += (targetLng - centerLng) * 0.035;
+      sphere.style.setProperty('--spin-lng', `${(-centerLng % 360) / 360 * 50}%`);
+      globeMap.style.setProperty('--globe-tilt', `${centerLat * -0.22}px`);
+
+      if (activePoint) {
+        const rect = sphere.getBoundingClientRect();
+        const radius = Math.min(rect.width, rect.height) * 0.43;
+        const projected = project(activePoint, radius);
+        activeMarker.style.setProperty('--x', `${projected.x}px`);
+        activeMarker.style.setProperty('--y', `${projected.y}px`);
+        activeMarker.style.setProperty('--opacity', projected.visible ? String(0.38 + projected.depth * 0.62) : '0');
+        activeMarker.style.setProperty('--scale', String(0.82 + projected.depth * 0.62));
+        activeMarker.hidden = !projected.visible;
+      }
       requestAnimationFrame(tick);
     };
 
-    selectCountry(points[0], false);
+    renderReadout(null);
     requestAnimationFrame(tick);
   }
 

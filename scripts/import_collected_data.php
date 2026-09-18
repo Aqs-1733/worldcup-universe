@@ -498,6 +498,7 @@ final class CollectedWorldCupImporter
         foreach ($this->csvRows($path) as $row) {
             $sourceId = (int) $row['player_id'];
             $teamId = $this->teamBySourceId[(int) $row['team_id']] ?? null;
+            $birthDate = $this->dateOnly($row['date_of_birth'] ?? null);
             $playerId = $this->repo->upsertPlayer([
                 'team_id' => $teamId,
                 'fifa_id' => 'mominullptr-player-' . $sourceId,
@@ -505,7 +506,8 @@ final class CollectedWorldCupImporter
                 'name_original' => (string) $row['player_name'],
                 'position' => $this->positionCode((string) ($row['position'] ?? '')),
                 'shirt_number' => (($sourceId - 1) % 26) + 1,
-                'birth_date' => $this->dateOnly($row['date_of_birth'] ?? null),
+                'birth_date' => $birthDate,
+                'age' => $this->ageOnTournamentStart($birthDate),
                 'club' => $row['club_team'] ?? null,
                 'caps' => $this->intOrNull($row['caps'] ?? null),
                 'goals' => $this->intOrNull($row['goals'] ?? null),
@@ -1575,6 +1577,18 @@ final class CollectedWorldCupImporter
         }
         $stamp = strtotime((string) $value);
         return $stamp ? date('Y-m-d', $stamp) : null;
+    }
+
+    private function ageOnTournamentStart(?string $birthDate): ?int
+    {
+        if (!$birthDate) {
+            return null;
+        }
+        try {
+            return (int) (new DateTimeImmutable($birthDate))->diff(new DateTimeImmutable('2026-06-11'))->y;
+        } catch (Throwable) {
+            return null;
+        }
     }
 
     private function intOrNull(mixed $value): ?int

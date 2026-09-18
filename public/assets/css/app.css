@@ -827,3 +827,145 @@ p { color: var(--muted); }
   .score-team.right { justify-content: flex-start; }
   .event-timeline article { grid-template-columns: auto 1fr; }
 }
+
+/* Yii2 rebuild visual polish: calmer globe, continent layer and site-wide motion */
+.hero-panel, .panel, .pitch-card, .auth-card, .setup-panel, .article-detail,
+.module-card, .team-card, .player-card, .member-card, .news-card, .travel-card, .country-card, .match-row, .player-row, .group-card, .tree-match {
+  border-radius: 22px;
+}
+.hero-panel, .panel, .pitch-card, .auth-card, .setup-panel, .article-detail {
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--panel-strong) 88%, transparent), color-mix(in srgb, var(--bg-2) 65%, transparent)),
+    radial-gradient(circle at var(--mx, 20%) var(--my, 10%), rgba(255,209,102,.10), transparent 34%);
+}
+.panel::before, .hero-panel::before, .pitch-card::before, .article-detail::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(115deg, transparent 0 38%, rgba(255,255,255,.10) 46%, transparent 58%);
+  transform: translateX(-130%);
+  animation: panelSheen 8.5s ease-in-out infinite;
+}
+.module-card, .team-card, .player-card, .news-card, .travel-card, .country-card, .match-row, .tree-match {
+  box-shadow: 0 16px 44px rgba(2,6,23,.15);
+}
+.motion-item {
+  opacity: 0;
+  transform: translateY(18px) scale(.985);
+  animation: motionUp .62s cubic-bezier(.2,.75,.2,1) forwards;
+  animation-delay: var(--stagger, 0ms);
+}
+.page-title.motion-item, .panel.motion-item { animation-duration: .78s; }
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--blue), transparent);
+  animation: headerFlow 5.5s linear infinite;
+}
+.top-nav a.active { box-shadow: 0 0 24px rgba(255,209,102,.16); }
+.team-chip, .tag-filter a, .source-chip, .user-pill { border-radius: 999px; }
+.shirt { border-radius: 16px; animation: shirtPulse 4.5s ease-in-out infinite; }
+.quality-chip.pass::after {
+  content: "✓";
+  float: right;
+  color: var(--gold);
+  font-weight: 1000;
+}
+.globe-card {
+  min-height: 390px;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(56,189,248,.22), transparent 34%),
+    linear-gradient(145deg, rgba(10,18,44,.94), rgba(16,22,48,.72));
+}
+[data-theme="light"] .globe-card {
+  background:
+    radial-gradient(circle at 50% 38%, rgba(49,92,255,.16), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,.92), rgba(230,238,255,.76));
+}
+.globe-sphere-clean {
+  width: min(64vw, 268px);
+  background:
+    radial-gradient(circle at 34% 25%, rgba(255,255,255,.50), transparent 7%),
+    radial-gradient(circle at 42% 45%, rgba(58,187,255,.72), rgba(17,96,177,.88) 42%, rgba(9,31,89,.98) 73%);
+}
+.globe-sphere-clean::before {
+  background:
+    linear-gradient(90deg, transparent 49.6%, rgba(255,255,255,.28) 49.9% 50.1%, transparent 50.4%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.10) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.10) 0 1px, transparent 1px 42px);
+  opacity: .38;
+  animation: none;
+  z-index: 2;
+}
+.globe-map {
+  position: absolute;
+  inset: 8% -50%;
+  z-index: 1;
+  transform: translateX(var(--spin-lng, 0%)) translateY(var(--globe-tilt, 0));
+  transition: transform .12s linear;
+  opacity: .88;
+}
+.globe-map svg {
+  width: 200%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(2,6,23,.34));
+}
+.globe-continent {
+  fill: color-mix(in srgb, var(--gold) 64%, #0f766e 36%);
+  stroke: rgba(255,255,255,.40);
+  stroke-width: 1.3;
+  opacity: .82;
+}
+.globe-continent.africa, .globe-continent.south-america { fill: color-mix(in srgb, var(--green) 50%, var(--gold) 50%); }
+.globe-continent.asia { fill: color-mix(in srgb, var(--violet) 30%, var(--gold) 70%); }
+.globe-active-marker {
+  --marker-color: var(--red);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  width: 1rem;
+  height: 1rem;
+  margin: -.5rem 0 0 -.5rem;
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,.94);
+  background: var(--marker-color);
+  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(var(--scale, 1));
+  opacity: var(--opacity, 1);
+  box-shadow: 0 0 0 .45rem rgba(255,93,115,.22), 0 0 26px rgba(255,93,115,.9);
+  animation: markerPulse 1.25s ease-in-out infinite;
+}
+.globe-readout strong {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.country-card.active {
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--panel-strong) 92%, transparent), color-mix(in srgb, var(--gold) 10%, transparent));
+}
+@keyframes motionUp {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes panelSheen {
+  0%, 54% { transform: translateX(-130%); opacity: 0; }
+  62% { opacity: .55; }
+  78%, 100% { transform: translateX(130%); opacity: 0; }
+}
+@keyframes headerFlow {
+  from { background-position: -30vw 0; }
+  to { background-position: 70vw 0; }
+}
+@keyframes shirtPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(255,209,102,0); }
+  50% { box-shadow: 0 0 24px rgba(255,209,102,.22); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
