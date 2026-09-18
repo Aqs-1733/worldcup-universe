@@ -1117,3 +1117,139 @@ p { color: var(--muted); }
   .earth-stage { width: min(68vw, 220px); }
   .globe-card { min-height: 405px; }
 }
+
+/* Final globe replacement: use native polished earth glyphs, no ugly hand-drawn continents */
+.globe-card {
+  min-height: 365px;
+  padding: 3.2rem 1rem 1rem;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(96,165,250,.18), transparent 28%),
+    radial-gradient(circle at 20% 12%, rgba(255,209,102,.14), transparent 22%),
+    linear-gradient(145deg, rgba(8,14,38,.96), rgba(21,30,62,.82));
+}
+[data-theme="light"] .globe-card {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(59,130,246,.14), transparent 28%),
+    radial-gradient(circle at 20% 12%, rgba(245,158,11,.14), transparent 22%),
+    linear-gradient(145deg, rgba(255,255,255,.96), rgba(229,236,255,.88));
+}
+.emoji-earth {
+  position: relative;
+  width: min(42vw, 174px);
+  max-width: 174px;
+  min-width: 154px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  filter: drop-shadow(0 22px 34px rgba(2,6,23,.38));
+  animation: premiumEarthFloat 4.8s ease-in-out infinite;
+}
+.earth-emoji-stack {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: radial-gradient(circle at 36% 28%, rgba(255,255,255,.26), rgba(255,255,255,0) 32%);
+}
+.earth-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(8.8rem, 23vw, 10.8rem);
+  line-height: 1;
+  opacity: 0;
+  transform: scale(.92) rotate(-8deg);
+  text-shadow: 0 12px 28px rgba(2,6,23,.24);
+  transition: opacity .45s ease, transform .45s ease, filter .45s ease;
+}
+.emoji-earth:not([data-face]) .earth-face.americas { animation: earthFaceAmericas 9s ease-in-out infinite; }
+.emoji-earth:not([data-face]) .earth-face.emea { animation: earthFaceEmea 9s ease-in-out infinite; }
+.emoji-earth:not([data-face]) .earth-face.asia { animation: earthFaceAsia 9s ease-in-out infinite; }
+.emoji-earth[data-face="americas"] .earth-face.americas,
+.emoji-earth[data-face="emea"] .earth-face.emea,
+.emoji-earth[data-face="asia"] .earth-face.asia {
+  opacity: 1;
+  transform: scale(1) rotate(-4deg);
+  filter: saturate(1.08) contrast(1.02);
+}
+.earth-halo {
+  position: absolute;
+  inset: -18%;
+  z-index: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 90deg, rgba(56,189,248,0), rgba(56,189,248,.34), rgba(255,209,102,.26), rgba(167,139,250,.32), rgba(56,189,248,0));
+  filter: blur(18px);
+  opacity: .70;
+  animation: haloSpin 10s linear infinite;
+}
+.earth-glass {
+  position: absolute;
+  inset: 5%;
+  z-index: 5;
+  pointer-events: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255,255,255,.42), transparent 18%),
+    radial-gradient(circle at 70% 76%, rgba(255,255,255,.12), transparent 28%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.16), inset -22px -20px 34px rgba(2,6,23,.15);
+}
+.earth-ring {
+  position: absolute;
+  z-index: 1;
+  inset: 3%;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1px solid rgba(255,255,255,.26);
+  transform: rotateX(68deg) rotateZ(-14deg);
+}
+.earth-ring.ring-one { animation: orbitSpin 9s linear infinite; }
+.earth-ring.ring-two { inset: -7%; border-color: rgba(255,209,102,.26); animation: orbitSpin 13s linear infinite reverse; }
+.emoji-earth.has-country-focus .earth-ring { border-color: rgba(255,66,99,.45); }
+.emoji-earth .globe-active-marker {
+  z-index: 8;
+  width: 13px;
+  height: 13px;
+  margin: -6.5px 0 0 -6.5px;
+  background: #ff2857;
+  box-shadow: 0 0 0 5px rgba(255,40,87,.20), 0 0 22px rgba(255,40,87,.92), 0 8px 18px rgba(2,6,23,.38);
+}
+.globe-readout {
+  width: min(100% - 1.4rem, 390px);
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+}
+@keyframes premiumEarthFloat {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+@keyframes earthFaceAmericas {
+  0%, 30% { opacity: 1; transform: scale(1) rotate(-5deg); }
+  36%, 100% { opacity: 0; transform: scale(.92) rotate(5deg); }
+}
+@keyframes earthFaceEmea {
+  0%, 30% { opacity: 0; transform: scale(.92) rotate(-6deg); }
+  36%, 63% { opacity: 1; transform: scale(1) rotate(2deg); }
+  69%, 100% { opacity: 0; transform: scale(.92) rotate(7deg); }
+}
+@keyframes earthFaceAsia {
+  0%, 63% { opacity: 0; transform: scale(.92) rotate(-8deg); }
+  69%, 96% { opacity: 1; transform: scale(1) rotate(-2deg); }
+  100% { opacity: 0; transform: scale(.92) rotate(6deg); }
+}
+@keyframes haloSpin {
+  from { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  to { transform: rotate(360deg) scale(1); }
+}
+@media (max-width: 680px) {
+  .emoji-earth { width: min(58vw, 166px); min-width: 142px; }
+  .globe-card { min-height: 350px; }
+}

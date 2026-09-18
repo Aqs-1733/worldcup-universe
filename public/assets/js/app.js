@@ -97,18 +97,29 @@
       `;
     };
 
+    const faceFor = (lng) => {
+      if (lng < -35) return { key: 'americas', center: -88 };
+      if (lng <= 72) return { key: 'emea', center: 24 };
+      return { key: 'asia', center: 116 };
+    };
+
     const placeMarker = (point) => {
       const rect = sphere.getBoundingClientRect();
-      const radius = Math.min(rect.width, rect.height) * 0.43;
-      let x = (point.lng / 180) * radius * 0.92;
-      let y = (-point.lat / 90) * radius * 0.78;
+      const radius = Math.min(rect.width, rect.height) * 0.40;
+      const face = faceFor(point.lng);
+      let lngDelta = point.lng - face.center;
+      while (lngDelta > 180) lngDelta -= 360;
+      while (lngDelta < -180) lngDelta += 360;
+      let x = (lngDelta / 92) * radius;
+      let y = (-point.lat / 82) * radius;
       const distance = Math.hypot(x, y);
-      const maxDistance = radius * 0.90;
+      const maxDistance = radius * 0.94;
       if (distance > maxDistance) {
         const scale = maxDistance / distance;
         x *= scale;
         y *= scale;
       }
+      sphere.dataset.face = face.key;
       activeMarker.style.setProperty('--x', `${x}px`);
       activeMarker.style.setProperty('--y', `${y}px`);
       activeMarker.hidden = false;
