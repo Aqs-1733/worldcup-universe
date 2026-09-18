@@ -22,6 +22,17 @@ foreach (array_filter(array_map('trim', explode(';', (string) $schema))) as $sta
     $server->exec($statement);
 }
 
+$database = (string) env('DB_DATABASE', 'worldcup_universe');
+$server->exec("ALTER TABLE `{$database}`.`teams` MODIFY country_code VARCHAR(8) NULL");
+$server->exec("ALTER TABLE `{$database}`.`country_profiles` MODIFY country_code VARCHAR(8) NOT NULL");
+$columns = $server->query("SHOW COLUMNS FROM `{$database}`.`country_profiles`")->fetchAll(PDO::FETCH_COLUMN);
+if (!in_array('latitude', $columns, true)) {
+    $server->exec("ALTER TABLE `{$database}`.`country_profiles` ADD COLUMN latitude DECIMAL(9,6) NULL AFTER area_km2");
+}
+if (!in_array('longitude', $columns, true)) {
+    $server->exec("ALTER TABLE `{$database}`.`country_profiles` ADD COLUMN longitude DECIMAL(9,6) NULL AFTER latitude");
+}
+
 $pdo = Database::pdo();
 
 $pdo->exec("INSERT IGNORE INTO roles (name, label) VALUES ('admin', '管理员'), ('user', '普通用户')");

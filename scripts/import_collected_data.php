@@ -81,12 +81,21 @@ final class CollectedWorldCupImporter
         if (!$this->columnExists('teams', 'flag_url')) {
             $this->pdo->exec('ALTER TABLE teams ADD COLUMN flag_url VARCHAR(800) NULL AFTER flag_emoji');
         }
+        $this->pdo->exec('ALTER TABLE teams MODIFY country_code VARCHAR(8) NULL');
 
         $schema = file_get_contents(ROOT_PATH . '/database/schema.sql');
         foreach (array_filter(array_map('trim', explode(';', (string) $schema))) as $statement) {
             if (str_starts_with(strtoupper($statement), 'CREATE TABLE')) {
                 $this->pdo->exec($statement);
             }
+        }
+
+        $this->pdo->exec('ALTER TABLE country_profiles MODIFY country_code VARCHAR(8) NOT NULL');
+        if (!$this->columnExists('country_profiles', 'latitude')) {
+            $this->pdo->exec('ALTER TABLE country_profiles ADD COLUMN latitude DECIMAL(9,6) NULL AFTER area_km2');
+        }
+        if (!$this->columnExists('country_profiles', 'longitude')) {
+            $this->pdo->exec('ALTER TABLE country_profiles ADD COLUMN longitude DECIMAL(9,6) NULL AFTER latitude');
         }
     }
 
@@ -1470,7 +1479,7 @@ final class CollectedWorldCupImporter
             'BRA' => 'BR',
             'MAR' => 'MA',
             'HAI' => 'HT',
-            'SCO' => 'GB',
+            'SCO' => 'GB-SCT',
             'USA' => 'US',
             'PAR' => 'PY',
             'AUS' => 'AU',
@@ -1503,7 +1512,7 @@ final class CollectedWorldCupImporter
             'COD' => 'CD',
             'UZB' => 'UZ',
             'COL' => 'CO',
-            'ENG' => 'GB',
+            'ENG' => 'GB-ENG',
             'CRO' => 'HR',
             'GHA' => 'GH',
             'PAN' => 'PA',

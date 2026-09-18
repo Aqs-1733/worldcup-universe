@@ -17,7 +17,7 @@
         'news_articles' => ['source_name' => '来源名', 'source_url' => '来源URL', 'title_cn' => '中文标题', 'title_original' => '原文标题', 'summary_cn' => '中文摘要', 'summary_original' => '原文摘要', 'content_cn' => '中文正文', 'content_original' => '原文正文', 'language_code' => '语言', 'published_at' => '发布时间', 'credibility_score' => '可信度', 'translation_status' => '翻译状态'],
         'admin_posts' => ['title' => '标题', 'body' => '正文', 'post_type' => '类型', 'status' => '状态', 'published_at' => '发布时间'],
         'comments' => ['status' => '状态'],
-        'country_profiles' => ['country_code' => '国家代码', 'country_name_cn' => '中文名', 'country_name_original' => '原名', 'capital' => '首都', 'region' => '地区', 'subregion' => '子地区', 'languages' => '语言', 'currencies' => '货币', 'population' => '人口', 'area_km2' => '面积km²', 'map_url' => '地图链接', 'travel_summary' => '旅行摘要', 'culture_summary' => '文化摘要', 'source_url' => '来源'],
+        'country_profiles' => ['country_code' => '国家/足协代码', 'country_name_cn' => '中文名', 'country_name_original' => '原名', 'capital' => '首都', 'region' => '地区', 'subregion' => '子地区', 'languages' => '语言', 'currencies' => '货币', 'population' => '人口', 'area_km2' => '面积km²', 'latitude' => '纬度', 'longitude' => '经度', 'map_url' => '地图链接', 'travel_summary' => '旅行摘要', 'culture_summary' => '文化摘要', 'source_url' => '来源'],
       ][$table] ?? [];
     ?>
     <?php foreach ($fields as $field => $labelText): ?>

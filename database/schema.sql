@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS teams (
   code VARCHAR(8) NULL,
   name_cn VARCHAR(120) NULL,
   name_original VARCHAR(160) NOT NULL,
-  country_code CHAR(2) NULL,
+  country_code VARCHAR(8) NULL,
   flag_emoji VARCHAR(16) NULL,
   flag_url VARCHAR(800) NULL,
   confederation VARCHAR(40) NULL,
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS teams (
 
 CREATE TABLE IF NOT EXISTS country_profiles (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  country_code CHAR(2) NOT NULL UNIQUE,
+  country_code VARCHAR(8) NOT NULL UNIQUE,
   country_name_cn VARCHAR(120) NULL,
   country_name_original VARCHAR(160) NOT NULL,
   capital VARCHAR(180) NULL,
@@ -97,6 +97,8 @@ CREATE TABLE IF NOT EXISTS country_profiles (
   currencies VARCHAR(300) NULL,
   population BIGINT UNSIGNED NULL,
   area_km2 DECIMAL(12,2) NULL,
+  latitude DECIMAL(9,6) NULL,
+  longitude DECIMAL(9,6) NULL,
   map_url VARCHAR(900) NULL,
   fifa_team_count INT NOT NULL DEFAULT 0,
   travel_summary TEXT NULL,

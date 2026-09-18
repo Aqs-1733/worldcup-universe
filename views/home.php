@@ -139,7 +139,7 @@
   </div>
   <div class="country-grid mini-country-grid">
     <?php foreach (($countries ?? []) as $country): ?>
-      <?php $flag = 'https://flagcdn.com/w80/' . strtolower((string) $country['country_code']) . '.png'; ?>
+      <?php $flag = $country['team_flag_url'] ?: ('https://flagcdn.com/w80/' . strtolower((string) $country['country_code']) . '.png'); ?>
       <article class="country-card">
         <div class="country-card-head">
           <?= flag_html($flag, null, (string) $country['country_name_cn']) ?>

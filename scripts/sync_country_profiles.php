@@ -9,6 +9,8 @@ use App\Services\HttpClient;
 
 $pdo = Database::pdo();
 $http = new HttpClient();
+ensureCountrySchema($pdo);
+
 $codes = $pdo->query('SELECT country_code, GROUP_CONCAT(DISTINCT name_cn ORDER BY name_cn SEPARATOR "、") AS team_names, COUNT(*) AS team_count FROM teams WHERE country_code IS NOT NULL AND country_code <> "" GROUP BY country_code ORDER BY country_code')->fetchAll();
 $onlyCodes = [];
 foreach (array_slice($argv ?? [], 1) as $arg) {
@@ -31,9 +33,9 @@ foreach ($allCountries as $country) {
 }
 
 $stmt = $pdo->prepare(
-    'INSERT INTO country_profiles (country_code, country_name_cn, country_name_original, capital, region, subregion, languages, currencies, population, area_km2, map_url, fifa_team_count, travel_summary, culture_summary, source_url, source_synced_at)
-     VALUES (:country_code, :country_name_cn, :country_name_original, :capital, :region, :subregion, :languages, :currencies, :population, :area_km2, :map_url, :fifa_team_count, :travel_summary, :culture_summary, :source_url, NOW())
-     ON DUPLICATE KEY UPDATE country_name_cn = VALUES(country_name_cn), country_name_original = VALUES(country_name_original), capital = VALUES(capital), region = VALUES(region), subregion = VALUES(subregion), languages = VALUES(languages), currencies = VALUES(currencies), population = VALUES(population), area_km2 = VALUES(area_km2), map_url = VALUES(map_url), fifa_team_count = VALUES(fifa_team_count), travel_summary = VALUES(travel_summary), culture_summary = VALUES(culture_summary), source_url = VALUES(source_url), source_synced_at = NOW()'
+    'INSERT INTO country_profiles (country_code, country_name_cn, country_name_original, capital, region, subregion, languages, currencies, population, area_km2, latitude, longitude, map_url, fifa_team_count, travel_summary, culture_summary, source_url, source_synced_at)
+     VALUES (:country_code, :country_name_cn, :country_name_original, :capital, :region, :subregion, :languages, :currencies, :population, :area_km2, :latitude, :longitude, :map_url, :fifa_team_count, :travel_summary, :culture_summary, :source_url, NOW())
+     ON DUPLICATE KEY UPDATE country_name_cn = VALUES(country_name_cn), country_name_original = VALUES(country_name_original), capital = VALUES(capital), region = VALUES(region), subregion = VALUES(subregion), languages = VALUES(languages), currencies = VALUES(currencies), population = VALUES(population), area_km2 = VALUES(area_km2), latitude = VALUES(latitude), longitude = VALUES(longitude), map_url = VALUES(map_url), fifa_team_count = VALUES(fifa_team_count), travel_summary = VALUES(travel_summary), culture_summary = VALUES(culture_summary), source_url = VALUES(source_url), source_synced_at = NOW()'
 );
 
 $ok = 0;
@@ -41,7 +43,7 @@ $failed = [];
 foreach ($codes as $row) {
     $code = strtoupper((string) $row['country_code']);
     try {
-        $json = $byCode[$code] ?? null;
+        $json = manualCountryProfile($code) ?? ($byCode[$code] ?? null);
         if (!$json) {
             throw new RuntimeException('country code not found in countries dataset');
         }
@@ -59,6 +61,9 @@ foreach ($codes as $row) {
         $region = (string) ($json['region'] ?? '');
         $subregion = (string) ($json['subregion'] ?? '');
         $mapUrl = (string) ($json['maps']['googleMaps'] ?? $json['maps']['openStreetMaps'] ?? '');
+        $latlng = (array) ($json['latlng'] ?? []);
+        $latitude = isset($latlng[0]) ? (float) $latlng[0] : null;
+        $longitude = isset($latlng[1]) ? (float) $latlng[1] : null;
         $travel = travelSummary($code, $nameCn, $capital, $region, $languages, $currencies, $mapUrl);
         $culture = cultureSummary($nameCn, $region, $subregion, $languages, $currencies, (string) $row['team_names']);
         $stmt->execute([
@@ -72,6 +77,8 @@ foreach ($codes as $row) {
             'currencies' => $currencies ?: null,
             'population' => isset($json['population']) ? (int) $json['population'] : null,
             'area_km2' => isset($json['area']) ? (float) $json['area'] : null,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
             'map_url' => $mapUrl ?: null,
             'fifa_team_count' => (int) $row['team_count'],
             'travel_summary' => $travel,
@@ -84,7 +91,56 @@ foreach ($codes as $row) {
     }
 }
 
+$pdo->exec('DELETE cp FROM country_profiles cp LEFT JOIN teams t ON t.country_code = cp.country_code WHERE t.id IS NULL');
+
 echo json_encode(['synced' => $ok, 'failed' => count($failed), 'errors' => $failed], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . PHP_EOL;
+
+function ensureCountrySchema(PDO $pdo): void
+{
+    $pdo->exec('ALTER TABLE teams MODIFY country_code VARCHAR(8) NULL');
+    $pdo->exec('ALTER TABLE country_profiles MODIFY country_code VARCHAR(8) NOT NULL');
+    $columns = $pdo->query('SHOW COLUMNS FROM country_profiles')->fetchAll(PDO::FETCH_COLUMN);
+    if (!in_array('latitude', $columns, true)) {
+        $pdo->exec('ALTER TABLE country_profiles ADD COLUMN latitude DECIMAL(9,6) NULL AFTER area_km2');
+    }
+    if (!in_array('longitude', $columns, true)) {
+        $pdo->exec('ALTER TABLE country_profiles ADD COLUMN longitude DECIMAL(9,6) NULL AFTER latitude');
+    }
+}
+
+function manualCountryProfile(string $code): ?array
+{
+    $profiles = [
+        'GB-ENG' => [
+            'name' => ['common' => 'England'],
+            'translations' => ['zho' => ['common' => '英格兰']],
+            'capital' => ['London'],
+            'region' => 'Europe',
+            'subregion' => 'Northern Europe',
+            'languages' => ['eng' => 'English'],
+            'currencies' => ['GBP' => ['name' => 'British pound']],
+            'population' => 56550000,
+            'area' => 130279,
+            'latlng' => [52.3555, -1.1743],
+            'maps' => ['googleMaps' => 'https://www.google.com/maps/place/England'],
+        ],
+        'GB-SCT' => [
+            'name' => ['common' => 'Scotland'],
+            'translations' => ['zho' => ['common' => '苏格兰']],
+            'capital' => ['Edinburgh'],
+            'region' => 'Europe',
+            'subregion' => 'Northern Europe',
+            'languages' => ['eng' => 'English', 'gla' => 'Scottish Gaelic'],
+            'currencies' => ['GBP' => ['name' => 'British pound']],
+            'population' => 5466000,
+            'area' => 77933,
+            'latlng' => [56.4907, -4.2026],
+            'maps' => ['googleMaps' => 'https://www.google.com/maps/place/Scotland'],
+        ],
+    ];
+
+    return $profiles[$code] ?? null;
+}
 
 function travelSummary(string $code, string $name, string $capital, string $region, string $languages, string $currencies, string $mapUrl): string
 {

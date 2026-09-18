@@ -8,12 +8,20 @@
       <a class="ghost-button" href="#host-cities">主办城市</a>
     </div>
   </div>
-  <div class="globe-card" aria-hidden="true">
-    <div class="globe-orbit orbit-one"></div>
-    <div class="globe-orbit orbit-two"></div>
-    <div class="globe-core">🌎</div>
-    <span>Teams</span>
-    <strong><?= e((string) count($teams)) ?></strong>
+  <div class="globe-card" data-country-globe>
+    <div class="globe-toolbar">
+      <span>Interactive Globe</span>
+      <b><?= e((string) count($countries)) ?>/<?= e((string) count($teams)) ?></b>
+    </div>
+    <div class="globe-sphere" data-globe-sphere>
+      <div class="globe-shine"></div>
+      <div class="globe-marker-layer" data-globe-markers></div>
+    </div>
+    <div class="globe-readout" data-globe-readout>
+      <span>点击下面国家卡片</span>
+      <strong>定位球队国家</strong>
+      <small>地球会自动转到对应位置</small>
+    </div>
   </div>
 </section>
 
@@ -41,12 +49,21 @@
   </div>
   <div class="country-grid">
     <?php foreach ($countries as $country): ?>
-      <?php $flag = 'https://flagcdn.com/w80/' . strtolower((string) $country['country_code']) . '.png'; ?>
-      <article class="country-card">
+      <?php $flag = $country['team_flag_url'] ?: ('https://flagcdn.com/w80/' . strtolower((string) $country['country_code']) . '.png'); ?>
+      <?php $countryName = display_name($country['country_name_cn'], $country['country_name_original']); ?>
+      <article class="country-card" tabindex="0" role="button"
+        data-country-card
+        data-code="<?= e($country['country_code']) ?>"
+        data-name="<?= e($countryName) ?>"
+        data-capital="<?= e($country['capital'] ?: '待同步') ?>"
+        data-region="<?= e($country['region'] ?: '地区待同步') ?>"
+        data-flag="<?= e($flag) ?>"
+        data-lat="<?= e((string) ($country['latitude'] ?? '')) ?>"
+        data-lng="<?= e((string) ($country['longitude'] ?? '')) ?>">
         <div class="country-card-head">
           <?= flag_html($flag, null, (string) $country['country_name_cn']) ?>
           <div>
-            <h3><?= e(display_name($country['country_name_cn'], $country['country_name_original'])) ?></h3>
+            <h3><?= e($countryName) ?></h3>
             <small><?= e($country['region'] ?: '地区待同步') ?><?= $country['subregion'] ? ' · ' . e($country['subregion']) : '' ?></small>
           </div>
         </div>
@@ -59,6 +76,7 @@
         <p class="muted-line"><?= e($country['culture_summary'] ?: '文化摘要待同步。') ?></p>
         <div class="meta-row">
           <span>球队：<?= e($country['team_names'] ?: '待关联') ?></span>
+          <?php if ($country['latitude'] !== null && $country['longitude'] !== null): ?><span>坐标：<?= e(number_format((float) $country['latitude'], 2)) ?>°, <?= e(number_format((float) $country['longitude'], 2)) ?>°</span><?php endif; ?>
           <?php if (!empty($country['map_url'])): ?><a class="mini-link" href="<?= e($country['map_url']) ?>" target="_blank" rel="noreferrer">地图</a><?php endif; ?>
         </div>
       </article>

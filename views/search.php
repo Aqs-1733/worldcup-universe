@@ -41,7 +41,7 @@
   <div class="panel">
     <div class="section-head"><div><span class="kicker">COUNTRIES</span><h2>国家探索</h2></div></div>
     <div class="country-grid mini-country-grid">
-      <?php foreach ($results['countries'] as $country): ?><?php $flag = 'https://flagcdn.com/w80/' . strtolower((string) $country['country_code']) . '.png'; ?><article class="country-card"><div class="country-card-head"><?= flag_html($flag, null, '') ?><div><h3><?= e(display_name($country['country_name_cn'], $country['country_name_original'])) ?></h3><small><?= e($country['capital'] ?: '首都待同步') ?></small></div></div><p><?= e(mb_strimwidth((string) $country['travel_summary'], 0, 120, '...')) ?></p></article><?php endforeach; ?>
+      <?php foreach ($results['countries'] as $country): ?><?php $flag = $country['team_flag_url'] ?: ('https://flagcdn.com/w80/' . strtolower((string) $country['country_code']) . '.png'); ?><article class="country-card"><div class="country-card-head"><?= flag_html($flag, null, '') ?><div><h3><?= e(display_name($country['country_name_cn'], $country['country_name_original'])) ?></h3><small><?= e($country['capital'] ?: '首都待同步') ?></small></div></div><p><?= e(mb_strimwidth((string) $country['travel_summary'], 0, 120, '...')) ?></p></article><?php endforeach; ?>
       <?php if (!$results['countries']): ?><div class="data-empty">没有国家资料命中。</div><?php endif; ?>
     </div>
   </div>

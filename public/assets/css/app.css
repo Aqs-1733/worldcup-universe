@@ -572,7 +572,7 @@ p { color: var(--muted); }
     linear-gradient(135deg, color-mix(in srgb, var(--panel-strong) 92%, transparent), color-mix(in srgb, var(--bg-2) 70%, transparent));
 }
 .globe-card {
-  min-height: 320px;
+  min-height: 420px;
   position: relative;
   overflow: hidden;
   border-radius: 30px;
@@ -586,12 +586,109 @@ p { color: var(--muted); }
   place-items: center;
   isolation: isolate;
 }
-.globe-core { font-size: 6rem; filter: drop-shadow(0 24px 28px rgba(2,6,23,.34)); animation: floatGlobe 4.8s ease-in-out infinite; }
-.globe-card span, .globe-card strong { position: absolute; left: 1.2rem; }
-.globe-card span { bottom: 4rem; color: var(--muted); letter-spacing: .16em; text-transform: uppercase; }
-.globe-card strong { bottom: 1.4rem; font-size: 3rem; color: var(--gold); }
-.globe-orbit { position: absolute; width: 78%; aspect-ratio: 1; border: 1px dashed rgba(255,255,255,.26); border-radius: 50%; animation: spin 14s linear infinite; }
-.orbit-two { width: 58%; animation-duration: 9s; animation-direction: reverse; border-color: rgba(255,209,102,.38); }
+.globe-toolbar {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: .75rem;
+}
+.globe-toolbar b { color: var(--gold); font-size: 1.1rem; letter-spacing: .04em; }
+.globe-sphere {
+  width: min(72vw, 310px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255,255,255,.34), transparent 8%),
+    radial-gradient(circle at 50% 50%, rgba(56,189,248,.30), rgba(24,88,158,.46) 44%, rgba(7,23,64,.96) 74%),
+    conic-gradient(from 0deg, rgba(255,209,102,.18), rgba(56,189,248,.22), rgba(167,139,250,.20), rgba(255,209,102,.18));
+  box-shadow:
+    inset -28px -24px 52px rgba(2,6,23,.60),
+    inset 18px 14px 38px rgba(255,255,255,.12),
+    0 28px 70px rgba(2,6,23,.42);
+  animation: floatGlobe 4.8s ease-in-out infinite;
+}
+.globe-sphere::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 23px, rgba(255,255,255,.16) 24px 25px, transparent 26px 48px),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(255,255,255,.12) 32px 33px, transparent 34px 64px),
+    radial-gradient(ellipse at 28% 35%, rgba(255,209,102,.22), transparent 22%),
+    radial-gradient(ellipse at 64% 58%, rgba(56,189,248,.18), transparent 28%);
+  opacity: .62;
+  mix-blend-mode: screen;
+  animation: globeTextureShift 11s linear infinite;
+}
+.globe-sphere::after {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border-radius: inherit;
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: inset 0 0 48px rgba(255,255,255,.12);
+}
+.globe-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 24%, rgba(255,255,255,.34), transparent 26%);
+  pointer-events: none;
+  z-index: 2;
+}
+.globe-marker-layer { position: absolute; inset: 0; z-index: 3; }
+.globe-marker {
+  --marker-color: var(--gold);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: .68rem;
+  height: .68rem;
+  margin: -.34rem 0 0 -.34rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.86);
+  background: var(--marker-color);
+  box-shadow: 0 0 0 .35rem color-mix(in srgb, var(--marker-color) 25%, transparent), 0 0 22px color-mix(in srgb, var(--marker-color) 70%, transparent);
+  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(var(--scale, .75));
+  opacity: var(--opacity, .35);
+  transition: opacity .2s ease, transform .2s ease, filter .2s ease;
+}
+.globe-marker.active {
+  --marker-color: var(--red);
+  width: .92rem;
+  height: .92rem;
+  margin: -.46rem 0 0 -.46rem;
+  z-index: 4;
+  animation: markerPulse 1.4s ease-in-out infinite;
+}
+.globe-readout {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 3;
+  display: grid;
+  gap: .2rem;
+  padding: .9rem 1rem;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--panel-strong) 82%, transparent);
+  backdrop-filter: blur(14px);
+}
+.globe-readout span { color: var(--gold); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; }
+.globe-readout strong { font-size: 1.35rem; }
+.globe-readout small { color: var(--muted); }
 .travel-grid, .country-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
 .travel-card, .country-card {
   position: relative;
@@ -611,7 +708,21 @@ p { color: var(--muted); }
   background: radial-gradient(circle, rgba(56,189,248,.22), transparent 60%);
   pointer-events: none;
 }
-.travel-card:hover, .country-card:hover { transform: translateY(-5px); border-color: rgba(255,209,102,.52); box-shadow: 0 24px 62px rgba(2, 6, 23, .24); }
+.travel-card:hover, .country-card:hover, .country-card.active { transform: translateY(-5px); border-color: rgba(255,209,102,.52); box-shadow: 0 24px 62px rgba(2, 6, 23, .24); }
+.country-card { cursor: pointer; }
+.country-card.active::before {
+  content: "已定位";
+  position: absolute;
+  right: .85rem;
+  top: .85rem;
+  z-index: 2;
+  border-radius: 999px;
+  padding: .2rem .55rem;
+  color: #071125;
+  background: linear-gradient(135deg, var(--gold), var(--blue));
+  font-size: .72rem;
+  font-weight: 900;
+}
 .travel-top, .country-card-head { display: flex; align-items: center; justify-content: space-between; gap: .8rem; }
 .travel-top span { color: var(--gold); font-weight: 900; }
 .travel-top b { color: var(--blue); }
@@ -619,8 +730,12 @@ p { color: var(--muted); }
 .country-card-head h3 { margin: 0; }
 .country-facts { display: grid; gap: .4rem; margin: .9rem 0; color: var(--muted); }
 .muted-line { color: var(--muted); }
-@keyframes spin { to { transform: rotate(360deg); } }
 @keyframes floatGlobe { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.04); } }
+@keyframes globeTextureShift { to { background-position: 72px 0, 0 64px, 0 0, 0 0; } }
+@keyframes markerPulse {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(255,93,115,.1)); }
+  50% { filter: drop-shadow(0 0 16px rgba(255,93,115,.9)); }
+}
 
 /* Search, match detail and knockout tree */
 .search-bar { display: grid; grid-template-columns: minmax(220px, 1fr) auto auto; gap: .8rem; align-items: center; }

@@ -72,10 +72,10 @@ final class AppRepository
     {
         try {
             return $this->pdo->query(
-                'SELECT cp.*, COALESCE(t.team_count, 0) AS team_count, t.team_names
+                'SELECT cp.*, COALESCE(t.team_count, 0) AS team_count, t.team_names, t.team_flag_url, t.team_flag_emoji
                  FROM country_profiles cp
                  LEFT JOIN (
-                    SELECT country_code, COUNT(id) AS team_count, GROUP_CONCAT(name_cn ORDER BY name_cn SEPARATOR "、") AS team_names
+                    SELECT country_code, COUNT(id) AS team_count, GROUP_CONCAT(name_cn ORDER BY name_cn SEPARATOR "、") AS team_names, MIN(flag_url) AS team_flag_url, MIN(flag_emoji) AS team_flag_emoji
                     FROM teams
                     GROUP BY country_code
                  ) t ON t.country_code = cp.country_code
@@ -641,7 +641,7 @@ final class AppRepository
         $allowed = [
             'team_members' => ['name', 'student_no', 'role_name', 'bio', 'photo_url', 'sort_order', 'is_visible'],
             'admin_posts' => ['title', 'body', 'post_type', 'status', 'published_at'],
-            'country_profiles' => ['country_code', 'country_name_cn', 'country_name_original', 'capital', 'region', 'subregion', 'languages', 'currencies', 'population', 'area_km2', 'map_url', 'travel_summary', 'culture_summary', 'source_url'],
+            'country_profiles' => ['country_code', 'country_name_cn', 'country_name_original', 'capital', 'region', 'subregion', 'languages', 'currencies', 'population', 'area_km2', 'latitude', 'longitude', 'map_url', 'travel_summary', 'culture_summary', 'source_url'],
             'teams' => ['code', 'name_cn', 'name_original', 'country_code', 'flag_emoji', 'flag_url', 'confederation', 'group_name', 'coach_name', 'world_ranking', 'profile', 'source_url'],
             'players' => ['team_id', 'name_cn', 'name_original', 'position', 'shirt_number', 'birth_date', 'age', 'club', 'caps', 'goals', 'height_cm', 'photo_url', 'popularity_score', 'source_url'],
             'matches' => ['stage', 'group_name', 'home_team_id', 'away_team_id', 'home_team_name', 'away_team_name', 'home_score', 'away_score', 'status', 'starts_at', 'source_url'],
@@ -829,9 +829,14 @@ final class AppRepository
         $news->execute([$like, $like, $like, $like, $like]);
 
         $countries = $this->pdo->prepare(
-            'SELECT * FROM country_profiles
-             WHERE country_name_cn LIKE ? OR country_name_original LIKE ? OR capital LIKE ? OR region LIKE ? OR travel_summary LIKE ? OR culture_summary LIKE ?
-             ORDER BY country_name_cn LIMIT 12'
+            'SELECT cp.*, t.team_flag_url, t.team_flag_emoji
+             FROM country_profiles cp
+             LEFT JOIN (
+                SELECT country_code, MIN(flag_url) AS team_flag_url, MIN(flag_emoji) AS team_flag_emoji
+                FROM teams GROUP BY country_code
+             ) t ON t.country_code = cp.country_code
+             WHERE cp.country_name_cn LIKE ? OR cp.country_name_original LIKE ? OR cp.capital LIKE ? OR cp.region LIKE ? OR cp.travel_summary LIKE ? OR cp.culture_summary LIKE ?
+             ORDER BY cp.country_name_cn LIMIT 12'
         );
         $countries->execute([$like, $like, $like, $like, $like, $like]);
 
