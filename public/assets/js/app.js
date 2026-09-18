@@ -55,11 +55,10 @@
 
   const globe = document.querySelector('[data-country-globe]');
   const sphere = document.querySelector('[data-globe-sphere]');
-  const globeMap = document.querySelector('[data-globe-map]');
   const activeMarker = document.querySelector('[data-globe-active-marker]');
   const readout = document.querySelector('[data-globe-readout]');
   const countryCards = Array.from(document.querySelectorAll('[data-country-card]'));
-  if (globe && sphere && globeMap && activeMarker && readout && countryCards.length) {
+  if (globe && sphere && activeMarker && readout && countryCards.length) {
     const points = countryCards
       .map((card) => ({
         card,
@@ -73,11 +72,6 @@
       }))
       .filter((point) => Number.isFinite(point.lat) && Number.isFinite(point.lng));
 
-    let centerLat = 14;
-    let centerLng = 0;
-    let targetLat = centerLat;
-    let targetLng = centerLng;
-    let focusedUntil = 0;
     let activePoint = null;
     const escapeHtml = (value) => String(value)
       .replaceAll('&', '&amp;')
@@ -86,19 +80,12 @@
       .replaceAll('"', '&quot;')
       .replaceAll("'", '&#039;');
 
-    const normalizeLng = (lng) => {
-      let next = lng;
-      while (next - centerLng > 180) next -= 360;
-      while (next - centerLng < -180) next += 360;
-      return next;
-    };
-
     const renderReadout = (point) => {
       if (!point) {
         readout.innerHTML = `
           <span>ROTATING EARTH</span>
-          <strong>点击国家卡片定位</strong>
-          <small>平时只显示可旋转地球；选择国家后显示唯一定位点。</small>
+          <strong>先选一个国家</strong>
+          <small>现在不显示密集点；点击国家后显示唯一红色定位点。</small>
         `;
         return;
       }
@@ -110,14 +97,29 @@
       `;
     };
 
+    const placeMarker = (point) => {
+      const rect = sphere.getBoundingClientRect();
+      const radius = Math.min(rect.width, rect.height) * 0.43;
+      let x = (point.lng / 180) * radius * 0.92;
+      let y = (-point.lat / 90) * radius * 0.78;
+      const distance = Math.hypot(x, y);
+      const maxDistance = radius * 0.90;
+      if (distance > maxDistance) {
+        const scale = maxDistance / distance;
+        x *= scale;
+        y *= scale;
+      }
+      activeMarker.style.setProperty('--x', `${x}px`);
+      activeMarker.style.setProperty('--y', `${y}px`);
+      activeMarker.hidden = false;
+      sphere.classList.add('has-country-focus');
+    };
+
     const selectCountry = (point, scroll) => {
       activePoint = point;
-      targetLat = Math.max(-58, Math.min(58, point.lat));
-      targetLng = normalizeLng(point.lng);
-      focusedUntil = performance.now() + 9000;
-      activeMarker.hidden = false;
       countryCards.forEach((card) => card.classList.toggle('active', card.dataset.code === point.code));
       renderReadout(point);
+      placeMarker(point);
       if (scroll) {
         point.card.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
@@ -138,42 +140,11 @@
       });
     });
 
-    const project = (point, radius) => {
-      const rad = Math.PI / 180;
-      const phi = point.lat * rad;
-      const lambda = (point.lng - centerLng) * rad;
-      const phi0 = centerLat * rad;
-      const cosc = Math.sin(phi0) * Math.sin(phi) + Math.cos(phi0) * Math.cos(phi) * Math.cos(lambda);
-      const x = radius * Math.cos(phi) * Math.sin(lambda);
-      const y = -radius * (Math.cos(phi0) * Math.sin(phi) - Math.sin(phi0) * Math.cos(phi) * Math.cos(lambda));
-      return { x, y, visible: cosc > -0.02, depth: Math.max(0, cosc) };
-    };
-
-    const tick = (now) => {
-      if (now > focusedUntil) {
-        targetLng += 0.032;
-        targetLat = 8 + Math.sin(now / 4200) * 7;
-      }
-      centerLat += (targetLat - centerLat) * 0.035;
-      centerLng += (targetLng - centerLng) * 0.035;
-      sphere.style.setProperty('--spin-lng', `${(-centerLng % 360) / 360 * 50}%`);
-      globeMap.style.setProperty('--globe-tilt', `${centerLat * -0.22}px`);
-
-      if (activePoint) {
-        const rect = sphere.getBoundingClientRect();
-        const radius = Math.min(rect.width, rect.height) * 0.43;
-        const projected = project(activePoint, radius);
-        activeMarker.style.setProperty('--x', `${projected.x}px`);
-        activeMarker.style.setProperty('--y', `${projected.y}px`);
-        activeMarker.style.setProperty('--opacity', projected.visible ? String(0.38 + projected.depth * 0.62) : '0');
-        activeMarker.style.setProperty('--scale', String(0.82 + projected.depth * 0.62));
-        activeMarker.hidden = !projected.visible;
-      }
-      requestAnimationFrame(tick);
-    };
+    window.addEventListener('resize', () => {
+      if (activePoint) placeMarker(activePoint);
+    });
 
     renderReadout(null);
-    requestAnimationFrame(tick);
   }
 
 })();

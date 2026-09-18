@@ -969,3 +969,151 @@ p { color: var(--muted); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
 }
+
+/* Redone premium mini globe: full earth visible, one marker only after country click */
+.globe-card {
+  min-height: 430px;
+  padding-top: 3.3rem;
+  gap: .85rem;
+}
+.earth-stage {
+  position: relative;
+  width: min(54vw, 238px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  filter: drop-shadow(0 26px 38px rgba(2, 6, 23, .38));
+  animation: earthFloat 5.2s ease-in-out infinite;
+}
+.mini-earth {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  border-radius: 999px;
+}
+.earth-shadow { fill: rgba(2,6,23,.28); transform: translate(0, 5px); }
+.earth-ocean { filter: drop-shadow(0 0 18px rgba(56,189,248,.20)); }
+.earth-grid path, .earth-grid ellipse {
+  fill: none;
+  stroke: rgba(255,255,255,.22);
+  stroke-width: .8;
+  vector-effect: non-scaling-stroke;
+}
+.earth-continents {
+  transform-origin: 120px 120px;
+  animation: continentBreath 6.4s ease-in-out infinite;
+}
+.earth-continents path {
+  fill: url(#landGrad);
+  stroke: rgba(255,255,255,.48);
+  stroke-width: 1.25;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 4px 7px rgba(2,6,23,.20));
+}
+.earth-clouds {
+  transform-origin: 120px 120px;
+  animation: cloudDrift 8.5s linear infinite;
+}
+.earth-clouds path {
+  fill: none;
+  stroke: rgba(255,255,255,.52);
+  stroke-width: 5;
+  stroke-linecap: round;
+  opacity: .56;
+}
+.earth-rim {
+  fill: none;
+  stroke: rgba(255,255,255,.38);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 12px rgba(147,197,253,.36));
+}
+.earth-highlight {
+  fill: rgba(255,255,255,.16);
+  filter: blur(2px);
+}
+.earth-orbit {
+  position: absolute;
+  inset: -8%;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.18);
+  transform: rotateX(64deg) rotateZ(0deg);
+  pointer-events: none;
+}
+.earth-orbit.orbit-a { animation: orbitSpin 10s linear infinite; }
+.earth-orbit.orbit-b { inset: 9%; border-color: rgba(255,209,102,.32); animation: orbitSpin 7s linear infinite reverse; }
+.earth-stage.has-country-focus .earth-orbit { border-color: rgba(255,93,115,.36); }
+.globe-active-marker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 7;
+  width: 15px;
+  height: 15px;
+  margin: -7.5px 0 0 -7.5px;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  background: #ff345d;
+  transform: translate3d(var(--x, 0), var(--y, 0), 0);
+  opacity: 1;
+  box-shadow: 0 0 0 7px rgba(255,52,93,.22), 0 0 26px rgba(255,52,93,.95), 0 10px 20px rgba(2,6,23,.30);
+  animation: selectedMarkerPulse 1.05s ease-in-out infinite;
+}
+.globe-active-marker span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border-radius: inherit;
+  border: 1px solid rgba(255,255,255,.72);
+  animation: selectedMarkerRing 1.6s ease-out infinite;
+}
+.globe-active-marker[hidden] { display: none; }
+.globe-readout {
+  bottom: .85rem;
+  background: color-mix(in srgb, var(--panel-strong) 90%, transparent);
+  box-shadow: 0 20px 48px rgba(2,6,23,.24);
+}
+.globe-readout strong { font-size: 1.2rem; }
+.travel-card, .country-card, .team-card, .player-card, .news-card, .module-card, .match-row, .tree-match, .group-card {
+  will-change: transform;
+}
+.travel-card:hover, .country-card:hover, .team-card:hover, .player-card:hover, .news-card:hover, .module-card:hover, .match-row:hover, .tree-match:hover {
+  transform: translateY(-7px) scale(1.012);
+  box-shadow: 0 28px 68px rgba(2,6,23,.24), 0 0 0 1px color-mix(in srgb, var(--gold) 34%, transparent);
+}
+.match-row, .tree-match, .team-chip {
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+}
+.match-row:hover, .team-chip:hover { border-color: color-mix(in srgb, var(--blue) 55%, var(--gold)); }
+@keyframes earthFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-7px) scale(1.025); }
+}
+@keyframes continentBreath {
+  0%, 100% { transform: translateX(0); opacity: .98; }
+  50% { transform: translateX(2px); opacity: .88; }
+}
+@keyframes cloudDrift {
+  from { transform: translateX(-14px); }
+  to { transform: translateX(18px); }
+}
+@keyframes orbitSpin {
+  from { transform: rotateX(64deg) rotateZ(0deg); }
+  to { transform: rotateX(64deg) rotateZ(360deg); }
+}
+@keyframes selectedMarkerPulse {
+  0%, 100% { box-shadow: 0 0 0 5px rgba(255,52,93,.20), 0 0 22px rgba(255,52,93,.75), 0 10px 20px rgba(2,6,23,.30); }
+  50% { box-shadow: 0 0 0 10px rgba(255,52,93,.10), 0 0 34px rgba(255,52,93,1), 0 10px 20px rgba(2,6,23,.30); }
+}
+@keyframes selectedMarkerRing {
+  from { transform: scale(.5); opacity: .95; }
+  to { transform: scale(1.85); opacity: 0; }
+}
+@media (max-width: 680px) {
+  .earth-stage { width: min(68vw, 220px); }
+  .globe-card { min-height: 405px; }
+}
