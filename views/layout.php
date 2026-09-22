@@ -26,6 +26,10 @@ $nav = [
   <title><?= e(($title ?? '世界杯') . ' - ' . app_name()) ?></title>
   <link rel="stylesheet" href="<?= e(asset('css/app.css')) ?>">
   <script src="<?= e(asset('js/app.js')) ?>" defer></script>
+  <?php if ($current === '/countries'): ?>
+    <script src="<?= e(asset('vendor/globe.gl-2.46.2.min.js')) ?>" defer></script>
+    <script src="<?= e(asset('js/globe-3d.js')) ?>" defer></script>
+  <?php endif; ?>
 </head>
 <body>
   <div class="field-lights" aria-hidden="true"></div>

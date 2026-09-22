@@ -8,27 +8,30 @@
       <a class="ghost-button" href="#host-cities">主办城市</a>
     </div>
   </div>
-  <div class="globe-card" data-country-globe>
+  <div class="globe-card globe-card-3d" data-globe-3d>
     <div class="globe-toolbar">
       <span>Interactive Globe</span>
-      <b><?= e((string) count($countries)) ?>/<?= e((string) count($teams)) ?></b>
+      <b data-globe-feature-count>加载中</b>
     </div>
-    <div class="earth-stage emoji-earth" data-globe-sphere aria-label="可旋转的精致小地球">
-      <div class="earth-halo" aria-hidden="true"></div>
-      <div class="earth-ring ring-one" aria-hidden="true"></div>
-      <div class="earth-ring ring-two" aria-hidden="true"></div>
-      <div class="earth-emoji-stack" aria-hidden="true">
-        <span class="earth-face americas">🌎</span>
-        <span class="earth-face emea">🌍</span>
-        <span class="earth-face asia">🌏</span>
+    <div class="globe-stage" data-globe-stage aria-label="可旋转的世界地图">
+      <div class="globe-canvas" data-globe-canvas></div>
+      <div class="globe-loading" data-globe-loading>正在加载本地真实地图数据…</div>
+      <div class="globe-unavailable" data-globe-unavailable hidden>
+        此设备无法启动 3D 地球。你仍可使用下面的国家列表探索内容。
       </div>
-      <div class="earth-glass" aria-hidden="true"></div>
-      <div class="globe-active-marker" data-globe-active-marker hidden><span></span></div>
     </div>
-    <div class="globe-readout" data-globe-readout>
-      <span>点击下面国家卡片</span>
-      <strong>点击国家后显示定位</strong>
-      <small>默认无定位点；选中国家后只显示一个红色位置点。</small>
+    <div class="globe-continent-controls" aria-label="大洲聚焦">
+      <button type="button" data-globe-continent="North America">北美洲</button>
+      <button type="button" data-globe-continent="South America">南美洲</button>
+      <button type="button" data-globe-continent="Europe">欧洲</button>
+      <button type="button" data-globe-continent="Africa">非洲</button>
+      <button type="button" data-globe-continent="Asia">亚洲</button>
+      <button type="button" data-globe-continent="Oceania">大洋洲</button>
+    </div>
+    <div class="globe-readout globe-readout-3d" data-globe-3d-readout aria-live="polite">
+      <span data-globe-readout-kicker>REAL MAP UNITS</span>
+      <strong data-globe-readout-title>拖动地球探索真实国家轮廓</strong>
+      <small data-globe-readout-detail>悬停高亮国家；点击后显示 Natural Earth 的稳定地图单元 ID。</small>
     </div>
   </div>
 </section>
