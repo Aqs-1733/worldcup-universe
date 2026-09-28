@@ -1,0 +1,13 @@
+对象,事件,条件,动作,动画,验证结果
+P_Home,OnPageLoad,无,设置G_Hero可见并移动至原位,500ms ease-out,首屏从下方16px淡入
+DP_Theme,OnClick,当前为Dark,设置面板状态Light并修改全局变量Theme,300ms fade,背景和文字切换浅色
+DP_Theme,OnClick,当前为Light,设置面板状态Dark并修改全局变量Theme,300ms fade,恢复深色
+REP_Nav,MouseEnter,无,设置当前项选中样式,200ms,金色文字与描边
+B_Schedule,OnClick,无,滚动到G_Dashboard,500ms,定位近期赛程
+REP_Bracket,OnItemClick,无,设置DP_MatchDetail文本并显示,250ms fade,弹出单场详情
+REP_Matches,OnItemClick,无,设置DP_MatchDetail文本并显示,250ms fade,弹出单场详情
+DP_Ticker,OnPageLoad,无,每18000ms向左移动并循环,linear,新闻连续滚动
+REP_Bars,OnLoad,无,根据points计算宽度并设置尺寸,1000ms ease-out,条形图由0增长
+REP_Modules,MouseEnter,无,移动当前项Y-5并增强描边,200ms,卡片悬浮
+REP_Countries,MouseEnter,无,移动当前项Y-3并改蓝色描边,200ms,国家卡高亮
+DP_MatchDetail,B_Close OnClick,无,隐藏DP_MatchDetail,200ms fade,返回首页状态

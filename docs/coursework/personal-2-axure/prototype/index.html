@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>世界杯赛事中控台 Axure 高保真原型</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="prototype.js" defer></script>
+</head>
+<body>
+  <div class="field-lights" aria-hidden="true"></div>
+  <div class="stadium-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top"><span>🏆</span><b>worldcup-universe</b></a>
+    <nav class="top-nav" aria-label="主导航">
+      <a class="active" href="#top">首页</a><a href="#schedule">赛程</a><a href="#teams">球队</a>
+      <a href="#players">球员</a><a href="#news">新闻</a><a href="#countries">国家探索</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="themeToggle" type="button" aria-label="切换深浅色">◐</button>
+      <button class="ghost-button" type="button" data-toast="登录入口采用模态框交互">登录</button>
+      <button class="primary-button" type="button" data-toast="注册入口采用主按钮样式">注册</button>
+    </div>
+  </header>
+
+  <main class="page-shell" id="top">
+    <section class="hero-grid reveal">
+      <div class="hero-panel">
+        <span class="kicker">WORLD CUP 2026</span>
+        <h1><span>世界杯</span>赛事中控台</h1>
+        <p class="hero-copy">集中查看 48 支球队、1248 名球员与 104 场比赛，用统一的数据语言连接赛程、新闻和国家文化。</p>
+        <div class="hero-stats">
+          <a href="#teams"><strong>48</strong><span>球队</span></a>
+          <a href="#players"><strong>1248</strong><span>球员</span></a>
+          <a href="#schedule"><strong>104</strong><span>赛程</span></a>
+          <a href="#news"><strong>32</strong><span>新闻</span></a>
+        </div>
+        <div class="hero-actions">
+          <button class="primary-button" type="button" data-scroll="#schedule">看赛程</button>
+          <button class="ghost-button" type="button" data-toast="已进入智能解说体验入口">智能解说</button>
+        </div>
+      </div>
+
+      <div class="pitch-card">
+        <div class="section-head"><div><span class="kicker">KNOCKOUT</span><h2>晋级关系</h2></div><span class="chip">实时数据</span></div>
+        <div class="bracket-mini">
+          <button class="bracket-node" data-match="法国 3 : 0 瑞典"><span>🇫🇷 法国</span><b>3</b><span>🇸🇪 瑞典</span><b>0</b></button>
+          <button class="bracket-node" data-match="巴西 2 : 1 日本"><span>🇧🇷 巴西</span><b>2</b><span>🇯🇵 日本</span><b>1</b></button>
+          <button class="bracket-node" data-match="英格兰 2 : 1 刚果民主共和国"><span>🏴 英格兰</span><b>2</b><span>🇨🇩 刚果民主共和国</span><b>1</b></button>
+          <button class="bracket-node" data-match="挪威 2 : 1 科特迪瓦"><span>🇳🇴 挪威</span><b>2</b><span>🇨🇮 科特迪瓦</span><b>1</b></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="ticker reveal" id="news"><b>LIVE</b><div><span>世界杯冠军法国队完成赛后庆典</span><span>决赛技术统计与球员评分已经更新</span><span>国家旅行文化专题新增主办城市路线</span></div></section>
+
+    <section class="dashboard-grid" id="schedule">
+      <article class="panel reveal">
+        <div class="section-head"><div><span class="kicker">SCHEDULE</span><h2>近期赛程</h2></div><button class="mini-link" data-toast="将跳转到完整赛程树状图">全部</button></div>
+        <div class="match-list">
+          <button class="match-row" data-match="墨西哥 2 : 0 南非"><time>06-12 03:00</time><span>🇲🇽 墨西哥</span><b>2 : 0</b><span>🇿🇦 南非</span><small>小组赛</small></button>
+          <button class="match-row" data-match="韩国 2 : 1 捷克"><time>06-12 10:00</time><span>🇰🇷 韩国</span><b>2 : 1</b><span>🇨🇿 捷克</span><small>小组赛</small></button>
+          <button class="match-row" data-match="巴西 1 : 1 摩洛哥"><time>06-14 06:00</time><span>🇧🇷 巴西</span><b>1 : 1</b><span>🇲🇦 摩洛哥</span><small>小组赛</small></button>
+        </div>
+      </article>
+
+      <article class="panel reveal">
+        <div class="section-head"><div><span class="kicker">CHART</span><h2>小组积分趋势</h2></div><span class="chip">MySQL</span></div>
+        <div class="bar-chart">
+          <div><span>墨西哥</span><i style="--w:92%"></i><b>9</b></div>
+          <div><span>瑞士</span><i style="--w:74%"></i><b>7</b></div>
+          <div><span>加拿大</span><i style="--w:52%"></i><b>4</b></div>
+          <div><span>韩国</span><i style="--w:39%"></i><b>3</b></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="module-grid reveal" id="teams">
+      <button data-toast="球队档案：国旗、教练、分组与球员名单"><span>01</span><b>球队档案</b><small>48 支球队完整资料</small></button>
+      <button id="players" data-toast="球员库：中英文名、位置、俱乐部"><span>02</span><b>球员库</b><small>1248 名注册球员</small></button>
+      <button data-toast="新闻中心：多来源抓取与中文摘要"><span>03</span><b>新闻中心</b><small>来源明确的实时内容</small></button>
+      <button data-toast="智能解说：赛事问答与比分分析"><span>04</span><b>智能解说</b><small>自然语言赛事入口</small></button>
+    </section>
+
+    <section class="panel country-panel reveal" id="countries">
+      <div class="section-head"><div><span class="kicker">COUNTRY TOUR</span><h2>球队国家与旅行文化</h2></div><span class="chip">48 / 48</span></div>
+      <div class="country-grid">
+        <button data-toast="法国：巴黎、法语、欧元、国家队资料"><strong>🇫🇷</strong><b>法国 / France</b><small>Paris · Europe</small></button>
+        <button data-toast="巴西：巴西利亚、葡萄牙语、雷亚尔"><strong>🇧🇷</strong><b>巴西 / Brazil</b><small>Brasília · Americas</small></button>
+        <button data-toast="日本：东京、日语、日元、国家队资料"><strong>🇯🇵</strong><b>日本 / Japan</b><small>Tokyo · Asia</small></button>
+        <button data-toast="摩洛哥：拉巴特、阿拉伯语、迪拉姆"><strong>🇲🇦</strong><b>摩洛哥 / Morocco</b><small>Rabat · Africa</small></button>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal" id="matchModal" aria-hidden="true">
+    <div class="modal-card"><span class="kicker">MATCH DETAIL</span><h2 id="modalTitle">比赛详情</h2><p>原型中点击比赛卡片后展示比分、阵容、事件时间轴和技术统计。</p><button class="primary-button" id="modalClose" type="button">关闭</button></div>
+  </div>
+</body>
+</html>
