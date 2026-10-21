@@ -75,3 +75,20 @@ Raw legacy unverified facts are retained but excluded from public source-filtere
 News polling: 300 seconds, seven real publishers, short excerpts/source links; counts change with sync.
 Human contribution signatures, final course PDFs/PPT and personal recorded presentation remain explicitly pending.
 No runtime .env, passwords, sessions, test accounts or database directories belong in the release seed/repository.
+
+ABSOLUTE-PATH REPLAY (same preserved inputs, all exit 0)
+BASELINE: & 'D:/XAMPP/php/php.exe' 'D:/Project114514/worldcup-universe/tests/config_probe.php' 'D:/Project114514/worldcup-universe/artifacts/original-web.php'
+Literal output: CSRF=off; teams=site/teams
+MODIFIED: & 'D:/XAMPP/php/php.exe' 'D:/Project114514/worldcup-universe/tests/config_probe.php' 'D:/Project114514/worldcup-universe/artifacts/MODIFIED_FILE.php'
+Literal output: CSRF=on; teams=team/index
+ROLLBACK: & 'D:/Git/bin/bash.exe' 'D:/Project114514/worldcup-universe/artifacts/ROLLBACK.sh' 'D:/Project114514/worldcup-universe/artifacts/rollback-test.php'
+Literal output: ROLLBACK PASS: original SHA256 restored
+Restored copy probe: CSRF=off; teams=site/teams; exit 0. Active file remains modified.
+
+RELEASE INTEGRITY
+Git staged-byte comparison passed for 161 critical configurations, seed and official evidence files.
+Credential-pattern scan passed for 625 text files; runtime .env is ignored.
+Git staged whitespace check passed (exit 0); upstream bytes and hash fixtures preserved by .gitattributes.
+Both ROLLBACK.sh files tracked as 100755.
+Implementation commit f1eb2165836ab29300c41dc398260a8e93287158 pushed successfully (exit 0).
+Remote refs/heads/codex/yii2-full-stack verified identical to implementation HEAD.
