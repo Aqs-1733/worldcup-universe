@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.com.mx/detail/fotograf%C3%ADa-de-noticias/players-of-argentina-pose-for-a-team-photograph-fotograf%C3%ADa-de-noticias/2286789564",
+  "publisher": "Getty Images",
+  "caption": "EAST RUTHERFORD, NEW JERSEY - JULY 19: Players of Argentina pose for a team photograph before the FIFA World Cup 2026 Final match between Spain and Argentina at New York New Jersey Stadium on July 19, 2026 in East Rutherford, New Jersey. (Photo by Hector Vivas - FIFA/FIFA via Getty Images)",
+  "dateCreated": "19 de julio de 2026",
+  "artist": "Hector Vivas - FIFA",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2286789564/es/foto/east-rutherford-new-jersey-players-of-argentina-pose-for-a-team-photograph-before-the-fifa.jpg?s=1024x1024&w=gi&k=20&c=ulXxUCr6aHR5g9iWPFq8vMJUOfG3uu2CWhCeAS6pww4=",
+  "source_html_sha256": "65362a182df49764d5dace4631abc92c04d5cdb8e2097c8c093a4662dde82ae2",
+  "source_html_bytes": 339103,
+  "retrieved_at": "2026-10-21T18:39:56.491192+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

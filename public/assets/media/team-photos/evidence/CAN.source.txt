@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/team-of-canada-poses-for-a-photo-prior-to-the-fifa-world-news-photo/2281445390",
+  "publisher": "Getty Images",
+  "caption": "TORONTO, ONTARIO - JUNE 12: Team of Canada poses for a photo prior to the FIFA World Cup 2026 Group B match between Canada and Bosnia and Herzegovina at Toronto Stadium on June 12, 2026 in Toronto, Ontario. (Photo by Maja Hitij - FIFA/FIFA via Getty Images)",
+  "dateCreated": "12 June, 2026",
+  "artist": "Maja Hitij - FIFA",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2281445390/photo/canada-v-bosnia-and-herzegovina-group-b-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=ohZRY32ImxiSlwxGtFo_Wu4rHCGUQgFtXby5o5nYs2M=",
+  "source_html_sha256": "da1ef03b8382d578cd1cb202a8923124e9352830d61b122652e0976844ec2686",
+  "source_html_bytes": 339736,
+  "retrieved_at": "2026-10-21T18:42:05.059441+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

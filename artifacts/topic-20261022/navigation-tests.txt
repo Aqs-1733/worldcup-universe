@@ -1,0 +1,1 @@
+PASS navigation: 6 primary items; one standings entry; /stats -> 301 /worldcup/standings; 12 groups.

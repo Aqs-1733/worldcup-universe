@@ -56,7 +56,7 @@ for code,entry in manifest['teams'].items():
         assert entry['source_url'].startswith('https://') and entry['caption_evidence']
         verified+=1
     else:assert entry['status']=='missing_verified_2026_team_photo'
-assert verified==5
+assert verified==48
 comments=get('/teams/brazil')
 assert 'comment-card' in comments and 'comment-compose' in comments and '还没有已审核的留言' not in comments
-print('PASS redesign: 6 labelled example topics; 32 unique expandable matches / 30 verified winner edges; 48 working country details; 5 hashed official 2026 squad photos; no individual team covers; new comment and footer components.')
+print('PASS redesign: 6 labelled example topics; 32 unique expandable matches / 30 verified winner edges; 48 working country details; 48 hashed 2026 squad photos; no individual team covers; new comment and footer components.')

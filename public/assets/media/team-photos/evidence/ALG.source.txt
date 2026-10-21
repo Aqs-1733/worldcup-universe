@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/algeria-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2283641550",
+  "publisher": "Getty Images",
+  "caption": "KANSAS CITY, MISSOURI - JUNE 27: Algeria players pose for a team photograph before the FIFA World Cup 2026 Group J match between Algeria and Austria at Kansas City Stadium on June 27, 2026 in Kansas City, Missouri. (Photo by Francois Nel/Getty Images)",
+  "dateCreated": "27 June, 2026",
+  "artist": "Francois Nel",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2283641550/photo/group-j-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=8gZ3iMsBN5iIRDrrXD0SZjYtdIB7L2TtgfIe9iTvp-Y=",
+  "source_html_sha256": "eb1b6fe2a6e727cf1592402495c0faaccc34b9c921aea1a354f65395fcce8b26",
+  "source_html_bytes": 339458,
+  "retrieved_at": "2026-10-21T18:39:51.999894+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

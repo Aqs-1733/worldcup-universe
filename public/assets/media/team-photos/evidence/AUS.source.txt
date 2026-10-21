@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.com.au/detail/news-photo/players-of-australia-pose-for-a-team-photo-before-the-fifa-news-photo/2281474461",
+  "publisher": "Getty Images",
+  "caption": "VANCOUVER, BRITISH COLUMBIA - JUNE 13: Players of Australia pose for a team photo before the FIFA World Cup 2026 Group D match between Australia and Türkiye at BC Place Vancouver on June 13, 2026 in Vancouver, British Columbia. (Photo by Dean Mouhtaropoulos/Getty Images)",
+  "dateCreated": "13 June, 2026",
+  "artist": "Dean Mouhtaropoulos",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2281474461/photo/group-d-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=A5rN1IVWTeZo2An0xneyYav3EjEhlzxfTYZdANQP4Z0=",
+  "source_html_sha256": "97c005e81e6863b4ec9cedadcbf2b7a43cd39305120a6647f60dac8cb09692ab",
+  "source_html_bytes": 334614,
+  "retrieved_at": "2026-10-21T18:39:51.999894+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/cabo-verde-players-pose-for-a-team-photograph-before-the-news-photo/2284542241",
+  "publisher": "Getty Images",
+  "caption": "MIAMI GARDENS, FLORIDA - JULY 03: Cabo Verde players pose for a team photograph before the FIFA World Cup 2026 Round of 32 match between Argentina and Cabo Verde at Miami Stadium on July 03, 2026 in Miami Gardens, Florida. (Photo by Megan Briggs/Getty Images)",
+  "dateCreated": "03 July, 2026",
+  "artist": "Megan Briggs",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2284542241/photo/argentina-v-cabo-verde-round-of-32-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=5yTcLwbpA7ytfHzBeUFa63nuUFmZ8VIAMEVSsh8lkDM=",
+  "source_html_sha256": "1069e4f1573bbce366abc03f99cf1d5b7ed50e014cff0eea2eb216861a64da4f",
+  "source_html_bytes": 341762,
+  "retrieved_at": "2026-10-21T18:42:09.593729+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

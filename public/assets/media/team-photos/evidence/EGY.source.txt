@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/egypt-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2285076384",
+  "publisher": "Getty Images",
+  "caption": "ATLANTA, GEORGIA - JULY 07: Egypt players pose for a team photograph before the FIFA World Cup 2026 Round of 16 match between Argentina and Egypt at Atlanta Stadium on July 07, 2026 in Atlanta, Georgia. (Photo by Buda Mendes/Getty Images)",
+  "dateCreated": "07 July, 2026",
+  "artist": "Buda Mendes",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2285076384/photo/round-of-16-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=O30wjZIMn2Xe_tP5iZAm4ujyvvJta3IIuF-T3uXXbXE=",
+  "source_html_sha256": "2f2c30d1f4ecd51dea2ca644d71e1acc214eeb4ed3bd903dc26e89a9e28ef57d",
+  "source_html_bytes": 341563,
+  "retrieved_at": "2026-10-21T18:42:18.570937+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

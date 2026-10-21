@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/congo-dr-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2283628292",
+  "publisher": "Getty Images",
+  "caption": "ATLANTA, GEORGIA - JUNE 27: Congo DR players pose for a team photograph before the FIFA World Cup 2026 Group K match between Congo DR and Uzbekistan at Atlanta Stadium on June 27, 2026 in Atlanta, Georgia. (Photo by Molly Darlington/Getty Images)",
+  "dateCreated": "27 June, 2026",
+  "artist": "Molly Darlington",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2283628292/photo/congo-dr-v-uzbekistan-group-k-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=UJ4n5h8xI25V6m1pxyN5PF-P43dEG6szmJrc1t6sfLE=",
+  "source_html_sha256": "4c910cddd3fa1a0defa9d809c37be299396628fcfce62b038971913db4abde5c",
+  "source_html_bytes": 341134,
+  "retrieved_at": "2026-10-21T18:42:18.808644+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.at/detail/nachrichtenfoto/players-of-austria-pose-for-a-team-group-photograph-nachrichtenfoto/2282008964",
+  "publisher": "Getty Images",
+  "caption": "SANTA CLARA, CALIFORNIA - JUNE 16: Players of Austria pose for  a team group photograph during the FIFA World Cup 2026 Group J match between Austria and Jordan at San Francisco Bay Area Stadium on June 16, 2026 in Santa Clara, California. (Photo by Stu Forster/Getty Images)",
+  "dateCreated": "16. Juni 2026",
+  "artist": "Stu Forster",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2282008964/de/foto/santa-clara-california-players-of-austria-pose-for-a-team-group-photograph-during-the-fifa.jpg?s=1024x1024&w=gi&k=20&c=OIjOehI9wCO9Y8dQ-ovmRuRQROmZEFtp2IviXyt3m0U=",
+  "source_html_sha256": "ab5617817ee69d4d8185c5d4872606a0b7c8f6a18c81494a4db41eb590af1cf0",
+  "source_html_bytes": 323266,
+  "retrieved_at": "2026-10-21T18:39:51.998879+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

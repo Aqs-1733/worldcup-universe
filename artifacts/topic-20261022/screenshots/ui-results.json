@@ -1,0 +1,71 @@
+[
+  {
+    "case": "empty-mobile",
+    "legacyBanners": 0,
+    "overflow": -15,
+    "panelHeight": 237.39584350585935,
+    "width": 390
+  },
+  {
+    "case": "quote-cancel",
+    "chipHidden": true,
+    "parent": ""
+  },
+  {
+    "case": "edit-mobile",
+    "open": 1,
+    "overflow": -15
+  },
+  {
+    "case": "cancel-fixed-desktop",
+    "chipHidden": true,
+    "parentCleared": true,
+    "textareaFocused": true
+  },
+  {
+    "case": "native-quote-submit",
+    "overflow": -15,
+    "postedBodyVisible": true,
+    "quoteReference": "#reply-30",
+    "replyCount": 3
+  },
+  {
+    "cards": 24,
+    "case": "teams-page1",
+    "firstThree": [
+      {
+        "loaded": true,
+        "src": "/assets/media/team-photos/MAR.jpg",
+        "width": 1920
+      },
+      {
+        "loaded": true,
+        "src": "/assets/media/team-photos/GER.jpg",
+        "width": 2720
+      },
+      {
+        "loaded": true,
+        "src": "/assets/media/team-photos/FRA.jpg",
+        "width": 1920
+      }
+    ],
+    "flagOnly": 0,
+    "overflow": -15,
+    "photos": 24
+  },
+  {
+    "cards": 24,
+    "case": "teams-page2",
+    "flagOnly": 0,
+    "overflow": -15,
+    "photos": 24,
+    "url": "/teams?page=2"
+  },
+  {
+    "cardWidth": 334.66668701171875,
+    "case": "teams-mobile",
+    "overflow": -15,
+    "photoWidth": 333.3333435058594,
+    "width": 390
+  }
+]

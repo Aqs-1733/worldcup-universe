@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/czechia-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2282215345",
+  "publisher": "Getty Images",
+  "caption": "ATLANTA, GEORGIA - JUNE 18: Czechia players pose for a team photograph before the FIFA World Cup 2026 Group A match between Czechia and South Africa at Atlanta Stadium on June 18, 2026 in Atlanta, Georgia. (Photo by Alex Slitz/Getty Images)",
+  "dateCreated": "18 June, 2026",
+  "artist": "Alex Slitz",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2282215345/photo/czechia-v-south-africa-group-a-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=ZUFlWnPOFUy1cTwU_czaCL0kCpGlhVnHIKUe1pnEs6Q=",
+  "source_html_sha256": "3a7e53f5736e4536f6dcfe8ed8d6721c1001ab5dfb31c8e23354bb617ec61e4a",
+  "source_html_bytes": 341660,
+  "retrieved_at": "2026-10-21T18:42:14.117743+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

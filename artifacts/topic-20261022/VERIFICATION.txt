@@ -1,0 +1,129 @@
+2026-10-22 | Topic-detail replies and all 48 same-year team photographs
+
+BRANCH: codex/yii2-full-stack
+CHANGED BRANCH/FIELD:
+- views/forum/view.php: legacy reply empty banner -> topic-replies-panel (Tabler card/list-group), compact zero count, unified guest/member/locked composer.
+- public/assets/js/v2-app.js: quote selection/cancellation, scroll-to-compose and textarea focus; native POST still supplies parent_id.
+- public/assets/media/team-photos/manifest.json: teams[*].path/status and coverage, 5/48 -> 48/48 verified 2026 World Cup squad/group photographs; missing 43 -> 0.
+- List, home cards and detail covers consume the same TeamPhoto manifest; no current team falls back to a flag-only cover or single-player portrait.
+
+FOUR REAL ARTIFACTS (reopened):
+MODIFIED_FILE: D:/Project114514/worldcup-universe/artifacts/topic-20261022/MODIFIED_FILE.php
+DIFF_FILE: D:/Project114514/worldcup-universe/artifacts/topic-20261022/DIFF_FILE.patch
+VERIFICATION: D:/Project114514/worldcup-universe/artifacts/topic-20261022/VERIFICATION.txt
+ROLLBACK: D:/Project114514/worldcup-universe/artifacts/topic-20261022/ROLLBACK.sh
+
+Original preserved file: D:/Project114514/worldcup-universe/artifacts/topic-20261022/original-topic.php
+Original SHA256: 0fb952fcd3a715641d720cf7188febe125d972888521b684914804eb2e811775
+Modified SHA256: 6515afa40fe064853efd54d14d06511a0200f72dfce6d601fd5902ba55621765
+Diff SHA256: 298167937350964783143d1067fe75f738fe0096c649bb6dab2727eab3acd7b0
+Rollback SHA256: 2daf8e1bd29e582627a83ff742f1c7892a1c52e4320541a1d75fd9a3afd4c6c3
+Live view SHA256 equals MODIFIED_FILE; original file remains byte-identical.
+
+BASELINE
+Exact command (PowerShell):
+& 'D:/XAMPP/php/php.exe' 'D:/Project114514/worldcup-universe/tests/topic_probe.php' 'D:/Project114514/worldcup-universe/artifacts/topic-20261022/original-topic.php'
+Input: preserved original topic view; no stdin.
+Literal output:
+REPLIES=legacy-empty-banner; MANUAL_QUOTE_ID=visible
+Exit status: 0
+
+MODIFIED
+Exact command (PowerShell):
+& 'D:/XAMPP/php/php.exe' 'D:/Project114514/worldcup-universe/tests/topic_probe.php' 'D:/Project114514/worldcup-universe/artifacts/topic-20261022/MODIFIED_FILE.php'
+Input: modified topic view copy; no stdin.
+Literal output:
+REPLIES=tabler-reply-panel; MANUAL_QUOTE_ID=hidden
+Exit status: 0
+
+ROLLBACK
+Exact command (PowerShell):
+& 'D:/Git/bin/bash.exe' 'D:/Project114514/worldcup-universe/artifacts/topic-20261022/ROLLBACK.sh' 'D:/Project114514/worldcup-universe/artifacts/topic-20261022/rollback-copy.php'
+Input: separate rollback-copy.php; script refuses another basename; no stdin.
+Literal output:
+ROLLBACK PASS: original topic SHA256 restored on copy
+Exit status: 0
+
+RESTORED BEHAVIOR/STATUS
+Exact command (PowerShell):
+& 'D:/XAMPP/php/php.exe' 'D:/Project114514/worldcup-universe/tests/topic_probe.php' 'D:/Project114514/worldcup-universe/artifacts/topic-20261022/rollback-copy.php'
+Literal output:
+REPLIES=legacy-empty-banner; MANUAL_QUOTE_ID=visible
+Exit status: 0
+Restored copy SHA256: 0fb952fcd3a715641d720cf7188febe125d972888521b684914804eb2e811775
+The served view was NOT rolled back: probe against D:/Project114514/worldcup-universe/views/forum/view.php still returns REPLIES=tabler-reply-panel; MANUAL_QUOTE_ID=hidden (exit 0).
+Bash chmod/test result: EXECUTABLE_PASS. Git executable mode is 100755.
+
+PHOTO BASELINE / MODIFIED
+Python: C:/Users/lenovo/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe
+Working directory: D:/Project114514/worldcup-universe
+Baseline command: python scripts/fetch_team_photos.py --manifest artifacts/topic-20261022/original-photo-manifest.json
+Literal first line: FAIL team photos: 5/48 verified; 43 errors
+Exit status: 1 (expected missing-photo regression); complete missing codes in photo-baseline-tests.txt.
+Modified command: python scripts/fetch_team_photos.py
+Literal output:
+PASS team photos: 48/48 distinct 2026 squad/group photographs; bytes, dimensions, caption evidence and visual-review hashes verified.
+Exit status: 0
+Network command: python scripts/fetch_team_photos.py --refresh
+Result: 48 REFETCH MATCH lines; exact output and 48 response hashes saved in photo-refetch-tests.txt / photo-refetch-results.json. Each of 48 actual downloaded responses matched the active image bytes; no candidate was substituted.
+Final literal line: PASS team photos: 48/48 distinct 2026 squad/group photographs; bytes, dimensions, caption evidence and visual-review hashes verified.
+Exit status: 0
+Photos total: 19,814,231 bytes, distinct SHA256 for all 48 teams.
+Sources: 5 association publications, 3 photographer-published Commons CC BY-SA 4.0 images, 40 public Getty default previews. Original publisher watermarks/credit remain. No older-year or generated images; some images are starting XI rather than all 26 squad members.
+
+INTEGRATION TESTS (all exit 0)
+D:/XAMPP/php/php.exe tests/backend.php
+PASS 42 database/service checks; all test writes rolled back.
+D:/XAMPP/php/php.exe tests/official.php
+PASS 3048 official-source checks; 48 teams / 1248 players / 104 matches / 5323 lineups / 32 edges.
+python tests/http_acceptance.py
+PASS 111 HTTP checks; prefix=qa_c2faaf21
+Cleanup: D:/XAMPP/php/php.exe tests/cleanup.php qa_c2faaf21
+CLEANED 2 test members; prefix=qa_c2faaf21
+python tests/topic_replies.py --browser-fixture
+PASS 28 topic reply checks; guest/member/quoted/invalid/locked states; prefix=qa_01edece5
+Cleanup after native browser quote submission: D:/XAMPP/php/php.exe tests/cleanup.php qa_01edece5
+CLEANED 1 test members; prefix=qa_01edece5
+Earlier failed assertion expected 422 for an invalid parent. Service intentionally returns 400; test was corrected and a separate short-body 422 case added. No backend permission weakening.
+python tests/team_photo_ui.py
+PASS team photo UI: 48/48 unique list covers; 48/48 native detail covers; 48/48 HTTP photo hashes; no flag-only or individual-player covers.
+python tests/redesign_ui.py
+PASS redesign: 6 labelled example topics; 32 unique expandable matches / 30 verified winner edges; 48 working country details; 48 hashed 2026 squad photos; no individual team covers; new comment and footer components.
+python tests/chinese_ui.py
+PASS 14 Chinese UI routes; functional Chinese headings; rejected slogans absent.
+python tests/flag_ui.py
+PASS flag coverage: 280 team containers; local flag images and Chinese alt text.
+python tests/navigation_ui.py
+PASS navigation: 6 primary items; one standings entry; /stats -> 301 /worldcup/standings; 12 groups.
+node --check public/assets/js/v2-app.js: no output, exit 0.
+PHP -l views/forum/view.php / views/layouts/main.php / views/site/credits.php: No syntax errors detected, exit 0 for each.
+
+BROWSER OBSERVATIONS
+- Exact user topic /forum/35: old .empty banner count 0; compact reply card and login footer visible, actual reply count remains 0.
+- /forum/31: actual 2 labelled example replies; no fabricated new replies added to make an ordinary topic look active.
+- 390px mobile topic: reply panel 237.4px; no horizontal overflow. Member edit disclosure expands without overlap.
+- Native login + click Reply + fill text + submit on disposable topic: 3 actual test replies, newly rendered quoteReference=#reply-30. Test member/topic/replies deleted by exact disposable prefix afterward.
+- Native cancel quote hides chip, clears parent selection and focuses textarea. Quote focus bug observed during initial QA was corrected and the corrected native flow was re-tested.
+- /teams and native pagination page 2: 24 actual squad-photo cards each, zero flag-only covers. First three images loaded at widths1920/2720/1920.
+- 390px team page: card334.7px/photo333.3px, no horizontal overflow. Temporary viewport reset.
+- Screenshots and actual DOM measurements: artifacts/topic-20261022/screenshots/ . Existing user tabs were not overwritten; own QA tab is separate.
+
+No database migration or sports data alteration. Existing six clearly labelled administrator examples retained; no fake fan identities/likes/heat added. Local preview server and requested news worker remain running.
+
+SHORT EXACT REPLAY (also executed; working directory D:/Project114514/worldcup-universe)
+$php='D:/XAMPP/php/php.exe'; $e='artifacts/topic-20261022'
+BASELINE command: & $php tests/topic_probe.php "$e/original-topic.php"
+Input: original-topic.php. Literal output: REPLIES=legacy-empty-banner; MANUAL_QUOTE_ID=visible. Exit: 0.
+MODIFIED command: & $php tests/topic_probe.php "$e/MODIFIED_FILE.php"
+Input: MODIFIED_FILE.php. Literal output: REPLIES=tabler-reply-panel; MANUAL_QUOTE_ID=hidden. Exit: 0.
+ROLLBACK command: & 'D:/Git/bin/bash.exe' "$e/ROLLBACK.sh" "$e/rollback-copy.php"
+Input: independent rollback-copy.php. Literal output: ROLLBACK PASS: original topic SHA256 restored on copy. Exit: 0.
+Restored probe command: & $php tests/topic_probe.php "$e/rollback-copy.php"
+Literal output: REPLIES=legacy-empty-banner; MANUAL_QUOTE_ID=visible. Exit: 0.
+The final live probe still returns REPLIES=tabler-reply-panel; MANUAL_QUOTE_ID=hidden. Exit: 0.
+
+FINAL PACKAGE CHECKS
+PASS deployment-secret scan: no configured private secret values in staged artifacts/source
+PASS Git index: all 48 photo blobs retain source SHA256 bytes
+Git diff --cached --check: no output, exit 0 (one CSS EOF blank line was removed before this successful check).
+Git ls-files --stage artifacts/topic-20261022/ROLLBACK.sh: mode 100755.

@@ -1,0 +1,338 @@
+[
+  {
+    "team_code": "ALG",
+    "sha256": "83acf01cb71025afdabf2bad9d2881c9133499bbb0b05f5f1c71e49971ad0bcc",
+    "bytes": 206688,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:02.583059+00:00"
+  },
+  {
+    "team_code": "ARG",
+    "sha256": "c8f114655d7d8337d039c2a518d0f34b483a8c6e854e71c2683bb3bd54929757",
+    "bytes": 271802,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:05.281805+00:00"
+  },
+  {
+    "team_code": "AUS",
+    "sha256": "b202a5d22f7e882cd8f7013ac1488eb3c6dfe44aeb82a06cc29c6856bd2b8c95",
+    "bytes": 207819,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:07.687156+00:00"
+  },
+  {
+    "team_code": "AUT",
+    "sha256": "c4c6a3ca111984365bb1c17c66355ee86b93ade45c74e6fa4066a01c67a98f19",
+    "bytes": 225797,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:10.334706+00:00"
+  },
+  {
+    "team_code": "BEL",
+    "sha256": "24fb9a461703cff5ecf8623e996a9e3d180b81d3fd1e17ad4a5e3eacc2cf9ac2",
+    "bytes": 240715,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:12.807100+00:00"
+  },
+  {
+    "team_code": "BIH",
+    "sha256": "8e067996a431d4c1cde57c82d67605d035aade4cc4645144c6571230766a865d",
+    "bytes": 214073,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:15.194136+00:00"
+  },
+  {
+    "team_code": "BRA",
+    "sha256": "c5fcec8499b3cf9d7b15cdc3de06a867806f4faac692524f281368f2fe1edfc0",
+    "bytes": 468373,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:17.932635+00:00"
+  },
+  {
+    "team_code": "CAN",
+    "sha256": "c660cd8612dc091bfb7a97d4902fc2a81429a1da2363a34085065cfb920aab6e",
+    "bytes": 215339,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:20.387183+00:00"
+  },
+  {
+    "team_code": "CIV",
+    "sha256": "a16d73c94cf2e37169679746b620e3f6ebd2572d9a71b02b208f7e797cb7bd4e",
+    "bytes": 223847,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:22.813433+00:00"
+  },
+  {
+    "team_code": "COD",
+    "sha256": "b1b414487e6faa5d75113b4b537c8dddd9b85aeffc4ec7ddf02af8ed8f9601c1",
+    "bytes": 243135,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:25.250646+00:00"
+  },
+  {
+    "team_code": "COL",
+    "sha256": "b3fd1087a31e377251ab08f86e39accb2120537dbad6f51442ce6794ba09253b",
+    "bytes": 465342,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:28.029661+00:00"
+  },
+  {
+    "team_code": "CPV",
+    "sha256": "c66d1ccb4d800d6c7ab14972f58169de42bb6c83d0ba7b943b1e80ecbdd27648",
+    "bytes": 213839,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:30.640911+00:00"
+  },
+  {
+    "team_code": "CRO",
+    "sha256": "5a87bbfc9f5dd90c5db6d9124e0af910e7d84854d0495b326617d15edd1cd27c",
+    "bytes": 240249,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:33.153043+00:00"
+  },
+  {
+    "team_code": "CUW",
+    "sha256": "888ba552894921e2c22732d2e42baa810a381cd221a92800e49d84145faffdab",
+    "bytes": 225009,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:35.548418+00:00"
+  },
+  {
+    "team_code": "CZE",
+    "sha256": "72210738923180be91adf7f4bb4a11c99a0993aea6d587f4617a4e23a14b5a90",
+    "bytes": 229285,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:38.197063+00:00"
+  },
+  {
+    "team_code": "ECU",
+    "sha256": "d1fb2cf9b35b9b4081346b9c1aeeee94814f37de7ff820d7e1e53d57cd67bfca",
+    "bytes": 270320,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:40.681997+00:00"
+  },
+  {
+    "team_code": "EGY",
+    "sha256": "2311e1aa12ec402d1355d2e5e946690a8bdca590cfe113d3797c32a36786434e",
+    "bytes": 166251,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:42.982270+00:00"
+  },
+  {
+    "team_code": "ENG",
+    "sha256": "323221071a6ddf0f53ec1942db4cbbc8bc0572a7ae309d1e4b28cec287711ffb",
+    "bytes": 1737009,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:46.123555+00:00"
+  },
+  {
+    "team_code": "ESP",
+    "sha256": "68f33743222a1366e401a5a933f052b4e2179cda1c0df61742bf0a4f9d3f108d",
+    "bytes": 215885,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:48.549008+00:00"
+  },
+  {
+    "team_code": "FRA",
+    "sha256": "7be511263d0a85aa27d715e1eaa463dc088b9180f943a604ddbc1c7c978d9248",
+    "bytes": 896388,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:51.428527+00:00"
+  },
+  {
+    "team_code": "GER",
+    "sha256": "3af2ecd9ca6a5c47efd6d7e3b0ca4c30973417076a05624deb5fe1933fa24ed7",
+    "bytes": 5287817,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:55.065534+00:00"
+  },
+  {
+    "team_code": "GHA",
+    "sha256": "2124c0c275f702c1498b18f5f17162743fa6ffb69d1e0bc8f9dc431ab635f4ee",
+    "bytes": 953097,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:47:58.170471+00:00"
+  },
+  {
+    "team_code": "HAI",
+    "sha256": "63b2c6a59a9e1ffe0cfbda4f5b7c667456c2eb66fa08251ed3d3e66388eec266",
+    "bytes": 218063,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:00.608884+00:00"
+  },
+  {
+    "team_code": "IRN",
+    "sha256": "fd98b97aec6473177b4d6d2fcbc1712b7274526a82b4bdb1acc15db6eba51a01",
+    "bytes": 225087,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:03.023220+00:00"
+  },
+  {
+    "team_code": "IRQ",
+    "sha256": "836ab55cf811fad5f5f58cdf8b59d48874bb4379e977bf1532d32b843d1de7af",
+    "bytes": 207081,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:05.389464+00:00"
+  },
+  {
+    "team_code": "JOR",
+    "sha256": "782e02ab9f4bbaa10520a2f5cdce099a08a5c7e3917f899f9b76ae5391373a7b",
+    "bytes": 198610,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:07.768212+00:00"
+  },
+  {
+    "team_code": "JPN",
+    "sha256": "dee0365699f4b2c3bb42948c14c8c0217ebeba96302c44fb20a192b021609239",
+    "bytes": 246760,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:10.187185+00:00"
+  },
+  {
+    "team_code": "KOR",
+    "sha256": "d78797bc3ff5f2d3fe23e19dcc643a670f02f60310f4e39bfa170bb68abcd6f9",
+    "bytes": 201391,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:12.561615+00:00"
+  },
+  {
+    "team_code": "KSA",
+    "sha256": "9a7f8e24796e927c72e81ca918e412f33d12170864650893aedfd1aeeb6abf7a",
+    "bytes": 283476,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:15.072983+00:00"
+  },
+  {
+    "team_code": "MAR",
+    "sha256": "7e2c0cdf2c9cafdcd39da002c0dc6d6ff2928918cfce6ca3574a90540cd7f08b",
+    "bytes": 719149,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:17.910883+00:00"
+  },
+  {
+    "team_code": "MEX",
+    "sha256": "8447a94a0156c3f7872ed5cc11b7f854a6a394aea516bfa37875c9d4ae61bd10",
+    "bytes": 286090,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:20.383306+00:00"
+  },
+  {
+    "team_code": "NED",
+    "sha256": "85460567580c6b25c56852d30ae4e7477f26415a4588831e135f144b4d838384",
+    "bytes": 201286,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:22.965307+00:00"
+  },
+  {
+    "team_code": "NOR",
+    "sha256": "5b39a3e40f7698ad6733f13daf978c8be1ef8c9e0b1f078d4672809b69f85d4d",
+    "bytes": 294918,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:26.568830+00:00"
+  },
+  {
+    "team_code": "NZL",
+    "sha256": "1b4748e5f2e9df40c37994e4cb4c9cc756be2590185728f8ff19d3a4e8f195e5",
+    "bytes": 184639,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:29.135773+00:00"
+  },
+  {
+    "team_code": "PAN",
+    "sha256": "c0abad69394fe1552915cf6cfec0c462b4141cd4f6aaf35005bf3f9e2001078a",
+    "bytes": 273544,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:31.832848+00:00"
+  },
+  {
+    "team_code": "PAR",
+    "sha256": "6501ad29ceff9b58f73e3976ca3b16eaa86358ba3568dcc3e53bb8a62d212335",
+    "bytes": 197820,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:34.202843+00:00"
+  },
+  {
+    "team_code": "POR",
+    "sha256": "ae41c81f1c92a29ed2957cc283aaa360e1552412fa24b108e9d78117fa83c307",
+    "bytes": 218648,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:36.641109+00:00"
+  },
+  {
+    "team_code": "QAT",
+    "sha256": "5dbe54fd5e67b6b204feaa0722d94bd8e13d410c3aff904349cf8d508ad1ff9b",
+    "bytes": 197259,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:39.030213+00:00"
+  },
+  {
+    "team_code": "RSA",
+    "sha256": "fb44e1b8470ef62478544ed81e595ef857aa3a4fee78ac623af4855b7fb3e617",
+    "bytes": 252587,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:41.664477+00:00"
+  },
+  {
+    "team_code": "SCO",
+    "sha256": "acd53f641031231153a31264e6d6d98553e4c0de04708b1b8a0416398f707661",
+    "bytes": 235752,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:44.557083+00:00"
+  },
+  {
+    "team_code": "SEN",
+    "sha256": "025f3579c6f959599e62bc810eea2299279414f072000547e1a455832adbc783",
+    "bytes": 223754,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:46.952269+00:00"
+  },
+  {
+    "team_code": "SUI",
+    "sha256": "b3a253a0c38eca407ac4e07227a6d7d70e4ee2d477f5d821963d03e11c8928f3",
+    "bytes": 199635,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:49.293169+00:00"
+  },
+  {
+    "team_code": "SWE",
+    "sha256": "8e4b3bfb67cdd16126c28a0c8f6d6624197a0a7a82ad7b07f12f9a4f0c78e1fa",
+    "bytes": 212977,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:51.691678+00:00"
+  },
+  {
+    "team_code": "TUN",
+    "sha256": "78fd4fda2f855b3454d584116283ad9a73141bb00a2141be9f4e4fb4adfb2972",
+    "bytes": 195906,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:54.113269+00:00"
+  },
+  {
+    "team_code": "TUR",
+    "sha256": "88e0e24f6ca7e84ace3c5d7c37c1f0fd6dc6f8c21691f7ea080907d4fdbf7138",
+    "bytes": 222592,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:56.502977+00:00"
+  },
+  {
+    "team_code": "URU",
+    "sha256": "df828d526cb30b209be13fb1295cbd3ef6f43c490f09c015ddb7048d9e552773",
+    "bytes": 244515,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:48:58.927762+00:00"
+  },
+  {
+    "team_code": "USA",
+    "sha256": "181d5aa25b74e236491b49731e6d840833262a5fb0f0d9293a30ebc3e6a32bcf",
+    "bytes": 240080,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:49:01.373105+00:00"
+  },
+  {
+    "team_code": "UZB",
+    "sha256": "a605dc550c0b83fd047e7da89e505f0387309e77ac03125829bba8fec5426290",
+    "bytes": 214533,
+    "matches_published": true,
+    "checked_at": "2026-10-21T18:49:03.873103+00:00"
+  }
+]

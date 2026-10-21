@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/ecuadors-players-pose-for-a-team-photo-ahead-of-the-2026-news-photo/2281000879",
+  "publisher": "Getty Images",
+  "caption": "Ecuador's players pose for a team photo ahead of the 2026 World Cup Group E football match between Ivory Coast and Ecuador at the Philadelphia Stadium in Philadelphia on June 14, 2026.  (Photo by CHARLY TRIBALLEAU / AFP via Getty Images)",
+  "dateCreated": "14 June, 2026",
+  "artist": "CHARLY TRIBALLEAU",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2281000879/photo/fbl-wc-2026-match09-civ-ecu.jpg?s=1024x1024&w=gi&k=20&c=GtsPgPrEczjP4AZTWWa3tOkX9EaVB7uwmimn6V-4rUE=",
+  "source_html_sha256": "35a633567020213029f09852d367639d5601736c865cc941a23ffe96ad80dbdb",
+  "source_html_bytes": 339641,
+  "retrieved_at": "2026-10-21T18:42:14.417337+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

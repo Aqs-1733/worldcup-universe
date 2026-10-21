@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-cote-divoire-pose-for-a-team-photograph-before-news-photo/2283318355",
+  "publisher": "Getty Images",
+  "caption": "PHILADELPHIA, PENNSYLVANIA - JUNE 25: Players of Cote d'Ivoire pose for a team photograph before the FIFA World Cup 2026 Group E match between Curacao and Cote D'Ivoire at Philadelphia Stadium on June 25, 2026 in Philadelphia, Pennsylvania. (Photo by Darrian Traynor/Getty Images)",
+  "dateCreated": "25 June, 2026",
+  "artist": "Darrian Traynor",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2283318355/photo/curacao-v-cote-divoire-group-e-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=6W1uDBZ4WUKJP4uq1L_Q_uG8GnMUNzhvv2fA0pUug6Y=",
+  "source_html_sha256": "16ab278f140c3eb7bb64028e858b0b091e84d55f7aabc247b2519e7b6ca314bb",
+  "source_html_bytes": 340741,
+  "retrieved_at": "2026-10-21T18:42:09.451787+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

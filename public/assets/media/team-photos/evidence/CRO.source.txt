@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-croatia-pose-for-a-team-photograph-before-the-news-photo/2283612118",
+  "publisher": "Getty Images",
+  "caption": "PHILADELPHIA, PENNSYLVANIA - JUNE 27: Players of Croatia pose for a team photograph before the FIFA World Cup 2026 Group L match between Croatia and Ghana at Philadelphia Stadium on June 27, 2026 in Philadelphia, Pennsylvania. (Photo by Darrian Traynor/Getty Images)",
+  "dateCreated": "27 June, 2026",
+  "artist": "Darrian Traynor",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2283612118/photo/group-l-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=copVcH5eMRUPeCAjs9J3W3t48yb-nk9XyV3w6Li4eBA=",
+  "source_html_sha256": "96b5c8e2d7491d87e5df4f5d9e5b28145652810f1349611d6c8aa673c32c3de6",
+  "source_html_bytes": 340972,
+  "retrieved_at": "2026-10-21T18:42:09.669466+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

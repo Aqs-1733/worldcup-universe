@@ -1,0 +1,2 @@
+PASS 111 HTTP checks; prefix=qa_c2faaf21
+  PASS public /: HTTP 200 (expected 200)

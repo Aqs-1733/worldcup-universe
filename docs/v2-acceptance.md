@@ -30,3 +30,5 @@ HTTP 流程 | 111 项，登录、CSRF、权限、主队、论坛、管理、下�
 2026-10-22 浏览器实测：官方 iframe 标题和封面已加载；点击播放后，RTVE 返回所在地播放权限制（“Este contenido tiene restringidos los derechos de emisión en su ubicación”）。本站显示官方登录／地区限制提示，未播放成功，不绕过地区或 DRM 校验。
 
 2026-10-22 截图修订另见 artifacts/redesign-20261022/VERIFICATION.txt。旧 artifacts/screenshots 和 navigation 截图作为前一版历史记录保留，当前新版截图位于 artifacts/redesign-20261022/screenshots。
+
+2026-10-22 后续修订：48/48 队真实 2026 合照已接入（缺失 0），逐队来源、图注、日期、图片／来源证据哈希及视觉复核均保留；48 个列表封面、48 个原生详情封面、48 张 HTTP 图像哈希通过。另修正 `/forum/35` 帖子详情曾遗漏的回复区，零回复不再显示旧灰色横幅，会员引用／取消引用及锁定态实测通过。28 项详情流程、111 项 HTTP、42 项后端及 3,048 项官方来源检查通过；临时测试账号与内容已精确清理。最新证据及桌面／390px 截图见 `artifacts/topic-20261022/VERIFICATION.txt` 和其 `screenshots/` 目录。

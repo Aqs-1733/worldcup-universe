@@ -1,0 +1,1 @@
+PASS team photos: 48/48 distinct 2026 squad/group photographs; bytes, dimensions, caption evidence and visual-review hashes verified.

@@ -1,0 +1,1 @@
+PASS redesign: 6 labelled example topics; 32 unique expandable matches / 30 verified winner edges; 48 working country details; 48 hashed 2026 squad photos; no individual team covers; new comment and footer components.

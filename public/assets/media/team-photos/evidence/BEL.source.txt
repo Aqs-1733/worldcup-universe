@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-belgium-pose-for-a-team-photograph-before-the-news-photo/2284228428",
+  "publisher": "Getty Images",
+  "caption": "SEATTLE, WASHINGTON - JULY 01: Players of Belgium pose for a team photograph before the FIFA World Cup 2026 Round Of 32 match between Belgium and Senegal at Seattle Stadium on July 01, 2026 in Seattle, Washington. (Photo by Alex Grimm/Getty Images)",
+  "dateCreated": "01 July, 2026",
+  "artist": "Alex Grimm",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2284228428/photo/round-of-32-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=C5qIScxsLvTpjCQWSnWCNABjpCtdXocUZYmCpstfQEc=",
+  "source_html_sha256": "2244d86982a4780bdf42f838f133344104890ed887b7de80d50811eefd28994e",
+  "source_html_bytes": 342116,
+  "retrieved_at": "2026-10-21T18:42:04.997283+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}

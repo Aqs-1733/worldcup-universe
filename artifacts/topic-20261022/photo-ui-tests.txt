@@ -1,0 +1,1 @@
+PASS team photo UI: 48/48 unique list covers; 48/48 native detail covers; 48/48 HTTP photo hashes; no flag-only or individual-player covers.

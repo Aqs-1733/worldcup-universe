@@ -1,79 +1,295 @@
 {
   "year": 2026,
   "collected_on": "2026-10-22",
-  "scope": "Official same-year men's World Cup team/squad group photographs only. Missing teams remain null; never substitute individual portraits, qualifiers from other years, or generated images.",
+  "scope": "Same-year 2026 World Cup team/squad group photographs: association publications, photographer-published Commons images and original public publisher previews. Never portraits, other-year teams or generated images.",
   "teams": {
     "ALG": {
       "team_code": "ALG",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/ALG.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/algeria-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2283641550",
+      "image_url": "https://media.gettyimages.com/id/2283641550/photo/group-j-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=8gZ3iMsBN5iIRDrrXD0SZjYtdIB7L2TtgfIe9iTvp-Y=",
+      "caption": "阿尔及利亚2026世界杯球队合影",
+      "caption_evidence": "KANSAS CITY, MISSOURI - JUNE 27: Algeria players pose for a team photograph before the FIFA World Cup 2026 Group J match between Algeria and Austria at Kansas City Stadium on June 27, 2026 in Kansas City, Missouri. (Photo by Francois Nel/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-27",
+      "dateCreated": "27 June, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "83acf01cb71025afdabf2bad9d2881c9133499bbb0b05f5f1c71e49971ad0bcc",
+      "bytes": 206688,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "credit": "Francois Nel / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/ALG.source.txt",
+        "sha256": "0ef2b44ae37a4ee732791e94f151ec086d1e42ef5978476ee2435c6968e56c50",
+        "bytes": 1001,
+        "required_markers": [
+          "2026",
+          "2283641550",
+          "team photograph",
+          "KANSAS CITY, MISSOURI - JUNE 27: Algeria players pose for a team photograph befo"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:39:51.999894+00:00",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "83acf01cb71025afdabf2bad9d2881c9133499bbb0b05f5f1c71e49971ad0bcc",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "publisher_caption": "KANSAS CITY, MISSOURI - JUNE 27: Algeria players pose for a team photograph before the FIFA World Cup 2026 Group J match between Algeria and Austria at Kansas City Stadium on June 27, 2026 in Kansas City, Missouri. (Photo by Francois Nel/Getty Images)",
+      "required_markers": [
+        "2026",
+        "2283641550",
+        "team photograph",
+        "KANSAS CITY, MISSOURI - JUNE 27: Algeria players pose for a team photograph befo"
+      ]
     },
     "ARG": {
       "team_code": "ARG",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/ARG.jpg",
+      "source_url": "https://www.gettyimages.com.mx/detail/fotograf%C3%ADa-de-noticias/players-of-argentina-pose-for-a-team-photograph-fotograf%C3%ADa-de-noticias/2286789564",
+      "image_url": "https://media.gettyimages.com/id/2286789564/es/foto/east-rutherford-new-jersey-players-of-argentina-pose-for-a-team-photograph-before-the-fifa.jpg?s=1024x1024&w=gi&k=20&c=ulXxUCr6aHR5g9iWPFq8vMJUOfG3uu2CWhCeAS6pww4=",
+      "caption": "阿根廷2026世界杯球队合影",
+      "caption_evidence": "EAST RUTHERFORD, NEW JERSEY - JULY 19: Players of Argentina pose for a team photograph before the FIFA World Cup 2026 Final match between Spain and Argentina at New York New Jersey Stadium on July 19, 2026 in East Rutherford, New Jersey. (Photo by Hector Vivas - FIFA/FIFA via Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-07-19",
+      "dateCreated": "19 de julio de 2026",
+      "date_kind": "photo-event date from publisher caption; localized dateCreated retained unchanged",
+      "sha256": "c8f114655d7d8337d039c2a518d0f34b483a8c6e854e71c2683bb3bd54929757",
+      "bytes": 271802,
+      "width": 1024,
+      "height": 663,
+      "mime": "image/jpeg",
+      "credit": "Hector Vivas - FIFA / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/ARG.source.txt",
+        "sha256": "585f82adc5639e3c72319ad3a3e78b4b2ded215e41eb7a42510001ecd15e3958",
+        "bytes": 1142,
+        "required_markers": [
+          "2026",
+          "2286789564",
+          "team photograph",
+          "EAST RUTHERFORD, NEW JERSEY - JULY 19: Players of Argentina pose for a team phot"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:39:56.491192+00:00",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "c8f114655d7d8337d039c2a518d0f34b483a8c6e854e71c2683bb3bd54929757",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "publisher_caption": "EAST RUTHERFORD, NEW JERSEY - JULY 19: Players of Argentina pose for a team photograph before the FIFA World Cup 2026 Final match between Spain and Argentina at New York New Jersey Stadium on July 19, 2026 in East Rutherford, New Jersey. (Photo by Hector Vivas - FIFA/FIFA via Getty Images)",
+      "required_markers": [
+        "2026",
+        "2286789564",
+        "team photograph",
+        "EAST RUTHERFORD, NEW JERSEY - JULY 19: Players of Argentina pose for a team phot"
+      ]
     },
     "AUS": {
       "team_code": "AUS",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/AUS.jpg",
+      "source_url": "https://www.gettyimages.com.au/detail/news-photo/players-of-australia-pose-for-a-team-photo-before-the-fifa-news-photo/2281474461",
+      "image_url": "https://media.gettyimages.com/id/2281474461/photo/group-d-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=A5rN1IVWTeZo2An0xneyYav3EjEhlzxfTYZdANQP4Z0=",
+      "caption": "澳大利亚2026世界杯球队合影",
+      "caption_evidence": "VANCOUVER, BRITISH COLUMBIA - JUNE 13: Players of Australia pose for a team photo before the FIFA World Cup 2026 Group D match between Australia and Türkiye at BC Place Vancouver on June 13, 2026 in Vancouver, British Columbia. (Photo by Dean Mouhtaropoulos/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-13",
+      "dateCreated": "13 June, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "b202a5d22f7e882cd8f7013ac1488eb3c6dfe44aeb82a06cc29c6856bd2b8c95",
+      "bytes": 207819,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "credit": "Dean Mouhtaropoulos / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/AUS.source.txt",
+        "sha256": "834af5634fc566fd2add95b1da3143f762b5be63ed4dc8758b53e40270023956",
+        "bytes": 1030,
+        "required_markers": [
+          "2026",
+          "2281474461",
+          "team photo",
+          "VANCOUVER, BRITISH COLUMBIA - JUNE 13: Players of Australia pose for a team phot"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:39:51.999894+00:00",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "b202a5d22f7e882cd8f7013ac1488eb3c6dfe44aeb82a06cc29c6856bd2b8c95",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "publisher_caption": "VANCOUVER, BRITISH COLUMBIA - JUNE 13: Players of Australia pose for a team photo before the FIFA World Cup 2026 Group D match between Australia and Türkiye at BC Place Vancouver on June 13, 2026 in Vancouver, British Columbia. (Photo by Dean Mouhtaropoulos/Getty Images)",
+      "required_markers": [
+        "2026",
+        "2281474461",
+        "team photo",
+        "VANCOUVER, BRITISH COLUMBIA - JUNE 13: Players of Australia pose for a team phot"
+      ]
     },
     "AUT": {
       "team_code": "AUT",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/AUT.jpg",
+      "source_url": "https://www.gettyimages.at/detail/nachrichtenfoto/players-of-austria-pose-for-a-team-group-photograph-nachrichtenfoto/2282008964",
+      "image_url": "https://media.gettyimages.com/id/2282008964/de/foto/santa-clara-california-players-of-austria-pose-for-a-team-group-photograph-during-the-fifa.jpg?s=1024x1024&w=gi&k=20&c=OIjOehI9wCO9Y8dQ-ovmRuRQROmZEFtp2IviXyt3m0U=",
+      "caption": "奥地利2026世界杯球队合影",
+      "caption_evidence": "SANTA CLARA, CALIFORNIA - JUNE 16: Players of Austria pose for  a team group photograph during the FIFA World Cup 2026 Group J match between Austria and Jordan at San Francisco Bay Area Stadium on June 16, 2026 in Santa Clara, California. (Photo by Stu Forster/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-16",
+      "dateCreated": "16. Juni 2026",
+      "date_kind": "photo-event date from publisher caption; localized dateCreated retained unchanged",
+      "sha256": "c4c6a3ca111984365bb1c17c66355ee86b93ade45c74e6fa4066a01c67a98f19",
+      "bytes": 225797,
+      "width": 1024,
+      "height": 724,
+      "mime": "image/jpeg",
+      "credit": "Stu Forster / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/AUT.source.txt",
+        "sha256": "206a0f1fd633e7434959524f0c6e3f48bc99456e2cc5d6ccf8987849dcacaefa",
+        "bytes": 1088,
+        "required_markers": [
+          "2026",
+          "2282008964",
+          "team group photograph",
+          "SANTA CLARA, CALIFORNIA - JUNE 16: Players of Austria pose for  a team group pho"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:39:51.998879+00:00",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "c4c6a3ca111984365bb1c17c66355ee86b93ade45c74e6fa4066a01c67a98f19",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "publisher_caption": "SANTA CLARA, CALIFORNIA - JUNE 16: Players of Austria pose for  a team group photograph during the FIFA World Cup 2026 Group J match between Austria and Jordan at San Francisco Bay Area Stadium on June 16, 2026 in Santa Clara, California. (Photo by Stu Forster/Getty Images)",
+      "required_markers": [
+        "2026",
+        "2282008964",
+        "team group photograph",
+        "SANTA CLARA, CALIFORNIA - JUNE 16: Players of Austria pose for  a team group pho"
+      ]
     },
     "BEL": {
       "team_code": "BEL",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/BEL.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-belgium-pose-for-a-team-photograph-before-the-news-photo/2284228428",
+      "image_url": "https://media.gettyimages.com/id/2284228428/photo/round-of-32-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=C5qIScxsLvTpjCQWSnWCNABjpCtdXocUZYmCpstfQEc=",
+      "caption": "比利时2026世界杯球队合影",
+      "caption_evidence": "SEATTLE, WASHINGTON - JULY 01: Players of Belgium pose for a team photograph before the FIFA World Cup 2026 Round Of 32 match between Belgium and Senegal at Seattle Stadium on July 01, 2026 in Seattle, Washington. (Photo by Alex Grimm/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-07-01",
+      "dateCreated": "01 July, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "24fb9a461703cff5ecf8623e996a9e3d180b81d3fd1e17ad4a5e3eacc2cf9ac2",
+      "bytes": 240715,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "credit": "Alex Grimm / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/BEL.source.txt",
+        "sha256": "87e1b578f8b2dd2d757b8431773129c1e20413aeae7e29b8bb4a64c0c43ad8c6",
+        "bytes": 998,
+        "required_markers": [
+          "2026",
+          "2284228428",
+          "team photograph",
+          "SEATTLE, WASHINGTON - JULY 01: Players of Belgium pose for a team photograph bef"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:04.997283+00:00",
+      "publisher_caption": "SEATTLE, WASHINGTON - JULY 01: Players of Belgium pose for a team photograph before the FIFA World Cup 2026 Round Of 32 match between Belgium and Senegal at Seattle Stadium on July 01, 2026 in Seattle, Washington. (Photo by Alex Grimm/Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "24fb9a461703cff5ecf8623e996a9e3d180b81d3fd1e17ad4a5e3eacc2cf9ac2",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2284228428",
+        "team photograph",
+        "SEATTLE, WASHINGTON - JULY 01: Players of Belgium pose for a team photograph bef"
+      ]
     },
     "BIH": {
       "team_code": "BIH",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/BIH.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/bosnia-and-herzegovina-players-pose-for-a-team-photograph-news-photo/2283153485",
+      "image_url": "https://media.gettyimages.com/id/2283153485/photo/bosnia-and-herzegovina-v-qatar-group-b-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=4dw9xVh6eL5ZF4oWTnBqoQxKXXbMAVPkmOT5mpi-AsU=",
+      "caption": "波黑2026世界杯球队合影",
+      "caption_evidence": "SEATTLE, WASHINGTON - JUNE 24: Bosnia and Herzegovina players pose for a team photograph before the FIFA World Cup 2026 Group B match between Bosnia and Herzegovina and Qatar at Seattle Stadium on June 24, 2026 in Seattle, Washington. (Photo by Richard Heathcote/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-24",
+      "dateCreated": "24 June, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "8e067996a431d4c1cde57c82d67605d035aade4cc4645144c6571230766a865d",
+      "bytes": 214073,
+      "width": 1024,
+      "height": 676,
+      "mime": "image/jpeg",
+      "credit": "Richard Heathcote / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/BIH.source.txt",
+        "sha256": "e30a2cb2dc5983a41b8d85b69e748cf1a7309f32c086dc6eaaa870f15a901fc7",
+        "bytes": 1061,
+        "required_markers": [
+          "2026",
+          "2283153485",
+          "team photograph",
+          "SEATTLE, WASHINGTON - JUNE 24: Bosnia and Herzegovina players pose for a team ph"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:04.995268+00:00",
+      "publisher_caption": "SEATTLE, WASHINGTON - JUNE 24: Bosnia and Herzegovina players pose for a team photograph before the FIFA World Cup 2026 Group B match between Bosnia and Herzegovina and Qatar at Seattle Stadium on June 24, 2026 in Seattle, Washington. (Photo by Richard Heathcote/Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "8e067996a431d4c1cde57c82d67605d035aade4cc4645144c6571230766a865d",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2283153485",
+        "team photograph",
+        "SEATTLE, WASHINGTON - JUNE 24: Bosnia and Herzegovina players pose for a team ph"
+      ]
     },
     "BRA": {
       "team_code": "BRA",
@@ -115,38 +331,146 @@
     "CAN": {
       "team_code": "CAN",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/CAN.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/team-of-canada-poses-for-a-photo-prior-to-the-fifa-world-news-photo/2281445390",
+      "image_url": "https://media.gettyimages.com/id/2281445390/photo/canada-v-bosnia-and-herzegovina-group-b-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=ohZRY32ImxiSlwxGtFo_Wu4rHCGUQgFtXby5o5nYs2M=",
+      "caption": "加拿大2026世界杯球队合影",
+      "caption_evidence": "TORONTO, ONTARIO - JUNE 12: Team of Canada poses for a photo prior to the FIFA World Cup 2026 Group B match between Canada and Bosnia and Herzegovina at Toronto Stadium on June 12, 2026 in Toronto, Ontario. (Photo by Maja Hitij - FIFA/FIFA via Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-12",
+      "dateCreated": "12 June, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "c660cd8612dc091bfb7a97d4902fc2a81429a1da2363a34085065cfb920aab6e",
+      "bytes": 215339,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "credit": "Maja Hitij - FIFA / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/CAN.source.txt",
+        "sha256": "0f6f32977527c9be7dbd775dc935f4b43ef8110f4580ff6199359e5a033d8857",
+        "bytes": 1042,
+        "required_markers": [
+          "2026",
+          "2281445390",
+          "poses for a photo",
+          "TORONTO, ONTARIO - JUNE 12: Team of Canada poses for a photo prior to the FIFA W"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:05.059441+00:00",
+      "publisher_caption": "TORONTO, ONTARIO - JUNE 12: Team of Canada poses for a photo prior to the FIFA World Cup 2026 Group B match between Canada and Bosnia and Herzegovina at Toronto Stadium on June 12, 2026 in Toronto, Ontario. (Photo by Maja Hitij - FIFA/FIFA via Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "c660cd8612dc091bfb7a97d4902fc2a81429a1da2363a34085065cfb920aab6e",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2281445390",
+        "poses for a photo",
+        "TORONTO, ONTARIO - JUNE 12: Team of Canada poses for a photo prior to the FIFA W"
+      ]
     },
     "CIV": {
       "team_code": "CIV",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/CIV.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-cote-divoire-pose-for-a-team-photograph-before-news-photo/2283318355",
+      "image_url": "https://media.gettyimages.com/id/2283318355/photo/curacao-v-cote-divoire-group-e-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=6W1uDBZ4WUKJP4uq1L_Q_uG8GnMUNzhvv2fA0pUug6Y=",
+      "caption": "科特迪瓦2026世界杯球队合影",
+      "caption_evidence": "PHILADELPHIA, PENNSYLVANIA - JUNE 25: Players of Cote d'Ivoire pose for a team photograph before the FIFA World Cup 2026 Group E match between Curacao and Cote D'Ivoire at Philadelphia Stadium on June 25, 2026 in Philadelphia, Pennsylvania. (Photo by Darrian Traynor/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-25",
+      "dateCreated": "25 June, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "a16d73c94cf2e37169679746b620e3f6ebd2572d9a71b02b208f7e797cb7bd4e",
+      "bytes": 223847,
+      "width": 1024,
+      "height": 623,
+      "mime": "image/jpeg",
+      "credit": "Darrian Traynor / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/CIV.source.txt",
+        "sha256": "ad5d6dc37f40636e94576cbe6ad949530cd94f1b7977575ea88a07023d3ea8f5",
+        "bytes": 1055,
+        "required_markers": [
+          "2026",
+          "2283318355",
+          "team photograph",
+          "PHILADELPHIA, PENNSYLVANIA - JUNE 25: Players of Cote d'Ivoire pose for a team p"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:09.451787+00:00",
+      "publisher_caption": "PHILADELPHIA, PENNSYLVANIA - JUNE 25: Players of Cote d'Ivoire pose for a team photograph before the FIFA World Cup 2026 Group E match between Curacao and Cote D'Ivoire at Philadelphia Stadium on June 25, 2026 in Philadelphia, Pennsylvania. (Photo by Darrian Traynor/Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "a16d73c94cf2e37169679746b620e3f6ebd2572d9a71b02b208f7e797cb7bd4e",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2283318355",
+        "team photograph",
+        "PHILADELPHIA, PENNSYLVANIA - JUNE 25: Players of Cote d'Ivoire pose for a team p"
+      ]
     },
     "COD": {
       "team_code": "COD",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/COD.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/congo-dr-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2283628292",
+      "image_url": "https://media.gettyimages.com/id/2283628292/photo/congo-dr-v-uzbekistan-group-k-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=UJ4n5h8xI25V6m1pxyN5PF-P43dEG6szmJrc1t6sfLE=",
+      "caption": "刚果（金）2026世界杯球队合影",
+      "caption_evidence": "ATLANTA, GEORGIA - JUNE 27: Congo DR players pose for a team photograph before the FIFA World Cup 2026 Group K match between Congo DR and Uzbekistan at Atlanta Stadium on June 27, 2026 in Atlanta, Georgia. (Photo by Molly Darlington/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-27",
+      "dateCreated": "27 June, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "b1b414487e6faa5d75113b4b537c8dddd9b85aeffc4ec7ddf02af8ed8f9601c1",
+      "bytes": 243135,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "credit": "Molly Darlington / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/COD.source.txt",
+        "sha256": "8a43ee5098ba739a60d61ff874fc2adde23a25c33e7cea43a5a9a3e481062c59",
+        "bytes": 1023,
+        "required_markers": [
+          "2026",
+          "2283628292",
+          "team photograph",
+          "ATLANTA, GEORGIA - JUNE 27: Congo DR players pose for a team photograph before t"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:18.808644+00:00",
+      "publisher_caption": "ATLANTA, GEORGIA - JUNE 27: Congo DR players pose for a team photograph before the FIFA World Cup 2026 Group K match between Congo DR and Uzbekistan at Atlanta Stadium on June 27, 2026 in Atlanta, Georgia. (Photo by Molly Darlington/Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "b1b414487e6faa5d75113b4b537c8dddd9b85aeffc4ec7ddf02af8ed8f9601c1",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2283628292",
+        "team photograph",
+        "ATLANTA, GEORGIA - JUNE 27: Congo DR players pose for a team photograph before t"
+      ]
     },
     "COL": {
       "team_code": "COL",
@@ -190,74 +514,290 @@
     "CPV": {
       "team_code": "CPV",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/CPV.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/cabo-verde-players-pose-for-a-team-photograph-before-the-news-photo/2284542241",
+      "image_url": "https://media.gettyimages.com/id/2284542241/photo/argentina-v-cabo-verde-round-of-32-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=5yTcLwbpA7ytfHzBeUFa63nuUFmZ8VIAMEVSsh8lkDM=",
+      "caption": "佛得角2026世界杯球队合影",
+      "caption_evidence": "MIAMI GARDENS, FLORIDA - JULY 03: Cabo Verde players pose for a team photograph before the FIFA World Cup 2026 Round of 32 match between Argentina and Cabo Verde at Miami Stadium on July 03, 2026 in Miami Gardens, Florida. (Photo by Megan Briggs/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-07-03",
+      "dateCreated": "03 July, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "c66d1ccb4d800d6c7ab14972f58169de42bb6c83d0ba7b943b1e80ecbdd27648",
+      "bytes": 213839,
+      "width": 1024,
+      "height": 677,
+      "mime": "image/jpeg",
+      "credit": "Megan Briggs / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/CPV.source.txt",
+        "sha256": "ec2f6483cb0082a889d0df20a3165d99a99fd79b2c3af99a3d907f0491b00568",
+        "bytes": 1034,
+        "required_markers": [
+          "2026",
+          "2284542241",
+          "team photograph",
+          "MIAMI GARDENS, FLORIDA - JULY 03: Cabo Verde players pose for a team photograph "
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:09.593729+00:00",
+      "publisher_caption": "MIAMI GARDENS, FLORIDA - JULY 03: Cabo Verde players pose for a team photograph before the FIFA World Cup 2026 Round of 32 match between Argentina and Cabo Verde at Miami Stadium on July 03, 2026 in Miami Gardens, Florida. (Photo by Megan Briggs/Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "c66d1ccb4d800d6c7ab14972f58169de42bb6c83d0ba7b943b1e80ecbdd27648",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2284542241",
+        "team photograph",
+        "MIAMI GARDENS, FLORIDA - JULY 03: Cabo Verde players pose for a team photograph "
+      ]
     },
     "CRO": {
       "team_code": "CRO",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/CRO.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-croatia-pose-for-a-team-photograph-before-the-news-photo/2283612118",
+      "image_url": "https://media.gettyimages.com/id/2283612118/photo/group-l-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=copVcH5eMRUPeCAjs9J3W3t48yb-nk9XyV3w6Li4eBA=",
+      "caption": "克罗地亚2026世界杯球队合影",
+      "caption_evidence": "PHILADELPHIA, PENNSYLVANIA - JUNE 27: Players of Croatia pose for a team photograph before the FIFA World Cup 2026 Group L match between Croatia and Ghana at Philadelphia Stadium on June 27, 2026 in Philadelphia, Pennsylvania. (Photo by Darrian Traynor/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-27",
+      "dateCreated": "27 June, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "5a87bbfc9f5dd90c5db6d9124e0af910e7d84854d0495b326617d15edd1cd27c",
+      "bytes": 240249,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "credit": "Darrian Traynor / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/CRO.source.txt",
+        "sha256": "12094a0ac16cd91740f6e011f2c1556b9a0b4e7f81b187161db7deec441d1f45",
+        "bytes": 1017,
+        "required_markers": [
+          "2026",
+          "2283612118",
+          "team photograph",
+          "PHILADELPHIA, PENNSYLVANIA - JUNE 27: Players of Croatia pose for a team photogr"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:09.669466+00:00",
+      "publisher_caption": "PHILADELPHIA, PENNSYLVANIA - JUNE 27: Players of Croatia pose for a team photograph before the FIFA World Cup 2026 Group L match between Croatia and Ghana at Philadelphia Stadium on June 27, 2026 in Philadelphia, Pennsylvania. (Photo by Darrian Traynor/Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "5a87bbfc9f5dd90c5db6d9124e0af910e7d84854d0495b326617d15edd1cd27c",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2283612118",
+        "team photograph",
+        "PHILADELPHIA, PENNSYLVANIA - JUNE 27: Players of Croatia pose for a team photogr"
+      ]
     },
     "CUW": {
       "team_code": "CUW",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/CUW.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/curacao-players-pose-for-a-team-photo-during-the-fifa-world-news-photo/2282114720",
+      "image_url": "https://media.gettyimages.com/id/2282114720/photo/group-e-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=nqlaoR7TxpTdxJ1WHPbXFIAY9arHAGZKeiTetLXnN2g=",
+      "caption": "库拉索2026世界杯球队合影",
+      "caption_evidence": "HOUSTON, TEXAS - JUNE 14: Curacao players pose for a team photo during the FIFA World Cup 2026 Group E match between Germany and Curacao at Houston Stadium on June 14, 2026 in Houston, Texas. (Photo by Molly Darlington/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-14",
+      "dateCreated": "14 June, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "888ba552894921e2c22732d2e42baa810a381cd221a92800e49d84145faffdab",
+      "bytes": 225009,
+      "width": 1024,
+      "height": 696,
+      "mime": "image/jpeg",
+      "credit": "Molly Darlington / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/CUW.source.txt",
+        "sha256": "89df14b02337e007500e19951bdaa287c7b77bbb086bddc1b0a37369f80298f0",
+        "bytes": 987,
+        "required_markers": [
+          "2026",
+          "2282114720",
+          "team photo",
+          "HOUSTON, TEXAS - JUNE 14: Curacao players pose for a team photo during the FIFA "
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:13.966899+00:00",
+      "publisher_caption": "HOUSTON, TEXAS - JUNE 14: Curacao players pose for a team photo during the FIFA World Cup 2026 Group E match between Germany and Curacao at Houston Stadium on June 14, 2026 in Houston, Texas. (Photo by Molly Darlington/Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "888ba552894921e2c22732d2e42baa810a381cd221a92800e49d84145faffdab",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2282114720",
+        "team photo",
+        "HOUSTON, TEXAS - JUNE 14: Curacao players pose for a team photo during the FIFA "
+      ]
     },
     "CZE": {
       "team_code": "CZE",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/CZE.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/czechia-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2282215345",
+      "image_url": "https://media.gettyimages.com/id/2282215345/photo/czechia-v-south-africa-group-a-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=ZUFlWnPOFUy1cTwU_czaCL0kCpGlhVnHIKUe1pnEs6Q=",
+      "caption": "捷克2026世界杯球队合影",
+      "caption_evidence": "ATLANTA, GEORGIA - JUNE 18: Czechia players pose for a team photograph before the FIFA World Cup 2026 Group A match between Czechia and South Africa at Atlanta Stadium on June 18, 2026 in Atlanta, Georgia. (Photo by Alex Slitz/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-18",
+      "dateCreated": "18 June, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "72210738923180be91adf7f4bb4a11c99a0993aea6d587f4617a4e23a14b5a90",
+      "bytes": 229285,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "credit": "Alex Slitz / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/CZE.source.txt",
+        "sha256": "895ae274c0d9aab4a5aa6271dc6ef9eb1c695bcbbc71b8ce08872e3fed0be3ab",
+        "bytes": 1011,
+        "required_markers": [
+          "2026",
+          "2282215345",
+          "team photograph",
+          "ATLANTA, GEORGIA - JUNE 18: Czechia players pose for a team photograph before th"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:14.117743+00:00",
+      "publisher_caption": "ATLANTA, GEORGIA - JUNE 18: Czechia players pose for a team photograph before the FIFA World Cup 2026 Group A match between Czechia and South Africa at Atlanta Stadium on June 18, 2026 in Atlanta, Georgia. (Photo by Alex Slitz/Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "72210738923180be91adf7f4bb4a11c99a0993aea6d587f4617a4e23a14b5a90",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2282215345",
+        "team photograph",
+        "ATLANTA, GEORGIA - JUNE 18: Czechia players pose for a team photograph before th"
+      ]
     },
     "ECU": {
       "team_code": "ECU",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/ECU.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/ecuadors-players-pose-for-a-team-photo-ahead-of-the-2026-news-photo/2281000879",
+      "image_url": "https://media.gettyimages.com/id/2281000879/photo/fbl-wc-2026-match09-civ-ecu.jpg?s=1024x1024&w=gi&k=20&c=GtsPgPrEczjP4AZTWWa3tOkX9EaVB7uwmimn6V-4rUE=",
+      "caption": "厄瓜多尔2026世界杯球队合影",
+      "caption_evidence": "Ecuador's players pose for a team photo ahead of the 2026 World Cup Group E football match between Ivory Coast and Ecuador at the Philadelphia Stadium in Philadelphia on June 14, 2026.  (Photo by CHARLY TRIBALLEAU / AFP via Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-06-14",
+      "dateCreated": "14 June, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "d1fb2cf9b35b9b4081346b9c1aeeee94814f37de7ff820d7e1e53d57cd67bfca",
+      "bytes": 270320,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "credit": "CHARLY TRIBALLEAU / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/ECU.source.txt",
+        "sha256": "a7aed7e893ac6647702a5d98a75f09fbb4ba73949299ae6afccafb641da9c13e",
+        "bytes": 990,
+        "required_markers": [
+          "2026",
+          "2281000879",
+          "team photo",
+          "Ecuador's players pose for a team photo ahead of the 2026 World Cup Group E foot"
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:14.417337+00:00",
+      "publisher_caption": "Ecuador's players pose for a team photo ahead of the 2026 World Cup Group E football match between Ivory Coast and Ecuador at the Philadelphia Stadium in Philadelphia on June 14, 2026.  (Photo by CHARLY TRIBALLEAU / AFP via Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "d1fb2cf9b35b9b4081346b9c1aeeee94814f37de7ff820d7e1e53d57cd67bfca",
+        "observation": "Viewed local unchanged publisher preview: Ecuador squad group on pitch with World Cup 2026 stadium branding; wider full-squad composition, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2281000879",
+        "team photo",
+        "Ecuador's players pose for a team photo ahead of the 2026 World Cup Group E foot"
+      ]
     },
     "EGY": {
       "team_code": "EGY",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/EGY.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/egypt-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2285076384",
+      "image_url": "https://media.gettyimages.com/id/2285076384/photo/round-of-16-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=O30wjZIMn2Xe_tP5iZAm4ujyvvJta3IIuF-T3uXXbXE=",
+      "caption": "埃及2026世界杯球队合影",
+      "caption_evidence": "ATLANTA, GEORGIA - JULY 07: Egypt players pose for a team photograph before the FIFA World Cup 2026 Round of 16 match between Argentina and Egypt at Atlanta Stadium on July 07, 2026 in Atlanta, Georgia. (Photo by Buda Mendes/Getty Images)",
+      "year_evidence": "Publisher caption and dateCreated identify 2026 World Cup finals and the team photograph; no qualifier or friendly.",
+      "date": "2026-07-07",
+      "dateCreated": "07 July, 2026",
+      "date_kind": "photo-event date from publisher metadata",
+      "sha256": "2311e1aa12ec402d1355d2e5e946690a8bdca590cfe113d3797c32a36786434e",
+      "bytes": 166251,
+      "width": 1024,
+      "height": 671,
+      "mime": "image/jpeg",
+      "credit": "Buda Mendes / Getty Images",
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default preview bytes preserved",
+      "watermarked": true,
+      "license": "Public publisher watermarked preview; no independent open/publication licence asserted.",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/EGY.source.txt",
+        "sha256": "14fb40c77d1148abbcb60d1018f721c27d35e9077bd42aae6552a529a33ee60d",
+        "bytes": 989,
+        "required_markers": [
+          "2026",
+          "2285076384",
+          "team photograph",
+          "ATLANTA, GEORGIA - JULY 07: Egypt players pose for a team photograph before the "
+        ]
+      },
+      "retrieved_at": "2026-10-21T18:42:18.570937+00:00",
+      "publisher_caption": "ATLANTA, GEORGIA - JULY 07: Egypt players pose for a team photograph before the FIFA World Cup 2026 Round of 16 match between Argentina and Egypt at Atlanta Stadium on July 07, 2026 in Atlanta, Georgia. (Photo by Buda Mendes/Getty Images)",
+      "visual_review": {
+        "reviewed_on": "2026-10-22",
+        "sha256": "2311e1aa12ec402d1355d2e5e946690a8bdca590cfe113d3797c32a36786434e",
+        "observation": "Viewed local unchanged published preview: football team group posing together at the 2026 tournament, not an individual portrait; Getty credit watermark remains visible.",
+        "watermark_preserved": true
+      },
+      "required_markers": [
+        "2026",
+        "2285076384",
+        "team photograph",
+        "ATLANTA, GEORGIA - JULY 07: Egypt players pose for a team photograph before the "
+      ]
     },
     "ENG": {
       "team_code": "ENG",
@@ -300,26 +840,90 @@
     "ESP": {
       "team_code": "ESP",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/ESP.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/spain-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2281724971",
+      "image_url": "https://media.gettyimages.com/id/2281724971/photo/group-h-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=tmSMunXIE9XedQ61KtHKLUDUql6zp5QJb4i89W5sAHQ=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: ESP",
+      "caption_evidence": "ATLANTA, GEORGIA - JUNE 15: Spain players pose for a team photograph before the FIFA World Cup 2026 Group H match between Spain and Cabo Verde at Atlanta Stadium on June 15, 2026 in Atlanta, Georgia. (Photo by Buda Mendes/Getty Images)",
+      "date": "2026-06-15",
+      "date_kind": "match date in publisher caption",
+      "credit": "Buda Mendes / Getty Images; public watermarked rendition",
+      "sha256": "68f33743222a1366e401a5a933f052b4e2179cda1c0df61742bf0a4f9d3f108d",
+      "bytes": 215885,
+      "width": 1024,
+      "height": 664,
+      "dimensions": {
+        "width": 1024,
+        "height": 664
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:31.051297+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/ESP.source.txt",
+        "sha256": "a06ba4dd5a4357775364e6f04bde68564ca368e92e6064e8293cca24db762f2b",
+        "bytes": 340794,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "68f33743222a1366e401a5a933f052b4e2179cda1c0df61742bf0a4f9d3f108d",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: eleven Spain starters pose together in two rows; red/navy shirts, blue goalkeeper shirt; original Getty/Buda Mendes watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "FRA": {
       "team_code": "FRA",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/FRA.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:France_Starting_XI_France_v_Senegal_16_June_2026-308.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/France_Starting_XI_France_v_Senegal_16_June_2026-308.jpg/1920px-France_Starting_XI_France_v_Senegal_16_June_2026-308.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "caption": "2026 FIFA World Cup pre-match team group photograph: FRA",
+      "caption_evidence": "France Starting XI during France v Senegal on 16 June 2026 at the 2026 FIFA World Cup at NY/NJ Stadium in East Rutherford, NJ",
+      "date": "2026-06-16",
+      "date_kind": "match date in photographer caption",
+      "credit": "Bryan Berlin",
+      "sha256": "7be511263d0a85aa27d715e1eaa463dc088b9180f943a604ddbc1c7c978d9248",
+      "bytes": 896388,
+      "width": 1920,
+      "height": 1280,
+      "dimensions": {
+        "width": 1920,
+        "height": 1280
+      },
+      "mime": "image/jpeg",
+      "watermarked": false,
+      "retrieved_at": "2026-10-21T18:37:59.543055+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/FRA.source.txt",
+        "sha256": "58cb076cde9fff57afc66cbb9c0e1e16aade351727e2aa3103d95970a4c68b36",
+        "bytes": 4884,
+        "required_markers": [
+          "2026",
+          "FIFA World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact publicly published 1920-pixel rendition response retained",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "visual_review": {
+        "sha256": "7be511263d0a85aa27d715e1eaa463dc088b9180f943a604ddbc1c7c978d9248",
+        "reviewed_on": "2026-10-22",
+        "observation": "Original local rendition viewed: eleven France players arranged in two rows on the pitch; blue shirts, red socks, team pennant visibly marked France-Senegal, 16 juin 2026.",
+        "status": "passed"
+      },
+      "year_evidence": "Photographer caption explicitly identifies 2026 FIFA World Cup, participating team and fixture date.",
+      "source_kind": "photographer-owned public CC BY-SA release"
     },
     "GER": {
       "team_code": "GER",
@@ -362,134 +966,486 @@
     "GHA": {
       "team_code": "GHA",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/GHA.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ghana_Starting_XI_England_v_Ghana_23_June_2026-117.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Ghana_Starting_XI_England_v_Ghana_23_June_2026-117.jpg/1920px-Ghana_Starting_XI_England_v_Ghana_23_June_2026-117.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "caption": "2026 FIFA World Cup pre-match team group photograph: GHA",
+      "caption_evidence": "Ghana Starting XI during England v Ghana on 23 June 2026 at the 2026 FIFA World CupWikiPortraits at 2026 FIFA World Cup (England v Ghana, 23 June 2026)",
+      "date": "2026-06-23",
+      "date_kind": "match date in photographer caption",
+      "credit": "Bryan Berlin",
+      "sha256": "2124c0c275f702c1498b18f5f17162743fa6ffb69d1e0bc8f9dc431ab635f4ee",
+      "bytes": 953097,
+      "width": 1920,
+      "height": 1280,
+      "dimensions": {
+        "width": 1920,
+        "height": 1280
+      },
+      "mime": "image/jpeg",
+      "watermarked": false,
+      "retrieved_at": "2026-10-21T18:38:02.106441+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/GHA.source.txt",
+        "sha256": "3ca84c60b40da0257de83e0c17800ff333673c5629e33f860025fa37df5d6f31",
+        "bytes": 4567,
+        "required_markers": [
+          "2026",
+          "FIFA World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact publicly published 1920-pixel rendition response retained",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "visual_review": {
+        "sha256": "2124c0c275f702c1498b18f5f17162743fa6ffb69d1e0bc8f9dc431ab635f4ee",
+        "reviewed_on": "2026-10-22",
+        "observation": "Replacement local rendition viewed: eleven Ghana starters arranged in two rows, yellow shirts and pink goalkeeper kit; not the earlier anthem-line photograph.",
+        "status": "passed"
+      },
+      "year_evidence": "Photographer caption explicitly identifies 2026 FIFA World Cup, participating team and fixture date.",
+      "source_kind": "photographer-owned public CC BY-SA release"
     },
     "HAI": {
       "team_code": "HAI",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/HAI.jpg",
+      "source_url": "https://www.gettyimages.dk/detail/news-photo/players-of-haiti-pose-for-a-team-group-photograph-during-news-photo/2282530298",
+      "image_url": "https://media.gettyimages.com/id/2282530298/photo/group-c-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=ZV9R5Xo-sorF5abnJJgbtUaNeoULg-WtQf4tSK-U4iU=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: HAI",
+      "caption_evidence": "PHILADELPHIA, PENNSYLVANIA - JUNE 19: Players of Haiti pose for a team group photograph during the FIFA World Cup 2026 Group C match between Brazil and Haiti at Philadelphia Stadium on June 19, 2026 in Philadelphia, Pennsylvania. (Photo by James Gill - Danehouse/Getty Images)",
+      "date": "2026-06-19",
+      "date_kind": "match date in publisher caption",
+      "credit": "James Gill - Danehouse / Getty Images; public watermarked rendition",
+      "sha256": "63b2c6a59a9e1ffe0cfbda4f5b7c667456c2eb66fa08251ed3d3e66388eec266",
+      "bytes": 218063,
+      "width": 1024,
+      "height": 683,
+      "dimensions": {
+        "width": 1024,
+        "height": 683
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:33.663342+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/HAI.source.txt",
+        "sha256": "4378296474fe821916aae05c6f19abd858d0f031d13a9b9e381ac65e7384f3dc",
+        "bytes": 383002,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "63b2c6a59a9e1ffe0cfbda4f5b7c667456c2eb66fa08251ed3d3e66388eec266",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: eleven Haiti starters pose together in two rows wearing white kits; original Getty/James Gill-Danehouse watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "IRN": {
       "team_code": "IRN",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/IRN.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-ir-iran-pose-for-a-team-photograph-before-the-news-photo/2281791567",
+      "image_url": "https://media.gettyimages.com/id/2281791567/photo/ir-iran-v-new-zealand-group-g-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=IQculXYnTs756RQWMKH8LJkLX6mIr-53_s07keQn9NU=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: IRN",
+      "caption_evidence": "INGLEWOOD, CALIFORNIA - JUNE 15: Players of IR Iran pose for a team photograph before the FIFA World Cup 2026 Group G match between IR Iran and New Zealand at Los Angeles Stadium on June 15, 2026 in Inglewood, California. (Photo by Harry How/Getty Images)",
+      "date": "2026-06-15",
+      "date_kind": "match date in publisher caption",
+      "credit": "Harry How / Getty Images; public watermarked rendition",
+      "sha256": "fd98b97aec6473177b4d6d2fcbc1712b7274526a82b4bdb1acc15db6eba51a01",
+      "bytes": 225087,
+      "width": 1024,
+      "height": 683,
+      "dimensions": {
+        "width": 1024,
+        "height": 683
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:42:17.216748+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/IRN.source.txt",
+        "sha256": "02d6ca8b138637cf8918d608fb06f3fa0dbd2f1b50148b19ac6b178d5621288c",
+        "bytes": 342435,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "fd98b97aec6473177b4d6d2fcbc1712b7274526a82b4bdb1acc15db6eba51a01",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: eleven Iran starters pose in two rows, white shirts and pale-blue goalkeeper; original Getty/Harry How watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "IRQ": {
       "team_code": "IRQ",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/IRQ.jpg",
+      "source_url": "https://www.gettyimages.co.nz/detail/news-photo/iraq-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2281948482",
+      "image_url": "https://media.gettyimages.com/id/2281948482/photo/group-i-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=tX_fmH180GoyULlDS-NqgurQy4_E05QysBD1K6gMHDk=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: IRQ",
+      "caption_evidence": "FOXBOROUGH, MASSACHUSETTS - JUNE 16: Iraq players pose for a team photograph before the FIFA World Cup 2026 Group I match between Iraq and Norway at Boston Stadium on June 16, 2026 in Foxborough, Massachusetts. (Photo by Mattia Ozbot/Getty Images)",
+      "date": "2026-06-16",
+      "date_kind": "match date in publisher caption",
+      "credit": "Mattia Ozbot / Getty Images; public watermarked rendition",
+      "sha256": "836ab55cf811fad5f5f58cdf8b59d48874bb4379e977bf1532d32b843d1de7af",
+      "bytes": 207081,
+      "width": 1024,
+      "height": 674,
+      "dimensions": {
+        "width": 1024,
+        "height": 674
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:42:22.217122+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/IRQ.source.txt",
+        "sha256": "ac6486716d44d13c90c4216c22172582c34706d92eadc7b734980c85faa1077e",
+        "bytes": 322640,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "836ab55cf811fad5f5f58cdf8b59d48874bb4379e977bf1532d32b843d1de7af",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: eleven Iraq starters pose in two rows, white shirts and green goalkeeper; national-team pennant present, Getty/Mattia Ozbot watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "JOR": {
       "team_code": "JOR",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/JOR.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-jordan-pose-for-a-team-photograph-before-the-news-photo/2281981270",
+      "image_url": "https://media.gettyimages.com/id/2281981270/photo/group-j-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=PX8U7minnfxkp7eGe6mx1DRv_SH2lKfke3zlHbydyeM=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: JOR",
+      "caption_evidence": "SANTA CLARA, CALIFORNIA - JUNE 16: Players of Jordan pose for a team photograph before the FIFA World Cup 2026 Group J match between Austria and Jordan at San Francisco Bay Area Stadium on June 16, 2026 in Santa Clara, California. (Photo by Richard Heathcote/Getty Images)",
+      "date": "2026-06-16",
+      "date_kind": "match date in publisher caption",
+      "credit": "Richard Heathcote / Getty Images; public watermarked rendition",
+      "sha256": "782e02ab9f4bbaa10520a2f5cdce099a08a5c7e3917f899f9b76ae5391373a7b",
+      "bytes": 198610,
+      "width": 1024,
+      "height": 650,
+      "dimensions": {
+        "width": 1024,
+        "height": 650
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:42:27.116359+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/JOR.source.txt",
+        "sha256": "a22a2d06f9220ef96d48b8e4060e066e14da5d92ab52ab5ffc5e16eb0babdb30",
+        "bytes": 340514,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "782e02ab9f4bbaa10520a2f5cdce099a08a5c7e3917f899f9b76ae5391373a7b",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: eleven Jordan starters pose in two rows, white shirts with red shoulder pattern and yellow goalkeeper; Getty/Richard Heathcote watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "JPN": {
       "team_code": "JPN",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/JPN.jpg",
+      "source_url": "https://www.gettyimages.ae/detail/news-photo/japans-players-pose-for-photos-before-a-group-f-match-news-photo/2282694000",
+      "image_url": "https://media.gettyimages.com/id/2282694000/photo/japans-players-pose-before-the-world-cup-match.jpg?s=1024x1024&w=gi&k=20&c=0VFKDAkXhZdj5vKD0LKpCBUrtOwDcnCTFLK9Ve9M1_g=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: JPN",
+      "caption_evidence": "MONTERREY, MEXICO - JUNE 20: Japan's players pose for photos before a Group F match between Tunisia and Japan at the soccer World Cup on June 20, 2026 in Monterrey, Mexico. (Photo by The Asahi Shimbun via Getty Images)",
+      "date": "2026-06-20",
+      "date_kind": "match date in publisher caption",
+      "credit": "The Asahi Shimbun / Getty Images; public watermarked rendition",
+      "sha256": "dee0365699f4b2c3bb42948c14c8c0217ebeba96302c44fb20a192b021609239",
+      "bytes": 246760,
+      "width": 1024,
+      "height": 683,
+      "dimensions": {
+        "width": 1024,
+        "height": 683
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:36.481269+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/JPN.source.txt",
+        "sha256": "13e560dd16c4ab3056909c74923f44786e4eb37e897db8eebdf237c4c63711f3",
+        "bytes": 316586,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "dee0365699f4b2c3bb42948c14c8c0217ebeba96302c44fb20a192b021609239",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: eleven Japan starters pose in two rows, blue shirts with yellow goalkeeper kit; original Getty/Asahi Shimbun watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "KOR": {
       "team_code": "KOR",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/KOR.jpg",
+      "source_url": "https://www.gettyimages.ie/detail/news-photo/players-of-korea-republic-pose-for-a-team-photo-before-the-news-photo/2281153281",
+      "image_url": "https://media.gettyimages.com/id/2281153281/photo/korea-republic-v-czechia-group-a-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=QUmMTS1FbtsOycSYkZ6RrHMx1bvY_lHNMb__JfMFS5I=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: KOR",
+      "caption_evidence": "ZAPOPAN, MEXICO - JUNE 11: Players of Korea Republic pose for a team photo before the FIFA World Cup 2026 Group A match between Korea Republic and Czechia at Guadalajara Stadium on June 11, 2026 in Zapopan, Mexico. (Photo by Alex Slitz/Getty Images)",
+      "date": "2026-06-11",
+      "date_kind": "match date in publisher caption",
+      "credit": "Alex Slitz / Getty Images; public watermarked rendition",
+      "sha256": "d78797bc3ff5f2d3fe23e19dcc643a670f02f60310f4e39bfa170bb68abcd6f9",
+      "bytes": 201391,
+      "width": 1024,
+      "height": 683,
+      "dimensions": {
+        "width": 1024,
+        "height": 683
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:44:07.737239+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/KOR.source.txt",
+        "sha256": "50218900717dbda98d0790f6b9b5faa3be7b6046dae39e9c7caaa86fc0e81f7a",
+        "bytes": 321016,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "d78797bc3ff5f2d3fe23e19dcc643a670f02f60310f4e39bfa170bb68abcd6f9",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: eleven Korea Republic starters pose in two rows, red shirts and yellow goalkeeper; original Getty/Alex Slitz watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "KSA": {
       "team_code": "KSA",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/KSA.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-saudi-arabia-pose-for-a-team-photograph-before-news-photo/2282631983",
+      "image_url": "https://media.gettyimages.com/id/2282631983/photo/group-h-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=vq2yhJMk79dl0n2Hw5M1_tlEz5fmawb2aLbC5UBC-xc=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: KSA",
+      "caption_evidence": "ATLANTA, GEORGIA - JUNE 21: Players of Saudi Arabia pose for a team photograph before the FIFA World Cup 2026 Group H match between Spain and Saudi Arabia at Atlanta Stadium on June 21, 2026 in Atlanta, Georgia. (Photo by Buda Mendes/Getty Images)",
+      "date": "2026-06-21",
+      "date_kind": "match date in publisher caption",
+      "credit": "Buda Mendes / Getty Images; public watermarked rendition",
+      "sha256": "9a7f8e24796e927c72e81ca918e412f33d12170864650893aedfd1aeeb6abf7a",
+      "bytes": 283476,
+      "width": 1024,
+      "height": 683,
+      "dimensions": {
+        "width": 1024,
+        "height": 683
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:43:38.565291+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/KSA.source.txt",
+        "sha256": "f6e4c25db32f4711b48bc832cce1f7d5ff3a7a11e14a934c3b33ae996907430b",
+        "bytes": 341665,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "9a7f8e24796e927c72e81ca918e412f33d12170864650893aedfd1aeeb6abf7a",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: eleven Saudi Arabia starters pose in two rows from an elevated angle; white shirts and blue goalkeeper; original Getty/Buda Mendes watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "MAR": {
       "team_code": "MAR",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/MAR.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Team_Morocco_at_2026_FIFA_World_Cup_by_YantsImages.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Team_Morocco_at_2026_FIFA_World_Cup_by_YantsImages.jpg/1920px-Team_Morocco_at_2026_FIFA_World_Cup_by_YantsImages.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "caption": "2026 FIFA World Cup pre-match team group photograph: MAR",
+      "caption_evidence": "EAST RUTHERFORD, UNITED STATES - June 13: Players of Morocco pose for the photo during the FIFA World Cup 2026 Group C match between Brazil and Morocco at New York New Jersey Stadium on June 13, 2026 in East Rutherford, New Jersey.",
+      "date": "2026-06-13",
+      "date_kind": "match date in photographer caption",
+      "credit": "YantsImages",
+      "sha256": "7e2c0cdf2c9cafdcd39da002c0dc6d6ff2928918cfce6ca3574a90540cd7f08b",
+      "bytes": 719149,
+      "width": 1920,
+      "height": 1280,
+      "dimensions": {
+        "width": 1920,
+        "height": 1280
+      },
+      "mime": "image/jpeg",
+      "watermarked": false,
+      "retrieved_at": "2026-10-21T18:38:04.471509+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/MAR.source.txt",
+        "sha256": "d12dcff1d218726ed7a14548e75be726dd09538934a20a91254c75a848bc7050",
+        "bytes": 4656,
+        "required_markers": [
+          "2026",
+          "FIFA World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact publicly published 1920-pixel rendition response retained",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "visual_review": {
+        "sha256": "7e2c0cdf2c9cafdcd39da002c0dc6d6ff2928918cfce6ca3574a90540cd7f08b",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local rendition viewed: eleven Morocco players pose together in two rows on the pitch; red shirts, green shorts and central national-team pennant.",
+        "status": "passed"
+      },
+      "year_evidence": "Photographer caption explicitly identifies 2026 FIFA World Cup, participating team and fixture date.",
+      "source_kind": "photographer-owned public CC BY-SA release"
     },
     "MEX": {
       "team_code": "MEX",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/MEX.jpg",
+      "source_url": "https://www.gettyimages.com.mx/detail/fotograf%C3%ADa-de-noticias/mexico-players-pose-for-a-team-photograph-fotograf%C3%ADa-de-noticias/2281122030",
+      "image_url": "https://media.gettyimages.com/id/2281122030/es/foto/mexico-city-mexico-mexico-players-pose-for-a-team-photograph-before-the-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=aS1ejAUsIZZIJJNRMXJv6d3H1YsREOojRxHpP0MN52s=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: MEX",
+      "caption_evidence": "MEXICO CITY, MEXICO - JUNE 11: Mexico players pose for a team photograph before the FIFA World Cup 2026 Group A match between Mexico and South Africa at Mexico City Stadium on June 11, 2026 in Mexico City, Mexico. (Photo by Luke Hales/Getty Images)",
+      "date": "2026-06-11",
+      "date_kind": "match date in publisher caption",
+      "credit": "Luke Hales / Getty Images; public watermarked rendition",
+      "sha256": "8447a94a0156c3f7872ed5cc11b7f854a6a394aea516bfa37875c9d4ae61bd10",
+      "bytes": 286090,
+      "width": 1024,
+      "height": 683,
+      "dimensions": {
+        "width": 1024,
+        "height": 683
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:42:32.391267+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/MEX.source.txt",
+        "sha256": "2acbccea45b6d6c15631e0b7db9999dbb8a0714615bf6b1231f393440013a054",
+        "bytes": 337875,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "8447a94a0156c3f7872ed5cc11b7f854a6a394aea516bfa37875c9d4ae61bd10",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: a full Mexico squad group in two rows on the pitch, green shirts with pink goalkeeper kits; original Getty/Luke Hales watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "NED": {
       "team_code": "NED",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/NED.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/netherlands-players-pose-for-a-team-photo-ahead-the-2026-news-photo/2282804344",
+      "image_url": "https://media.gettyimages.com/id/2282804344/photo/fbl-wc-2026-match58-tun-ned.jpg?s=1024x1024&w=gi&k=20&c=O3d8YajhhRzooqSoWqOwHnZb7mM6yXxA8IgQsi6sGSA=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: NED",
+      "caption_evidence": "Netherlands' players pose for a team photo ahead the 2026 World Cup Group F football match between Tunisia and the Netherlands at the Kansas City Stadium in Kansas City on June 25, 2026.  (Photo by Juan MABROMATA / AFP via Getty Images)",
+      "date": "2026-06-25",
+      "date_kind": "match date in publisher caption",
+      "credit": "JUAN MABROMATA / Getty Images; public watermarked rendition",
+      "sha256": "85460567580c6b25c56852d30ae4e7477f26415a4588831e135f144b4d838384",
+      "bytes": 201286,
+      "width": 1024,
+      "height": 683,
+      "dimensions": {
+        "width": 1024,
+        "height": 683
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:39.077408+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/NED.source.txt",
+        "sha256": "e444deaf20a6fce423759f5bb16b2e92c9cd68165242fa25034740fb1c1c1a40",
+        "bytes": 340911,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "85460567580c6b25c56852d30ae4e7477f26415a4588831e135f144b4d838384",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: eleven Netherlands starters pose in two rows, orange shirts; pennant visibly identifies Tunisia, Netherlands and 25 June 2026; Getty/AFP watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "NOR": {
       "team_code": "NOR",
@@ -532,193 +1488,603 @@
     "NZL": {
       "team_code": "NZL",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/NZL.jpg",
+      "source_url": "https://www.gettyimages.co.nz/detail/news-photo/players-of-new-zealand-pose-for-a-team-photograph-before-the-news-photo/2281791713",
+      "image_url": "https://media.gettyimages.com/id/2281791713/photo/ir-iran-v-new-zealand-group-g-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=s5sKM5LWTUmFILSAJR7VztOLE1jjKTFMhxn6rhTn87s=",
+      "caption": "2026 FIFA World Cup pre-match team photograph: NZL",
+      "caption_evidence": "INGLEWOOD, CALIFORNIA - JUNE 15: Players of New Zealand pose for a team photograph before the FIFA World Cup 2026 Group G match between IR Iran and New Zealand at Los Angeles Stadium on June 15, 2026 in Inglewood, California. (Photo by Dean Mouhtaropoulos/Getty Images)",
+      "date": "2026-06-15",
+      "date_kind": "match date in publisher caption",
+      "credit": "Dean Mouhtaropoulos / Getty Images; public watermarked rendition",
+      "sha256": "1b4748e5f2e9df40c37994e4cb4c9cc756be2590185728f8ff19d3a4e8f195e5",
+      "bytes": 184639,
+      "width": 1024,
+      "height": 651,
+      "dimensions": {
+        "width": 1024,
+        "height": 651
+      },
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:43:45.407570+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/NZL.source.txt",
+        "sha256": "9131453c5605d12fee282c9822e11651c1e5ac334273954a43c521bc7e5f1e3f",
+        "bytes": 324444,
+        "required_markers": [
+          "defaultMainImageURL",
+          "2026",
+          "World Cup"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "pixel_changes": "none; exact published default public preview response retained",
+      "license": "Publisher credit and original watermark retained; no independent open/publication licence asserted.",
+      "visual_review": {
+        "sha256": "1b4748e5f2e9df40c37994e4cb4c9cc756be2590185728f8ff19d3a4e8f195e5",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local default preview viewed: eleven New Zealand starters pose in two rows, black shirts and pink goalkeeper; team pennant and original Getty/Dean Mouhtaropoulos watermark intact.",
+        "status": "passed"
+      },
+      "year_evidence": "Publisher photo caption explicitly identifies the 2026 World Cup and fixture date.",
+      "source_kind": "publisher public default watermarked preview"
     },
     "PAN": {
       "team_code": "PAN",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/PAN.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/panama-players-pose-for-a-team-photograph-fotograf%C3%ADa-de-noticias/2283015711",
+      "image_url": "https://media.gettyimages.com/id/2283015711/photo/group-l-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=1Blm7oSiDHvF4gbMC3JFiPimm66NS3zbsEu5bk1RW9w=",
+      "caption": "2026世界杯巴拿马队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "TORONTO, ONTARIO - JUNE 23: Panama players pose for a team photograph before the FIFA World Cup 2026 Group L match between Panama and Croatia at Toronto Stadium on June 23, 2026 in Toronto, Ontario. (Photo by Robert Cianflone/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-23",
+      "date_created_evidence": "23 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Robert Cianflone / Getty Images",
+      "sha256": "c0abad69394fe1552915cf6cfec0c462b4141cd4f6aaf35005bf3f9e2001078a",
+      "bytes": 273544,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:20.883367+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/PAN.source.txt",
+        "sha256": "8d6381c0277846bcd06ffa5863ec83b9eecbc6eda8710de2211e174f56edd0f7",
+        "bytes": 340737,
+        "required_markers": [
+          "2283015711",
+          "TORONTO, ONTARIO - JUNE 23: Panama players pose for a team photograph before the FIFA World Cup 2026 Group L match between Panama and Croatia at Toronto Stadium on June 23, 2026 in Toronto, Ontario. (Photo by Robert Cianflone/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "c0abad69394fe1552915cf6cfec0c462b4141cd4f6aaf35005bf3f9e2001078a",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Panama XI in navy kit with Panama pennant, two rows; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "PAR": {
       "team_code": "PAR",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/PAR.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/paraguay-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2284666887",
+      "image_url": "https://media.gettyimages.com/id/2284666887/photo/round-of-16-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=6B2FP_BuzUlJA860x56z6QFZmTCaC0NULoE3w2LSjy4=",
+      "caption": "2026世界杯巴拉圭队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "PHILADELPHIA, PENNSYLVANIA - JULY 04: Paraguay players pose for a team photograph before the FIFA World Cup 2026 Round of 16 match between Paraguay and France at Philadelphia Stadium on July 04, 2026 in Philadelphia, Pennsylvania. (Photo by Justin Setterfield/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-07-04",
+      "date_created_evidence": "04 July, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Justin Setterfield / Getty Images",
+      "sha256": "6501ad29ceff9b58f73e3976ca3b16eaa86358ba3568dcc3e53bb8a62d212335",
+      "bytes": 197820,
+      "width": 1024,
+      "height": 653,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:25.988375+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/PAR.source.txt",
+        "sha256": "95027a181c403b3c27f6eae8afdfcefa98ea8acc237a68e5e46968c586eb7df0",
+        "bytes": 340137,
+        "required_markers": [
+          "2284666887",
+          "PHILADELPHIA, PENNSYLVANIA - JULY 04: Paraguay players pose for a team photograph before the FIFA World Cup 2026 Round of 16 match between Paraguay and France at Philadelphia Stadium on July 04, 2026 in Philadelphia, Pennsylvania. (Photo by Justin Setterfield/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "6501ad29ceff9b58f73e3976ca3b16eaa86358ba3568dcc3e53bb8a62d212335",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Paraguay XI in red-white striped shirts at World Cup stadium, two rows; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "POR": {
       "team_code": "POR",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/POR.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/portugal-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2282071332",
+      "image_url": "https://media.gettyimages.com/id/2282071332/photo/group-k-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=v7ArK6MlJ2d8T0kKEej9YdmZqzgiL99X8HAtfSpaQuw=",
+      "caption": "2026世界杯葡萄牙队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "HOUSTON, TEXAS - JUNE 17: Portugal players pose for a team photograph before the FIFA World Cup 2026 Group K match between Portugal and Congo DR at Houston Stadium on June 17, 2026 in Houston, Texas. (Photo by Molly Darlington/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-17",
+      "date_created_evidence": "17 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Molly Darlington / Getty Images",
+      "sha256": "ae41c81f1c92a29ed2957cc283aaa360e1552412fa24b108e9d78117fa83c307",
+      "bytes": 218648,
+      "width": 1024,
+      "height": 697,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:31.126995+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/POR.source.txt",
+        "sha256": "0436e4f64e73be8ba9e5071baddbb493fe87726ed4e60a5b215337076c40dcd9",
+        "bytes": 339960,
+        "required_markers": [
+          "2282071332",
+          "HOUSTON, TEXAS - JUNE 17: Portugal players pose for a team photograph before the FIFA World Cup 2026 Group K match between Portugal and Congo DR at Houston Stadium on June 17, 2026 in Houston, Texas. (Photo by Molly Darlington/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "ae41c81f1c92a29ed2957cc283aaa360e1552412fa24b108e9d78117fa83c307",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Portugal XI in red shirts with Ronaldo at rear right, grouped on pitch; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "QAT": {
       "team_code": "QAT",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/QAT.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/qatar-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2281429306",
+      "image_url": "https://media.gettyimages.com/id/2281429306/photo/group-b-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=Gjwuoi4S4U-yk2ZhqM6S6NxU2Oqgx4W2I7N8wPPfxC4=",
+      "caption": "2026世界杯卡塔尔队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "SANTA CLARA, CALIFORNIA - JUNE 13: Qatar players pose for a team photograph before the FIFA World Cup 2026 Group B match between Qatar and Switzerland at San Francisco Bay Area Stadium on June 13, 2026 in Santa Clara, California. (Photo by Fran Santiago/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-13",
+      "date_created_evidence": "13 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Fran Santiago / Getty Images",
+      "sha256": "5dbe54fd5e67b6b204feaa0722d94bd8e13d410c3aff904349cf8d508ad1ff9b",
+      "bytes": 197259,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:36.111105+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/QAT.source.txt",
+        "sha256": "be72f8b9f5b974c4858f655d2a9e90739301e93e0415c125a2a2fb62376e3c4a",
+        "bytes": 341208,
+        "required_markers": [
+          "2281429306",
+          "SANTA CLARA, CALIFORNIA - JUNE 13: Qatar players pose for a team photograph before the FIFA World Cup 2026 Group B match between Qatar and Switzerland at San Francisco Bay Area Stadium on June 13, 2026 in Santa Clara, California. (Photo by Fran Santiago/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "5dbe54fd5e67b6b204feaa0722d94bd8e13d410c3aff904349cf8d508ad1ff9b",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Qatar full squad in maroon kit and three goalkeepers, grouped in rows on pitch; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "RSA": {
       "team_code": "RSA",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/RSA.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-south-africa-pose-for-a-team-photo-before-the-news-photo/2283742173",
+      "image_url": "https://media.gettyimages.com/id/2283742173/photo/south-africa-v-canada-round-of-32-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=OBACH5YSnCWdCvPD4amkcjpU8XteJ7-UG6XIllpTFn8=",
+      "caption": "2026世界杯南非队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "INGLEWOOD, CALIFORNIA - JUNE 28: Players of South Africa pose for a team photo before the FIFA World Cup 2026 Round Of 32 match between South Africa and Canada at Los Angeles Stadium on June 28, 2026 in Inglewood, California. (Photo by Alex Grimm/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-28",
+      "date_created_evidence": "28 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Alex Grimm / Getty Images",
+      "sha256": "fb44e1b8470ef62478544ed81e595ef857aa3a4fee78ac623af4855b7fb3e617",
+      "bytes": 252587,
+      "width": 1024,
+      "height": 677,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:41.192569+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/RSA.source.txt",
+        "sha256": "34d866f8b90eb6083971e781dfbe60fd77c9aabf193eb04d4a9d7347906bc902",
+        "bytes": 342377,
+        "required_markers": [
+          "2283742173",
+          "INGLEWOOD, CALIFORNIA - JUNE 28: Players of South Africa pose for a team photo before the FIFA World Cup 2026 Round Of 32 match between South Africa and Canada at Los Angeles Stadium on June 28, 2026 in Inglewood, California. (Photo by Alex Grimm/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "fb44e1b8470ef62478544ed81e595ef857aa3a4fee78ac623af4855b7fb3e617",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: South Africa XI in yellow-green kit with South Africa pennant, two rows; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "SCO": {
       "team_code": "SCO",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/SCO.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/scotland-players-pose-for-a-team-photo-prior-to-the-fifa-news-photo/2281573232",
+      "image_url": "https://media.gettyimages.com/id/2281573232/photo/group-c-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=7ox-sHFE84VeMdfEu2DRJJ3prxEfh4VVnF1Xn2sBxZM=",
+      "caption": "2026世界杯苏格兰队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "FOXBOROUGH, MASSACHUSETTS - JUNE 13:  Scotland players pose for a team photo prior to the FIFA World Cup 2026 Group C match between Haiti and Scotland at Boston Stadium on June 13, 2026 in Foxborough, United States. (Photo by Visionhaus/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-13",
+      "date_created_evidence": "14 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Visionhaus / Getty Images",
+      "sha256": "acd53f641031231153a31264e6d6d98553e4c0de04708b1b8a0416398f707661",
+      "bytes": 235752,
+      "width": 1024,
+      "height": 669,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:46.467336+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/SCO.source.txt",
+        "sha256": "817f12d556552e15722793cf05ce9f1f1752129b2f2dce71df31e721c07109fe",
+        "bytes": 341981,
+        "required_markers": [
+          "2281573232",
+          "FOXBOROUGH, MASSACHUSETTS - JUNE 13:  Scotland players pose for a team photo prior to the FIFA World Cup 2026 Group C match between Haiti and Scotland at Boston Stadium on June 13, 2026 in Foxborough, United States. (Photo by Visionhaus/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "acd53f641031231153a31264e6d6d98553e4c0de04708b1b8a0416398f707661",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Scotland XI in orange alternate kit and Scottish crest, two rows; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "SEN": {
       "team_code": "SEN",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/SEN.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-senegal-pose-for-a-team-photograph-before-the-news-photo/2284228958",
+      "image_url": "https://media.gettyimages.com/id/2284228958/photo/round-of-32-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=_3Biaqx_fHu2L9QWHPDlqc4W_eyXuzEy9l-No9WahjQ=",
+      "caption": "2026世界杯塞内加尔队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "SEATTLE, WASHINGTON - JULY 01: Players of Senegal pose for a team photograph before the FIFA World Cup 2026 Round Of 32 match between Belgium and Senegal at Seattle Stadium on July 01, 2026 in Seattle, Washington. (Photo by Fran Santiago/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-07-01",
+      "date_created_evidence": "01 July, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Fran Santiago / Getty Images",
+      "sha256": "025f3579c6f959599e62bc810eea2299279414f072000547e1a455832adbc783",
+      "bytes": 223754,
+      "width": 1024,
+      "height": 671,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:51.512459+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/SEN.source.txt",
+        "sha256": "722f05fca2a1f85d4516316c052b447157f814ca4511f0de9cf5fefa5f2a6885",
+        "bytes": 341960,
+        "required_markers": [
+          "2284228958",
+          "SEATTLE, WASHINGTON - JULY 01: Players of Senegal pose for a team photograph before the FIFA World Cup 2026 Round Of 32 match between Belgium and Senegal at Seattle Stadium on July 01, 2026 in Seattle, Washington. (Photo by Fran Santiago/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "025f3579c6f959599e62bc810eea2299279414f072000547e1a455832adbc783",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Senegal XI in green-yellow kit holding Senegal pennant, two rows; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "SUI": {
       "team_code": "SUI",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/SUI.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-switzerland-pose-for-a-team-photograph-before-news-photo/2283154586",
+      "image_url": "https://media.gettyimages.com/id/2283154586/photo/group-b-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=g2MBuPyMhUNJMV1eebBsLmdpfQEbpclR5W0rzRsPWPc=",
+      "caption": "2026世界杯瑞士队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "VANCOUVER, BRITISH COLUMBIA - JUNE 24: Players of Switzerland pose for a team photograph before the FIFA World Cup 2026 Group B match between Switzerland and Canada at BC Place Vancouver on June 24, 2026 in Vancouver, British Columbia. (Photo by Sarah Stier - FIFA/FIFA via Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-24",
+      "date_created_evidence": "24 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Sarah Stier - FIFA / Getty Images",
+      "sha256": "b3a253a0c38eca407ac4e07227a6d7d70e4ee2d477f5d821963d03e11c8928f3",
+      "bytes": 199635,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:40:56.549635+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/SUI.source.txt",
+        "sha256": "9789c37e95179c5db8698668758cb625f4f1e3278d9f842e9eb451e17790dc14",
+        "bytes": 339110,
+        "required_markers": [
+          "2283154586",
+          "VANCOUVER, BRITISH COLUMBIA - JUNE 24: Players of Switzerland pose for a team photograph before the FIFA World Cup 2026 Group B match between Switzerland and Canada at BC Place Vancouver on June 24, 2026 in Vancouver, British Columbia. (Photo by Sarah Stier - FIFA/FIFA via Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "b3a253a0c38eca407ac4e07227a6d7d70e4ee2d477f5d821963d03e11c8928f3",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Switzerland XI in red kit and Swiss football association pennant, two rows; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "SWE": {
       "team_code": "SWE",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/SWE.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-sweden-pose-for-a-team-photograph-before-the-news-photo/2281617637",
+      "image_url": "https://media.gettyimages.com/id/2281617637/photo/group-f-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=7NVuyA8UvKdbNAFh1IqcsLIRgBe_U8dEgQjmxwNqi2o=",
+      "caption": "2026世界杯瑞典队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "GUADALUPE, MEXICO - JUNE 14: players of Sweden pose for a team photograph before the FIFA World Cup 2026 Group F match between Sweden and Tunisia at Monterrey Stadium on June 14, 2026 in Guadalupe, Mexico. (Photo by David Ramos/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-14",
+      "date_created_evidence": "14 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "David Ramos / Getty Images",
+      "sha256": "8e4b3bfb67cdd16126c28a0c8f6d6624197a0a7a82ad7b07f12f9a4f0c78e1fa",
+      "bytes": 212977,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:41:01.535875+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/SWE.source.txt",
+        "sha256": "f317d2789f73fbf70fd6a110aa2d8c74e1424e46a0ee9cba832bfaa4dabe86e5",
+        "bytes": 340674,
+        "required_markers": [
+          "2281617637",
+          "GUADALUPE, MEXICO - JUNE 14: players of Sweden pose for a team photograph before the FIFA World Cup 2026 Group F match between Sweden and Tunisia at Monterrey Stadium on June 14, 2026 in Guadalupe, Mexico. (Photo by David Ramos/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "8e4b3bfb67cdd16126c28a0c8f6d6624197a0a7a82ad7b07f12f9a4f0c78e1fa",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Sweden XI in yellow-blue kit and goalkeeper in green, front-facing two-row squad group on pitch; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "TUN": {
       "team_code": "TUN",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/TUN.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/tunisia-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2282567690",
+      "image_url": "https://media.gettyimages.com/id/2282567690/photo/group-f-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=uoB8UNC1hDoTf-JtS3LTONDNTwGFyc9tybHE1RyaKvo=",
+      "caption": "2026世界杯突尼斯队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "GUADALUPE, MEXICO - JUNE 20: Tunisia players pose for a team photograph before the FIFA World Cup 2026 Group F match between Tunisia and Japan at Monterrey Stadium on June 20, 2026 in Guadalupe, Mexico. (Photo by David Ramos/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-20",
+      "date_created_evidence": "20 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "David Ramos / Getty Images",
+      "sha256": "78fd4fda2f855b3454d584116283ad9a73141bb00a2141be9f4e4fb4adfb2972",
+      "bytes": 195906,
+      "width": 1024,
+      "height": 661,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:41:06.561273+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/TUN.source.txt",
+        "sha256": "e76f26550cb554054c5f1eaec7e58b01c9c002bbcd2377f7bd27929691820ca1",
+        "bytes": 341505,
+        "required_markers": [
+          "2282567690",
+          "GUADALUPE, MEXICO - JUNE 20: Tunisia players pose for a team photograph before the FIFA World Cup 2026 Group F match between Tunisia and Japan at Monterrey Stadium on June 20, 2026 in Guadalupe, Mexico. (Photo by David Ramos/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "78fd4fda2f855b3454d584116283ad9a73141bb00a2141be9f4e4fb4adfb2972",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Tunisia XI in white-red kit and Tunisia crest, two rows; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "TUR": {
       "team_code": "TUR",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/TUR.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/turkiye-players-pose-for-a-team-photograph-before-the-fifa-news-photo/2282435338",
+      "image_url": "https://media.gettyimages.com/id/2282435338/photo/group-d-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=K8WzSI2iFveo5OFJO2YF-taP35TOUP1q3jSusxynEzk=",
+      "caption": "2026世界杯土耳其队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "SANTA CLARA, CALIFORNIA - JUNE 19: Turkiye players pose for a team photograph before the FIFA World Cup 2026 Group D match between Türkiye and Paraguay at San Francisco Bay Area Stadium on June 19, 2026 in Santa Clara, California. (Photo by Richard Heathcote/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-19",
+      "date_created_evidence": "19 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Richard Heathcote / Getty Images",
+      "sha256": "88e0e24f6ca7e84ace3c5d7c37c1f0fd6dc6f8c21691f7ea080907d4fdbf7138",
+      "bytes": 222592,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:41:11.596632+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/TUR.source.txt",
+        "sha256": "b90c1fd0e9a9d700d5ae4fdb58d2861a3d006ae9daf4dfc233d2e6a3689782c0",
+        "bytes": 340233,
+        "required_markers": [
+          "2282435338",
+          "SANTA CLARA, CALIFORNIA - JUNE 19: Turkiye players pose for a team photograph before the FIFA World Cup 2026 Group D match between Türkiye and Paraguay at San Francisco Bay Area Stadium on June 19, 2026 in Santa Clara, California. (Photo by Richard Heathcote/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "88e0e24f6ca7e84ace3c5d7c37c1f0fd6dc6f8c21691f7ea080907d4fdbf7138",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Türkiye XI in white-red kit with Turkish pennant, two rows; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "URU": {
       "team_code": "URU",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/URU.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-uruguay-pose-for-a-team-photograph-before-foto-jornal%C3%ADstica/2281776742",
+      "image_url": "https://media.gettyimages.com/id/2281776742/photo/saudi-arabia-v-uruguay-group-h-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=eleBrSBNxdtXhUWFHGzijGI25anEL6eu4zWQqv7KTZw=",
+      "caption": "2026世界杯乌拉圭队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "MIAMI GARDENS, FLORIDA - JUNE 15: Players of Uruguay pose for a team photograph before the FIFA World Cup 2026 Group H match between Saudi Arabia and Uruguay at Miami Stadium on June 15, 2026 in Miami Gardens, Florida. (Photo by Carmen Mandato - FIFA/FIFA via Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-15",
+      "date_created_evidence": "15 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Carmen Mandato - FIFA / Getty Images",
+      "sha256": "df828d526cb30b209be13fb1295cbd3ef6f43c490f09c015ddb7048d9e552773",
+      "bytes": 244515,
+      "width": 1024,
+      "height": 683,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:41:18.688965+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/URU.source.txt",
+        "sha256": "cad510e2974c0d796059150499b60ef276a6ec8a368336147aeeb2d4b47f9fea",
+        "bytes": 342202,
+        "required_markers": [
+          "2281776742",
+          "MIAMI GARDENS, FLORIDA - JUNE 15: Players of Uruguay pose for a team photograph before the FIFA World Cup 2026 Group H match between Saudi Arabia and Uruguay at Miami Stadium on June 15, 2026 in Miami Gardens, Florida. (Photo by Carmen Mandato - FIFA/FIFA via Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "df828d526cb30b209be13fb1295cbd3ef6f43c490f09c015ddb7048d9e552773",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Uruguay full squad in pale-blue kit with Uruguay football association pennant, two rows at stadium; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "USA": {
       "team_code": "USA",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/USA.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-the-united-states-pose-for-a-team-photo-before-news-photo/2281310211",
+      "image_url": "https://media.gettyimages.com/id/2281310211/photo/group-d-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=qYAWS3MmIX-9UtmEVuJ5FZek3H_jLk67iHgYVX9a7Bc=",
+      "caption": "2026世界杯美国队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "INGLEWOOD, CALIFORNIA - JUNE 12: Players of the United States pose for a team photo before the FIFA World Cup 2026 Group D match between USA and Paraguay at Los Angeles Stadium on June 12, 2026 in Inglewood, California. (Photo by John Dorton/USSF/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-12",
+      "date_created_evidence": "12 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "John Dorton/USSF / Getty Images",
+      "sha256": "181d5aa25b74e236491b49731e6d840833262a5fb0f0d9293a30ebc3e6a32bcf",
+      "bytes": 240080,
+      "width": 1024,
+      "height": 654,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:41:23.721653+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/USA.source.txt",
+        "sha256": "d1b5a4336fa94a974aeafd082db634488c99463eb7cd81861e5f8425637bcd28",
+        "bytes": 338583,
+        "required_markers": [
+          "2281310211",
+          "INGLEWOOD, CALIFORNIA - JUNE 12: Players of the United States pose for a team photo before the FIFA World Cup 2026 Group D match between USA and Paraguay at Los Angeles Stadium on June 12, 2026 in Inglewood, California. (Photo by John Dorton/USSF/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "181d5aa25b74e236491b49731e6d840833262a5fb0f0d9293a30ebc3e6a32bcf",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: United States XI in white-red striped kit with USSF crest, two rows; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     },
     "UZB": {
       "team_code": "UZB",
       "year": 2026,
-      "path": null,
-      "source_url": null,
-      "image_url": null,
-      "caption": null,
-      "sha256": null,
-      "bytes": null,
-      "status": "missing_verified_2026_team_photo",
-      "reason": "No verified same-year official team-photo source collected in this bounded pass."
+      "path": "/assets/media/team-photos/UZB.jpg",
+      "source_url": "https://www.gettyimages.co.uk/detail/news-photo/players-of-uzbekistan-pose-for-a-team-photograph-before-the-news-photo/2282125249",
+      "image_url": "https://media.gettyimages.com/id/2282125249/photo/uzbekistan-v-colombia-group-k-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=t0iQjSKTrmY83b5WTfiL2f5J8mTwtIpC_2emReXW6pQ=",
+      "caption": "2026世界杯乌兹别克斯坦队赛前球队合照；保留出版方公开预览的水印。",
+      "caption_evidence": "MEXICO CITY, MEXICO - JUNE 17: Players of Uzbekistan pose for a team photograph before the FIFA World Cup 2026 Group K match between Uzbekistan and Colombia at Mexico City Stadium on June 17, 2026 in Mexico City, Mexico. (Photo by Carl Recine/Getty Images)",
+      "year_evidence": "Publisher caption identifies the FIFA World Cup 2026 finals, country, venue and capture date; not a qualifier or old-year image.",
+      "date": "2026-06-17",
+      "date_created_evidence": "17 June, 2026",
+      "date_kind": "capture date stated in publisher image caption",
+      "credit": "Carl Recine / Getty Images",
+      "sha256": "a605dc550c0b83fd047e7da89e505f0387309e77ac03125829bba8fec5426290",
+      "bytes": 214533,
+      "width": 1024,
+      "height": 677,
+      "mime": "image/jpeg",
+      "watermarked": true,
+      "retrieved_at": "2026-10-21T18:41:28.732247+00:00",
+      "source_evidence": {
+        "path": "public/assets/media/team-photos/evidence/UZB.source.txt",
+        "sha256": "5e6661c8ce1fb6e74d818d912623111b76ef3c0a9c3f4fb517aa8884340e526e",
+        "bytes": 340771,
+        "required_markers": [
+          "2282125249",
+          "MEXICO CITY, MEXICO - JUNE 17: Players of Uzbekistan pose for a team photograph before the FIFA World Cup 2026 Group K match between Uzbekistan and Colombia at Mexico City Stadium on June 17, 2026 in Mexico City, Mexico. (Photo by Carl Recine/Getty Images)",
+          "defaultMainImageURL"
+        ]
+      },
+      "status": "verified_2026_team_photo",
+      "visual_review": {
+        "sha256": "a605dc550c0b83fd047e7da89e505f0387309e77ac03125829bba8fec5426290",
+        "reviewed_on": "2026-10-22",
+        "observation": "Local published preview viewed individually: Uzbekistan XI in white kit, grouped in two rows holding Masharipov shirt; publisher watermark retained."
+      },
+      "pixel_changes": "none; exact publisher defaultMainImageURL response bytes retained; watermark/signature preserved",
+      "license": "Public watermarked catalogue preview; publisher credit retained. No independent open/publication licence asserted."
     }
   },
   "coverage": {
     "total_teams": 48,
-    "downloaded": 5,
-    "missing": 43
+    "downloaded": 48,
+    "missing": 0
   },
   "notes": [
-    "Source text is retained as .txt evidence, not executable HTML.",
-    "A source/page title saying 2026 alone is insufficient; each image selector must be tied to explicit team/squad-photo evidence.",
-    "Photo pixels are not edited. Publisher crop/watermark/rendition is preserved."
+    "Every team photo has explicit 2026 World Cup team/group caption evidence, source snapshot, photo and evidence SHA256, date and individual visual review.",
+    "Association photos and photographer-published CC images are preferred; publisher previews retain their original watermark, exact bytes and credit.",
+    "Open-source permission is recorded only where the photographer explicitly supplies it; source credit is not a claim of an open licence."
   ],
   "collection_timezone": "Asia/Shanghai"
 }

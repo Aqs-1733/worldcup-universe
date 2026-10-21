@@ -1033,8 +1033,8 @@
   "public_credits_review": {
     "view_file": {
       "path": "views/site/credits.php",
-      "bytes": 2657,
-      "sha256": "c96a5423d444c9684d3a537d08405d0eb77ecde17c73a71def761ec423483394"
+      "bytes": 2923,
+      "sha256": "aa27cc257d705d46aa88bc42d0b02e08394b8410275afb1c98eedb992f0b6c54"
     },
     "view_modified_by_audit": false,
     "original_photography_statement": "The credits grid loads library.json original paths. Its statement that originals are unchanged describes those retained files; those original bytes still match their registered hashes.",
@@ -1045,10 +1045,10 @@
   "screenshot_refinement_20261022": {
     "team_photos": {
       "manifest": "public/assets/media/team-photos/manifest.json",
-      "sha256": "ad6c79dc708e6eacc41c560146e4966133c66d9e914a869dce23f6382293c9ac",
-      "verified": 5,
-      "missing": 43,
-      "fallback": "Flag-only design, never an individual or older-year team photograph.",
+      "sha256": "cf000d0d0c76dcb2146d1266dad3cf989842e28da6f4a05307325b23e017431e",
+      "verified": 48,
+      "missing": 0,
+      "fallback": "No fallback displayed for the current 48-team catalogue; future unknown entries are never substituted with portraits or older-year images.",
       "source_document": "docs/v2-team-photo-sources.md"
     },
     "components": [
@@ -1071,6 +1071,11 @@
         "path": "public/assets/js/country-directory.js",
         "bytes": 1018,
         "sha256": "1e1b3e6c44d3776595f0876c5f8c91ccda85a5488c1ee55e2fa4c79bcd1c9dfc"
+      },
+      {
+        "path": "public/assets/css/topic-detail.css",
+        "bytes": 9040,
+        "sha256": "4085d2d28383974c231122800bd5ef418ce8297ae4456fd67c83e51cfb83b273"
       }
     ]
   }

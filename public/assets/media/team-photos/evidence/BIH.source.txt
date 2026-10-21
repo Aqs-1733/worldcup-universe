@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.gettyimages.co.uk/detail/news-photo/bosnia-and-herzegovina-players-pose-for-a-team-photograph-news-photo/2283153485",
+  "publisher": "Getty Images",
+  "caption": "SEATTLE, WASHINGTON - JUNE 24: Bosnia and Herzegovina players pose for a team photograph before the FIFA World Cup 2026 Group B match between Bosnia and Herzegovina and Qatar at Seattle Stadium on June 24, 2026 in Seattle, Washington. (Photo by Richard Heathcote/Getty Images)",
+  "dateCreated": "24 June, 2026",
+  "artist": "Richard Heathcote",
+  "defaultMainImageURL": "https://media.gettyimages.com/id/2283153485/photo/bosnia-and-herzegovina-v-qatar-group-b-fifa-world-cup-2026.jpg?s=1024x1024&w=gi&k=20&c=4dw9xVh6eL5ZF4oWTnBqoQxKXXbMAVPkmOT5mpi-AsU=",
+  "source_html_sha256": "ece00aff1c20eadfc2def7950d3038757535a49369dad76c26b071936cbb4411",
+  "source_html_bytes": 343667,
+  "retrieved_at": "2026-10-21T18:42:04.995268+00:00",
+  "scope": "Verbatim public metadata extracted from publisher page; raw HTML retained in ignored local research cache."
+}
