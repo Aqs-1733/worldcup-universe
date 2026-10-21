@@ -10,7 +10,7 @@ final class CatalogService
 {
     public function teams(array $filters=[]): ActiveDataProvider
     {
-        $q=Team::find()->where(['not',['official_import_id'=>null]])->with('featurePlayer')->orderBy(['world_ranking'=>SORT_ASC,'id'=>SORT_ASC]);
+        $q=Team::find()->where(['not',['official_import_id'=>null]])->with('featurePlayer')->orderBy(TeamPhoto::order());
         if (!empty($filters['q'])) { $q->andWhere(['or',['like','name_cn',mb_substr((string)$filters['q'],0,120)],['like','name_original',mb_substr((string)$filters['q'],0,120)]]); }
         $q->andFilterWhere(['confederation'=>$filters['confederation']??null]);
         return $this->provider($q,24);
@@ -60,7 +60,7 @@ final class CatalogService
     }
     public function home(): array
     {
-        return ['hero'=>\app\models\MediaAsset::findOne(['asset_key'=>'home-hero','status'=>'approved']),'teams'=>Team::find()->where(['not',['official_import_id'=>null]])->with('featurePlayer')->orderBy(['world_ranking'=>SORT_ASC])->limit(6)->all(),
+        return ['hero'=>\app\models\MediaAsset::findOne(['asset_key'=>'home-hero','status'=>'approved']),'teams'=>Team::find()->where(['not',['official_import_id'=>null]])->orderBy(TeamPhoto::order())->limit(6)->all(),
             'players'=>Player::find()->where(['not',['official_import_id'=>null]])->with('team')->orderBy(['caps'=>SORT_DESC])->limit(4)->all(),
             'matches'=>MatchGame::find()->where(['not',['official_import_id'=>null]])->with(['homeTeam','awayTeam'])->orderBy(['starts_at'=>SORT_DESC])->limit(4)->all(),
             'news'=>NewsArticle::find()->with('tags')->where(['status'=>'published'])->andWhere(['<>','source_name','赛事简报'])->orderBy(['published_at'=>SORT_DESC])->limit(3)->all(),

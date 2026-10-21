@@ -1,0 +1,75 @@
+[
+  {
+    "page": "forum",
+    "columnsDisjoint": true,
+    "examples": 6,
+    "overflow": -15,
+    "width": 1440
+  },
+  {
+    "page": "bracket",
+    "afterExpand": 2
+  },
+  {
+    "page": "bracket",
+    "highlighted": 5,
+    "nestedScrollbars": 0,
+    "open": 5,
+    "overflow": -15
+  },
+  {
+    "page": "bracket",
+    "afterReset": 1
+  },
+  {
+    "page": "comments-footer",
+    "footerBrandLeft": 57.59375,
+    "headerBrandLeft": 57.59375,
+    "overflow": -15
+  },
+  {
+    "page": "forum",
+    "overflow": -15,
+    "topicCount": 7,
+    "width": 390
+  },
+  {
+    "page": "/worldcup",
+    "footerAligned": true,
+    "h1": "赛程与比分",
+    "overflow": -15,
+    "width": 390
+  },
+  {
+    "page": "/teams",
+    "footerAligned": true,
+    "h1": "参赛球队",
+    "overflow": -15,
+    "width": 390
+  },
+  {
+    "page": "/countries/ar",
+    "footerAligned": true,
+    "h1": "阿根廷",
+    "overflow": -15,
+    "width": 390
+  },
+  {
+    "page": "bracket-expanded",
+    "open": 5,
+    "overflow": -15,
+    "selected": 5,
+    "width": 390
+  },
+  {
+    "page": "country-filter",
+    "counter": "1 个国家",
+    "first": "/countries/ar",
+    "visible": 1
+  },
+  {
+    "page": "country-continent",
+    "onlyEurope": true,
+    "visible": 15
+  }
+]

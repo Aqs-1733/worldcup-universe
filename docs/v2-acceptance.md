@@ -28,3 +28,5 @@ HTTP 流程 | 111 项，登录、CSRF、权限、主队、论坛、管理、下�
 测试脚本仅向本机专用测试环境创建带精确 qa_ 前缀的临时账号，结束按本轮前缀清理，不能在真实用户库中批量匹配删除。
 
 2026-10-22 浏览器实测：官方 iframe 标题和封面已加载；点击播放后，RTVE 返回所在地播放权限制（“Este contenido tiene restringidos los derechos de emisión en su ubicación”）。本站显示官方登录／地区限制提示，未播放成功，不绕过地区或 DRM 校验。
+
+2026-10-22 截图修订另见 artifacts/redesign-20261022/VERIFICATION.txt。旧 artifacts/screenshots 和 navigation 截图作为前一版历史记录保留，当前新版截图位于 artifacts/redesign-20261022/screenshots。

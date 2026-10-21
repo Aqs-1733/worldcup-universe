@@ -1,0 +1,12 @@
+✔ local Natural Earth map units provide clickable real-world country features (42.9746ms)
+✔ web map preserves the local map units while reducing polygon complexity (60.928ms)
+✔ rendering map uses complete unsimplified 110m Natural Earth map units (17.8473ms)
+✔ country hover keeps map fills stable and uses ID-keyed outline paths (5.9429ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 273.4188

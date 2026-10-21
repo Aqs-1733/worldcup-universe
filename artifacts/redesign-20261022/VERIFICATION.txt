@@ -1,0 +1,69 @@
+截图修订验收 — 2026-10-22（Asia/Shanghai）
+Branch: codex/yii2-full-stack
+Changed field: FORUM_COMPONENT legacy-card -> tabler-topics; DEMO_BADGE absent -> present.
+MODIFIED_FILE: D:/Project114514/worldcup-universe/artifacts/redesign-20261022/MODIFIED_FILE.php
+DIFF_FILE: D:/Project114514/worldcup-universe/artifacts/redesign-20261022/DIFF_FILE.patch
+VERIFICATION: D:/Project114514/worldcup-universe/artifacts/redesign-20261022/VERIFICATION.txt
+ROLLBACK: D:/Project114514/worldcup-universe/artifacts/redesign-20261022/ROLLBACK.sh
+Original SHA256: 8fed1f39d87b634c471730ce2a0e97256dd9bfbde5d0e658f5cc44ae86e15fbf
+Modified SHA256: 45866b1b2ca9552a87f8eb83df33565258208cf1c7e46835a5dddb8558e0e130
+
+BASELINE exact command:
+& 'D:/XAMPP/php/php.exe' 'D:/Project114514/worldcup-universe/tests/redesign_probe.php' 'D:/Project114514/worldcup-universe/artifacts/redesign-20261022/original-forum.php'
+Input: preserved original forum view fixture.
+Literal output: FORUM_COMPONENT=legacy-card; DEMO_BADGE=absent
+Exit: 0
+
+MODIFIED exact command:
+& 'D:/XAMPP/php/php.exe' 'D:/Project114514/worldcup-universe/tests/redesign_probe.php' 'D:/Project114514/worldcup-universe/artifacts/redesign-20261022/MODIFIED_FILE.php'
+Input: reopened modified forum view fixture, byte-equal to live view.
+Literal output: FORUM_COMPONENT=tabler-topics; DEMO_BADGE=present
+Exit: 0
+
+ROLLBACK exact command:
+& 'D:/Git/bin/bash.exe' 'D:/Project114514/worldcup-universe/artifacts/redesign-20261022/ROLLBACK.sh' 'D:/Project114514/worldcup-universe/artifacts/redesign-20261022/rollback-copy.php'
+Input: independent copy of modified forum fixture, not the live website.
+Literal output: ROLLBACK PASS: original forum SHA256 restored on copy
+Exit: 0
+RESTORED exact command:
+& 'D:/XAMPP/php/php.exe' 'D:/Project114514/worldcup-universe/tests/redesign_probe.php' 'D:/Project114514/worldcup-universe/artifacts/redesign-20261022/rollback-copy.php'
+Literal output: FORUM_COMPONENT=legacy-card; DEMO_BADGE=absent
+Exit: 0
+Restored hash equals original. Live views/forum/index.php remains modified.
+Executable: chmod +x and test -x ROLLBACK.sh succeeded, exit 0.
+This is a view-fixture rollback demonstration, not a full database rollback.
+
+本轮需求结果
+1. 论坛使用保留的MIT Tabler Card/List group/Avatar/Chat，紧凑主题列表、板块卡片、主队侧栏。
+2. 6个管理员作者示例主题，2条明确示例回复，均标注，不创建虚构球迷、点赞或热度。
+   php yii design/forum first run: PASS forum examples: 6 administrator-authored, labelled topics; 2 labelled replies; no fabricated fan accounts or likes.
+   second run: PASS forum examples: 0 administrator-authored, labelled topics; 0 labelled replies; no fabricated fan accounts or likes.
+   Both exit 0. Production seed still excludes users and forum examples; development examples are an explicit console command.
+3. 页脚、主导航和页面统一1480px上限。1440px实测：footer brand left=57.59375，header brand left=57.59375。
+4. 晋级图为native details树，32场唯一节点、30条官方胜者边，季军赛独立。零固定画布／内部双向滚动。
+   展开一场后open=2；追踪阿根廷后5节点高亮、open=5；重置后open=1。
+5. 所有球队封面取消个人球员。5队官方2026合照（GER/NOR/COL/ENG/BRA）均核对来源日期、caption、文件SHA256；另43队纯国旗设计。巴西原站水印原样保留。
+6. 留言改为卡片/头像/编辑器/聊天记录，保留原认证、CSRF和待审核流程。
+7. 国家列表48个普通链接，全部原生详情路由实际HTTP200；未知国家404。搜索阿根廷仅1条，欧洲筛选只显示Europe资料。
+   首都、语言与货币仅做中文展示标签，原国家源值未修改。
+
+实际回归日志（命令退出码均0）
+PASS 42 database/service checks; all test writes rolled back.
+PASS 3048 official-source checks; 48 teams / 1248 players / 104 matches / 5323 lineups / 32 edges.
+PASS 111 HTTP checks; prefix=qa_e5399a4c
+HTTP cleanup: CLEANED 2 test members; prefix=qa_e5399a4c. Administrator-owned examples retained.
+PASS redesign: 6 labelled example topics; 32 unique expandable matches / 30 verified winner edges; 48 working country details; 5 hashed official 2026 squad photos; no individual team covers; new comment and footer components.
+PASS 184 first-party PHP files
+All first-party JavaScript syntax passed; globe 4 passed / 0 failed.
+Chinese 14 routes passed; flag 280 containers passed; navigation 6 primary entries / unique standings passed.
+No schema migration required in this UI revision.
+
+浏览器证据
+screenshots/ui-results.json 保存实际DOM几何与交互观察；1440px论坛两栏不重叠；390px论坛、展开后晋级路线、球队及国家详情均无文档横向溢出。
+Countries card click was exercised from /countries to /countries/ar; native page heading is 阿根廷.
+All screenshots are actual local-browser captures, not design renders.
+
+来源
+Tabler: https://docs.tabler.io/ui/components/card ; /list-group ; /chat . Scoped component CSS retains MIT attribution.
+Team photos: public/assets/media/team-photos/manifest.json and docs/v2-team-photo-sources.md.
+Original sports source bundle was not modified and 3048 official checks passed again.

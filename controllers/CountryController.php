@@ -5,6 +5,13 @@ namespace app\controllers;
 use app\models\{CountryProfile,Venue,Team};
 final class CountryController extends BaseController
 {
+    public function actionView(string $code)
+    {
+        $country=CountryProfile::find()->where(['country_code'=>strtoupper($code)])->asArray()->one();
+        if(!$country)throw new \yii\web\NotFoundHttpException('国家资料不存在。');
+        $country['linked_teams']=Team::find()->where(['country_code'=>$country['country_code']])->andWhere(['not',['official_import_id'=>null]])->asArray()->all();
+        return $this->render('/catalog/country',['country'=>$country]);
+    }
     public function actionIndex()
     {
         $teams=Team::find()->andWhere(['not',['official_import_id'=>null]])->asArray()->all(); $map=[]; foreach($teams as $team) { $code=strtolower((string)$team['country_code']); $map[$code][]=$team; }

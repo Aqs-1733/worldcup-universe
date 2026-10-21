@@ -1,0 +1,1263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>England men&#x27;s squad wear M&amp;S for official squad photo | England Football</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="WT.sv" content="EF-RENDERING-9B" />
+
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#e1261c">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+            <link rel="canonical" href="https://www.englandfootball.com/articles/2026/Jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" />
+    
+    
+<script src="https://platform.twitter.com/widgets.js" async></script>
+<script async src="https://track.uniqodo.com/widgets/button.js" ></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=WM1W9APIu0vuHvGLKiPQVA&gtm_preview=env-1&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KT4SPMT');</script>
+<!-- End Google Tag Manager -->
+<meta name="google-site-verification" content="Z0VAY5k-P2tomEn1ma8c4Ki-kUCkZKz0Q6dtxk0v5PA" />
+<meta name="facebook-domain-verification" content="syt2z2i4s2nod3uifk90l71oz02019" />
+
+
+
+<!--  Hotjar  -->
+<script>
+(function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:5239932,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+})(window,document,' https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<!-- End Hotjar-->
+
+<!-- handling video url redirect to App store landing page-->
+<script>
+ 
+document.addEventListener("DOMContentLoaded", function () {
+ 
+  const path = window.location.pathname;
+
+  if (/\/video\/[^\/]+\/?$/.test(path)) {
+
+    window.location.href = "/fanapphome/video";
+
+  }
+
+});
+</script>
+ <!--End -- handling video url redirect to App store landing page-->
+
+<!-- Brightcove Video -->
+<script>
+const NativeBridge = (function() {
+    const Platform = {
+        iOS: !!(window.webkit && window.webkit.messageHandlers),
+        Android: typeof Android !== 'undefined',
+        get current() {
+            if (this.iOS) return 'iOS';
+            if (this.Android) return 'Android';
+            return 'Browser';
+        },
+        get isNative() {
+            return this.iOS || this.Android;
+        }
+    };
+    function sendToNative(handlerName, data) {
+        const dataString = String(data);
+        if (Platform.iOS) {
+            const handler = window.webkit.messageHandlers[handlerName];
+            if (handler) {
+                handler.postMessage(dataString);
+                return true;
+            }
+        } else if (Platform.Android) {
+            const method = Android[handlerName];
+            if (typeof method === 'function') {
+                method.call(Android, dataString);
+                return true;
+            }
+        }
+        return false;
+    }
+    return {
+        platform: Platform,
+        playVideo: function(id) {
+            if (!sendToNative('playVideo', String(id))) {
+                console.log('[NativeBridge] playVideo not available - running in browser');
+            }
+        },
+        playPlaylist: function(id) {
+            if (!sendToNative('playPlaylist', String(id))) {
+                console.log('[NativeBridge] playPlaylist not available - running in browser');
+            }
+        }
+    };
+})();
+</script>
+<!--end Brightcove Video -->
+
+
+<!-- Call Nativebridge on first every video Interaction-->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+// Only run if URL param exists
+const params = new URLSearchParams(window.location.search);
+if (params.get("sc_device") !== "fanapp") return;
+
+const iframe = document.getElementById("brightcove-iframe-player");
+if (!iframe) return;
+
+const wrapper = iframe.closest(".large-video-player__video-wrap");
+if (!wrapper) return;
+
+// Extract videoId
+const url = new URL(iframe.src);
+let videoId = url.searchParams.get("videoId");
+
+if (videoId && videoId.includes("ref:")) {
+videoId = videoId.split("ref:")[1];
+}
+
+// Ensure wrapper is positioning context
+wrapper.style.position = "relative";
+
+// Create overlay
+const overlay = document.createElement("div");
+overlay.style.position = "absolute";
+overlay.style.top = "0";
+overlay.style.left = "0";
+overlay.style.width = "100%";
+overlay.style.height = "100%";
+overlay.style.cursor = "pointer";
+overlay.style.zIndex = "5";
+overlay.style.background = "transparent";
+
+wrapper.appendChild(overlay);
+
+overlay.addEventListener("click", function () {
+
+console.log("Video clicked");
+console.log("Video ID:", videoId);
+
+sendVideoToApp(videoId);
+});
+
+function sendVideoToApp(videoId) {
+ NativeBridge.playVideo(videoId);
+ console.log("Nativebridge playvideo executed with:", videoId);
+}
+
+});
+</script>
+<!--end Call Nativebridge -->
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1462312985449770');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1462312985449770&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+        <meta name="robots" content="all" />
+    <meta name="title" content="England men&#x27;s squad wear M&amp;S for official squad photo" />
+    <meta name="description" content="The Three Lions wear the Marks &amp; Spencers x England edit ahead of this summer&#x27;s tournament" />
+    <meta name="keywords" content="England men&#x27;s national football team, Three Lions, FIFA World Cup 2026, M&amp;S, Marks and Spencer, England official squad photo" />
+    <meta name="author" content="The Football Association" />
+    <meta property="og:site_name" content="https://www.englandfootball.com" />
+    <meta property="og:url" content="https://www.englandfootball.com/articles/2026/Jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="England men&#x27;s squad wear M&amp;S for official squad photo" />
+    <meta property="og:description" content="The Three Lions wear the Marks &amp; Spencers x England edit ahead of this summer&#x27;s tournament" />
+        <meta property="og:image" content="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/June/Team-photo-1440-20261106.png?h=810&amp;iar=0&amp;w=1440&amp;rev=c7acc0ef7f1f404e87b7cc45d3570d15&amp;hash=838A13B39739253DF12E9A654510EA58" />
+        <meta property="og:image:secure_url" itemprop="image" content="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/June/Team-photo-1440-20261106.png?h=810&amp;iar=0&amp;w=1440&amp;rev=c7acc0ef7f1f404e87b7cc45d3570d15&amp;hash=838A13B39739253DF12E9A654510EA58" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="England men&#x27;s squad wear M&amp;S for official squad photo" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:domain" content="https://www.englandfootball.com" />
+    <meta name="twitter:site" content="@fa" />
+    <meta name="twitter:creator" content="@fa" />
+        <meta name="twitter:image" content="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/June/Team-photo-1440-20261106.png?h=810&amp;iar=0&amp;w=1440&amp;rev=c7acc0ef7f1f404e87b7cc45d3570d15&amp;hash=838A13B39739253DF12E9A654510EA58" />
+
+<!-- OneTrust Cookies Consent Notice start for www.englandfootball.com -->
+<script src="https://cdn-ukwest.onetrust.com/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="297edd3d-255d-4c74-b1bc-37d2a8ab935d" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for www.englandfootball.com -->
+
+
+    <link href="/styles/main.css?v=f1CO-q4BCZI1k6zbWgwqBHqq5uBdN8fT14VzL1H8ooA" rel="stylesheet" />
+</head>
+
+<body>
+    
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KT4SPMT&gtm_auth=WM1W9APIu0vuHvGLKiPQVA&gtm_preview=env-1&gtm_cookies_win=x"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header>
+            <header class="global-fixed-header">
+        <a href="#main-content" class="skip-to-content">Skip to main content</a>
+            <div class="global-site-navigation-top-bar">
+                <div class="container">
+                    <div class="global-site-navigation-top-bar--links">
+                        <a href="https://www.englandstore.com/?_s=bm-FI-PSC-ENG-Football-TopNavLink--- ">England Merchandise</a>
+                        <a href="https://www.wembleystadium.com/tickets/">England Tickets</a>
+                    </div>
+                </div>
+            </div>
+        <div class="global-site-header container">
+            <div class="container__content">
+                <a href="/" class="logo" aria-label="England Football Learning logo"></a>
+            </div>
+            <button class="hamburger" aria-controls="main-nav" aria-haspopup="false" aria-expanded="false">
+                Open
+                navigation
+            </button>
+            <nav role="navigation" class="global-site-navigation" id="main-nav" aria-label="Primary">
+                <div class="global-site-navigation__home"><span>Menu</span></div>
+                <ul>
+                            <li class="global-site-navigation__level1 ">
+                                    <a href="/england" data-attr="false" aria-haspopup="true"><span>England</span></a>
+                                    <button role="menuitem" aria-label="England" class="global-site-navigation__main-tab" aria-controls="England" aria-haspopup="true" aria-expanded="false">
+                                    </button>
+                                    <div class="global-site-navigation__level2-wrapper" id="England" data-lazy-background="https://cdn.englandfootball.com/-/media/EFLearning/Hero/menu-lion-watermark.png?h=464&amp;iar=0&amp;w=1440&amp;rev=1ad82dc944fa4e67936aca89b26caf19&amp;hash=6F2C15C4E60622668E4316755D78ED29">
+                                        <ul class="global-site-navigation__level2">
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/england/mens-senior-team">Men&#x27;s Senior</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-1" id="accordion-button-1">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-1" aria-labelledby="accordion-button-1">
+                                                                    <li><a href="/england/mens-senior-team/fixtures-results" data-attr="false"><span>Fixtures &amp; Results</span></a></li>
+                                                                    <li><a href="/england/mens-senior-team/squad" data-attr="false"><span>Squad</span></a></li>
+                                                                    <li><a href="/england/mens-senior-team/News" data-attr="false"><span>News</span></a></li>
+                                                                    <li><a href="/england/mens-senior-team/England-Supporters-Travel-Club" data-attr="false"><span>England Supporters Travel Club</span></a></li>
+                                                                    <li><a href="/england/mens-senior-team/FIFA-World-Cup-2026" data-attr="false"><span>FIFA World Cup 2026</span></a></li>
+                                                                    <li><a href="/england/mens-senior-team/Legacy" data-attr="false"><span>Legacy</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/england/womens-senior-team">Women&#x27;s Senior</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-2" id="accordion-button-2">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-2" aria-labelledby="accordion-button-2">
+                                                                    <li><a href="/england/womens-senior-team/fixtures-results" data-attr="false"><span>Fixtures &amp; Results</span></a></li>
+                                                                    <li><a href="/england/womens-senior-team/squad" data-attr="false"><span>Squad</span></a></li>
+                                                                    <li><a href="/england/womens-senior-team/News" data-attr="false"><span>News</span></a></li>
+                                                                    <li><a href="/england/womens-senior-team/UEFA-Womens-EURO-2025" data-attr="false"><span>UEFA Women&#x27;s EURO 2025</span></a></li>
+                                                                    <li><a href="/england/womens-senior-team/Legacy" data-attr="false"><span>Legacy</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/england/youth">Youth</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-3" id="accordion-button-3">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-3" aria-labelledby="accordion-button-3">
+                                                                    <li><a href="/england/youth/News" data-attr="false"><span>News</span></a></li>
+                                                                    <li><a href="/england/youth/mens-u21" data-attr="false"><span>Men&#x27;s U21s</span></a></li>
+                                                                    <li><a href="/england/youth/womens-u23" data-attr="false"><span>Women&#x27;s U23s</span></a></li>
+                                                                    <li><a href="/england/youth/Mens-U20" data-attr="false"><span>Men&#x2019;s U20s</span></a></li>
+                                                                    <li><a href="/england/youth/Womens-U20" data-attr="false"><span>Women&#x27;s U20s</span></a></li>
+                                                                    <li><a href="/england/youth/mens-u19" data-attr="false"><span>Men&#x27;s U19s</span></a></li>
+                                                                    <li><a href="/england/youth/Womens-U19" data-attr="false"><span>Women&#x27;s U19s</span></a></li>
+                                                                    <li><a href="/england/youth/mens-u18" data-attr="false"><span>Men&#x27;s U18s</span></a></li>
+                                                                    <li><a href="/england/youth/mens-u17" data-attr="false"><span>Men&#x27;s U17s</span></a></li>
+                                                                    <li><a href="/england/youth/Womens-U17" data-attr="false"><span>Women&#x27;s U17s</span></a></li>
+                                                                    <li><a href="/england/youth/womens-talent-pathway" data-attr="false"><span>Play for the Lionesses</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/england/para">Para</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-4" id="accordion-button-4">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-4" aria-labelledby="accordion-button-4">
+                                                                    <li><a href="/england/para/News" data-attr="false"><span>News</span></a></li>
+                                                                    <li><a href="https://www.englandfootball.com/play/Disability-Football/England-Para-Talent-Pathway" data-attr="false"><span>England Para Talent Pathway</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/england/St-Georges-Park">St. George&#x27;s Park</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-5" id="accordion-button-5">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-5" aria-labelledby="accordion-button-5">
+                                                                    <li><a href="/england/St-Georges-Park/News" data-attr="false"><span>News</span></a></li>
+                                                                    <li><a href="/england/St-Georges-Park/About" data-attr="false"><span>About</span></a></li>
+                                                                    <li><a href="/england/St-Georges-Park/Performance" data-attr="false"><span>Performance &amp; Training Facilities</span></a></li>
+                                                                    <li><a href="/england/St-Georges-Park/Hilton-Hotel" data-attr="false"><span>Hilton Hotel</span></a></li>
+                                                                    <li><a href="/england/St-Georges-Park/Grassroots-Teams" data-attr="false"><span>Grassroots Teams</span></a></li>
+                                                                    <li><a href="/england/St-Georges-Park/Outdoor-Leadership-Centre" data-attr="false"><span>Outdoor Leadership Centre</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                <li>
+                                                    <ul class="global-site-navigation__section-heading--more">
+                                                                    <li><a href="/england/elions" data-attr="false">England Gaming</a></li>
+                                                                    <li><a href="/england/England-App" data-attr="false">The England app</a></li>
+                                                    </ul>
+                                                </li>
+                                        </ul>
+                                    </div>
+
+                            </li>
+                            <li class="global-site-navigation__level1 ">
+                                    <a href="/play" data-attr="false" aria-haspopup="true"><span>Play</span></a>
+                                    <button role="menuitem" aria-label="Play" class="global-site-navigation__main-tab" aria-controls="Play" aria-haspopup="true" aria-expanded="false">
+                                    </button>
+                                    <div class="global-site-navigation__level2-wrapper" id="Play" data-lazy-background="https://cdn.englandfootball.com/-/media/EFLearning/Hero/menu-lion-watermark.png?h=464&amp;iar=0&amp;w=1440&amp;rev=1ad82dc944fa4e67936aca89b26caf19&amp;hash=6F2C15C4E60622668E4316755D78ED29">
+                                        <ul class="global-site-navigation__level2">
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/play/ways-to-play">Ways to Play</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-6" id="accordion-button-6">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-6" aria-labelledby="accordion-button-6">
+                                                                    <li><a href="/play/ways-to-play/walking-football" data-attr="false"><span>Walking Football</span></a></li>
+                                                                    <li><a href="/play/ways-to-play/11-a-side-football" data-attr="false"><span>11-a-side football</span></a></li>
+                                                                    <li><a href="/play/ways-to-play/small-sided-football" data-attr="false"><span>Small-sided football</span></a></li>
+                                                                    <li><a href="/play/ways-to-play/9-a-side-football" data-attr="false"><span>9-a-side football</span></a></li>
+                                                                    <li><a href="/play/ways-to-play/futsal" data-attr="false"><span>Futsal</span></a></li>
+                                                                    <li><a href="/play/ways-to-play/Play-Phase" data-attr="false"><span>Play Phase</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/play/adult-football">Adult Football</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-7" id="accordion-button-7">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-7" aria-labelledby="accordion-button-7">
+                                                                    <li><a href="/play/adult-football/Just-Play" data-attr="false"><span>Just Play</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/play/youth-football">Youth</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-8" id="accordion-button-8">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-8" aria-labelledby="accordion-button-8">
+                                                                    <li><a href="/play/youth-football/Youth-Club-Football" data-attr="false"><span>Youth Club Football</span></a></li>
+                                                                    <li><a href="/play/youth-football/in-education" data-attr="false"><span>In Education</span></a></li>
+                                                                    <li><a href="/play/youth-football/wildcats" data-attr="false"><span>Wildcats</span></a></li>
+                                                                    <li><a href="/play/youth-football/Squad-Girls-Football" data-attr="false"><span>Squad Girls Football</span></a></li>
+                                                                    <li><a href="https://www.englandfootball.com/play/Disability-Football/Comets" data-attr="false"><span>Comets</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/play/Disability-Football">Disability Football</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-9" id="accordion-button-9">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-9" aria-labelledby="accordion-button-9">
+                                                                    <li><a href="/play/Disability-Football/Cerebral-Palsy-Football" data-attr="false"><span>Cerebral Palsy Football</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/Deaf-Football" data-attr="false"><span>Deaf Football</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/Frame-Football" data-attr="false"><span>Frame Football</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/Pan-Disability-Football" data-attr="false"><span>Pan-Disability Football</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/Partially-Sighted-Football" data-attr="false"><span>Partially Sighted</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/Powerchair-Football" data-attr="false"><span>Powerchair Football</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/Amputee-Football" data-attr="false"><span>Amputee Football</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/Blind-Football" data-attr="false"><span>Blind Football</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/Other-Disability-Football-Formats" data-attr="false"><span>Other Disability Football Formats</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/Comets" data-attr="false"><span>Comets</span></a></li>
+                                                                    <li><a href="https://www.englandfootball.com/play/adult-football/Just-Play" data-attr="false"><span>Just Play</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/Training" data-attr="false"><span>Disability Training for Clubs</span></a></li>
+                                                                    <li><a href="/play/Disability-Football/England-Para-Talent-Pathway" data-attr="false"><span>England Para Talent Pathway</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                        </ul>
+                                    </div>
+
+                            </li>
+                            <li class="global-site-navigation__level1 ">
+                                    <a href="/participate" data-attr="false" aria-haspopup="true"><span>Participate</span></a>
+                                    <button role="menuitem" aria-label="Participate" class="global-site-navigation__main-tab" aria-controls="Participate" aria-haspopup="true" aria-expanded="false">
+                                    </button>
+                                    <div class="global-site-navigation__level2-wrapper" id="Participate" data-lazy-background="https://cdn.englandfootball.com/-/media/EFLearning/Hero/menu-lion-watermark.png?h=464&amp;iar=0&amp;w=1440&amp;rev=1ad82dc944fa4e67936aca89b26caf19&amp;hash=6F2C15C4E60622668E4316755D78ED29">
+                                        <ul class="global-site-navigation__level2">
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/participate/behaviour">Behaviour Hub</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-10" id="accordion-button-10">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-10" aria-labelledby="accordion-button-10">
+                                                                    <li><a href="/participate/behaviour/The-Grassroots-Code" data-attr="false"><span>The Grassroots Code</span></a></li>
+                                                                    <li><a href="/participate/behaviour/Behaviour-Improvement-Resources" data-attr="false"><span>Behaviour Improvement Resources</span></a></li>
+                                                                    <li><a href="/participate/behaviour/Behaviour-Improvement-Programme" data-attr="false"><span>Behaviour Improvement Programme</span></a></li>
+                                                                    <li><a href="/participate/behaviour/Reporting-Discrimination" data-attr="false"><span>Reporting Discrimination</span></a></li>
+                                                                    <li><a href="/participate/behaviour/Sanctions-and-Discipline" data-attr="false"><span>Sanctions &amp; Discipline</span></a></li>
+                                                                    <li><a href="/participate/behaviour/safeguarding" data-attr="false"><span>Safeguarding</span></a></li>
+                                                                    <li><a href="/participate/behaviour/inclusive-football" data-attr="false"><span>Inclusive football</span></a></li>
+                                                                    <li><a href="/participate/behaviour/Silent-Support" data-attr="false"><span>Silent Support</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/participate/learn">Learn</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-11" id="accordion-button-11">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-11" aria-labelledby="accordion-button-11">
+                                                                    <li><a href="https://learn.englandfootball.com/courses" data-attr="false"><span>Courses</span></a></li>
+                                                                    <li><a href="https://community.thefa.com/" target="_blank" aria-label="Community link opens in a new tab"><span>Community</span></a></li>
+                                                                    <li><a href="https://learn.englandfootball.com/sessions" data-attr="false"><span>Session Plans</span></a></li>
+                                                                    <li><a href="https://learn.englandfootball.com/" target="_blank" aria-label="England Football Learning link opens in a new tab"><span>England Football Learning</span></a></li>
+                                                                    <li><a href="/participate/learn/Brain-Health" data-attr="false"><span>Brain Health and Concussion Guidelines</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/participate/women-and-girls">Women and Girls</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-12" id="accordion-button-12">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-12" aria-labelledby="accordion-button-12">
+                                                                    <li><a href="/participate/women-and-girls/Play" data-attr="false"><span>Play</span></a></li>
+                                                                    <li><a href="/participate/women-and-girls/Get-Involved" data-attr="false"><span>Get Involved</span></a></li>
+                                                                    <li><a href="/participate/women-and-girls/Rising-Leaders" data-attr="false"><span>Rising Leaders</span></a></li>
+                                                                    <li><a href="https://www.englandfootball.com/play/Disability-Football" data-attr="false"><span>Disability Football</span></a></li>
+                                                                    <li><a href="https://femalehealthhub.englandfootball.com/" target="_blank" aria-label="Female Health Hub link opens in a new tab"><span>Female Health Hub</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/participate/leagues-and-clubs">Leagues &amp; Clubs</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-13" id="accordion-button-13">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-13" aria-labelledby="accordion-button-13">
+                                                                    <li><a href="/participate/leagues-and-clubs/Greener-Game" data-attr="false"><span>Greener Game</span></a></li>
+                                                                    <li><a href="/participate/leagues-and-clubs/england-football-accreditation" data-attr="false"><span>England Football Accredited</span></a></li>
+                                                                    <li><a href="/participate/leagues-and-clubs/Facilities-Guidance" data-attr="false"><span>Facilities Guidance</span></a></li>
+                                                                    <li><a href="/participate/leagues-and-clubs/Female-Football-at-Your-Club" data-attr="false"><span>Female Football</span></a></li>
+                                                                    <li><a href="/participate/leagues-and-clubs/county-football-associations" data-attr="false"><span>County FAs</span></a></li>
+                                                                    <li><a href="https://www.englandfootball.com/play/Disability-Football/training" data-attr="false"><span>Disability Training For Clubs</span></a></li>
+                                                                    <li><a href="/participate/leagues-and-clubs/helpful-apps-and-websites" data-attr="false"><span>Digitising the grassroots game</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="global-site-navigation__section-heading" data-attr="false" href="/participate/volunteer">Volunteer</a>
+
+                                                        <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-section-14" id="accordion-button-14">
+                                                        </button>
+                                                        <ul class="global-site-navigation__level3 accordion-section" id="accordion-section-14" aria-labelledby="accordion-button-14">
+                                                                    <li><a href="/participate/volunteer/Thinking-about-becoming-a-volunteer" data-attr="false"><span>Thinking about becoming a volunteer?</span></a></li>
+                                                                    <li><a href="/participate/volunteer/Celebrating-Volunteers" data-attr="false"><span>Celebrating Volunteers</span></a></li>
+                                                                    <li><a href="/participate/volunteer/Growing-Volunteers" data-attr="false"><span>Growing Volunteers</span></a></li>
+                                                                    <li><a href="/participate/volunteer/Young-Volunteers" data-attr="false"><span>Young Volunteers</span></a></li>
+                                                                    <li><a href="/participate/volunteer/Learning-and-Development-for-Volunteers" data-attr="false"><span>Learning &amp; Development for Volunteers</span></a></li>
+                                                                    <li><a href="/participate/volunteer/Volunteer-Conferences" data-attr="false"><span>Volunteer Conferences</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                <li>
+                                                    <ul class="global-site-navigation__section-heading--more">
+                                                                    <li><a href="/participate/coaches" data-attr="false">Coaches</a></li>
+                                                                    <li><a href="/participate/referees" data-attr="false">Referees</a></li>
+                                                                    <li><a href="/participate/Grassroots-Football-Awards" data-attr="false">Grassroots Football Awards</a></li>
+                                                                    <li><a href="/participate/England-Football-Providers" data-attr="false">England Football Programmes</a></li>
+                                                                    <li><a href="/participate/Cost-of-Living-Resource-Hub" data-attr="false">Cost of Living Resource Hub</a></li>
+                                                                    <li><a href="/participate/Greater-Game" data-attr="false">The Greater Game</a></li>
+                                                    </ul>
+                                                </li>
+                                        </ul>
+                                    </div>
+
+                            </li>
+                            <li class="global-site-navigation__level1 ">
+                                    <a href="https://find.englandfootball.com/" data-attr="false" aria-haspopup="false"><span>Find Football</span></a>
+
+                            </li>
+                            <li class="global-site-navigation__level1 ">
+                                    <a href="/News" data-attr="false" aria-haspopup="false"><span>News</span></a>
+
+                            </li>
+                            <li class="global-site-navigation__level1 ">
+                                    <a href="https://www.englandfootball.com/members/England" data-attr="false" aria-haspopup="false"><span>Membership</span></a>
+
+                            </li>
+                            <li class="global-site-navigation__level1 ">
+                                    <a href="https://learn.englandfootball.com/" data-attr="false" aria-haspopup="false"><span>Learning</span></a>
+
+                            </li>
+
+                </ul>
+                <ul>
+                </ul>
+
+                    <div class="global-site-navigation__bottom-link hidden">
+                        <a href="/members/England">
+                            <span>Be part of every moment with England+</span>
+                        </a>
+                    </div>
+            </nav>
+
+            <div class="container__content b2c-nav-container">
+                    <a href="/" class="site-search" aria-label="search"></a>
+                <div class="site-signin">
+                    <a class="user-login" role="menuitem" aria-label="My account" aria-haspopup="true" aria-controls="myaccount-nav" aria-expanded="false" tabindex="0"></a>
+                    <nav role="navigation" class="global-site-navigation__level2-wrapper site-myaccount-menus" id="myaccount-nav" data-lazy-background="https://cdn.englandfootball.com/-/media/EFLearning/Hero/menu-lion-watermark.png?h=464&amp;iar=0&amp;w=1440&amp;rev=1ad82dc944fa4e67936aca89b26caf19&amp;hash=6F2C15C4E60622668E4316755D78ED29" aria-label="Myaccount">
+                        <ul>
+                            <li>
+                                <p class="global-site-navigation__section-heading">My Account</p>
+                                <div class="my-account-not-loggedin">
+                                    <ul class="global-site-navigation__level3">
+                                                <li><a href="/account/signin?returnurl=https://www.englandfootball.com/estcprofile" class="" target="" aria-label="TravelClubBio">England supporters travel club</a></li>
+                                                <li><a href="/account/signin?returnurl=https%3a%2f%2fwww.englandfootball.com%2farticles%2f2026%2fJun%2f12%2fengland-mens-senior-team-marks-and-spencers-squad-photo-20261206" class="" target="" aria-label="Sign in to Account">Sign in to Account</a></li>
+                                                <li><a href="/account/signup?returnurl=https%3a%2f%2fwww.englandfootball.com%2farticles%2f2026%2fJun%2f12%2fengland-mens-senior-team-marks-and-spencers-squad-photo-20261206" class="" target="" aria-label="Register For an Account">Register For an Account</a></li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="my-account-loggedin hidden">
+                                    <ul class="global-site-navigation__level3">
+                                                    <li><a href="/estcprofile" class="" data-hide-age-limit="18" data-hide-redirect-tab="" aria-label="TravelClubBio">England supporters travel club</a></li>
+                                                    <li><a href="https://myaccount.thefa.com/#/" class="link-external" target="_blank" aria-label="Manage my account preferences">Manage my account preferences</a></li>
+                                                    <li><a href="/Account/SignOut?returnurl=https%3a%2f%2fwww.englandfootball.com%2farticles%2f2026%2fJun%2f12%2fengland-mens-senior-team-marks-and-spencers-squad-photo-20261206" class="" target="" aria-label="Sign out of Account">Sign out of Account</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                            <div class="global-site-navigation__bottom-link">
+                                <a href="/members/England">
+                                    <span>Be part of every moment with England+</span>
+                                </a>
+                            </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+</header>
+
+<main id="main-content" class="">
+    <div id="content">
+        
+<div data-brand="mens">
+
+    <div class="common-template article-page">
+            <div class="common-template__news-container">
+                    <div class="article-page__header">
+            <div class="published-date">Published 12 June 2026 <span>3 min read</span></div>
+                <div class="article-page__header--tag">Men&#x27;s Senior</div>
+        <h1 class="heading-section ">England men&#x27;s squad wear M&amp;S for official squad photo</h1>
+        <div class="article-page__header--author">
+            <p>Written by:</p>
+            <p>England Communications</p>
+        </div>
+    </div>
+
+            </div>
+            
+<div class="banner banner--h3 banner--gradient">
+            <picture>
+                <source media="(max-width: 600px)" srcset="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/June/Team-photo-338-20261106.png?h=600&amp;iar=0&amp;w=338&amp;rev=a70f5fad11d346d69c6b684eb26c7448&amp;hash=7596C81F1B782DECF36E5FEDD3DE1290">
+                <source media="(min-width: 600px)" srcset="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/June/Team-photo-1440-20261106.png?h=810&amp;iar=0&amp;w=1440&amp;rev=c7acc0ef7f1f404e87b7cc45d3570d15&amp;hash=838A13B39739253DF12E9A654510EA58">
+                <img alt="The England men&#x27;s senior team pose for the official M&amp;S team photo ahead of the World Cup" loading="lazy" src="https://cdn.englandfootball.com/-/jssmedia/EnglandFootball/Article/england/mens-senior-team/2026/June/Team-photo-338-20261106.png?h=600&amp;iar=0&amp;w=338&amp;rev=a70f5fad11d346d69c6b684eb26c7448&amp;hash=7596C81F1B782DECF36E5FEDD3DE1290" />
+            </picture>
+</div>
+
+            <div class="share">
+        <div class="share__fallback" data-behavior="share-fallback">
+            <p>Share</p>
+            <ul class="share__options">
+                <li>
+                    <button data-behavior="copy-url" aria-label="Copy page link">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-copy-icon.svg?iar=0&amp;rev=c443f7261ac941a9b0058b9b4506f738&amp;hash=14DB7CDD25717693D5393C8C72D62FAE" alt="Copy url" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Copy page link</span>
+                    </button>
+                </li>
+                <li>
+                    <a class="fb-button" href="https://www.facebook.com/sharer.php?u=https://www.englandfootball.com/articles/2026/jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" area-label="Facebook. Opens in new tab" target="_blank">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-facebook-icon.svg?iar=0&amp;rev=fe0908cfd782497186b49c5d5ac2ad35&amp;hash=B06D7D0342FD4FA95F2737EC93F414CB)" alt="Facebook" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Share on Facebook</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="tiktok-button" href="https://www.tiktok.com/@england?lang=enhttps://www.englandfootball.com/articles/2026/jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" area-label="TikTok. Opens in new tab" target="_blank">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-tiktok-icon.svg?iar=0&amp;rev=2ecbf7a0d26246b88899998457e93afb&amp;hash=5F024215B4A0C69B32FC335A425B2570)" alt="TikTok" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Share on TikTok</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="instagram-button" href="https://www.instagram.com/englandhttps://www.englandfootball.com/articles/2026/jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" area-label="Instagram. Opens in new tab" target="_blank">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-instagram-icon.svg?iar=0&amp;rev=4d517be13036490fa2d7bcb31e46ba1e&amp;hash=B183F5776AAAD86EAFA405BBD0546607)" alt="Instagram" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Share on Instagram</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="twitter-button" href="https://twitter.com/intent/tweet?url=https://www.englandfootball.com/articles/2026/jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" area-label="Tweeter. Opens in new tab" target="_blank">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-twitter-icon.svg?iar=0&amp;rev=87db3c2e1ab642cda6c2061288996d6b&amp;hash=0D81112AC6712941F009BE9CF7EC30AD)" alt="twitter" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Share on X</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="whatsapp-button" href="https://wa.me/?text=https://www.englandfootball.com/articles/2026/jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" area-label="Whatsapp. Opens in new tab" target="_blank">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-whatsapp-icon.svg?iar=0&amp;rev=fd3667442ccc42cc89189c792758ad52&amp;hash=33EA57EFA590C353AC9D4217BC475BCF)" alt="WhatsApp" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Share on Whatsapp</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <button class="share__native" data-behavior="share-native">
+            <span>Share</span>
+            <noscript class="loading-lazy">
+                <img src="/assets/images/share-icon.svg?v=yYYrlxoTizp-ubEpvLz1TTtJogDcJYwAmfu92NV7hfQ" alt="Share" loading="lazy" />
+            </noscript>
+        </button>
+    </div>
+
+        <div class="common-template__news-container">
+                <div class="rte-content rte-content--lead">
+        <h2>The Three Lions wear the Marks &amp; Spencers x England edit ahead of this summer's tournament</h2>
+    </div>
+    <div class="rte-content rte-content--normal">
+        <p><strong>A partnership rooted in shared pride, heritage and a belief in football&rsquo;s power to bring people together.</strong></p>
+<p>First established in 2007, when M&amp;S became the official suit supplier to our England senior men&rsquo;s team, its long-standing relationship with the FA enters a new chapter in 2026.</p>
+<p>As official formalwear partner, M&amp;S introduces the M&amp;S x England edit - a modern, modular wardrobe designed for life off the pitch.</p>
+<p>Defined by elevated, tailored style, the collection blends signature British design with purpose-built functionality, created for the global stage. Built for movement, presence and impact, the wardrobe is designed for life on the move, reinforcing that style and function transcend the game.</p>
+<p>Football is the most-watched sport among M&amp;S customers, with 75 per cent* actively following the game, underscoring a strong audience connection. With 77 per cent of men and 49 per cent* of women planning to watch this summer&rsquo;s tournament, the partnership reflects football&rsquo;s unmatched scale and appeal.</p>
+    </div>
+<figure class="image-with-caption">
+        <picture>
+            <source media="(max-width: 800px)" srcset="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/June/Team-photo-485-20261106.png?h=656&amp;iar=0&amp;w=485&amp;rev=51cf9223bc36430ca6d7da8fb0903289&amp;hash=94DA6794A57D0BC075E87322AB8A64CA">
+            <source media="(min-width: 801px)" srcset="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/June/Team-photo-952-20261106.png?h=536&amp;iar=0&amp;w=952&amp;rev=375f5b5f1047445dae97e07167343bcd&amp;hash=DE6408E6502C7D30ECBA62FEC861641A">
+            <img alt="M&amp;S are the official formalwear partner" loading="lazy" src="https://cdn.englandfootball.com/-/jssmedia/EnglandFootball/Article/england/mens-senior-team/2026/June/Team-photo-952-20261106.png?h=536&amp;iar=0&amp;w=952&amp;rev=375f5b5f1047445dae97e07167343bcd&amp;hash=DE6408E6502C7D30ECBA62FEC861641A" alt="The England men&#x27;s senior team pose for the official M&amp;S team photo ahead of the World Cup" />
+        </picture>
+        <figcaption>M&amp;S are the official formalwear partner</figcaption>
+</figure>
+
+    <div class="rte-content rte-content--normal">
+        <p>With a clear passion for football among M&amp;S customers, and a new generation of inspiring role models across the England teams, the partnership celebrates individuality and the collection is designed to bridge the gap between players and customers.<br>
+<br>
+Mitch Hughes, M&amp;S director of menswear, said: “Our long-standing partnership with the FA continues to evolve, and this collection starts a new chapter in our approach to modern formalwear for the England senior men’s team.<br>
+<br>
+“Designed as a refined 12-piece edit, it balances elevated tailoring with versatile staples that move seamlessly beyond the pitch. Ease and functionality remain central, with technical details including bi-stretch fabrication for comfort - great for travelling - alongside breathable and storm-wear finishes, suited to unpredictable weather conditions.<br>
+<br>
+“This season the focus has been on creating a flexible wardrobe that gives players the freedom to express their individual style while still delivering a strong, cohesive look"<br>
+<br>
+FA commercial director, James Gray, added: “Our partnership with M&amp;S, established in 2007, continues to reflect a shared commitment to football and to England supporters.<br>
+<br>
+“This next phase builds on that long-standing relationship and supports how the England men’s team is represented on the global stage. The collection has been developed with the squad in mind, and we expect it to be positively received by both players and supporters.”</p>
+    </div>
+
+        </div>
+        
+        <section class="large-video-player container">
+            <div class="large-video-player__inner container__content">
+                <div class="large-video-player__content">
+                    <div class="large-video-player__video-wrap">
+
+                            <iframe src="https://www.youtube.com/embed/H0NhCq1yIn8"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    title="youtube video"
+                                    allowfullscreen></iframe>
+
+                    </div>
+                    <div class="large-video-player__video-info">
+                        <div class="datetime-info">
+                            <span class="date">15 Jun 2026</span>
+                            <span class="duration">8:04</span>
+                        </div>
+                        <h3 class="title">
+                            Three Lions fitted up!
+                        </h3>
+                        <hr />
+                        <p class="description">
+                            Go behind the scenes at the squad&#x27;s suit fitting for their M&amp;S World Cup suits
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="common-template__news-container">
+            
+    <div class="rte-content rte-content--normal">
+        <p><strong>THE COLLECTION</strong></p>
+<p>Featuring 12 pieces, the M&amp;S x England edit is available online now and in selected stores across the UK. Bringing together elevated and versatile tailoring staples, the collection delivers a sharp, contemporary aesthetic designed for effortless styling and everyday functionality.</p>
+<p>Anchored in a refined palette of navy, stone and beige, the edit presents a confident, mod<a title="Hyperlink Manager" class="reTool" href="/EditorPage.aspx?da=core&amp;id=%7BA3D04C77-72A0-4CE4-B39C-993D1FD958D3%7D&amp;ed=FIELD627219227&amp;vs&amp;la=en&amp;fld=%7B5098B799-31DD-4C1B-9955-3E8598CAA21F%7D&amp;so=%2Fsitecore%2Fsystem%2FSettings%2FHtml%20Editor%20Profiles%2FRich%20Text%20Full&amp;di=0&amp;hdl=H627219238&amp;mo&amp;pe=0&amp;fbd=1#" unselectable="on"><span class="LinkManager" unselectable="on"></span></a>ern wardrobe built for now. Hero outerwear, from the funnel jacket to the blazer and Harrington, sets the tone, layered effortlessly over clean crew necks and merino polos. Tailored and relaxed trousers offer versatility, while leather and suede loafers ground each look with understated ease.</p>
+<p>All pieces sit within the Autograph range, blending premium materials, contemporary cuts and timeless style with the quality, value and versatility that define modern M&amp;S dressing. Designed to move seamlessly between moments, the collection delivers a modern uniform rooted in comfort, functionality and considered style at exceptional value.</p>
+<p>*Data from M&amp;S Customer Pulse Platform</p>
+<p>&nbsp;</p>
+<br />
+    </div>
+    <section class="carousel-widget container">
+        <div class="container__content">
+            <div class="container__header">
+                <h2 class="heading-section ">ENGLAND MEN&#x27;S NEWS &amp; FEATURES</h2>
+            </div>
+            <div class="carousel-widget__content">
+                <div class="tabbed-carousel" data-behavior="tabs-with-carousel">
+                    <div class="tabbed-carousel__navigation">
+                        <div class="tabbed-carousel__tab-list" role="tablist" aria-label="tabbed list">
+                                <a href="#panel-SEEMORE" role="tab" aria-selected="true" aria-controls="panel-SEEMORE" id="tab-SEEMORE" tabindex="0" data-behavior="SEEMORE">
+                                    SEE MORE
+                                </a>
+                        </div>
+                        <div class="tabbed-carousel__select-list">
+                            <select data-behavior="tabbed-carousel-select-list">
+
+                                        <option selected value="SEEMORE">SEE MORE</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="tabbed-carousel__tab-panels">
+                            <div id="panel-SEEMORE" role="tabpanel" tabindex="0" aria-labelledby="tab-SEEMORE" data-tab-label="see more">
+                                <div class="carousel" data-behavior="carousel-SEEMORE">
+<div>                                                    
+
+    <button class="content-card content-card--video" id="video-dialog-label" data-behavior="video-lightbox"
+        data-video-id="wkc9uZF90w4" data-poster-image="">
+        <div class="content-card__image-bg">
+            <noscript class="loading-lazy">
+                <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/VideoThumbnail/Features/2026/20261012-Best-of-Camp.jpg?h=228&amp;iar=0&amp;w=274&amp;rev=ae47605727454cdba8bd014685608ec8&amp;hash=1B3AE5FB4C031B2A95282AE1A022D791" loading="lazy" alt="" />
+            </noscript>
+        </div>
+        <div class="time">14:26 <span> video</span></div>
+        <div class="content-card__content">
+            <div class="content-card__content--dark-gradient no-sponsor">
+            </div>
+            <div class="content-card__content--info">
+                <div class="sponsored-label">Men&#x27;s Senior</div>
+                    <p class="title">Best of Camp: Kane makes history. Bellingham shines. Gordon&#x2019;s goals.</p>
+                <hr />
+                <div class="dateduration-wrap">
+                    <span class="date">10 Oct 2026</span>
+                </div>
+            </div>
+        </div>
+    </button>
+
+                                                <a href="/articles/2026/Apr/23/james-trafford-origins-grassroots-story-20262304" class="content-card content-card--article" aria-label="Origins: James Trafford">
+                                                    
+<div class="content-card__image-bg">
+    <noscript class="loading-lazy">
+        <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/April/20262304-1440-james-trafford.jpg?h=810&amp;iar=0&amp;w=1440&amp;rev=4a7b7c60d5a749b09e4c560892fe5853&amp;hash=C1A7A040A6999183060BB88E4C782950" loading="lazy" alt="" />
+    </noscript>
+</div>
+<div class="time">5 min <span> read</span></div>
+<div class="content-card__content">
+    <div class="content-card__content--dark-gradient no-sponsor">
+    </div>
+    <div class="content-card__content--info">
+        <div class="sponsored-label"></div>
+            <p class="title">Origins: James Trafford</p>
+        <hr />
+        <div class="dateduration-wrap">
+            <span class="date">10 Oct 2026</span>
+        </div>
+    </div>
+</div>
+                                                    
+                                                </a>
+                                                    
+
+    <button class="content-card content-card--video" id="video-dialog-label" data-behavior="video-lightbox"
+        data-video-id="kJEY-UFTDk8" data-poster-image="">
+        <div class="content-card__image-bg">
+            <noscript class="loading-lazy">
+                <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/VideoThumbnail/Highlights/2026/20261008-Highlights-England-3-0-Czechia.jpg?h=228&amp;iar=0&amp;w=274&amp;rev=12c37d674582425a9186f34d017a3925&amp;hash=0E309272B77460728F4A25FAA51723BC" loading="lazy" alt="" />
+            </noscript>
+        </div>
+        <div class="time">3:21 <span> video</span></div>
+        <div class="content-card__content">
+            <div class="content-card__content--dark-gradient no-sponsor">
+            </div>
+            <div class="content-card__content--info">
+                <div class="sponsored-label">Men&#x27;s Senior</div>
+                    <p class="title">Highlights: England 3-0 Czechia</p>
+                <hr />
+                <div class="dateduration-wrap">
+                    <span class="date">8 Oct 2026</span>
+                </div>
+            </div>
+        </div>
+    </button>
+
+                                                <a href="/articles/2026/Oct/06/england-czechia-uefa-nations-league-jude-bellingham-reaction-20260610" class="content-card content-card--article" aria-label="Bellingham: Kane is only getting better">
+                                                    
+<div class="content-card__image-bg">
+    <noscript class="loading-lazy">
+        <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/October/Czechia-H/1440-Kane-Bellingham-20260610.jpg?h=810&amp;iar=0&amp;w=1440&amp;rev=48771bd06aca4f1b8f929f58e06d5663&amp;hash=4620FF9559F9FE32E5580AAC885FC6DD" loading="lazy" alt="" />
+    </noscript>
+</div>
+<div class="time">3 min <span> read</span></div>
+<div class="content-card__content">
+    <div class="content-card__content--dark-gradient no-sponsor">
+    </div>
+    <div class="content-card__content--info">
+        <div class="sponsored-label"></div>
+            <p class="title">Bellingham: Kane is only getting better</p>
+        <hr />
+        <div class="dateduration-wrap">
+            <span class="date">6 Oct 2026</span>
+        </div>
+    </div>
+</div>
+                                                    
+                                                </a>
+</div><div>                                                <a href="/articles/2026/Oct/06/england-czechia-uefa-nations-league-post-match-stats-20260610" class="content-card content-card--article" aria-label="Stats and records from England 3-0 Czechia">
+                                                    
+<div class="content-card__image-bg">
+    <noscript class="loading-lazy">
+        <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/October/Czechia-H/20260610-england-players-high-five-1440.png?h=810&amp;iar=0&amp;w=1440&amp;rev=43b0f0deed3641b190d05be56b0ebf3d&amp;hash=65D4BBE87741A089459841A219C89D05" loading="lazy" alt="" />
+    </noscript>
+</div>
+<div class="time">4 min <span> read</span></div>
+<div class="content-card__content">
+    <div class="content-card__content--dark-gradient no-sponsor">
+    </div>
+    <div class="content-card__content--info">
+        <div class="sponsored-label"></div>
+            <p class="title">Stats and records from England 3-0 Czechia</p>
+        <hr />
+        <div class="dateduration-wrap">
+            <span class="date">6 Oct 2026</span>
+        </div>
+    </div>
+</div>
+                                                    
+                                                </a>
+                                                <a href="/articles/2026/Oct/06/england-czechia-uefa-nations-league-thomas-tuchel-reaction-20260610" class="content-card content-card--article" aria-label="Tuchel: &#x2018;We&#x2019;re on a high level&#x2019;">
+                                                    
+<div class="content-card__image-bg">
+    <noscript class="loading-lazy">
+        <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/October/Czechia-H/20260610-thomas-tuchel-1440.png?h=810&amp;iar=0&amp;w=1440&amp;rev=c757c283ddbb4ae5b0b0f5811ab5bd84&amp;hash=F895314256B5102808A81F80D33984B7" loading="lazy" alt="" />
+    </noscript>
+</div>
+<div class="time">4 min <span> read</span></div>
+<div class="content-card__content">
+    <div class="content-card__content--dark-gradient no-sponsor">
+    </div>
+    <div class="content-card__content--info">
+        <div class="sponsored-label"></div>
+            <p class="title">Tuchel: &#x2018;We&#x2019;re on a high level&#x2019;</p>
+        <hr />
+        <div class="dateduration-wrap">
+            <span class="date">6 Oct 2026</span>
+        </div>
+    </div>
+</div>
+                                                    
+                                                </a>
+                                                <a href="/articles/2026/Oct/06/england-czechia-uefa-nations-league-harry-kane-reaction-20260610" class="content-card content-card--article" aria-label="Kane on his &#x2018;perfect night&#x2019; against Czechia">
+                                                    
+<div class="content-card__image-bg">
+    <noscript class="loading-lazy">
+        <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/October/Czechia-H/20260610-kane-celebrates-his-second-1440.png?h=810&amp;iar=0&amp;w=1440&amp;rev=82f77dac234540cb8d852fc636220e75&amp;hash=8A0672C89E1A9F2C2C0056C001212A35" loading="lazy" alt="" />
+    </noscript>
+</div>
+<div class="time">3 min <span> read</span></div>
+<div class="content-card__content">
+    <div class="content-card__content--dark-gradient no-sponsor">
+    </div>
+    <div class="content-card__content--info">
+        <div class="sponsored-label"></div>
+            <p class="title">Kane on his &#x2018;perfect night&#x2019; against Czechia</p>
+        <hr />
+        <div class="dateduration-wrap">
+            <span class="date">6 Oct 2026</span>
+        </div>
+    </div>
+</div>
+                                                    
+                                                </a>
+                                                <a href="/articles/2026/Oct/06/harry-kane-england-career-in-numbers-20260610" class="content-card content-card--article" aria-label="Harry Kane&#x27;s England career in numbers">
+                                                    
+<div class="content-card__image-bg">
+    <noscript class="loading-lazy">
+        <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/October/20260610-harry-kane-czechia-cele-1440.jpg?h=810&amp;iar=0&amp;w=1440&amp;rev=bca5be5728b94395a24b111502e970e9&amp;hash=49A77F9CAADE83D506EC4803A851DC8C" loading="lazy" alt="" />
+    </noscript>
+</div>
+<div class="time">5 min <span> read</span></div>
+<div class="content-card__content">
+    <div class="content-card__content--dark-gradient no-sponsor">
+    </div>
+    <div class="content-card__content--info">
+        <div class="sponsored-label"></div>
+            <p class="title">Harry Kane&#x27;s England career in numbers</p>
+        <hr />
+        <div class="dateduration-wrap">
+            <span class="date">6 Oct 2026</span>
+        </div>
+    </div>
+</div>
+                                                    
+                                                </a>
+</div><div>                                                <a href="/articles/2022/Aug/22/england-mens-senior-all-time-record-appearances-international-caps" class="content-card content-card--article" aria-label="Harry Kane equals England men&#x27;s cap record">
+                                                    
+<div class="content-card__image-bg">
+    <noscript class="loading-lazy">
+        <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2026/October/Czechia-H/20260610-1440-kane-shilton-asset.png?h=811&amp;iar=0&amp;w=1440&amp;rev=3d2db9dfeb214586955ddd99779d3ff7&amp;hash=8BBF43DA96FE15E2CA413244073B4AD3" loading="lazy" alt="" />
+    </noscript>
+</div>
+<div class="time">5 min <span> read</span></div>
+<div class="content-card__content">
+    <div class="content-card__content--dark-gradient no-sponsor">
+    </div>
+    <div class="content-card__content--info">
+        <div class="sponsored-label"></div>
+            <p class="title">Harry Kane equals England men&#x27;s cap record</p>
+        <hr />
+        <div class="dateduration-wrap">
+            <span class="date">6 Oct 2026</span>
+        </div>
+    </div>
+</div>
+                                                    
+                                                </a>
+                                                <a href="/articles/2021/Nov/15/england-mens-all-time-record-goalscorers-20211115" class="content-card content-card--article" aria-label="England men&#x27;s all-time record goalscorers list">
+                                                    
+<div class="content-card__image-bg">
+    <noscript class="loading-lazy">
+        <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/Article/england/mens-senior-team/2023/March/20240324-harry-kane-graphic-1440.jpg?h=810&amp;iar=0&amp;w=1440&amp;rev=0dd890580e5147a48e5b5861d9dc7957&amp;hash=B274B4FDAB73F84E0CCEE436F8AB567E" loading="lazy" alt="" />
+    </noscript>
+</div>
+<div class="time">5 min <span> read</span></div>
+<div class="content-card__content">
+    <div class="content-card__content--dark-gradient no-sponsor">
+    </div>
+    <div class="content-card__content--info">
+        <div class="sponsored-label"></div>
+            <p class="title">England men&#x27;s all-time record goalscorers list</p>
+        <hr />
+        <div class="dateduration-wrap">
+            <span class="date">6 Oct 2026</span>
+        </div>
+    </div>
+</div>
+                                                    
+                                                </a>
+                                                    
+
+    <button class="content-card content-card--video" id="video-dialog-label" data-behavior="video-lightbox"
+        data-video-id="Tkx5qWl3TiU" data-poster-image="">
+        <div class="content-card__image-bg">
+            <noscript class="loading-lazy">
+                <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/VideoThumbnail/Features/2026/20261006-Training-day.jpg?h=228&amp;iar=0&amp;w=274&amp;rev=c4e38359af5047f69e04812f928141ab&amp;hash=50263522089C3A2107AE3858FF5F9AA3" loading="lazy" alt="" />
+            </noscript>
+        </div>
+        <div class="time">5:24 <span> video</span></div>
+        <div class="content-card__content">
+            <div class="content-card__content--dark-gradient no-sponsor">
+            </div>
+            <div class="content-card__content--info">
+                <div class="sponsored-label">Men&#x27;s Senior</div>
+                    <p class="title">A day in the life of Rio Ngumoha</p>
+                <hr />
+                <div class="dateduration-wrap">
+                    <span class="date">6 Oct 2026</span>
+                </div>
+            </div>
+        </div>
+    </button>
+
+                                                    
+
+    <button class="content-card content-card--video" id="video-dialog-label" data-behavior="video-lightbox"
+        data-video-id="P6oRQE6yeaE" data-poster-image="">
+        <div class="content-card__image-bg">
+            <noscript class="loading-lazy">
+                <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/VideoThumbnail/Features/2026/20261006-players-react-to-FC27-card.jpg?h=228&amp;iar=0&amp;w=274&amp;rev=198cc14154ec465fbb487acd1641ea42&amp;hash=4B1AA951840BA26D177657DF55E1AF97" loading="lazy" alt="" />
+            </noscript>
+        </div>
+        <div class="time">17:06 <span> video</span></div>
+        <div class="content-card__content">
+            <div class="content-card__content--dark-gradient no-sponsor">
+            </div>
+            <div class="content-card__content--info">
+                <div class="sponsored-label">Men&#x27;s Senior</div>
+                    <p class="title">EA Sports FC 27 Ratings Reveal</p>
+                <hr />
+                <div class="dateduration-wrap">
+                    <span class="date">6 Oct 2026</span>
+                </div>
+            </div>
+        </div>
+    </button>
+
+</div><div>                                                    
+
+    <button class="content-card content-card--video" id="video-dialog-label" data-behavior="video-lightbox"
+        data-video-id="vykFPRLd_Og" data-poster-image="">
+        <div class="content-card__image-bg">
+            <noscript class="loading-lazy">
+                <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/VideoThumbnail/Features/2026/20261005-Highlights---Croatia-0-7-England.jpg?h=228&amp;iar=0&amp;w=274&amp;rev=439ed2b2477c48018535ece927143248&amp;hash=5EFD6BD33213FB208B49A08E7B19EFF0" loading="lazy" alt="" />
+            </noscript>
+        </div>
+        <div class="time">3:14 <span> video</span></div>
+        <div class="content-card__content">
+            <div class="content-card__content--dark-gradient no-sponsor">
+            </div>
+            <div class="content-card__content--info">
+                <div class="sponsored-label">Men&#x27;s Senior</div>
+                    <p class="title">Highlights: Croatia 0-7 England</p>
+                <hr />
+                <div class="dateduration-wrap">
+                    <span class="date">5 Oct 2026</span>
+                </div>
+            </div>
+        </div>
+    </button>
+
+                                                    
+
+    <button class="content-card content-card--video" id="video-dialog-label" data-behavior="video-lightbox"
+        data-video-id="4ia2eeyAWAE" data-poster-image="">
+        <div class="content-card__image-bg">
+            <noscript class="loading-lazy">
+                <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/VideoThumbnail/Features/2026/20261005-Tunnel-Cam-v-Croatia.jpg?h=228&amp;iar=0&amp;w=274&amp;rev=80305b48d8ef4231844ae087d712c196&amp;hash=9CB4F0CFAB78B7A3183D6CE61212ADCC" loading="lazy" alt="" />
+            </noscript>
+        </div>
+        <div class="time">8:09 <span> video</span></div>
+        <div class="content-card__content">
+            <div class="content-card__content--dark-gradient no-sponsor">
+            </div>
+            <div class="content-card__content--info">
+                <div class="sponsored-label">Men&#x27;s Senior</div>
+                    <p class="title">Croatia v England | Tunnel Cam</p>
+                <hr />
+                <div class="dateduration-wrap">
+                    <span class="date">5 Oct 2026</span>
+                </div>
+            </div>
+        </div>
+    </button>
+
+                                                    
+
+    <button class="content-card content-card--video" id="video-dialog-label" data-behavior="video-lightbox"
+        data-video-id="qZTJfvfqzLc" data-poster-image="">
+        <div class="content-card__image-bg">
+            <noscript class="loading-lazy">
+                <img src="https://cdn.englandfootball.com/-/media/EnglandFootball/VideoThumbnail/Features/2026/20261005-Inside-Training.jpg?h=228&amp;iar=0&amp;w=274&amp;rev=d25e373795204a4fa28620080ab38f4b&amp;hash=73911C4C74A7E3921B21CBC31F0BC9F0" loading="lazy" alt="" />
+            </noscript>
+        </div>
+        <div class="time">17:08 <span> video</span></div>
+        <div class="content-card__content">
+            <div class="content-card__content--dark-gradient no-sponsor">
+            </div>
+            <div class="content-card__content--info">
+                <div class="sponsored-label">Men&#x27;s Senior</div>
+                    <p class="title">Inside Training: Saka vs Eze wall ball. Gibbs-White on fire. Free kicks &amp; sprint comps</p>
+                <hr />
+                <div class="dateduration-wrap">
+                    <span class="date">4 Oct 2026</span>
+                </div>
+            </div>
+        </div>
+    </button>
+
+                                                    
+
+    <button class="content-card content-card--video" id="video-dialog-label" data-behavior="video-lightbox"
+        data-video-id="TnGV_aD29rw" data-poster-image="">
+        <div class="content-card__image-bg">
+            <noscript class="loading-lazy">
+                <img loading="lazy" alt="" />
+            </noscript>
+        </div>
+        <div class="time">13:34 <span> video</span></div>
+        <div class="content-card__content">
+            <div class="content-card__content--dark-gradient no-sponsor">
+            </div>
+            <div class="content-card__content--info">
+                <div class="sponsored-label">Men&#x27;s Senior</div>
+                    <p class="title">Best Of Camp | Knock Out Stages</p>
+                <hr />
+                <div class="dateduration-wrap">
+                    <span class="date">21 Jul 2022</span>
+                </div>
+            </div>
+        </div>
+    </button>
+
+</div>
+                                </div>
+                            </div>
+
+
+                        <div class="carousel-nav-block">
+                            <div class="carousel-nav-wrapper">
+                                <div class="tabbed-carousel__navigation-bottom">
+                                    <div role="tablist" class="tabbed-carousel__pagination carousel__pagination"></div>
+                                </div>
+                                <div class="tabbed-carousel__arrows-wrap">
+                                    <button aria-label="Previous" class="carousel__cta carousel__prev tabbed-carousel__prev disabled">
+                                        <span class="visually-hidden">Previous page</span>
+                                        <svg fill="none" viewBox="0 0 10 17" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="m9.2722 9.3355-6.75 6.75c-0.46089 0.4609-1.2087 0.4609-1.6706 0-0.46089-0.4609-0.46089-1.2097 0-1.6706l5.9146-5.9146-5.9146-5.9146c-0.46089-0.46089-0.46089-1.2097 0-1.6706 0.46194-0.46089 1.2097-0.46089 1.6706 0l6.75 6.75c0.46194 0.46089 0.46194 1.2097 0 1.6706v-1.4e-4z" fill="currentColor" />
+                                        </svg>
+                                    </button>
+                                    <button aria-label="Next" class="carousel__cta carousel__next tabbed-carousel__next">
+                                        <span class="visually-hidden">Next page</span>
+                                        <svg fill="none" viewBox="0 0 10 17" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="m9.2722 9.3355-6.75 6.75c-0.46089 0.4609-1.2087 0.4609-1.6706 0-0.46089-0.4609-0.46089-1.2097 0-1.6706l5.9146-5.9146-5.9146-5.9146c-0.46089-0.46089-0.46089-1.2097 0-1.6706 0.46194-0.46089 1.2097-0.46089 1.6706 0l6.75 6.75c0.46194 0.46089 0.46194 1.2097 0 1.6706v-1.4e-4z" fill="currentColor" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                <div class="share">
+        <div class="share__fallback" data-behavior="share-fallback">
+            <p>Share</p>
+            <ul class="share__options">
+                <li>
+                    <button data-behavior="copy-url" aria-label="Copy page link">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-copy-icon.svg?iar=0&amp;rev=c443f7261ac941a9b0058b9b4506f738&amp;hash=14DB7CDD25717693D5393C8C72D62FAE" alt="Copy url" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Copy page link</span>
+                    </button>
+                </li>
+                <li>
+                    <a class="fb-button" href="https://www.facebook.com/sharer.php?u=https://www.englandfootball.com/articles/2026/jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" area-label="Facebook. Opens in new tab" target="_blank">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-facebook-icon.svg?iar=0&amp;rev=fe0908cfd782497186b49c5d5ac2ad35&amp;hash=B06D7D0342FD4FA95F2737EC93F414CB)" alt="Facebook" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Share on Facebook</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="tiktok-button" href="https://www.tiktok.com/@england?lang=enhttps://www.englandfootball.com/articles/2026/jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" area-label="TikTok. Opens in new tab" target="_blank">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-tiktok-icon.svg?iar=0&amp;rev=2ecbf7a0d26246b88899998457e93afb&amp;hash=5F024215B4A0C69B32FC335A425B2570)" alt="TikTok" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Share on TikTok</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="instagram-button" href="https://www.instagram.com/englandhttps://www.englandfootball.com/articles/2026/jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" area-label="Instagram. Opens in new tab" target="_blank">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-instagram-icon.svg?iar=0&amp;rev=4d517be13036490fa2d7bcb31e46ba1e&amp;hash=B183F5776AAAD86EAFA405BBD0546607)" alt="Instagram" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Share on Instagram</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="twitter-button" href="https://twitter.com/intent/tweet?url=https://www.englandfootball.com/articles/2026/jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" area-label="Tweeter. Opens in new tab" target="_blank">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-twitter-icon.svg?iar=0&amp;rev=87db3c2e1ab642cda6c2061288996d6b&amp;hash=0D81112AC6712941F009BE9CF7EC30AD)" alt="twitter" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Share on X</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="whatsapp-button" href="https://wa.me/?text=https://www.englandfootball.com/articles/2026/jun/12/england-mens-senior-team-marks-and-spencers-squad-photo-20261206" area-label="Whatsapp. Opens in new tab" target="_blank">
+                        <noscript class="loading-lazy">
+                            <img src="https://cdn.englandfootball.com/-/media/Latest-Social-Media/icons/share-whatsapp-icon.svg?iar=0&amp;rev=fd3667442ccc42cc89189c792758ad52&amp;hash=33EA57EFA590C353AC9D4217BC475BCF)" alt="WhatsApp" loading="lazy" />
+                        </noscript>
+                        <span class="tooltip">Share on Whatsapp</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <button class="share__native" data-behavior="share-native">
+            <span>Share</span>
+            <noscript class="loading-lazy">
+                <img src="/assets/images/share-icon.svg?v=yYYrlxoTizp-ubEpvLz1TTtJogDcJYwAmfu92NV7hfQ" alt="Share" loading="lazy" />
+            </noscript>
+        </button>
+    </div>
+
+        </div>
+    </div>
+</div>
+
+        <!-- Placeholder 'eng-footer-sponsors' was empty. -->
+    </div>
+</main>
+
+    <footer class="footer-section">
+            <section class="container">
+        <div class="footer-socialsection">
+            <nav class="footer-subnav" aria-label="Footer">
+                <ul>
+                        <li><a href="https://cdn.englandfootball.com/-/media/EnglandFootball/Files/the-fa-slavery-human-trafficking-statement-2020.pdf?rev=ccb87a8b4cb641e3a4c7cd8f3ff5182d" rel="noopener noreferrer" target="_blank" title="Anti-Slavery">Anti-Slavery</a></li>
+                        <li><a href="https://www.thefa.com/public/privacy" rel="noopener noreferrer" target="_blank" title="Privacy Policy">Privacy Policy</a></li>
+                        <li><a href="https://www.thefa.com/public/terms" rel="noopener noreferrer" target="_blank" title="Term of use">Term of use</a></li>
+                        <li><a href="https://www.thefa.com/about-football-association/contact-us-fa" rel="noopener noreferrer" target="_blank" title="Contact Us">Contact Us</a></li>
+                    <li>
+                        <!-- OneTrust Cookies Settings button start -->
+                        <a id="ot-sdk-btn ot-sdk-fnav" tabindex="0" class="ot-sdk-show-settings" style="cursor:pointer">Cookies Settings</a>
+                        <!-- OneTrust Cookies Settings button end -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footerstrip">
+            <div class="footer-icons">
+
+                        <img alt="The FA" loading="lazy" src="https://cdn.englandfootball.com/-/jssmedia/EnglandFootball/Logos/fa.png?h=41&amp;iar=0&amp;w=29&amp;rev=37b913fd33cd4ed8ad75c10ea76589af&amp;hash=9C4C63821C04FB62C7848DE29079518E" />
+                        <img alt="England Football" loading="lazy" src="https://cdn.englandfootball.com/-/jssmedia/EnglandFootball/Logos/ef_logo.png?h=41&amp;iar=0&amp;w=34&amp;rev=9290f386d3d9449c9a986dd2ac2901ca&amp;hash=692A9783770AFEB07BCCE22B4EB4D639" />
+                        <img alt="England" loading="lazy" src="https://cdn.englandfootball.com/-/jssmedia/EnglandFootball/Logos/england-badge.svg?iar=0&amp;rev=c81ec77ab20d433281e18c593756ce24&amp;hash=760C4AC75F1B96FAFDE21ACFA3EA7572" />
+            </div>
+        </div>
+    </section>
+    <div class="footer-bottom">
+        <span>The Football Association &#xA9; 2001 - 2026- All Rights Reserved</span>
+    </div>
+
+    </footer>
+
+    <!-- Placeholder 'eng-search' was empty. -->
+    <script src="/js/main.bundle.js?v=DRPLgVMVyz8u3ZxpZ9Fg1BlCDQNGgo1OTMiyGxKo2XI"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+</body>
+</html>

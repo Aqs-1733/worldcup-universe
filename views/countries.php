@@ -1,15 +1,6 @@
-<?php /** Compact country cover; the globe remains the interactive centrepiece. */ ?>
+<?php /** Compact country cover and navigable directory. */ $this->title='国家与主办城市'; ?>
 <?= $this->render('/catalog/_masthead',['heading'=>'国家与主办城市','photo'=>'vancouver','photoLabel'=>'温哥华城市全景','class'=>'countries-cover']) ?>
 <section class="hero-grid country-hero reveal">
-  <div class="hero-panel travel-hero">
-
-
-
-    <div class="hero-actions">
-      <a class="primary-button" href="#country-list">探索国家</a>
-      <a class="ghost-button" href="#host-cities">主办城市</a>
-    </div>
-  </div>
   <div class="globe-card globe-card-3d" data-globe-3d>
     <div class="globe-toolbar">
       <span>交互式地球</span>
@@ -42,47 +33,4 @@
 <?php $library=json_decode(file_get_contents(ROOT_PATH.'/public/assets/media/photos/library.json'),true); ?>
 <section id="host-cities" class="section"><div class="section-head"><h2>主办城市与球场</h2><a href="/credits">摄影来源 ↗</a></div><div class="venue-gallery"><?php foreach($library as $photo): ?><article class="thumb"><button class="image" type="button" data-gallery-image="<?= e($photo['path']) ?>" data-photo-title="<?= e($photo['label']) ?>" data-photo-source="<?= e(safe_url($photo['source_url'])) ?>" aria-label="查看<?= e($photo['label']) ?>照片"><img src="<?= e(is_file(ROOT_PATH.'/public/assets/media/photos/display/'.$photo['key'].'.jpg')?'/assets/media/photos/display/'.$photo['key'].'.jpg':$photo['path']) ?>" alt="<?= e($photo['label']) ?>" loading="lazy"></button><h3><?= e($photo['label']) ?></h3></article><?php endforeach ?></div><details class="venue-directory"><summary>全部 16 座比赛场馆</summary><div class="datagrid"><?php foreach($venues as $v): ?><div class="datagrid-item"><div class="datagrid-title"><?= e($v['city']) ?></div><div class="datagrid-content"><?= e($v['name']) ?></div></div><?php endforeach ?></div></details></section>
 <dialog class="photo-dialog" data-photo-dialog><button class="photo-close" data-photo-close type="button" aria-label="关闭照片">×</button><img alt=""><div class="photo-caption"><h2></h2><a href="#" target="_blank" rel="noopener">原图与摄影署名 ↗</a></div></dialog>
-<section id="country-list" class="panel reveal">
-  <div class="section-head">
-    <div><span class="kicker">国家资料</span><h2>参赛国家探索</h2></div>
-    <span class="source-chip"><?= e((string) count($countries)) ?> 个国家资料</span>
-  </div>
-  <div class="country-grid">
-    <?php foreach ($countries as $country): ?>
-      <?php $flag = $country['team_flag_url'] ?: ('https://flagcdn.com/w80/' . strtolower((string) $country['country_code']) . '.png'); ?>
-      <?php $countryName = display_name($country['country_name_cn'], $country['country_name_original']); ?>
-      <article class="country-card" tabindex="0" role="button"
-        data-country-card
-        data-code="<?= e($country['country_code']) ?>"
-        data-name="<?= e($countryName) ?>"
-        data-capital="<?= e($country['capital'] ?: '待同步') ?>"
-        data-region="<?= e($country['region'] ?: '地区待同步') ?>"
-        data-flag="<?= e($flag) ?>"
-        data-lat="<?= e((string) ($country['latitude'] ?? '')) ?>"
-        data-lng="<?= e((string) ($country['longitude'] ?? '')) ?>">
-        <div class="country-card-head">
-          <?= flag_html($flag, null, (string) $country['country_name_cn']) ?>
-          <div>
-            <h3><?= e($countryName) ?></h3>
-            <small><?= e($country['region'] ?: '地区待同步') ?><?= $country['subregion'] ? ' · ' . e($country['subregion']) : '' ?></small>
-          </div>
-        </div>
-        <div class="country-facts">
-          <span>首都：<?= e($country['capital'] ?: '待同步') ?></span>
-          <span>语言：<?= e($country['languages'] ?: '待同步') ?></span>
-          <span>货币：<?= e($country['currencies'] ?: '待同步') ?></span>
-        </div>
-
-
-        <div class="meta-row">
-          <span class="country-teams"><?php foreach($country['linked_teams'] as $ct): ?><a href="/teams/<?= e($ct['slug']) ?>"><?= \app\services\TeamUi::label(['code'=>$ct['code'],'name'=>$ct['name_cn']?:$ct['name_original'],'flag_url'=>$ct['flag_url']]) ?></a><?php endforeach ?></span>
-          <?php if ($country['latitude'] !== null && $country['longitude'] !== null): ?><span>坐标：<?= e(number_format((float) $country['latitude'], 2)) ?>°, <?= e(number_format((float) $country['longitude'], 2)) ?>°</span><?php endif; ?>
-          <?php if (!empty($country['map_url'])): ?><a class="mini-link" href="<?= e(safe_url($country['map_url'])) ?>" target="_blank" rel="noreferrer">地图</a><?php endif; ?>
-        </div>
-      </article>
-    <?php endforeach; ?>
-    <?php if (!$countries): ?>
-      <div class="data-empty">暂无国家资料。</div>
-    <?php endif; ?>
-  </div>
-</section>
+<section id="country-list" class="section country-directory" data-country-directory><div class="section-head"><h2>参赛国家</h2><span data-country-counter><?= count($countries) ?> 个国家</span></div><div class="country-directory-tools"><nav aria-label="按大洲筛选"><?php foreach([''=>'全部国家','Europe'=>'欧洲','Asia'=>'亚洲','Africa'=>'非洲','Americas'=>'美洲','Oceania'=>'大洋洲'] as $region=>$label): ?><button type="button" data-country-region="<?= e($region) ?>" aria-pressed="<?= $region===''?'true':'false' ?>"><?= e($label) ?></button><?php endforeach ?></nav><label><span class="visually-hidden">搜索国家</span><input type="search" data-country-search placeholder="搜索国家或首都"></label></div><div class="country-tile-grid"><?php foreach($countries as $country): ?><?php $name=app\services\CountryUi::name($country);$capital=app\services\CountryUi::capital($country); ?><a class="country-tile" href="/countries/<?= e(strtolower($country['country_code'])) ?>" data-region="<?= e($country['region']) ?>" data-search="<?= e($name.' '.$country['country_name_original'].' '.$capital.' '.$country['capital']) ?>"><div class="country-tile-top"><?= app\services\CountryUi::flag($country) ?><span><?= e(app\services\CountryUi::region($country)) ?></span></div><h3><?= e($name) ?></h3><p><?= e($country['country_name_original']) ?></p><div class="country-tile-bottom"><span>首都 <b><?= e($capital) ?></b></span><span class="country-open" aria-hidden="true">↗</span></div></a><?php endforeach ?></div><div class="community-empty" data-country-empty hidden>没有符合条件的国家。</div></section>

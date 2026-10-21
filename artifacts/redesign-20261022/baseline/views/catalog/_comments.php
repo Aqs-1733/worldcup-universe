@@ -1,0 +1,4 @@
+<?php
+/** Reusable moderated comments with native Yii2 CSRF form fields. */
+?>
+<section class="section prose"><h2>球迷留言</h2><?php foreach($items as $c): ?><article class="reply"><b><?= e($c->user?->displayName??'球迷') ?></b><small><?= e($c->created_at) ?></small><p><?= nl2br(e($c->body)) ?></p></article><?php endforeach ?><?php if(!$items): ?><p class="empty">还没有已审核的留言。</p><?php endif ?><?php if(Yii::$app->user->isGuest): ?><a href="/login">登录后参与讨论 →</a><?php else: ?><form method="post" action="/comments"><?= csrf_field() ?><input type="hidden" name="entity_type" value="<?= e($type) ?>"><input type="hidden" name="entity_id" value="<?= (int)$id ?>"><label>留下你的看法<textarea name="body" required minlength="2" maxlength="1000" rows="4"></textarea></label><button class="button">提交审核 →</button></form><?php endif ?></section>

@@ -169,3 +169,16 @@ flowchart LR
 四名成员姓名、学号、学院可由用户现有 `个人作业2_2412096_王麒萱/build_assets.py` 核对；其中“前台信息架构”等是原型里的角色标签，不作为完成相应开发贡献的证据。课程对应位置与未完成项目见 `docs/v2-coursework.md` 和 `docs/coursework-traceability.md`。
 
 AI 编码工具可以协助实现，但课件要求的“每名成员至少一套 M/V/C”和真实工作量需要成员本人确认、理解并留存提交记录；本次没有编造人员贡献。
+
+## 2026-10-22 组件与导航更新
+
+论坛采用保留的 MIT Tabler 卡片、列表组、头像与聊天组件，再由 scoped community.css / refinement.css 调整本站样式。来源：
+- https://docs.tabler.io/ui/components/card
+- https://docs.tabler.io/ui/components/list-group
+- https://docs.tabler.io/ui/components/chat
+
+晋级展示不再依赖 SVG 固定画布：native details 显式嵌套已核验胜者边，季军赛保留独立比赛入口，source 数据本身不修改。bracket-tree.js 仅增强球队路线与一键收起，禁用 JavaScript 时仍能逐轮展开／打开比赛。
+
+CountryController::actionView 与 views/catalog/country.php 构成国家详情 MVC；列表是普通 anchor，无 JS 也可进入。country-directory.js 仅做本地条件过滤。CountryUi 负责首都和语言／货币词条的中文展示，不把翻译当作来源事实更新。
+
+TeamPhoto 只接受清单内 year=2026、status=verified_2026_team_photo 且路径受控的本地图片；不存在的合照使用纯国旗设计，绝不由“最有名球员”替代。

@@ -28,7 +28,7 @@ return [
             'players'=>'player/index','players/<id:[a-zA-Z0-9-]+>'=>'player/view',
             'worldcup'=>'match/index','worldcup/standings'=>'match/standings','stats'=>'match/stats','matches/<id:\d+>'=>'match/view',
             'news'=>'news/index','news/refresh'=>'news/refresh','news/status'=>'news/status','news/<id:\d+>'=>'news/view',
-            'countries'=>'country/index','search'=>'site/search','credits'=>'site/credits',
+            'countries'=>'country/index','countries/<code:[a-zA-Z0-9-]+>'=>'country/view','search'=>'site/search','credits'=>'site/credits',
             'watch'=>'video/index','watch/<slug:[a-z0-9-]+>'=>'video/index',
             'fan-space'=>'forum/index','forum'=>'forum/index','forum/new'=>'forum/create',
             'forum/<id:\d+>'=>'forum/view','forum/<id:\d+>/<action:edit|delete|reply|like|bookmark|report>'=>'forum/<action>',

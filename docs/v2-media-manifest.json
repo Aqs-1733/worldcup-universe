@@ -1033,13 +1033,45 @@
   "public_credits_review": {
     "view_file": {
       "path": "views/site/credits.php",
-      "bytes": 1997,
-      "sha256": "11b4790e783407a1bfcae967119db0cb73334d80e0b4ae528fba3867a5cac01f"
+      "bytes": 2657,
+      "sha256": "c96a5423d444c9684d3a537d08405d0eb77ecde17c73a71def761ec423483394"
     },
     "view_modified_by_audit": false,
     "original_photography_statement": "The credits grid loads library.json original paths. Its statement that originals are unchanged describes those retained files; those original bytes still match their registered hashes.",
     "portrait_statement": "The public credits correctly identify FIFA as flag/portrait source. Cached portrait records preserve official URLs and hashes; caching changes transport location only, not source or pixels. Coverage is 56 distinct selected portraits, not all 1248 players.",
     "preview_clarification": "Other pages now use official-origin 1280px MediaWiki preview renditions for six photographs. Those are publisher-resized derivatives downloaded unchanged, not original-resolution files. Do not apply the credits CSS-only/original-unchanged wording to the publisher rendition process; this manifest records the distinction and retains original authors/licenses.",
     "scope": "Read-only review of source wording and local asset records; no browser inspection or runtime rendering assertion."
+  },
+  "screenshot_refinement_20261022": {
+    "team_photos": {
+      "manifest": "public/assets/media/team-photos/manifest.json",
+      "sha256": "ad6c79dc708e6eacc41c560146e4966133c66d9e914a869dce23f6382293c9ac",
+      "verified": 5,
+      "missing": 43,
+      "fallback": "Flag-only design, never an individual or older-year team photograph.",
+      "source_document": "docs/v2-team-photo-sources.md"
+    },
+    "components": [
+      {
+        "path": "public/assets/vendor/tabler/community.css",
+        "bytes": 2101,
+        "sha256": "dd9706167609bde1d92944555f7e951de6e5b14a21d3715004f9c42cf396817b"
+      },
+      {
+        "path": "public/assets/css/refinement.css",
+        "bytes": 24353,
+        "sha256": "d985766fc98b7aa4b4e71be17c425c58898afaab138d78d7373b873e9a15aa82"
+      },
+      {
+        "path": "public/assets/js/bracket-tree.js",
+        "bytes": 1224,
+        "sha256": "7fcc196004198fc2b85dad1e5a50d52784ca58bc691835581f78f59c863bd4a7"
+      },
+      {
+        "path": "public/assets/js/country-directory.js",
+        "bytes": 1018,
+        "sha256": "1e1b3e6c44d3776595f0876c5f8c91ccda85a5488c1ee55e2fa4c79bcd1c9dfc"
+      }
+    ]
   }
 }

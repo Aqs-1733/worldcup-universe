@@ -1,0 +1,27 @@
+{
+  "GER": {
+    "sha256": "3af2ecd9ca6a5c47efd6d7e3b0ca4c30973417076a05624deb5fe1933fa24ed7",
+    "reviewed_on": "2026-10-22",
+    "observation": "Local original viewed: full national-team group and staff arranged in rows on a training pitch; not an individual portrait."
+  },
+  "NOR": {
+    "sha256": "5b39a3e40f7698ad6733f13daf978c8be1ef8c9e0b1f078d4672809b69f85d4d",
+    "reviewed_on": "2026-10-22",
+    "observation": "Local original viewed: Norway squad in matching national-team kits, arranged in rows; not an individual portrait."
+  },
+  "COL": {
+    "sha256": "b3fd1087a31e377251ab08f86e39accb2120537dbad6f51442ce6794ba09253b",
+    "reviewed_on": "2026-10-22",
+    "observation": "Local original viewed: Colombia starting team grouped for a pre-match photograph in a stadium."
+  },
+  "BRA": {
+    "sha256": "c5fcec8499b3cf9d7b15cdc3de06a867806f4faac692524f281368f2fe1edfc0",
+    "reviewed_on": "2026-10-22",
+    "observation": "Local original viewed: Brazil delegation grouped before the team aircraft; large original CBF watermark remains visible."
+  },
+  "ENG": {
+    "sha256": "323221071a6ddf0f53ec1942db4cbbc8bc0572a7ae309d1e4b28cec287711ffb",
+    "reviewed_on": "2026-10-22",
+    "observation": "Local original viewed: full England squad grouped in formal departure clothing; not an individual portrait."
+  }
+}

@@ -39,7 +39,7 @@
 
   const updateReadout = (feature) => {
     if (!feature) {
-      readout.kicker.textContent = 'REAL MAP UNITS';
+      readout.kicker.textContent = '国家探索';
       readout.title.textContent = '拖动地球探索真实国家轮廓';
       readout.detail.textContent = '';
       return;
@@ -47,7 +47,7 @@
     const properties = feature.properties;
     const name = properties.NAME_ZH || properties.NAME_EN || properties.NAME;
     const iso = properties.ISO_A3 && properties.ISO_A3 !== '-99' ? ` · ISO ${properties.ISO_A3}` : '';
-    readout.kicker.textContent = `MAP UNIT · ${properties.CONTINENT || '未知大洲'}`;
+    readout.kicker.textContent = '已选地区';
     readout.title.textContent = name;
     readout.detail.textContent = '';
   };

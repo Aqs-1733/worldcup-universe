@@ -78,3 +78,12 @@ php yii app/audit
 4 位成员资料已按原个人作业核对。每人的实际贡献签认、最终 PDF/PPT 与本人录屏仍需本人确认补齐；交付清单逐项标注，不把代码说明冒充这些材料。
 
 2026-10-22 浏览器实测：官方 iframe 标题和封面已加载；点击播放后，RTVE 返回所在地播放权限制（“Este contenido tiene restringidos los derechos de emisión en su ubicación”）。本站显示官方登录／地区限制提示，未播放成功，不绕过地区或 DRM 校验。
+
+## 2026-10-22 截图修订
+
+- 论坛：采用 Tabler Card / List group / Avatar / Chat 组合，紧凑主题列表、板块卡片和主队侧栏。运行 `php yii design/forum` 可幂等添加 6 个明确标注的示例主题、2 条示例回复；均由现有管理员发布，不创建虚构球迷账号、点赞或热度。
+- 晋级图：改成原生 details 逐轮展开的来源树，32 场唯一节点、30 条胜者树边；季军赛独立展示，不重复整棵半决赛子树。可按队展开路线，无固定宽画布或双向内部滚动。
+- 球队封面：撤除个人肖像，接入 GER/NOR/COL/ENG/BRA 五队经核验的官方 2026 合照，其余 43 队为纯国旗设计。巴西原站水印原样保留。清晰、无大水印的合照优先展示。
+- 国家：48 张语义链接卡片、前端筛选／搜索、`/countries/{country_code}` 原生详情；中文展示标签不修改原始国家资料。
+- 留言：Tabler card/chat 形式，保留登录、CSRF、提交审核流程；页脚与页面／导航统一最大宽度及内边距。
+- 本轮验收与截图：`artifacts/redesign-20261022/VERIFICATION.txt`；页面回归：`python tests/redesign_ui.py`。
