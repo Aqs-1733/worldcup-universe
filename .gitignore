@@ -23,3 +23,13 @@ storage/imports/*
 !storage/imports/.gitkeep
 public/uploads/*
 !public/uploads/.gitkeep
+
+# V2 local databases, sessions, test output and generation scratch files
+storage/runtime/
+storage/mysql-test/
+storage/audit/
+storage/*.py
+artifacts/rollback-test.php
+artifacts/navigation/rollback-copy.php
+
+storage/design-assets/

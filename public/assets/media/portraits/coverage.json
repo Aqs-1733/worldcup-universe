@@ -1,0 +1,9 @@
+{
+  "selection_rows": 72,
+  "unique_urls": 56,
+  "cached_files": 56,
+  "failures": 0,
+  "bytes": 55571595,
+  "scope": "48 verified Team::getFeaturePlayer() results plus verified players ordered caps DESC LIMIT 24; URLs deduplicated by downloader.",
+  "pixel_changes": "none; original response bytes preserved"
+}

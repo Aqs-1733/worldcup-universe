@@ -1,18 +1,9 @@
 <?php
-
+/** Legacy command URL retained, but sports ingestion now exclusively uses official FIFA evidence. */
 declare(strict_types=1);
-
-require_once dirname(__DIR__) . '/app/bootstrap.php';
-
-use App\Services\WorldCupSyncService;
-
-$service = new WorldCupSyncService();
-$scoreboard = $service->syncScoreboard();
-echo 'Scoreboard: ' . json_encode($scoreboard, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . PHP_EOL;
-
-try {
-    $squads = $service->syncWikipediaSquads();
-    echo 'Squads: ' . json_encode($squads, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . PHP_EOL;
-} catch (Throwable $error) {
-    echo 'Squads sync failed: ' . $error->getMessage() . PHP_EOL;
-}
+require dirname(__DIR__).'/vendor/autoload.php';
+require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';
+require dirname(__DIR__).'/app/bootstrap.php';
+$app=new yii\console\Application(require ROOT_PATH.'/config/console.php');
+$folder=$argv[1]??ROOT_PATH.'/data/official/20261021';
+exit($app->runAction('fifa/import',[$folder]));

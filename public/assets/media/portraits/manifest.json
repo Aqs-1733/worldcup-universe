@@ -1,0 +1,1138 @@
+{
+  "01109a9120371d4c931db25e14d5c600a02fa5654e01129cffa6bde608839dba": {
+    "source_url": "https://digitalhub.fifa.com/transform/f192cf34-173f-47b3-9748-981bd3f21275/CALHANOGLU-Hakan_369304",
+    "path": "/assets/media/portraits/01109a9120371d4c931db25e14d5c600a02fa5654e01129cffa6bde608839dba.png",
+    "sha256": "6932a620f142f63fbd3ff0f2582438a98a1f9ee4a538677bdb918992ceff39cf",
+    "bytes": 1104920,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:09.495106+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "TUR",
+        "player_id": 400,
+        "fifa_id": "369304",
+        "name": "Hakan CALHANOGLU",
+        "caps": 108
+      }
+    ]
+  },
+  "121243ff61168ae6f0f71f9d3a3971f801a6c099316be1b89088982923ce6741": {
+    "source_url": "https://digitalhub.fifa.com/transform/dc4250ac-0a37-44da-9ae0-c858225ad8a1/MANDI-Aissa_376285",
+    "path": "/assets/media/portraits/121243ff61168ae6f0f71f9d3a3971f801a6c099316be1b89088982923ce6741.png",
+    "sha256": "15a482578963aa03bf4d86ff982c7af0f3042c368d7fdcbb66c137e2b9fd16a6",
+    "bytes": 919841,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:52.403502+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "ALG",
+        "player_id": 964,
+        "fifa_id": "376285",
+        "name": "Aissa MANDI",
+        "caps": 123
+      }
+    ]
+  },
+  "1b69ed99fa421dfb8580035cc7e54646e724c7bd77453fc6012aba1654537c3f": {
+    "source_url": "https://digitalhub.fifa.com/transform/d37c65ce-135e-4bd4-b870-2c2548b93e2d/GOMEZ-Gustavo_369744",
+    "path": "/assets/media/portraits/1b69ed99fa421dfb8580035cc7e54646e724c7bd77453fc6012aba1654537c3f.png",
+    "sha256": "ed2bb696f5e7538776e80a98e84e422a163fa3b72e37ddb7700b40683a2ad143",
+    "bytes": 1124348,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:06.137934+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "PAR",
+        "player_id": 353,
+        "fifa_id": "369744",
+        "name": "Gustavo GOMEZ",
+        "caps": 94
+      }
+    ]
+  },
+  "1fdbbe43119a86c3d7e38b1c56da8cb6d095e8ae67a232334e2d7bad1e84b921": {
+    "source_url": "https://digitalhub.fifa.com/transform/618c02bf-ef05-4651-bd3a-10ee566afcab/ABDULAZIZ-HATEM_345059",
+    "path": "/assets/media/portraits/1fdbbe43119a86c3d7e38b1c56da8cb6d095e8ae67a232334e2d7bad1e84b921.png",
+    "sha256": "6c69f82d78fed669f245f93ee0208289dbce9b927acbd0e1c036dfda0eed0dba",
+    "bytes": 1017696,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:30.167667+00:00",
+    "selections": [
+      {
+        "selection": "global_caps_24",
+        "team_code": "QAT",
+        "player_id": 162,
+        "fifa_id": "345059",
+        "name": "ABDULAZIZ HATEM",
+        "caps": 133
+      }
+    ]
+  },
+  "22f1caa589982a62e534637a5c147a6e6febc69aa46b4ea1ee3137dfd600eddb": {
+    "source_url": "https://digitalhub.fifa.com/transform/e3701d06-66b5-4728-8bad-fea05319b6b8/NEUER-Manuel_228912",
+    "path": "/assets/media/portraits/22f1caa589982a62e534637a5c147a6e6febc69aa46b4ea1ee3137dfd600eddb.png",
+    "sha256": "36c1fe447991d0ae124af4677c14d7fa0954cbf5c493469c0fd241873b37932c",
+    "bytes": 1112252,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:11.138955+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "GER",
+        "player_id": 417,
+        "fifa_id": "228912",
+        "name": "Manuel NEUER",
+        "caps": 128
+      }
+    ]
+  },
+  "23ecc90bfaf96cd6fed1d983481572c913b711a8fbb1291eef908d7f089762cc": {
+    "source_url": "https://digitalhub.fifa.com/transform/2e649ed1-5e23-4de2-aafc-79fac130f5f0/KESSIE-Franck_371609",
+    "path": "/assets/media/portraits/23ecc90bfaf96cd6fed1d983481572c913b711a8fbb1291eef908d7f089762cc.png",
+    "sha256": "423d1a77cbd095f8ba25e575995387fa4861bf8204797c3e9d0db2aa6830e99a",
+    "bytes": 1078410,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:14.505131+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "CIV",
+        "player_id": 476,
+        "fifa_id": "371609",
+        "name": "Franck KESSIE",
+        "caps": 108
+      }
+    ]
+  },
+  "23fc6cf6fc9c22dc1e89fc80ba4e770cc9884380f90b9c2bfae5e9dc542e9355": {
+    "source_url": "https://digitalhub.fifa.com/transform/6567ec6b-b63d-4163-8729-6e9ad25e32f7/HAJISAFI-Ehsan_288961",
+    "path": "/assets/media/portraits/23fc6cf6fc9c22dc1e89fc80ba4e770cc9884380f90b9c2bfae5e9dc542e9355.png",
+    "sha256": "79e9ce7fcd45d1605b9bc07fde832392da27e20aac3c66b1683d41be25058e16",
+    "bytes": 1121022,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:31.221942+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "IRN",
+        "player_id": 679,
+        "fifa_id": "288961",
+        "name": "Ehsan HAJISAFI",
+        "caps": 148
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "IRN",
+        "player_id": 679,
+        "fifa_id": "288961",
+        "name": "Ehsan HAJISAFI",
+        "caps": 148
+      }
+    ]
+  },
+  "248d6a50268a9dc71ce7f46786944405dc8a98b95e9149192f3415af5998f80b": {
+    "source_url": "https://digitalhub.fifa.com/transform/69224c23-3cb2-4d08-967c-0c318328366a/RYAN-MENDES_355642",
+    "path": "/assets/media/portraits/248d6a50268a9dc71ce7f46786944405dc8a98b95e9149192f3415af5998f80b.png",
+    "sha256": "641538be8b85be2a88ce39d760c6374cdd50f3804f7d56e0ec7ed1be1f66fe4b",
+    "bytes": 709340,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:35.462910+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "CPV",
+        "player_id": 774,
+        "fifa_id": "355642",
+        "name": "RYAN MENDES",
+        "caps": 102
+      }
+    ]
+  },
+  "25f79c46e68cedb4dbdc699fed39fd3a8519acb34cd5b00fa7828d22fb793a46": {
+    "source_url": "https://digitalhub.fifa.com/transform/d167ee25-02d4-48c1-b6bf-ec1eea3a1633/SALEM-ALDAWSARI_339745",
+    "path": "/assets/media/portraits/25f79c46e68cedb4dbdc699fed39fd3a8519acb34cd5b00fa7828d22fb793a46.png",
+    "sha256": "10168edd2bc76347b32cccc2ce6d2e8be4f1913cb4b68132dbfdf836b3290e7f",
+    "bytes": 1015170,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:38.006331+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "KSA",
+        "player_id": 790,
+        "fifa_id": "339745",
+        "name": "SALEM ALDAWSARI",
+        "caps": 114
+      }
+    ]
+  },
+  "2be30c053c292156e51125efa9a80fb20c5cf276fe02da45b86fa65542b83145": {
+    "source_url": "https://digitalhub.fifa.com/transform/b95f9142-251c-4943-911c-9c8d7ad8dd1c/WILLIAMS-Ronwen_395986",
+    "path": "/assets/media/portraits/2be30c053c292156e51125efa9a80fb20c5cf276fe02da45b86fa65542b83145.png",
+    "sha256": "705f841a52c4ea907bdd7a1743d3ec2c3f2ba8b168b2a0bcb91f1c3a75bf75f2",
+    "bytes": 1117848,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:24:45.590031+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "RSA",
+        "player_id": 27,
+        "fifa_id": "395986",
+        "name": "Ronwen WILLIAMS",
+        "caps": 68
+      }
+    ]
+  },
+  "2f7e5b1e255809826c9238ab3cfe1b3028f5f2eae85e23d9af0be310df877dcd": {
+    "source_url": "https://digitalhub.fifa.com/transform/21086aea-3ec5-47b2-a81f-f7316489183a/LARIN-Cyle_390670",
+    "path": "/assets/media/portraits/2f7e5b1e255809826c9238ab3cfe1b3028f5f2eae85e23d9af0be310df877dcd.png",
+    "sha256": "15bece976f9a2cd92b9a5222758a206a4261558c21dd05185e6d74e46cbfb179",
+    "bytes": 843627,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:24:50.985476+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "CAN",
+        "player_id": 113,
+        "fifa_id": "390670",
+        "name": "Cyle LARIN",
+        "caps": 94
+      }
+    ]
+  },
+  "30551b89764bfd239c09c55531b649aabdc3a6f15007196b5e9eb05ac5805af0": {
+    "source_url": "https://digitalhub.fifa.com/transform/eb34bfe6-5b60-4771-a303-40f68231bbd2/SOUCEK-Tomas_404885",
+    "path": "/assets/media/portraits/30551b89764bfd239c09c55531b649aabdc3a6f15007196b5e9eb05ac5805af0.png",
+    "sha256": "2836f7964468031fbd07d7b3d507e2f9c1174d999cfdd331a2398846e6b37946",
+    "bytes": 620757,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:24:49.095313+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "CZE",
+        "player_id": 100,
+        "fifa_id": "404885",
+        "name": "Tomas SOUCEK",
+        "caps": 93
+      }
+    ]
+  },
+  "338f43597e69a6a250dae23c65cf7d617207c2a77e5e98b480617be13b277b24": {
+    "source_url": "https://digitalhub.fifa.com/transform/800cc17f-8f64-4d16-90e9-c5ab79c4d302/RODRIGUEZ-James_269058",
+    "path": "/assets/media/portraits/338f43597e69a6a250dae23c65cf7d617207c2a77e5e98b480617be13b277b24.png",
+    "sha256": "8f4a8f757a8aaf21bc4d4c7c61e989ce0b14c06fdae09c678ce0e42886571f93",
+    "bytes": 1069305,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:05.036628+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "COL",
+        "player_id": 1128,
+        "fifa_id": "269058",
+        "name": "James RODRIGUEZ",
+        "caps": 131
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "COL",
+        "player_id": 1128,
+        "fifa_id": "269058",
+        "name": "James RODRIGUEZ",
+        "caps": 131
+      }
+    ]
+  },
+  "38b6cd824e22c67b38afbe934385651c15e3e3a9a99e101575ec16954b582934": {
+    "source_url": "https://digitalhub.fifa.com/transform/a7f7a32a-4968-462b-9c34-e8a0d0530b99/JALAL-HASSAN_347085",
+    "path": "/assets/media/portraits/38b6cd824e22c67b38afbe934385651c15e3e3a9a99e101575ec16954b582934.png",
+    "sha256": "75db45be33524a21ac4106aacbc858de93e43580dc7b4a557b5049c8041febe8",
+    "bytes": 1026242,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:43.915111+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "IRQ",
+        "player_id": 896,
+        "fifa_id": "347085",
+        "name": "JALAL HASSAN",
+        "caps": 106
+      }
+    ]
+  },
+  "42d100227ddd78e9eddc1d06f9904c76de40949a343c85811b7dbdfab204157c": {
+    "source_url": "https://digitalhub.fifa.com/transform/5bd9ff87-6801-46d2-8f10-ca9eb3ea2ea4/ROOM-Eloy_390650",
+    "path": "/assets/media/portraits/42d100227ddd78e9eddc1d06f9904c76de40949a343c85811b7dbdfab204157c.png",
+    "sha256": "d5592904aeaff2a5b83ec45c672eef8d79d6a1622bf404f2e9bd293f23d59a6d",
+    "bytes": 1027055,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:13.057885+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "CUW",
+        "player_id": 443,
+        "fifa_id": "390650",
+        "name": "Eloy ROOM",
+        "caps": 75
+      }
+    ]
+  },
+  "4999efb77d7d44a0c114aa6f1cba183601824e452a94fe51ed55a8a5befe5e12": {
+    "source_url": "https://digitalhub.fifa.com/transform/98334cd9-f4b4-4f2f-9b57-5cc547a75ec8/QUINTERO-Alberto_271116",
+    "path": "/assets/media/portraits/4999efb77d7d44a0c114aa6f1cba183601824e452a94fe51ed55a8a5befe5e12.png",
+    "sha256": "5e64bd9e9b69fe0a8ae6000fa2a3c0adbe0c1c2ab79120f6b4c7eaa6e69a4bdf",
+    "bytes": 916245,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:19.539508+00:00",
+    "selections": [
+      {
+        "selection": "global_caps_24",
+        "team_code": "PAN",
+        "player_id": 1241,
+        "fifa_id": "271116",
+        "name": "Alberto QUINTERO",
+        "caps": 142
+      }
+    ]
+  },
+  "4d7ac00144452b8f8e7fe07db6c0c42206f0f3bc65fa5fbad01c9a779735f1f4": {
+    "source_url": "https://digitalhub.fifa.com/transform/4d275801-8b11-4fcc-bed0-ace70703da2d/IDRISSA-GANA-GUEYE_332314_1",
+    "path": "/assets/media/portraits/4d7ac00144452b8f8e7fe07db6c0c42206f0f3bc65fa5fbad01c9a779735f1f4.png",
+    "sha256": "88868c7f29314a17d43b346ef3bfe5eb981374b7126b52cffc9a12e4676828ad",
+    "bytes": 1051806,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:43.337959+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "SEN",
+        "player_id": 863,
+        "fifa_id": "332314",
+        "name": "Idrissa Gana GUEYE",
+        "caps": 140
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "SEN",
+        "player_id": 863,
+        "fifa_id": "332314",
+        "name": "Idrissa Gana GUEYE",
+        "caps": 140
+      }
+    ]
+  },
+  "4f8021851cf3b816e6418f12e6c4598774b6e4c69b0bc9652be3bab1d0027d52": {
+    "source_url": "https://digitalhub.fifa.com/transform/a6c333cc-3042-4094-9ec0-094479b8ca3a/XHAKA-Granit_311558",
+    "path": "/assets/media/portraits/4f8021851cf3b816e6418f12e6c4598774b6e4c69b0bc9652be3bab1d0027d52.png",
+    "sha256": "b9ff7fc921a9dccf4c24d00b882d9479b5deae4e96a97a7fff6fc478ad8d996e",
+    "bytes": 905216,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:24:56.022550+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "SUI",
+        "player_id": 192,
+        "fifa_id": "311558",
+        "name": "Granit XHAKA",
+        "caps": 152
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "SUI",
+        "player_id": 192,
+        "fifa_id": "311558",
+        "name": "Granit XHAKA",
+        "caps": 152
+      }
+    ]
+  },
+  "5078fffcf332adcc0b48dac1f8e2464c845af22527adb095c454a12cbe230cb4": {
+    "source_url": "https://digitalhub.fifa.com/transform/527a870c-dad4-474a-91a3-3ccac43d3ce7/AYEW-Jordan_353235",
+    "path": "/assets/media/portraits/5078fffcf332adcc0b48dac1f8e2464c845af22527adb095c454a12cbe230cb4.png",
+    "sha256": "cad8c747cb021c07785a1153ae3f93742047f880e2a466261d4dd68a9f0463a1",
+    "bytes": 1117504,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:12.908462+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "GHA",
+        "player_id": 1205,
+        "fifa_id": "353235",
+        "name": "Jordan AYEW",
+        "caps": 124
+      }
+    ]
+  },
+  "52987ca43301ed5d24fb022a30d835f65d4b015d56c92087de343a85b7474a2f": {
+    "source_url": "https://digitalhub.fifa.com/transform/fedeac9f-968d-4d4c-b08a-5b2bf157c396/OCHOA-Guillermo_215285",
+    "path": "/assets/media/portraits/52987ca43301ed5d24fb022a30d835f65d4b015d56c92087de343a85b7474a2f.png",
+    "sha256": "9f8a0d897b93a50acbcb93ff82eafd158ce8ef42f5b73c1da36990c88e76b274",
+    "bytes": 979346,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:24:43.543336+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "MEX",
+        "player_id": 13,
+        "fifa_id": "215285",
+        "name": "Guillermo OCHOA",
+        "caps": 154
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "MEX",
+        "player_id": 13,
+        "fifa_id": "215285",
+        "name": "Guillermo OCHOA",
+        "caps": 154
+      }
+    ]
+  },
+  "539f2aeaa3ff8dd90d9e7788d4e4da53fe0d0926acca4d5f1e3d51dd1f93434b": {
+    "source_url": "https://digitalhub.fifa.com/transform/5ad83fe6-1139-4f92-a97c-669052eb1755/KANE-Harry_369419",
+    "path": "/assets/media/portraits/539f2aeaa3ff8dd90d9e7788d4e4da53fe0d0926acca4d5f1e3d51dd1f93434b.png",
+    "sha256": "0b420f5dbe200b9ef3a81bc01fe63bd4cf7e68888bb7b8f3eb16ac836d9e4470",
+    "bytes": 1063637,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:05.976400+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "ENG",
+        "player_id": 1153,
+        "fifa_id": "369419",
+        "name": "Harry KANE",
+        "caps": 121
+      }
+    ]
+  },
+  "5d330b48aa98f2d4a3541f5c98dfc45e7ebb0cfcfc90f69c13432f114f96b949": {
+    "source_url": "https://digitalhub.fifa.com/transform/66f6087d-9563-4644-8f10-5614ef6e1e51/MBAPPE-Kylian_389867",
+    "path": "/assets/media/portraits/5d330b48aa98f2d4a3541f5c98dfc45e7ebb0cfcfc90f69c13432f114f96b949.png",
+    "sha256": "2b724f877e0388b16045e3ea97edd8c5aa1021a7a61ca59dfa32280868f9eccb",
+    "bytes": 966131,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:40.703452+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "FRA",
+        "player_id": 842,
+        "fifa_id": "389867",
+        "name": "Kylian MBAPPE",
+        "caps": 106
+      }
+    ]
+  },
+  "5ec4d7dd1d682e99a8a9be01471c7fa07f6eccba3acf5588c17ef9707148c781": {
+    "source_url": "https://digitalhub.fifa.com/transform/cbff6a19-cce4-45ee-9869-84cf30ce5676/MODRIC-Luka_241559",
+    "path": "/assets/media/portraits/5ec4d7dd1d682e99a8a9be01471c7fa07f6eccba3acf5588c17ef9707148c781.png",
+    "sha256": "721730832bec20f68bacd5caaa96c6bc7be31476132d2f72da6227c19e4b5423",
+    "bytes": 1202853,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:07.507930+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "CRO",
+        "player_id": 1180,
+        "fifa_id": "241559",
+        "name": "Luka MODRIC",
+        "caps": 202
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "CRO",
+        "player_id": 1180,
+        "fifa_id": "241559",
+        "name": "Luka MODRIC",
+        "caps": 202
+      }
+    ]
+  },
+  "62996724d6fb70d0f627a8e61188daa133a5a4f2bdd78776f2201ef22f210d8f": {
+    "source_url": "https://digitalhub.fifa.com/transform/3b4c1123-62c6-4267-9d22-6d138e461a54/PLACIDE-Johny_295922",
+    "path": "/assets/media/portraits/62996724d6fb70d0f627a8e61188daa133a5a4f2bdd78776f2201ef22f210d8f.png",
+    "sha256": "de7f77b4e9cf2bea43842b805d7a54415a8494ef982858d82325c2ac19c4b1b6",
+    "bytes": 918418,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:00.617167+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "HAI",
+        "player_id": 261,
+        "fifa_id": "295922",
+        "name": "Johny Placide",
+        "caps": 86
+      }
+    ]
+  },
+  "64946eeac6a1e6600424993b9d07bb7b57b4fbf82ae9164f82a996e78d08809e": {
+    "source_url": "https://digitalhub.fifa.com/transform/d311d575-b59c-4d9f-8825-b506b0aa3c49/SHOMURODOV-Eldor_385475",
+    "path": "/assets/media/portraits/64946eeac6a1e6600424993b9d07bb7b57b4fbf82ae9164f82a996e78d08809e.png",
+    "sha256": "b49e6bb5261bd43a76e8eccb6e4e160ecd9d151b34c65df5366bda986132ad7d",
+    "bytes": 1029927,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:01.905322+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "UZB",
+        "player_id": 1106,
+        "fifa_id": "385475",
+        "name": "Eldor SHOMURODOV",
+        "caps": 96
+      }
+    ]
+  },
+  "6ca60eecf2ee544c5542e6fd1493336e8c19a553134b401415706aa8ec3a41e9": {
+    "source_url": "https://digitalhub.fifa.com/transform/e2ba8e19-b4ab-435f-b12c-e56d655c31e6/SKHIRI-Ellyes_411658",
+    "path": "/assets/media/portraits/6ca60eecf2ee544c5542e6fd1493336e8c19a553134b401415706aa8ec3a41e9.png",
+    "sha256": "a954d93d77cbe42dc288583b82ee103f7e1551e49331bf007a6dae83dd68bdc1",
+    "bytes": 993256,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:22.312065+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "TUN",
+        "player_id": 615,
+        "fifa_id": "411658",
+        "name": "Ellyes SKHIRI",
+        "caps": 86
+      }
+    ]
+  },
+  "6e6d73009f5b45e3474b979d5a839e9b84e5a05414e72ca35ae779f7cfa86e67": {
+    "source_url": "https://digitalhub.fifa.com/transform/7b63f223-fda2-4d56-b218-f143f0abd2d8/CRISTIANO-RONALDO_201200",
+    "path": "/assets/media/portraits/6e6d73009f5b45e3474b979d5a839e9b84e5a05414e72ca35ae779f7cfa86e67.png",
+    "sha256": "448a8e964b52c29061d32b4de3b678f33ebc02e05150bdb0c210a69016cdb961",
+    "bytes": 953348,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:59.997717+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "POR",
+        "player_id": 1047,
+        "fifa_id": "201200",
+        "name": "CRISTIANO RONALDO",
+        "caps": 233
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "POR",
+        "player_id": 1047,
+        "fifa_id": "201200",
+        "name": "CRISTIANO RONALDO",
+        "caps": 233
+      }
+    ]
+  },
+  "7db276ed92294e25340e8cacee9794f126a702c48235e76b34c1dd8a42ee60ea": {
+    "source_url": "https://digitalhub.fifa.com/transform/521889b3-16a2-48ef-92d4-6978a9e05cc6/HASSAN-ALHAYDOS_284190",
+    "path": "/assets/media/portraits/7db276ed92294e25340e8cacee9794f126a702c48235e76b34c1dd8a42ee60ea.png",
+    "sha256": "0dc7ac4f959e882138fe482d934f3ce3d673595a12180f065ac05d2b7a70ec60",
+    "bytes": 1024647,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:24:54.232111+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "QAT",
+        "player_id": 166,
+        "fifa_id": "284190",
+        "name": "HASSAN ALHAYDOS",
+        "caps": 191
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "QAT",
+        "player_id": 166,
+        "fifa_id": "284190",
+        "name": "HASSAN ALHAYDOS",
+        "caps": 191
+      }
+    ]
+  },
+  "91408b3b933b8614a78d0e1db60d46ddc1a04963bb36d1f98540cb7453e4134a": {
+    "source_url": "https://digitalhub.fifa.com/transform/302b7fb7-6964-4a52-8db4-9c12778b80fa/LUKAKU-Romelu_358112",
+    "path": "/assets/media/portraits/91408b3b933b8614a78d0e1db60d46ddc1a04963bb36d1f98540cb7453e4134a.png",
+    "sha256": "b126b6d0f36dd8075cc759470b9b7eda0f9bbe9db0115c6aaa2962e9acb03934",
+    "bytes": 930937,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:33.207949+00:00",
+    "selections": [
+      {
+        "selection": "global_caps_24",
+        "team_code": "BEL",
+        "player_id": 633,
+        "fifa_id": "358112",
+        "name": "Romelu LUKAKU",
+        "caps": 132
+      }
+    ]
+  },
+  "9174776f52b747c5acd57335a9fcb8abb49913680b9b40bd01abef24861c3028": {
+    "source_url": "https://digitalhub.fifa.com/transform/7c98d5eb-1514-4e8f-a6c6-60f4017b2175/RYAN-Mathew_339117",
+    "path": "/assets/media/portraits/9174776f52b747c5acd57335a9fcb8abb49913680b9b40bd01abef24861c3028.png",
+    "sha256": "351478c5eaaefa47fa9d8faa072ef5ccc347e84ff3206304a229bf536a7c0210",
+    "bytes": 1121903,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:08.518792+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "AUS",
+        "player_id": 365,
+        "fifa_id": "339117",
+        "name": "Mathew RYAN",
+        "caps": 105
+      }
+    ]
+  },
+  "9c0878709a53703ea626da1d16976bd0a41ebfff32408c79efb5df8a85f243ac": {
+    "source_url": "https://digitalhub.fifa.com/transform/19823774-fac0-485a-8a8f-572e7324c6c2/MESSI-Lionel_229397",
+    "path": "/assets/media/portraits/9c0878709a53703ea626da1d16976bd0a41ebfff32408c79efb5df8a85f243ac.png",
+    "sha256": "a875132bc9e3dfb225f3e1c9578ed696a052813d0081b3ccf47ef19bcfec327d",
+    "bytes": 987297,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:48.561924+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "ARG",
+        "player_id": 946,
+        "fifa_id": "229397",
+        "name": "Lionel MESSI",
+        "caps": 207
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "ARG",
+        "player_id": 946,
+        "fifa_id": "229397",
+        "name": "Lionel MESSI",
+        "caps": 207
+      }
+    ]
+  },
+  "9daa38b70561da723e6557ddb2c43f6e03abc9bcd4bbcd610ccec814380f0f56": {
+    "source_url": "https://digitalhub.fifa.com/transform/88b96376-9f31-40fd-a0fc-ae12aab484c4/LINDELOF-Victor_395283",
+    "path": "/assets/media/portraits/9daa38b70561da723e6557ddb2c43f6e03abc9bcd4bbcd610ccec814380f0f56.png",
+    "sha256": "3dc7219d659028d25f18ba24cf353c10da5e783d68d14f0e4e8bb875ea2a6662",
+    "bytes": 876280,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:22.484037+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "SWE",
+        "player_id": 575,
+        "fifa_id": "395283",
+        "name": "Victor LINDELOF",
+        "caps": 80
+      }
+    ]
+  },
+  "9dc4d6654017de0ceab5286aea9ac318ad7af7df530dc5f1b69a7a1967cfee62": {
+    "source_url": "https://digitalhub.fifa.com/transform/49424ad5-f8d5-485a-a55b-07c22b49bd07/NEYMAR_314197",
+    "path": "/assets/media/portraits/9dc4d6654017de0ceab5286aea9ac318ad7af7df530dc5f1b69a7a1967cfee62.png",
+    "sha256": "6c52354643d75b9ca2968153a1486d32a5fd1c06a5367b6e300542298a332783",
+    "bytes": 1096162,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:24:56.460924+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "BRA",
+        "player_id": 218,
+        "fifa_id": "314197",
+        "name": "NEYMAR JR",
+        "caps": 130
+      }
+    ]
+  },
+  "a2995841d83e961694dcdf15c365070348688c3a666f8fc17a627cf5eab6c113": {
+    "source_url": "https://digitalhub.fifa.com/transform/22c6ca49-7262-4799-8a9f-530e427321ac/HAKIMI-Achraf_400721",
+    "path": "/assets/media/portraits/a2995841d83e961694dcdf15c365070348688c3a666f8fc17a627cf5eab6c113.png",
+    "sha256": "f63ba1026e933b51274f73cca109d34cbc370abf6d871aa7e5e58744ec143d86",
+    "bytes": 699694,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:24:59.045217+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "MAR",
+        "player_id": 236,
+        "fifa_id": "400721",
+        "name": "Achraf HAKIMI",
+        "caps": 102
+      }
+    ]
+  },
+  "a2ba32627bce866ac1faf9337b11870b09b4ff17ec7af5d541d41e7ce681138e": {
+    "source_url": "https://digitalhub.fifa.com/transform/8d5236b8-acac-4946-af8e-5b007bcfa284/MOHAMED-SALAH_344654",
+    "path": "/assets/media/portraits/a2ba32627bce866ac1faf9337b11870b09b4ff17ec7af5d541d41e7ce681138e.png",
+    "sha256": "9f000870be8654fd8b23763b59444eda7bbc28f266e307b3ee0900a27668dfa7",
+    "bytes": 945163,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:27.083032+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "EGY",
+        "player_id": 660,
+        "fifa_id": "344654",
+        "name": "MOHAMED SALAH",
+        "caps": 121
+      }
+    ]
+  },
+  "a87429a9d8a14cd1a07268dee5c5398634069d73aee2d70e3f38ff15ab9a3e67": {
+    "source_url": "https://digitalhub.fifa.com/transform/e999f9d2-7ca2-4d4d-b7ba-33c1ee96b375/MOUSA-ALTAMARI_431211",
+    "path": "/assets/media/portraits/a87429a9d8a14cd1a07268dee5c5398634069d73aee2d70e3f38ff15ab9a3e67.png",
+    "sha256": "108d8f10cac4947517126ba35d50f8dc716c23defbd688be80c7c7f270454f3a",
+    "bytes": 1166250,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:53.755063+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "JOR",
+        "player_id": 1024,
+        "fifa_id": "431211",
+        "name": "MOUSA ALTAMARI",
+        "caps": 95
+      }
+    ]
+  },
+  "b553dba5891632bcd95c869daae6c9fde7fee8a6913c7e991769ba37c998f49d": {
+    "source_url": "https://digitalhub.fifa.com/transform/07f27983-8eee-43f3-b68c-b45b6f806785/RODRIGUEZ-Ricardo_313559",
+    "path": "/assets/media/portraits/b553dba5891632bcd95c869daae6c9fde7fee8a6913c7e991769ba37c998f49d.png",
+    "sha256": "7e85f21683538a4d322ca9f2d29d77ef926630e4b1524b64fa57649bd7861289",
+    "bytes": 1053453,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:18.567662+00:00",
+    "selections": [
+      {
+        "selection": "global_caps_24",
+        "team_code": "SUI",
+        "player_id": 195,
+        "fifa_id": "313559",
+        "name": "Ricardo RODRIGUEZ",
+        "caps": 144
+      }
+    ]
+  },
+  "b9781271722a00195ec0b901ff908ab0de97def4feabc35c29777ee0e741beac": {
+    "source_url": "https://digitalhub.fifa.com/transform/ff0110d3-0721-4983-bc62-018a993d8486/WITSEL-Axel_290821",
+    "path": "/assets/media/portraits/b9781271722a00195ec0b901ff908ab0de97def4feabc35c29777ee0e741beac.png",
+    "sha256": "ee5912a62afa9ffeefac61c3adee6a12a68f94c46b64bff704a04dd2b4d5cd37",
+    "bytes": 940706,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:27.841342+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "BEL",
+        "player_id": 630,
+        "fifa_id": "290821",
+        "name": "Axel WITSEL",
+        "caps": 140
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "BEL",
+        "player_id": 630,
+        "fifa_id": "290821",
+        "name": "Axel WITSEL",
+        "caps": 140
+      }
+    ]
+  },
+  "ba763bed351807bb78639d4b42fa5f0fc9ee115a12a3202b15eb999301366961": {
+    "source_url": "https://digitalhub.fifa.com/transform/8bc6e66f-1f5a-4f1d-813d-41c4ab04c6ac/ARNAUTOVIC-Marko_299200",
+    "path": "/assets/media/portraits/ba763bed351807bb78639d4b42fa5f0fc9ee115a12a3202b15eb999301366961.png",
+    "sha256": "3233520bed6b76a6ebacf69893c300742edd154432601cf15f8b074204921e2f",
+    "bytes": 863627,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:52.207446+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "AUT",
+        "player_id": 995,
+        "fifa_id": "299200",
+        "name": "Marko ARNAUTOVIC",
+        "caps": 137
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "AUT",
+        "player_id": 995,
+        "fifa_id": "299200",
+        "name": "Marko ARNAUTOVIC",
+        "caps": 137
+      }
+    ]
+  },
+  "bd7aa3ee01f3685ad2d927d0e9c072b875b0ddb11b69e6fcb9238eba832a51f4": {
+    "source_url": "https://digitalhub.fifa.com/transform/bec34ba5-7129-44fe-b108-bc57a1fd3257/MUSLERA-Fernando_229498",
+    "path": "/assets/media/portraits/bd7aa3ee01f3685ad2d927d0e9c072b875b0ddb11b69e6fcb9238eba832a51f4.png",
+    "sha256": "01a3af5f3ab5bd8afd22c32ab97640754382c07143b44a0d8657f896fc081842",
+    "bytes": 1080039,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:38.590976+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "URU",
+        "player_id": 829,
+        "fifa_id": "229498",
+        "name": "Fernando MUSLERA",
+        "caps": 137
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "URU",
+        "player_id": 829,
+        "fifa_id": "229498",
+        "name": "Fernando MUSLERA",
+        "caps": 137
+      }
+    ]
+  },
+  "c6ee1832275c03ac8ea62eb939bc16589cd282715a47fb10e1289d7f6bd65db4": {
+    "source_url": "https://digitalhub.fifa.com/transform/b5fa7216-27c0-4652-b7df-b099e97a5604/DZEKO-Edin_300409",
+    "path": "/assets/media/portraits/c6ee1832275c03ac8ea62eb939bc16589cd282715a47fb10e1289d7f6bd65db4.png",
+    "sha256": "84e9ccade4e722ee43f8740c0523141fb22356c8448ccd75f20d8529b9906e72",
+    "bytes": 837130,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:24:51.109317+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "BIH",
+        "player_id": 141,
+        "fifa_id": "300409",
+        "name": "Edin DZEKO",
+        "caps": 151
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "BIH",
+        "player_id": 141,
+        "fifa_id": "300409",
+        "name": "Edin DZEKO",
+        "caps": 151
+      }
+    ]
+  },
+  "ca7d1490716dad2a626a98c8fe3b316de80355d4562365e33eefd092d411f40d": {
+    "source_url": "https://digitalhub.fifa.com/transform/f9694bf1-eb42-4d26-9503-e988bd32a435/SON-Heungmin_307849",
+    "path": "/assets/media/portraits/ca7d1490716dad2a626a98c8fe3b316de80355d4562365e33eefd092d411f40d.png",
+    "sha256": "e4b0243e6a3284f8db0823b12a6ad45e0391e3dee7d3d2c91588f5a4b3b09a96",
+    "bytes": 997303,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:24:44.078341+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "KOR",
+        "player_id": 59,
+        "fifa_id": "307849",
+        "name": "SON Heungmin",
+        "caps": 147
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "KOR",
+        "player_id": 59,
+        "fifa_id": "307849",
+        "name": "SON Heungmin",
+        "caps": 147
+      }
+    ]
+  },
+  "cfe27bc44e705c6609571cb37d9335216da3658c663fe1c693b425a61d556cf6": {
+    "source_url": "https://digitalhub.fifa.com/transform/b5995ed9-3969-48a1-abc7-abd8df77abda/AKRAM-AFIF_386347",
+    "path": "/assets/media/portraits/cfe27bc44e705c6609571cb37d9335216da3658c663fe1c693b425a61d556cf6.png",
+    "sha256": "1ee20863442c3d2b3894518df796cad4b1930f1080b3afdd6f29913b77934c2f",
+    "bytes": 1079831,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:28.509758+00:00",
+    "selections": [
+      {
+        "selection": "global_caps_24",
+        "team_code": "QAT",
+        "player_id": 167,
+        "fifa_id": "386347",
+        "name": "AKRAM AFIF",
+        "caps": 139
+      }
+    ]
+  },
+  "d19fc73a30a5cc08f5ed8c7dac60a249ffa2d3c7aea0e6440117595f4f282198": {
+    "source_url": "https://digitalhub.fifa.com/transform/6fe9f49e-5f45-4a44-9807-579be23fc0db/DEPAY-Memphis_336098",
+    "path": "/assets/media/portraits/d19fc73a30a5cc08f5ed8c7dac60a249ffa2d3c7aea0e6440117595f4f282198.png",
+    "sha256": "55194505c5da1b9970eb69d054fa958d3d0b182e54e5bf3a44fefbd7318c9da0",
+    "bytes": 1040367,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:18.017449+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "NED",
+        "player_id": 530,
+        "fifa_id": "336098",
+        "name": "Memphis DEPAY",
+        "caps": 112
+      }
+    ]
+  },
+  "dc01b6c0e38af4bc174eea50a9d077127a6e298fd185823b95bd2e765d32d511": {
+    "source_url": "https://digitalhub.fifa.com/transform/c0f17753-49b2-481c-8924-9f9f1b081bcf/GODOY-Anibal_269514",
+    "path": "/assets/media/portraits/dc01b6c0e38af4bc174eea50a9d077127a6e298fd185823b95bd2e765d32d511.png",
+    "sha256": "39a1fe10b2f4131056634f613c4f4530c6ff01d34db78343f52883377d0b8b2b",
+    "bytes": 894321,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:13.517044+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "PAN",
+        "player_id": 1242,
+        "fifa_id": "269514",
+        "name": "Anibal GODOY",
+        "caps": 160
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "PAN",
+        "player_id": 1242,
+        "fifa_id": "269514",
+        "name": "Anibal GODOY",
+        "caps": 160
+      }
+    ]
+  },
+  "e1cb8370342bf90b7edc7a23b2229cfc97f00a2395f613fc9958913defeed218": {
+    "source_url": "https://digitalhub.fifa.com/transform/30bebca0-cc33-4a32-ad33-8a6141647128/MBEMBA-Chancel_356532",
+    "path": "/assets/media/portraits/e1cb8370342bf90b7edc7a23b2229cfc97f00a2395f613fc9958913defeed218.png",
+    "sha256": "452415135fd0089f5547f9981ca0f6f501926200cf3ed17f9cc8dc5a1cb0502b",
+    "bytes": 1234796,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:58.393898+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "COD",
+        "player_id": 1088,
+        "fifa_id": "356532",
+        "name": "Chancel MBEMBA",
+        "caps": 113
+      }
+    ]
+  },
+  "e28c28bde5aae53ed1c71763ced605e1a5203b908fffd69d132f985b27aec49b": {
+    "source_url": "https://digitalhub.fifa.com/transform/295ab5b2-4dbf-42b9-918b-04fb4ae0ec0a/RODRI_411375",
+    "path": "/assets/media/portraits/e28c28bde5aae53ed1c71763ced605e1a5203b908fffd69d132f985b27aec49b.png",
+    "sha256": "f53b3dd9f104245aa6f51365a8d21c827cf70134b05dd1413f6c80353b581234",
+    "bytes": 952847,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:32.743410+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "ESP",
+        "player_id": 744,
+        "fifa_id": "411375",
+        "name": "RODRI",
+        "caps": 70
+      }
+    ]
+  },
+  "e2d576d313df987ab080b37deb6545f27f0a2ef9ff3211c7117337b8f7177acf": {
+    "source_url": "https://digitalhub.fifa.com/transform/4688cb2a-6446-4439-ba5f-e4db7b5a18c5/VALENCIA-Enner_373400",
+    "path": "/assets/media/portraits/e2d576d313df987ab080b37deb6545f27f0a2ef9ff3211c7117337b8f7177acf.png",
+    "sha256": "a518eece7bb29962ddf3b28d00a34900f8289b6201f3b9a1361b6c349834e245",
+    "bytes": 858975,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:16.723856+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "ECU",
+        "player_id": 507,
+        "fifa_id": "373400",
+        "name": "Enner VALENCIA",
+        "caps": 109
+      }
+    ]
+  },
+  "e846ae3b85252dda089899da1d480b1a359084e9b3388e700cc49ff1f3ed9c00": {
+    "source_url": "https://digitalhub.fifa.com/transform/719252dc-c983-411f-875b-13a0f6acd967/NAGATOMO-Yuto_291372",
+    "path": "/assets/media/portraits/e846ae3b85252dda089899da1d480b1a359084e9b3388e700cc49ff1f3ed9c00.png",
+    "sha256": "9da74226efbfc14fd5e8db22c3539a0631df8848519b27f8319712d047aa41b3",
+    "bytes": 933815,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:21.206516+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "JPN",
+        "player_id": 551,
+        "fifa_id": "291372",
+        "name": "Yuto NAGATOMO",
+        "caps": 146
+      },
+      {
+        "selection": "global_caps_24",
+        "team_code": "JPN",
+        "player_id": 551,
+        "fifa_id": "291372",
+        "name": "Yuto NAGATOMO",
+        "caps": 146
+      }
+    ]
+  },
+  "e9eb23378d0fc614bcd778bca3648f199c15f96790c3d6b4cb4760c09f5ff060": {
+    "source_url": "https://digitalhub.fifa.com/transform/ba7ea3ab-0ef6-4cdd-834c-79a94739fe26/PERISIC-Ivan_359381",
+    "path": "/assets/media/portraits/e9eb23378d0fc614bcd778bca3648f199c15f96790c3d6b4cb4760c09f5ff060.png",
+    "sha256": "0da3b243f5361c64ed3d49dada8ea41e8ace6f6d2732eeb199b4989dd90d38dc",
+    "bytes": 1112976,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:15.600351+00:00",
+    "selections": [
+      {
+        "selection": "global_caps_24",
+        "team_code": "CRO",
+        "player_id": 1184,
+        "fifa_id": "359381",
+        "name": "Ivan PERISIC",
+        "caps": 158
+      }
+    ]
+  },
+  "ed4499363fe6532eac7c9face08ba238ca7880d881772ea12beb1e1501dc1776": {
+    "source_url": "https://digitalhub.fifa.com/transform/ba94c3aa-e071-4add-b402-5d3f8df8acb9/ROBERTSON-Andy_401339",
+    "path": "/assets/media/portraits/ed4499363fe6532eac7c9face08ba238ca7880d881772ea12beb1e1501dc1776.png",
+    "sha256": "5075180f2fc16e9b6fe3db18995c2ee3669a3d4b6dd3172892ae7f6068692989",
+    "bytes": 735788,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:02.298537+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "SCO",
+        "player_id": 289,
+        "fifa_id": "401339",
+        "name": "Andy ROBERTSON",
+        "caps": 97
+      }
+    ]
+  },
+  "ef45d8adce5ba714d2c6daa33bb7242ce3ad42826a58a253fa1533ac9d2e4fec": {
+    "source_url": "https://digitalhub.fifa.com/transform/23bcc976-2dbc-4fe2-b844-1878ff0cd354/SORLOTH-Alexander_398588",
+    "path": "/assets/media/portraits/ef45d8adce5ba714d2c6daa33bb7242ce3ad42826a58a253fa1533ac9d2e4fec.png",
+    "sha256": "1766dd40e644ecb9a1719acb1b4ae58b8cd79d5e75ed6f3a4a311ad7e542aa06",
+    "bytes": 882618,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:47.423106+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "NOR",
+        "player_id": 917,
+        "fifa_id": "398588",
+        "name": "Alexander SORLOTH",
+        "caps": 77
+      }
+    ]
+  },
+  "f24c03cf40ef7f2ae5309a40da086c809a6145cab3370a49c5c0effae2b6040c": {
+    "source_url": "https://digitalhub.fifa.com/transform/34d1c247-2a09-4fd6-87bc-71ec687a54aa/PULISIC-Christian_390267",
+    "path": "/assets/media/portraits/f24c03cf40ef7f2ae5309a40da086c809a6145cab3370a49c5c0effae2b6040c.png",
+    "sha256": "88fdd248c1042a3b5819876e5ced69bcfd47be95b7ad969b0573d72d83516a35",
+    "bytes": 890450,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:04.240992+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "USA",
+        "player_id": 322,
+        "fifa_id": "390267",
+        "name": "Christian PULISIC",
+        "caps": 90
+      }
+    ]
+  },
+  "f2da8a8bef642256907f5dbc9ba993692292af22a28986ff12e85ac91483eaae": {
+    "source_url": "https://digitalhub.fifa.com/transform/e0f75257-7c12-4777-a0d6-87b5d30f5548/MANE-Sadio_353790",
+    "path": "/assets/media/portraits/f2da8a8bef642256907f5dbc9ba993692292af22a28986ff12e85ac91483eaae.png",
+    "sha256": "841ef2b1438d2c083b2ab3bd8034a765018d4029fca1ebd85bfe21ab9a84ddde",
+    "bytes": 1248843,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:27.146363+00:00",
+    "selections": [
+      {
+        "selection": "global_caps_24",
+        "team_code": "SEN",
+        "player_id": 868,
+        "fifa_id": "353790",
+        "name": "Sadio MANE",
+        "caps": 134
+      }
+    ]
+  },
+  "f2e603ef6484781172a164fbdef4418caf2d90bc16befefc3e7badd66078bcd3": {
+    "source_url": "https://digitalhub.fifa.com/transform/4aedbffa-a35c-4aa5-a7ce-8a29c2af3e72/OTAMENDI-Nicolas_310116",
+    "path": "/assets/media/portraits/f2e603ef6484781172a164fbdef4418caf2d90bc16befefc3e7badd66078bcd3.png",
+    "sha256": "cc36905b1ce04c9c5ce2b7c1afd5a2c574668ca8ca895783f0d9718150f13d69",
+    "bytes": 1034608,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:26:24.867659+00:00",
+    "selections": [
+      {
+        "selection": "global_caps_24",
+        "team_code": "ARG",
+        "player_id": 955,
+        "fifa_id": "310116",
+        "name": "Nicolas OTAMENDI",
+        "caps": 139
+      }
+    ]
+  },
+  "fcba65adda8294318e650646ada3dd28c64c01774b33c598c87363bca646290d": {
+    "source_url": "https://digitalhub.fifa.com/transform/431bf921-6e73-469f-87bd-3fb2c010966e/WOOD-Chris_274078",
+    "path": "/assets/media/portraits/fcba65adda8294318e650646ada3dd28c64c01774b33c598c87363bca646290d.png",
+    "sha256": "58ae746d8f6cda57cbd0d9a1206ac6f84d70edbb48c6441207d1e4f07d770636",
+    "bytes": 1045249,
+    "mime": "image/png",
+    "retrieved_at": "2026-10-21T16:25:31.975166+00:00",
+    "selections": [
+      {
+        "selection": "team_feature",
+        "team_code": "NZL",
+        "player_id": 711,
+        "fifa_id": "274078",
+        "name": "Chris WOOD",
+        "caps": 93
+      }
+    ]
+  }
+}

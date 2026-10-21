@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: app/Core/Flash.php; course project source. */
 
 declare(strict_types=1);
 

@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: scripts/sync_country_profiles.php; course project source. */
 
 declare(strict_types=1);
 

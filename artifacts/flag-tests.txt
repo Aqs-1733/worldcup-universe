@@ -1,0 +1,1 @@
+PASS flag coverage: 280 team containers; local flag images and Chinese alt text.

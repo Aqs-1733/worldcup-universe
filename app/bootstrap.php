@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: app/bootstrap.php; course project source. */
 
 declare(strict_types=1);
 
@@ -24,12 +25,7 @@ Env::load(ROOT_PATH . '/.env');
 
 date_default_timezone_set(env('APP_TIMEZONE', 'Asia/Shanghai'));
 
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start([
-        'cookie_httponly' => true,
-        'cookie_samesite' => 'Lax',
-    ]);
-}
+// Yii2 owns the web session. CLI collection tasks do not create session files.
 
 function env(string $key, mixed $default = null): mixed
 {
@@ -43,7 +39,16 @@ function app_name(): string
 
 function e(mixed $value): string
 {
+    if(is_array($value) || (is_object($value) && !$value instanceof Stringable)) { return ''; }
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
+
+/** Public links never execute data/javascript URL schemes from imported rows. */
+function safe_url(?string $value): string
+{
+    $value=trim((string)$value);
+    if (str_starts_with($value,'/') && !str_starts_with($value,'//') && !str_contains($value,'\\')) { return $value; }
+    return preg_match('~^https?://~i',$value) ? $value : '#';
 }
 
 function url(string $path = ''): string
@@ -59,7 +64,10 @@ function asset(string $path): string
 
 function csrf_field(): string
 {
-    return '<input type="hidden" name="_token" value="' . e(Csrf::token()) . '">';
+    if (class_exists('Yii', false) && Yii::$app instanceof yii\web\Application) {
+        return '<input type="hidden" name="' . e(Yii::$app->request->csrfParam) . '" value="' . e(Yii::$app->request->csrfToken) . '">';
+    }
+    return '';
 }
 
 function flash(?string $key = null): mixed
@@ -101,7 +109,7 @@ function flag_html(?string $flagUrl, ?string $flagEmoji = '', ?string $alt = '')
 {
     $alt = $alt !== '' ? $alt : 'flag';
     if ($flagUrl) {
-        return '<img class="inline-flag" src="' . e($flagUrl) . '" alt="' . e($alt) . '" loading="lazy">';
+        return '<img class="inline-flag" src="' . e(safe_url($flagUrl)) . '" alt="' . e($alt) . '" loading="lazy">';
     }
     if ($flagEmoji) {
         return '<span class="emoji-flag">' . e($flagEmoji) . '</span>';

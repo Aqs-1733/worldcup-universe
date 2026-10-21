@@ -1,0 +1,1396 @@
+{
+  "complete": true,
+  "teams": 48,
+  "players": 1248,
+  "matches": 104,
+  "match_details": 104,
+  "sources": [
+    {
+      "url": "https://api.fifa.com/api/v3/calendar/matches?idCompetition=17&idSeason=285023&language=en&count=500",
+      "file": "matches.json",
+      "retrieved_at": "2026-10-21T13:09:13.503380+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "a79a299b6bd6931ab2da94f16659d32ac2c35de000f24025f6905c1c1aba4c9b",
+      "bytes": 459453
+    },
+    {
+      "url": "https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf",
+      "file": "squads.pdf",
+      "retrieved_at": "2026-10-21T13:09:20.153134+00:00",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "sha256": "02a0a9beb5d219e7cc0aedde19273e9a3bfe4818ecd600d37804b8801dd96d94",
+      "bytes": 784283
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/1895293?language=en",
+      "file": "team-1895293.json",
+      "retrieved_at": "2026-10-21T13:13:58.488553+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "cd44e4737f204f4c1c85fd9635fbf5be2808d47be0c11ff16864a7d199c0d4c5",
+      "bytes": 720
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/20014?language=en",
+      "file": "team-20014.json",
+      "retrieved_at": "2026-10-21T13:14:06.157466+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "4f32dc9b63d2660bbae053a7ce7bf5874c6382e658df475cf0eed17992b5917b",
+      "bytes": 718
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43817?language=en",
+      "file": "team-43817.json",
+      "retrieved_at": "2026-10-21T13:14:08.180996+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "2cde2c5e76f2fcd848d7b24bebb3d104eac4eba791d6691394f94bcc997449eb",
+      "bytes": 781
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43818?language=en",
+      "file": "team-43818.json",
+      "retrieved_at": "2026-10-21T13:14:09.407490+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "a159065b940ab244cecc1bc75c4a23fb9c9204f7691c129b2bad1b59e4c90d86",
+      "bytes": 701
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43819?language=en",
+      "file": "team-43819.json",
+      "retrieved_at": "2026-10-21T13:14:10.440610+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "70dff9ba58d5050e44119db66ea38e014dd5d8d5b00de498b531a8b312b6ba1c",
+      "bytes": 779
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43820?language=en",
+      "file": "team-43820.json",
+      "retrieved_at": "2026-10-21T13:14:12.822727+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "c5290e90f1d0d76922b5ea85a96d9e1e11290d67e28fa8632aa9f4e7604792f1",
+      "bytes": 705
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43822?language=en",
+      "file": "team-43822.json",
+      "retrieved_at": "2026-10-21T13:14:14.273605+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "7fa2421e9f63cc4e9adc7ac4d7ac1eb37448dc800704c76c011112cb150cee5a",
+      "bytes": 791
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43834?language=en",
+      "file": "team-43834.json",
+      "retrieved_at": "2026-10-21T13:14:15.709272+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "b382f2edf4628e4f6ae89c8206c5ab844bf8ff8fb9e5712cc7bb131a7dc59347",
+      "bytes": 703
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43835?language=en",
+      "file": "team-43835.json",
+      "retrieved_at": "2026-10-21T13:14:17.701225+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "49de4eca377b253184181ff07e10c722381c3ce21cb439a2ad29a7d236eb72e6",
+      "bytes": 812
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43843?language=en",
+      "file": "team-43843.json",
+      "retrieved_at": "2026-10-21T13:14:19.585148+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "9959e6db2bc336f198dd669511c38030e3885cdc9c3f420408c43dcb8ed0c8c9",
+      "bytes": 716
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43850?language=en",
+      "file": "team-43850.json",
+      "retrieved_at": "2026-10-21T13:14:20.796338+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "e5a4c9142f9dbcdb7451ecd4b13aa2e842fa605df789406c2d25082c97f8c9c0",
+      "bytes": 713
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43854?language=en",
+      "file": "team-43854.json",
+      "retrieved_at": "2026-10-21T13:14:22.101501+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "8dea558ba19950812e98080ce5dece68e510c52325a76dd7297c317ee8b81d9a",
+      "bytes": 784
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43855?language=en",
+      "file": "team-43855.json",
+      "retrieved_at": "2026-10-21T13:14:28.687986+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "cfa1bfd1ec70fe82ff721cbc11e40511805de865d53540c14a37a30b41925546",
+      "bytes": 703
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43860?language=en",
+      "file": "team-43860.json",
+      "retrieved_at": "2026-10-21T13:14:30.120651+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "d5068a09d9267f0c46ad741f2e79b997584ded4e7c77d04ad7f7d715362d0e8e",
+      "bytes": 761
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43872?language=en",
+      "file": "team-43872.json",
+      "retrieved_at": "2026-10-21T13:14:31.991460+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "8153b49520cabdef003a2f4948c3350dd854c57cae66f97fe58cd8166ad1e685",
+      "bytes": 707
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43879?language=en",
+      "file": "team-43879.json",
+      "retrieved_at": "2026-10-21T13:14:33.431425+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "90a1189b19dc300894c35e6d50056675df205cb2bfe7d7813f7f1165df960674",
+      "bytes": 707
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43883?language=en",
+      "file": "team-43883.json",
+      "retrieved_at": "2026-10-21T13:14:35.097555+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "cdd5ed6dca4e76e856977d3e3e3bd758f3220147b803a97e187106641ecedabe",
+      "bytes": 716
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43888?language=en",
+      "file": "team-43888.json",
+      "retrieved_at": "2026-10-21T13:14:36.306371+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "cb69600ed7afab7fedcc52c7a1620e77c030db3e72dab7257568cc9d9b483b06",
+      "bytes": 804
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43899?language=en",
+      "file": "team-43899.json",
+      "retrieved_at": "2026-10-21T13:14:42.391263+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "3158366a9a9da2360510f555fdbd4e662436ca1ac384778fb640ecf4d44b77db",
+      "bytes": 719
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43908?language=en",
+      "file": "team-43908.json",
+      "retrieved_at": "2026-10-21T13:14:43.520789+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "70b8201c7a87dae6c8f80a244f458bc052c098fa2633c44da5e4edbe3864095c",
+      "bytes": 708
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43911?language=en",
+      "file": "team-43911.json",
+      "retrieved_at": "2026-10-21T13:14:44.725627+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "1788650b109dafd56104c81a90a0ea18cb96fdd2ca102ce526a23e0e8e25ebbc",
+      "bytes": 759
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43914?language=en",
+      "file": "team-43914.json",
+      "retrieved_at": "2026-10-21T13:14:46.407241+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "bb347a8d88584d52eb27721fd2cc15ce46c85c0bae49ac41d23ecdfa517e4c49",
+      "bytes": 710
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43921?language=en",
+      "file": "team-43921.json",
+      "retrieved_at": "2026-10-21T13:14:47.971619+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "6c1269529dfcbfa53f554d021d0b8fa71c70ec172e2105baea94093791d4265b",
+      "bytes": 780
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43922?language=en",
+      "file": "team-43922.json",
+      "retrieved_at": "2026-10-21T13:14:51.608429+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "7ee21f26bd1bb4a6a3db32098ba104cbeac6be19afad3aa8d00668068196a565",
+      "bytes": 783
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43924?language=en",
+      "file": "team-43924.json",
+      "retrieved_at": "2026-10-21T13:14:53.145274+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "527c659ccc3fa494a9f656bdc665f370beb0c085b57146efd737d2f8abd42037",
+      "bytes": 813
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43926?language=en",
+      "file": "team-43926.json",
+      "retrieved_at": "2026-10-21T13:14:54.400743+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "977f2974b3f7da1a68ffd3169d28f9080aee87ddb72d77421b3c6529cd525df2",
+      "bytes": 714
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43927?language=en",
+      "file": "team-43927.json",
+      "retrieved_at": "2026-10-21T13:14:55.566448+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "0a4c153c5e23cb7b0e63f0b076d66b182c2b9d5e9ce1424b8d979f41f5afd2a8",
+      "bytes": 712
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43928?language=en",
+      "file": "team-43928.json",
+      "retrieved_at": "2026-10-21T13:14:56.980880+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "532d6cd5476a3c952595128a7748178eb1da80af72c738c662af942759b94eff",
+      "bytes": 783
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43930?language=en",
+      "file": "team-43930.json",
+      "retrieved_at": "2026-10-21T13:14:58.231119+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "eb3a4d3d3981bff70b0751efea64f8ebfc52f26de7f4d19e8abdb010d7c85cd7",
+      "bytes": 712
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43934?language=en",
+      "file": "team-43934.json",
+      "retrieved_at": "2026-10-21T13:14:59.484531+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "17c763a32a3bc4ed61f644aaed31d9411971e4bf56c4263f8bce7f266f39e1e0",
+      "bytes": 708
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43935?language=en",
+      "file": "team-43935.json",
+      "retrieved_at": "2026-10-21T13:15:01.069915+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "f52503015d81090365873c5a61903a351d9e287b62e98c45f572799f30df1fed",
+      "bytes": 707
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43938?language=en",
+      "file": "team-43938.json",
+      "retrieved_at": "2026-10-21T13:15:02.369607+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "64f79900d0cdc89a6833b2b6c06137d71dabd2e24e3f26c14854281110cd791f",
+      "bytes": 731
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43942?language=en",
+      "file": "team-43942.json",
+      "retrieved_at": "2026-10-21T13:15:03.398070+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "b3b2c351efd458094e69b346f678301e7992dbff8481b62ed15be2acecb4717e",
+      "bytes": 761
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43946?language=en",
+      "file": "team-43946.json",
+      "retrieved_at": "2026-10-21T13:15:04.523042+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "460f267c0d83ddca3ae474cb226d987e0cd107ed71c2c32dcc202109de4f75ea",
+      "bytes": 746
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43948?language=en",
+      "file": "team-43948.json",
+      "retrieved_at": "2026-10-21T13:15:05.623564+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "1409b54449f6245d637f408d6ab60ad809cd684d5f80c25ac2117e8fd3146763",
+      "bytes": 776
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43960?language=en",
+      "file": "team-43960.json",
+      "retrieved_at": "2026-10-21T13:15:06.792880+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "54ed058ae60774215b987160f23ca2083cfca21ed7cf238d16cc8be98f807e29",
+      "bytes": 786
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43961?language=en",
+      "file": "team-43961.json",
+      "retrieved_at": "2026-10-21T13:15:07.941663+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "4adb574d969c26fc794ed3974436d33134c9998f808e25df6f9e210b15e9e4c6",
+      "bytes": 706
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43963?language=en",
+      "file": "team-43963.json",
+      "retrieved_at": "2026-10-21T13:15:09.343883+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "01cca966ebc49a2363fd22815e032c38ebc36a304017d713eedaa82b1b31b01e",
+      "bytes": 788
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43967?language=en",
+      "file": "team-43967.json",
+      "retrieved_at": "2026-10-21T13:15:10.586855+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "2db9c049033e83be678bf40b4b68dd4cc79dd8950f0acb44a92e089eaa5c2a5a",
+      "bytes": 710
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43969?language=en",
+      "file": "team-43969.json",
+      "retrieved_at": "2026-10-21T13:15:11.751262+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "e6ae66cd2795d1b7437a98440459b4dd4370184e3b334e526e6e716f4cd0dba1",
+      "bytes": 784
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43970?language=en",
+      "file": "team-43970.json",
+      "retrieved_at": "2026-10-21T13:15:12.865715+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "bae6a72057df9176b043e4811d8d4adbba77c1d7ddbb8942f23f7ce759b64c30",
+      "bytes": 757
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43971?language=en",
+      "file": "team-43971.json",
+      "retrieved_at": "2026-10-21T13:15:13.982950+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "ad7aaa5f2c38538c4a997855787c81649e2cd570e34f413361c8b338a304b0af",
+      "bytes": 771
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43972?language=en",
+      "file": "team-43972.json",
+      "retrieved_at": "2026-10-21T13:15:15.162457+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "bb2def47d733f77ceacd4ef29cdac2a08805410198a491c8dc4fa39896b28a68",
+      "bytes": 710
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43976?language=en",
+      "file": "team-43976.json",
+      "retrieved_at": "2026-10-21T13:15:16.539222+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "739895a92a561b643b47c3c36903ceedb836e35f2fcb5bfde1f0bba028578a3b",
+      "bytes": 786
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43978?language=en",
+      "file": "team-43978.json",
+      "retrieved_at": "2026-10-21T13:15:17.651485+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "1e9f03345b5a353ed72498a200fa7ff7b161b10779b2f6397874c6f8de4ed34a",
+      "bytes": 715
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/43995?language=en",
+      "file": "team-43995.json",
+      "retrieved_at": "2026-10-21T13:15:18.943293+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "df14dad82b3c6e463b82cb2addfdbb8e0a88fd96987a2dcc38634e4fa47ac2fc",
+      "bytes": 733
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/44005?language=en",
+      "file": "team-44005.json",
+      "retrieved_at": "2026-10-21T13:15:20.251185+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "42c484ed38ca9cc0e6b561b9d5a10e98444e5665f37325fc183120ece016e51e",
+      "bytes": 713
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/teams/44037?language=en",
+      "file": "team-44037.json",
+      "retrieved_at": "2026-10-21T13:15:21.402017+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "8988078de18ee3a91ba8f743557e3b44eef80e515a61b91f107dee6df96696db",
+      "bytes": 737
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021443?language=en",
+      "file": "live-400021443.json",
+      "retrieved_at": "2026-10-21T13:15:22.616129+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "e7e8dc57b23f5acc2507803719b7184b2a9e0068db9fe5f6f2d305d81e332670",
+      "bytes": 35610
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021441?language=en",
+      "file": "live-400021441.json",
+      "retrieved_at": "2026-10-21T13:15:23.846732+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "8de6e04535f55ac31465f10fa8e70e62efb9bdc1a979e05c0756464d0b2b8b69",
+      "bytes": 35504
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021449?language=en",
+      "file": "live-400021449.json",
+      "retrieved_at": "2026-10-21T13:15:25.086977+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "afeff330d5d175da63b9c3264165b076cf6aca6e2f8d8cd0e7a09d71058b0973",
+      "bytes": 36778
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021458?language=en",
+      "file": "live-400021458.json",
+      "retrieved_at": "2026-10-21T13:15:26.313073+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "feca0ed22632c6a00c76bcc8d453a0c8f324d437edbdda820dbec89cc6993d5c",
+      "bytes": 36911
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021447?language=en",
+      "file": "live-400021447.json",
+      "retrieved_at": "2026-10-21T13:15:27.578042+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "b6db12a4a33a028d7643d79245528bbddb00dcd36ab1015ca8453c70c31adc20",
+      "bytes": 35909
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021456?language=en",
+      "file": "live-400021456.json",
+      "retrieved_at": "2026-10-21T13:15:28.862915+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "a4585f81f4f196309cff1949c5eccf2baecbc496c013c05198592c57ea87332c",
+      "bytes": 35662
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021453?language=en",
+      "file": "live-400021453.json",
+      "retrieved_at": "2026-10-21T13:15:30.430614+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "3e20d55577bfcd11114665dc5de35b03b20b372b028f019a54cb8123abe77e31",
+      "bytes": 35574
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021463?language=en",
+      "file": "live-400021463.json",
+      "retrieved_at": "2026-10-21T13:15:31.662696+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "30d4d121842acf6c63b8416380ee472337bf1b8f09b00087fb843e76ad2cf186",
+      "bytes": 35339
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021464?language=en",
+      "file": "live-400021464.json",
+      "retrieved_at": "2026-10-21T13:15:33.020484+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "f1138b54122b177dff5c91c0c40ea00bb0a5b4d7ad1b3ae1f8499f354ab4b7d9",
+      "bytes": 35445
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021470?language=en",
+      "file": "live-400021470.json",
+      "retrieved_at": "2026-10-21T13:15:34.362632+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "abe0c9ac88ae7613b15b0bfcb4dd356cf629399eb2820f5d950ca3a9431c8119",
+      "bytes": 36793
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021467?language=en",
+      "file": "live-400021467.json",
+      "retrieved_at": "2026-10-21T13:15:37.256622+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "22fbab4ecf2a69266f2452be703172b7fadf8802ea4968f939eacb29d50238d9",
+      "bytes": 35764
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021474?language=en",
+      "file": "live-400021474.json",
+      "retrieved_at": "2026-10-21T13:15:42.024516+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "3c9c06758537a47a0807215cbcfec6bd5dae7cb0b6f9b1d8d9a212ae37889da2",
+      "bytes": 36554
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021482?language=en",
+      "file": "live-400021482.json",
+      "retrieved_at": "2026-10-21T13:15:44.745712+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "e1559cabb2830e12ad3bc6e95d88bb86f481f1e5c0902771209386cfe3e0e0d9",
+      "bytes": 34724
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021478?language=en",
+      "file": "live-400021478.json",
+      "retrieved_at": "2026-10-21T13:15:51.035883+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "d7e745aff259e9a431217d6069b29d38a89c1b74654c5686b32559e021b4e3be",
+      "bytes": 35801
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021486?language=en",
+      "file": "live-400021486.json",
+      "retrieved_at": "2026-10-21T13:15:52.980383+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "932b695a6f42670bf6ef932bd12ae6d8d6688087db1915464db36311403a2863",
+      "bytes": 35350
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021476?language=en",
+      "file": "live-400021476.json",
+      "retrieved_at": "2026-10-21T13:15:55.729893+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "786e69520a469feec8e375b196c504357f2e4b778c970c28c49c785ef57a0264",
+      "bytes": 34842
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021490?language=en",
+      "file": "live-400021490.json",
+      "retrieved_at": "2026-10-21T13:15:57.015711+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "55f6d8948f4f30001e56b80bf1897c0f2c6dbce54a0d6505b8b0b3314599501e",
+      "bytes": 35079
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021488?language=en",
+      "file": "live-400021488.json",
+      "retrieved_at": "2026-10-21T13:15:58.393472+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "4a38864eb41d5068af7a60001b05a1b59abb67fd1031d1d105136cd7422add3b",
+      "bytes": 35997
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021496?language=en",
+      "file": "live-400021496.json",
+      "retrieved_at": "2026-10-21T13:15:59.605954+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "c64f961d000005b258cba19aef1127f87a3b24b81cc47c331311d10dc0f46731",
+      "bytes": 36291
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021498?language=en",
+      "file": "live-400021498.json",
+      "retrieved_at": "2026-10-21T13:16:01.408091+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "0ea07dbd2b7430564056754bb4c76b4ca2256067cbd451ee2d1523b9fc2dd102",
+      "bytes": 35736
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021502?language=en",
+      "file": "live-400021502.json",
+      "retrieved_at": "2026-10-21T13:16:02.673054+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "a151a81c6e7a10d05d5ab615472c9afd2d135b8a1d1de373256b87608509144a",
+      "bytes": 35933
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021507?language=en",
+      "file": "live-400021507.json",
+      "retrieved_at": "2026-10-21T13:16:03.891775+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "17b3049a30974d62e16ba4164156f08798862cfa94812749235b8e7edb25260f",
+      "bytes": 35456
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021510?language=en",
+      "file": "live-400021510.json",
+      "retrieved_at": "2026-10-21T13:16:05.097493+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "79f1de15e83147747d1e684976367ca0b2295339e45a8ea79bc26ccb6432bec5",
+      "bytes": 35895
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021504?language=en",
+      "file": "live-400021504.json",
+      "retrieved_at": "2026-10-21T13:16:06.404773+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "be2be511c5563b6aef52b1b62c3eb1d671977674896d5c23e2d44b61611a2ebf",
+      "bytes": 36674
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021440?language=en",
+      "file": "live-400021440.json",
+      "retrieved_at": "2026-10-21T13:16:07.670057+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "185bdcbc5d02c601a93e1ce0c81770802d822b78080f8f3951928ab6a80676ff",
+      "bytes": 33825
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021446?language=en",
+      "file": "live-400021446.json",
+      "retrieved_at": "2026-10-21T13:16:08.927030+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "91a58ded4d8f62be90768dc3c314470f0170cfc98adfb0edfa1f56c985f18c82",
+      "bytes": 36554
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021450?language=en",
+      "file": "live-400021450.json",
+      "retrieved_at": "2026-10-21T13:16:10.297590+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "ba9c7fd36115f6490bb1be921a9305a055e839a769aeedb6b7ce1c99a34d9495",
+      "bytes": 35976
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021442?language=en",
+      "file": "live-400021442.json",
+      "retrieved_at": "2026-10-21T13:16:11.514470+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "91eee3c789003f56c2a8ad8237e4fca09c6e75f6805a2e046453f976b7230217",
+      "bytes": 34887
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021462?language=en",
+      "file": "live-400021462.json",
+      "retrieved_at": "2026-10-21T13:16:12.856307+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "d19d851ec1540fc585fbe721daf71cc74a0cd02a569ca1311e2001e1f5526735",
+      "bytes": 36049
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021454?language=en",
+      "file": "live-400021454.json",
+      "retrieved_at": "2026-10-21T13:16:14.141357+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "d8cdbc969b110deead23dc5913b6bbf9b8bf059dc6443016982ab395b0287d39",
+      "bytes": 35718
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021457?language=en",
+      "file": "live-400021457.json",
+      "retrieved_at": "2026-10-21T13:16:15.417872+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "d00c60f129f38fc3649ea923d86510df62c726a9d14070d960a6959bfc06914f",
+      "bytes": 35975
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021460?language=en",
+      "file": "live-400021460.json",
+      "retrieved_at": "2026-10-21T13:16:16.642337+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "71d7d1a11457de6d9e5c51f83ed86a2c7c98a087b72fd675446bbf3b97d54dfa",
+      "bytes": 36405
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021472?language=en",
+      "file": "live-400021472.json",
+      "retrieved_at": "2026-10-21T13:16:17.840853+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "ba23bcdf250af351cf8c3c9f51c332eff1e86fefca07dc9ed03309027691a0df",
+      "bytes": 35736
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021469?language=en",
+      "file": "live-400021469.json",
+      "retrieved_at": "2026-10-21T13:16:19.114031+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "435e2adbe5dc43e173d67992a7d8ea68938797c32812f8a2808e99d8e20754c3",
+      "bytes": 35912
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021465?language=en",
+      "file": "live-400021465.json",
+      "retrieved_at": "2026-10-21T13:16:20.420580+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "9833076ecddcd06603c8b3bfeb0f10c235b01fb30b439135a55ff3b09099ba52",
+      "bytes": 35515
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021475?language=en",
+      "file": "live-400021475.json",
+      "retrieved_at": "2026-10-21T13:16:21.620998+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "78aa87baa8384266f2d50523e9016ae9f19e355cf34595286b14b89e4c600426",
+      "bytes": 36084
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021483?language=en",
+      "file": "live-400021483.json",
+      "retrieved_at": "2026-10-21T13:16:23.017673+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "244080f96c9dfd7ec5ae284977533f7ed6a974f88bb62fc06a3d245307d8b5eb",
+      "bytes": 36025
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021477?language=en",
+      "file": "live-400021477.json",
+      "retrieved_at": "2026-10-21T13:16:24.226961+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "cb13a219ec7d067403a62de02bfb12b586c03413f24972ecd2f1219bf88b5193",
+      "bytes": 35104
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021487?language=en",
+      "file": "live-400021487.json",
+      "retrieved_at": "2026-10-21T13:16:25.462230+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "e942f3a739f5c8c3d7c316616d8b5be0155f36bbfaffce8789066f5ab42f61a0",
+      "bytes": 34888
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021480?language=en",
+      "file": "live-400021480.json",
+      "retrieved_at": "2026-10-21T13:16:26.689769+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "092229350367d324a2f4f16baea4645617d58b35e3a57d8266c4fc67f0584641",
+      "bytes": 36097
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021494?language=en",
+      "file": "live-400021494.json",
+      "retrieved_at": "2026-10-21T13:16:27.990232+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "5da282b832c4b3624ee2c1bc86fe163a15cbe22c3257185db14c50a75d23caea",
+      "bytes": 36388
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021492?language=en",
+      "file": "live-400021492.json",
+      "retrieved_at": "2026-10-21T13:16:29.819672+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "bbf507338c6cf00f48b9cdc3a71d2a5577d432a2d3210e4bc54dd168eeb2cb90",
+      "bytes": 35227
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021491?language=en",
+      "file": "live-400021491.json",
+      "retrieved_at": "2026-10-21T13:16:31.117341+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "2e8a590db4917e25b6d8074f00213d87262eff8018c8866780a04e70ebf72a1c",
+      "bytes": 36506
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021499?language=en",
+      "file": "live-400021499.json",
+      "retrieved_at": "2026-10-21T13:16:32.541647+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "ee38cb6778a296cdd4299808e126c19bf7bbf2ae8416f9f359bfc7285210b3cc",
+      "bytes": 35745
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021503?language=en",
+      "file": "live-400021503.json",
+      "retrieved_at": "2026-10-21T13:16:34.291740+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "46024dab511a0f37bdf6d4f683a91ce335d84cda45b2008e2302becf0790977d",
+      "bytes": 36510
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021506?language=en",
+      "file": "live-400021506.json",
+      "retrieved_at": "2026-10-21T13:16:36.513550+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "ccf50bb424b22d06cc83b04e6782f14ae125dce7a5ededcf6a7d816dc54d08ab",
+      "bytes": 35451
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021511?language=en",
+      "file": "live-400021511.json",
+      "retrieved_at": "2026-10-21T13:16:38.047898+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "1ba2239e8dac3ee49f5a619118b3a8ab67f916ee9d2d65483e7805df392be1ea",
+      "bytes": 36011
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021501?language=en",
+      "file": "live-400021501.json",
+      "retrieved_at": "2026-10-21T13:16:41.230665+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "1eb9255e2ceb70bf05831ffece7091560c78f80f4ef263b6954b7b1596bbee6e",
+      "bytes": 35706
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021448?language=en",
+      "file": "live-400021448.json",
+      "retrieved_at": "2026-10-21T13:16:42.525297+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "13d76ed3b3fbd8a6f7cb1ff1caa83977862107b854a851082debe02725c4007b",
+      "bytes": 35289
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021451?language=en",
+      "file": "live-400021451.json",
+      "retrieved_at": "2026-10-21T13:16:43.745177+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "43ddf5d5954e277a9c348c82c6bdfb8cee4c0541568355b62ded2e01bfe42be3",
+      "bytes": 34432
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021452?language=en",
+      "file": "live-400021452.json",
+      "retrieved_at": "2026-10-21T13:16:44.992436+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "304b44d5966dfc7a02da24408339f110a4436e6640749d13c0a04aab998815f8",
+      "bytes": 36855
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021455?language=en",
+      "file": "live-400021455.json",
+      "retrieved_at": "2026-10-21T13:16:46.984633+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "7a67eeec3e4589df076096c756dc58df34173faa0ff0c107277c5b3787ba8f3b",
+      "bytes": 35588
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021445?language=en",
+      "file": "live-400021445.json",
+      "retrieved_at": "2026-10-21T13:16:51.518613+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "42f86d2acebc07ca1ec9f4e1409db2b2dc44e20bbd2627fa69b9a522a13b54b4",
+      "bytes": 33794
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021444?language=en",
+      "file": "live-400021444.json",
+      "retrieved_at": "2026-10-21T13:16:53.504920+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "7cfb78c232dcdf56f6b552fee88c90e44df1c617e66d985ad4fe4337f9fedcc8",
+      "bytes": 35243
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021468?language=en",
+      "file": "live-400021468.json",
+      "retrieved_at": "2026-10-21T13:16:54.747144+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "ed52ad2ff1b7ff02d6e08e296ff560529acbfa8673ad7e40259977b55c99a49e",
+      "bytes": 35931
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021466?language=en",
+      "file": "live-400021466.json",
+      "retrieved_at": "2026-10-21T13:16:56.000144+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "86ac212db43a1c4567aba0166dd7638f665c421e8812891fe8e3911f3cbf7017",
+      "bytes": 35182
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021473?language=en",
+      "file": "live-400021473.json",
+      "retrieved_at": "2026-10-21T13:16:58.282311+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "4750ac13847d0f6582a8d8b3b0bde51faf7a41edd10d4552bdbfc3cffa67119a",
+      "bytes": 35724
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021471?language=en",
+      "file": "live-400021471.json",
+      "retrieved_at": "2026-10-21T13:16:59.615526+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "bec13349974e32e857fceb2924b7e8e6af81c78489980c082ae671378809fbc8",
+      "bytes": 35809
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021461?language=en",
+      "file": "live-400021461.json",
+      "retrieved_at": "2026-10-21T13:17:00.843781+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "93bd6f7da7bc44622ffcad8ce9f16a18abef60a977772f1227974076067e4ef6",
+      "bytes": 33702
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021459?language=en",
+      "file": "live-400021459.json",
+      "retrieved_at": "2026-10-21T13:17:02.467769+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "4b9035cc04125e9ca47aa3ead626d30bd38a91758c0ed369b1edef1fb59c1ba7",
+      "bytes": 35614
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021493?language=en",
+      "file": "live-400021493.json",
+      "retrieved_at": "2026-10-21T13:17:03.707315+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "7a2d7fd4307917e34f03d49b11ae8b916f31b71da9ae676911a24e27dd4b14c1",
+      "bytes": 36481
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021489?language=en",
+      "file": "live-400021489.json",
+      "retrieved_at": "2026-10-21T13:17:05.061174+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "85d54fd38429c4505a8844213cd21b9f2252a3d09f2184c289f2e247a8cfe9c6",
+      "bytes": 35368
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021484?language=en",
+      "file": "live-400021484.json",
+      "retrieved_at": "2026-10-21T13:17:08.062053+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "881b56448f265d76bb9d345a84557c1002fe90a2c277dddda49fd2b66060e33f",
+      "bytes": 36286
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021485?language=en",
+      "file": "live-400021485.json",
+      "retrieved_at": "2026-10-21T13:17:09.635674+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "6a21b2b26306c81ab967f3134161d26ce3fdd5f5ec4b55752da2d9141ebfce2d",
+      "bytes": 34602
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021481?language=en",
+      "file": "live-400021481.json",
+      "retrieved_at": "2026-10-21T13:17:10.966662+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "9b8cd7dca95307d674890674ab8123e8ea120661d03154b47df6425edf33a5f5",
+      "bytes": 35281
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021479?language=en",
+      "file": "live-400021479.json",
+      "retrieved_at": "2026-10-21T13:17:12.204618+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "90019eba55390f1ffb6c4d79916bec21b1f869bea22becd676ab2103d8e06202",
+      "bytes": 35030
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021508?language=en",
+      "file": "live-400021508.json",
+      "retrieved_at": "2026-10-21T13:17:13.788041+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "fd4be6cd2de58f8cf046cf8e019c3fad7888261ef99f6fa236eaae85014857ff",
+      "bytes": 35896
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021509?language=en",
+      "file": "live-400021509.json",
+      "retrieved_at": "2026-10-21T13:17:15.186290+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "cdf043183cf5a20da614c91700bfc549d8d8de176ea9e7fd17b1ad8076ae95b5",
+      "bytes": 36069
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021500?language=en",
+      "file": "live-400021500.json",
+      "retrieved_at": "2026-10-21T13:17:16.432402+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "127ac466b9d10aefea300cf5421ba16a1def2ff43fa9606c4a7de7095ccf8e61",
+      "bytes": 37201
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021505?language=en",
+      "file": "live-400021505.json",
+      "retrieved_at": "2026-10-21T13:17:17.675594+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "02753160147b88d6cae0004aa7770d7d9691a76f5120b6bcb67109405ac5090a",
+      "bytes": 35463
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021497?language=en",
+      "file": "live-400021497.json",
+      "retrieved_at": "2026-10-21T13:17:18.934914+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "cae0d865e4c1986cd8a2e0d860858c1a5c45bb8b989f3cc0bbdbb0204c0bfc30",
+      "bytes": 35708
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289273/400021495?language=en",
+      "file": "live-400021495.json",
+      "retrieved_at": "2026-10-21T13:17:20.301137+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "f8eae65901174ff52c8614c3bb4a6b455c4f1faade463bf5f4b98146b219f331",
+      "bytes": 36298
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021518?language=en",
+      "file": "live-400021518.json",
+      "retrieved_at": "2026-10-21T13:17:21.491639+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "d5792330105a23569488c2f5fac126712ff3cc82737add6fd39a14b07dbd51ed",
+      "bytes": 33793
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021516?language=en",
+      "file": "live-400021516.json",
+      "retrieved_at": "2026-10-21T13:17:22.794863+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "b48ee462046737d998fbe7ce7b24b9de56402184b72c5b6fd14fd03becf49612",
+      "bytes": 36145
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021513?language=en",
+      "file": "live-400021513.json",
+      "retrieved_at": "2026-10-21T13:17:24.035444+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "e8cfb93d4dadc15116843dc51596d0e10df5a215ec336e5ae31a3b3a712f2053",
+      "bytes": 37363
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021522?language=en",
+      "file": "live-400021522.json",
+      "retrieved_at": "2026-10-21T13:17:25.272391+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "3cdd58e7b00de891a9334b70d6a9b65e6cd504f3381463927906e82ad3f1508e",
+      "bytes": 36836
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021514?language=en",
+      "file": "live-400021514.json",
+      "retrieved_at": "2026-10-21T13:17:26.546219+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "9548081e0e4da0ff79e26f5d29ef988dca8ca15665123fb15c1e8f7a927f15d1",
+      "bytes": 35493
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021523?language=en",
+      "file": "live-400021523.json",
+      "retrieved_at": "2026-10-21T13:17:27.789838+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "1a21cb8c2b76ebc72b63077b5eaf8a53a4e32469e22a9742c34a0c7f17b4e456",
+      "bytes": 34486
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021520?language=en",
+      "file": "live-400021520.json",
+      "retrieved_at": "2026-10-21T13:17:29.029304+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "6299b5c175ef067c0d25efa5bde94efef493403f6b2ac9ac914ea1c05435419c",
+      "bytes": 35688
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021512?language=en",
+      "file": "live-400021512.json",
+      "retrieved_at": "2026-10-21T13:17:30.593304+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "58aed28e2d3ab314ca863094bfd813f5b68a6d3c406469034965c89f257c1aab",
+      "bytes": 35755
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021525?language=en",
+      "file": "live-400021525.json",
+      "retrieved_at": "2026-10-21T13:17:31.804735+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "6b43dbfa5cd437a0b8d4b203e8dee4472f9455fd548a9cdf328e710e859edc06",
+      "bytes": 36675
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021524?language=en",
+      "file": "live-400021524.json",
+      "retrieved_at": "2026-10-21T13:17:33.023182+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "e67cae05aa59321a1c18bde4036ecf9be524044f68d3fa137c4dd912a6525ae3",
+      "bytes": 35290
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021519?language=en",
+      "file": "live-400021519.json",
+      "retrieved_at": "2026-10-21T13:17:34.271547+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "073cb16244e84aa479238167d08a158994ff5c7b78ef11f00436b07e5c4e8167",
+      "bytes": 35496
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021526?language=en",
+      "file": "live-400021526.json",
+      "retrieved_at": "2026-10-21T13:17:35.718354+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "724c7e096084557957e5d44c8d94f7c134d3d7e86ee0c0a0aab973e889f8b49e",
+      "bytes": 35776
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021527?language=en",
+      "file": "live-400021527.json",
+      "retrieved_at": "2026-10-21T13:17:38.121607+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "e7eca47a046634a359a4db17dcae5509a4e3a24763a64c9b746ad2bb27aa91c5",
+      "bytes": 34682
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021515?language=en",
+      "file": "live-400021515.json",
+      "retrieved_at": "2026-10-21T13:17:39.438061+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "a2ecc5500195437e1f8115f6a0350c70273adb890917d97b0c2448c243501852",
+      "bytes": 34227
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021521?language=en",
+      "file": "live-400021521.json",
+      "retrieved_at": "2026-10-21T13:17:40.704390+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "0431aa919866ce523ac9851b50b662d2312f1609609071c2494adefa91f4cf98",
+      "bytes": 36144
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289287/400021517?language=en",
+      "file": "live-400021517.json",
+      "retrieved_at": "2026-10-21T13:17:42.084438+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "a46c34bf24f434670df0d58ab5e518b2ccd4faa6a1f867db6796cb9d829ccf1f",
+      "bytes": 36266
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289288/400021530?language=en",
+      "file": "live-400021530.json",
+      "retrieved_at": "2026-10-21T13:17:43.417469+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "66b25169b6c027cdc55895bf4226e49d505afb771b39d778873a4a7fde00e519",
+      "bytes": 36488
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289288/400021533?language=en",
+      "file": "live-400021533.json",
+      "retrieved_at": "2026-10-21T13:17:44.719664+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "887ddba90f2e8f3bd439aeed42030d707281f8f9a6471bb896365df65f9ebb59",
+      "bytes": 34736
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289288/400021532?language=en",
+      "file": "live-400021532.json",
+      "retrieved_at": "2026-10-21T13:17:45.952111+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "14f199cb8e767954d969b1882713d481056671c4b791d0c7f716879ea9be1632",
+      "bytes": 34355
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289288/400021531?language=en",
+      "file": "live-400021531.json",
+      "retrieved_at": "2026-10-21T13:17:47.178761+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "991962105e11f2e8c398b838d73ca5d4def5cb4108f8a1d8073eb2d78e5c738e",
+      "bytes": 36239
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289288/400021529?language=en",
+      "file": "live-400021529.json",
+      "retrieved_at": "2026-10-21T13:17:48.457661+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "828c27c27060a7b2e43d51635b6d48888b79a9be4c295e84edab28e3444f3000",
+      "bytes": 35244
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289288/400021534?language=en",
+      "file": "live-400021534.json",
+      "retrieved_at": "2026-10-21T13:17:51.797839+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "8dba87a567efa4c432dee6d875c77cb8d85e0b2068a60a7705b8ef8232a0e245",
+      "bytes": 36069
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289288/400021528?language=en",
+      "file": "live-400021528.json",
+      "retrieved_at": "2026-10-21T13:17:54.753250+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "39c9269958a27cc4e16e24ad91c602a9f070e96893b196d290747a019b30f10f",
+      "bytes": 35866
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289288/400021535?language=en",
+      "file": "live-400021535.json",
+      "retrieved_at": "2026-10-21T13:18:00.039793+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "55f8e7ae461d4143cb9c91913bd054545847bc9b2c76f45b0fc5a2e6aa95f134",
+      "bytes": 35874
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289289/400021536?language=en",
+      "file": "live-400021536.json",
+      "retrieved_at": "2026-10-21T13:18:01.415731+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "6b6ee46538a5147f661e5f9d229ce0f6e4309588c89cb4cf9097e956e21655a8",
+      "bytes": 35264
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289289/400021538?language=en",
+      "file": "live-400021538.json",
+      "retrieved_at": "2026-10-21T13:18:02.661688+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "80e50755548de3cb834dceaa315852578376cbe5db65f820f73ad637ab3bad04",
+      "bytes": 34585
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289289/400021539?language=en",
+      "file": "live-400021539.json",
+      "retrieved_at": "2026-10-21T13:18:04.000198+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "700f92638089911496195e8b1648c6ea4c602e9a472b5abb5b66cb351c6b53a3",
+      "bytes": 35878
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289289/400021537?language=en",
+      "file": "live-400021537.json",
+      "retrieved_at": "2026-10-21T13:18:05.288000+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "081900aa94688b0fcb68ec3ed1c392ed2cada03728298ea99bc695ed4e882912",
+      "bytes": 36710
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289290/400021541?language=en",
+      "file": "live-400021541.json",
+      "retrieved_at": "2026-10-21T13:18:06.548842+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "7bfada1b01e709f899b8b08d8e59b5bc5e4b920cac32a18195dd20ff3ac293e5",
+      "bytes": 35388
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289290/400021540?language=en",
+      "file": "live-400021540.json",
+      "retrieved_at": "2026-10-21T13:18:07.858564+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "0264085ef739262a988380af1d35fde9d3cb44d2db3b2eb37e08af6aefc9e0c4",
+      "bytes": 35841
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289291/400021542?language=en",
+      "file": "live-400021542.json",
+      "retrieved_at": "2026-10-21T13:18:09.196057+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "e79eaae24916b30af132ede13bbca221475ffaeb6a665a8e7729126214cc5ce8",
+      "bytes": 35399
+    },
+    {
+      "url": "https://api.fifa.com/api/v3/live/football/17/285023/289292/400021543?language=en",
+      "file": "live-400021543.json",
+      "retrieved_at": "2026-10-21T13:18:10.439091+00:00",
+      "http_status": 200,
+      "content_type": "application/json",
+      "sha256": "da104e4acdab8098796901ab1ee50cd1939af00c152f44536f312a958a18b1df",
+      "bytes": 37110
+    }
+  ],
+  "normalized_sha256": "470efcbd4515737fa0c8576f5ad53a370fa9277ed695f37b3251d7d6752ef294"
+}

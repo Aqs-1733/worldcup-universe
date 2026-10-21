@@ -1,0 +1,9 @@
+{
+  "url": "https://api.fifa.com/api/v3/calendar/matches?idCompetition=17&idSeason=285023&language=en&count=500",
+  "file": "matches.json",
+  "retrieved_at": "2026-10-21T13:09:13.503380+00:00",
+  "http_status": 200,
+  "content_type": "application/json",
+  "sha256": "a79a299b6bd6931ab2da94f16659d32ac2c35de000f24025f6905c1c1aba4c9b",
+  "bytes": 459453
+}

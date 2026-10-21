@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: scripts/fill_derived_data.php; course project source. */
 
 declare(strict_types=1);
 

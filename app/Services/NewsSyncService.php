@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: app/Services/NewsSyncService.php; course project source. */
 
 declare(strict_types=1);
 

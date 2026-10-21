@@ -1,0 +1,101 @@
+[
+  {
+    "page": "forum",
+    "width": 390,
+    "actionInside": true,
+    "overflow": -15,
+    "sidebar": "none"
+  },
+  {
+    "page": "standings",
+    "action": "open-all",
+    "open": 12
+  },
+  {
+    "page": "standings",
+    "action": "close-all",
+    "open": 0
+  },
+  {
+    "page": "watch",
+    "iframeLoaded": true,
+    "playAttempt": "official publisher showed: Este contenido tiene restringidos los derechos de emisión en su ubicación",
+    "streamPlaybackVerified": false
+  },
+  {
+    "page": "/teams",
+    "coverHeight": 108,
+    "heading": "参赛球队",
+    "overflow": -15,
+    "width": 390
+  },
+  {
+    "page": "/players",
+    "coverHeight": 108,
+    "heading": "球员名单",
+    "overflow": -15,
+    "width": 390
+  },
+  {
+    "page": "/news",
+    "coverHeight": 108,
+    "heading": "足球新闻",
+    "overflow": -15,
+    "width": 390
+  },
+  {
+    "page": "/worldcup/standings",
+    "coverHeight": 108,
+    "heading": "赛程与比分",
+    "overflow": -15,
+    "width": 390
+  },
+  {
+    "page": "/worldcup",
+    "coverHeight": 108,
+    "heading": "赛程与比分",
+    "overflow": -15,
+    "width": 390
+  },
+  {
+    "page": "/countries",
+    "coverHeight": 108,
+    "heading": "国家与主办城市",
+    "overflow": -15,
+    "width": 390
+  },
+  {
+    "page": "players",
+    "selectedTab": "02 / 利昂内尔·梅西",
+    "portraitCacheLoaded": 3,
+    "footballTexture": "/assets/media/football-texture.png",
+    "footballSize": "24px"
+  },
+  {
+    "page": "forum",
+    "width": 1440,
+    "actionInside": true,
+    "columnsDisjoint": true,
+    "overflow": -15
+  },
+  {
+    "page": "countries",
+    "action": "photo-dialog-open",
+    "open": 1
+  },
+  {
+    "page": "countries",
+    "action": "photo-dialog-close",
+    "open": 0
+  },
+  {
+    "page": "worldcup",
+    "action": "select-argentina",
+    "edges": 32,
+    "flags": 64,
+    "highlightedEdges": 4,
+    "highlightedNodes": 5,
+    "nodes": 32,
+    "pickerFlags": 48
+  }
+]

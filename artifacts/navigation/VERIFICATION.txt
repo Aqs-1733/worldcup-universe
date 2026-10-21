@@ -1,0 +1,19 @@
+Branch: codex/yii2-full-stack
+Changed field: main navigation /stats removed; standings canonical /worldcup/standings inside competition; old /stats ->301.
+MODIFIED_FILE: D:/Project114514/worldcup-universe/artifacts/navigation/MODIFIED_FILE.php
+DIFF_FILE: D:/Project114514/worldcup-universe/artifacts/navigation/DIFF_FILE.patch
+VERIFICATION: D:/Project114514/worldcup-universe/artifacts/navigation/VERIFICATION.txt
+ROLLBACK: D:/Project114514/worldcup-universe/artifacts/navigation/ROLLBACK.sh
+Original SHA256: 6d087fedce3b4ef09d236e8bc0ef76ab17b2d82c125e66926d6765362c251dfb
+Modified SHA256: 382fc51e781ac34bd56f29fa90003d2df1f52f76346ad44888d0a997e6a75f27
+Commands run from D:/Project114514/worldcup-universe.
+BASELINE: & 'D:/XAMPP/php/php.exe' tests/navigation_probe.php artifacts/navigation/original-main.php
+Input: original layout. Literal output: DATA_NAV=present. Exit: 0.
+MODIFIED: & 'D:/XAMPP/php/php.exe' tests/navigation_probe.php artifacts/navigation/MODIFIED_FILE.php
+Input: modified layout copy. Literal output: DATA_NAV=absent. Exit: 0.
+ROLLBACK: & 'D:/Git/bin/bash.exe' artifacts/navigation/ROLLBACK.sh artifacts/navigation/rollback-copy.php
+Input: independent modified-layout copy. Literal output: ROLLBACK PASS: original layout SHA256 restored on copy. Exit: 0.
+RESTORED: & 'D:/XAMPP/php/php.exe' tests/navigation_probe.php artifacts/navigation/rollback-copy.php
+Literal output: DATA_NAV=present. Exit: 0.
+Restored original hash on copy; LIVE views/layouts/main.php remains modified with DATA_NAV=absent.
+PASS navigation: 6 primary items; one standings entry; /stats -> 301 /worldcup/standings; 12 groups.

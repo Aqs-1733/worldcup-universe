@@ -1,0 +1,4 @@
+<?php
+/** Administrative dashboard with real model counts and open reports. */
+?>
+<h1>数据与内容总览</h1><p>所有模块使用 Yii2 ActiveRecord。业务表由明确的模型白名单控制。</p><div class="admin-counts"><?php foreach($counts as $table=>$data): ?><a href="/admin/<?= e($table) ?>"><span><?= e($data['label']) ?></span><b><?= (int)$data['count'] ?></b></a><?php endforeach ?></div><section class="section"><h2>待处理举报</h2><?php foreach($reports as $r): ?><article class="reply"><b>举报 #<?= (int)$r->id ?></b><a href="/forum/<?= (int)$r->thread_id ?>">查看主题 ↗</a><p><?= e($r->reason) ?></p><form method="post" action="/admin/moderate"><?= csrf_field() ?><input type="hidden" name="type" value="report"><input type="hidden" name="id" value="<?= (int)$r->id ?>"><button name="operation" value="resolve">处理完成</button><button name="operation" value="dismiss">驳回举报</button></form></article><?php endforeach ?><?php if(!$reports): ?><p class="empty">暂无待处理举报。</p><?php endif ?></section>

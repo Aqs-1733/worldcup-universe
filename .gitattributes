@@ -1,0 +1,22 @@
+*.sh text eol=lf
+# Preserve original byte hashes used by reproducible rollback fixtures.
+artifacts/original-web.php -text
+artifacts/MODIFIED_FILE.php -text
+artifacts/navigation/original-main.php -text
+artifacts/navigation/MODIFIED_FILE.php -text
+# Evidence and asset manifests hash the downloaded bytes, not platform EOLs.
+data/official/** -text -diff -whitespace
+data/video-evidence/** -text -whitespace
+data/sports-seed.sql -text whitespace=trailing-space,space-before-tab,cr-at-eol
+public/assets/media/** -text -whitespace
+public/assets/fonts/** -text -whitespace
+public/assets/vendor/** -text -whitespace
+artifacts/** -text -whitespace
+# Upstream styles and literal patch context are retained verbatim.
+public/assets/vendor/** -whitespace
+artifacts/*.patch -whitespace
+artifacts/navigation/*.patch -whitespace
+*.pdf binary
+*.png binary
+*.jpg binary
+*.woff2 binary

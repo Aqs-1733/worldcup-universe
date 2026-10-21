@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: scripts/translate_news.php; course project source. */
 
 declare(strict_types=1);
 

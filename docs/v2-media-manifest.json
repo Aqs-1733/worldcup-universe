@@ -1,0 +1,1045 @@
+{
+  "schema_version": 1,
+  "audited_on": "2026-10-22",
+  "audit_scope": "Local asset registry and stored source hashes only; no claim of browser rendering, provider playback, automated-test success, deployment or Git push.",
+  "registry": "docs/v2-media-manifest.json",
+  "public_attribution_route": "/credits",
+  "counts": {
+    "historical_photographs": 10,
+    "local_fifa_flags": 48,
+    "font_families": 4,
+    "font_files": 6,
+    "template_families": 3,
+    "official_raw_source_files": 154,
+    "cached_official_portraits": 56,
+    "portrait_selection_rows": 72,
+    "publisher_photo_display_previews": 6
+  },
+  "templates": [
+    {
+      "key": "arena",
+      "title": "Arena / uiCookies",
+      "source_url": "https://uicookies.com/downloads/arena/",
+      "license": "See preserved author-use statement in NOTICE.md; Bootstrap is MIT.",
+      "integration": "Adapted navigation, hero, scoreboard, stat band, player cards and buttons. Original template demo identities and photographs are not asserted as project facts.",
+      "files": [
+        {
+          "path": "public/assets/vendor/arena/NOTICE.md",
+          "bytes": 1719,
+          "sha256": "d98f982f9553a69efd09e4301ce90df34d64f1e4259a5d94423512e2757c5cf3"
+        },
+        {
+          "path": "public/assets/vendor/arena/css/style.css",
+          "bytes": 34512,
+          "sha256": "8d01e5aa7f1294a7ba58d26138c2f7bd3c72859cf1996337f216cc40ccff7ce5"
+        },
+        {
+          "path": "public/assets/vendor/arena/css/arena-adapted.css",
+          "bytes": 36790,
+          "sha256": "d3b62e69c338cb28ce547e29a4f91687d7cf6078cfc1bebf2441616b12aa8c12"
+        },
+        {
+          "path": "public/assets/vendor/arena/css/vendor/bootstrap.min.css",
+          "bytes": 232111,
+          "sha256": "d85327d99c7a3ee1f9b5d0500d1370acea3ad2db39c163c2f51f232baedbdede"
+        }
+      ]
+    },
+    {
+      "key": "tabler",
+      "title": "Tabler 1.4.0",
+      "source_url": "https://github.com/tabler/tabler",
+      "license": "MIT",
+      "integration": "Only scoped/adapted components.css is loaded; original global stylesheet is retained for source evidence.",
+      "files": [
+        {
+          "path": "public/assets/vendor/tabler/NOTICE.md",
+          "bytes": 508,
+          "sha256": "6b598d1bd68ae11a8131352e58277a651c9aa521f493dc3303e5ca4bdac7cfca"
+        },
+        {
+          "path": "public/assets/vendor/tabler/LICENSE",
+          "bytes": 1090,
+          "sha256": "4f88a82d13be3c5c63a12c5631eae914aa4381b6dc17641bf1ab85f3f8f6c8a5"
+        },
+        {
+          "path": "public/assets/vendor/tabler/tabler-1.4.0.css",
+          "bytes": 633526,
+          "sha256": "b9e98ce0ca81ce406a667c84a7153da45b35b677488305d12ede8587252a0d09"
+        },
+        {
+          "path": "public/assets/vendor/tabler/components.css",
+          "bytes": 1365,
+          "sha256": "a6661a6af769d082c68c66e6a26abe19cae24dd6f6fc1bf1a89fb167505fc494"
+        }
+      ]
+    },
+    {
+      "key": "multiverse",
+      "title": "Multiverse / HTML5 UP / AJ",
+      "source_url": "https://html5up.net/multiverse",
+      "license": "Creative Commons Attribution 3.0",
+      "integration": "Only gallery.css is loaded. Thumb gallery, image overlay and caption styles adapted with responsive changes; original demo images and JavaScript not used.",
+      "files": [
+        {
+          "path": "public/assets/vendor/multiverse/NOTICE.md",
+          "bytes": 607,
+          "sha256": "a5fbb51fc5b5e11d6630552bbda57f0324ee7de9f93655fbb3b10d0e43b0d28d"
+        },
+        {
+          "path": "public/assets/vendor/multiverse/main.css",
+          "bytes": 44147,
+          "sha256": "2d5ef4fb78de63c866ffc158f21e3f5cd670256510cc70731a9e990433dfee35"
+        },
+        {
+          "path": "public/assets/vendor/multiverse/gallery.css",
+          "bytes": 2577,
+          "sha256": "608737ac1b0838a573d228825ff7c6c55aedc00df659499f5d27ae45a796dc03"
+        }
+      ]
+    }
+  ],
+  "photographs": [
+    {
+      "key": "azteca",
+      "label": "阿兹特克体育场",
+      "path": "public/assets/media/photos/azteca.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Panor%C3%A1mica_Estadio_Azteca.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Panor%C3%A1mica_Estadio_Azteca.jpg",
+      "title": "File:Panorámica Estadio Azteca.jpg",
+      "author": "Luicheto",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "photographed_at": "2022-05-16 14:22:01",
+      "width": 4032,
+      "height": 3024,
+      "sha256": "75c770c6693014cb8bd1d5d5dcd5971a1c6b92e7d28166e81b13474d0b8f33d7",
+      "changes": "No file edits; CSS crop/overlay only.",
+      "bytes": 3226514,
+      "registered_hash_matches": true,
+      "local_url": "/assets/media/photos/azteca.jpg",
+      "usage": "Historical venue/city illustration; not described as a 2026 match photograph."
+    },
+    {
+      "key": "metlife",
+      "label": "纽约／新泽西体育场",
+      "path": "public/assets/media/photos/metlife.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:MetLife_Stadium_2022.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/MetLife_Stadium_2022.jpg",
+      "title": "File:MetLife Stadium 2022.jpg",
+      "author": "Thecoolone1223",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "photographed_at": "2022-09-13",
+      "width": 1688,
+      "height": 1121,
+      "sha256": "c5b0e64dbcb9b9ad6df34f9c171c0fff2a2798b90cc17758012f0dbb41ae7d4c",
+      "changes": "No file edits; CSS crop/overlay only.",
+      "bytes": 2232857,
+      "registered_hash_matches": true,
+      "local_url": "/assets/media/photos/metlife.jpg",
+      "usage": "Historical venue/city illustration; not described as a 2026 match photograph."
+    },
+    {
+      "key": "bc-place",
+      "label": "温哥华卑诗体育场",
+      "path": "public/assets/media/photos/bc-place.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Whitecaps_vs._Timbers_at_BC_Place.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Whitecaps_vs._Timbers_at_BC_Place.jpg",
+      "title": "File:Whitecaps vs. Timbers at BC Place.jpg",
+      "author": "Christian Paul",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "photographed_at": "2011-10-02 13:20:12",
+      "width": 2048,
+      "height": 1536,
+      "sha256": "7b3a0e27c0e88d90b32d3e2179f7efccf21a1d081a58c5ddaa03e93aeea3fc3b",
+      "changes": "No file edits; CSS crop/overlay only.",
+      "bytes": 1287238,
+      "registered_hash_matches": true,
+      "local_url": "/assets/media/photos/bc-place.jpg",
+      "usage": "Historical venue/city illustration; not described as a 2026 match photograph."
+    },
+    {
+      "key": "sofi",
+      "label": "洛杉矶体育场",
+      "path": "public/assets/media/photos/sofi.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:SoFi_Stadium_(51126606022).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/SoFi_Stadium_%2851126606022%29.jpg",
+      "title": "File:SoFi Stadium (51126606022).jpg",
+      "author": "Thank You (21 Millions+) views",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "photographed_at": "Taken on 18 March 2021, 10:35:41",
+      "width": 6000,
+      "height": 4000,
+      "sha256": "c346d47fc5e8238a7b21241a37b937486d126dc77d27b8c191195128ce8aa76d",
+      "changes": "No file edits; CSS crop/overlay only.",
+      "bytes": 5498583,
+      "registered_hash_matches": true,
+      "local_url": "/assets/media/photos/sofi.jpg",
+      "usage": "Historical venue/city illustration; not described as a 2026 match photograph."
+    },
+    {
+      "key": "lumen",
+      "label": "西雅图体育场",
+      "path": "public/assets/media/photos/lumen.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Seattle_Sounders_FC_vs._Real_Salt_Lake_(Oct_23,_2019)_panorama_from_Section_126.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Seattle_Sounders_FC_vs._Real_Salt_Lake_%28Oct_23%2C_2019%29_panorama_from_Section_126.jpg",
+      "title": "File:Seattle Sounders FC vs. Real Salt Lake (Oct 23, 2019) panorama from Section 126.jpg",
+      "author": "SounderBruce",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "photographed_at": "2019-10-23 19:21:54",
+      "width": 2400,
+      "height": 696,
+      "sha256": "3434a0f16405c9e7aae38a8c7f5a2d10f4aadc6ae3eed362df3b3ee9f292a0d8",
+      "changes": "No file edits; CSS crop/overlay only.",
+      "bytes": 1235889,
+      "registered_hash_matches": true,
+      "local_url": "/assets/media/photos/lumen.jpg",
+      "usage": "Historical venue/city illustration; not described as a 2026 match photograph."
+    },
+    {
+      "key": "bmo",
+      "label": "多伦多体育场",
+      "path": "public/assets/media/photos/bmo.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Toronto_-_ON_-_BMO_Field.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Toronto_-_ON_-_BMO_Field.jpg",
+      "title": "File:Toronto - ON - BMO Field.jpg",
+      "author": "Wladyslaw",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "photographed_at": "2009-05-08",
+      "width": 3784,
+      "height": 2142,
+      "sha256": "39985ae1c1701c2d722501781e2e895603a4431be9d4f007c7e7c94885c8bc8c",
+      "changes": "No file edits; CSS crop/overlay only.",
+      "bytes": 2167368,
+      "registered_hash_matches": true,
+      "local_url": "/assets/media/photos/bmo.jpg",
+      "usage": "Historical venue/city illustration; not described as a 2026 match photograph."
+    },
+    {
+      "key": "dallas",
+      "label": "达拉斯体育场",
+      "path": "public/assets/media/photos/dallas.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:ATT_Stadium_Interior.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/ATT_Stadium_Interior.jpg",
+      "title": "File:ATT Stadium Interior.jpg",
+      "author": "Drew Tarvin from New York, United States",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "photographed_at": "Taken on 9 October 2016, 15:12",
+      "width": 4984,
+      "height": 2480,
+      "sha256": "ddd14db08ed8943512f3d21eb828981c180462db6102aa0ab0bbc975f3d96379",
+      "changes": "No file edits; CSS crop/overlay only.",
+      "bytes": 3585443,
+      "registered_hash_matches": true,
+      "local_url": "/assets/media/photos/dallas.jpg",
+      "usage": "Historical venue/city illustration; not described as a 2026 match photograph."
+    },
+    {
+      "key": "vancouver",
+      "label": "温哥华",
+      "path": "public/assets/media/photos/vancouver.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Vancouver-Panorama.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Vancouver-Panorama.jpg",
+      "title": "File:Vancouver-Panorama.jpg",
+      "author": "Xicotencatl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "photographed_at": "2017-01-20 00:53:01",
+      "width": 6000,
+      "height": 3559,
+      "sha256": "d96ebcfdd906db2a279107cfd3e444058e2da229f8cb8ab295b8159f5d26e0e8",
+      "changes": "No file edits; CSS crop/overlay only.",
+      "bytes": 17477386,
+      "registered_hash_matches": true,
+      "local_url": "/assets/media/photos/vancouver.jpg",
+      "usage": "Historical venue/city illustration; not described as a 2026 match photograph."
+    },
+    {
+      "key": "mexico-city",
+      "label": "墨西哥城",
+      "path": "public/assets/media/photos/mexico-city.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mexico_City_Zocalo_Panorama_(49275255128).jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Mexico_City_Zocalo_Panorama_%2849275255128%29.jpg",
+      "title": "File:Mexico City Zocalo Panorama (49275255128).jpg",
+      "author": "Nan Palmero from San Antonio, TX, USA",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "photographed_at": "2019-08-10 12:02",
+      "width": 13555,
+      "height": 3958,
+      "sha256": "97e02764730818368460949784e2ddb15b0369154bc991214a0dc39dbd2d6160",
+      "changes": "No file edits; CSS crop/overlay only.",
+      "bytes": 26455576,
+      "registered_hash_matches": true,
+      "local_url": "/assets/media/photos/mexico-city.jpg",
+      "usage": "Historical venue/city illustration; not described as a 2026 match photograph."
+    },
+    {
+      "key": "new-york",
+      "label": "纽约",
+      "path": "public/assets/media/photos/new-york.jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg",
+      "title": "File:Lower Manhattan from Jersey City November 2014 panorama 3.jpg",
+      "author": "King of Hearts",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "photographed_at": "2014-11-28",
+      "width": 9250,
+      "height": 3700,
+      "sha256": "c7d7e62086d480969347a7d815bac52ad5ab7d343e655a9fb3f4665a1de94df4",
+      "changes": "No file edits; CSS crop/overlay only.",
+      "bytes": 9337939,
+      "registered_hash_matches": true,
+      "local_url": "/assets/media/photos/new-york.jpg",
+      "usage": "Historical venue/city illustration; not described as a 2026 match photograph."
+    }
+  ],
+  "flags": [
+    {
+      "code": "CUW",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CUW",
+      "sha256": "7ae6265d5425aa2f306663bb70cd124bbd6c825cd73b0c22f35fcaeeb97af1b8",
+      "path": "public/assets/media/flags/CUW.png",
+      "bytes": 17008,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "COD",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/COD",
+      "sha256": "c9f246f09076219968920a3313d313514b3cfa5fe19d70b63e24d41bedb3f1f0",
+      "path": "public/assets/media/flags/COD.png",
+      "bytes": 15738,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "IRN",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/IRN",
+      "sha256": "f42ab927301fb2dbc4ed76275c6de6f4e26cab832aef708fc5457e34e2a79378",
+      "path": "public/assets/media/flags/IRN.png",
+      "bytes": 24029,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "IRQ",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/IRQ",
+      "sha256": "b74dd47d27cea0a0d15f3bca12c114ef77f88f24a690d11e72b66c3e804fe069",
+      "path": "public/assets/media/flags/IRQ.png",
+      "bytes": 5154,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "JPN",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/JPN",
+      "sha256": "9dc1f2d93511e777af7f1dfa181448ba21291a4247a42bbefbc682abd8e1e3ee",
+      "path": "public/assets/media/flags/JPN.png",
+      "bytes": 7210,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "JOR",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/JOR",
+      "sha256": "09003bf91d8cd6cbd8181ded5a384f37515feace6c749750a75f6320769f3569",
+      "path": "public/assets/media/flags/JOR.png",
+      "bytes": 4280,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "KOR",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/KOR",
+      "sha256": "c5934cf5860fd650f5b759181101dccbf399e0f5c23e1bb967141179d49a09b9",
+      "path": "public/assets/media/flags/KOR.png",
+      "bytes": 18549,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "QAT",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/QAT",
+      "sha256": "7e1c93812c4d72e26475ba082552520bbb06483450f3df329a3f25c4e43a9aa6",
+      "path": "public/assets/media/flags/QAT.png",
+      "bytes": 9602,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "KSA",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/KSA",
+      "sha256": "38123adde8b51466bc52afe2c73dbd5ecaff6c8299fadd512b2956b79fd17bb2",
+      "path": "public/assets/media/flags/KSA.png",
+      "bytes": 16180,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "ALG",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/ALG",
+      "sha256": "c3346153e6e65876b84ecd09db20e0a20eb59ac2b8e805811d06a58b1361437f",
+      "path": "public/assets/media/flags/ALG.png",
+      "bytes": 6549,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "CPV",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CPV",
+      "sha256": "c7673560b6da5a25b6ea6febd8c4e899ccc0de679fbc9a6000d1be7405cbba54",
+      "path": "public/assets/media/flags/CPV.png",
+      "bytes": 6756,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "CIV",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CIV",
+      "sha256": "f5f8cf838c1e37d4db74e2e330c2b19f16cb218d4bb9aae265318c4ea8e225a0",
+      "path": "public/assets/media/flags/CIV.png",
+      "bytes": 1014,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "EGY",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/EGY",
+      "sha256": "d5a739f63cf24593f5582212e315d2371424633ffa5771567a8c62cb10473cb8",
+      "path": "public/assets/media/flags/EGY.png",
+      "bytes": 5802,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "GHA",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/GHA",
+      "sha256": "04c0edf571a27dfd1706770748a93a5cf2551175d2f8a480f283fe39566b29e2",
+      "path": "public/assets/media/flags/GHA.png",
+      "bytes": 5085,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "MAR",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/MAR",
+      "sha256": "74c8818677587841c937451ff2b92d1d61c6eefba7d7db35d35fba4aab62d1ca",
+      "path": "public/assets/media/flags/MAR.png",
+      "bytes": 4829,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "SEN",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/SEN",
+      "sha256": "a9465fed5f9f8e2365ac9c79d25182a22d8701c95cf436b6afbb411cbe20afbc",
+      "path": "public/assets/media/flags/SEN.png",
+      "bytes": 4403,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "RSA",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/RSA",
+      "sha256": "164bad1b2574b8a79499017179373db50df21917c1b082c9c33c8e54525769de",
+      "path": "public/assets/media/flags/RSA.png",
+      "bytes": 6194,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "TUN",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/TUN",
+      "sha256": "d871bdc5ffa04224af39670c4238d7c29702eaaa5c2cc2f404a362bc332fb928",
+      "path": "public/assets/media/flags/TUN.png",
+      "bytes": 13208,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "CAN",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CAN",
+      "sha256": "44406eabe7b57d8a47cbafcddcf673cef534ed8be95b8395ca57419a4e161273",
+      "path": "public/assets/media/flags/CAN.png",
+      "bytes": 9029,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "HAI",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/HAI",
+      "sha256": "a03b7096538e0828eed2d6e7e39b0de7ea0a4ac857a252d27f3e09cf5d8db0c0",
+      "path": "public/assets/media/flags/HAI.png",
+      "bytes": 6863,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "MEX",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/MEX",
+      "sha256": "1ffced0279c526518a4a5bf204037e2f260d1599e30f93fbfdede25acb3f47b4",
+      "path": "public/assets/media/flags/MEX.png",
+      "bytes": 10838,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "PAN",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/PAN",
+      "sha256": "04c9541459e7de4c26cc53193a31239d8f0992f62184132e1e5d05b772c8f51e",
+      "path": "public/assets/media/flags/PAN.png",
+      "bytes": 4394,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "USA",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/USA",
+      "sha256": "d2becb313f792dab29417e93a11e4804d53a1a2a4e193eb678e4a1c7711e3a11",
+      "path": "public/assets/media/flags/USA.png",
+      "bytes": 26871,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "ARG",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/ARG",
+      "sha256": "b3e86a0aed94c492f76f118adffdccd6a13cbca874d5d023a620efb2a07969de",
+      "path": "public/assets/media/flags/ARG.png",
+      "bytes": 5986,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "BRA",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/BRA",
+      "sha256": "8227fc45b063484df860a322cf55786f73c81bd2d832ae128e11745cb421250b",
+      "path": "public/assets/media/flags/BRA.png",
+      "bytes": 24723,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "COL",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/COL",
+      "sha256": "ee10676befc42f57119162fee834251fe255fea8a3a8fe647ad7784f1ddc011e",
+      "path": "public/assets/media/flags/COL.png",
+      "bytes": 673,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "ECU",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/ECU",
+      "sha256": "3bac5dd87181509ba2869c75bdcea68fbee68f78d0485fe3f0a3d340aab4c270",
+      "path": "public/assets/media/flags/ECU.png",
+      "bytes": 16486,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "PAR",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/PAR",
+      "sha256": "f585d7cba6ffaea23f1e2d9283e25d2d3dded14c72cdb0e5724f00af5536d159",
+      "path": "public/assets/media/flags/PAR.png",
+      "bytes": 4988,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "URU",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/URU",
+      "sha256": "70bb92857461e8651202a9a6b99387fafba85ecdb622f4d5da569e7f580d871b",
+      "path": "public/assets/media/flags/URU.png",
+      "bytes": 11382,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "AUT",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/AUT",
+      "sha256": "2fbb29db2356e349f3f85520c789e1688f7b9e40845babea494b1a60034c8e86",
+      "path": "public/assets/media/flags/AUT.png",
+      "bytes": 633,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "BEL",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/BEL",
+      "sha256": "1abb700abc32f5873abeeb6ce2c25468bc3bf828025ac69f5f364775adac54e0",
+      "path": "public/assets/media/flags/BEL.png",
+      "bytes": 482,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "CRO",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CRO",
+      "sha256": "fcb2826ff939d2949f46a56477f4c098264246e2517819246a5de189d0ea0320",
+      "path": "public/assets/media/flags/CRO.png",
+      "bytes": 15572,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "ENG",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/ENG",
+      "sha256": "2cf0eda7b76ce6b362eb52e38cb004868ba02447c098b0b67870cfc875988a85",
+      "path": "public/assets/media/flags/ENG.png",
+      "bytes": 1529,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "FRA",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/FRA",
+      "sha256": "a71b7ef5e362b46d27f76221f1f624a244258ff139e59c1e89b47cc6e4dd7e03",
+      "path": "public/assets/media/flags/FRA.png",
+      "bytes": 478,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "GER",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/GER",
+      "sha256": "be2323d9c32b588e7d34d52d4add1f0c4347fe0acb47303ef340d9e6a6717df5",
+      "path": "public/assets/media/flags/GER.png",
+      "bytes": 750,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "NED",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/NED",
+      "sha256": "d34a73a5fcf692dcade922ac380497ac848ef82df585f741af692ce69724b791",
+      "path": "public/assets/media/flags/NED.png",
+      "bytes": 657,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "NOR",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/NOR",
+      "sha256": "3bda3d3b3293b3c1229c6c2a80f728304b626ad7a39c62d1b80ac71ffb3fc8fe",
+      "path": "public/assets/media/flags/NOR.png",
+      "bytes": 1506,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "POR",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/POR",
+      "sha256": "a607e2cce76c3952c02e340175fab2af8ef308f80c2018d7300728414a29ade6",
+      "path": "public/assets/media/flags/POR.png",
+      "bytes": 16217,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "SCO",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/SCO",
+      "sha256": "1c8b040cb0ffcf4d458db2c5d9d78ae853bfc858ab395c650c97f8768c899a4e",
+      "path": "public/assets/media/flags/SCO.png",
+      "bytes": 5294,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "ESP",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/ESP",
+      "sha256": "5813649937e8b40124e82ab741c69b49eb8b7a46669e8c365759c9118992f139",
+      "path": "public/assets/media/flags/ESP.png",
+      "bytes": 12008,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "SWE",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/SWE",
+      "sha256": "c816f68a915bb08ea5b7970e2c8ec4f41b9d36e604b06be4ff2a8fd229687b6c",
+      "path": "public/assets/media/flags/SWE.png",
+      "bytes": 1302,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "SUI",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/SUI",
+      "sha256": "97cd5bdd54e6efd147eb41bf966eaa707038d12c87c0eeb2766c2bceabf7a6d4",
+      "path": "public/assets/media/flags/SUI.png",
+      "bytes": 3055,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "TUR",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/TUR",
+      "sha256": "866359a105bbeb68d6c155887265abf5d3cacc90696b511382ebe11d68c81bd5",
+      "path": "public/assets/media/flags/TUR.png",
+      "bytes": 5662,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "AUS",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/AUS",
+      "sha256": "c6cc9d4f88f854bde806cccf77b8eb6b3a894d32f04e65171d769318a7c13975",
+      "path": "public/assets/media/flags/AUS.png",
+      "bytes": 25792,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "NZL",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/NZL",
+      "sha256": "e68da656066b857e90e68acf8c771856c43f590e5ad53d4493afe013778667e9",
+      "path": "public/assets/media/flags/NZL.png",
+      "bytes": 13098,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "CZE",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CZE",
+      "sha256": "a28a874a92cf662cc565a88836314fbccc1f5165ac938910dd407d09677b7144",
+      "path": "public/assets/media/flags/CZE.png",
+      "bytes": 3083,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "UZB",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/UZB",
+      "sha256": "01ea4425e46be76feb910ea93eb30e1d72314e3713206ee575a671a9b85ecf43",
+      "path": "public/assets/media/flags/UZB.png",
+      "bytes": 4483,
+      "registered_hash_matches": true
+    },
+    {
+      "code": "BIH",
+      "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/BIH",
+      "sha256": "70193702b6b878abe2e264b45100d5216b2925fbedae71b94cf775a376b49870",
+      "path": "public/assets/media/flags/BIH.png",
+      "bytes": 10621,
+      "registered_hash_matches": true
+    }
+  ],
+  "football_pointer_texture": {
+    "source_url": "https://commons.wikimedia.org/wiki/File:Soccerball.png",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Soccerball.png",
+    "author": "CAPS LOCK; transparent background by Kmf164",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sha256": "808a6dae09e4bc8bd0f6d09594221fa9cad671085bdfb8f418ad04d1e357a8ee",
+    "changes": "Original pixels unchanged; CSS display size only.",
+    "width": 235,
+    "height": 235,
+    "path": "public/assets/media/football-texture.png",
+    "bytes": 71464,
+    "registered_hash_matches": true
+  },
+  "fonts": [
+    {
+      "key": "wcu-sans",
+      "family": "WCU Sans (Noto Sans SC subset)",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/google/fonts/tree/main/ofl/notosanssc",
+      "local_license": {
+        "path": "public/assets/fonts/OFL-NotoSansSC.txt",
+        "bytes": 4388,
+        "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+      },
+      "files": [
+        {
+          "path": "public/assets/fonts/wcu-sans.woff2",
+          "bytes": 243020,
+          "sha256": "92bebf9ec4d71460ef6c4fa4dec5d4068e76b25d73aff3fef7bf93576ed7f06c"
+        }
+      ],
+      "changes": "Project-local WOFF2 subset. Noto internal family renamed WCU Sans. Build script: scripts/build_fonts.py."
+    },
+    {
+      "key": "anton",
+      "family": "Anton",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/google/fonts/tree/main/ofl/anton",
+      "local_license": {
+        "path": "public/assets/fonts/OFL-Anton.txt",
+        "bytes": 4484,
+        "sha256": "ee67e6ee22790b7929f1a3769ca2801d565c64b5a9096942c1adf5596de9c9e4"
+      },
+      "files": [
+        {
+          "path": "public/assets/fonts/wcu-anton-400.woff2",
+          "bytes": 25148,
+          "sha256": "a4a1198635f844aec46e111cff2692f713dcf614e50522424cc6e0e19537e56e"
+        }
+      ],
+      "changes": "Project-local WOFF2 subset. Noto internal family renamed WCU Sans. Build script: scripts/build_fonts.py."
+    },
+    {
+      "key": "mulish",
+      "family": "Mulish",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/google/fonts/tree/main/ofl/mulish",
+      "local_license": {
+        "path": "public/assets/fonts/OFL-Mulish.txt",
+        "bytes": 4385,
+        "sha256": "097e9ac414d9251c8580c073a13f8899798c66db746de60662148789ca693f19"
+      },
+      "files": [
+        {
+          "path": "public/assets/fonts/wcu-mulish-400.woff2",
+          "bytes": 14552,
+          "sha256": "363cc349361c340ef2c462b294219f0566bbf5257ce470475decde0169e0e398"
+        },
+        {
+          "path": "public/assets/fonts/wcu-mulish-600.woff2",
+          "bytes": 14548,
+          "sha256": "7aa959edd470a0088f9236a3a149eb391eb2f81da9a26099e3f0790e57110516"
+        },
+        {
+          "path": "public/assets/fonts/wcu-mulish-800.woff2",
+          "bytes": 14664,
+          "sha256": "1eff6afe12708d329e6bb74b74c26127b6867ab63b2dd50e5470b0cd2ffab640"
+        }
+      ],
+      "changes": "Project-local WOFF2 subset. Noto internal family renamed WCU Sans. Build script: scripts/build_fonts.py."
+    },
+    {
+      "key": "qingke",
+      "family": "ZCOOL QingKe HuangYou",
+      "license": "SIL Open Font License 1.1",
+      "source": "https://github.com/google/fonts/tree/main/ofl/zcoolqingkehuangyou",
+      "local_license": {
+        "path": "public/assets/fonts/OFL-ZCOOL.txt",
+        "bytes": 4419,
+        "sha256": "f1bce31b817dee01c1e4ef8bc45d8ecb95f01f4abbf0a985007cb3cd0fd8123d"
+      },
+      "files": [
+        {
+          "path": "public/assets/fonts/wcu-qingke-400.woff2",
+          "bytes": 196208,
+          "sha256": "b419cce94f8feeba9fd51e4ef575100b3b884037e686c8a55b9856a225eaa1c9"
+        }
+      ],
+      "changes": "Project-local WOFF2 subset. Noto internal family renamed WCU Sans. Build script: scripts/build_fonts.py."
+    }
+  ],
+  "official_sports_data": {
+    "snapshot_directory": "data/official/20261021",
+    "manifest": {
+      "path": "data/official/20261021/manifest.json",
+      "bytes": 58129,
+      "sha256": "877a358226a9bf6f30bfea10607ce374ca766c9c26a56191118d5ff4736b5490"
+    },
+    "normalized": {
+      "path": "data/official/20261021/normalized.json",
+      "bytes": 8961990,
+      "sha256": "470efcbd4515737fa0c8576f5ad53a370fa9277ed695f37b3251d7d6752ef294"
+    },
+    "complete": true,
+    "teams": 48,
+    "players": 1248,
+    "matches": 104,
+    "match_details": 104,
+    "lineup_records": 5323,
+    "verified_progression_edges": 32,
+    "source_hashes_checked": 154,
+    "raw_source_ledger": "data/official/20261021/manifest.json",
+    "scope": "Single complete 2026 tournament snapshot, not a guarantee of continuous live updates. All original response hashes and normalized hash matched at local audit time.",
+    "player_portraits": "Official FIFA digitalhub/api URLs returned by match rosters. Selected 56 originals are cached byte-for-byte in public/assets/media/portraits; remaining players keep official URL fallback. Not bundled Commons photos; attribution is not a separate commercial image license."
+  },
+  "historical_design_assets": [
+    {
+      "path": "public/assets/media/stadium-hero-v2.png",
+      "bytes": 2153050,
+      "sha256": "00af3723481e3ac8f2befebe9a430a163c17b81240f42d5c038f724f409640bf",
+      "kind": "Generated design illustration",
+      "usage": "Retained prior design; not a real 2026 news photograph or primary official evidence."
+    },
+    {
+      "path": "public/assets/media/football-cursor.svg",
+      "bytes": 702,
+      "sha256": "92fbb9c0e2196be9dd5cb4b8591bf33639d647cdbd24677e264cb48ea6148cd7",
+      "kind": "Earlier code-drawn pointer",
+      "usage": "Retained earlier asset. Current player-interaction.js preloads football-texture.png."
+    }
+  ],
+  "limitations": [
+    "Photo date, author and license metadata are copied from the registered Commons records; local hashing confirms the stored file bytes, not independently the factual venue identity.",
+    "FIFA flag/portrait API attribution does not grant an independent license to FIFA trademarks or portraits.",
+    "Video availability and full-match embedding are not audited by this media file. Only 2026 entries belong in the current video catalogue.",
+    "News publisher images remain remote publisher assets and are identified per article payload; they are not part of the Commons photo library."
+  ],
+  "video_source_notes": {
+    "document": "docs/v2-video-sources.md",
+    "provider": "RTVE",
+    "provider_id": "17162172",
+    "tournament_year": 2026,
+    "official_iframe": "https://www.rtve.es/drmn/embed/video/17162172/",
+    "state": "Official metadata and iframe candidate identified; provider login required; actual browser video-frame playback not verified.",
+    "playback_verified": false,
+    "evidence_file": "data/video-evidence/rtve-2026-final.json"
+  },
+  "portrait_cache": {
+    "manifest": {
+      "path": "public/assets/media/portraits/manifest.json",
+      "bytes": 43527,
+      "sha256": "be69b30021b901e7abb33662700dcf5cb66db5b51149b3b5b28cb0b1ba17d8e9"
+    },
+    "coverage": {
+      "path": "public/assets/media/portraits/coverage.json",
+      "bytes": 321,
+      "sha256": "8d6cbc54303b8c3840f3e5a9a93cf9122492a30e5586374da6d068109a331b12"
+    },
+    "failures": {
+      "path": "public/assets/media/portraits/failures.json",
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    "cached_files": 56,
+    "bytes": 55571595,
+    "team_feature_selections": 48,
+    "top_caps_selections": 24,
+    "manifest_key": "SHA256(source_url), lower-case hex",
+    "record_fields": [
+      "source_url",
+      "path",
+      "sha256",
+      "bytes",
+      "mime",
+      "retrieved_at",
+      "selections"
+    ],
+    "scope": "48 verified Team::getFeaturePlayer() results plus caps DESC LIMIT 24; 72 selections, 56 distinct URLs. This is not a cache of all 1248 players.",
+    "pixel_changes": "None; exact HTTPS response bytes cached, original official source_url retained.",
+    "local_use": "PortraitAsset resolves selected source URLs to cached originals and otherwise retains the official URL fallback. No view/model changes made by this asset audit."
+  },
+  "photo_display_previews": {
+    "manifest": {
+      "path": "public/assets/media/photos/display/manifest.json",
+      "bytes": 3142,
+      "sha256": "424635b37a1d973e6b1f61fa5886f17325aa300a0afec24d2ffe366400f6c6ca"
+    },
+    "library_manifest": {
+      "path": "public/assets/media/photos/library.json",
+      "bytes": 7617,
+      "sha256": "e85fe0238edcaaf1d9b469b6c1811054b275242de8dd3c779f4a61801ea91bf0"
+    },
+    "count": 6,
+    "bytes": 1741333,
+    "source_kind": "Wikimedia/MediaWiki generated 1280px-wide original-site thumbnail rendition; downloaded byte-for-byte without local image editing.",
+    "original_retention": "Full-resolution originals remain in public/assets/media/photos/ with original hashes recorded in the photo library. Preview SHA256 is distinct from original SHA256.",
+    "current_usage": "Home hero uses display/azteca.jpg; _masthead and countries gallery thumbnails prefer the selected 1280px display preview when available, otherwise the retained original. The credits photo grid uses library originals, and the countries full-size dialog loads the original library path.",
+    "entries": [
+      {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Panor%C3%A1mica_Estadio_Azteca.jpg",
+        "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Panor%C3%A1mica_Estadio_Azteca.jpg/1280px-Panor%C3%A1mica_Estadio_Azteca.jpg",
+        "path": "/assets/media/photos/display/azteca.jpg",
+        "bytes": 436383,
+        "sha256": "b4f7759ebc0ecaa6db0d414a77366c33d9e1f2d01dfca154b9ab684a84631542",
+        "changes": "MediaWiki/Wikimedia publisher-generated 1280px-wide preview downloaded unchanged; separate original retained. Publisher resized the preview; local CSS may additionally crop/overlay. Not a locally resized or original-resolution file.",
+        "key": "azteca",
+        "local_file": {
+          "path": "public/assets/media/photos/display/azteca.jpg",
+          "bytes": 436383,
+          "sha256": "b4f7759ebc0ecaa6db0d414a77366c33d9e1f2d01dfca154b9ab684a84631542",
+          "width": 1280,
+          "height": 960,
+          "format": "JPEG"
+        },
+        "author": "Luicheto",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "original_path": "public/assets/media/photos/azteca.jpg",
+        "original_sha256": "75c770c6693014cb8bd1d5d5dcd5971a1c6b92e7d28166e81b13474d0b8f33d7"
+      },
+      {
+        "source_url": "https://commons.wikimedia.org/wiki/File:MetLife_Stadium_2022.jpg",
+        "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/MetLife_Stadium_2022.jpg/1280px-MetLife_Stadium_2022.jpg",
+        "path": "/assets/media/photos/display/metlife.jpg",
+        "bytes": 294352,
+        "sha256": "ac3d803b4b8f44f6782b3f922e25f9a674a45cc8ff1a09ad91d6272b515963f2",
+        "changes": "MediaWiki/Wikimedia publisher-generated 1280px-wide preview downloaded unchanged; separate original retained. Publisher resized the preview; local CSS may additionally crop/overlay. Not a locally resized or original-resolution file.",
+        "key": "metlife",
+        "local_file": {
+          "path": "public/assets/media/photos/display/metlife.jpg",
+          "bytes": 294352,
+          "sha256": "ac3d803b4b8f44f6782b3f922e25f9a674a45cc8ff1a09ad91d6272b515963f2",
+          "width": 1280,
+          "height": 850,
+          "format": "JPEG"
+        },
+        "author": "Thecoolone1223",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0",
+        "original_path": "public/assets/media/photos/metlife.jpg",
+        "original_sha256": "c5b0e64dbcb9b9ad6df34f9c171c0fff2a2798b90cc17758012f0dbb41ae7d4c"
+      },
+      {
+        "source_url": "https://commons.wikimedia.org/wiki/File:SoFi_Stadium_(51126606022).jpg",
+        "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/SoFi_Stadium_%2851126606022%29.jpg/1280px-SoFi_Stadium_%2851126606022%29.jpg",
+        "path": "/assets/media/photos/display/sofi.jpg",
+        "bytes": 433456,
+        "sha256": "db7b6282019c56b7655108e41236538789105b0dd3db4d8f7ce8d6f2db0bd3cc",
+        "changes": "MediaWiki/Wikimedia publisher-generated 1280px-wide preview downloaded unchanged; separate original retained. Publisher resized the preview; local CSS may additionally crop/overlay. Not a locally resized or original-resolution file.",
+        "key": "sofi",
+        "local_file": {
+          "path": "public/assets/media/photos/display/sofi.jpg",
+          "bytes": 433456,
+          "sha256": "db7b6282019c56b7655108e41236538789105b0dd3db4d8f7ce8d6f2db0bd3cc",
+          "width": 1280,
+          "height": 853,
+          "format": "JPEG"
+        },
+        "author": "Thank You (21 Millions+) views",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "original_path": "public/assets/media/photos/sofi.jpg",
+        "original_sha256": "c346d47fc5e8238a7b21241a37b937486d126dc77d27b8c191195128ce8aa76d"
+      },
+      {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Toronto_-_ON_-_BMO_Field.jpg",
+        "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Toronto_-_ON_-_BMO_Field.jpg/1280px-Toronto_-_ON_-_BMO_Field.jpg",
+        "path": "/assets/media/photos/display/bmo.jpg",
+        "bytes": 151166,
+        "sha256": "b49ed76f34f2c15f194270785d8382ab8506b9e88690adbaf70c25830382f9e0",
+        "changes": "MediaWiki/Wikimedia publisher-generated 1280px-wide preview downloaded unchanged; separate original retained. Publisher resized the preview; local CSS may additionally crop/overlay. Not a locally resized or original-resolution file.",
+        "key": "bmo",
+        "local_file": {
+          "path": "public/assets/media/photos/display/bmo.jpg",
+          "bytes": 151166,
+          "sha256": "b49ed76f34f2c15f194270785d8382ab8506b9e88690adbaf70c25830382f9e0",
+          "width": 1280,
+          "height": 725,
+          "format": "JPEG"
+        },
+        "author": "Wladyslaw",
+        "license": "CC BY-SA 3.0",
+        "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+        "original_path": "public/assets/media/photos/bmo.jpg",
+        "original_sha256": "39985ae1c1701c2d722501781e2e895603a4431be9d4f007c7e7c94885c8bc8c"
+      },
+      {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Vancouver-Panorama.jpg",
+        "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Vancouver-Panorama.jpg/1280px-Vancouver-Panorama.jpg",
+        "path": "/assets/media/photos/display/vancouver.jpg",
+        "bytes": 323740,
+        "sha256": "e51e755e608423e2497286aa11f01d887914f89676e442e27b4479831fb394bd",
+        "changes": "MediaWiki/Wikimedia publisher-generated 1280px-wide preview downloaded unchanged; separate original retained. Publisher resized the preview; local CSS may additionally crop/overlay. Not a locally resized or original-resolution file.",
+        "key": "vancouver",
+        "local_file": {
+          "path": "public/assets/media/photos/display/vancouver.jpg",
+          "bytes": 323740,
+          "sha256": "e51e755e608423e2497286aa11f01d887914f89676e442e27b4479831fb394bd",
+          "width": 1280,
+          "height": 759,
+          "format": "JPEG"
+        },
+        "author": "Xicotencatl",
+        "license": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "original_path": "public/assets/media/photos/vancouver.jpg",
+        "original_sha256": "d96ebcfdd906db2a279107cfd3e444058e2da229f8cb8ab295b8159f5d26e0e8"
+      },
+      {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg",
+        "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg/1280px-Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg",
+        "path": "/assets/media/photos/display/new-york.jpg",
+        "bytes": 102236,
+        "sha256": "399ffb24f421ae80e4b0ca0f504bdb2434dacbf9cc27236f92c11d7aa11c32dc",
+        "changes": "MediaWiki/Wikimedia publisher-generated 1280px-wide preview downloaded unchanged; separate original retained. Publisher resized the preview; local CSS may additionally crop/overlay. Not a locally resized or original-resolution file.",
+        "key": "new-york",
+        "local_file": {
+          "path": "public/assets/media/photos/display/new-york.jpg",
+          "bytes": 102236,
+          "sha256": "399ffb24f421ae80e4b0ca0f504bdb2434dacbf9cc27236f92c11d7aa11c32dc",
+          "width": 1280,
+          "height": 512,
+          "format": "JPEG"
+        },
+        "author": "King of Hearts",
+        "license": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "original_path": "public/assets/media/photos/new-york.jpg",
+        "original_sha256": "c7d7e62086d480969347a7d815bac52ad5ab7d343e655a9fb3f4665a1de94df4"
+      }
+    ]
+  },
+  "public_credits_review": {
+    "view_file": {
+      "path": "views/site/credits.php",
+      "bytes": 1997,
+      "sha256": "11b4790e783407a1bfcae967119db0cb73334d80e0b4ae528fba3867a5cac01f"
+    },
+    "view_modified_by_audit": false,
+    "original_photography_statement": "The credits grid loads library.json original paths. Its statement that originals are unchanged describes those retained files; those original bytes still match their registered hashes.",
+    "portrait_statement": "The public credits correctly identify FIFA as flag/portrait source. Cached portrait records preserve official URLs and hashes; caching changes transport location only, not source or pixels. Coverage is 56 distinct selected portraits, not all 1248 players.",
+    "preview_clarification": "Other pages now use official-origin 1280px MediaWiki preview renditions for six photographs. Those are publisher-resized derivatives downloaded unchanged, not original-resolution files. Do not apply the credits CSS-only/original-unchanged wording to the publisher rendition process; this manifest records the distinction and retains original authors/licenses.",
+    "scope": "Read-only review of source wording and local asset records; no browser inspection or runtime rendering assertion."
+  }
+}

@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: config/db.php; course project source. */
 
 declare(strict_types=1);
 

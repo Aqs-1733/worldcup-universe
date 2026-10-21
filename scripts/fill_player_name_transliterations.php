@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: scripts/fill_player_name_transliterations.php; course project source. */
 
 declare(strict_types=1);
 

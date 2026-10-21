@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: app/Core/Csrf.php; course project source. */
 
 declare(strict_types=1);
 

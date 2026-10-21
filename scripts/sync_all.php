@@ -1,8 +1,9 @@
 <?php
-
+/** Compatibility entry point: official sports data and native Yii2 RSS ingestion only. */
 declare(strict_types=1);
-
-require_once __DIR__ . '/sync_worldcup.php';
-require_once __DIR__ . '/sync_country_profiles.php';
-require_once __DIR__ . '/fill_derived_data.php';
-require_once __DIR__ . '/sync_news.php';
+require dirname(__DIR__).'/vendor/autoload.php';
+require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';
+require dirname(__DIR__).'/app/bootstrap.php';
+$app=new yii\console\Application(require ROOT_PATH.'/config/console.php');
+if($app->runAction('fifa/import',[$argv[1]??ROOT_PATH.'/data/official/20261021'])!==0) {exit(1);}
+exit($app->runAction('news/sync'));

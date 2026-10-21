@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: app/Services/WorldCupSyncService.php; course project source. */
 
 declare(strict_types=1);
 
@@ -19,6 +20,7 @@ final class WorldCupSyncService
     /** @return array<string, int|string> */
     public function syncScoreboard(): array
     {
+        throw new \RuntimeException('Use the native FIFA-only command: php yii fifa/import data/official/20261021');
         $url = $this->scoreboardUrl();
         $json = json_decode($this->http->get($url), true);
         if (!is_array($json)) {

@@ -1,0 +1,7 @@
+<?php
+/** Player explorer with real database search, team and position filters. */
+$this->title='球员名单';
+?>
+<?= $this->render('_masthead',['heading'=>'球员名单','photo'=>'bmo','photoLabel'=>'多伦多体育场','class'=>'players-cover']) ?>
+<?= $this->render('_spotlight',['players'=>$featured]) ?><div class="section-head" style="margin-top:50px"><div><h2>全部球员</h2></div></div><form method="get" class="filter-bar"><label>球员或俱乐部<input name="q" value="<?= e(Yii::$app->request->get('q','')) ?>" placeholder="搜索球员"></label><label>球队<select data-team-select name="team_id"><option value="">所有球队</option><?php foreach($teams as $t): ?><option data-flag="<?= e(\app\services\TeamUi::url($t)) ?>" value="<?= (int)$t->id ?>" <?= Yii::$app->request->get('team_id')==$t->id?'selected':'' ?>><?= e($t->name) ?></option><?php endforeach ?></select></label><label>位置<select name="position"><option value="">全部位置</option><?php foreach($positions as $pos): ?><?php if($pos): ?><option value="<?= e($pos) ?>" <?= Yii::$app->request->get('position')===$pos?'selected':'' ?>><?= e(['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'][$pos]??$pos) ?></option><?php endif ?><?php endforeach ?></select></label><button class="button">查找 →</button></form>
+<p class="meta"><?= (int)$provider->totalCount ?> 位球员</p><div class="player-grid"><?php foreach($provider->models as $p): ?><?= $this->render('_player',['model'=>$p]) ?><?php endforeach ?></div><?php if(!$provider->models): ?><div class="empty">未找到球员，试试其他条件。</div><?php endif ?><?= yii\widgets\LinkPager::widget(['pagination'=>$provider->pagination]) ?>

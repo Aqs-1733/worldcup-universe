@@ -1,0 +1,112 @@
+PASS 111 HTTP checks; prefix=qa_125fb484
+  PASS public /: HTTP 200 (expected 200)
+  PASS public /teams: HTTP 200 (expected 200)
+  PASS public /teams/argentina: HTTP 200 (expected 200)
+  PASS public /players: HTTP 200 (expected 200)
+  PASS public /players/1: HTTP 200 (expected 200)
+  PASS public /worldcup: HTTP 200 (expected 200)
+  PASS public /worldcup/standings: HTTP 200 (expected 200)
+  PASS public /watch: HTTP 200 (expected 200)
+  PASS public /credits: HTTP 200 (expected 200)
+  PASS public /matches/1: HTTP 200 (expected 200)
+  PASS public /news: HTTP 200 (expected 200)
+  PASS public /countries: HTTP 200 (expected 200)
+  PASS public /forum: HTTP 200 (expected 200)
+  PASS public /fan-space: HTTP 200 (expected 200)
+  PASS public /deliverables: HTTP 200 (expected 200)
+  PASS public /login: HTTP 200 (expected 200)
+  PASS public /register: HTTP 200 (expected 200)
+  PASS public /search?q=France: HTTP 200 (expected 200)
+  PASS public /commentary: HTTP 200 (expected 200)
+  PASS public /vision: HTTP 200 (expected 200)
+  PASS /api/v1/home: HTTP 200 (expected 200)
+  PASS /api/v1/home JSON envelope
+  PASS /api/v1/teams: HTTP 200 (expected 200)
+  PASS /api/v1/teams JSON envelope
+  PASS /api/v1/teams/argentina: HTTP 200 (expected 200)
+  PASS /api/v1/teams/argentina JSON envelope
+  PASS /api/v1/players: HTTP 200 (expected 200)
+  PASS /api/v1/players JSON envelope
+  PASS /api/v1/players/1: HTTP 200 (expected 200)
+  PASS /api/v1/players/1 JSON envelope
+  PASS /api/v1/matches: HTTP 200 (expected 200)
+  PASS /api/v1/matches JSON envelope
+  PASS /api/v1/matches/1: HTTP 200 (expected 200)
+  PASS /api/v1/matches/1 JSON envelope
+  PASS /api/v1/standings: HTTP 200 (expected 200)
+  PASS /api/v1/standings JSON envelope
+  PASS /api/v1/stats: HTTP 200 (expected 200)
+  PASS /api/v1/stats JSON envelope
+  PASS /api/v1/news: HTTP 200 (expected 200)
+  PASS /api/v1/news JSON envelope
+  PASS /api/v1/countries: HTTP 200 (expected 200)
+  PASS /api/v1/countries JSON envelope
+  PASS /api/v1/forum: HTTP 200 (expected 200)
+  PASS /api/v1/forum JSON envelope
+  PASS /api/v1/bracket: HTTP 200 (expected 200)
+  PASS /api/v1/bracket JSON envelope
+  PASS 2026 official iframe and publisher access state visible
+  PASS old standalone data URL redirects: HTTP 301 (expected 301)
+  PASS canonical competition standings URL
+  PASS missing team: HTTP 404 (expected 404)
+  PASS query shape validation: HTTP 400 (expected 400)
+  PASS GET cannot log out: HTTP 405 (expected 405)
+  PASS missing CSRF rejected: HTTP 400 (expected 400)
+  PASS guest admin access redirects to login: HTTP 302 (expected 302)
+  PASS register a: HTTP 302 (expected 302)
+  PASS session bound to registered member
+  PASS register b: HTTP 302 (expected 302)
+  PASS session bound to registered member
+  PASS member admin access forbidden: HTTP 403 (expected 403)
+  PASS main team save: HTTP 302 (expected 302)
+  PASS main team persists after reload
+  PASS JSON create thread: HTTP 201 (expected 201)
+  PASS JSON cannot forge author or moderation state
+  PASS published thread visible: HTTP 200 (expected 200)
+  PASS forum escapes script markup
+  PASS nonowner cannot edit through HTTP: HTTP 403 (expected 403)
+  PASS nonowner cannot delete through HTTP: HTTP 403 (expected 403)
+  PASS reply persisted: HTTP 302 (expected 302)
+  PASS reply owner check: HTTP 403 (expected 403)
+  PASS owner can edit own reply: HTTP 302 (expected 302)
+  PASS reply notification delivered
+  PASS owner marks notifications read: HTTP 302 (expected 302)
+  PASS read state persists
+  PASS like on: HTTP 302 (expected 302)
+  PASS like idempotent retry: HTTP 302 (expected 302)
+  PASS bookmark on: HTTP 302 (expected 302)
+  PASS bookmark idempotent retry: HTTP 302 (expected 302)
+  PASS report submitted: HTTP 302 (expected 302)
+  PASS administrator login: HTTP 302 (expected 302)
+  PASS native admin dashboard: HTTP 200 (expected 200)
+  PASS admin teams: HTTP 200 (expected 200)
+  PASS admin players: HTTP 200 (expected 200)
+  PASS admin matches: HTTP 200 (expected 200)
+  PASS admin news_articles: HTTP 200 (expected 200)
+  PASS admin forum_threads: HTTP 200 (expected 200)
+  PASS admin forum_replies: HTTP 200 (expected 200)
+  PASS admin forum_reports: HTTP 200 (expected 200)
+  PASS admin match_videos: HTTP 200 (expected 200)
+  PASS admin media_assets: HTTP 200 (expected 200)
+  PASS admin coursework_files: HTTP 200 (expected 200)
+  PASS user management: HTTP 200 (expected 200)
+  PASS audit log: HTTP 200 (expected 200)
+  PASS admin table whitelist: HTTP 404 (expected 404)
+  PASS admin locks thread: HTTP 302 (expected 302)
+  PASS locked thread blocks replies over HTTP: HTTP 403 (expected 403)
+  PASS admin hides thread: HTTP 302 (expected 302)
+  PASS guest cannot read hidden thread: HTTP 404 (expected 404)
+  PASS admin restores thread: HTTP 302 (expected 302)
+  PASS native news create: HTTP 302 (expected 302)
+  PASS created article visible through public Yii2 API
+  PASS news update draft: HTTP 302 (expected 302)
+  PASS draft article not public: HTTP 404 (expected 404)
+  PASS news delete: HTTP 302 (expected 302)
+  PASS deleted article remains unavailable: HTTP 404 (expected 404)
+  PASS registered coursework download: HTTP 200 (expected 200)
+  PASS admin disables member: HTTP 302 (expected 302)
+  PASS disabled member session invalidated on next request
+  PASS POST logout: HTTP 302 (expected 302)
+  PASS logout clears identity
+  PASS read-only API rejects POST before action execution: HTTP 405 (expected 405)
+  PASS read-only API rejects valid-CSRF POST: HTTP 405 (expected 405)

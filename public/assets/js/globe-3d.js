@@ -41,7 +41,7 @@
     if (!feature) {
       readout.kicker.textContent = 'REAL MAP UNITS';
       readout.title.textContent = '拖动地球探索真实国家轮廓';
-      readout.detail.textContent = '悬停高亮国家；点击后显示 Natural Earth 的稳定地图单元 ID。';
+      readout.detail.textContent = '';
       return;
     }
     const properties = feature.properties;
@@ -49,7 +49,7 @@
     const iso = properties.ISO_A3 && properties.ISO_A3 !== '-99' ? ` · ISO ${properties.ISO_A3}` : '';
     readout.kicker.textContent = `MAP UNIT · ${properties.CONTINENT || '未知大洲'}`;
     readout.title.textContent = name;
-    readout.detail.textContent = `NE_ID ${properties.NE_ID}${iso} · ${properties.NAME || name}`;
+    readout.detail.textContent = '';
   };
 
   const featureView = (feature) => ({
@@ -239,7 +239,7 @@
         tooltip.hidden = !feature;
         if (feature) {
           const properties = feature.properties;
-          tooltip.textContent = `${properties.NAME_ZH || properties.NAME_EN || properties.NAME} · ${properties.NE_ID}`;
+          tooltip.textContent = `${properties.NAME_ZH || properties.NAME_EN || properties.NAME}`;
           const bounds = stage.getBoundingClientRect();
           tooltip.style.left = `${event.clientX - bounds.left + 12}px`;
           tooltip.style.top = `${event.clientY - bounds.top + 12}px`;
@@ -270,6 +270,9 @@
       controls.enableDamping = true;
       controls.dampingFactor = 0.08;
       controls.enablePan = false;
+      controls.minDistance = 135;
+      controls.maxDistance = 600;
+      controls.zoomSpeed = 0.65;
       controls.autoRotate = !reduceMotion;
       controls.autoRotateSpeed = 0.26;
 
@@ -314,7 +317,47 @@
       }, { passive: true });
       ['pointerup', 'pointercancel'].forEach((eventName) => stage.addEventListener(eventName, () => { pointerOrigin = null; }, { passive: true }));
       ['touchstart', 'wheel'].forEach((eventName) => stage.addEventListener(eventName, pauseAutoRotate, { passive: true }));
-      new ResizeObserver(refreshSize).observe(stage);
+      const resizeObserver = new ResizeObserver(refreshSize);
+      resizeObserver.observe(stage);
+
+      // Database-backed country cards also work as keyboard-accessible controls.
+      document.querySelectorAll('[data-country-card]').forEach((card) => {
+        const focusCountry = () => {
+          const lat = Number(card.dataset.lat);
+          const lng = Number(card.dataset.lng);
+          if (!card.dataset.lat || !card.dataset.lng || !Number.isFinite(lat) || !Number.isFinite(lng)) return;
+          const feature = findFeatureAt({ lat, lng });
+          if (feature) selectFeature(feature);
+          else globe.pointOfView({ lat, lng, altitude: 1.5 }, reduceMotion ? 0 : 1000);
+          readout.title.textContent = card.dataset.name;
+          readout.detail.textContent = `${card.dataset.capital} · ${card.dataset.region}`;
+          root.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+        };
+        card.addEventListener('click', (event) => { if (!event.target.closest('a')) focusCountry(); });
+        card.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); focusCountry(); }
+        });
+      });
+      root.querySelector('[data-globe-reset]')?.addEventListener('click', () => {
+        selectedId = null; hoveredId = null; activeFeature = null; hoveredFeature = null;
+        renderFeatureOutlines(); updateReadout(null);
+        globe.pointOfView({ lat: 18, lng: 10, altitude: 2.05 }, reduceMotion ? 0 : 1000);
+        pauseAutoRotate();
+      });
+      const onVisibility = () => {
+        if (document.hidden) { globe.pauseAnimation(); controls.autoRotate = false; }
+        else { globe.resumeAnimation(); controls.autoRotate = !reduceMotion; }
+      };
+      document.addEventListener('visibilitychange', onVisibility);
+      window.addEventListener('pagehide', (event) => {
+        globe.pauseAnimation(); window.clearTimeout(autoRotateTimer);
+        if (hoverFrame) cancelAnimationFrame(hoverFrame);
+        if (!event.persisted) {
+          resizeObserver.disconnect(); document.removeEventListener('visibilitychange', onVisibility);
+          controls.dispose(); globe.renderer().dispose();
+        }
+      });
+      window.addEventListener('pageshow', onVisibility);
 
       continentButtons.forEach((button) => {
         button.addEventListener('click', () => {

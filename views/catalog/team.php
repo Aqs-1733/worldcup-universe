@@ -1,0 +1,10 @@
+<?php
+/** Team profile, squad, match history, discussion and main-team entry. */
+$this->title=$model->name;
+?>
+<a class="back-link" href="/teams">← 所有球队</a><section class="profile-hero nation-hero"><div><span class="eyebrow"><?= e($model->confederation) ?> / <?= e($model->code) ?></span><h1><?= \app\services\TeamUi::label($model) ?></h1><p><?= e($model->name_original) ?></p><a class="button" href="/profile?team=<?= (int)$model->id ?>">设为我的主队</a><a class="text-link" href="/forum?team_id=<?= (int)$model->id ?>">球队论坛 →</a></div><?php if(isset($players[0])): ?><?php $portrait=array_reduce($players,fn($best,$p)=>!$best||$p->caps>$best->caps?$p:$best); ?><?php if($portrait?->photo_url): ?><img class="team-hero-player" src="<?= e(safe_url($portrait->displayPhotoUrl)) ?>" alt="<?= e($portrait->name_original) ?> · FIFA 官方照片" referrerpolicy="no-referrer"><?php endif ?><?php endif ?><span class="hero-flag" aria-hidden="true"><?= \app\services\TeamUi::flag($model) ?></span></section>
+<?= $this->render('_source',['model'=>$model]) ?><div class="facts-grid"><div><small>主教练</small><b><?= e($model->coach_name?:'待同步') ?></b></div><div><small>本届比赛</small><b><?= count($matches) ?></b></div><div><small>小组</small><b><?= e($model->group_name?:'待确认') ?></b></div><div><small>阵容人数</small><b><?= count($players) ?></b></div></div>
+<?php if($model->profile): ?><section class="section prose"><h2>球队档案</h2><p><?= nl2br(e($model->profile)) ?></p></section><?php endif ?>
+<section class="section"><div class="section-head"><h2>球队阵容</h2></div><div class="player-grid"><?php foreach($players as $p): ?><?= $this->render('_player',['model'=>$p]) ?><?php endforeach ?></div><?php if(!$players): ?><div class="empty">阵容资料尚未采集。</div><?php endif ?></section>
+<section class="section"><h2>球队赛程</h2><div class="match-strip"><?php foreach($matches as $m): ?><?= $this->render('_match',['model'=>$m]) ?><?php endforeach ?></div></section>
+<?= $this->render('_comments',['items'=>$comments,'type'=>'team','id'=>$model->id]) ?>

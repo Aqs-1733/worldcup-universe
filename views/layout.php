@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: views/layout.php; course project source. */
 
 use App\Core\Auth;
 

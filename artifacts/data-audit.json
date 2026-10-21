@@ -1,0 +1,67 @@
+{
+    "tables": {
+        "admin_posts": 0,
+        "ai_generations": 0,
+        "audit_logs": 69,
+        "coaches": 0,
+        "comments": 0,
+        "country_profiles": 48,
+        "coursework_files": 2,
+        "data_quality_checks": 8,
+        "data_sources": 7,
+        "fan_preferences": 0,
+        "fan_profiles": 0,
+        "forum_categories": 4,
+        "forum_replies": 0,
+        "forum_reports": 0,
+        "forum_threads": 1,
+        "match_events": 600,
+        "match_lineups": 10731,
+        "match_prediction_features": 104,
+        "match_progressions": 32,
+        "match_stats": 208,
+        "match_videos": 1,
+        "matches": 104,
+        "media_assets": 1,
+        "migration": 6,
+        "news_article_tags": 318,
+        "news_articles": 164,
+        "news_sources": 7,
+        "notifications": 0,
+        "official_imports": 1,
+        "player_statistics": 1248,
+        "players": 1248,
+        "referees": 28,
+        "roles": 2,
+        "source_files": 78,
+        "source_records": 116341,
+        "standings": 48,
+        "tags": 9,
+        "team_members": 4,
+        "teams": 48,
+        "thread_bookmarks": 0,
+        "thread_likes": 0,
+        "tournament_stages": 7,
+        "user_blocked_teams": 0,
+        "user_favorite_players": 0,
+        "user_favorite_teams": 0,
+        "user_roles": 1,
+        "users": 1,
+        "venues": 32
+    },
+    "media_field_coverage": {
+        "players": {
+            "total": 1248,
+            "nonempty": 1248
+        },
+        "teams": {
+            "total": 48,
+            "nonempty": 48
+        },
+        "team_members": {
+            "total": 4,
+            "nonempty": 0
+        }
+    },
+    "note": "URL nonempty counts do not establish accessibility or licence."
+}

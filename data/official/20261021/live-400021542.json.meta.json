@@ -1,0 +1,9 @@
+{
+  "url": "https://api.fifa.com/api/v3/live/football/17/285023/289291/400021542?language=en",
+  "file": "live-400021542.json",
+  "retrieved_at": "2026-10-21T13:18:09.196057+00:00",
+  "http_status": 200,
+  "content_type": "application/json",
+  "sha256": "e79eaae24916b30af132ede13bbca221475ffaeb6a665a8e7729126214cc5ce8",
+  "bytes": 35399
+}

@@ -1,0 +1,6 @@
+<?php
+/** Optional AI studio with configuration feedback, text output and image opt-in. */
+use yii\helpers\Html;
+$this->title='智能解说';
+?>
+<section class="page-heading"><h1>智能解说</h1><p>AI 内容是辅助创作，不是官方赛事结论。</p></section><div class="meta">文本服务：<?= $configured?'已配置':'待配置模型' ?></div><form method="post" class="form-panel prose"><?= csrf_field() ?><?= Html::errorSummary($model,['class'=>'form-errors']) ?><label>创作内容<textarea name="AiForm[prompt]" required maxlength="4000" rows="5"><?= e($model->prompt) ?></textarea></label><div class="form-grid"><label>语气<input name="AiForm[tone]" value="<?= e($model->tone) ?>" maxlength="80"></label><label>关注球队<input name="AiForm[target_team]" value="<?= e($model->target_team) ?>" maxlength="120"></label></div><label class="choice"><input type="checkbox" name="AiForm[generate_image]" value="1"> 同时生成图片（仅勾选后调用图片服务）</label><label>图片要求<input name="AiForm[image_prompt]" value="<?= e($model->image_prompt) ?>" maxlength="300"></label><button class="button">生成解说 →</button></form><?php if($result): ?><article class="article prose"><h2>生成结果</h2><p><?= nl2br(e($result)) ?></p></article><?php endif ?><?php if($image&&($image['url']??null)): ?><img class="studio-image" src="<?= e(safe_url($image['url'])) ?>" alt="用户请求生成的球迷创作图片"><?php endif ?>

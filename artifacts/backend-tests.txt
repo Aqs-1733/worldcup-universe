@@ -1,0 +1,43 @@
+PASS 42 database/service checks; all test writes rolled back.
+  PASS existing sports data available
+  PASS registration rejects invalid credentials
+  PASS native registration writes User and FanProfile
+  PASS second member registered
+  PASS registration grants no administrator role
+  PASS identity serialization omits secrets
+  PASS username/email uniqueness validated
+  PASS main team and preferences saved transactionally
+  PASS blocked team cannot overlap main/followed team
+  PASS preference rejects nonexistent team (yii\web\BadRequestHttpException)
+  PASS thread title/body validation rejects short content
+  PASS public mass assignment cannot forge author/moderation fields
+  PASS nonowner cannot edit thread (yii\web\ForbiddenHttpException)
+  PASS nonowner cannot delete thread (yii\web\ForbiddenHttpException)
+  PASS reply author bound to authenticated actor
+  PASS reply creates owner notification
+  PASS cross-thread parent reply rejected (yii\web\BadRequestHttpException)
+  PASS like is idempotent under unique composite key
+  PASS unlike is persisted
+  PASS bookmark ownership persisted
+  PASS member report accepted
+  PASS duplicate open report rejected (yii\web\BadRequestHttpException)
+  PASS member cannot moderate (yii\web\ForbiddenHttpException)
+  PASS existing administrator identity is preserved
+  PASS locked thread rejects replies (yii\web\ForbiddenHttpException)
+  PASS hidden thread unavailable to other members (yii\web\NotFoundHttpException)
+  PASS author can inspect own hidden topic
+  PASS moderation stores reviewer and resolution
+  PASS media rejects non-HTTPS/nonasset source path
+  PASS download traversal rejected by input validator
+  PASS bracket self-cycle rejected
+  PASS bracket exposes verified edges only
+  PASS real Yii2 search query returns existing team
+  PASS SQL restore parser preserves quoted semicolons and doubled quotes
+  PASS malformed SQL rejected (RuntimeException)
+  PASS RSS parser strips markup and ignores unsafe link schemes
+  PASS invalid RSS rejected (RuntimeException)
+  PASS public links reject script and protocol-relative URLs
+  PASS partial preference update preserves main team and followed players
+  PASS reply edit ownership enforced in service (yii\web\ForbiddenHttpException)
+  PASS reply author can edit own unlocked reply
+  PASS admin news tags require existing tag records

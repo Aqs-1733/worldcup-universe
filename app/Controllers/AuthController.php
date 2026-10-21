@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: app/Controllers/AuthController.php; course project source. */
 
 declare(strict_types=1);
 

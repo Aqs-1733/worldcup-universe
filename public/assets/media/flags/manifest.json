@@ -1,0 +1,242 @@
+[
+  {
+    "code": "CUW",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CUW",
+    "sha256": "7ae6265d5425aa2f306663bb70cd124bbd6c825cd73b0c22f35fcaeeb97af1b8"
+  },
+  {
+    "code": "COD",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/COD",
+    "sha256": "c9f246f09076219968920a3313d313514b3cfa5fe19d70b63e24d41bedb3f1f0"
+  },
+  {
+    "code": "IRN",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/IRN",
+    "sha256": "f42ab927301fb2dbc4ed76275c6de6f4e26cab832aef708fc5457e34e2a79378"
+  },
+  {
+    "code": "IRQ",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/IRQ",
+    "sha256": "b74dd47d27cea0a0d15f3bca12c114ef77f88f24a690d11e72b66c3e804fe069"
+  },
+  {
+    "code": "JPN",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/JPN",
+    "sha256": "9dc1f2d93511e777af7f1dfa181448ba21291a4247a42bbefbc682abd8e1e3ee"
+  },
+  {
+    "code": "JOR",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/JOR",
+    "sha256": "09003bf91d8cd6cbd8181ded5a384f37515feace6c749750a75f6320769f3569"
+  },
+  {
+    "code": "KOR",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/KOR",
+    "sha256": "c5934cf5860fd650f5b759181101dccbf399e0f5c23e1bb967141179d49a09b9"
+  },
+  {
+    "code": "QAT",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/QAT",
+    "sha256": "7e1c93812c4d72e26475ba082552520bbb06483450f3df329a3f25c4e43a9aa6"
+  },
+  {
+    "code": "KSA",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/KSA",
+    "sha256": "38123adde8b51466bc52afe2c73dbd5ecaff6c8299fadd512b2956b79fd17bb2"
+  },
+  {
+    "code": "ALG",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/ALG",
+    "sha256": "c3346153e6e65876b84ecd09db20e0a20eb59ac2b8e805811d06a58b1361437f"
+  },
+  {
+    "code": "CPV",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CPV",
+    "sha256": "c7673560b6da5a25b6ea6febd8c4e899ccc0de679fbc9a6000d1be7405cbba54"
+  },
+  {
+    "code": "CIV",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CIV",
+    "sha256": "f5f8cf838c1e37d4db74e2e330c2b19f16cb218d4bb9aae265318c4ea8e225a0"
+  },
+  {
+    "code": "EGY",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/EGY",
+    "sha256": "d5a739f63cf24593f5582212e315d2371424633ffa5771567a8c62cb10473cb8"
+  },
+  {
+    "code": "GHA",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/GHA",
+    "sha256": "04c0edf571a27dfd1706770748a93a5cf2551175d2f8a480f283fe39566b29e2"
+  },
+  {
+    "code": "MAR",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/MAR",
+    "sha256": "74c8818677587841c937451ff2b92d1d61c6eefba7d7db35d35fba4aab62d1ca"
+  },
+  {
+    "code": "SEN",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/SEN",
+    "sha256": "a9465fed5f9f8e2365ac9c79d25182a22d8701c95cf436b6afbb411cbe20afbc"
+  },
+  {
+    "code": "RSA",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/RSA",
+    "sha256": "164bad1b2574b8a79499017179373db50df21917c1b082c9c33c8e54525769de"
+  },
+  {
+    "code": "TUN",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/TUN",
+    "sha256": "d871bdc5ffa04224af39670c4238d7c29702eaaa5c2cc2f404a362bc332fb928"
+  },
+  {
+    "code": "CAN",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CAN",
+    "sha256": "44406eabe7b57d8a47cbafcddcf673cef534ed8be95b8395ca57419a4e161273"
+  },
+  {
+    "code": "HAI",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/HAI",
+    "sha256": "a03b7096538e0828eed2d6e7e39b0de7ea0a4ac857a252d27f3e09cf5d8db0c0"
+  },
+  {
+    "code": "MEX",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/MEX",
+    "sha256": "1ffced0279c526518a4a5bf204037e2f260d1599e30f93fbfdede25acb3f47b4"
+  },
+  {
+    "code": "PAN",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/PAN",
+    "sha256": "04c9541459e7de4c26cc53193a31239d8f0992f62184132e1e5d05b772c8f51e"
+  },
+  {
+    "code": "USA",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/USA",
+    "sha256": "d2becb313f792dab29417e93a11e4804d53a1a2a4e193eb678e4a1c7711e3a11"
+  },
+  {
+    "code": "ARG",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/ARG",
+    "sha256": "b3e86a0aed94c492f76f118adffdccd6a13cbca874d5d023a620efb2a07969de"
+  },
+  {
+    "code": "BRA",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/BRA",
+    "sha256": "8227fc45b063484df860a322cf55786f73c81bd2d832ae128e11745cb421250b"
+  },
+  {
+    "code": "COL",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/COL",
+    "sha256": "ee10676befc42f57119162fee834251fe255fea8a3a8fe647ad7784f1ddc011e"
+  },
+  {
+    "code": "ECU",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/ECU",
+    "sha256": "3bac5dd87181509ba2869c75bdcea68fbee68f78d0485fe3f0a3d340aab4c270"
+  },
+  {
+    "code": "PAR",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/PAR",
+    "sha256": "f585d7cba6ffaea23f1e2d9283e25d2d3dded14c72cdb0e5724f00af5536d159"
+  },
+  {
+    "code": "URU",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/URU",
+    "sha256": "70bb92857461e8651202a9a6b99387fafba85ecdb622f4d5da569e7f580d871b"
+  },
+  {
+    "code": "AUT",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/AUT",
+    "sha256": "2fbb29db2356e349f3f85520c789e1688f7b9e40845babea494b1a60034c8e86"
+  },
+  {
+    "code": "BEL",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/BEL",
+    "sha256": "1abb700abc32f5873abeeb6ce2c25468bc3bf828025ac69f5f364775adac54e0"
+  },
+  {
+    "code": "CRO",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CRO",
+    "sha256": "fcb2826ff939d2949f46a56477f4c098264246e2517819246a5de189d0ea0320"
+  },
+  {
+    "code": "ENG",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/ENG",
+    "sha256": "2cf0eda7b76ce6b362eb52e38cb004868ba02447c098b0b67870cfc875988a85"
+  },
+  {
+    "code": "FRA",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/FRA",
+    "sha256": "a71b7ef5e362b46d27f76221f1f624a244258ff139e59c1e89b47cc6e4dd7e03"
+  },
+  {
+    "code": "GER",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/GER",
+    "sha256": "be2323d9c32b588e7d34d52d4add1f0c4347fe0acb47303ef340d9e6a6717df5"
+  },
+  {
+    "code": "NED",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/NED",
+    "sha256": "d34a73a5fcf692dcade922ac380497ac848ef82df585f741af692ce69724b791"
+  },
+  {
+    "code": "NOR",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/NOR",
+    "sha256": "3bda3d3b3293b3c1229c6c2a80f728304b626ad7a39c62d1b80ac71ffb3fc8fe"
+  },
+  {
+    "code": "POR",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/POR",
+    "sha256": "a607e2cce76c3952c02e340175fab2af8ef308f80c2018d7300728414a29ade6"
+  },
+  {
+    "code": "SCO",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/SCO",
+    "sha256": "1c8b040cb0ffcf4d458db2c5d9d78ae853bfc858ab395c650c97f8768c899a4e"
+  },
+  {
+    "code": "ESP",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/ESP",
+    "sha256": "5813649937e8b40124e82ab741c69b49eb8b7a46669e8c365759c9118992f139"
+  },
+  {
+    "code": "SWE",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/SWE",
+    "sha256": "c816f68a915bb08ea5b7970e2c8ec4f41b9d36e604b06be4ff2a8fd229687b6c"
+  },
+  {
+    "code": "SUI",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/SUI",
+    "sha256": "97cd5bdd54e6efd147eb41bf966eaa707038d12c87c0eeb2766c2bceabf7a6d4"
+  },
+  {
+    "code": "TUR",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/TUR",
+    "sha256": "866359a105bbeb68d6c155887265abf5d3cacc90696b511382ebe11d68c81bd5"
+  },
+  {
+    "code": "AUS",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/AUS",
+    "sha256": "c6cc9d4f88f854bde806cccf77b8eb6b3a894d32f04e65171d769318a7c13975"
+  },
+  {
+    "code": "NZL",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/NZL",
+    "sha256": "e68da656066b857e90e68acf8c771856c43f590e5ad53d4493afe013778667e9"
+  },
+  {
+    "code": "CZE",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/CZE",
+    "sha256": "a28a874a92cf662cc565a88836314fbccc1f5165ac938910dd407d09677b7144"
+  },
+  {
+    "code": "UZB",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/UZB",
+    "sha256": "01ea4425e46be76feb910ea93eb30e1d72314e3713206ee575a671a9b85ecf43"
+  },
+  {
+    "code": "BIH",
+    "url": "https://api.fifa.com/api/v3/picture/flags-sq-4/BIH",
+    "sha256": "70193702b6b878abe2e264b45100d5216b2925fbedae71b94cf775a376b49870"
+  }
+]

@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: scripts/sync_news.php; course project source. */
 
 declare(strict_types=1);
 

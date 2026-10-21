@@ -1,0 +1,4 @@
+<?php
+/** Yii2 adaptation of the Arena template player component, with official FIFA portraits. */
+?>
+<a class="player" href="/players/<?= e($model->slug) ?>" data-media><span class="p-num"><?= (int)$model->shirt_number ?></span><div class="p-media"><?php if($model->photo_url): ?><img src="<?= e(safe_url($model->displayPhotoUrl)) ?>" alt="<?= e($model->name_original) ?> · FIFA 官方球员照片" loading="lazy" referrerpolicy="no-referrer"><?php endif ?><span class="p-country"><?= e($model->team?->code) ?></span></div><div class="p-body"><span class="p-pos"><?= \app\services\TeamUi::label($model->team) ?> · <?= e(['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'][$model->position]??$model->position) ?></span><h3 class="p-name"><?= e($model->name) ?></h3><p class="p-stat"><?= e($model->club?:'') ?></p></div></a>

@@ -1,199 +1,80 @@
-# worldcup-universe
+# WorldCup Universe / 世界杯宇宙
 
-Yii2 + PHP + MySQL 版 2026 世界杯球迷信息系统。项目保留原来的世界杯首页、赛程、球队、球员、新闻、球迷偏好、智能解说、生图入口、视觉入口和后台管理，但技术栈已切换为老师要求的 PHP + MySQL，不使用 SQLite。
+Yii2 原生 MVC + MySQL 的世界杯课程项目。当前开发包含赛事/球队/球员/国家探索、新闻、管理台，以及球迷论坛、主队选择、回复通知、点赞收藏与举报审核。
 
-## 功能
+## 快速启动
 
-- 账号密码登录、注册、用户名和邮箱唯一校验。
-- 用户首次登录问卷：支持球队多选、支持球员多选、屏蔽球队、推送偏好，也支持跳过；填过或跳过后不再强制弹出。
-- 首页赛事中控台：赛程、晋级关系、积分图表、球队、球员、新闻、项目团队。
-- 国家探索：参赛球队国家、主办城市、场馆、地图、语言、货币、旅行和文化摘要。
-- 球队和球员页面：中文名 / 原名并列，球队和球员显示国旗，球员按知名度、出场和进球排序。
-- 新闻中心：从真实 RSS 来源抓取，按比赛内容、战术分析、球队动态、球迷内容、娱乐内容、二创内容等多标签分类，保留来源链接和原文版本；配置 ARK 后自动中文翻译和归纳。
-- 世界杯中心：比赛、积分榜和对战图从 MySQL 读取，未同步或未开始的比赛不预测比分。
-- 智能解说：支持用户自定义语气、自主输入球队，勾选后才调用图片生成，节省图片额度。
-- 视觉分析入口：支持图片上传记录，后续可接视觉模型。
-- 后台管理：团队成员、球队、球员、赛程、新闻、发布内容、留言管理。
-- MySQL 表数量超过 10 张，见 `database/schema.sql`。
-
-
-## 课程作业留存
-
-老师要求的个人作业 1/2/3 和团队 1-6 阶段不放进网站页面，全部单独放在文档目录，便于按阶段独立提交：
-
-- 总映射：`docs/coursework-traceability.md`。
-- 团队文档：`docs/requirements.md`、`docs/design.md`、`docs/implementation.md`、`docs/user-manual.md`、`docs/deployment.md`、`docs/presentation-outline.md`。
-- 个人作业模板和软件下载指导：`docs/coursework/`。
-- 网站本体只保留世界杯、球队国家、旅行文化、新闻、智能客服/解说、后台管理等业务内容。
-
-## 环境要求
-
-- PHP 8.1+，需要启用 `pdo_mysql`、`mbstring`、`curl`、`simplexml`、`dom`。Composer 安装 Yii2 依赖时需要临时启用 `zip`，XAMPP 可用 `D:\XAMPP\php\php.exe -d extension=zip`。
-- MySQL 8.0+。
-- Git。
-
-本机如果 `php -v` 或 `mysql --version` 不能执行，先安装 PHP 和 MySQL，或者用 phpStudy / XAMPP / Laragon 这类集成环境。
-
-## 启动
+需要 PHP 8.1+（pdo_mysql、mbstring、curl、SimpleXML、fileinfo）、Composer、MySQL 8.0+ 或兼容 MariaDB/InnoDB。
 
 ```powershell
-cd D:\worldcup-universe
 Copy-Item .env.example .env
-```
-
-
-第一次拉取项目时先准备 Yii2 依赖：
-
-```powershell
-$composer = "$env:TEMP\composer.phar"
-if (!(Test-Path $composer)) { Invoke-WebRequest https://getcomposer.org/composer-stable.phar -OutFile $composer }
-D:\XAMPP\php\php.exe -d extension=zip $composer install
-```
-编辑 .env，填好 MySQL 账号密码。然后建库和初始化：
-
-```powershell
-php scripts/install.php
-php scripts/import_collected_data.php
-php scripts/fill_player_name_transliterations.php
-php scripts/sync_country_profiles.php
-php scripts/fill_derived_data.php
-php scripts/sync_news.php
+# 编辑 .env 的 DB_* 和 ADMIN_PASSWORD（至少 12 位，不提交到 Git）
+composer install --no-dev --prefer-dist
+php yii app/install
 php -S 127.0.0.1:8080 -t public public/index.php
 ```
 
-如果你本机 PHP 在 XAMPP 里，但没有加入 PATH，用：
+Windows 可运行 `setup.ps1` 完成环境检查、依赖安装和建库迁移，再运行 `start_php.bat`。安装命令保持已有账号/密码和体育记录不变；全新空库才导入随仓库提供的公开体育快照。数据库账号需要建库、建表和迁移权限；生产环境完成部署后可使用权限更小的运行账号。
 
-```powershell
-D:\XAMPP\php\php.exe scripts\install.php
-D:\XAMPP\php\php.exe scripts\import_collected_data.php
-D:\XAMPP\php\php.exe scripts\fill_player_name_transliterations.php
-D:\XAMPP\php\php.exe scripts\sync_country_profiles.php
-D:\XAMPP\php\php.exe scripts\fill_derived_data.php
-D:\XAMPP\php\php.exe scripts\sync_news.php
-D:\XAMPP\php\php.exe -S 127.0.0.1:8080 -t public public/index.php
-```
+前台：`http://127.0.0.1:8080`，管理台：`http://127.0.0.1:8080/admin`。管理员从本地 `.env` 初始化，没有写死在前端。
 
-打开：
+## 原生架构
 
 ```text
-http://127.0.0.1:8080
+controllers/  Yii2 Controller / AccessControl / CSRF
+models/       原有 34 表及论坛扩展的 ActiveRecord / rules / relations
+services/     查询聚合、事务、所有权校验、RSS同步、审计
+views/        Yii2 render，前后台独立 layout
+commands/     Yii2 Console 安装、审计、新闻同步
+migrations/   增量数据库升级与 down
+public/       唯一 Web 根目录
+ data/install.sql       基础 schema
+ data/sports-seed.sql   公开体育快照，不含用户/密钥/论坛测试内容
+ data/team/             团队交付
+ data/personal/         个人交付
 ```
 
-默认管理员来自 `.env`：
+核心请求不再调用 LegacyBridgeController / 自定义 PDO Repository / 自定义 View。历史采集适配工具保留在 `scripts/` 和 `app/`，不承担当前页面核心业务。
 
-```text
-用户名：admin
-密码：ChangeMe2026!
-```
+## 主要流程
 
-正式演示前建议把 `.env` 里的 `ADMIN_PASSWORD` 改掉，再运行 `php scripts/install.php`。
+- 主队：一人最多一支，关注球队/球员可多选，不与屏蔽球队重叠。
+- 论坛：板块/球队筛选、主队看台、主题与回复、同主题引用、编辑/删除、幂等点赞/收藏、回复通知、举报与管理员审核。
+- 权限：只能修改自己的内容；管理员可以隐藏/恢复、锁定/解锁、置顶、处理举报；所有写操作校验 CSRF。
+- 新闻：保留来源、原文链接和发布时间，草稿不公开；原生 RSS 同步：`php yii news/sync`。
+- 赛事：2026 年一届，FIFA 官方名单 PDF 与比赛接口共 48 队、1,248 名球员、104 场比赛、5,323 条阵容记录、32 条已核验晋级关系。原始响应、时间与 SHA256 随仓库保存；比分是采集快照，不宣称实时推送。
+- 导航：赛事内统一提供赛程与晋级、小组积分、比赛回放；小组赛与积分按 A–L 组折叠。旧 `/stats` 永久跳转至 `/worldcup/standings`，不再重复开设数据栏目。
+- 新闻：7 个真实 RSS 来源，按类型和来源筛选，后台每 300 秒轮询；保留原文标题、短摘要、配图和原文链接，不把比赛结果自动拼成新闻。`powershell -File scripts/start_news_worker.ps1` 启动采集进程。
+- 页面：Arena、Tabler、Multiverse 组件及本地中文字体；各模块不同窄幅首图，球队相关内容显示国旗。56 张官方球员肖像已缓存，足球鼠标使用真实透明贴图。
+- 视频：`/watch` 收录经官方元数据核验的 2026 决赛完整回放，嵌入 RTVE 官方播放器；需官方账号登录，未验证登录后的受保护视频流。没有虚构 104 场可播放地址。
+- 媒体：真实场馆／城市摄影，作者与许可见 `/credits`；原图保留，部分展示使用 MediaWiki 官方 1280px 预览。
+- AI：文本/生图服务需配置自己的凭据；私有图片上传已实现，视觉模型分析尚未接入，不返回虚构结果。
 
-## ARK 配置
-
-不要把真实密钥提交到 GitHub。只在本地 `.env` 填：
-
-```env
-ARK_API_KEY=你的火山方舟Key
-ARK_OPENAI_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
-ARK_MODEL=你的文本模型ID
-ARK_IMAGE_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
-ARK_IMAGE_MODEL=你的Seedream 4.5模型ID或Endpoint ID
-ARK_IMAGE_SIZE=1024x1024
-ARK_IMAGE_RESPONSE_FORMAT=url
-```
-
-图片生成请求路径是：
-
-```text
-POST https://ark.cn-beijing.volces.com/api/v3/images/generations
-```
-
-只有在 智能解说页勾选“同时生成图片”时才会调用图片生成，避免浪费额度。
-
-## 真实数据同步
-
-初始化只建立表、基础标签、来源和管理员，不伪造世界杯赛果。老师验收用的完整数据导入脚本是：
+## 验证
 
 ```powershell
-php scripts/import_collected_data.php
+php tests/backend.php
+php tests/official.php
+php tests/news.php
+python tests/http_acceptance.py
+python tests/chinese_ui.py
+python tests/flag_ui.py
+python tests/navigation_ui.py
+node --test tests/globe-data.test.mjs
+php yii app/audit
 ```
 
-如果使用 XAMPP：
+数据库测试会回滚写入；HTTP 测试会生成带 `qa_` 标记的临时账号。**使用专用测试数据库**，并按输出的精确前缀清理：`php tests/cleanup.php qa_XXXXXXXX`。测试服务器默认 `http://127.0.0.1:8088`，可用 `WCU_TEST_URL` 环境变量设置。
 
-```powershell
-D:\XAMPP\php\php.exe scripts\import_collected_data.php
-```
+## 设计与交付
 
-导入脚本会读取 `storage/imports/worldcup2026_complete_collection_kit`，把采集包里的 CSV/JSON 原始记录、球队、球员、赛程、赛果、阵容、事件、统计和校验结果全部写入 MySQL。当前完整导入结果：
+- `docs/v2-architecture.md`：需求、架构、模块/流程/ER 图、权限、页面与数据边界。
+- `docs/v2-database-dictionary.md`：实际迁移后数据库完整字典。
+- `docs/v2-api.md`：接口、状态码、CSRF 与请求示例。
+- `docs/v2-deployment.md`：全新安装、已有库升级、恢复与回滚。
+- `docs/v2-coursework.md`：逐条对照老师课件与设计方案，区分代码完成和最终课程材料。
+- `docs/v2-acceptance.md`、`artifacts/VERIFICATION.txt`：真实测试和回滚证据。
 
-- 48 支球队。
-- 1248 名最终注册球员，每队 26 人。
-- 104 场比赛，阶段为小组赛 72 场、32 强 16 场、16 强 8 场、四分之一决赛 4 场、半决赛 2 场、季军赛 1 场、决赛 1 场。
-- 116341 条原始 CSV/JSON 记录入库。
-- 13 项自动校验全部通过，包含 Pochih/FIFA 与 Alamyy 赛果交叉检查 `0 mismatch`。
-- 全部球员都保留英文/原始姓名；源数据缺中文名时，可运行 `scripts/fill_player_name_transliterations.php` 用中文音译补齐展示名；`scripts/fill_derived_data.php` 会按 2026-06-11 开幕日从出生日期推导年龄，并校验 Yii2 后端和国家坐标完整度。
+4 位成员资料已按原个人作业核对。每人的实际贡献签认、最终 PDF/PPT 与本人录屏仍需本人确认补齐；交付清单逐项标注，不把代码说明冒充这些材料。
 
-核心数据来源：
-
-- FIFA 官方球队、赛程、积分页面。
-- Pochih WorldCup2026 赛程和官方名单快照。
-- Mominullptr FIFA World Cup 2026 Dataset。
-- Alamyy Worldcup26 比赛赛果和来源链接。
-- EbEmad FIFA-Data-Wc-2026 球员补充字段。
-- BBC Sport、ESPN、The Guardian、CBS Sports、The New York Times、Sky Sports 等 RSS 新闻源。
-
-新闻仍可联网刷新：
-
-```powershell
-php scripts/sync_news.php
-```
-
-如果网络或来源失败，脚本会记录错误，不会填本地假数据。外文新闻翻译依赖 `ARK_API_KEY` 和 `ARK_MODEL`，没配置时保留原文并标记待翻译。
-
-新闻刷新会在抓取 RSS 时同步翻译标题和摘要，不需要单独手动翻译。默认适合课堂演示：每个来源 1 条、单篇网页正文抓取 2 秒、ARK 单篇翻译 30 秒，失败时再尝试 MyMemory 单条翻译 6 秒。智能解说和生图仍走 ARK；需要更多新闻或切换翻译策略时可在 `.env` 调整：
-
-```env
-NEWS_MAX_PER_SOURCE=10
-NEWS_RSS_TIMEOUT=5
-NEWS_ARTICLE_TIMEOUT=5
-NEWS_TRANSLATE_TIMEOUT=12
-NEWS_ARK_TRANSLATE_TIMEOUT=30
-NEWS_TRANSLATION_PROVIDER=auto
-```
-
-如果数据库里已有旧的未翻译新闻，可临时运行 `php scripts/translate_news.php` 补历史数据；正常使用只需要点击页面里的“联网刷新”。
-
-`scripts/sync_worldcup.php` 保留为在线同步入口；课程验收建议优先使用 `scripts/import_collected_data.php`，因为它会导入采集包并写入数据质量检查表。
-
-如果火山方舟域名在本机 DNS 下解析失败，可以在 `.env` 里配置：
-
-```env
-ARK_DNS_FALLBACK_IP=方舟域名解析IP
-NO_PROXY=127.0.0.1,localhost,::1,ark.cn-beijing.volces.com
-```
-
-程序会对 `ark.cn-beijing.volces.com` 使用 DNS fallback，同时保留 HTTPS 主机名校验。
-
-## GitHub 提交
-
-```powershell
-cd D:\worldcup-universe
-git status
-git add .
-git commit -m "Rebuild worldcup system with PHP MySQL"
-git push origin codex/php-mysql-rebuild
-```
-
-如果要推到主分支：
-
-```powershell
-git checkout main
-git merge codex/php-mysql-rebuild
-git push origin main
-```
-
-`.env` 不会提交，密钥和数据库密码不要发到仓库。
-
-## Yii2 后端说明
-
-当前入口 public/index.php 已经改为 Yii2 Application，Yii2 路由位于 config/web.php，Yii2 控制器位于 controllers/。原来的数据库仓库、同步服务和视图作为业务层继续复用，便于保持页面和数据不丢失，同时满足后端框架切换到 Yii2 的课程要求。
+2026-10-22 浏览器实测：官方 iframe 标题和封面已加载；点击播放后，RTVE 返回所在地播放权限制（“Este contenido tiene restringidos los derechos de emisión en su ubicación”）。本站显示官方登录／地区限制提示，未播放成功，不绕过地区或 DRM 校验。

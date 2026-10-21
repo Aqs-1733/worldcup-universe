@@ -1,0 +1,1 @@
+PASS 3048 official-source checks; 48 teams / 1248 players / 104 matches / 5323 lineups / 32 edges.

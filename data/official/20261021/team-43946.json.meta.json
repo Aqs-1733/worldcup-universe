@@ -1,0 +1,9 @@
+{
+  "url": "https://api.fifa.com/api/v3/teams/43946?language=en",
+  "file": "team-43946.json",
+  "retrieved_at": "2026-10-21T13:15:04.523042+00:00",
+  "http_status": 200,
+  "content_type": "application/json",
+  "sha256": "460f267c0d83ddca3ae474cb226d987e0cd107ed71c2c32dcc202109de4f75ea",
+  "bytes": 746
+}

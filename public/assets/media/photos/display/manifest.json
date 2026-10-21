@@ -1,0 +1,50 @@
+{
+  "azteca": {
+    "source_url": "https://commons.wikimedia.org/wiki/File:Panor%C3%A1mica_Estadio_Azteca.jpg",
+    "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Panor%C3%A1mica_Estadio_Azteca.jpg/1280px-Panor%C3%A1mica_Estadio_Azteca.jpg",
+    "path": "/assets/media/photos/display/azteca.jpg",
+    "bytes": 436383,
+    "sha256": "b4f7759ebc0ecaa6db0d414a77366c33d9e1f2d01dfca154b9ab684a84631542",
+    "changes": "Publisher-generated 1280px preview; original is retained separately."
+  },
+  "metlife": {
+    "source_url": "https://commons.wikimedia.org/wiki/File:MetLife_Stadium_2022.jpg",
+    "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/MetLife_Stadium_2022.jpg/1280px-MetLife_Stadium_2022.jpg",
+    "path": "/assets/media/photos/display/metlife.jpg",
+    "bytes": 294352,
+    "sha256": "ac3d803b4b8f44f6782b3f922e25f9a674a45cc8ff1a09ad91d6272b515963f2",
+    "changes": "Publisher-generated 1280px preview; original is retained separately."
+  },
+  "sofi": {
+    "source_url": "https://commons.wikimedia.org/wiki/File:SoFi_Stadium_(51126606022).jpg",
+    "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/SoFi_Stadium_%2851126606022%29.jpg/1280px-SoFi_Stadium_%2851126606022%29.jpg",
+    "path": "/assets/media/photos/display/sofi.jpg",
+    "bytes": 433456,
+    "sha256": "db7b6282019c56b7655108e41236538789105b0dd3db4d8f7ce8d6f2db0bd3cc",
+    "changes": "Publisher-generated 1280px preview; original is retained separately."
+  },
+  "bmo": {
+    "source_url": "https://commons.wikimedia.org/wiki/File:Toronto_-_ON_-_BMO_Field.jpg",
+    "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Toronto_-_ON_-_BMO_Field.jpg/1280px-Toronto_-_ON_-_BMO_Field.jpg",
+    "path": "/assets/media/photos/display/bmo.jpg",
+    "bytes": 151166,
+    "sha256": "b49ed76f34f2c15f194270785d8382ab8506b9e88690adbaf70c25830382f9e0",
+    "changes": "Publisher-generated 1280px preview; original is retained separately."
+  },
+  "vancouver": {
+    "source_url": "https://commons.wikimedia.org/wiki/File:Vancouver-Panorama.jpg",
+    "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Vancouver-Panorama.jpg/1280px-Vancouver-Panorama.jpg",
+    "path": "/assets/media/photos/display/vancouver.jpg",
+    "bytes": 323740,
+    "sha256": "e51e755e608423e2497286aa11f01d887914f89676e442e27b4479831fb394bd",
+    "changes": "Publisher-generated 1280px preview; original is retained separately."
+  },
+  "new-york": {
+    "source_url": "https://commons.wikimedia.org/wiki/File:Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg",
+    "preview_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg/1280px-Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg",
+    "path": "/assets/media/photos/display/new-york.jpg",
+    "bytes": 102236,
+    "sha256": "399ffb24f421ae80e4b0ca0f504bdb2434dacbf9cc27236f92c11d7aa11c32dc",
+    "changes": "Publisher-generated 1280px preview; original is retained separately."
+  }
+}

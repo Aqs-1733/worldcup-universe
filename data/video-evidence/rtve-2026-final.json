@@ -1,0 +1,29 @@
+{
+  "id": "17162172",
+  "title": "España - Argentina | Mundial FIFA 2026",
+  "longTitle": "Final | España - Argentina | Mundial FIFA 2026",
+  "htmlUrl": "https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/final-espana-argentina-completo-mundial-2026/17162172/",
+  "mainTopic": "Televisión/Programas de TVE/Deportes/Copa Mundial de la FIFA 2026",
+  "publicationDate": "20-07-2026 00:54:39",
+  "expirationDate": "15-01-2027 23:59:00",
+  "type": {
+    "id": 39816,
+    "name": "Completo"
+  },
+  "duration": 13360650,
+  "requireLogged": true,
+  "hasDRM": true,
+  "notDownloadable": true,
+  "allowedInCountry": true,
+  "paidContent": false,
+  "thumbnail": "https://img.rtve.es/imagenes/final-espana-argentina-mundial-fifa-2026/01784494770759.jpg",
+  "checked_date": "2026-10-21",
+  "provider": "RTVE",
+  "year": 2026,
+  "video_type": "full_match",
+  "embed_url": "https://www.rtve.es/drmn/embed/video/17162172/",
+  "metadata_verified": true,
+  "embed_document_http_status": 200,
+  "playback_verified": false,
+  "playback_observation": "Browser navigation timed out; no playable frames observed."
+}

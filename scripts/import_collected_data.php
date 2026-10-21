@@ -32,6 +32,7 @@ final class CollectedWorldCupImporter
     public function __construct(string $root)
     {
         $this->pdo = Database::pdo();
+        if ($this->pdo->query("SHOW TABLES LIKE 'official_imports'")->fetchColumn() && $this->pdo->query('SELECT COUNT(*) FROM official_imports')->fetchColumn()) { throw new RuntimeException('Official FIFA mode is active. Legacy dataset import is retired; use php yii fifa/import.'); }
         $this->repo = new AppRepository();
         $this->root = rtrim(str_replace('\\', '/', $root), '/');
         $this->dataRoot = $this->root . '/data';
@@ -1618,7 +1619,7 @@ final class CollectedWorldCupImporter
 
 $defaultRoot = ROOT_PATH . '/storage/imports/worldcup2026_complete_collection_kit';
 $root = $argv[1] ?? $defaultRoot;
-$fresh = !in_array('--append', $argv, true);
+$fresh = in_array('--fresh', $argv, true);
 $result = (new CollectedWorldCupImporter($root))->run($fresh);
 
 echo json_encode($result, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . PHP_EOL;

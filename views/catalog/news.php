@@ -1,0 +1,12 @@
+<?php
+/** Live publisher feed with type pills, source filter and a non-blocking update indicator. */
+$this->title='足球新闻';$activeTag=Yii::$app->request->get('tag','');$typeLabels=['match'=>'赛事报道','tactics'=>'战术分析','team'=>'球队动态','fan'=>'球迷现场','entertainment'=>'场外花絮','worldcup'=>'世界杯'];
+$stories=$provider->models;
+// A real publisher photo leads the magazine; text-only reports remain ordinary cards.
+foreach($stories as $key=>$story){if($story->imageUrl){if($key){array_splice($stories,$key,1);array_unshift($stories,$story);}break;}}
+?>
+<?= $this->render('_masthead',['heading'=>'足球新闻','photo'=>'lumen','photoLabel'=>'西雅图体育场','class'=>'news-cover']) ?>
+<nav class="news-type-tabs" aria-label="新闻分类"><a href="/news" class="<?= !$activeTag?'active':'' ?>">最新新闻</a><?php foreach($typeLabels as $slug=>$label): ?><a href="/news?tag=<?= e($slug) ?>" class="<?= $activeTag===$slug?'active':'' ?>"><?= e($label) ?></a><?php endforeach ?></nav>
+<div class="news-toolbar" data-news-live><span class="feed-status"><span aria-hidden="true"></span>更新于 <time data-news-updated><?= e(\app\models\NewsSource::find()->max('last_synced_at')) ?></time></span><button type="button" class="news-reload" data-news-reload>刷新新闻 ↻</button><a href="/news" class="news-update-ready" data-news-new hidden>有新内容，点击查看 ↗</a></div>
+<form class="filter-bar news-filters" method="get"><?php if($activeTag): ?><input type="hidden" name="tag" value="<?= e($activeTag) ?>"><?php endif ?><label>搜索报道<input name="q" value="<?= e(Yii::$app->request->get('q','')) ?>" placeholder="球队或关键词"></label><label>新闻来源<select name="source"><option value="">全部来源</option><?php foreach($sources as $source): ?><option value="<?= (int)$source->id ?>" <?= Yii::$app->request->get('source')==$source->id?'selected':'' ?>><?= e($source->name) ?></option><?php endforeach ?></select></label><button class="button">搜索 →</button></form>
+<div class="editorial-news"><?php foreach($stories as $i=>$n): ?><?= $this->render('_news-card',['model'=>$n,'featured'=>$i===0 && (bool)$n->imageUrl]) ?><?php endforeach ?></div><?php if(!$provider->models): ?><div class="empty">当前分类暂无报道。</div><?php endif ?><?= yii\widgets\LinkPager::widget(['pagination'=>$provider->pagination]) ?>

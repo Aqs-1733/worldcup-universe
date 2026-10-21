@@ -1,0 +1,77 @@
+WORLD CUP UNIVERSE — VERIFIED RELEASE RECORD
+Branch: codex/yii2-full-stack
+Workspace: D:/Project114514/worldcup-universe
+Changed fields: request.enableCsrfValidation false -> true; teams route site/teams -> team/index.
+Active application: native Yii2 Controllers/ActiveRecord/CSRF; no LegacyBridge inheritance.
+
+FOUR ARTIFACTS (reopened, nonempty)
+MODIFIED_FILE: D:/Project114514/worldcup-universe/artifacts/MODIFIED_FILE.php
+DIFF_FILE: D:/Project114514/worldcup-universe/artifacts/DIFF_FILE.patch
+VERIFICATION: D:/Project114514/worldcup-universe/artifacts/VERIFICATION.txt
+ROLLBACK: D:/Project114514/worldcup-universe/artifacts/ROLLBACK.sh
+Original SHA256: d8093e6cdc08b83dc18f4837645cc9c31a0f1b39a027414ac128dba157be7703
+Modified SHA256: bfd17a5816c5fbcd078ea5ca6df8951752689a2de59ddbf76e575513590dc397
+
+All commands below ran in D:/Project114514/worldcup-universe (PowerShell).
+BASELINE command: & 'D:/XAMPP/php/php.exe' tests/config_probe.php artifacts/original-web.php
+Input: preserved original configuration copy.
+Literal output: CSRF=off; teams=site/teams
+Exit status: 0
+
+MODIFIED command: & 'D:/XAMPP/php/php.exe' tests/config_probe.php artifacts/MODIFIED_FILE.php
+Input: reopened copy of active config/web.php.
+Literal output: CSRF=on; teams=team/index
+Exit status: 0
+
+ROLLBACK command: & 'D:/Git/bin/bash.exe' artifacts/ROLLBACK.sh artifacts/rollback-test.php
+Input: independent copy of MODIFIED_FILE, never the live configuration.
+Literal output: ROLLBACK PASS: original SHA256 restored
+Exit status: 0
+Restored command: & 'D:/XAMPP/php/php.exe' tests/config_probe.php artifacts/rollback-test.php
+Literal output: CSRF=off; teams=site/teams
+Exit status: 0
+Restored copy SHA256 equals original: d8093e6cdc08b83dc18f4837645cc9c31a0f1b39a027414ac128dba157be7703
+LIVE STATUS: config/web.php remains MODIFIED (CSRF=on; teams=team/index).
+Executable check: Git Bash chmod +x and test -x for both ROLLBACK.sh scripts; exit 0.
+This fixture restoration is not a whole-application/database rollback.
+
+APPLICATION TESTS (actual logs; all commands exited 0)
+& 'D:/XAMPP/php/php.exe' tests/backend.php
+PASS 42 database/service checks; all test writes rolled back.
+& 'D:/XAMPP/php/php.exe' tests/official.php
+PASS 3048 official-source checks; 48 teams / 1248 players / 104 matches / 5323 lineups / 32 edges.
+& 'D:/XAMPP/php/php.exe' tests/news.php
+PASS news: 133 publisher articles; 101 source images; 6 types; 7 sources synced; generated briefs not public.
+Python tests/http_acceptance.py (absolute bundled interpreter recorded in docs)
+PASS 111 HTTP checks; prefix=qa_125fb484
+Cleanup: exact prefix qa_125fb484; CLEANED 2 test members; exit 0.
+Schema input: DB_DATABASE=wcu_restore_release_20261022c (dedicated empty test DB).
+& 'D:/XAMPP/php/php.exe' tests/schema_roundtrip.php
+PASS schema roundtrip: {"teams":48,"players":1248,"matches":104}; upgraded tables=48; restored original tables=34.
+Rollback observed: 34 original tables + migration history; original sports records and password hash unchanged.
+Migration up: 48 tables, official source replay successful. Additive module data requires a full DB backup.
+
+Chinese UI / flag / navigation logs:
+PASS 14 Chinese UI routes; functional Chinese headings; rejected slogans absent.
+PASS flag coverage: 280 team containers; local flag images and Chinese alt text.
+PASS navigation: 6 primary items; one standings entry; /stats -> 301 /worldcup/standings; 12 groups.
+Node globe tests: 4 passed / 0 failed, exit 0.
+PHP lint: 177 first-party files passed; later changed files separately linted.
+
+BROWSER OBSERVATIONS (artifacts/screenshots/ui-results.json)
+390px: teams, players, news, worldcup, standings, countries and forum have no document horizontal overflow.
+1440px forum: main/sidebar disjoint; banner action inside cover.
+Standings: expand all opens 12 groups; collapse all opens 0.
+Players: Chinese star tabs switch; 3 local showcase portraits loaded; actual football texture 24px.
+Bracket: 32 nodes, 32 edges, 64 flag images; Argentina highlights 5 nodes / 4 edges; dropdown has 48 flags.
+Countries: photo dialog opened and closed; globe canvas loaded.
+News: 6 publishers on first page; observed lead source photo 1920px (no fake image substituted).
+RTVE: iframe title/cover loaded; clicking play returned regional broadcast-rights restriction.
+Video stream playback: NOT VERIFIED; official account/region/DRM remain publisher controlled.
+
+DATA / MATERIAL BOUNDARIES
+Official FIFA 2026 snapshot: 48 teams, 1248 players, 104 matches, 5323 lineup rows, 32 verified edges.
+Raw legacy unverified facts are retained but excluded from public source-filtered views/API.
+News polling: 300 seconds, seven real publishers, short excerpts/source links; counts change with sync.
+Human contribution signatures, final course PDFs/PPT and personal recorded presentation remain explicitly pending.
+No runtime .env, passwords, sessions, test accounts or database directories belong in the release seed/repository.

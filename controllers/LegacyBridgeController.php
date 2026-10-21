@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: controllers/LegacyBridgeController.php; course project source. */
 
 declare(strict_types=1);
 
