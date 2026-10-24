@@ -432,13 +432,13 @@
           .htmlLat('lat').htmlLng('lng').htmlAltitude('alt').htmlElement('el').htmlTransitionDuration(0);
         const clearLayers = () => { journeyTimers.forEach(clearTimeout); journeyTimers = []; globe.arcsData([]).pointsData([]).ringsData([]).htmlElementsData([]); };
         const setLegend = (items) => { legend.innerHTML = items.map(([c, t]) => `<span><i style="background:${c}"></i>${t}</span>`).join(''); legend.hidden = !items.length; };
-        const setCaption = (kicker, title, detail = '') => { caption.innerHTML = `<span>${kicker}</span><strong>${title}</strong>${detail ? `<small>${detail}</small>` : ''}`; };
+        const setCaption = (kicker, title) => { caption.innerHTML = `${kicker ? `<span>${kicker}</span>` : ''}<strong>${title}</strong>`; };
         const modes = {
           qualified() {
             globe.globeImageUrl(textures.qualified);
             const counts = {}; story.teams.forEach((t) => { counts[t.reach] = (counts[t.reach] || 0) + 1; });
             setLegend(Object.entries(REACH).reverse().map(([k, [c, t]]) => [c, `${t}${counts[k] ? ` · ${counts[k]}` : ''}`]));
-            setCaption('参赛版图', `${story.teams.length} 支球队，颜色代表它走到了哪一轮`, '金色是冠军，银色是亚军；点击国家查看球队资料');
+            setCaption('', `${story.teams.length} 支球队走到了哪一轮`);
             globe.pointOfView({ lat: 22, lng: -20, altitude: 2.25 }, reduceMotion ? 0 : 1200);
             controls.autoRotate = !reduceMotion;
           },
@@ -451,7 +451,7 @@
             globe.arcsData(arcs);
             globe.ringsData(story.venues.map((v) => ({ lat: v.lat, lng: v.lng, rgb: '255,107,107', max: 2.4, period: 1400 })));
             setLegend(Object.entries(CONF).map(([k, c]) => [c, CONF_ZH[k]]));
-            setCaption('飞向北美', `${arcs.length} 支球队，从世界各地奔赴 ${story.venues.length} 座城市`, '每条航线连接球队所在国家与它首场比赛的球场');
+            setCaption('', `${arcs.length} 支球队 → ${story.venues.length} 座城市`);
             globe.pointOfView({ lat: 28, lng: -45, altitude: 2.6 }, reduceMotion ? 0 : 1400);
             controls.autoRotate = false;
           },
@@ -462,8 +462,8 @@
             globe.pointsData(story.venues.map((v) => ({ lat: v.lat, lng: v.lng, alt: height(v), radius: 0.42, color: v.final ? '#f2c75c' : '#ff5a5f' })));
             globe.ringsData(story.venues.map((v) => ({ lat: v.lat, lng: v.lng, rgb: v.final ? '242,199,92' : '255,90,95', max: v.final ? 4 : 2.6, period: v.final ? 900 : 1600 })));
             globe.htmlElementsData(story.venues.map((v) => ({ lat: v.lat, lng: v.lng, alt: height(v) + 0.02, el: pin(`<b>${escapeHtml(v.city)}</b><span>${v.matches} 场${v.final ? ' · 决赛' : ''}</span>`, v.final ? 'is-final' : '') })));
-            setLegend([['#ff5a5f', '比赛场馆（柱高 = 场次）'], ['#f2c75c', '决赛场馆']]);
-            setCaption('主办城市', '加拿大 · 墨西哥 · 美国，16 座城市', '柱子越高，这座球场承办的比赛越多');
+            setLegend([['#ff5a5f', '场馆'], ['#f2c75c', '决赛']]);
+            setCaption('', '16 座城市 · 104 场比赛');
             globe.pointOfView({ lat: 34, lng: -96, altitude: 1.3 }, reduceMotion ? 0 : 1400);
             controls.autoRotate = false;
           },
@@ -486,8 +486,8 @@
             globe.htmlElementsData([...stopsByVenue.values()].map((s) => ({ lat: s.lat, lng: s.lng, alt: 0.02, el: pin(`<b>${escapeHtml(s.city)}</b>${s.lines.map((l) => `<span>${l}</span>`).join('')}`, 'is-journey') })));
             const last = games[games.length - 1]; const lastVenue = last && venue(last.v);
             if (lastVenue) globe.ringsData([{ lat: lastVenue.lat, lng: lastVenue.lng, rgb: '242,199,92', max: 4.5, period: 1000 }]);
-            setLegend([['#f2c75c', '按比赛顺序的航线'], ['#ffffff55', '从本国出发']]);
-            setCaption(`${team.id === story.champion ? '冠军之路' : '球队征程'} · ${REACH[team.reach]?.[1] || ''}`, `<img src="${escapeHtml(team.flag)}" alt="">${escapeHtml(team.name)} 的 ${games.length} 场比赛`, '在参赛版图里点击其他国家，再回来查看它的征程');
+            setLegend([]);
+            setCaption(REACH[team.reach]?.[1] || '', `<img src="${escapeHtml(team.flag)}" alt="">${escapeHtml(team.name)} · ${games.length} 场`);
             globe.pointOfView({ lat: 34, lng: -92, altitude: 1.35 }, reduceMotion ? 0 : 1400);
             controls.autoRotate = false;
           },

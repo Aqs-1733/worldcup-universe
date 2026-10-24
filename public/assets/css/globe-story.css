@@ -34,3 +34,10 @@
  .globe-card-3d .globe-journey-go{top:auto;bottom:12px;left:18px;right:auto}
 }
 @media(max-width:560px){.globe-legend{display:none}.globe-caption strong{font-size:16px}.globe-caption small{display:none}.globe-card-3d .globe-modes button{height:34px;padding:0 10px;font-size:12px}.globe-modes{left:18px;max-width:calc(100% - 36px)}}
+/* Story modes own the camera and the caption: the old readout and continent row are redundant. */
+.globe-card-3d .globe-readout,.globe-card-3d .globe-continent-controls{display:none}
+.globe-card-3d{min-height:0}
+.globe-modes{top:24px}
+.globe-caption{top:80px}
+.globe-card-3d .globe-journey-go{top:24px}
+.globe-legend{bottom:22px}

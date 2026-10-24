@@ -6,12 +6,26 @@
   const fmt = s => { if (!Number.isFinite(s)) return '0:00'; const m = Math.floor(s / 60), r = Math.floor(s % 60); return `${m}:${String(r).padStart(2, '0')}`; };
 
   const embedButton = root.querySelector('[data-cp-embed]');
+  const youtubeErrors = { 2: '视频参数无效', 5: '浏览器无法播放这个视频', 100: '视频已被删除或设为私享', 101: '版权方禁止在其他网站播放', 150: '版权方禁止在其他网站播放', 153: '播放器缺少来源信息' };
   embedButton?.addEventListener('click', () => {
     const iframe = document.createElement('iframe');
-    iframe.src = root.dataset.embed; iframe.title = '视频播放器'; iframe.allowFullscreen = true;
+    let src = root.dataset.embed;
+    const isYoutube = /youtube\.com\/embed\//.test(src);
+    // The JS API lets the page hear YouTube's own error codes; origin must match this site for it to answer.
+    if (isYoutube) src += `&enablejsapi=1&origin=${encodeURIComponent(location.origin)}`;
+    iframe.src = src; iframe.title = '视频播放器'; iframe.allowFullscreen = true;
     iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
     root.replaceChildren(iframe); root.classList.add('is-embedded');
+    if (!isYoutube) return;
+    iframe.addEventListener('load', () => iframe.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: 'wcu', channel: 'widget' }), '*'));
+    window.addEventListener('message', e => {
+      if (!/youtube(-nocookie)?\.com$/.test(new URL(e.origin).hostname)) return;
+      let data; try { data = JSON.parse(e.data); } catch (err) { return; }
+      if (data.event !== 'onError' || !status) return;
+      const link = document.querySelector('.cinema-status a')?.href || '';
+      status.innerHTML = `YouTube 返回错误 ${Number(data.info)}：${youtubeErrors[data.info] || '无法在站内播放'}。${link ? `<a href="${link}" target="_blank" rel="noopener noreferrer">在 YouTube 打开 ↗</a>` : ''}`;
+    });
   });
 
   const video = root.querySelector('[data-cp-video]');

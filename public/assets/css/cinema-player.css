@@ -54,3 +54,10 @@
 .cinema-help summary{cursor:pointer;color:#dfe6ec;font-weight:700}
 .cinema-help ol{margin:12px 0 0;padding-left:18px;line-height:1.9}
 @media(max-width:900px){.cinema-body{grid-template-columns:1fr}.cinema-head{flex-direction:column;align-items:flex-start}.cinema-head p{text-align:left}.cinema-notes{flex-direction:column}.cinema-list{max-height:none}.cinema{padding:46px 18px 40px}}
+.cinema{padding-top:40px}
+.official-replays{margin:10px 0 60px;border-top:1px solid #d9dfe5}
+.official-replays>summary{cursor:pointer;padding:22px 0;font-weight:700;font-size:15px;color:#1b2a38;list-style:none;display:flex;justify-content:space-between}
+.official-replays>summary::after{content:'+';font-size:20px;color:#8a97a3}
+.official-replays[open]>summary::after{content:'−'}
+.cinema input.cp-seek{min-height:0;height:4px;padding:0;margin:0;border:0;border-radius:4px;box-shadow:none;background:linear-gradient(90deg,#f2c75c var(--fill,0%),#ffffff40 var(--fill,0%))}
+.cinema-help>summary{border:0}

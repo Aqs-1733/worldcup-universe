@@ -6,9 +6,10 @@ $access=$selected?($playback[$selected->provider.':'.$selected->provider_id]??[]
 $external=$access['external']??false;
 $alternative=$selected&&$full?\app\models\MatchVideo::find()->where(['status'=>'published','video_type'=>'highlights','tournament_year'=>$selected->tournament_year,'home_code'=>$selected->home_code,'away_code'=>$selected->away_code,'stage'=>$selected->stage])->andWhere(['not',['verified_at'=>null]])->one():null;
 ?>
-<header class="edition-page-intro"><div><span class="edition-kicker">THE GAME, REVISITED</span><h1>让精彩，再发生一次。</h1></div><span class="edition-video-year">2026 世界杯 · 官方影像</span></header>
+<header class="edition-page-intro"><div><h1>让精彩，再发生一次。</h1></div></header>
 <?= $this->render('_competition-nav',['active'=>'videos']) ?>
 <?= $this->render('_video-shelf',['library'=>$library??[],'clip'=>$clip??null]) ?>
+<details class="official-replays"<?= str_starts_with(Yii::$app->request->pathInfo,'watch/')||Yii::$app->request->get('type')?' open':'' ?>><summary>官方完整回放 · RTVE</summary>
 <nav class="edition-video-tabs" aria-label="视频类型"><a href="/watch?type=full_match" <?= $full?'aria-current="page"':'' ?>>完整回放<span>FULL MATCH</span></a><a href="/watch?type=highlights" <?= !$full?'aria-current="page"':'' ?>>精彩集锦<span>HIGHLIGHTS</span></a></nav>
 <?php if($selected): ?>
 <section class="edition-cinema" data-official-player data-embed="<?= e($selected->embedUrl) ?>" data-provider="<?= e($selected->provider) ?>">
@@ -24,3 +25,4 @@ $alternative=$selected&&$full?\app\models\MatchVideo::find()->where(['status'=>'
 </section>
 <?php else: ?><section class="edition-video-empty"><span aria-hidden="true">▷</span><h2><?= $full?'暂未收录官方完整回放':'精彩集锦，等待官方收录。' ?></h2><p>当前数据库没有经核验、可发布的<?= $full?'完整回放':'官方精彩集锦' ?>。你可以先回看完整比赛，或查看比赛档案。</p><a class="edition-inline-link" href="<?= $full?'/worldcup':'/watch?type=full_match' ?>"><?= $full?'查看比赛档案':'查看完整回放' ?> ↗</a></section><?php endif ?>
 <?php if(count($provider->models)>1): ?><section class="section"><div class="section-head"><h2><?= $full?'完整回放目录':'精彩集锦目录' ?></h2></div><div class="video-grid"><?php foreach($provider->models as $video): ?><a class="video-card" href="/watch/<?= e($video->slug) ?>"><div class="video-thumbnail"><?php if($video->thumbnail_url): ?><img src="<?= e(safe_url($video->thumbnail_url)) ?>" alt="" loading="lazy"><?php endif ?><span class="play-mark">▶</span></div><h3><?= e($video->title) ?></h3></a><?php endforeach ?></div><?= yii\widgets\LinkPager::widget(['pagination'=>$provider->pagination]) ?></section><?php endif ?>
+</details>

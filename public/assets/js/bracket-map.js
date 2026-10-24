@@ -42,7 +42,8 @@
     });
     paths.forEach(p => p.classList.toggle('is-path', active && teamOf(Number(p.dataset.from), teamId) && teamOf(Number(p.dataset.to), teamId)));
     chips.forEach(c => c.setAttribute('aria-pressed', String(active ? c.dataset.bmTeam === String(teamId) : c.dataset.bmTeam === '')));
-    if (!active) { summary.innerHTML = '<span>选择一支球队</span><b>查看它走了多远</b>'; return; }
+    summary.hidden = !active;
+    if (!active) return;
     const chip = chips.find(c => c.dataset.bmTeam === String(teamId));
     const reach = Number(chip?.dataset.reach || 0), champion = Number(teamId) === data.champion;
     const games = [...cards.values()].filter(c => c.dataset.teams.split(' ').includes(String(teamId)) && !c.classList.contains('bm-bronze')).length;
