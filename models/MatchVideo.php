@@ -12,7 +12,7 @@ final class MatchVideo extends Record
             ['tournament_year','integer','min'=>2026,'max'=>2026],[['stage'],'string','max'=>60],[['home_name','away_name','source_author'],'string','max'=>80],
             [['home_code','away_code'],'match','pattern'=>'/^[A-Z]{3}$/'],['provider','in','range'=>['youtube','rtve']],['provider_id','validateProviderId'],
             ['source_url','url'],[['source_url','thumbnail_url'],'string','max'=>800],['source_url','validateOfficialSource'],['thumbnail_url','validateThumbnail'],
-            ['video_type','in','range'=>['full_match']],['status','in','range'=>['draft','published','hidden']],['verified_at','safe']];
+            ['video_type','in','range'=>['full_match','highlights']],['status','in','range'=>['draft','published','hidden']],['verified_at','safe']];
     }
     public function validateOfficialSource(string $field): void
     {

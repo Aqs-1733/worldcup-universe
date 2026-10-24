@@ -1,0 +1,11 @@
+/* Recovered scoped chat layout; refinement.css and topic-detail.css remain authoritative. */
+.community-scope .card{overflow:hidden}
+.community-scope .chat{display:grid;gap:22px}
+.community-scope .chat-item{display:flex;align-items:flex-start;gap:15px}
+.community-scope .chat-bubble{flex:1;min-width:0;padding:20px;border:1px solid #e4eaf2;border-radius:9px;background:#f8fafd}
+.community-scope .chat-bubble-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.community-scope .chat-bubble-title b{font-weight:700}.community-scope .chat-bubble-title time{font-size:10px;color:#95a2b3}
+.community-scope .chat-bubble p{margin:0;line-height:1.9;overflow-wrap:anywhere}
+.community-scope .list-group-item{display:flex}
+.community-scope .card-footer{padding:18px 24px}
+@media(max-width:600px){.community-scope .card-body{padding:20px 16px}.community-scope .chat-item{gap:10px}.community-scope .chat-bubble{padding:15px}}

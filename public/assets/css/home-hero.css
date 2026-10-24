@@ -1,0 +1,64 @@
+/* Home only. All tunnel composition rules live here; copy/image/crop in presentation.php. */
+/* Local Google Fonts subset for the heading; same OFL as fonts/OFL-ZCOOL.txt. */
+@font-face{font-family:'WCU Hero QingKe';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/wcu-hero-qingke.ttf') format('truetype')}
+.home-tunnel{background:#070b0b}
+.home-tunnel .arena-topline{display:none}
+.home-tunnel .site-header{height:84px;min-height:84px;padding:0 4%;background:#090e10;position:sticky;top:0;border-bottom:1px solid #ffffff14;transition:background .25s;z-index:50}
+.home-tunnel .site-header.is-scrolled{background:#101718}
+.home-tunnel .site-header .nav-inner{height:100%;padding:0;max-width:none}
+.home-tunnel .brand-name{font-size:18px}
+.home-tunnel .wcu-crest{width:32px;height:40px;font-size:24px}
+.home-tunnel .site-header .nav-menu a{font-size:12px}
+.home-tunnel .site-header .nav-menu a[aria-current=page]{color:#fff;border-bottom-color:#b8c3be}
+.home-tunnel .account-nav{font-size:12px}
+.home-tunnel .account-nav .btn-scarlet{background:transparent;border:1px solid #ffffff4d;border-radius:2px;min-height:36px;padding:8px 18px;color:#fff;font-size:12px}
+.home-tunnel .page-shell{background:#f4f5f7}
+.tunnel-hero{position:relative;isolation:isolate;background:#070b0b;color:#fff;width:100vw;left:50%;margin-left:-50vw;height:calc(100svh - 84px);min-height:650px;overflow:hidden;display:flex;align-items:end;padding:0 4.5% 114px}
+.tunnel-hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hero-image-position);z-index:-2}
+.tunnel-hero-shade{position:absolute;inset:0;z-index:-1;opacity:var(--hero-shade);background:linear-gradient(90deg,#030807b3,transparent 36%),linear-gradient(0deg,#030807 0%,transparent 24%);pointer-events:none}
+.tunnel-hero-copy{max-width:340px}
+.tunnel-hero-eyebrow{font:400 13px/1.6 'Anton',sans-serif;letter-spacing:.16em;color:#d6dedb;margin:0 0 13px}
+.tunnel-hero h1{font:400 clamp(36px,3.7vw,54px)/1.2 'WCU Hero QingKe','ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;color:#fff;letter-spacing:.035em;margin:0 0 18px}
+.tunnel-hero-description{font-size:12px;line-height:1.8;color:#d6dcd9;margin:0 0 26px}
+.tunnel-hero-actions{display:flex;align-items:center;gap:24px}
+.tunnel-hero-actions>a{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;color:#fff;font-size:12px;min-height:45px;padding:10px 0;border-bottom:1px solid #ffffff60;transition:color .2s,border-color .2s,background .2s}
+.tunnel-hero-actions>a:first-child{border:1px solid #ffffff8a;padding:10px 17px;background:#080e0b30}
+.tunnel-hero-actions>a:hover{color:#fff;border-color:#fff;background:#ffffff14}
+.tunnel-hero a:focus-visible{outline:2px solid #fff;outline-offset:5px}
+.tunnel-hero-bottom{position:absolute;bottom:27px;left:4.5%;right:4.5%;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:10px}
+.tunnel-hero-bottom>a{min-height:44px;display:inline-flex;align-items:center;gap:24px;color:#d2dad7}
+.tunnel-hero-bottom .tunnel-hero-credit{font-size:9px;color:#aab6b1}
+.tunnel-hero.is-ready .tunnel-hero-copy{animation:tunnel-reveal var(--hero-reveal) ease-out both}
+.home-tunnel #matchday{scroll-margin-top:84px}
+@keyframes tunnel-reveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:1000px){
+ .home-tunnel .site-header{height:auto;min-height:84px;padding:0 24px}
+ .tunnel-hero{padding-left:28px;padding-right:28px}
+}
+@media(max-width:720px){
+ .home-tunnel .site-header{height:72px;min-height:72px;padding:0 20px}
+ .home-tunnel .site-header .nav-inner{position:relative;flex-wrap:nowrap;gap:14px}
+ .home-tunnel .brand-name{font-size:15px}
+ .home-tunnel .wcu-crest{width:27px;height:33px;font-size:20px}
+ .home-tunnel .menu-button{order:3;margin-left:0;min-width:36px;min-height:44px}
+ .home-tunnel .account-nav{width:auto;order:2;margin-left:auto;border:0;padding:0;font-size:11px;gap:10px}
+ .home-tunnel .account-nav .btn-scarlet{display:none}
+ .home-tunnel .navigation.is-open{position:absolute;top:72px;left:-20px;right:-20px;width:auto;background:#101718;padding:20px;border-bottom:1px solid #ffffff30;box-shadow:none}
+ .home-tunnel .navigation .nav-menu{width:100%;display:flex;flex-wrap:wrap;gap:15px 24px}
+ .tunnel-hero{height:calc(100svh - 72px);min-height:720px;padding:0 25px 78px;align-items:end}
+ .tunnel-hero-image{height:calc(100% - 240px);object-position:var(--hero-mobile-position)}
+ .tunnel-hero-shade{height:calc(100% - 220px);opacity:1;background:linear-gradient(0deg,#070b0b,transparent 18%)}
+ .tunnel-hero-copy{max-width:none;width:100%}
+ .tunnel-hero-eyebrow{font-size:11px;letter-spacing:.15em;margin-bottom:10px}
+ .tunnel-hero h1{font-size:38px;margin-bottom:10px}
+ .tunnel-hero-description{font-size:11px;margin-bottom:17px}
+ .tunnel-hero-actions{gap:26px}
+ .tunnel-hero-actions>a{font-size:11px;gap:22px}
+ .tunnel-hero-bottom{left:25px;right:25px;bottom:15px;font-size:9px;gap:10px}
+ .tunnel-hero-bottom>a{gap:12px}
+ .tunnel-hero-bottom .tunnel-hero-credit{font-size:8px}
+ .home-tunnel #matchday{scroll-margin-top:72px}
+}
+@media(prefers-reduced-motion:reduce){
+ .tunnel-hero *, .home-tunnel .site-header{animation:none!important;transition:none!important}
+}

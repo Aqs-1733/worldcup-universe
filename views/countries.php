@@ -1,12 +1,23 @@
 <?php /** Compact country cover and navigable directory. */ $this->title='国家与主办城市'; ?>
 <?= $this->render('/catalog/_masthead',['heading'=>'国家与主办城市','photo'=>'vancouver','photoLabel'=>'温哥华城市全景','class'=>'countries-cover']) ?>
-<section class="hero-grid country-hero reveal">
+<header class="edition-page-intro"><div><span class="edition-kicker">A WORLD OF FOOTBALL</span><h2>转动世界，找到你的主队。</h2></div><a href="#country-list">浏览国家目录 ↓</a></header>
+<script type="application/json" data-globe-story><?= yii\helpers\Json::htmlEncode((new app\services\GlobeStoryService())->payload()) ?></script>
+<section class="hero-grid country-hero reveal edition-explorer">
   <div class="globe-card globe-card-3d" data-globe-3d>
     <div class="globe-toolbar">
       <span>交互式地球</span>
       <b data-globe-feature-count>加载中</b>
     </div>
-    <div class="globe-stage" data-globe-stage aria-label="可旋转的世界地图">
+    <div class="globe-modes" data-globe-modes role="toolbar" aria-label="地球故事模式" hidden>
+      <button type="button" data-globe-mode="qualified" aria-pressed="true"><i>01</i>参赛版图</button>
+      <button type="button" data-globe-mode="flights" aria-pressed="false"><i>02</i>飞向北美</button>
+      <button type="button" data-globe-mode="hosts" aria-pressed="false"><i>03</i>主办城市</button>
+      <button type="button" data-globe-mode="journey" aria-pressed="false"><i>04</i>冠军之路</button>
+    </div>
+    <div class="globe-caption" data-globe-caption aria-live="polite"></div>
+    <div class="globe-legend" data-globe-legend hidden></div>
+    <button type="button" class="globe-journey-go" data-globe-journey-go hidden></button>
+    <div class="globe-stage" data-globe-stage data-lenis-prevent aria-label="可旋转的世界地图">
       <div class="globe-canvas" data-globe-canvas></div>
       <div class="globe-loading" data-globe-loading>地球加载中…</div>
       <div class="globe-unavailable" data-globe-unavailable hidden>
@@ -22,12 +33,17 @@
       <button type="button" data-globe-continent="Asia">亚洲</button>
       <button type="button" data-globe-continent="Oceania">大洋洲</button>
     </div>
+    <div class="edition-globe-zoom" aria-label="地球缩放"><button type="button" data-globe-zoom="in" aria-label="放大地球">＋</button><button type="button" data-globe-zoom="out" aria-label="缩小地球">−</button></div>
     <div class="globe-readout globe-readout-3d" data-globe-3d-readout aria-live="polite">
       <span data-globe-readout-kicker>国家探索</span>
       <strong data-globe-readout-title>旋转地球，选择国家</strong>
       <small data-globe-readout-detail></small>
     </div>
   </div>
+  <aside class="edition-country-panel" data-country-panel>
+   <label class="edition-country-picker">选择国家队<select data-globe-country-picker><option value="">点击地球或选择国家</option><?php $geoMap=array_flip(require ROOT_PATH.'/config/globe-country-map.php');foreach($countries as $country): ?><option value="<?= e($country['country_code']) ?>" data-geo-key="<?= e($geoMap[$country['country_code']]??'') ?>" data-lat="<?= e($country['latitude']) ?>" data-lng="<?= e($country['longitude']) ?>"><?= e(app\services\CountryUi::name($country)) ?></option><?php endforeach ?></select></label>
+   <div data-country-panel-content aria-live="polite"><span class="edition-kicker">EXPLORE THE WORLD</span><h2>一个世界。<br>不同的热爱。</h2><p class="edition-country-message">拖动地球，点击一个国家；或者从上方选择国家队。</p><div class="edition-world-legend"><span>金色轮廓</span><p>你正在关注的国家</p></div></div>
+  </aside>
 </section>
 
 <?php $library=json_decode(file_get_contents(ROOT_PATH.'/public/assets/media/photos/library.json'),true); ?>

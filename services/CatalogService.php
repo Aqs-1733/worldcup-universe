@@ -8,6 +8,14 @@ use yii\db\Expression;
 use yii\web\NotFoundHttpException;
 final class CatalogService
 {
+    public function featuredPlayers(): array
+    {
+        $config=require ROOT_PATH.'/config/presentation.php';
+        $slugs=$config['featuredPlayerSlugs'];
+        $players=Player::find()->where(['slug'=>$slugs])->andWhere(['not',['official_import_id'=>null]])->with('team')->indexBy('slug')->all();
+        $featured=array_values(array_filter(array_map(static fn($slug)=>$players[$slug]??null,$slugs)));
+        return $featured?:Player::find()->where(['not',['official_import_id'=>null]])->with('team')->orderBy(['caps'=>SORT_DESC])->limit(3)->all();
+    }
     public function teams(array $filters=[]): ActiveDataProvider
     {
         $q=Team::find()->where(['not',['official_import_id'=>null]])->with('featurePlayer')->orderBy(TeamPhoto::order());
@@ -61,7 +69,7 @@ final class CatalogService
     public function home(): array
     {
         return ['hero'=>\app\models\MediaAsset::findOne(['asset_key'=>'home-hero','status'=>'approved']),'teams'=>Team::find()->where(['not',['official_import_id'=>null]])->orderBy(TeamPhoto::order())->limit(6)->all(),
-            'players'=>Player::find()->where(['not',['official_import_id'=>null]])->with('team')->orderBy(['caps'=>SORT_DESC])->limit(4)->all(),
+            'players'=>$this->featuredPlayers(),
             'matches'=>MatchGame::find()->where(['not',['official_import_id'=>null]])->with(['homeTeam','awayTeam'])->orderBy(['starts_at'=>SORT_DESC])->limit(4)->all(),
             'news'=>NewsArticle::find()->with('tags')->where(['status'=>'published'])->andWhere(['<>','source_name','赛事简报'])->orderBy(['published_at'=>SORT_DESC])->limit(3)->all(),
             'members'=>TeamMember::find()->where(['is_visible'=>1])->orderBy(['sort_order'=>SORT_ASC])->all(),
