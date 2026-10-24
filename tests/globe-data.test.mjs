@@ -71,8 +71,8 @@ test('country hover keeps map fills stable and uses ID-keyed outline paths', asy
   assert.match(script, /canvasHost\.querySelector\('canvas'\)/);
   assert.match(script, /if \(!pointerOrigin\) pauseAutoRotate\(\)/);
   assert.match(script, /lastDragAt/);
-  assert.match(script, /const normalLandColor = '#6F9568'/);
-  assert.match(script, /const oceanColor = '#245F9E'/);
+  assert.match(script, /const normalLandColor = '#7FB07A'/);
+  assert.match(script, /const oceanColor = '#2E7BD1'/);
   assert.match(script, /const createMapTexture/);
   assert.match(script, /context\.fill\('evenodd'\)/);
   assert.match(script, /const hoverOutlineColor = '#F4C95D'/);
