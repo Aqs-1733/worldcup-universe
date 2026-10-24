@@ -42,7 +42,8 @@
     });
     paths.forEach(p => p.classList.toggle('is-path', active && teamOf(Number(p.dataset.from), teamId) && teamOf(Number(p.dataset.to), teamId)));
     chips.forEach(c => c.setAttribute('aria-pressed', String(active ? c.dataset.bmTeam === String(teamId) : c.dataset.bmTeam === '')));
-    summary.hidden = !active;
+    // Toggle visibility only: the box keeps its space so hovering never reflows the bracket.
+    summary.classList.toggle('is-empty', !active);
     if (!active) return;
     const chip = chips.find(c => c.dataset.bmTeam === String(teamId));
     const reach = Number(chip?.dataset.reach || 0), champion = Number(teamId) === data.champion;
