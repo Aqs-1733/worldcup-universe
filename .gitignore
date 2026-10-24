@@ -2,6 +2,9 @@
 .idea/
 .vscode/
 vendor/
+# Keep the browser runtime dependencies; only Composer's root vendor is generated.
+!public/assets/vendor/
+!public/assets/vendor/**
 node_modules/
 *.log
 *.tmp
@@ -35,3 +38,7 @@ artifacts/navigation/rollback-copy.php
 storage/design-assets/
 artifacts/redesign-20261022/rollback-copy.php
 artifacts/topic-20261022/rollback-copy.php
+
+# Local personal-use videos (see public/assets/media/videos/README.md)
+public/assets/media/videos/*
+!public/assets/media/videos/README.md

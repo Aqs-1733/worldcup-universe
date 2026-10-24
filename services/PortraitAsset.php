@@ -13,4 +13,11 @@ final class PortraitAsset
         if(($entry['source_url']??null)===$source&&preg_match('~^/assets/media/portraits/[a-f0-9]{64}\.(png|jpg|webp)$~',$path)&&is_file(ROOT_PATH.'/public'.$path))return $path;
         return $source;
     }
+    /** Grid-sized image: the local cache when present, otherwise FIFA's own resize transform (about 35 KB instead of 1 MB). */
+    public static function thumb(?string $source,int $width=420): string
+    {
+        $url=self::url($source);
+        if($url===''||str_starts_with($url,'/'))return $url;
+        return preg_match('~^https://digitalhub\.fifa\.com/transform/[A-Za-z0-9-]+/[A-Za-z0-9_.-]+$~',$url)?$url.'?io=transform:scale,width:'.max(120,min(1200,$width)):$url;
+    }
 }

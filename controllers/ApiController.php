@@ -13,7 +13,7 @@ final class ApiController extends BaseController
     public function behaviors(): array { return ['verbs'=>['class'=>VerbFilter::class,'actions'=>[
         'session'=>['GET'],'teams'=>['GET'],'team'=>['GET'],'players'=>['GET'],'player'=>['GET'],
         'matches'=>['GET'],'match'=>['GET'],'standings'=>['GET'],'stats'=>['GET'],'news'=>['GET'],
-        'countries'=>['GET'],'home'=>['GET'],'bracket'=>['GET'],'forum'=>['GET','POST'],
+        'countries'=>['GET'],'globe'=>['GET'],'home'=>['GET'],'bracket'=>['GET'],'forum'=>['GET','POST'],
         'thread'=>['GET','PATCH','DELETE'],'profile'=>['GET','POST'],
     ]]]; }
     public function beforeAction($action): bool { Yii::$app->response->format=Response::FORMAT_JSON; return parent::beforeAction($action); }
@@ -26,6 +26,7 @@ final class ApiController extends BaseController
     public function actionMatch(int $id): array { $m=(new CatalogService())->find(MatchGame::class,$id); return ['data'=>array_merge($m->toArray(),['homeTeam'=>$m->homeTeam?->toArray(),'awayTeam'=>$m->awayTeam?->toArray(),'events'=>$this->arrays($m->events),'stats'=>$this->arrays($m->stats),'lineups'=>$this->arrays($m->lineups)])]; }
     public function actionNews(): array { return $this->page((new CatalogService())->news(Yii::$app->request->get())); }
     public function actionCountries(): array { return $this->page(new ActiveDataProvider(['query'=>CountryProfile::find()->orderBy('country_name_original'),'pagination'=>['pageSize'=>50],'sort'=>false])); }
+    public function actionGlobe(string $key): array { return ['data'=>(new \app\services\GlobeCountryService())->detail($key)]; }
     public function actionStandings(): array { return ['data'=>$this->arrays((new CatalogService())->stats()['standings'])]; }
     public function actionStats(): array { $d=(new CatalogService())->stats(); return ['data'=>['standings'=>$this->arrays($d['standings']),'scorers'=>$this->arrays($d['scorers'])],'meta'=>['emptyMeaning'=>'未采集到统计时返回空数组，不生成估计值']]; }
     public function actionBracket(): array { return ['data'=>(new CatalogService())->bracket(),'meta'=>['verifiedOnly'=>true]]; }

@@ -8,15 +8,18 @@ final class VideoVerificationService
     public function verify(MatchVideo $video): array
     {
         if((int)$video->tournament_year!==2026)throw new \RuntimeException('仅收录 2026 年世界杯。');
+        $highlights=$video->video_type==='highlights';
         if($video->provider==='rtve') {
             if(!preg_match('/^\d{8}$/',$video->provider_id))throw new \RuntimeException('官方视频编号无效。');
             $d=$this->json('https://www.rtve.es/api/videos/'.$video->provider_id.'.json');$v=$d['page']['items'][0]??[];
-            if(($v['id']??'')!==$video->provider_id||($v['type']['name']??'')!=='Completo'||($v['pubState']['code']??'')!=='ENPUB'||!str_contains($v['mainTopic']??'','2026')||($v['duration']??0)<3600000||($v['htmlUrl']??'')!==$video->source_url)throw new \RuntimeException('官方元数据未确认完整的 2026 世界杯比赛。');
+            $typeValid=$highlights?in_array($v['type']['name']??'',['Resumen','Resumen deportivo'],true)&&($v['duration']??0)>0:($v['type']['name']??'')==='Completo'&&($v['duration']??0)>=3600000;
+            if(($v['id']??'')!==$video->provider_id||!$typeValid||($v['pubState']['code']??'')!=='ENPUB'||!str_contains($v['mainTopic']??'','2026')||($v['htmlUrl']??'')!==$video->source_url)throw new \RuntimeException('官方元数据未确认对应类型的 2026 世界杯视频。');
             return ['author'=>'RTVE','title'=>$v['longTitle']??$v['title'],'thumbnail'=>$v['thumbnail']??null,'requires_login'=>(bool)($v['requireLogged']??false),'duration_seconds'=>(int)round(($v['duration']??0)/1000)];
         }
         if($video->provider==='youtube') {
             $d=$this->json('https://www.youtube.com/oembed?format=json&url='.rawurlencode($video->source_url));
-            if(($d['author_name']??'')!=='FIFA'||!preg_match('/full match/i',$d['title']??'')||!str_contains($d['title']??'','2026'))throw new \RuntimeException('官方频道未确认完整的 2026 比赛。');
+            $pattern=$highlights?'/highlights|resumen/i':'/full match/i';
+            if(($d['author_name']??'')!=='FIFA'||!preg_match($pattern,$d['title']??'')||!str_contains($d['title']??'','2026'))throw new \RuntimeException('官方频道未确认对应类型的 2026 世界杯视频。');
             return ['author'=>'FIFA','title'=>$d['title'],'thumbnail'=>$d['thumbnail_url']??null,'requires_login'=>false];
         }
         throw new \RuntimeException('视频来源无效。');

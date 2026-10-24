@@ -1,0 +1,32 @@
+/* Local preview recovery for missing Arena integration primitives.
+   This is not the original adapted template recorded in v2-media-manifest.json.
+   Existing arena-integration.css, matchday.css and refinement.css supply the skin. */
+.shell{width:100%;max-width:1480px;margin-inline:auto}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;margin-inline:auto}
+.nav-menu{display:flex;align-items:center;list-style:none;padding:0;margin:0}
+.nav-menu a{display:block;position:relative;text-decoration:none}
+.hero{position:relative;overflow:hidden;color:white;background:#101b2b}
+.hero-bg,.hero-overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-bg{z-index:-3}
+.hero-overlay{background:linear-gradient(90deg,#091321db,#09132150);z-index:-2;pointer-events:none}
+.hero-slant{position:absolute;right:-8%;top:0;bottom:0;background:#cf172bab;transform:skewX(-15deg);z-index:-1;pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.72fr);align-items:center;gap:65px;padding-inline:var(--space)}
+.home-template-hero .hero-copy{min-width:0}
+.hero-copy .hl{color:#ffc531}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.scoreboard{position:relative;min-width:0;border:1px solid #ffffff26;border-radius:10px;padding:30px;background:#132136e8}
+.sb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:11px;color:#bcc7d6}
+.sb-tag{background:#e11d2a;color:white;padding:5px 9px;border-radius:3px}
+.sb-teams{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;text-align:center}
+.sb-team{display:flex;flex-direction:column;align-items:center;min-width:0}
+.sb-name{overflow-wrap:anywhere}
+.sb-vs{display:flex;flex-direction:column;gap:8px;color:white}
+.sb-vs small{font-size:10px;color:#a8b7c9}
+.sb-cta{display:block;text-align:center;padding-top:18px;border-top:1px solid #ffffff24;color:#ffc531}
+.stat-band{display:grid;list-style:none;padding:0;margin:0}
+.stat-band li{display:flex;flex-direction:column;align-items:center;gap:5px;color:white;text-align:center}
+.stat-num{line-height:1.2}
+.eyebrow{align-items:center;gap:10px}
+.eyebrow:before{content:'';display:inline-block;flex:none;background:currentColor}
+@media(max-width:960px){.hero-inner{grid-template-columns:minmax(0,1fr);gap:30px}.home-template-hero{padding-top:40px!important;padding-bottom:40px!important}.scoreboard{max-width:540px;width:100%}.site-header .nav-inner{flex-wrap:wrap;position:relative}.site-header .menu-button{display:block}.site-header .navigation{display:none;order:4;width:100%}.site-header .navigation.is-open,.site-header .navigation.open{display:block}.nav-menu{flex-wrap:wrap;gap:15px}.nav-menu a{padding:14px 0!important}.nav-menu a[aria-current]:after{bottom:4px!important}}
+@media(max-width:600px){.hero-inner{padding-inline:var(--space)}.hero-actions{gap:10px}.hero-actions .btn{font-size:12px;padding:11px 14px}.hero-copy h1{font-size:50px!important}.sb-name{font-size:14px!important}.stat-band{grid-template-columns:repeat(2,minmax(0,1fr))!important}.stat-band>li{padding:18px 10px!important}.brand-name{font-size:17px!important}.account-nav{gap:10px!important}.site-header .nav-inner{gap:12px;min-height:78px}}

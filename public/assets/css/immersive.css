@@ -1,0 +1,10 @@
+/* Site-wide motion helpers. Page-specific styles live in their own sections below. */
+html.motion-on{scroll-behavior:auto}
+.reveal-mask{display:inline-block;vertical-align:bottom;max-width:100%;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.reveal-inner{display:inline-block;will-change:transform}
+[data-tilt]{transform-style:preserve-3d;will-change:transform}
+
+/* Player cards: shared fallbacks (team pages reuse the partial). */
+.player .p-fallback{display:none}
+.player .p-media.is-failed .p-fallback{display:grid;place-items:center;position:absolute;inset:0;font:400 72px/1 'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;color:#ffffff30}
+.player .p-numbers{display:none}
