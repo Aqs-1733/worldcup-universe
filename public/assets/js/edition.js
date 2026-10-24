@@ -21,10 +21,11 @@
    tabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;});
    panels.forEach((panel,i)=>{panel.hidden=i!==index;panel.classList.toggle('is-active',i===index);});
    animateIn(panels[index]);
+   root.dispatchEvent(new CustomEvent('player:change'));
    if(focus)tabs[index].focus();
    schedule();
   };
-  const schedule=()=>{clearTimeout(timer);if(reduced||tabs.length<2||root.classList.contains('is-paused'))return;timer=setTimeout(()=>activate((current+1)%tabs.length),interval);};
+  const schedule=()=>{clearTimeout(timer);if(reduced||tabs.length<2||root.classList.contains('is-paused')||root.matches(':hover')||root.contains(document.activeElement))return;timer=setTimeout(()=>activate((current+1)%tabs.length),interval);};
   tabs.forEach((tab,index)=>{
    tab.addEventListener('click',()=>activate(index));
    tab.addEventListener('keydown',event=>{
@@ -35,7 +36,7 @@
    });
   });
   const pause=()=>{root.classList.add('is-paused');clearTimeout(timer);};
-  const resume=()=>{root.classList.remove('is-paused');schedule();};
+  const resume=()=>{if(root.matches(':hover')||root.contains(document.activeElement))return;root.classList.remove('is-paused');schedule();};
   root.addEventListener('pointerenter',pause);root.addEventListener('pointerleave',resume);
   root.addEventListener('focusin',pause);root.addEventListener('focusout',e=>{if(!root.contains(e.relatedTarget))resume();});
   // Start the timer only once the spotlight is on screen.

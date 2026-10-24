@@ -1,0 +1,392 @@
+/* Shared light palette. The .cine-hero opening and its animation are intentionally untouched. */
+:root {
+  --paper: #f5f7fb;
+  --surface: #fff;
+  --ink: #24354a;
+  --muted: #66788d;
+  --line: #e0e7f0;
+  --brand: #d33e50;
+  --radius: 20px;
+  --edition-gold: #b85b46;
+  --light-soft: #edf3fa;
+  --light-shadow: 0 10px 30px rgba(47, 70, 103, .055);
+  --light-round: 24px;
+}
+
+body { background: var(--paper); color: var(--ink); }
+body #main { background: var(--paper); }
+body .section { border-color: var(--line); }
+body .meta, body .source-note, body .edition-stat-note { color: var(--muted); }
+body .section-head > a, body .edition-inline-link, body .back-link { color: #5d728b; }
+body .empty, body .data-empty {
+  background: #edf3fa;
+  color: #637892;
+  border-color: #d8e4f0;
+  border-radius: 16px;
+}
+
+/* Light glass outside the protected home opening. */
+body:not(.home-cine) #site-header,
+.home-cine #site-header.is-past-opening {
+  --glass-base: 255, 255, 255;
+  --glass-opacity: .76;
+  --glass-ink: #293d54;
+  --glass-text-shadow: none;
+  --glass-selection: rgba(211, 62, 80, .085);
+  --glass-brightness: 1.04;
+  --glass-shadow-opacity: .075;
+}
+.home-cine #site-header.is-past-opening .account-nav .btn {
+  background: var(--brand);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* Gentle photographic covers with readable dark headings. */
+body .editorial-cover { border-radius: 0 0 30px 30px; background: #e5edf6; color: var(--ink); }
+body .editorial-cover::before {
+  background: linear-gradient(90deg, rgba(246, 249, 253, .96), rgba(241, 246, 252, .82) 45%, rgba(239, 245, 252, .42));
+}
+body .editorial-cover::after { background: #d9e5f3; opacity: .4; }
+body .editorial-cover h1 { color: var(--ink); }
+body .page-heading { border-color: var(--line); background: transparent; }
+body .page-heading h1, body .edition-page-intro h1 { color: var(--ink); }
+body .page-heading p { color: var(--muted); }
+
+/* Consistent surfaces, forms and rounded actions. */
+body :is(.card, .form-panel, .standing-panel, .group-accordion, .member-block, .country-card,
+  .travel-card, .forum-sidebar, .thread-row, .news-block, .edition-country-panel,
+  .main-team-panel, .board-card, .community-detail .thread-article, .topic-detail-aside) {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+  border-radius: var(--light-round);
+  box-shadow: var(--light-shadow);
+}
+body :is(.form-panel, .forum-sidebar, .main-team-panel) :is(h2, h3) { color: var(--ink); }
+body :is(.form-panel, .forum-sidebar) p { color: var(--muted); }
+body .button, body .edition-primary { border-radius: 999px; background: var(--brand); border-color: var(--brand); color: #fff; }
+body .button:hover, body .edition-primary:hover { background: #bd3345; border-color: #bd3345; color: #fff; }
+body .button.outline { color: #435c78; background: #fff; border-color: #d6e0ec; }
+body .filter-bar > button, body .form-panel > button { border-radius: 999px; }
+body input:not([type=hidden], [type=checkbox], [type=radio], [type=range]),
+body select, body textarea {
+  background: #fff;
+  color: var(--ink);
+  border-color: #d7e1ee;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(47, 70, 103, .025);
+}
+body input::placeholder, body textarea::placeholder { color: #8493a7; }
+body .team-picker button.team-picker-trigger { border-radius: 14px; background: #fff; color: var(--ink); border-color: #d7e1ee; }
+body .team-picker-list { border-radius: 18px; border-color: var(--line); box-shadow: 0 14px 40px #334c6a15; }
+body .team-picker button.team-picker-option { border-radius: 10px; }
+body .choice, body .bookmark-item { border-radius: 12px; border-color: var(--line); }
+body .pagination a, body .pagination span { border-radius: 12px; }
+body .pagination .active a { background: var(--brand); border-color: var(--brand); color: #fff; }
+body .flash { background: #e8f4ee; color: #396852; border-radius: 16px; }
+body .flash.error, body .form-errors { background: #fcecef; color: #aa3446; border-radius: 14px; }
+body .badge, body .team-badge { background: #edf2f8; color: #526d8b; border-radius: 999px; }
+
+/* Team photography keeps its natural color, inside softer cards. */
+body .squad-card, body .edition-teams-directory .squad-card {
+  border-radius: var(--light-round) !important;
+  background: #fff;
+  border-color: var(--line);
+  box-shadow: var(--light-shadow) !important;
+}
+body .squad-cover { background: #e7eef7; }
+body .squad-group { background: rgba(255, 255, 255, .88); color: #425b76; border-radius: 999px; }
+body .squad-card .nation-bottom .meta { color: var(--muted); }
+body .flag-cover .squad-cover { background: linear-gradient(145deg, #e4edf8, #f2f6fb); }
+body .nation-hero, body .athlete-stage {
+  background: radial-gradient(ellipse at 75% 35%, #dce9f7, #f4f7fc 75%);
+  color: var(--ink);
+  border-radius: 28px;
+  overflow: hidden;
+}
+body .nation-hero::after, body .athlete-stage::after { background: linear-gradient(90deg, #f3f7fce8, #f3f7fc00 75%); }
+body .nation-hero h1, body .athlete-copy h1 { color: var(--ink); }
+body .nation-hero p, body .athlete-copy p, body .nation-hero .text-link { color: #5d748e; }
+body .athlete-copy .eyebrow { color: var(--brand); }
+body .athlete-watermark, body .athlete-shirt { color: #a9bed6; }
+body .athlete-shirt small { color: #637b95; }
+body .athlete-copy .hero-actions > a:not(.button) { color: #506d8d; }
+body .facts-grid, body .athlete-datagrid, body .lineup-history {
+  background: #fff; border-color: var(--line); border-radius: 24px; overflow: hidden;
+}
+body .facts-grid > div { border-top-color: #e8b1ba; }
+body .country-profile-head {
+  background: linear-gradient(125deg, #e8f0fa, #f9fbfe);
+  color: var(--ink); border-radius: 28px;
+}
+body .country-profile-head h1 { color: var(--ink); }
+body .country-profile-head > div > span, body .country-profile-head p { color: #667e98; }
+body .country-profile-head > .button { background: #fff; color: #435c78; border-color: #d6e0ec; }
+
+/* Player spotlight and directory: pastel portrait backgrounds, dark text. */
+body .edition-spotlight.spotlight { background: linear-gradient(130deg, #eef4fb, #e5eef9); color: var(--ink); border-radius: 30px; }
+body .edition-spotlight-heading { color: #637b95; border-color: #d7e3ef; }
+body .edition-spotlight-heading > span:first-child { color: #a04a54; }
+body .edition-player-nationality, body .edition-player-nationality > span { color: #627992; }
+body .edition-spotlight .spotlight-copy h2 { color: var(--ink); }
+body .edition-spotlight .edition-player-original { color: #a95553; }
+body .edition-spotlight .edition-player-club, body .edition-player-facts dt { color: #6b7f96; }
+body .edition-player-facts dd, body .edition-player-link { color: #314d6c; }
+body .edition-player-link { border-color: #bbcadb; }
+body .edition-player-link > span { color: var(--brand); }
+body .edition-shirt-number, body .edition-player-watermark { color: #cdddeb; }
+body .edition-spotlight .spotlight-tabs { background: #f9fbfe; border-color: #dae4ef; }
+body .edition-spotlight .spotlight-tabs button { color: #667c94; border-color: #e0e8f1; }
+body .edition-spotlight .spotlight-tabs button[aria-selected=true] { background: #f9e9ed; color: #9d3f50; border-top-color: var(--brand); }
+body .edition-spotlight .spotlight-tabs button small { color: #71849b; }
+body .edition-spotlight .spotlight-tabs button::after { background: var(--brand); }
+body .edition-player-directory.player-grid .player:nth-child(n) {
+  --c1: #e7effb;
+  --c2: #fff;
+  background: linear-gradient(160deg, var(--c1), var(--c2));
+  color: var(--ink);
+  border-radius: 24px;
+  box-shadow: var(--light-shadow);
+}
+body .edition-player-directory.player-grid .player[data-pos=GK] { --c1: #fcf2dc; }
+body .edition-player-directory.player-grid .player[data-pos=DF] { --c1: #e5eefb; }
+body .edition-player-directory.player-grid .player[data-pos=MF] { --c1: #e3f2eb; }
+body .edition-player-directory.player-grid .player[data-pos=FW] { --c1: #fae9ed; }
+body .edition-player-directory .player .p-body { background: linear-gradient(0deg, #fff 60%, #ffffff00); }
+body .edition-player-directory .player .p-name { color: var(--ink); }
+body .edition-player-directory .player .p-pos, body .edition-player-directory .player .p-stat,
+body .edition-player-directory .player .p-numbers { color: #637a94; border-color: var(--line); }
+body .edition-player-directory .player .p-numbers b { color: #b54052; }
+body .edition-player-directory .player .p-go { background: #e8eff7; color: #4e6a88; }
+body .edition-player-directory .player .p-country { color: #5d7590; background: #ffffff9c; border-radius: 999px; }
+body .edition-player-directory .player .p-num { -webkit-text-stroke-color: #7895b42e; }
+body .edition-player-directory .player .p-media img { filter: drop-shadow(0 12px 20px #6986a233); }
+/* The same card is also used inside team profiles. */
+body .player-grid:not(.edition-player-directory) .player {
+  background: #fff; color: var(--ink); border-color: var(--line); border-radius: 24px;
+}
+body .player-grid:not(.edition-player-directory) .player:nth-child(n) .p-media {
+  background: radial-gradient(ellipse at 60% 40%, #edf3fb, #dce8f5);
+}
+body .player-grid:not(.edition-player-directory) .p-media::after { background: none; }
+body .player-grid:not(.edition-player-directory) .p-country { color: #526f8c; }
+body .player-grid:not(.edition-player-directory) .p-num { color: #8ba4bf44; }
+body .player-grid:not(.edition-player-directory) .p-name { color: var(--ink); }
+body .player-grid:not(.edition-player-directory) .p-stat,
+body .player-grid:not(.edition-player-directory) .p-numbers { color: #637a94; border-color: var(--line); }
+
+/* Home content below the opening. No selector here targets .cine-hero. */
+body .cine-ticker { background: #eef3f9; border-color: #dfe7f1; }
+body .cine-ticker li a { color: #617791; border-color: #dce5ef; }
+body .cine-ticker li a:hover { background: #e6edf6; color: var(--ink); }
+body .cine-ticker .is-win, body .cine-ticker b { color: #2c4560; }
+body .cine-ticker em { color: #b34051; border-color: #e7bec7; border-radius: 999px; }
+body .edition-results { border: 0; gap: 16px; }
+body .edition-results .match-tile {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--light-shadow);
+}
+body .edition-results .match-tile:last-child { border-right: 1px solid var(--line); }
+body .player-rail {
+  width: auto; left: auto; margin-left: 0;
+  background: linear-gradient(135deg, #e8f0fa, #f4f7fc);
+  color: var(--ink); border-radius: 32px;
+}
+body .player-rail-head h2, body .player-rail-all { color: var(--ink); }
+body .player-rail-all { border-color: #a8bbcf; }
+body .rail-card {
+  color: var(--ink);
+  background: linear-gradient(155deg, #d9e6f5, #f2f6fc);
+  border-radius: 26px;
+  box-shadow: 0 16px 34px #516d8e16;
+}
+body .rail-card-body { background: linear-gradient(0deg, #f7faff 30%, #f7faff00); }
+body .rail-card-team, body .rail-card-stats { color: #5d7693; }
+body .rail-card-stats i { color: #b13e52; }
+body .rail-card-number { -webkit-text-stroke-color: #7692b232; }
+body .rail-card-photo { filter: drop-shadow(0 12px 22px #58718c33); }
+body .rail-card-arrow { background: #ffffffb3; color: #526e8b; }
+body .rail-card-more { background: #f7fafe; border-color: #bdd0e4; }
+body .rail-card-more b { color: #334d6b; }
+body .rail-card-more span { color: #637a94; }
+body .player-rail-progress { background: #dce6f1; }
+body .player-rail-progress i { background: linear-gradient(90deg, #d95566, #91accd); }
+body .home-cinema {
+  width: auto; left: auto; margin-left: 0;
+  background: linear-gradient(135deg, #eef3fa, #fff);
+  color: var(--ink); border-radius: 32px;
+  padding: 48px 32px;
+}
+body .home-cinema-lead { border-radius: 24px; box-shadow: 0 16px 40px #3d577e20; }
+body .home-cinema-side h2 { color: var(--ink); }
+body .home-cinema-side p, body .home-cinema-side li em { color: #6b7f97; }
+body .home-cinema-side ul, body .home-cinema-side li a { border-color: #dce5f0; }
+body .home-cinema-side li a { color: #415b79; }
+body .home-cinema-side .cine-btn-solid { background: var(--brand); border-color: var(--brand); color: #fff; }
+body .community-feature {
+  background: linear-gradient(100deg, #e8f0faeb, #f1f6fbd9), url('/assets/media/photos/lumen.jpg') center/cover;
+  color: var(--ink); border-radius: 30px;
+}
+body .community-feature h2 { color: var(--ink); }
+body .community-feature p { color: #617893; }
+
+/* Tournament map and scoreboards share the light card system. */
+body .bracket-map {
+  --bm-gold: #bc4557;
+  width: auto; left: auto; margin-left: 0;
+  padding: 40px 28px;
+  color: var(--ink);
+  background: linear-gradient(135deg, #edf3fb, #f9fbfe);
+  border: 1px solid #e0e8f2;
+  border-radius: 30px;
+}
+body .bracket-map::before { border-color: #dbe5f1; }
+body .bm-head h2, body .bm-summary b, body .bm-champion { color: var(--ink); }
+body .bm-head p, body .bm-summary span, body .bm-summary small, body .bm-foot { color: #6d8096; }
+body .bm-summary { background: #fff; border-color: #dde6f0; box-shadow: var(--light-shadow); border-radius: 20px; }
+body .bracket-map .bm-chip { background: #fff; color: #5e7590; border-color: #d9e3ef; }
+body .bracket-map .bm-chip:hover { border-color: #c18d99; color: #9f3a4c; }
+body .bracket-map .bm-chip[aria-pressed=true] { background: #f9e8ed; color: #a53b4e; border-color: #e8b8c4; }
+body .bracket-map .bm-chip.is-champion:not([aria-pressed=true]) { color: #a64d3e; border-color: #dcb8a4; }
+body .bm-lines path { stroke: #becfe1; }
+body .bm-lines path.is-path { stroke: #c85267; filter: drop-shadow(0 0 3px #cc6a7d33); }
+body .bm-round { color: #435f7d; }
+body .bm-round i, body .bm-meta, body .bm-team { color: #73869d; }
+body .bm-match { background: #fff; border-color: #dbe5f0; color: var(--ink); border-radius: 15px; box-shadow: 0 3px 10px #3b567a05; }
+body .bm-match:hover { border-color: #ce93a0; color: var(--ink); }
+body .bm-match.is-path { background: #fff1f5; border-color: #d88b9f; box-shadow: 0 6px 18px #ba62751a; }
+body .bm-team.is-win { color: #2e4867; }
+body .bm-team.is-win b, body .bm-team.is-focus .bm-code, body .bm-team.is-focus .bm-name { color: #b64558; }
+body .bracket-map.has-focus .bm-match:not(.is-path) { opacity: .48; }
+body .bm-scroll { scrollbar-color: #c6d4e4 transparent; }
+body .bm-final { border-color: #d9abb4; box-shadow: 0 8px 26px #ba657619; }
+body .bm-key { background: #b9cada; }
+body .bm-key-path { background: #c85267; box-shadow: none; }
+body .match-scoreboard { background: linear-gradient(120deg, #e8f0fa, #f9fbfe); color: var(--ink); border-radius: 28px; }
+body .match-scoreboard h1, body .big-score { color: #2d4766; }
+/* The original scoreboard explicitly forces white text. */
+body .match-scoreboard .match-opponents { color: #2d4766 !important; }
+body .match-round { color: #ae4657; }
+body .match-round > span { color: #6b829c; }
+body .match-scoreboard p, body .match-scoreboard > span, body .match-status { color: #647d98; }
+body .match-status { border-color: #c6d5e5; }
+body .lineup-panel { border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--light-shadow); }
+body .standing-panel { overflow: hidden; }
+body .standing-panel h3 { color: #365575; background: #edf3fa; }
+body .standing-panel h3 small { color: #768ba3; }
+body thead th { color: #667f99; background: #edf3fa; }
+body .group-accordion { border-radius: 20px; }
+body .group-accordion > summary { background: #fff; }
+
+/* Globe and country journey, including controls drawn over its transparent canvas. */
+body .edition-explorer.hero-grid { gap: 20px; }
+body .edition-explorer .globe-card-3d { background: radial-gradient(ellipse at 45% 40%, #f9fcff, #e5effa); border: 1px solid var(--line); border-radius: 28px; }
+body .globe-card-3d::before { opacity: 0; }
+body .globe-card-3d .globe-toolbar { color: #6b829c; }
+body .globe-card-3d .globe-modes button, body .edition-globe-zoom button {
+  background: #ffffffd9; color: #486580; border-color: #d4e0ee; box-shadow: 0 4px 12px #627b9b08;
+}
+body .globe-card-3d .globe-modes button i { color: #7b8fa8; }
+body .edition-globe-zoom button { border-radius: 12px; }
+body .globe-card-3d .globe-modes button[aria-pressed=true] { background: #fae9ed; color: #a64052; border-color: #ebbbc6; }
+body .globe-card-3d .globe-modes button[aria-pressed=true] i { color: #a64052; }
+body .globe-caption { color: #344e6c; }
+body .globe-caption > span { color: #ac4959; }
+body .globe-caption strong { text-shadow: none; }
+body .globe-caption small { color: #6e849c; }
+body .globe-legend { background: #ffffffd9; color: #5d7693; border-color: #dbe5f0; border-radius: 18px; }
+body .globe-legend i { box-shadow: 0 0 0 1px #5a759322; }
+body .globe-card-3d .globe-journey-go { background: #fff0f3; color: #a64154; border-color: #e1abb9; }
+body .globe-pin { background: #fffffff0; color: #3d5978; border-color: #d7e3ef; box-shadow: 0 8px 24px #4f6d921a; border-radius: 12px; }
+body .globe-pin span { color: #72869f; }
+body .globe-pin.is-final { color: #a65144; border-color: #d3af9a; }
+body .edition-country-team, body .edition-country-player { border-radius: 16px; }
+body .edition-journey { background: #edf3fa; color: var(--ink); border: 1px solid var(--line); border-radius: 28px; }
+body .edition-journey-heading { border-color: #d5e1ee; }
+body .edition-journey-heading h2 { color: var(--ink); }
+body .edition-journey-heading > span, body .edition-route-toolbar > label,
+body .edition-route-toolbar > p, body .edition-route-footnote { color: #6c829b; }
+body .edition-route-match { background: #fff; color: var(--ink); border-color: #d6e2ef; border-radius: 20px; }
+body .edition-route-match:hover { background: #f9fbfe; color: var(--ink); border-color: #b6c9df; }
+body .edition-route-side.is-route-team { color: #365472; }
+body .edition-route-side.is-route-team > b { color: #b6495c; }
+body .edition-route-detail { color: #758aa2; border-color: var(--line); }
+body .edition-route-empty { color: #8296ac; border-color: #cbd9e8; border-radius: 20px; }
+body .edition-route-scroll { scrollbar-color: #c2d0e1 transparent; }
+body .edition-route-scroll-controls button { background: #fff; color: #57718e; border-color: #d2dfed; border-radius: 12px; }
+
+/* Video imagery keeps its playback colors; its surrounding interface is light. */
+body .cinema {
+  width: auto; left: auto; margin-left: 0;
+  padding: 36px 28px;
+  background: linear-gradient(135deg, #edf3fa, #f9fbfe);
+  color: var(--ink); border-radius: 30px;
+}
+body .cinema-head h2 { color: var(--ink); }
+body .cinema-head .edition-kicker { color: #ac4959; }
+body .cinema-head p, body .cinema-notes, body .cinema-status { color: #697f98; }
+body .cinema-item { color: #3d5977; background: #ffffffa8; border-color: transparent; border-radius: 18px; }
+body .cinema-item:hover { color: var(--ink); background: #fff; }
+body .cinema-item.is-active { background: #fcecf1; border-color: #ebbdc9; }
+body .cinema-meta small { color: #7488a0; }
+body .cinema-list .cp-badge { background: #e9eff7; color: #607994; border-radius: 999px; }
+body .cinema-list .cp-badge-youtube { background: #fae9ed; color: #b34254; }
+body .cinema-list .cp-badge-bilibili { background: #f7eafa; color: #9f548f; }
+body .cinema-help summary { color: #405e7d; }
+body .cinema-status a { color: #b1495a; }
+body .cp { border-radius: 24px; box-shadow: 0 16px 38px #36567920; }
+body .edition-video-access { background: #edf3fa; color: #6a8098; border-radius: 0 0 22px 22px; }
+body .edition-video-provider { color: #a54d42; }
+body .edition-cinema-poster { border-radius: 24px 24px 0 0; }
+body .edition-video-empty { border-radius: 24px; }
+body .cinema code { background: #e4ebf5; color: #a24353; }
+
+/* News, community, authentication and footer. */
+body .editorial-story { background: #fff; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; box-shadow: var(--light-shadow); }
+body .editorial-story .story-picture { border-radius: 0; background: #e8eff8; }
+body .editorial-story .story-copy { padding: 22px; }
+body .story-no-photo { color: #9eb3ca; }
+body .story-category { background: #ffffffe0; color: #5b728d; border-radius: 999px; }
+body .country-tile, body .community-comments, body .topic-replies-panel, body .topic-compose { border-radius: 22px; }
+body .forum-sidebar, body .main-team-panel { color: var(--ink); }
+body .main-team-panel .card-body h3, body .main-team-panel .card-body p { color: #426180; }
+body .main-team-panel .card-body > a:not(.button) { color: #6c829a; }
+/* The previous community stylesheet makes this particular background important. */
+body .main-team-panel { background: linear-gradient(135deg, #fff, #edf3fb) !important; }
+body .topic-panel { border-radius: 24px; }
+body .topic-panel > .card-header { border-radius: 24px 24px 0 0; }
+body .topic-search > button { border-radius: 999px; background: var(--brand); }
+body .board-card h3, body .board-card p { color: #4c6785; }
+body .thread-row { background: #fff; border-color: var(--line); }
+body .member-initial { background: #f9e9ed; color: #ad4053; border-radius: 16px; }
+body .auth-shell { background: linear-gradient(135deg, #e9f0fa, #f5f8fc); border-radius: 30px; }
+body .auth-message h1 { color: var(--ink); }
+body .auth-message p { color: #6c829b; }
+body .site-footer { background: #ebf0f7; color: var(--ink); border: 0; border-radius: 32px 32px 0 0; }
+body .site-footer .footer-brand { color: #314c6b; }
+body .site-footer p, body .site-footer a:not(.footer-brand), body .footer-bottom { color: #637a94; }
+body .footer-bottom { border-color: #d8e3ef; }
+
+/* The administrative workspace uses the same palette without altering access control. */
+body.admin-body { background: var(--paper); }
+body .admin-sidebar { background: #fff; color: var(--ink); border-right: 1px solid var(--line); }
+body .admin-sidebar > a, body .admin-sidebar details a, body .admin-sidebar summary { color: #506d8d; }
+body .admin-sidebar a:hover { background: #f6eaf0; color: #a94254; border-radius: 12px; }
+body .admin-sidebar .brand { color: #2b4768; }
+body .admin-top { background: #fff; border-radius: 20px; padding: 18px 22px; box-shadow: var(--light-shadow); border: 1px solid var(--line); }
+body .admin-main .admin-card, body .admin-main .stat-card { background: #fff; border-color: var(--line); border-radius: 22px; }
+body .admin-counts > a { background: #fff; border-color: var(--line); border-radius: 22px; box-shadow: var(--light-shadow); }
+body .admin-main table { background: #fff; border-radius: 18px; overflow: hidden; }
+
+@media (max-width: 760px) {
+  body .edition-results { gap: 12px; }
+  body .bracket-map { padding: 28px 16px; border-radius: 24px; }
+  body .home-cinema, body .cinema { padding: 28px 18px; border-radius: 24px; }
+  body .player-rail { border-radius: 24px; }
+  body .edition-journey { margin-inline: 0; }
+  body .editorial-story .story-copy { padding: 18px; }
+  body .auth-shell { border-radius: 24px; }
+}
