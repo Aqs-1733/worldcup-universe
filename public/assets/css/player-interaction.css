@@ -1,0 +1,136 @@
+/* Body-aware action scenes, scoped to player showcases and profile portraits. */
+.player-playground {
+  --action-kit: #bf4356;
+  --action-shorts: #314e54;
+  --action-sock: #b94959;
+  --action-duration: 3s;
+}
+.player-playground[hidden], .player-action-replay[hidden] { display: none !important; }
+.player-action-tools {
+  position: relative; z-index: 6;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 12px; padding: 15px 24px;
+  background: #f7fafe; border-top: 1px solid #dce5f0;
+}
+.player-action-tools > p { display: flex; align-items: center; gap: 8px; margin: 0; color: #6a7e95; font-size: 11px; }
+.player-action-tools > p > span:first-child { font-size: 19px; }
+.player-action-buttons { display: flex; gap: 7px; }
+body .player-action-buttons button {
+  min-height: 34px; padding: 7px 13px; border: 1px solid #d9e3ef; border-radius: 999px;
+  background: #fff; color: #526c88; font-size: 11px; font-weight: 600;
+  transition: background .2s, border-color .2s, color .2s;
+}
+body .player-action-buttons button:hover, body .player-action-buttons button[aria-pressed=true] {
+  color: #a93c51; background: #fbeef2; border-color: #e6bdc9;
+}
+.player-action-buttons button:focus-visible, .player-action-heading button:focus-visible { outline: 3px solid #b4687e; outline-offset: 3px; }
+.player-action-replay {
+  position: fixed; z-index: 110; inset: auto; margin: 0; width: min(520px, calc(100vw - 32px));
+  padding: 20px; border: 1px solid #fff; border-radius: 28px;
+  background: #f8fbfbe8; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 18px 55px #4e6d8b24; color: #293e55;
+  overflow: auto; overscroll-behavior: contain;
+  animation: player-scene-in .25s ease-out both;
+}
+.player-action-heading { display: flex; justify-content: space-between; align-items: start; gap: 12px; margin-bottom: 12px; }
+.player-action-kicker { color: #8a6d78; font-size: 9px; letter-spacing: .1em; }
+body .player-action-heading h3 { margin: 6px 0 4px; color: #293e55; font: 800 23px/1.3 var(--font); }
+.player-action-heading p { margin: 0; color: #73869a; font-size: 11px; }
+body .player-action-heading button {
+  display: grid; place-items: center; width: 30px; min-height: 30px; padding: 0; flex-shrink: 0;
+  border-radius: 50%; border: 1px solid #d9e4e9; color: #698292; background: #fff; font: 22px/1 Arial, sans-serif;
+}
+body .player-action-heading button:hover { background: #eef3f7; }
+.player-action-pitch { display: block; width: 100%; height: auto; border-radius: 20px; overflow: hidden; }
+.player-action-outcome { display: flex; gap: 11px; align-items: center; padding: 16px 2px 0; }
+.player-action-outcome > span { display: grid; place-items: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; background: #e6efed; color: #5b7e70; font-size: 17px; }
+.player-action-outcome b { color: #37586b; font-size: 13px; }
+.player-action-outcome p { margin: 3px 0 0; color: #738b98; font-size: 10px; line-height: 1.6; }
+.player-action-replay[data-action=handball] .player-action-outcome > span { background: #f8e9ed; color: #b6495d; }
+.player-action-replay[data-action=handball] .player-action-outcome b { color: #b34659; }
+.player-action-status { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.football-active .player-action-replay { cursor: auto; }
+.football-active .football-pointer { z-index: 9; }
+.athlete-stage .player-action-tools { position: absolute; bottom: 16px; left: 24px; right: 24px; border: 1px solid #dce5f0; border-radius: 20px; background: #f7fafeed; }
+.player-action-replay::backdrop { background: transparent; pointer-events: none; }
+
+/* The player has independent upper body, arms and legs, rather than a moving still. */
+.pa-player { transform-origin: 250px 350px; }
+.pa-upper { transform-origin: 246px 246px; }
+.pa-arm-back { transform-origin: 229px 175px; }
+.pa-arm-front { transform-origin: 264px 177px; }
+.pa-leg-back { transform-origin: 230px 268px; }
+.pa-leg-front { transform-origin: 259px 268px; }
+.pa-net { transform-origin: 535px 239px; }
+.pa-contact, .pa-whistle, .pa-goal-flash { opacity: 0; }
+.pa-ball { transform: translate(86px, 90px); }
+.is-playing :is(.pa-player, .pa-upper, .pa-arm-back, .pa-arm-front, .pa-leg-back, .pa-leg-front, .pa-ball, .pa-contact, .pa-whistle, .pa-goal-flash, .pa-net) {
+  animation-duration: var(--action-duration); animation-fill-mode: both; animation-timing-function: linear;
+}
+.is-playing[data-action=header] .pa-player { animation-name: pa-jump; }
+.is-playing[data-action=header] .pa-upper { animation-name: pa-header-body; }
+.is-playing[data-action=header] .pa-arm-back { animation-name: pa-balance-back; }
+.is-playing[data-action=header] .pa-arm-front { animation-name: pa-balance-front; }
+.is-playing[data-action=header] .pa-ball { animation-name: pa-header-ball; }
+.is-playing[data-action=kick] .pa-upper { animation-name: pa-kick-body; }
+.is-playing[data-action=kick] .pa-leg-front { animation-name: pa-kick-leg; }
+.is-playing[data-action=kick] .pa-arm-back { animation-name: pa-balance-back; }
+.is-playing[data-action=kick] .pa-ball { animation-name: pa-kick-ball; }
+.is-playing[data-action=handball] .pa-arm-front { animation-name: pa-hand-arm; }
+.is-playing[data-action=handball] .pa-ball { animation-name: pa-hand-ball; }
+.is-playing[data-action=handball] .pa-contact { animation-name: pa-hand-contact; }
+.is-playing[data-action=handball] .pa-whistle { animation-name: pa-verdict; }
+.is-playing:not([data-action=handball]) .pa-goal-flash { animation-name: pa-verdict; }
+.is-playing:not([data-action=handball]) .pa-net { animation-name: pa-net-hit; }
+
+@keyframes player-scene-in { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+@keyframes pa-jump { 0%, 10% { transform: translate(0,0); } 27%, 33% { transform: translate(8px,-25px); } 48%, 100% { transform: translate(12px,0); } }
+@keyframes pa-header-body { 0%, 14% { transform: rotate(-9deg); } 27%, 34% { transform: rotate(14deg); } 53%, 100% { transform: rotate(0); } }
+@keyframes pa-balance-back { 0%, 10%, 68%, 100% { transform: rotate(0); } 26%, 42% { transform: rotate(36deg); } }
+@keyframes pa-balance-front { 0%, 10%, 68%, 100% { transform: rotate(0); } 26%, 42% { transform: rotate(-38deg); } }
+@keyframes pa-kick-body { 0%, 10%, 72%, 100% { transform: rotate(0); } 28%, 42% { transform: rotate(-13deg); } }
+@keyframes pa-kick-leg { 0%, 8%, 76%, 100% { transform: rotate(0); } 18% { transform: rotate(23deg); } 30%, 37% { transform: rotate(-48deg); } 55% { transform: rotate(-12deg); } }
+@keyframes pa-hand-arm { 0%, 8%, 80%, 100% { transform: rotate(0); } 29%, 52% { transform: rotate(-20deg); } }
+@keyframes pa-header-ball {
+  0% { transform: translate(86px,80px) rotate(-90deg); } 27% { transform: translate(280px,110px) rotate(50deg); }
+  53% { transform: translate(531px,201px) rotate(400deg); } 66% { transform: translate(558px,284px) rotate(480deg); }
+  78% { transform: translate(547px,264px) rotate(520deg); } 88%, 100% { transform: translate(540px,303px) rotate(560deg); }
+}
+@keyframes pa-kick-ball {
+  0% { transform: translate(108px,309px) rotate(-100deg); } 18% { transform: translate(264px,325px) rotate(40deg); }
+  30% { transform: translate(336px,290px) rotate(100deg); } 54% { transform: translate(538px,221px) rotate(430deg); }
+  68% { transform: translate(560px,283px) rotate(500deg); } 80% { transform: translate(548px,268px) rotate(540deg); }
+  91%, 100% { transform: translate(540px,303px) rotate(560deg); }
+}
+@keyframes pa-hand-ball {
+  0% { transform: translate(91px,135px) rotate(-100deg); } 29% { transform: translate(319px,204px) rotate(120deg); }
+  48% { transform: translate(370px,265px) rotate(230deg); } 59% { transform: translate(380px,324px) rotate(260deg); }
+  70% { transform: translate(388px,303px) rotate(280deg); } 85%, 100% { transform: translate(394px,327px) rotate(300deg); }
+}
+@keyframes pa-hand-contact { 0%, 26% { opacity: 0; } 30%, 40% { opacity: 1; } 52%, 100% { opacity: 0; } }
+@keyframes pa-verdict { 0%, 49% { opacity: 0; transform: translateY(5px); } 57%, 100% { opacity: 1; transform: translateY(0); } }
+@keyframes pa-net-hit { 0%, 51%, 82%, 100% { transform: skewY(0); } 57% { transform: skewY(2deg); } 64% { transform: skewY(-1deg); } 72% { transform: skewY(.5deg); } }
+
+@media (max-width: 1000px) {
+  .player-action-replay { padding: 16px; }
+  .player-action-tools { padding: 13px 18px; }
+  .player-action-tools > p { font-size: 10px; }
+}
+@media (max-width: 760px) {
+  .player-action-tools { justify-content: center; gap: 9px; padding: 13px 10px; text-align: center; }
+  .player-action-tools > p { justify-content: center; width: 100%; }
+  .player-action-buttons { justify-content: center; gap: 6px; }
+  body .player-action-buttons button { min-height: 38px; padding: 9px 12px; font-size: 10px; }
+  .player-action-replay { padding: 16px; border-radius: 24px; }
+  body .player-action-heading h3 { font-size: 21px; }
+  .player-action-heading { margin-bottom: 9px; }
+  .player-action-outcome { padding-top: 11px; }
+  .athlete-stage .player-action-tools { bottom: 12px; left: 12px; right: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .player-action-replay, .player-action-replay.is-playing * { animation: none !important; }
+  .player-action-replay .pa-ball { transform: translate(540px,303px); }
+  .player-action-replay[data-action=handball] .pa-ball { transform: translate(319px,204px); }
+  .player-action-replay[data-action=handball] .pa-contact, .player-action-replay[data-action=handball] .pa-whistle,
+  .player-action-replay:not([data-action=handball]) .pa-goal-flash { opacity: 1; }
+}
