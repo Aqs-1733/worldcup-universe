@@ -8,4 +8,12 @@
 - `final-highlights.mp4`：配置里已预留，对应决赛集锦条目。
 - `hero-loop.mp4`：首页第二幕的背景循环视频（建议 10–20 秒、无声、≤1080p、≤15MB）。
 
+## 开放授权视频（一键下载）
+
+`config/local-videos.php` 中带 `commons` 字段的条目是 Wikimedia Commons 上的开放授权视频（CC BY / 公有领域），可合法使用，页面会显示作者与授权。克隆项目后运行一次即可下载：
+
+```
+php scripts/fetch-open-videos.php
+```
+
 视频文件已在 `.gitignore` 中排除，不会提交到仓库。

@@ -15,7 +15,7 @@ return [
   // Three pinned scenes on the home page. Drop an .mp4 at the path below to replace the stadium still with a looping video.
   'eyebrow'=>'FIFA WORLD CUP 2026™ · CANADA · MEXICO · USA',
   'titleLines'=>['ONLY ONE','MORE STEP'],
-  'subtitle'=>'走出通道，就是世界杯。48 支球队，一个梦想。',
+  'subtitle'=>'走出通道，就是世界杯。',
   'stadiumKicker'=>'THE STAGE IS SET',
   'stadiumTitle'=>'三国同办，史上最大的一届世界杯。',
   'stadiumImage'=>'/assets/media/stadium-hero-v2.png','stadiumAlt'=>'灯光下座无虚席的足球场',

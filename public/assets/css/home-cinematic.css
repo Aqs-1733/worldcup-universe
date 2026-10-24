@@ -211,3 +211,6 @@ html:not(.motion-on) .cine-ticker-track{animation:cine-marquee 70s linear infini
 .home-cinema-side li a:hover{color:var(--cine-gold);padding-left:6px}
 .home-cinema-side li em{font-style:normal;font-size:11px;color:#8695a3}
 @media(max-width:900px){.home-cinema{grid-template-columns:1fr;padding:60px 20px}.home-cinema-play{width:70px;height:70px}}
+.player-rail-all{color:#fff;font-weight:700;font-size:14px;border-bottom:1px solid #ffffff55;padding-bottom:4px;transition:border-color .3s,color .3s}
+.player-rail-all:hover{color:var(--cine-gold);border-color:var(--cine-gold)}
+.cine-chapters{gap:18px}

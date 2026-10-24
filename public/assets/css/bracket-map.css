@@ -64,3 +64,5 @@
 @media(max-width:900px){.bm-head{flex-direction:column;align-items:flex-start}.bm-summary{text-align:left;width:100%}.bm-summary span{justify-content:flex-start}.bracket-map{padding:60px 18px 40px}.bm-scroll{cursor:grab}}
 @media(prefers-reduced-motion:reduce){.bm-trophy{animation:none}}
 .bm-col-left .bm-round i,.bm-col-right .bm-round i{display:none}
+.bm-summary[hidden]{display:none}
+.bm-head{align-items:center}
