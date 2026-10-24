@@ -1,4 +1,5 @@
-/* Site-wide motion helpers. Page-specific styles live in their own sections below. */
+/* Site-wide motion helpers and type tokens. */
+:root{--wcu-zh:'WCU Serif SC','Noto Serif SC','Songti SC','STSong',serif;--wcu-num:'WCU Big Shoulders','Anton',Impact,sans-serif;--wcu-label:'WCU Barlow Cond','Mulish',sans-serif}
 html.motion-on{scroll-behavior:auto}
 .reveal-mask{display:inline-block;vertical-align:bottom;max-width:100%;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
 .reveal-inner{display:inline-block;will-change:transform}
@@ -6,5 +7,9 @@ html.motion-on{scroll-behavior:auto}
 
 /* Player cards: shared fallbacks (team pages reuse the partial). */
 .player .p-fallback{display:none}
-.player .p-media.is-failed .p-fallback{display:grid;place-items:center;position:absolute;inset:0;font:400 72px/1 'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;color:#ffffff30}
+.player .p-media.is-failed .p-fallback{display:grid;place-items:center;position:absolute;inset:0;font:400 72px/1 'WCU Serif SC','Noto Serif SC','Songti SC','STSong',serif;color:#ffffff30}
 .player .p-numbers{display:none}
+
+/* Editorial headings: Chinese serif black across section titles; English kickers in condensed caps. */
+body .section-head h2,body .feature-intro h2,body .edition-page-intro h1,body .edition-page-intro h2,body .edition-journey-heading h2,body .community-feature h2,body .editorial-cover h1,body .athlete-copy h1,body .edition-spotlight .spotlight-copy h2{font-family:var(--wcu-zh);font-weight:900;letter-spacing:.01em}
+body .edition-kicker{font-family:var(--wcu-label);font-weight:600;letter-spacing:.22em;font-size:12px}

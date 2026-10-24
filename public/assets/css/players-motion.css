@@ -15,16 +15,16 @@
 .edition-player-directory .p-media img{position:absolute;left:0;right:0;bottom:0;width:100%;height:96%;object-fit:contain;object-position:center bottom;opacity:0;transform:translateY(6%) translateZ(30px);transition:opacity .6s,transform .8s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 16px 24px #0008)}
 .edition-player-directory .p-media.is-loaded img{opacity:1;transform:translateY(2%) translateZ(30px)}
 .edition-player-directory .player:hover .p-media.is-loaded img{transform:translateY(0) scale(1.05) translateZ(50px)}
-.edition-player-directory .p-num{z-index:0;top:-6px;right:12px;left:auto;font:400 150px/1 'Anton',sans-serif;color:transparent;-webkit-text-stroke:1.5px #ffffff26;transition:transform .8s cubic-bezier(.2,.8,.2,1),-webkit-text-stroke-color .4s}
+.edition-player-directory .p-num{z-index:0;top:-6px;right:12px;left:auto;font:800 150px/1 'WCU Big Shoulders','Anton',sans-serif;color:transparent;-webkit-text-stroke:1.5px #ffffff26;transition:transform .8s cubic-bezier(.2,.8,.2,1),-webkit-text-stroke-color .4s}
 .edition-player-directory .player:hover .p-num{transform:translateY(-8px);-webkit-text-stroke-color:#ffffff55}
-.edition-player-directory .p-country{top:16px;left:16px;right:auto;bottom:auto;z-index:2;background:#ffffff1f;backdrop-filter:blur(6px);border-radius:4px;font:400 11px/1 'Anton',sans-serif;letter-spacing:.2em;padding:6px 8px}
+.edition-player-directory .p-country{top:16px;left:16px;right:auto;bottom:auto;z-index:2;background:#ffffff1f;backdrop-filter:blur(6px);border-radius:4px;font:800 11px/1 'WCU Big Shoulders','Anton',sans-serif;letter-spacing:.2em;padding:6px 8px}
 .edition-player-directory .p-body{position:relative;z-index:2;padding:16px 18px 18px;margin-top:-56px;background:linear-gradient(0deg,var(--c2) 55%,transparent);transform:translateZ(40px)}
 .edition-player-directory .p-pos{color:#b8c6d2;font-size:12px}
 .edition-player-directory .p-pos .team-flag{width:20px;height:13px;border-radius:2px}
-.edition-player-directory .p-name{font:400 22px/1.25 'ZCOOL QingKe HuangYou','WCU Sans','Microsoft YaHei',sans-serif;color:#fff;margin:8px 0 4px;letter-spacing:.02em}
+.edition-player-directory .p-name{font:900 23px/1.2 'WCU Big Shoulders','WCU Serif SC','Noto Serif SC','Songti SC','STSong',serif;color:#fff;margin:8px 0 4px;letter-spacing:.02em}
 .edition-player-directory .p-stat{font-size:11px;color:#8ea0b0;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .edition-player-directory .p-numbers{display:flex;align-items:baseline;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid #ffffff1a;font-size:11px;color:#8ea0b0}
-.edition-player-directory .p-numbers b{font:400 20px/1 'Anton',sans-serif;color:#f2c75c;margin-right:4px;font-weight:400}
+.edition-player-directory .p-numbers b{font:800 20px/1 'WCU Big Shoulders','Anton',sans-serif;color:#f2c75c;margin-right:4px}
 .edition-player-directory .p-go{margin-left:auto;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#ffffff14;color:#fff;transition:background .3s,transform .3s}
 .edition-player-directory .player:hover .p-go{background:#f2c75c;color:#1a1204;transform:rotate(45deg)}
 .edition-player-directory .p-media.is-failed{background:radial-gradient(circle at 50% 60%,#ffffff12,transparent 60%)}

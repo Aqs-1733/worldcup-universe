@@ -18,7 +18,7 @@
 .tunnel-hero-shade{position:absolute;inset:0;z-index:-1;opacity:var(--hero-shade);background:linear-gradient(90deg,#030807b3,transparent 36%),linear-gradient(0deg,#030807 0%,transparent 24%);pointer-events:none}
 .tunnel-hero-copy{max-width:340px}
 .tunnel-hero-eyebrow{font:400 13px/1.6 'Anton',sans-serif;letter-spacing:.16em;color:#d6dedb;margin:0 0 13px}
-.tunnel-hero h1{font:400 clamp(36px,3.7vw,54px)/1.2 'WCU Hero QingKe','ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;color:#fff;letter-spacing:.035em;margin:0 0 18px}
+.tunnel-hero h1{font:400 clamp(36px,3.7vw,54px)/1.2 'WCU Serif SC','Noto Serif SC','Songti SC','STSong',serif;color:#fff;letter-spacing:.035em;margin:0 0 18px}
 .tunnel-hero-description{font-size:12px;line-height:1.8;color:#d6dcd9;margin:0 0 26px}
 .tunnel-hero-actions{display:flex;align-items:center;gap:24px}
 .tunnel-hero-actions>a{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;color:#fff;font-size:12px;min-height:45px;padding:10px 0;border-bottom:1px solid #ffffff60;transition:color .2s,border-color .2s,background .2s}

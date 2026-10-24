@@ -3,17 +3,17 @@
 .bracket-map::before{content:"";position:absolute;left:50%;top:50%;width:min(52vw,720px);aspect-ratio:1;translate:-50% -46%;border:1px solid #ffffff0d;border-radius:50%;pointer-events:none}
 .bm-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:26px;position:relative}
 .bm-head .edition-kicker{color:var(--bm-gold)}
-.bm-head h2{font:400 clamp(36px,4vw,64px)/1.1 'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;color:#fff;margin:8px 0 12px;letter-spacing:.04em}
+.bm-head h2{font:900 clamp(36px,4vw,64px)/1.1 'WCU Serif SC','Noto Serif SC','Songti SC','STSong',serif;color:#fff;margin:8px 0 12px;letter-spacing:.04em}
 .bm-head p{color:#9cb0c1;font-size:14px;margin:0;max-width:520px}
 .bm-summary{min-width:250px;padding:16px 22px;border:1px solid #ffffff1f;border-radius:14px;background:#0d1a28cc;display:flex;flex-direction:column;gap:4px;text-align:right}
 .bm-summary span{display:flex;justify-content:flex-end;align-items:center;gap:8px;font-size:12px;color:#9cb0c1}
 .bm-summary span .team-flag{width:26px;height:17px;border-radius:2px}
-.bm-summary b{font:400 26px/1.1 'ZCOOL QingKe HuangYou','Anton',sans-serif;color:#fff;letter-spacing:.03em}
+.bm-summary b{font:900 26px/1.1 'WCU Serif SC','Noto Serif SC','Songti SC','STSong',serif,'Anton',sans-serif;color:#fff;letter-spacing:.03em}
 .bm-summary small{color:#9cb0c1}
 .bm-summary.is-champion{border-color:var(--bm-gold);box-shadow:0 0 40px #f2c75c33}
 .bm-summary.is-champion b{color:var(--bm-gold)}
 .bracket-map .bm-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:34px;position:relative}
-.bracket-map .bm-chip{min-height:0;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px 0 7px;border-radius:999px;border:1px solid #ffffff1f;background:#ffffff08;color:#b9c7d3;font:400 12px/1 'Anton',sans-serif;letter-spacing:.06em;transition:background .25s,border-color .25s,color .25s,transform .25s}
+.bracket-map .bm-chip{min-height:0;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px 0 7px;border-radius:999px;border:1px solid #ffffff1f;background:#ffffff08;color:#b9c7d3;font:800 12px/1 'WCU Big Shoulders','Anton',sans-serif;letter-spacing:.06em;transition:background .25s,border-color .25s,color .25s,transform .25s}
 .bracket-map .bm-chip .team-flag{width:18px;height:12px;border-radius:2px;object-fit:cover}
 .bracket-map .bm-chip:hover{transform:translateY(-2px);border-color:#ffffff55;color:#fff}
 .bracket-map .bm-chip[aria-pressed=true]{background:var(--bm-gold);border-color:var(--bm-gold);color:#1a1204}
@@ -27,7 +27,7 @@
 .bracket-map.has-focus .bm-lines path:not(.is-path){opacity:.25}
 .bm-col{position:relative;z-index:1;display:flex;flex-direction:column}
 .bm-round{display:flex;justify-content:center;align-items:baseline;gap:6px;font-size:12px;font-weight:700;color:#d5dee6;margin-bottom:14px;white-space:nowrap}
-.bm-round i{font:400 10px/1 'Anton',sans-serif;letter-spacing:.14em;color:#6f8396;font-style:normal}
+.bm-round i{font:600 11px/1 var(--wcu-label);letter-spacing:.14em;color:#6f8396;font-style:normal}
 .bm-slots{flex:1;display:flex;flex-direction:column;justify-content:space-around;min-height:700px}
 .bm-slot{padding:5px 0}
 .bm-match{display:block;padding:6px 8px 7px;border-radius:10px;background:linear-gradient(160deg,#13233599,#0b1622e6);border:1px solid #ffffff17;color:#c4d0db;transition:border-color .3s,box-shadow .3s,opacity .35s,transform .3s,background .3s;position:relative}
@@ -35,9 +35,9 @@
 .bm-meta{display:block;font-size:9px;color:#6f8396;letter-spacing:.05em;margin-bottom:3px}
 .bm-team{display:grid;grid-template-columns:18px 1fr auto;align-items:center;gap:7px;height:22px;color:#7f90a0}
 .bm-team .team-flag{width:18px;height:12px;border-radius:2px;object-fit:cover}
-.bm-code{font:400 14px/1 'Anton',sans-serif;letter-spacing:.06em}
+.bm-code{font:800 14px/1 'WCU Big Shoulders','Anton',sans-serif;letter-spacing:.06em}
 .bm-name{display:none}
-.bm-team b{font:400 15px/1 'Anton',sans-serif;color:inherit;font-weight:400}
+.bm-team b{font:800 15px/1 'WCU Big Shoulders','Anton',sans-serif;color:inherit;font-weight:400}
 .bm-team b small{font-size:10px;margin-left:2px;color:#9cb0c1}
 .bm-team.is-win{color:#fff}
 .bm-team.is-win b{color:var(--bm-gold)}
@@ -55,7 +55,7 @@
 .bm-final .bm-name,.bm-bronze .bm-name{display:block;font-size:13px;text-align:left}
 .bm-final .bm-team b{font-size:22px}
 .bm-champion{display:flex;flex-direction:column;align-items:center;gap:6px;margin:14px 0 0;color:#fff;font-size:15px;font-weight:700}
-.bm-champion>span{font:400 11px/1 'Anton',sans-serif;letter-spacing:.4em;color:var(--bm-gold)}
+.bm-champion>span{font:600 12px/1 var(--wcu-label);letter-spacing:.4em;color:var(--bm-gold)}
 .bm-champion .team-label{display:inline-flex;align-items:center;gap:8px}
 .bm-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:20px;font-size:11px;color:#6f8396}
 .bm-key{display:inline-block;width:18px;height:3px;border-radius:2px;margin:0 6px 2px 14px;vertical-align:middle;background:#fff}
@@ -63,3 +63,4 @@
 .bm-key-path{background:var(--bm-gold);box-shadow:0 0 6px var(--bm-gold)}
 @media(max-width:900px){.bm-head{flex-direction:column;align-items:flex-start}.bm-summary{text-align:left;width:100%}.bm-summary span{justify-content:flex-start}.bracket-map{padding:60px 18px 40px}.bm-scroll{cursor:grab}}
 @media(prefers-reduced-motion:reduce){.bm-trophy{animation:none}}
+.bm-col-left .bm-round i,.bm-col-right .bm-round i{display:none}

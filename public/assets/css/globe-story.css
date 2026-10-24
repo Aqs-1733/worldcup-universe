@@ -4,13 +4,13 @@
 .globe-card-3d .globe-stage{height:640px;z-index:1}
 .globe-modes{position:absolute;z-index:4;top:58px;left:25px;display:flex;flex-wrap:wrap;gap:6px;max-width:calc(100% - 50px)}
 .globe-card-3d .globe-modes button{min-height:0;height:38px;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:999px;border:1px solid #ffffff26;background:#0b1a2acc;color:#c9d6e2;font-size:13px;font-weight:700;backdrop-filter:blur(8px);transition:background .25s,border-color .25s,color .25s,transform .25s}
-.globe-card-3d .globe-modes button i{font:400 11px/1 'Anton',sans-serif;letter-spacing:.08em;color:#6f8aa0;font-style:normal}
+.globe-card-3d .globe-modes button i{font:800 11px/1 'WCU Big Shoulders','Anton',sans-serif;letter-spacing:.08em;color:#6f8aa0;font-style:normal}
 .globe-card-3d .globe-modes button:hover{transform:translateY(-2px);border-color:#ffffff66;color:#fff}
 .globe-card-3d .globe-modes button[aria-pressed=true]{background:#f2c75c;border-color:#f2c75c;color:#1a1204}
 .globe-card-3d .globe-modes button[aria-pressed=true] i{color:#6b4d0e}
 .globe-caption{position:absolute;z-index:3;top:112px;left:25px;max-width:min(380px,60%);pointer-events:none;color:#fff}
-.globe-caption span{display:block;font:400 11px/1 'Anton','Microsoft YaHei',sans-serif;letter-spacing:.24em;color:#f2c75c;margin-bottom:10px}
-.globe-caption strong{display:flex;align-items:center;gap:10px;font:400 24px/1.3 'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;letter-spacing:.03em;text-shadow:0 4px 20px #000a}
+.globe-caption span{display:block;font:600 12px/1 var(--wcu-label);letter-spacing:.24em;color:#f2c75c;margin-bottom:10px}
+.globe-caption strong{display:flex;align-items:center;gap:10px;font:900 24px/1.3 'WCU Serif SC','Noto Serif SC','Songti SC','STSong',serif;letter-spacing:.03em;text-shadow:0 4px 20px #000a}
 .globe-caption strong img{width:34px;height:23px;border-radius:3px;object-fit:cover;box-shadow:0 0 0 1px #ffffff40}
 .globe-caption small{display:block;margin-top:8px;font-size:12px;color:#9fb3c4;line-height:1.6}
 .globe-legend{position:absolute;z-index:3;right:22px;bottom:150px;display:flex;flex-direction:column;gap:7px;padding:14px 16px;border-radius:12px;border:1px solid #ffffff1c;background:#07121dcc;backdrop-filter:blur(8px);font-size:12px;color:#c9d6e2;pointer-events:none}
