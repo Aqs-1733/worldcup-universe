@@ -4,3 +4,10 @@
 @font-face{font-family:'Mulish';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/wcu-mulish-600.woff2') format('woff2')}
 @font-face{font-family:'Mulish';font-style:normal;font-weight:800;font-display:swap;src:url('/assets/fonts/wcu-mulish-800.woff2') format('woff2')}
 @font-face{font-family:'ZCOOL QingKe HuangYou';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/wcu-qingke-400.woff2') format('woff2')}
+/* Display system (subset from the OFL originals; licences beside each file):
+   WCU Serif SC = Noto Serif SC (Chinese headlines), WCU Big Shoulders = Big Shoulders Display (numbers / English display),
+   WCU Barlow Cond = Barlow Condensed SemiBold (labels). Glyph sets come from the views, config and database names. */
+@font-face{font-family:'WCU Serif SC';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/wcu-serif-sc-700.woff2') format('woff2')}
+@font-face{font-family:'WCU Serif SC';font-style:normal;font-weight:900;font-display:swap;src:url('/assets/fonts/wcu-serif-sc-900.woff2') format('woff2')}
+@font-face{font-family:'WCU Big Shoulders';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/wcu-bigshoulders.woff2') format('woff2')}
+@font-face{font-family:'WCU Barlow Cond';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/wcu-barlow-cond-600.woff2') format('woff2')}

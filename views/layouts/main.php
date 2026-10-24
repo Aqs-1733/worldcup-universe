@@ -2,8 +2,8 @@
 /** Shared responsive Yii2 frontend layout and semantic navigation. */
 use yii\helpers\Html;
 $current='/'.Yii::$app->request->pathInfo;
-$nav=['/'=>'首页','/worldcup'=>'赛事','/teams'=>'球队','/players'=>'球员','/news'=>'新闻','/forum'=>'球迷论坛','/countries'=>'探索'];
-if(str_starts_with($current,'/watch')||$current==='/stats'){$current='/worldcup';}
+$nav=['/'=>'首页','/worldcup'=>'赛事','/teams'=>'球队','/players'=>'球员','/news'=>'新闻','/watch'=>'回放','/forum'=>'球迷论坛','/countries'=>'探索'];
+if($current==='/stats'){$current='/worldcup';}
 $user=Yii::$app->user->identity;
 $asset=static fn(string $path):string=>e($path.'?v='.filemtime(ROOT_PATH.'/public'.$path));
 ?>

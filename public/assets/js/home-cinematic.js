@@ -141,5 +141,6 @@
       gsap.from(card, { y: 80, rotate: 3, autoAlpha: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left 95%', once: true } });
     });
   }
+  document.querySelectorAll('[data-hover-play]').forEach(v => { const card = v.closest('a'); card.addEventListener('pointerenter', () => v.play().catch(() => {})); card.addEventListener('pointerleave', () => v.pause()); });
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();

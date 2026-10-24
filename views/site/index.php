@@ -46,7 +46,7 @@ $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
    </div>
    <div class="cine-final-score"><span><?= TeamUi::label($final->homeTeam) ?></span><b><?= (int)$final->home_score ?><i>:</i><?= (int)$final->away_score ?></b><span><?= TeamUi::label($final->awayTeam) ?></span></div>
    <p class="cine-final-meta">决赛 · <?= e(date('Y.m.d',strtotime($final->starts_at))) ?> · <?= e($final->venue?->name_cn?:($final->venue?->name_original?:'')) ?></p>
-   <div class="cine-actions"><a class="cine-btn cine-btn-gold" href="/matches/<?= (int)$final->id ?>" data-magnetic>决赛档案<span aria-hidden="true">↗</span></a><a class="cine-btn" href="/worldcup#bracket-map" data-magnetic>回看淘汰赛之路<span aria-hidden="true">→</span></a></div>
+   <div class="cine-actions"><a class="cine-btn cine-btn-gold" href="/watch?clip=final-highlights#cinema" data-magnetic>观看决赛集锦<span aria-hidden="true">▶</span></a><a class="cine-btn" href="/matches/<?= (int)$final->id ?>" data-magnetic>决赛档案<span aria-hidden="true">↗</span></a><a class="cine-btn" href="/worldcup#bracket-map" data-magnetic>回看淘汰赛之路<span aria-hidden="true">→</span></a></div>
   </div><?php endif ?>
 
   <ol class="cine-chapters" aria-hidden="true"><li data-cine-chapter="1"><span>01</span>通道</li><li data-cine-chapter="2"><span>02</span>球场</li><li data-cine-chapter="3"><span>03</span>冠军</li><i class="cine-chapter-bar"><i data-cine-progress></i></i></ol>
@@ -66,7 +66,7 @@ $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
    <?php foreach($rail as $i=>$p): ?><a class="rail-card" href="/players/<?= e($p->slug) ?>" data-tilt style="--card-index:<?= $i ?>">
     <span class="rail-card-number" aria-hidden="true"><?= (int)$p->shirt_number ?></span>
     <span class="rail-card-code" aria-hidden="true"><?= e($p->team?->code) ?></span>
-    <img class="rail-card-photo" src="<?= e($p->displayPhotoUrl) ?>" alt="<?= e($p->name_original) ?> · FIFA 官方照片" loading="lazy">
+    <img class="rail-card-photo" src="<?= e($p->displayPhotoUrl) ?>" alt="<?= e($p->name_original) ?> · FIFA 官方照片" decoding="async">
     <span class="rail-card-body"><span class="rail-card-team"><?= TeamUi::flag($p->team) ?><?= e($p->team?->name) ?> · <?= e($position[$p->position]??$p->position) ?></span><b><?= e($p->name) ?></b><span class="rail-card-stats"><span><i><?= e($p->caps??'—') ?></i>出场</span><span><i><?= e($p->goals??'—') ?></i>进球</span></span></span>
     <span class="rail-card-arrow" aria-hidden="true">↗</span>
    </a><?php endforeach ?>
@@ -77,6 +77,20 @@ $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
 </section><?php endif ?>
 
 <section class="section teams-feature" data-reveal-group><div class="feature-intro"><div><span class="edition-kicker" data-reveal>NATIONS OF THE WORLD</span><h2 data-reveal-title>不同的球衣，同样的热爱。</h2></div><a class="edition-inline-link" href="/teams" data-reveal>全部球队 ↗</a></div><div class="nations-grid edition-team-grid cine-team-grid" data-reveal-children><?php foreach($teams as $t): ?><?= $this->render('/catalog/_team',['model'=>$t]) ?><?php endforeach ?></div></section>
+<?php $shelf=(new app\services\LocalVideoLibrary())->all();$lead=null;foreach($shelf as $s){if($s['provider']==='local'){$lead=$s;break;}}$lead??=$shelf[0]??null;$badge=['local'=>'本地视频','bilibili'=>'B站','youtube'=>'YouTube','missing'=>'待添加']; ?>
+<?php if($lead): ?><section class="home-cinema" aria-labelledby="home-cinema-title">
+ <a class="home-cinema-lead" href="/watch?clip=<?= e($lead['slug']) ?>#cinema" data-tilt>
+  <?php if($lead['provider']==='local'): ?><video src="<?= e($lead['src']) ?>" poster="<?= e($lead['poster']) ?>" muted loop playsinline preload="none" data-hover-play></video><?php else: ?><img src="<?= e($lead['poster']) ?>" alt="" loading="lazy"><?php endif ?>
+  <span class="home-cinema-play" aria-hidden="true"><i></i></span>
+  <span class="home-cinema-copy"><span class="cp-tag"><?= e($badge[$lead['provider']]) ?></span><b><?= e($lead['title']) ?></b><small><?= e($lead['subtitle']) ?></small></span>
+ </a>
+ <div class="home-cinema-side">
+  <span class="edition-kicker">REPLAY · 影像馆</span><h2 id="home-cinema-title" data-reveal-title>再看一遍，那些瞬间。</h2>
+  <p>集锦和回放都在「回放」频道。把视频文件放进 <code>public/assets/media/videos/</code> 就能在站内直接播放。</p>
+  <ul><?php foreach(array_slice($shelf,0,4) as $item): ?><li><a href="/watch?clip=<?= e($item['slug']) ?>#cinema"><span><?= e($item['title']) ?></span><em><?= e($badge[$item['provider']]) ?></em></a></li><?php endforeach ?></ul>
+  <a class="cine-btn cine-btn-solid" href="/watch#cinema" data-magnetic>进入影像馆<span aria-hidden="true">▶</span></a>
+ </div>
+</section><?php endif ?>
 <section class="community-feature" data-parallax-bg><h2 data-reveal-title>终场哨后，讨论继续。</h2><p data-reveal>选择主队，发布话题，和球迷聊聊比赛。</p><a class="button" href="/forum" data-reveal data-magnetic>进入球迷论坛 ↗</a></section>
 <section class="section" data-reveal-group><div class="section-head"><h2 data-reveal-title>世界杯新闻</h2><a href="/news" data-reveal>全部新闻 →</a></div><div class="editorial-news home-news" data-reveal-children><?php foreach($news as $n): ?><?= $this->render('/catalog/_news-card',['model'=>$n]) ?><?php endforeach ?></div></section>
 <section id="our-team" class="section" data-reveal-group><div class="section-head"><h2 data-reveal-title>项目团队</h2><a href="/deliverables" data-reveal>课程作业下载 →</a></div><div class="member-grid" data-reveal-children><?php foreach($members as $member): ?><article class="member-block"><span class="member-initial"><?= e(mb_substr($member->name,0,1)) ?></span><small><?= e($member->role_name) ?></small><h3><?= e(preg_match('/^成员[1-4]$/u',$member->name)?'团队资料待完善':$member->name) ?></h3><p><?= e($member->bio) ?></p></article><?php endforeach ?></div></section>

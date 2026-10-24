@@ -2,7 +2,7 @@
 .cinema{position:relative;width:100vw;left:50%;margin-left:-50vw;padding:60px 4.5% 50px;margin-block:30px 50px;background:radial-gradient(60% 70% at 30% 0%,#1b2c42,transparent 70%),#070c13;color:#e8eef3}
 .cinema-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:26px}
 .cinema-head .edition-kicker{color:#f2c75c}
-.cinema-head h2{font:400 clamp(34px,3.6vw,56px)/1.1 'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;color:#fff;margin:8px 0 0;letter-spacing:.05em}
+.cinema-head h2{font:900 clamp(34px,3.6vw,56px)/1.1 'WCU Serif SC','Noto Serif SC','Songti SC','STSong',serif;color:#fff;margin:8px 0 0;letter-spacing:.05em}
 .cinema-head p{color:#93a7b8;font-size:14px;max-width:440px;margin:0;text-align:right}
 .cinema-body{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(260px,1fr);gap:22px}
 .cp{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 30px 80px #0009,inset 0 0 0 1px #ffffff14;outline:none}
@@ -11,7 +11,7 @@
 .cp video{object-fit:contain}
 .cp-poster{filter:brightness(.42) saturate(1.1)}
 .cp-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;gap:8px}
-.cp-cover h3{font:400 clamp(24px,3vw,44px)/1.2 'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;color:#fff;margin:6px 0 0}
+.cp-cover h3{font:900 clamp(24px,3vw,44px)/1.2 'WCU Serif SC','Noto Serif SC','Songti SC','STSong',serif;color:#fff;margin:6px 0 0}
 .cp-cover p{color:#c9d4dc;margin:0}
 .cp-missing{margin-top:14px!important;padding:12px 16px;border-radius:10px;border:1px dashed #ffffff40;background:#0008;font-size:13px;color:#e8eef3!important}
 .cp code,.cinema code{font-size:.92em;color:#f7d77f;background:#ffffff12;padding:1px 6px;border-radius:4px}
@@ -27,7 +27,7 @@
 .cinema .cp-btn:hover{background:#ffffff1f}
 .cp-icon-play{width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
 .cp.is-playing .cp-icon-play{width:11px;height:13px;border:0;margin:0;border-left:4px solid #fff;border-right:4px solid #fff}
-.cp-time{font:400 13px/1 'Anton',monospace;letter-spacing:.04em;color:#dfe6ec;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cp-time{font:800 13px/1 'WCU Big Shoulders','Anton',monospace;letter-spacing:.04em;color:#dfe6ec;white-space:nowrap;font-variant-numeric:tabular-nums}
 .cp-seek{flex:1;-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;background:linear-gradient(90deg,#f2c75c var(--fill,0%),#ffffff40 var(--fill,0%));cursor:pointer}
 .cp-seek::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px #f2c75c55}
 .cp-seek::-moz-range-thumb{width:14px;height:14px;border:0;border-radius:50%;background:#fff}
