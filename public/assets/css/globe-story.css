@@ -1,5 +1,5 @@
 /* Story modes for the /countries globe. Loaded after edition.css. */
-.globe-card-3d{background:radial-gradient(70% 60% at 50% 45%,#12304d 0%,#08131f 60%,#050b12 100%);isolation:isolate}
+.edition-explorer .globe-card-3d{background:radial-gradient(75% 65% at 50% 45%,#2a5d8f 0%,#143252 55%,#0b1d31 100%);isolation:isolate}
 .globe-card-3d::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;background-image:radial-gradient(1px 1px at 12% 18%,#fff,transparent),radial-gradient(1px 1px at 72% 12%,#fff,transparent),radial-gradient(1.5px 1.5px at 85% 62%,#cfe3ff,transparent),radial-gradient(1px 1px at 33% 78%,#fff,transparent),radial-gradient(1px 1px at 55% 40%,#fff8,transparent),radial-gradient(1px 1px at 8% 66%,#fff,transparent),radial-gradient(1.5px 1.5px at 92% 28%,#fff,transparent),radial-gradient(1px 1px at 46% 90%,#fff9,transparent);background-size:420px 420px}
 .globe-card-3d .globe-stage{height:640px;z-index:1}
 .globe-modes{position:absolute;z-index:4;top:58px;left:25px;display:flex;flex-wrap:wrap;gap:6px;max-width:calc(100% - 50px)}

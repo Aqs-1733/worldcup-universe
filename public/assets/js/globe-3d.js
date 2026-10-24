@@ -117,9 +117,9 @@
       let pointerMoved = false;
       let hoverFrame = null;
       let lastDragAt = 0;
-      const normalLandColor = '#6F9568';
-      const normalBorderColor = '#C8D6DB';
-      const oceanColor = '#245F9E';
+      const normalLandColor = '#7FB07A';
+      const normalBorderColor = '#E4EDF1';
+      const oceanColor = '#2E7BD1';
       const hoverOutlineColor = '#F4C95D';
       const selectedOutlineColor = '#FFD86B';
       const featurePolygons = (feature) => (feature.geometry.type === 'Polygon'
@@ -200,8 +200,8 @@
         .globeImageUrl(mapTexture)
         .backgroundColor('rgba(0,0,0,0)')
         .showAtmosphere(true)
-        .atmosphereColor('#7d9cff')
-        .atmosphereAltitude(0.07)
+        .atmosphereColor('#8ec8ff')
+        .atmosphereAltitude(0.16)
         .polygonsData([])
         .polygonsTransitionDuration(0)
         .pathsData([])
@@ -263,9 +263,9 @@
       globe.renderer().setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth <= 720 ? 1 : 1.25));
       const material = globe.globeMaterial();
       material.color.set('#ffffff');
-      material.emissive.set('#0d2c58');
-      material.emissiveIntensity = 0.08;
-      material.shininess = 10;
+      material.emissive.set('#2a5fa0');
+      material.emissiveIntensity = 0.38;
+      material.shininess = 22;
 
       const controls = globe.controls();
       controls.enableDamping = true;
@@ -401,15 +401,15 @@
       const storyNode = document.querySelector('[data-globe-story]');
       const story = storyNode ? JSON.parse(storyNode.textContent) : null;
       if (story) {
-        const REACH = { 1: ['#5b7c8f', '小组赛出局'], 2: ['#3f8fd2', '32 强'], 3: ['#2fc0c9', '16 强'], 4: ['#5fd38d', '8 强'], 5: ['#f08a3c', '4 强'], 6: ['#dfe5ec', '亚军'], 7: ['#f2c75c', '冠军'] };
+        const REACH = { 1: ['#a9c1d6', '小组赛出局'], 2: ['#4fa3ff', '32 强'], 3: ['#35d6dc', '16 强'], 4: ['#6be89a', '8 强'], 5: ['#ff9a4a', '4 强'], 6: ['#f4f7fb', '亚军'], 7: ['#ffd25e', '冠军'] };
         const CONF = { UEFA: '#7fb2ff', CONMEBOL: '#f2c75c', CONCACAF: '#ff6b6b', CAF: '#5fd38d', AFC: '#ff9f43', OFC: '#c08cff' };
         const CONF_ZH = { UEFA: '欧洲', CONMEBOL: '南美', CONCACAF: '中北美', CAF: '非洲', AFC: '亚洲', OFC: '大洋洲' };
         const byGeo = new Map(story.teams.filter((t) => t.geo).map((t) => [t.geo, t]));
         const byId = new Map(story.teams.map((t) => [t.id, t]));
         const byCountry = new Map(story.teams.map((t) => [t.country, t]));
         const textures = {
-          qualified: createMapTexture(features, (f) => (byGeo.has(f.geoKey) ? REACH[byGeo.get(f.geoKey).reach][0] : '#2d4239'), '#0b2240', '#0b224088'),
-          night: createMapTexture(features, (f) => (byGeo.has(f.geoKey) ? '#4f7363' : '#2a3d35'), '#081a33', '#6f8a9966'),
+          qualified: createMapTexture(features, (f) => (byGeo.has(f.geoKey) ? REACH[byGeo.get(f.geoKey).reach][0] : '#5f8573'), '#1f63b0', '#ffffff55'),
+          night: createMapTexture(features, (f) => (byGeo.has(f.geoKey) ? '#7aa98f' : '#55786a'), '#1a5299', '#ffffff40'),
         };
         const modeBar = root.querySelector('[data-globe-modes]');
         const legend = root.querySelector('[data-globe-legend]');
