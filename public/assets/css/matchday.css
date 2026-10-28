@@ -38,3 +38,5 @@ body{font-family:var(--font);background:var(--paper)}h1,h2,h3,.brand-name,.natio
 
 /* Text-only source stories do not reserve a fake image-sized placeholder. */
 .editorial-story:not(.story-featured) .story-no-photo{min-height:65px;background:#1b2c43}.story-no-photo .news-type-mark{display:none}.editorial-story:not(.story-featured) .story-no-photo .story-category{bottom:20px}
+
+.news-toolbar .news-refresh-form{display:contents}

@@ -17,7 +17,7 @@ $card=static function($m,bool $lead=false) use($duties): string{
  $avatar=$m->photo_url?'<img src="'.e(safe_url($m->photo_url)).'" alt="">':e(mb_substr($m->name,0,1));
  $chips='';foreach($duties[$m->student_no]??[] as $d)$chips.='<li>'.e($d).'</li>';
  return '<article class="team-card'.($lead?' is-captain':'').'"><span class="team-avatar">'.$avatar.'</span><div class="team-card-body">'
-  .($lead?'<span class="team-badge">队长</span>':'').'<h3>'.e($m->name).'</h3><p>'.e($school).' · '.e($m->student_no).'</p>'
+  .'<h3>'.e($m->name).($lead?'<span class="team-role">队长</span>':'').'</h3><p>'.e($school).' · '.e($m->student_no).'</p>'
   .($chips?'<ul class="team-duty-chips">'.$chips.'</ul>':'').'</div></article>';
 };
 ?>
@@ -27,8 +27,7 @@ $card=static function($m,bool $lead=false) use($duties): string{
 </header>
 
 <section id="members" class="team-members" aria-label="团队成员">
- <?php if($captain): ?><?= $card($captain,true) ?><?php endif ?>
- <div class="team-grid"><?php foreach($others as $m): ?><?= $card($m) ?><?php endforeach ?></div>
+ <div class="team-grid"><?php if($captain): ?><?= $card($captain,true) ?><?php endif ?><?php foreach($others as $m): ?><?= $card($m) ?><?php endforeach ?></div>
 </section>
 
 <section id="duties" class="team-duties">
@@ -36,7 +35,7 @@ $card=static function($m,bool $lead=false) use($duties): string{
  <div class="team-duties-body">
   <table class="team-matrix">
    <thead><tr><th scope="col">成员</th><th scope="col">负责内容</th></tr></thead>
-   <tbody><?php foreach(array_merge($captain?[$captain]:[],$others) as $m): ?><tr><th scope="row"><?= e($m->name) ?><?php if($m->role_name==='队长'): ?><span class="team-badge">队长</span><?php endif ?></th><td><?php $list=$duties[$m->student_no]??[]; ?><?= $list?e(implode('、',$list)):'<span class="team-muted">待补充</span>' ?></td></tr><?php endforeach ?></tbody>
+   <tbody><?php foreach(array_merge($captain?[$captain]:[],$others) as $m): ?><tr><th scope="row"><?= e($m->name) ?><?php if($m->role_name==='队长'): ?><span class="team-role">队长</span><?php endif ?></th><td><?php $list=$duties[$m->student_no]??[]; ?><?= $list?e(implode('、',$list)):'<span class="team-muted">待补充</span>' ?></td></tr><?php endforeach ?></tbody>
   </table>
   <aside class="team-progress" aria-label="团队交付进度">
    <div class="team-progress-head"><b><?= $done ?><i>/<?= count($deliverables) ?></i></b><span>截止 <?= e(str_replace('-','.',$team['deadline']??'')) ?></span></div>

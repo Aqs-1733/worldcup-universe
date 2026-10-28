@@ -11,17 +11,23 @@
   const reachLabel = ['', '止步 32 强', '止步 16 强', '止步 8 强', '止步 4 强', '亚军'];
   let paths = [], locked = null;
 
+  // Layout box relative to the board; offsets ignore transforms, so lines stay put while columns animate in.
+  const layout = el => {
+    let left = 0, top = 0;
+    for (let n = el; n && n !== board; n = n.offsetParent) { left += n.offsetLeft; top += n.offsetTop; }
+    return { left, top, right: left + el.offsetWidth, height: el.offsetHeight };
+  };
   const draw = () => {
-    const box = board.getBoundingClientRect();
-    svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`); svg.setAttribute('width', box.width); svg.setAttribute('height', box.height);
+    const w = board.offsetWidth, h = board.offsetHeight;
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`); svg.setAttribute('width', w); svg.setAttribute('height', h);
     svg.replaceChildren(); paths = [];
     data.edges.forEach(edge => {
       const from = cards.get(Number(edge.from_match_id)), to = cards.get(Number(edge.to_match_id));
       if (!from || !to) return;
-      const a = from.getBoundingClientRect(), b = to.getBoundingClientRect();
+      const a = layout(from), b = layout(to);
       const ltr = a.left < b.left;
-      const x1 = (ltr ? a.right : a.left) - box.left, y1 = a.top + a.height / 2 - box.top;
-      const x2 = (ltr ? b.left : b.right) - box.left, y2 = b.top + b.height / 2 - box.top;
+      const x1 = ltr ? a.right : a.left, y1 = a.top + a.height / 2;
+      const x2 = ltr ? b.left : b.right, y2 = b.top + b.height / 2;
       const xm = x1 + (x2 - x1) / 2;
       const p = document.createElementNS(NS, 'path');
       p.setAttribute('d', `M${x1} ${y1} H${xm} V${y2} H${x2}`);

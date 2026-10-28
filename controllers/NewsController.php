@@ -18,9 +18,10 @@ final class NewsController extends BaseController
     public function actionRefresh()
     {
         $this->posted(); if (!$this->actor()->isAdmin()) { throw new \yii\web\ForbiddenHttpException(); }
-        if(!Yii::$app->cache->add('news-sync-lock',1,90)) { throw new \yii\web\TooManyRequestsHttpException('新闻同步正在进行或刚刚完成。'); }
+        if(!Yii::$app->cache->add('news-sync-lock',1,90)) { Yii::$app->session->setFlash('info','新闻刚刚同步过，请稍后再试。'); return $this->redirect('/news'); }
         $result=(new \app\services\NewsImportService())->sync();
-        Yii::$app->session->setFlash('success','本次新增 '.$result['saved'].' 条新闻。来源同步状态可在后台查看。');
+        $failed=count(array_filter($result['sources'],fn($s)=>$s['status']==='failed'));
+        Yii::$app->session->setFlash($failed?'warning':'success','本次新增 '.$result['saved'].' 条新闻'.($failed?'，'.$failed.' 个来源失败，详情见后台。':'。'));
         return $this->redirect('/news');
     }
 }

@@ -6,25 +6,18 @@
 .team-anchors a{padding:9px 18px;border-radius:999px;font-size:14px;font-weight:700;color:#3d4d5e;transition:background .25s,color .25s}
 .team-anchors a:hover{background:#152331;color:#fff}
 
-.team-members{display:grid;gap:22px;margin-bottom:70px}
-.team-card{position:relative;display:flex;gap:22px;align-items:flex-start;padding:28px;border-radius:22px;background:#fff;border:1px solid #e6ebf0;box-shadow:0 14px 40px #1a2a3a0f;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.team-members{margin-bottom:70px}
+.team-card{position:relative;display:flex;flex-direction:column;gap:18px;padding:26px;border-radius:22px;background:#fff;border:1px solid #e6ebf0;box-shadow:0 14px 40px #1a2a3a0f;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
 .team-card:hover{transform:translateY(-4px);box-shadow:0 22px 50px #1a2a3a1c}
 .team-avatar{flex:none;width:72px;height:72px;border-radius:20px;display:grid;place-items:center;overflow:hidden;background:#f6e3e6;color:#b4293a;font:900 30px/1 var(--wcu-zh)}
 .team-avatar img{width:100%;height:100%;object-fit:cover}
-.team-card h3{font:900 24px/1.25 var(--wcu-zh);color:#152331;margin:0 0 6px}
+.team-card h3{display:flex;align-items:center;gap:10px;font:900 24px/1.25 var(--wcu-zh);color:#152331;margin:0 0 6px}
 .team-card p{margin:0;color:#6b7b8c;font-size:14px}
-.team-badge{display:inline-block;margin:0 0 10px;padding:4px 10px;border-radius:999px;background:#152331;color:#f2c75c;font-size:12px;font-weight:700;letter-spacing:.12em}
-th .team-badge{margin:0 0 0 8px;vertical-align:middle;font-size:11px;padding:2px 8px}
+.team-card .team-role,.team-matrix .team-role{display:inline-block;font-family:var(--font,system-ui),sans-serif;padding:3px 9px;border-radius:999px;background:#fbe9ec;color:#b4293a;border:1px solid #f1c4cc;font-size:12px;font-weight:700;line-height:1.4;letter-spacing:.1em}
+th .team-role{margin:0 0 0 8px;vertical-align:middle;font-size:11px;padding:2px 8px}
 .team-duty-chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:14px 0 0}
 .team-duty-chips li{padding:5px 11px;border-radius:999px;background:#f1f4f7;color:#3d4d5e;font-size:12px;font-weight:600}
-.team-card.is-captain{padding:38px 40px;background:radial-gradient(70% 140% at 100% 0%,#24476b,transparent 60%),#0f1c2a;border-color:#0f1c2a;color:#fff;overflow:hidden}
-.team-card.is-captain::after{content:"C";position:absolute;right:28px;bottom:-40px;font:900 220px/1 var(--wcu-num,'Anton');color:#ffffff0d;pointer-events:none}
-.team-card.is-captain .team-avatar{width:104px;height:104px;border-radius:28px;background:#f2c75c;color:#1a1204;font-size:44px}
-.team-card.is-captain h3{color:#fff;font-size:36px}
-.team-card.is-captain p{color:#a8b8c8}
-.team-card.is-captain .team-badge{background:#f2c75c;color:#1a1204}
-.team-card.is-captain .team-duty-chips li{background:#ffffff14;color:#e6edf3}
-.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
 
 .team-section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px}
 .team-section-head h2{font:900 clamp(26px,2.6vw,38px)/1.2 var(--wcu-zh);color:#152331;margin:0}
@@ -66,4 +59,6 @@ th .team-badge{margin:0 0 0 8px;vertical-align:middle;font-size:11px;padding:2px
 .team-download-panel li a:hover .team-dl{background:#e51b2b;color:#fff}
 .team-empty{margin:0;padding:34px 0;text-align:center;color:#a0acb8;border:1px dashed #dde3ea;border-radius:14px}
 
-@media(max-width:900px){.team-hero{flex-direction:column;align-items:flex-start}.team-grid,.team-download-grid,.team-duties-body{grid-template-columns:1fr}.team-card.is-captain{padding:28px}.team-card.is-captain h3{font-size:28px}.team-card.is-captain .team-avatar{width:80px;height:80px;font-size:34px}}
+@media(max-width:1100px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.team-hero{flex-direction:column;align-items:flex-start}.team-download-grid,.team-duties-body{grid-template-columns:1fr}}
+@media(max-width:560px){.team-grid{grid-template-columns:1fr}.team-card{flex-direction:row;align-items:flex-start}}

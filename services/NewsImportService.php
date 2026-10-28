@@ -68,7 +68,7 @@ final class NewsImportService
     {
         $allowed=['feeds.bbci.co.uk','www.espn.com','www.theguardian.com','www.cbssports.com','rss.nytimes.com','www.skysports.com','www.chinanews.com.cn'];
         if(parse_url($url,PHP_URL_SCHEME)!=='https'||!in_array(strtolower((string)parse_url($url,PHP_URL_HOST)),$allowed,true))throw new \RuntimeException('RSS host is not in the configured source allowlist');
-        $curl=curl_init($url);$body='';curl_setopt_array($curl,[CURLOPT_TIMEOUT=>20,CURLOPT_CONNECTTIMEOUT=>5,CURLOPT_PROTOCOLS=>CURLPROTO_HTTPS,CURLOPT_FOLLOWLOCATION=>false,CURLOPT_USERAGENT=>'WorldCupUniverse-CourseProject/2.0',CURLOPT_WRITEFUNCTION=>function($c,$data)use(&$body){if(strlen($body)+strlen($data)>2097152)return 0;$body.=$data;return strlen($data);}]);
+        $curl=curl_init($url);$body='';curl_setopt_array($curl,[CURLOPT_TIMEOUT=>20,CURLOPT_CONNECTTIMEOUT=>5,CURLOPT_PROTOCOLS=>CURLPROTO_HTTPS,CURLOPT_FOLLOWLOCATION=>false,CURLOPT_SSL_OPTIONS=>CURLSSLOPT_NATIVE_CA,CURLOPT_USERAGENT=>'WorldCupUniverse-CourseProject/2.0',CURLOPT_WRITEFUNCTION=>function($c,$data)use(&$body){if(strlen($body)+strlen($data)>2097152)return 0;$body.=$data;return strlen($data);}]);
         $ok=curl_exec($curl);$status=(int)curl_getinfo($curl,CURLINFO_RESPONSE_CODE);$error=curl_error($curl);curl_close($curl);if(!$ok||$status!==200)throw new \RuntimeException('RSS request failed: HTTP '.$status.' '.$error);return $body;
     }
     private function assignTags(NewsArticle $article): void
