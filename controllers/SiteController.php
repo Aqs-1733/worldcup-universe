@@ -18,7 +18,18 @@ final class SiteController extends BaseController
         $filters=['q'=>Yii::$app->request->get('q','')]; $service=new CatalogService();
         return $this->render('search',['q'=>$filters['q'],'teams'=>$filters['q']?$service->teams($filters)->getModels():[],'players'=>$filters['q']?$service->players($filters)->getModels():[],'news'=>$filters['q']?$service->news($filters)->getModels():[]]);
     }
-    public function actionDeliverables(): string { return $this->render('deliverables',['files'=>CourseworkFile::find()->where(['is_visible'=>1])->orderBy(['scope'=>SORT_ASC,'id'=>SORT_ASC])->all()]); }
+    public function actionTeam(): string
+    {
+        return $this->render('team',['members'=>\app\models\TeamMember::find()->where(['is_visible'=>1])->orderBy(['sort_order'=>SORT_ASC,'id'=>SORT_ASC])->all(),'files'=>(new \app\services\CourseworkLibrary())->grouped(),'team'=>require ROOT_PATH.'/config/team.php']);
+    }
+    /** The team page now carries the coursework downloads. */
+    public function actionDeliverables() { return $this->redirect('/team#downloads',301); }
+    public function actionDownloadFile(string $scope,string $name)
+    {
+        $path=\app\services\CourseworkLibrary::resolve($scope,$name);
+        if(!$path){ throw new \yii\web\NotFoundHttpException('文件不存在。'); }
+        return Yii::$app->response->sendFile($path,basename($path),['inline'=>false]);
+    }
     public function actionDownload(int $id)
     {
         $file=CourseworkFile::findOne(['id'=>$id,'is_visible'=>1]);

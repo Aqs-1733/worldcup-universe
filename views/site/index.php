@@ -60,7 +60,7 @@ $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
 
 <?php if($rail): ?><section class="player-rail" data-player-rail aria-labelledby="rail-title">
  <div class="player-rail-sticky">
-  <header class="player-rail-head"><div><h2 id="rail-title" data-reveal-title>场上的主角</h2></div><a class="player-rail-all" href="/players">全部球员 →</a></header>
+  <header class="player-rail-head"><div><h2 id="rail-title" data-reveal-title>场上的主角</h2></div><div class="rail-nav"><button type="button" data-rail-prev aria-label="向左查看球员">←</button><button type="button" data-rail-next aria-label="向右查看球员">→</button><a class="player-rail-all" href="/players">全部球员 →</a></div></header>
   <div class="player-rail-viewport" data-rail-viewport tabindex="0" aria-label="球员卡片，可横向滚动"><div class="player-rail-track" data-rail-track>
    <?php foreach($rail as $i=>$p): ?><a class="rail-card" href="/players/<?= e($p->slug) ?>" data-tilt style="--card-index:<?= $i ?>">
     <span class="rail-card-number" aria-hidden="true"><?= (int)$p->shirt_number ?></span>
@@ -90,4 +90,4 @@ $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
 </section><?php endif ?>
 <section class="community-feature" data-parallax-bg><h2 data-reveal-title>终场哨后，讨论继续。</h2><p data-reveal>选择主队，发布话题，和球迷聊聊比赛。</p><a class="button" href="/forum" data-reveal data-magnetic>进入球迷论坛 ↗</a></section>
 <section class="section" data-reveal-group><div class="section-head"><h2 data-reveal-title>世界杯新闻</h2><a href="/news" data-reveal>全部新闻 →</a></div><div class="editorial-news home-news" data-reveal-children><?php foreach($news as $n): ?><?= $this->render('/catalog/_news-card',['model'=>$n]) ?><?php endforeach ?></div></section>
-<section id="our-team" class="section" data-reveal-group><div class="section-head"><h2 data-reveal-title>项目团队</h2><a href="/deliverables" data-reveal>课程作业下载 →</a></div><div class="member-grid" data-reveal-children><?php foreach($members as $member): ?><article class="member-block"><span class="member-initial"><?= e(mb_substr($member->name,0,1)) ?></span><small><?= e($member->role_name) ?></small><h3><?= e(preg_match('/^成员[1-4]$/u',$member->name)?'团队资料待完善':$member->name) ?></h3><p><?= e($member->bio) ?></p></article><?php endforeach ?></div></section>
+<section id="our-team" class="section" data-reveal-group><div class="section-head"><h2 data-reveal-title>项目团队</h2><a href="/team" data-reveal>团队主页 →</a></div><div class="member-grid" data-reveal-children><?php foreach($members as $member): ?><article class="member-block"><span class="member-initial"><?= e(mb_substr($member->name,0,1)) ?></span><small><?= e($member->role_name) ?></small><h3><?= e(preg_match('/^成员[1-4]$/u',$member->name)?'团队资料待完善':$member->name) ?></h3><p><?= e($member->bio) ?></p></article><?php endforeach ?></div></section>

@@ -129,17 +129,38 @@
     track.addEventListener('pointerleave', () => gsap.to(loop, { timeScale: 1, duration: 0.6 }));
   }
 
-  // ---- Player rail: vertical scroll drives a horizontal pinned gallery on wide screens.
+  // ---- Player rail: a native horizontal scroller (swipe, drag, arrows); vertical scrolling stays with the page.
   const rail = document.querySelector('[data-player-rail]');
-  if (rail && window.matchMedia('(min-width: 900px)').matches) {
-    const viewport = rail.querySelector('[data-rail-viewport]'), railTrack = rail.querySelector('[data-rail-track]'), bar = rail.querySelector('[data-rail-progress]');
-    rail.classList.add('is-pinned');
-    const distance = () => { const cs = getComputedStyle(viewport); return Math.max(0, railTrack.scrollWidth - (viewport.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight))); };
-    const tween = gsap.to(railTrack, { x: () => -distance(), ease: 'none', scrollTrigger: { trigger: rail, start: 'top top', end: () => '+=' + distance(), pin: rail.querySelector('.player-rail-sticky'), scrub: 0.6, invalidateOnRefresh: true, anticipatePin: 1, onUpdate: self => { if (bar) bar.style.transform = `scaleX(${self.progress})`; } } });
-    railTrack.querySelectorAll('.rail-card').forEach(card => {
-      gsap.fromTo(card.querySelector('.rail-card-number'), { xPercent: 30 }, { xPercent: -30, ease: 'none', scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left right', end: 'right left', scrub: true } });
-      gsap.from(card, { y: 80, rotate: 3, autoAlpha: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left 95%', once: true } });
+  if (rail) {
+    const viewport = rail.querySelector('[data-rail-viewport]'), bar = rail.querySelector('[data-rail-progress]');
+    const cards = [...rail.querySelectorAll('.rail-card')];
+    const prev = rail.querySelector('[data-rail-prev]'), next = rail.querySelector('[data-rail-next]');
+    const update = () => {
+      const max = viewport.scrollWidth - viewport.clientWidth, p = max > 0 ? viewport.scrollLeft / max : 0;
+      if (bar) bar.style.transform = `scaleX(${Math.max(0.08, p)})`;
+      if (prev) prev.disabled = viewport.scrollLeft < 4;
+      if (next) next.disabled = viewport.scrollLeft > max - 4;
+      rail.classList.toggle('at-start', viewport.scrollLeft < 4);
+      rail.classList.toggle('at-end', viewport.scrollLeft > max - 4);
+    };
+    const step = dir => viewport.scrollBy({ left: dir * Math.max(cards[0]?.offsetWidth || 300, viewport.clientWidth * 0.75), behavior: motion.reduced ? 'auto' : 'smooth' });
+    prev?.addEventListener('click', () => step(-1));
+    next?.addEventListener('click', () => step(1));
+    viewport.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+    // Click-and-drag with a mouse; touch and trackpads already scroll natively.
+    let drag = null;
+    viewport.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || e.button !== 0) return; drag = { x: e.clientX, left: viewport.scrollLeft, moved: false }; });
+    window.addEventListener('pointermove', e => {
+      if (!drag) return; const dx = e.clientX - drag.x;
+      if (!drag.moved && Math.abs(dx) > 5) { drag.moved = true; rail.classList.add('is-dragging'); }
+      if (drag.moved) viewport.scrollLeft = drag.left - dx;
     });
+    window.addEventListener('pointerup', () => { if (!drag) return; const moved = drag.moved; rail.classList.remove('is-dragging'); setTimeout(() => { drag = null; }, 0); if (moved) viewport.dispatchEvent(new Event('scroll')); });
+    viewport.addEventListener('click', e => { if (drag?.moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+    viewport.addEventListener('dragstart', e => e.preventDefault());
+    gsap.from(cards, { y: 60, autoAlpha: 0, duration: 0.9, stagger: 0.06, ease: 'power3.out', scrollTrigger: { trigger: viewport, start: 'top 85%', once: true } });
   }
   document.querySelectorAll('[data-hover-play]').forEach(v => { const card = v.closest('a'); card.addEventListener('pointerenter', () => v.play().catch(() => {})); card.addEventListener('pointerleave', () => v.pause()); });
   window.addEventListener('load', () => ScrollTrigger.refresh());
