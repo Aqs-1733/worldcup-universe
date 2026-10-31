@@ -86,6 +86,7 @@ $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
  </div>
 </section><?php endif ?>
 <?php $shelf=(new app\services\LocalVideoLibrary())->all();$lead=null;foreach($shelf as $s){if($s['provider']==='local'){$lead=$s;break;}}$lead??=$shelf[0]??null;$badge=['local'=>'本地视频','bilibili'=>'B站','youtube'=>'YouTube','missing'=>'待添加']; ?>
+<?= $this->render('_pitch',['type'=>'halfway']) ?>
 <?php if($lead): ?><section class="home-cinema" aria-labelledby="home-cinema-title">
  <a class="home-cinema-lead" href="/watch?clip=<?= e($lead['slug']) ?>#cinema" data-tilt>
   <?php if($lead['provider']==='local'): ?><video src="<?= e($lead['src']) ?>" poster="<?= e($lead['poster']) ?>" muted loop playsinline preload="none" data-hover-play></video><?php else: ?><img src="<?= e($lead['poster']) ?>" alt="" loading="lazy"><?php endif ?>
@@ -99,5 +100,6 @@ $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
  </div>
 </section><?php endif ?>
 <section class="community-feature" data-parallax-bg><h2 data-reveal-title>终场哨后，讨论继续。</h2><p data-reveal>选择主队，发布话题，和球迷聊聊比赛。</p><a class="button" href="/forum" data-reveal data-magnetic>进入球迷论坛 ↗</a></section>
+<?= $this->render('_pitch',['type'=>'box']) ?>
 <section class="section" data-reveal-group><div class="section-head"><h2 data-reveal-title>世界杯新闻</h2><a href="/news" data-reveal>全部新闻 →</a></div><div class="editorial-news home-news" data-reveal-children><?php foreach($news as $n): ?><?= $this->render('/catalog/_news-card',['model'=>$n]) ?><?php endforeach ?></div></section>
 <section id="our-team" class="section" data-reveal-group><div class="section-head"><h2 data-reveal-title>项目团队</h2><a href="/team" data-reveal>团队主页 →</a></div><div class="member-grid" data-reveal-children><?php foreach($members as $member): ?><article class="member-block"><span class="member-initial"><?= e(mb_substr($member->name,0,1)) ?></span><small><?= e($member->role_name) ?></small><h3><?= e(preg_match('/^成员[1-4]$/u',$member->name)?'团队资料待完善':$member->name) ?></h3><p><?= e($member->bio) ?></p></article><?php endforeach ?></div></section>
