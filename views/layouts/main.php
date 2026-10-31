@@ -28,7 +28,7 @@ $asset=static fn(string $path):string=>e($path.'?v='.filemtime(ROOT_PATH.'/publi
 <?php if($current==='/countries'): ?><script src="<?= $asset('/assets/vendor/globe.gl-2.46.2.min.js') ?>" defer></script><script src="<?= $asset('/assets/js/globe-3d.js') ?>" defer></script><?php endif ?>
 <link rel="stylesheet" href="<?= $asset('/assets/css/navigation-glass.css') ?>">
 <script src="<?= $asset('/assets/js/navigation-glass.js') ?>" defer></script>
-<link rel="stylesheet" href="<?= $asset('/assets/css/light-theme.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/cover-intro.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/pitch-lines.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/holo-cards.css') ?>"><script src="<?= $asset('/assets/js/pitch-lines.js') ?>" defer></script>
+<link rel="stylesheet" href="<?= $asset('/assets/css/light-theme.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/cover-intro.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/pitch-lines.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/holo-cards.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/split-flap.css') ?>"><script src="<?= $asset('/assets/js/split-flap.js') ?>" defer></script><script src="<?= $asset('/assets/js/pitch-lines.js') ?>" defer></script>
 <?php if(str_starts_with($current,'/players')): ?><link rel="stylesheet" href="<?= $asset('/assets/css/player-interaction.css') ?>"><?php endif ?>
 <?php $this->head() ?></head><body<?= $current==='/'?' class="home-tunnel home-cine"':'' ?>><script>document.documentElement.classList.add('js');</script><?php $this->beginBody() ?>
 <a class="skip-link" href="#main">跳到内容</a>
