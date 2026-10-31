@@ -1,0 +1,64 @@
+/* Inner-page cover intro: the stadium starts at dusk, the floodlight lamps flicker on, two beams sweep the stands,
+   then the lights come up to the normal light cover and the title rises character by character.
+   Pure CSS from first paint; with reduced motion the extra layers stay hidden and the cover is static. */
+.cover-dusk, .cover-lamps, .cover-beam { display: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-cover-intro] { --ci-on: .78s; }
+  [data-cover-intro] .cover-dusk,
+  [data-cover-intro] .cover-lamps,
+  [data-cover-intro] .cover-beam { display: block; position: absolute; pointer-events: none; }
+
+  /* Night over the stands; sits above the light wash (::before) and below the copy. */
+  [data-cover-intro] .cover-dusk {
+    inset: 0; z-index: -2;
+    background: radial-gradient(120% 140% at 70% 0%, #1d3557 0%, #0b1625 70%);
+    animation: ci-dusk .55s ease-in var(--ci-on) both;
+  }
+  /* A row of lamp heads along the top edge, lighting up one bank after another. */
+  [data-cover-intro] .cover-lamps {
+    top: calc(var(--nav-cover-inset, 0px) + 2px); right: 4%; width: min(40%, 520px); height: 30px; z-index: -1;
+    background: radial-gradient(circle, #fffbe6 0 2.5px, rgba(255, 236, 170, .55) 3.5px, transparent 9px) 0 6px / 26px 14px repeat-x,
+                radial-gradient(circle, #fffbe6 0 2px, rgba(255, 236, 170, .45) 3px, transparent 8px) 13px 18px / 26px 14px repeat-x;
+    filter: drop-shadow(0 0 6px rgba(255, 230, 160, .9));
+    animation: ci-lamps 1.5s steps(1, end) .12s both;
+  }
+  /* Skewed light shafts sweeping left to right; screen blend lifts the photo underneath. */
+  [data-cover-intro] .cover-beam {
+    top: -40%; bottom: -40%; left: 0; width: 40%; z-index: -1;
+    background: linear-gradient(90deg, transparent, rgba(255, 246, 214, .22) 28%, rgba(255, 252, 238, .85) 50%, rgba(255, 246, 214, .22) 72%, transparent);
+    mix-blend-mode: screen; filter: blur(4px);
+    animation: ci-beam .9s cubic-bezier(.55, .1, .3, 1) .3s both;
+  }
+  [data-cover-intro] .cover-beam.is-late { width: 22%; animation-delay: .46s; animation-duration: .8s; }
+
+  [data-cover-intro] > img { animation: ci-photo 1.8s cubic-bezier(.2, .7, .2, 1) both; }
+  [data-cover-intro]::after { animation: ci-slant .7s cubic-bezier(.2, .8, .2, 1) calc(var(--ci-on) + .1s) both; }
+
+  [data-cover-intro] h1 { overflow: hidden; padding-bottom: .08em; }
+  [data-cover-intro] .cover-char {
+    display: inline-block; white-space: pre;
+    animation: ci-char .8s cubic-bezier(.16, 1, .3, 1) calc(var(--ci-on) + .05s + var(--i) * 45ms) both;
+  }
+  [data-cover-intro] .cover-copy .button { animation: ci-rise .7s cubic-bezier(.16, 1, .3, 1) calc(var(--ci-on) + .25s) both; }
+
+  @keyframes ci-dusk { from { opacity: .8; } to { opacity: 0; } }
+  @keyframes ci-lamps {
+    0% { opacity: 0; } 14% { opacity: .9; } 20% { opacity: .15; } 28% { opacity: 1; }
+    62% { opacity: 1; } 100% { opacity: 0; }
+  }
+  @keyframes ci-beam {
+    from { transform: translateX(-120%) skewX(-24deg); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    to { transform: translateX(320%) skewX(-24deg); opacity: 0; }
+  }
+  @keyframes ci-photo {
+    0% { transform: scale(1.12); filter: brightness(.55) saturate(.7); }
+    45% { filter: brightness(1.45) saturate(1.15); }
+    100% { transform: none; filter: none; }
+  }
+  @keyframes ci-slant { from { transform: skew(-14deg) translateX(110%); } to { transform: skew(-14deg); } }
+  @keyframes ci-char { from { transform: translateY(105%) rotate(6deg); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes ci-rise { from { transform: translateY(14px); opacity: 0; } to { transform: none; opacity: 1; } }
+}

@@ -19,7 +19,7 @@ $asset=static fn(string $path):string=>e($path.'?v='.filemtime(ROOT_PATH.'/publi
 <script src="<?= $asset('/assets/js/v2-app.js') ?>" defer></script>
 <link rel="stylesheet" href="<?= $asset('/assets/css/edition.css') ?>"><script src="<?= $asset('/assets/js/edition.js') ?>" defer></script>
 <link rel="stylesheet" href="<?= $asset('/assets/css/immersive.css') ?>"><script src="<?= $asset('/assets/vendor/motion/gsap.min.js') ?>" defer></script><script src="<?= $asset('/assets/vendor/motion/ScrollTrigger.min.js') ?>" defer></script><script src="<?= $asset('/assets/vendor/motion/lenis.min.js') ?>" defer></script><script src="<?= $asset('/assets/js/motion-core.js') ?>" defer></script>
-<?php if($current==='/'): ?><link rel="stylesheet" href="<?= $asset('/assets/css/home-hero.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/home-cinematic.css') ?>"><script src="<?= $asset('/assets/js/home-cinematic.js') ?>" defer></script><?php endif ?>
+<?php if($current==='/'): ?><link rel="stylesheet" href="<?= $asset('/assets/css/home-hero.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/home-cinematic.css') ?>"><script src="<?= $asset('/assets/js/home-cinematic.js') ?>" defer></script><link rel="stylesheet" href="<?= $asset('/assets/css/team-wall.css') ?>"><script src="<?= $asset('/assets/js/team-wall.js') ?>" defer></script><?php endif ?>
 <?php if($current==='/players'): ?><link rel="stylesheet" href="<?= $asset('/assets/css/players-motion.css') ?>"><?php endif ?>
 <?php if($current==='/worldcup'): ?><link rel="stylesheet" href="<?= $asset('/assets/css/bracket-map.css') ?>"><script src="<?= $asset('/assets/js/bracket-route.js') ?>" defer></script><script src="<?= $asset('/assets/js/bracket-map.js') ?>" defer></script><?php endif ?>
 <?php if($current==='/team'): ?><link rel="stylesheet" href="<?= $asset('/assets/css/team.css') ?>"><?php endif ?>
@@ -28,7 +28,7 @@ $asset=static fn(string $path):string=>e($path.'?v='.filemtime(ROOT_PATH.'/publi
 <?php if($current==='/countries'): ?><script src="<?= $asset('/assets/vendor/globe.gl-2.46.2.min.js') ?>" defer></script><script src="<?= $asset('/assets/js/globe-3d.js') ?>" defer></script><?php endif ?>
 <link rel="stylesheet" href="<?= $asset('/assets/css/navigation-glass.css') ?>">
 <script src="<?= $asset('/assets/js/navigation-glass.js') ?>" defer></script>
-<link rel="stylesheet" href="<?= $asset('/assets/css/light-theme.css') ?>">
+<link rel="stylesheet" href="<?= $asset('/assets/css/light-theme.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/cover-intro.css') ?>">
 <?php if(str_starts_with($current,'/players')): ?><link rel="stylesheet" href="<?= $asset('/assets/css/player-interaction.css') ?>"><?php endif ?>
 <?php $this->head() ?></head><body<?= $current==='/'?' class="home-tunnel home-cine"':'' ?>><script>document.documentElement.classList.add('js');</script><?php $this->beginBody() ?>
 <a class="skip-link" href="#main">跳到内容</a>

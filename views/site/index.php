@@ -74,6 +74,18 @@ $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
  </div>
 </section><?php endif ?>
 
+<?php $wallTeams=app\models\Team::find()->where(['code'=>array_keys(app\services\TeamPhoto::all())])->orderBy(['group_name'=>SORT_ASC,'id'=>SORT_ASC])->all();$wallHero=$teams[0]??null; ?>
+<?php if($wallHero&&app\services\TeamPhoto::get($wallHero->code)&&count($wallTeams)>=24): ?><?php $wallCells=array_slice(array_values(array_filter($wallTeams,static fn($t)=>$t->id!==$wallHero->id)),0,48);$wallHeroSrc=is_file(ROOT_PATH.'/public/assets/media/team-photos/wall/'.$wallHero->code.'-hero.webp')?'/assets/media/team-photos/wall/'.$wallHero->code.'-hero.webp':app\services\TeamPhoto::get($wallHero->code)['path']; ?>
+<section class="team-wall" data-team-wall aria-labelledby="team-wall-title">
+ <div class="team-wall-stage" data-wall-stage>
+  <div class="team-wall-grid" data-wall-grid aria-hidden="true">
+   <?php for($i=0,$k=0;$i<49;$i++): ?><?php if($i===24): ?><div class="wall-tile is-hero" data-wall-hero><img src="<?= e($wallHeroSrc) ?>" alt="" loading="lazy" decoding="async"></div><?php elseif(isset($wallCells[$k])): $t=$wallCells[$k++]; ?><div class="wall-tile" style="--col:<?= $i%7 ?>"><img src="/assets/media/team-photos/wall/<?= e($t->code) ?>.webp" alt="" loading="lazy" decoding="async"><span><?= e($t->name) ?></span></div><?php else: ?><div class="wall-tile is-empty" style="--col:<?= $i%7 ?>"></div><?php endif ?><?php endfor ?>
+  </div>
+  <img class="team-wall-plate" data-wall-plate src="<?= e($wallHeroSrc) ?>" alt="" loading="lazy" decoding="async" aria-hidden="true">
+  <div class="team-wall-shade" data-wall-shade aria-hidden="true"></div>
+  <div class="team-wall-copy" data-wall-copy><span class="team-wall-kicker"><?= count($wallTeams) ?> 支球队 · 一面球衣墙</span><h2 id="team-wall-title">每一张合照，<br>都是一个国家的夏天。</h2><a class="team-wall-link" href="/teams/<?= e($wallHero->slug) ?>">走进<?= e($wallHero->name) ?>队 ↗</a></div>
+ </div>
+</section><?php endif ?>
 <section class="section teams-feature" data-reveal-group><div class="feature-intro"><div><h2 data-reveal-title>不同的球衣，同样的热爱。</h2></div><a class="edition-inline-link" href="/teams" data-reveal>全部球队 ↗</a></div><div class="nations-grid edition-team-grid cine-team-grid" data-reveal-children><?php foreach($teams as $t): ?><?= $this->render('/catalog/_team',['model'=>$t]) ?><?php endforeach ?></div></section>
 <?php $shelf=(new app\services\LocalVideoLibrary())->all();$lead=null;foreach($shelf as $s){if($s['provider']==='local'){$lead=$s;break;}}$lead??=$shelf[0]??null;$badge=['local'=>'本地视频','bilibili'=>'B站','youtube'=>'YouTube','missing'=>'待添加']; ?>
 <?php if($lead): ?><section class="home-cinema" aria-labelledby="home-cinema-title">

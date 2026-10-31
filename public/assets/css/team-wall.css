@@ -1,0 +1,45 @@
+/* Home team wall: a tilted 7×7 wall of squad photos that the scroll flies into until the centre team fills the screen.
+   Static (no GSAP / reduced motion) it is a cropped photo banner with the copy on top. */
+.team-wall { position: relative; margin: clamp(40px, 6vw, 90px) calc(-1 * var(--space)) 0; }
+.team-wall-stage {
+  --tile-w: max(15vw, 19svh); --tile-h: calc(var(--tile-w) * .66); --gap: calc(var(--tile-w) * .055);
+  position: relative; height: min(100svh, 900px); overflow: hidden; isolation: isolate;
+  background: radial-gradient(90% 70% at 50% 45%, #1b2f4a, #070f1b 75%); perspective: 1600px;
+}
+.team-wall-grid {
+  position: absolute; left: 50%; top: 50%;
+  width: calc(var(--tile-w) * 7 + var(--gap) * 6); height: calc(var(--tile-h) * 7 + var(--gap) * 6);
+  margin: calc((var(--tile-h) * 7 + var(--gap) * 6) / -2) 0 0 calc((var(--tile-w) * 7 + var(--gap) * 6) / -2);
+  display: grid; grid-template-columns: repeat(7, var(--tile-w)); grid-auto-rows: var(--tile-h); gap: var(--gap);
+  transform: rotateX(22deg) rotateZ(-7deg) scale(.95); transform-origin: 50% 50%;
+}
+.wall-tile { position: relative; overflow: hidden; border-radius: calc(var(--tile-w) * .04); background: #13233a; }
+.wall-tile img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.85) brightness(.8); }
+.wall-tile span {
+  position: absolute; left: 8%; bottom: 7%; color: #fff; font-size: clamp(9px, calc(var(--tile-w) * .075), 15px); font-weight: 800;
+  letter-spacing: .04em; text-shadow: 0 1px 6px #000a;
+}
+.wall-tile.is-hero img { filter: none; }
+.wall-tile.is-hero { box-shadow: 0 0 0 2px #fff6, 0 20px 60px #000a; }
+.wall-tile.is-empty { background: repeating-linear-gradient(115deg, var(--brand, #d33e50) 0 14px, #b8293b 14px 28px); }
+
+/* Full-bleed copy of the centre photo, faded in once the zoom lands so the hold frame is sharp. */
+.team-wall-plate { display: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; pointer-events: none; }
+.team-wall.is-live .team-wall-plate { display: block; }
+.team-wall-shade { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, #050b14e6 0%, #050b1499 38%, #050b1400 70%), linear-gradient(90deg, #050b1499, transparent 60%); }
+.team-wall-copy { position: absolute; z-index: 2; left: var(--space); right: var(--space); bottom: clamp(36px, 8svh, 90px); color: #fff; max-width: 760px; }
+.team-wall-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; letter-spacing: .14em; color: #ffd58a; }
+.team-wall-kicker::before { content: ''; width: 34px; height: 2px; background: currentColor; }
+.team-wall-copy h2 { margin: 14px 0 22px; color: #fff; font: 900 clamp(32px, 5vw, 68px)/1.18 var(--wcu-zh, 'WCU Serif SC', 'Noto Serif SC', serif); letter-spacing: .01em; }
+.team-wall-link { display: inline-flex; padding: 13px 22px; border-radius: 999px; background: var(--brand, #d33e50); color: #fff; font-weight: 800; font-size: 14px; }
+.team-wall-link:hover { color: #fff; filter: brightness(1.08); }
+
+/* Motion version: the stage is pinned and driven by team-wall.js. */
+.team-wall.is-live .team-wall-stage { height: 100svh; max-height: none; }
+.team-wall.is-live .team-wall-shade, .team-wall.is-live .team-wall-copy { opacity: 0; }
+.team-wall.is-live .team-wall-copy { visibility: hidden; }
+
+@media (max-width: 700px) {
+  .team-wall-stage { --tile-w: max(30vw, 17svh); }
+  .team-wall-copy h2 { font-size: clamp(28px, 8.4vw, 40px); }
+}
