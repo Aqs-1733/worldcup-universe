@@ -37,7 +37,7 @@ $column=static function(array $ids,string $side,int $index) use($byId,$card,$rou
   <div><h2 id="bracket-map-title">淘汰赛全景图</h2></div>
   <div class="bm-summary is-empty" data-bm-summary aria-live="polite"></div>
  </div>
- <div class="bm-chips" role="toolbar" aria-label="按球队高亮晋级路线"><button type="button" class="bm-chip is-all" data-bm-team="" aria-pressed="true">全部</button><?php foreach($teamsInMap as $id=>$t): ?><button type="button" class="bm-chip<?= $id===$championId?' is-champion':'' ?>" data-bm-team="<?= (int)$id ?>" data-reach="<?= (int)$reach[$id] ?>" data-name="<?= e($t->name) ?>" aria-pressed="false" title="<?= e($t->name) ?>"><?= TeamUi::flag($t) ?><span><?= e($t->code) ?></span></button><?php endforeach ?></div>
+ <div class="bm-chips" role="toolbar" aria-label="按球队高亮晋级路线"><button type="button" class="bm-chip is-all" data-bm-team="" aria-pressed="true">全部</button><?php if($championId): ?><button type="button" class="bm-chip is-run" data-bm-run>▶ 冠军之路</button><?php endif ?><?php foreach($teamsInMap as $id=>$t): ?><button type="button" class="bm-chip<?= $id===$championId?' is-champion':'' ?>" data-bm-team="<?= (int)$id ?>" data-reach="<?= (int)$reach[$id] ?>" data-name="<?= e($t->name) ?>" aria-pressed="false" title="<?= e($t->name) ?>"><?= TeamUi::flag($t) ?><span><?= e($t->code) ?></span></button><?php endforeach ?></div>
  <div class="bm-scroll" data-bm-scroll data-lenis-prevent-wheel tabindex="0" aria-label="淘汰赛对阵图，可横向滚动">
   <div class="bm-board" data-bm-board>
    <svg class="bm-lines" data-bm-lines aria-hidden="true"></svg>

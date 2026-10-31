@@ -67,3 +67,11 @@
 .bm-summary{min-height:96px;transition:opacity .3s,visibility .3s}
 .bm-summary.is-empty{visibility:hidden;opacity:0}
 .bm-head{align-items:center}
+
+/* Champion run: comet, card flashes and the final burst. */
+.bm-comet circle{fill:var(--brand,#d33e50);filter:drop-shadow(0 0 4px #ff8a98) drop-shadow(0 0 12px #f2c75c)}
+.bm-match.is-hit{animation:bm-hit .7s cubic-bezier(.2,.8,.2,1)}
+@keyframes bm-hit{30%{transform:scale(1.08);box-shadow:0 0 0 2px var(--bm-gold),0 0 40px #f2c75c99}}
+.bm-burst{position:absolute;left:0;top:0;pointer-events:none;z-index:3}
+.bracket-map .bm-chip.is-run{font-family:inherit;font-weight:700;padding:0 14px;border-color:#f2c75c88;color:var(--bm-gold)}
+.bracket-map.is-running .bm-chip.is-run{background:#f2c75c22}
