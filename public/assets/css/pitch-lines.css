@@ -1,4 +1,4 @@
-/* Pitch markings (views/site/_pitch.php) and the footer wordmark; pitch-lines.js draws and fills them with the scroll. */
+/* Pitch markings (views/site/_pitch.php); pitch-lines.js draws them with the scroll. */
 .pitch-lines { display: block; fill: none; stroke: #c3d2e3; stroke-width: 1.6; stroke-linecap: round; overflow: visible; }
 .pitch-lines * { vector-effect: non-scaling-stroke; }
 .pitch-lines .pitch-spot { fill: #c3d2e3; stroke: none; transform-box: fill-box; transform-origin: center; }
@@ -7,12 +7,3 @@
 .site-footer { position: relative; overflow: hidden; isolation: isolate; }
 .pitch-full { position: absolute; inset: 24px 0 auto; height: min(78%, 520px); width: 100%; z-index: -1; stroke: #d3deeb; }
 .pitch-full .pitch-spot { fill: #d3deeb; }
-
-.footer-wordmark {
-  display: block; margin: 6px 0 -.14em; padding: 0 var(--space); text-align: center; white-space: nowrap; user-select: none;
-  font: 900 clamp(64px, 15.5vw, 240px)/1 var(--wcu-zh, 'WCU Serif SC', 'Noto Serif SC', serif); letter-spacing: .04em;
-  color: transparent; -webkit-text-stroke: 1.5px #bccbdd;
-  background: linear-gradient(90deg, var(--brand, #d33e50) 0, #f0875c var(--fill, 100%), transparent var(--fill, 100%));
-  -webkit-background-clip: text; background-clip: text;
-}
-@media (max-width: 700px) { .footer-wordmark { -webkit-text-stroke-width: 1px; } }
