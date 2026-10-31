@@ -1,0 +1,22 @@
+/* Holographic foil on player cards: the existing glare layer becomes a rainbow foil that slides with the pointer
+   (--glare-x/--glare-y come from motion-core's tilt), plus fine diagonal streaks and a bright hotspot.
+   Hover-only, so touch screens and reduced motion keep the plain card. */
+body .player[data-tilt], body .rail-card[data-tilt] { isolation: isolate; }
+body .player[data-tilt]::after, body .rail-card[data-tilt]::after {
+  content: ''; position: absolute; inset: 0; z-index: 5; border-radius: inherit; pointer-events: none;
+  background:
+    radial-gradient(farthest-corner circle at var(--glare-x, 50%) var(--glare-y, 30%), #ffffffcc 0%, #ffffff33 18%, #ffffff00 42%),
+    repeating-linear-gradient(118deg, #ffffff00 0 6px, #ffffff2e 6px 7px, #ffffff00 7px 13px),
+    repeating-linear-gradient(118deg, #ff5f8a 0%, #ffc85c 4%, #7dffb0 8%, #5cc8ff 12%, #b07bff 16%, #ff5f8a 20%);
+  background-size: 100% 100%, 100% 100%, 200% 200%;
+  background-position: center, center, var(--glare-x, 50%) var(--glare-y, 50%);
+  -webkit-mask-image: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 30%), #000 0%, #000a 35%, #0003 75%);
+  mask-image: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 30%), #000 0%, #000a 35%, #0003 75%);
+  mix-blend-mode: hard-light; opacity: 0; transition: opacity .45s;
+}
+body .player[data-tilt]:hover::after, body .rail-card[data-tilt]:hover::after { opacity: .55; }
+body .player[data-tilt]:hover, body .rail-card[data-tilt]:hover { box-shadow: 0 26px 60px #3a52722e, 0 0 0 1px #ffffff99 inset, 0 0 32px #b07bff26; }
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  body .player[data-tilt]::after, body .rail-card[data-tilt]::after { display: none; }
+}
