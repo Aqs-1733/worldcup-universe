@@ -1,18 +1,26 @@
-/* Home team wall: a full-screen, tilted wall of every squad photo whose columns drift up and down without end.
+/* Home team wall: an edge-to-edge, tilted wall of every squad photo whose columns drift up and down without end.
+   It spans the full window width and fades into the page at top and bottom, so it has no visible frame.
    Compositor-only CSS animation; paused off screen (team-wall.js), per column on hover, and off for reduced motion. */
-.team-wall { position: relative; margin: clamp(40px, 6vw, 90px) calc(-1 * var(--space)) 0; }
+.team-wall { position: relative; width: 100vw; margin: clamp(30px, 5vw, 70px) 0 0 calc(50% - 50vw); }
 .team-wall-stage {
-  --tile-w: max(15vw, 19svh); --tile-h: calc(var(--tile-w) * .66); --gap: calc(var(--tile-w) * .055);
-  position: relative; height: 100svh; min-height: 560px; overflow: hidden; isolation: isolate;
-  background: radial-gradient(90% 70% at 50% 45%, #1b2f4a, #070f1b 75%); perspective: 1600px;
+  --tile-w: max(16vw, 150px); --tile-h: calc(var(--tile-w) * .66); --gap: calc(var(--tile-w) * .055);
+  position: relative; height: min(100svh, 1000px); min-height: 560px;
+}
+/* Dark field holding the wall; the mask feathers it into the page so the section has no hard edge. */
+.team-wall-field {
+  position: absolute; inset: 0; overflow: hidden; isolation: isolate; perspective: 1600px;
+  background: radial-gradient(90% 70% at 50% 45%, #1b2f4a, #070f1b 75%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 13%, #000 87%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 13%, #000 87%, transparent 100%);
 }
 .team-wall-grid {
   position: absolute; left: 50%; top: 50%; display: flex; gap: var(--gap);
   width: calc(var(--tile-w) * 7 + var(--gap) * 6); height: 140%;
-  transform: translate(-50%, -50%) rotateX(22deg) rotateZ(-7deg) scale(1.08);
+  transform: translate(-50%, -50%) rotateX(22deg) rotateZ(-7deg) scale(1.12);
 }
 .wall-col { flex: 0 0 var(--tile-w); }
-/* Three copies of the column (the bottom padding evens out the gaps), so moving by one copy loops seamlessly. */
+/* Four copies of the column (the bottom padding evens out the gaps), so moving by one copy loops seamlessly
+   even on very tall windows. */
 .wall-track { display: flex; flex-direction: column; gap: var(--gap); padding-bottom: var(--gap); animation: wall-up var(--speed, 60s) linear infinite; }
 .wall-col:nth-child(even) .wall-track { animation-name: wall-down; }
 .wall-col:hover .wall-track, .team-wall.is-offscreen .wall-track { animation-play-state: paused; }
@@ -32,7 +40,7 @@
   background: linear-gradient(0deg, #050b14f0 0%, #050b1499 30%, #050b1400 60%), linear-gradient(90deg, #050b14b3, transparent 55%),
               linear-gradient(180deg, #050b1499, transparent 18%);
 }
-.team-wall-copy { position: absolute; z-index: 2; left: var(--space); right: var(--space); bottom: clamp(36px, 9svh, 100px); color: #fff; max-width: 760px; pointer-events: none; }
+.team-wall-copy { position: absolute; z-index: 2; left: max(var(--space), 4vw); right: var(--space); bottom: max(17%, 110px); color: #fff; max-width: 760px; pointer-events: none; }
 .team-wall-copy > * { pointer-events: auto; }
 .team-wall-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; letter-spacing: .14em; color: #ffd58a; }
 .team-wall-kicker::before { content: ''; width: 34px; height: 2px; background: currentColor; }
@@ -40,11 +48,10 @@
 .team-wall-link { display: inline-flex; padding: 14px 24px; border-radius: 999px; background: var(--brand, #d33e50); color: #fff; font-weight: 800; font-size: 14px; }
 .team-wall-link:hover { color: #fff; filter: brightness(1.08); }
 
-@keyframes wall-up { from { transform: translateY(0); } to { transform: translateY(calc(-100% / 3)); } }
-@keyframes wall-down { from { transform: translateY(calc(-100% / 3)); } to { transform: translateY(0); } }
+@keyframes wall-up { from { transform: translateY(0); } to { transform: translateY(-25%); } }
+@keyframes wall-down { from { transform: translateY(-25%); } to { transform: translateY(0); } }
 
 @media (max-width: 700px) {
-  .team-wall-stage { --tile-w: max(30vw, 17svh); }
   .team-wall-copy h2 { font-size: clamp(30px, 8.6vw, 42px); }
 }
 @media (prefers-reduced-motion: reduce) {

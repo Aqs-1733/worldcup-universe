@@ -78,10 +78,12 @@ $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
 <?php if(count($wallTeams)>=14): ?><?php $wallCols=array_fill(0,7,[]);foreach($wallTeams as $i=>$t){$wallCols[$i%7][]=$t;}$wallSpeed=[52,66,48,72,56,64,50]; ?>
 <section class="team-wall" data-team-wall aria-labelledby="team-wall-title">
  <div class="team-wall-stage">
-  <div class="team-wall-grid">
-   <?php foreach($wallCols as $c=>$col): ?><div class="wall-col" style="--speed:<?= $wallSpeed[$c] ?>s"><div class="wall-track"><?php foreach([0,1,2] as $copy): ?><?php foreach($col as $t): ?><a class="wall-tile" href="/teams/<?= e($t->slug) ?>"<?= $copy?' tabindex="-1" aria-hidden="true"':'' ?>><img src="/assets/media/team-photos/wall/<?= e($t->code) ?>.webp" alt="" loading="lazy" decoding="async"><span><?= e($t->name) ?></span></a><?php endforeach ?><?php endforeach ?></div></div><?php endforeach ?>
+  <div class="team-wall-field">
+   <div class="team-wall-grid">
+    <?php foreach($wallCols as $c=>$col): ?><div class="wall-col" style="--speed:<?= $wallSpeed[$c] ?>s"><div class="wall-track"><?php foreach([0,1,2,3] as $copy): ?><?php foreach($col as $t): ?><a class="wall-tile" href="/teams/<?= e($t->slug) ?>"<?= $copy?' tabindex="-1" aria-hidden="true"':'' ?>><img src="/assets/media/team-photos/wall/<?= e($t->code) ?>.webp" alt="" loading="lazy" decoding="async"><span><?= e($t->name) ?></span></a><?php endforeach ?><?php endforeach ?></div></div><?php endforeach ?>
+   </div>
+   <div class="team-wall-shade" aria-hidden="true"></div>
   </div>
-  <div class="team-wall-shade" aria-hidden="true"></div>
   <div class="team-wall-copy"><span class="team-wall-kicker"><?= count($wallTeams) ?> 支球队 · 2026 美加墨</span><h2 id="team-wall-title" data-reveal-title>不同的球衣，<br>同样的热爱。</h2><a class="team-wall-link" href="/teams" data-magnetic>全部球队 ↗</a></div>
  </div>
 </section><?php endif ?>
