@@ -10,6 +10,7 @@ $asset=static fn(string $path):string=>e($path.'?v='.filemtime(ROOT_PATH.'/publi
 <?php $this->beginPage() ?>
 <!doctype html><html lang="zh-CN"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="<?= $asset('/assets/css/page-transition.css') ?>"><link rel="expect" href="#site-footer" blocking="render"><script src="<?= $asset('/assets/js/page-transition.js') ?>"></script>
 <?= Html::csrfMetaTags() ?><title><?= e(($this->title?:'世界杯宇宙').' · 世界杯宇宙') ?></title>
 <meta name="description" content="世界杯宇宙：赛事、球队、球员、数据与属于球迷的主队看台。">
 <link rel="stylesheet" href="<?= $asset('/assets/vendor/arena/css/vendor/bootstrap.min.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/v2-tokens.css') ?>"><link rel="stylesheet" href="<?= $asset('/assets/css/v2-site.css') ?>">

@@ -1,0 +1,51 @@
+/* Cross-page transition: the old page is swept off by a diagonal scarlet band and the new page follows it in.
+   The glass header stays put, and a team/player image morphs into the detail cover (names set by page-transition.js).
+   Browsers without cross-document view transitions, or with reduced motion, simply navigate as before. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+
+  :root { --pt-duration: 760ms; --pt-ease: cubic-bezier(.77, 0, .18, 1); }
+  #site-header { view-transition-name: site-header; }
+
+  /* The band is whatever shows between the two wipe edges. */
+  ::view-transition-image-pair(root) {
+    background: repeating-linear-gradient(115deg, var(--brand, #d33e50) 0 22px, #b8293b 22px 44px);
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) { mix-blend-mode: normal; animation-duration: var(--pt-duration); animation-timing-function: var(--pt-ease); animation-fill-mode: both; }
+  ::view-transition-old(root) { animation-name: pt-old-out; }
+  ::view-transition-new(root) { animation-name: pt-new-in; animation-delay: 110ms; }
+
+  /* Going back sweeps the other way. */
+  html:active-view-transition-type(back)::view-transition-old(root) { animation-name: pt-old-out-back; }
+  html:active-view-transition-type(back)::view-transition-new(root) { animation-name: pt-new-in-back; }
+
+  ::view-transition-group(site-header) { z-index: 3; animation-duration: var(--pt-duration); animation-timing-function: var(--pt-ease); }
+  ::view-transition-old(site-header),
+  ::view-transition-new(site-header) { animation-duration: calc(var(--pt-duration) * .6); }
+
+  /* Shared card → cover image. */
+  ::view-transition-group(pt-media) { z-index: 2; overflow: clip; border-radius: 18px; animation-duration: calc(var(--pt-duration) + 120ms); animation-timing-function: cubic-bezier(.6, 0, .15, 1); }
+  ::view-transition-old(pt-media),
+  ::view-transition-new(pt-media) { height: 100%; object-fit: cover; animation-duration: calc(var(--pt-duration) * .45); animation-timing-function: ease-out; }
+  /* Drop the card photo early so differently cropped images don't double-expose. */
+  ::view-transition-old(pt-media) { animation-duration: calc(var(--pt-duration) * .25); }
+
+  /* Points go TL, TR, BR, BL; the leading edge leans 15% so the sweep reads as a diagonal. */
+  @keyframes pt-old-out {
+    from { clip-path: polygon(-15% 0, 115% 0, 100% 100%, -15% 100%); transform: none; filter: none; }
+    to   { clip-path: polygon(-15% 0, 0% 0, -15% 100%, -15% 100%); transform: translateX(-6%) scale(.97); filter: brightness(.55); }
+  }
+  @keyframes pt-new-in {
+    from { clip-path: polygon(115% 0, 115% 0, 115% 100%, 100% 100%); transform: translateX(8%); }
+    to   { clip-path: polygon(0% 0, 115% 0, 115% 100%, -15% 100%); transform: none; }
+  }
+  @keyframes pt-old-out-back {
+    from { clip-path: polygon(0% 0, 115% 0, 115% 100%, -15% 100%); transform: none; filter: none; }
+    to   { clip-path: polygon(115% 0, 115% 0, 115% 100%, 100% 100%); transform: translateX(6%) scale(.97); filter: brightness(.55); }
+  }
+  @keyframes pt-new-in-back {
+    from { clip-path: polygon(-15% 0, 0% 0, -15% 100%, -15% 100%); transform: translateX(-8%); }
+    to   { clip-path: polygon(-15% 0, 115% 0, 100% 100%, -15% 100%); transform: none; }
+  }
+}
