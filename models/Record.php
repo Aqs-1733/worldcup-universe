@@ -34,9 +34,9 @@ abstract class Record extends ActiveRecord
     {
         if (!parent::beforeSave($insert)) { return false; }
         // Manual edits to factual fields must not retain FIFA verification.
-        // Chinese display translations and URL aliases are application metadata.
+        // Chinese display translations, URL aliases and display images are application metadata.
         if ($this->hasAttribute('official_import_id') && $this->official_import_id) {
-            $factual=array_diff(array_keys($this->getDirtyAttributes()),['name_cn','slug','updated_at']);
+            $factual=array_diff(array_keys($this->getDirtyAttributes()),['name_cn','slug','photo_url','flag_url','updated_at']);
             if($factual) { $this->official_import_id=null; }
         }
         if ($this->hasAttribute('updated_at')) { $this->updated_at = new Expression('CURRENT_TIMESTAMP'); }

@@ -42,7 +42,7 @@ return [
             'admin'=>'admin/index','admin/users'=>'admin/users','admin/users/<id:\d+>/status'=>'admin/user-status',
             'admin/moderate'=>'admin/moderate','admin/audit'=>'admin/audit',
             'admin/<table:[a-z_]+>'=>'admin/table',
-            'admin/<table:[a-z_]+>/<action:create|edit|delete|save>'=>'admin/<action>',
+            'admin/<table:[a-z_]+>/<action:create|edit|delete|save|file>'=>'admin/<action>',
             'api/v1/session'=>'api/session', 'api/v1/<action:teams|players|matches|standings|stats|news|countries|home|forum|bracket>'=>'api/<action>',
             'api/v1/teams/<id:[a-zA-Z0-9-]+>'=>'api/team','api/v1/players/<id:[a-zA-Z0-9-]+>'=>'api/player',
             'api/v1/matches/<id:\d+>'=>'api/match','api/v1/forum/<id:\d+>'=>'api/thread',

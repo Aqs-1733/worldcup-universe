@@ -18,6 +18,11 @@ final class LocalVideoLibrary
             if(isset($claimed[$file])||!in_array(strtolower(pathinfo($file,PATHINFO_EXTENSION)),self::EXT,true))continue;
             $items[]=$this->normalize(['slug'=>'file-'.substr(sha1($file),0,10),'title'=>str_replace(['_','-'],' ',pathinfo($file,PATHINFO_FILENAME)),'type'=>'moment','file'=>$file]);
         }
+        // Videos an administrator uploaded and approved under 媒体资产 (home-hero-video is the home page loop, not a shelf item).
+        foreach(\app\models\MediaAsset::find()->where(['status'=>'approved'])->andWhere(['like','path','/uploads/%',false])->andWhere(['<>','asset_key','home-hero-video'])->orderBy(['id'=>SORT_ASC])->all() as $asset){
+            if(!MediaUploadService::isVideo($asset->path))continue;
+            $items[]=$this->normalize(['slug'=>'asset-'.$asset->asset_key,'title'=>$asset->alt_text,'type'=>'moment','url'=>$asset->path,'credit'=>trim($asset->credit.' · '.$asset->license_name,' ·'),'source_url'=>$asset->source_url]);
+        }
         return $items;
     }
     public function find(string $slug): ?array { foreach($this->all() as $item){if($item['slug']===$slug)return $item;} return null; }
@@ -30,14 +35,15 @@ final class LocalVideoLibrary
     private function normalize(array $e): array
     {
         $file=$e['file']??null;$local=$file?self::safeFile($file):null;
+        $uploaded=isset($e['url'])&&MediaUploadService::managedPath((string)$e['url'])?(string)$e['url']:null;
         $poster=$e['poster']??null;
         if(!$poster&&$file){foreach(['jpg','png','webp'] as $ext){$p=pathinfo($file,PATHINFO_FILENAME).'.'.$ext;if(is_file(self::DIR.'/'.$p)){$poster='/assets/media/videos/'.$p;break;}}}
         $bilibili=isset($e['bilibili'])&&preg_match('/^BV[0-9A-Za-z]{10}$/',(string)$e['bilibili'])?$e['bilibili']:null;
         $youtube=isset($e['youtube'])&&preg_match('/^[A-Za-z0-9_-]{11}$/',(string)$e['youtube'])?$e['youtube']:null;
-        $provider=$local?'local':($bilibili?'bilibili':($youtube?'youtube':'missing'));
+        $provider=$local||$uploaded?'local':($bilibili?'bilibili':($youtube?'youtube':'missing'));
         return [
             'slug'=>$e['slug'],'title'=>$e['title'],'credit'=>$e['credit']??null,'commons'=>!empty($e['commons']),'subtitle'=>$e['subtitle']??'','type'=>$e['type']??'highlights','match_id'=>$e['match_id']??null,
-            'file'=>$file,'src'=>$local?'/stream/'.rawurlencode($file):null,'poster'=>$poster?:'/assets/media/stadium-hero-v2.png',
+            'file'=>$file,'src'=>$local?'/stream/'.rawurlencode($file):$uploaded,'poster'=>$poster?:'/assets/media/stadium-hero-v2.png',
             'provider'=>$provider,'bilibili'=>$bilibili,'youtube'=>$youtube,'source_url'=>$e['source_url']??($youtube?'https://www.youtube.com/watch?v='.$youtube:null),
             'embed'=>match($provider){'bilibili'=>'https://player.bilibili.com/player.html?bvid='.$bilibili.'&autoplay=1&high_quality=1&danmaku=0','youtube'=>'https://www.youtube.com/embed/'.$youtube.'?autoplay=1&rel=0&playsinline=1',default=>null},
         ];

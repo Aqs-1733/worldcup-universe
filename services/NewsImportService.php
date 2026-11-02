@@ -22,7 +22,10 @@ final class NewsImportService
                         $article=NewsArticle::findOne(['source_url'=>$item['url']]);$new=!$article;$article??=new NewsArticle();
                         if($new) {$article->source_id=$source->id;$article->source_name=$source->name;$article->status='published';$article->language_code=$source->language_code;$article->credibility_score=$source->trust_level;}
                         $article->title_original=mb_substr($item['title'],0,280);$article->summary_original=mb_substr($item['summary'],0,240);$article->published_at=$item['published_at'];$article->source_url=$item['url'];
-                        $article->raw_payload_json=new \yii\db\JsonExpression(['kind'=>'publisher_rss','image'=>$item['image'],'categories'=>$item['categories'],'retrieved_at'=>gmdate(DATE_ATOM),'feed_url'=>$source->rss_url,'feed_sha256'=>hash('sha256',$xml)]);
+                        // Keep a cover the administrator uploaded; the feed would otherwise overwrite it on every run.
+                        $oldRaw=$new?[]:(is_array($article->raw_payload_json)?$article->raw_payload_json:(json_decode((string)$article->raw_payload_json,true)?:[]));
+                        $image=str_starts_with((string)($oldRaw['image']??''),'/uploads/')?$oldRaw['image']:$item['image'];
+                        $article->raw_payload_json=new \yii\db\JsonExpression(['kind'=>'publisher_rss','image'=>$image,'categories'=>$item['categories'],'retrieved_at'=>gmdate(DATE_ATOM),'feed_url'=>$source->rss_url,'feed_sha256'=>hash('sha256',$xml)]);
                         if($source->language_code==='zh-CN') {$article->title_cn=$article->title_original;$article->summary_cn=$article->summary_original;}
                         if($article->save()) {$this->assignTags($article);$new?$saved++:$updated++;}
                     }
@@ -57,6 +60,8 @@ final class NewsImportService
     }
     public function imageUrl(string $url): string
     {
+        // Covers uploaded by an administrator through MediaUploadService.
+        if(preg_match('~^/uploads/\d{4}/\d{2}/[a-f0-9]{32}\.(jpg|png|webp|gif)$~',$url))return $url;
         $host=strtolower((string)parse_url($url,PHP_URL_HOST));$allowed=['ichef.bbci.co.uk','a.espncdn.com','e0.365dm.com','i.guim.co.uk','media.guim.co.uk','static01.nyt.com','sportshub.cbsistatic.com','www.chinanews.com.cn','image.cns.com.cn','i2.chinanews.com.cn'];
         return strlen($url)<=1200&&parse_url($url,PHP_URL_SCHEME)==='https'&&in_array($host,$allowed,true)?$url:'';
     }

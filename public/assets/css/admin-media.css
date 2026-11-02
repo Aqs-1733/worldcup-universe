@@ -1,0 +1,9 @@
+/* WorldCup Universe admin: upload field, current-file preview and list thumbnails. */
+.media-upload{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.media-upload input[type=file]{padding:8px;border:1px dashed #9aa6b8;border-radius:6px;background:#f7f9fc;font-size:13px}
+.media-upload small{font-size:11px;color:#64708a}
+.media-preview{display:block;max-width:240px;max-height:160px;border-radius:6px;border:1px solid #dce2ec;object-fit:contain;background:#eef1f5}
+.media-preview-new{display:flex;flex-direction:column;gap:4px}
+.media-preview-new[hidden]{display:none}
+.media-current{font-size:13px}
+.media-thumb{display:block;max-width:96px;max-height:64px;margin:4px 0;border-radius:4px;border:1px solid #dce2ec;object-fit:cover}
