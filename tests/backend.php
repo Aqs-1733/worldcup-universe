@@ -69,6 +69,12 @@ try {
     rejects(fn()=>$service->editReply($a,(int)$reply->id,'非作者不能改别人的回复'),yii\web\ForbiddenHttpException::class,'reply edit ownership enforced in service');
     $edited=$service->editReply($b,(int)$reply->id,'这是作者修改后的回复。');check(!$edited->hasErrors()&&$edited->body==='这是作者修改后的回复。','reply author can edit own unlocked reply');
     $invalidTag=new app\models\NewsArticle(['source_name'=>'test','source_url'=>'https://example.org/test','title_original'=>'test','tagIds'=>[999999999]]);check(!$invalidTag->validate(),'admin news tags require existing tag records');
+    $official=Player::find()->where(['not',['official_import_id'=>null]])->one(); $official->photo_url='/uploads/2026/11/'.str_repeat('a',32).'.png'; $official->save(false); $official->refresh();
+    check($official->official_import_id!==null,'replacing an official player photo keeps it on the public site');
+    $official->club='Edited Club FC'; $official->save(false); $official->refresh(); check($official->official_import_id===null,'editing a factual player field still drops official verification');
+    $asset=new MediaAsset(['asset_key'=>'qa-upload','path'=>'/uploads/2026/11/'.str_repeat('b',32).'.webp','alt_text'=>'qa','source_url'=>'https://example.org/qa','license_name'=>'qa']); check($asset->validate(),'media asset accepts a managed upload path');
+    $asset->path='/uploads/../../.env'; check(!$asset->validate(),'media asset rejects traversal in upload path');
+    check(app\services\MediaUploadService::managedPath('/uploads/../.env')===null && app\services\MediaUploadService::managedPath('data/team/../../.env')===null,'upload service never resolves paths outside its roots');
     $tx->rollBack(); echo 'PASS '.count($checks)." database/service checks; all test writes rolled back.\n";
     foreach($checks as $check) { echo '  PASS '.$check."\n"; }
     exit(0);

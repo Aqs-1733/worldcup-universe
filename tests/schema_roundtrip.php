@@ -10,7 +10,7 @@ if($app->runAction('app/install')!==0) {exit(1);}
 $before=[];foreach(['teams','players','matches'] as $table) { $before[$table]=(int)(new yii\db\Query())->from($table)->count(); }
 if ($before!==['teams'=>48,'players'=>1248,'matches'=>104]) { throw new RuntimeException('Bundled sports restore count mismatch'); }
 $password=$app->db->createCommand('SELECT password_hash FROM users ORDER BY id LIMIT 1')->queryScalar();
-if($app->runAction('migrate/down',[5,'interactive'=>false])!==0) {exit(1);}
+if($app->runAction('migrate/down',['all','interactive'=>false])!==0) {exit(1);}
 $app->db->schema->refresh();
 if(count($app->db->schema->getTableNames())!==35) { throw new RuntimeException('Expected 34 original tables plus migration history after rollback'); }
 foreach($before as $table=>$count) { if((int)(new yii\db\Query())->from($table)->count()!==$count) { throw new RuntimeException('Original sports records changed'); } }
