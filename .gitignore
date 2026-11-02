@@ -42,3 +42,12 @@ artifacts/topic-20261022/rollback-copy.php
 # Local personal-use videos (see public/assets/media/videos/README.md)
 public/assets/media/videos/*
 !public/assets/media/videos/README.md
+
+# Administrator uploads: persistent server data, covered by scripts/backup.sh, never committed
+data/team/uploads/
+data/personal/uploads/
+
+# Course requirement source material (lecture PDF / assignment PPTX, kept in ../docs outside the repo)
+docs/*.pdf
+docs/*.pptx
+/互联网数据库开发*

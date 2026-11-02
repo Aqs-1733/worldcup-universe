@@ -20,3 +20,5 @@ artifacts/navigation/*.patch -whitespace
 *.png binary
 *.jpg binary
 *.woff2 binary
+# Server configuration templates are consumed on Linux as-is.
+deploy/** text eol=lf

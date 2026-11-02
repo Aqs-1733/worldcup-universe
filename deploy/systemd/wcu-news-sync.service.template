@@ -1,0 +1,20 @@
+# WorldCup Universe — one RSS import run (php yii news/sync), started by wcu-news-sync.timer.
+# flock -n -E 0: if a previous run is still going this start exits quietly instead of overlapping;
+# NewsImportService also holds a Yii FileMutex shared with the admin "refresh" button.
+# A failed source keeps its error in news_sources.last_error and storage/logs/console.log; the next tick retries it.
+[Unit]
+Description=WorldCup Universe news RSS sync
+After=network-online.target mariadb.service mysql.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=www-data
+Group=www-data
+WorkingDirectory=__APP_DIR__
+ExecStart=/usr/bin/flock -n -E 0 /run/lock/wcu-news-sync.lock /usr/bin/php __APP_DIR__/yii news/sync
+TimeoutStartSec=15min
+Nice=10
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full

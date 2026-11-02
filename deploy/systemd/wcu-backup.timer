@@ -1,0 +1,12 @@
+# WorldCup Universe — nightly backup at 03:30 server time.
+[Unit]
+Description=WorldCup Universe nightly backup timer
+
+[Timer]
+OnCalendar=*-*-* 03:30:00
+RandomizedDelaySec=10min
+Persistent=true
+Unit=wcu-backup.service
+
+[Install]
+WantedBy=timers.target

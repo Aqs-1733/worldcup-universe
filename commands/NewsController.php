@@ -19,7 +19,15 @@ final class NewsController extends \yii\console\Controller
         $this->stdout("PASS configured Chinese publisher RSS.\n");return 0;
     }
     public function actionTags(): int { $this->stdout('Tagged '.(new \app\services\NewsImportService())->backfillTags()." articles.\n"); return 0; }
-    public function actionSync(): int { $r=(new \app\services\NewsImportService())->sync(); $this->stdout(json_encode($r,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE)."\n"); return array_filter($r['sources'],fn($s)=>$s['status']==='failed')?1:0; }
+    public function actionSync(): int
+    {
+        $r=(new \app\services\NewsImportService())->sync(); $this->stdout(gmdate(DATE_ATOM).' '.json_encode($r,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE)."\n");
+        if(!empty($r['busy'])) { $this->stdout("SKIP another news import holds the lock.\n"); return 0; }
+        // Failed sources keep their message in news_sources.last_error; the next scheduled run retries them.
+        $failed=array_column(array_filter($r['sources'],fn($s)=>$s['status']==='failed'),'name');
+        if($failed) { \Yii::error('News sources failed: '.implode(', ',$failed),'news'); }
+        return $failed?1:0;
+    }
     public function actionWatch(int $interval=300,int $cycles=0): int
     {
         $interval=max(60,min(3600,$interval));$round=0;

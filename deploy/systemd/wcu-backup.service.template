@@ -1,0 +1,12 @@
+# WorldCup Universe — nightly database dump plus uploaded files (scripts/backup.sh); keeps BACKUP_KEEP_DAYS days.
+[Unit]
+Description=WorldCup Universe backup
+After=mariadb.service mysql.service
+
+[Service]
+Type=oneshot
+Environment=BACKUP_DIR=/var/backups/worldcup-universe
+Environment=BACKUP_KEEP_DAYS=14
+ExecStart=/usr/bin/flock -n -E 0 /run/lock/wcu-backup.lock /bin/bash __APP_DIR__/scripts/backup.sh
+Nice=10
+IOSchedulingClass=idle

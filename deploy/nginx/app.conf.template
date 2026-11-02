@@ -1,0 +1,67 @@
+# WorldCup Universe — server-level application rules shared by the HTTP and HTTPS sites (rendered by scripts/deploy.sh).
+# Only public/ is reachable. .env, source, vendor, data/, storage/, logs and backups live outside the web root.
+root __APP_DIR__/public;
+index index.php;
+charset utf-8;
+server_tokens off;
+client_max_body_size __BODY_MB__m;
+client_body_timeout 300s;
+
+gzip on;
+gzip_vary on;
+gzip_min_length 1024;
+gzip_types text/plain text/css application/javascript application/json image/svg+xml application/xml;
+
+include /etc/nginx/snippets/worldcup-universe-headers.conf;
+
+# Dotfiles (.env, .git, .htaccess, .user.ini) are never served, wherever they appear.
+location ~ /\. { return 404; }
+
+# Administrator uploads: plain static files with random names. Scripts and markup are refused outright, and the
+# sandboxing CSP stops a browser from treating any file here as an active page.
+location ^~ /uploads/ {
+    location ~* \.(php\d?|phtml|phar|pht|phps|cgi|pl|py|sh|html?|xhtml|svg|js|mjs)$ { return 403; }
+    include /etc/nginx/snippets/worldcup-universe-headers.conf;
+    add_header Content-Security-Policy "default-src 'none'; img-src 'self'; media-src 'self'; style-src 'unsafe-inline'; sandbox" always;
+    expires 30d;
+    access_log off;
+    try_files $uri =404;
+}
+
+# Local video shelf: Nginx serves the same files VideoController::actionStream would, with native Range support,
+# so seeking a large .mp4/.webm never ties up a PHP-FPM worker. Names follow LocalVideoLibrary::safeFile().
+location ~ "^/stream/([A-Za-z0-9][A-Za-z0-9._-]{0,120}\.(?:mp4|m4v|webm))$" {
+    alias __APP_DIR__/public/assets/media/videos/$1;
+    include /etc/nginx/snippets/worldcup-universe-headers.conf;
+    add_header Cache-Control "public, max-age=86400" always;
+    add_header Accept-Ranges bytes always;
+    access_log off;
+}
+
+# Static design assets. CSS/JS are versioned with ?v=<mtime> by the layouts; media and fonts rarely change.
+location ^~ /assets/ {
+    location ~* \.(php\d?|phtml|phar)$ { return 404; }
+    location ~* \.(?:css|js|mjs|json|map)$ { expires 1d; access_log off; try_files $uri =404; }
+    location ~* \.(?:png|jpe?g|webp|gif|svg|ico|avif|woff2?|ttf|otf|mp4|m4v|webm|mp3)$ { expires 30d; access_log off; try_files $uri =404; }
+    try_files $uri =404;
+}
+
+location = /favicon.ico { access_log off; log_not_found off; try_files $uri =204; }
+location = /robots.txt  { access_log off; log_not_found off; try_files $uri =204; }
+
+# Everything else is routed by Yii2's UrlManager through the front controller.
+location / { try_files $uri /index.php$is_args$args; }
+
+location = /index.php {
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+    fastcgi_param DOCUMENT_ROOT $document_root;
+    fastcgi_pass unix:/run/php/worldcup-universe-fpm.sock;
+    fastcgi_hide_header X-Powered-By;
+    fastcgi_read_timeout 300s;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
+}
+
+# No other PHP file under public/ may run.
+location ~ \.php$ { return 404; }

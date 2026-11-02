@@ -1,0 +1,12 @@
+# WorldCup Universe — HTTP-only site, used before a TLS certificate exists (rendered by scripts/deploy.sh).
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name __SERVER_NAME__;
+    set $wcu_hsts "";
+
+    # Let's Encrypt HTTP-01 challenges (certbot --webroot).
+    location ^~ /.well-known/acme-challenge/ { root /var/www/letsencrypt; default_type text/plain; }
+
+    include /etc/nginx/snippets/worldcup-universe-app.conf;
+}

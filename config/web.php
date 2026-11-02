@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 $runtime=dirname(__DIR__).'/storage/runtime';
 foreach ([$runtime,$runtime.'/sessions',$runtime.'/cache'] as $dir) { if (!is_dir($dir)) { mkdir($dir,0775,true); } }
+$production=env('APP_ENV','development')==='production';
+// Cookies carry the Secure flag when the site is served over HTTPS (APP_URL https:// in production, or forced).
+$secure=filter_var(env('SESSION_SECURE_COOKIE',$production && str_starts_with((string)env('APP_URL',''),'https://')?'1':'0'),FILTER_VALIDATE_BOOLEAN);
 $key=(string)env('YII_COOKIE_VALIDATION_KEY','');
 if (strlen($key)<32) {
+    // Production must use a fixed key from .env so sessions and remember-me cookies survive redeployments.
+    if ($production) { throw new RuntimeException('YII_COOKIE_VALIDATION_KEY (at least 32 characters) must be set in .env when APP_ENV=production.'); }
     $keyFile=$runtime.'/cookie-key';
     if (!is_file($keyFile)) { file_put_contents($keyFile,bin2hex(random_bytes(32)),LOCK_EX); }
     $key=trim((string)file_get_contents($keyFile));
@@ -16,10 +21,11 @@ return [
     'controllerNamespace'=>'app\\controllers','language'=>'zh-CN','timeZone'=>'Asia/Shanghai',
     'defaultRoute'=>'site/index','bootstrap'=>['log'],
     'components'=>[
-        'request'=>['cookieValidationKey'=>$key,'enableCsrfValidation'=>true,'parsers'=>['application/json'=>yii\web\JsonParser::class]],
+        'request'=>['cookieValidationKey'=>$key,'enableCsrfValidation'=>true,'csrfCookie'=>['httpOnly'=>true,'secure'=>$secure,'sameSite'=>'Lax'],'parsers'=>['application/json'=>yii\web\JsonParser::class]],
         'response'=>['charset'=>'UTF-8'],
-        'session'=>['name'=>'WCUSESSID','savePath'=>$runtime.'/sessions','cookieParams'=>['httponly'=>true,'samesite'=>'Lax']],
-        'user'=>['identityClass'=>app\models\User::class,'enableAutoLogin'=>true,'loginUrl'=>['auth/login'],'identityCookie'=>['name'=>'_wcu_identity','httpOnly'=>true,'sameSite'=>'Lax']],
+        // Ubuntu's PHP disables probabilistic session GC (it cleans only /var/lib/php/sessions by cron), so enable it for this save path.
+        'session'=>['name'=>'WCUSESSID','savePath'=>$runtime.'/sessions','GCProbability'=>1,'cookieParams'=>['httponly'=>true,'secure'=>$secure,'samesite'=>'Lax']],
+        'user'=>['identityClass'=>app\models\User::class,'enableAutoLogin'=>true,'loginUrl'=>['auth/login'],'identityCookie'=>['name'=>'_wcu_identity','httpOnly'=>true,'secure'=>$secure,'sameSite'=>'Lax']],
         'cache'=>['class'=>yii\caching\FileCache::class,'cachePath'=>$runtime.'/cache'],
         'db'=>require __DIR__.'/db.php',
         'errorHandler'=>['errorAction'=>'site/error'],

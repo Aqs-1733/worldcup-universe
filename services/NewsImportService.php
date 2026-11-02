@@ -8,7 +8,10 @@ final class NewsImportService
 {
     public function sync(int $perSource=24): array
     {
-        if(!Yii::$app->cache->add('news-import-running',1,150)) {return ['saved'=>0,'updated'=>0,'busy'=>true,'sources'=>[]];}
+        // An OS file lock (not a cache entry with a TTL) so a slow or crashed run can never let two imports overlap;
+        // the lock is shared by the systemd timer, the Windows worker and the admin refresh button.
+        $mutex=new \yii\mutex\FileMutex(['fileMode'=>0664]);
+        if(!$mutex->acquire('news-import')) {return ['saved'=>0,'updated'=>0,'busy'=>true,'sources'=>[]];}
         $result=['saved'=>0,'updated'=>0,'sources'=>[]];
         try {
             foreach(NewsSource::find()->where(['is_enabled'=>1])->all() as $source) {
@@ -36,7 +39,7 @@ final class NewsImportService
                 }
             }
             return $result;
-        } finally {Yii::$app->cache->delete('news-import-running');}
+        } finally {$mutex->release('news-import');}
     }
     public function parse(string $xml): array
     {
