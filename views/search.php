@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/search.php; legacy view template. */ ?>
 <section class="page-title reveal">
   <div><span class="kicker">SEARCH</span><h1>全站智能搜索</h1><p>搜索球队、球员、比赛、新闻和国家旅行信息；可勾选智能总结辅助理解结果。</p></div>
 </section>

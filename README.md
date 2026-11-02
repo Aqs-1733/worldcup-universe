@@ -4,7 +4,7 @@ Yii2 原生 MVC + MySQL 的世界杯课程项目。当前开发包含赛事/球�
 
 ## 快速启动
 
-需要 PHP 8.1+（pdo_mysql、mbstring、curl、SimpleXML、fileinfo）、Composer、MySQL 8.0+ 或兼容 MariaDB/InnoDB。
+需要 PHP 8.1+（pdo_mysql、mbstring、curl、SimpleXML、fileinfo）、Composer、MariaDB 10.4+（`data/install.sql` 在 VARCHAR(800/900) 上的唯一索引依赖 MariaDB 的长唯一键，MySQL 8 会报 1071 无法建表）。
 
 ```powershell
 Copy-Item .env.example .env
@@ -17,6 +17,10 @@ php -S 127.0.0.1:8080 -t public public/index.php
 Windows 可运行 `setup.ps1` 完成环境检查、依赖安装和建库迁移，再运行 `start_php.bat`。安装命令保持已有账号/密码和体育记录不变；全新空库才导入随仓库提供的公开体育快照。数据库账号需要建库、建表和迁移权限；生产环境完成部署后可使用权限更小的运行账号。
 
 前台：`http://127.0.0.1:8080`，管理台：`http://127.0.0.1:8080/admin`。管理员从本地 `.env` 初始化，没有写死在前端。
+
+**公网生产部署**（Oracle Cloud Ubuntu + Nginx + PHP-FPM + MariaDB，HTTPS、上传、新闻定时同步、备份恢复、回滚）：见 [docs/deployment-oracle-ubuntu.md](docs/deployment-oracle-ubuntu.md)，一键执行 `sudo bash scripts/deploy.sh --install-packages --domain <域名> --email <邮箱>`。
+
+后台“媒体资产、项目团队、球员、球队、新闻、课程交付”支持浏览器上传、预览与替换（`services/MediaUploadService.php`）；公开媒体保存在 `public/uploads/`，课程作业保存在 `data/<team|personal>/uploads/`，仅在记录“前台可见”时可下载。
 
 ## 原生架构
 
@@ -57,6 +61,7 @@ php tests/backend.php
 php tests/official.php
 php tests/news.php
 python tests/http_acceptance.py
+python tests/upload_acceptance.py
 python tests/chinese_ui.py
 python tests/flag_ui.py
 python tests/navigation_ui.py
@@ -64,7 +69,7 @@ node --test tests/globe-data.test.mjs
 php yii app/audit
 ```
 
-数据库测试会回滚写入；HTTP 测试会生成带 `qa_` 标记的临时账号。**使用专用测试数据库**，并按输出的精确前缀清理：`php tests/cleanup.php qa_XXXXXXXX`。测试服务器默认 `http://127.0.0.1:8088`，可用 `WCU_TEST_URL` 环境变量设置。
+数据库测试会回滚写入；HTTP 测试会生成带 `qa_` 标记的临时账号。**使用专用测试数据库**，并按输出的精确前缀清理：`php tests/cleanup.php qa_XXXXXXXX`。测试服务器默认 `http://127.0.0.1:8088`，可用 `WCU_TEST_URL` 环境变量设置。`tests/upload_acceptance.py` 默认 `http://127.0.0.1:8098`，需要 `ADMIN_PASSWORD` 环境变量，并在项目根目录运行（会检查并清理自己上传的文件）。
 
 ## 设计与交付
 

@@ -2,7 +2,7 @@
 
 ## 环境与全新安装
 
-PHP 8.1+，扩展 pdo_mysql、mbstring、curl、SimpleXML、fileinfo；Composer；MySQL 8+ 或兼容 MariaDB/InnoDB。Python 的 pdfplumber 用于重新采集 FIFA PDF，网站运行本身不依赖 Python。
+PHP 8.1+，扩展 pdo_mysql、mbstring、curl、SimpleXML、fileinfo；Composer；MariaDB 10.4+（长唯一索引；MySQL 8 无法创建 install.sql 中的部分唯一键）。Linux 公网部署见 [deployment-oracle-ubuntu.md](deployment-oracle-ubuntu.md)。Python 的 pdfplumber 用于重新采集 FIFA PDF，网站运行本身不依赖 Python。
 
 ```powershell
 Copy-Item .env.example .env
@@ -42,7 +42,7 @@ powershell -File scripts/start_news_worker.ps1
 php yii video/seed
 ```
 
-新闻源固定 HTTPS 主机白名单、响应上限、超时、短摘要和原始来源；worker 每 300 秒轮询，可在本机进程日志查看同步结果。Linux 可由进程管理器运行 `php yii news/watch 300`。页面每分钟检查状态，有新增时给出刷新入口，不宣称瞬时推送。英文来源保留原标题，不伪造中文译文。
+新闻源固定 HTTPS 主机白名单、响应上限、超时、短摘要和原始来源；worker 每 300 秒轮询，可在本机进程日志查看同步结果。Linux 生产环境使用 systemd 定时器 `wcu-news-sync.timer`（每 10 分钟 `php yii news/sync`，flock + 文件锁防重复，见 deployment-oracle-ubuntu.md）。页面每分钟检查状态，有新增时给出刷新入口，不宣称瞬时推送。英文来源保留原标题，不伪造中文译文。
 
 视频仅 2026 年；发布时校验官方元数据。RTVE 的完整决赛需要官方账户和 DRM，嵌入的是公开播放器文档，不保存、代理或拆解受保护媒体流。现有证据证明元数据和 iframe 接入，未证明登录后流播放成功。
 

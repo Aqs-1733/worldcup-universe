@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/vision.php; legacy view template. */ ?>
 <section class="page-title reveal">
   <div><span class="kicker">VISION</span><h1>视觉分析</h1></div>
 </section>

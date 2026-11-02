@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/commentary.php; legacy view template. */ ?>
 <section class="page-title reveal">
   <div><span class="kicker">COMMENTARY</span><h1>智能解说</h1></div>
   <div class="tag-row"><span>文本：<?= $textReady ? '已配置' : '未配置' ?></span><span>生图：<?= $imageReady ? '已配置' : '未配置' ?></span></div>

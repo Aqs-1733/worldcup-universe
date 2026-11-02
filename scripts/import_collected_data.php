@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: scripts/import_collected_data.php; course project source. */
 
 declare(strict_types=1);
 

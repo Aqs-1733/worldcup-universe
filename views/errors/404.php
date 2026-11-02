@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/errors/404.php; legacy view template. */ ?>
 <section class="empty-state">
   <div class="kicker">404</div>
   <h1>页面不存在</h1>

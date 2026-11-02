@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/fan_space.php; legacy view template. */ ?>
 <section class="page-title reveal">
   <div><span class="kicker">FAN SPACE</span><h1>球迷空间</h1></div>
 </section>

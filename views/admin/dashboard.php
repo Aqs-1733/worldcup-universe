@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/admin/dashboard.php; legacy view template. */ ?>
 <section class="page-title reveal">
   <div><span class="kicker">ADMIN</span><h1>后台管理</h1></div>
 </section>

@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/errors/runtime.php; legacy view template. */ ?>
 <section class="empty-state">
   <div class="kicker">SETUP</div>
   <h1>运行环境未就绪</h1>

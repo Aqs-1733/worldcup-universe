@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/match.php; legacy view template. */ ?>
 <section class="page-title match-title reveal">
   <div>
     <span class="kicker"><?= e($match['stage']) ?><?= $match['group_name'] ? ' · ' . e($match['group_name']) . '组' : '' ?></span>

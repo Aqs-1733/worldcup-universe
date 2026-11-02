@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/players.php; legacy view template. */ ?>
 <section class="page-title reveal">
   <div><span class="kicker">PLAYERS</span><h1>球员</h1></div>
   <form class="search-box" method="get">

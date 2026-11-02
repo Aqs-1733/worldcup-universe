@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/worldcup.php; legacy view template. */ ?>
 <section class="page-title reveal">
   <div><span class="kicker">WORLD CUP</span><h1>赛程、分组与淘汰赛树</h1><p>小组赛按组折叠展示；淘汰赛用 VS 树状图展示，决赛居中，每场比赛都可点进详情。</p></div>
   <a class="ghost-button" href="<?= e(url('/news')) ?>">查看新闻</a>

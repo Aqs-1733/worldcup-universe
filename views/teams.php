@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/teams.php; legacy view template. */ ?>
 <section class="page-title reveal">
   <div><span class="kicker">TEAMS</span><h1>球队</h1></div>
   <form class="search-box" method="get">

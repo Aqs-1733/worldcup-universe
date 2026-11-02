@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/onboarding.php; legacy view template. */ ?>
 <section class="setup-panel reveal">
   <form method="post">
     <?= csrf_field() ?>

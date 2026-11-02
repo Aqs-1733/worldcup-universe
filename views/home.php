@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/home.php; legacy view template. */ ?>
 <section class="hero-grid reveal">
   <div class="hero-panel">
     <div class="kicker">WORLD CUP 2026</div>

@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/news.php; legacy view template. */ ?>
 <section class="page-title reveal">
   <div><span class="kicker">NEWS</span><h1>新闻</h1></div>
   <form method="post" action="<?= e(url('/news/refresh')) ?>">

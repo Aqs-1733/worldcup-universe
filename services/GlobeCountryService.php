@@ -1,4 +1,5 @@
 <?php
+/** WorldCup Universe: services/GlobeCountryService.php; course project source. */
 declare(strict_types=1);
 namespace app\services;
 use app\models\{CountryProfile,Team,Player,MatchGame};

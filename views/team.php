@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/team.php; legacy view template. */ ?>
 <section class="detail-hero reveal">
   <div class="flag-hero"><?= flag_html($team['flag_url'] ?? null, $team['flag_emoji'] ?? null, $team['name_cn'] ?: $team['name_original']) ?></div>
   <div>

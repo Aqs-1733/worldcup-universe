@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/admin/table.php; legacy view template. */ ?>
 <section class="page-title reveal">
   <div><span class="kicker">ADMIN</span><h1><?= e($label) ?>管理</h1></div>
   <a class="ghost-button" href="<?= e(url('/admin')) ?>">返回后台</a>

@@ -1,3 +1,4 @@
+<?php /** WorldCup Universe: views/news_show.php; legacy view template. */ ?>
 <article class="article-detail reveal">
   <a class="mini-link" href="<?= e(url('/news')) ?>">返回新闻</a>
   <div class="source-badge"><?= e($article['source_name']) ?></div>
