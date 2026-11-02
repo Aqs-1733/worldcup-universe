@@ -34,7 +34,9 @@ final class SiteController extends BaseController
     {
         $file=CourseworkFile::findOne(['id'=>$id,'is_visible'=>1]);
         if (!$file || !($path=$file->resolvedPath())) { throw new \yii\web\NotFoundHttpException('文件尚未发布。'); }
-        return Yii::$app->response->sendFile($path,basename($path),['inline'=>false]);
+        // Uploaded copies carry a random name on disk; give the visitor the registered title instead.
+        $name=preg_match('/^[a-f0-9]{32}\./',basename($path))?trim(preg_replace('/[\x00-\x1f\\\\\/:*?"<>|]+/u','_',$file->title)).'.'.pathinfo($path,PATHINFO_EXTENSION):basename($path);
+        return Yii::$app->response->sendFile($path,$name,['inline'=>false]);
     }
     public function actionComment()
     {

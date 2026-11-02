@@ -6,12 +6,12 @@ use app\models\CourseworkFile;
 final class CourseworkLibrary
 {
     public const SCOPES=['team'=>'团队作业','personal'=>'个人作业'];
-    private const EXT=['pdf','doc','docx','ppt','pptx','zip','rar','7z','md','txt','mp4','xlsx'];
+    public const EXT=['pdf','doc','docx','ppt','pptx','zip','rar','7z','md','txt','mp4','xlsx'];
 
     /** @return array<string,list<array{title:string,url:string,ext:string,size:int,updated:int}>> */
     public function grouped(): array
     {
-        $out=array_fill_keys(array_keys(self::SCOPES),[]);$seen=[];
+        $out=array_fill_keys(array_keys(self::SCOPES),[]);$seen=self::hidden();
         foreach(CourseworkFile::find()->where(['is_visible'=>1])->orderBy(['id'=>SORT_ASC])->all() as $file){
             $path=$file->resolvedPath();if(!$path||!self::allowed(basename($path)))continue;
             $seen[str_replace('\\','/',$path)]=true;
@@ -36,7 +36,16 @@ final class CourseworkLibrary
     {
         if(!isset(self::SCOPES[$scope])||!self::allowed($name))return null;
         $base=realpath(ROOT_PATH.'/data/'.$scope);$path=realpath(ROOT_PATH.'/data/'.$scope.'/'.$name);
-        return $base&&$path&&is_file($path)&&str_starts_with(str_replace('\\','/',$path),str_replace('\\','/',$base).'/')?$path:null;
+        if(!$base||!$path||!is_file($path)||!str_starts_with(str_replace('\\','/',$path),str_replace('\\','/',$base).'/'))return null;
+        // A file the administrator registered and then hid stays private even though it sits in the folder.
+        return isset(self::hidden()[str_replace('\\','/',$path)])?null:$path;
+    }
+    /** Real paths of registered coursework files whose record is not visible. */
+    private static function hidden(): array
+    {
+        $out=[];
+        foreach(CourseworkFile::find()->where(['is_visible'=>0])->all() as $file){if($path=$file->resolvedPath())$out[str_replace('\\','/',$path)]=true;}
+        return $out;
     }
     private function item(string $title,string $url,string $path): array
     {
