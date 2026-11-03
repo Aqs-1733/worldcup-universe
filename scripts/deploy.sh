@@ -239,5 +239,10 @@ env_code="$(curl -k -s -o /dev/null -w '%{http_code}' --resolve "$HOST_NAME:443:
 echo "GET /      -> $code (expect 200)"
 echo "GET /.env  -> $env_code (expect 404)"
 [[ "$code" == "200" && "$env_code" == "404" ]] || die "smoke test failed; see storage/logs and /var/log/nginx/error.log."
-[[ $FIRST_INSTALL -eq 1 ]] && echo "Administrator '$(env_get ADMIN_USERNAME)' created; its first password is ADMIN_PASSWORD in $ENV_FILE."
+[[ $FIRST_INSTALL -eq 1 ]] && echo "Administrator '$(env_get ADMIN_USERNAME)' created; its first password is ADMIN_PASSWORD in $ENV_FILE (use it only over HTTPS or an SSH tunnel)."
 echo "Deployed $SCHEME://$HOST_NAME/"
+if [[ "$SCHEME" == http ]]; then
+  echo "NOTE: HTTPS is not configured yet. Logins and registrations from the network are refused until it is" >&2
+  echo "      (re-run with --domain and --email). Until then sign in only through an SSH tunnel:" >&2
+  echo "      ssh -L 8080:127.0.0.1:80 <server>  and open http://127.0.0.1:8080/login" >&2
+fi
