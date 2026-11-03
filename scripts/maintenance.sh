@@ -13,9 +13,11 @@ TIMERS=(wcu-news-sync.timer wcu-backup.timer)
 DRAIN_SECONDS="${DRAIN_SECONDS:-60}"            # wait for in-flight PHP requests
 UNIT_WAIT_SECONDS="${UNIT_WAIT_SECONDS:-900}"   # wait for a running news sync or backup
 
-busy() { # PHP requests still running = connections Nginx holds open on the pool socket
-  command -v ss >/dev/null || { echo 0; return; }
-  ss -xH state connected 2>/dev/null | grep -c "$SOCK" || true
+busy() { # PHP requests not finished = connections a worker accepted + connections still queued on the listen socket
+  local accepted queued
+  accepted="$(ss -xH state connected 2>/dev/null | grep -c "$SOCK" || true)"
+  queued="$(ss -xlH 2>/dev/null | awk -v s="$SOCK" '$5==s {q+=$3} END {print q+0}')"
+  echo $(( accepted + queued ))
 }
 
 case "${1:-status}" in
