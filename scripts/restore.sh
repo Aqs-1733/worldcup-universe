@@ -36,7 +36,7 @@ DB_DATABASE="$(env_get DB_DATABASE)"; DB_USERNAME="$(env_get DB_USERNAME)"; DB_P
 
 echo "Target application: $APP_DIR"
 [[ -n "$DB_FILE" ]] && echo "  database  $DB_DATABASE@$DB_HOST:$DB_PORT  <=  $DB_FILE"
-[[ -n "$FILES_FILE" ]] && echo "  files     uploads, data/team, data/personal, videos  <=  $FILES_FILE"
+[[ -n "$FILES_FILE" ]] && echo "  files     uploads, data/team, data/personal, storage/uploads, videos  <=  $FILES_FILE"
 if [[ $CONFIRM -ne 1 ]]; then echo "Dry run only. Re-run with --yes to overwrite the data above." >&2; exit 3; fi
 
 [[ -z "$DB_FILE" || -r "$DB_FILE" ]] || { echo "ERROR: cannot read $DB_FILE" >&2; exit 1; }
@@ -63,13 +63,13 @@ if [[ -n "$DB_FILE" ]]; then
 fi
 
 if [[ -n "$FILES_FILE" ]]; then
-  members=(public/uploads data/team data/personal public/assets/media/videos)
+  members=(public/uploads data/team data/personal storage/uploads public/assets/media/videos)
   [[ $KEEP_ENV -eq 1 ]] || members+=(.env)
   present=()
   for m in "${members[@]}"; do tar -tzf "$FILES_FILE" "$m" > /dev/null 2>&1 && present+=("$m"); done
   # GNU tar refuses absolute and ../ member names, so extraction cannot leave APP_DIR.
   tar -xzf "$FILES_FILE" -C "$APP_DIR" --no-same-owner "${present[@]}"
-  for d in public/uploads data/team data/personal; do
+  for d in public/uploads data/team data/personal storage/uploads public/assets/media/videos; do
     [[ -d "$APP_DIR/$d" ]] && chgrp -R www-data "$APP_DIR/$d" && find "$APP_DIR/$d" -type d -exec chmod 2775 {} + && find "$APP_DIR/$d" -type f -exec chmod 664 {} +
   done
   [[ -f "$APP_DIR/.env" ]] && chgrp www-data "$APP_DIR/.env" && chmod 640 "$APP_DIR/.env"

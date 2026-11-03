@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # WorldCup Universe: consistent backup of the MySQL database and every file the website writes.
 #   db-<timestamp>.sql.gz     mysqldump --single-transaction of DB_DATABASE (no DROP DATABASE; restores into any name)
-#   files-<timestamp>.tar.gz  public/uploads, data/team, data/personal, public/assets/media/videos, .env
+#   files-<timestamp>.tar.gz  public/uploads, data/team, data/personal, storage/uploads (private AI uploads),
+#                             public/assets/media/videos, .env
 # Usage: sudo bash scripts/backup.sh            (BACKUP_DIR, BACKUP_KEEP_DAYS and APP_DIR may be overridden)
 # Credentials are read from .env and handed to mysqldump through a 0600 temp file, never on the command line.
 set -euo pipefail
@@ -40,7 +41,7 @@ mysqldump --defaults-extra-file="$CNF" --single-transaction --quick --routines -
 gzip -t "$DB_OUT.part" && mv "$DB_OUT.part" "$DB_OUT"
 
 paths=()
-for p in public/uploads data/team data/personal public/assets/media/videos .env; do [[ -e "$APP_DIR/$p" ]] && paths+=("$p"); done
+for p in public/uploads data/team data/personal storage/uploads public/assets/media/videos .env; do [[ -e "$APP_DIR/$p" ]] && paths+=("$p"); done
 tar -czf "$FILES_OUT.part" -C "$APP_DIR" "${paths[@]}"
 mv "$FILES_OUT.part" "$FILES_OUT"
 
