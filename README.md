@@ -65,11 +65,14 @@ python tests/upload_acceptance.py
 python tests/chinese_ui.py
 python tests/flag_ui.py
 python tests/navigation_ui.py
+python tests/redesign_ui.py
+python tests/team_photo_ui.py
+python tests/topic_replies.py
 node --test tests/globe-data.test.mjs
 php yii app/audit
 ```
 
-数据库测试会回滚写入；HTTP 测试会生成带 `qa_` 标记的临时账号。**使用专用测试数据库**，并按输出的精确前缀清理：`php tests/cleanup.php qa_XXXXXXXX`。测试服务器默认 `http://127.0.0.1:8088`，可用 `WCU_TEST_URL` 环境变量设置。`tests/upload_acceptance.py` 默认 `http://127.0.0.1:8098`，需要 `ADMIN_PASSWORD` 环境变量，并在项目根目录运行（会检查并清理自己上传的文件）。
+数据库测试会回滚写入；HTTP 测试会生成带 `qa_` 标记的临时账号。**使用专用测试数据库**，并按输出的精确前缀清理：`php tests/cleanup.php qa_XXXXXXXX`。测试服务器默认 `http://127.0.0.1:8088`，可用 `WCU_TEST_URL` 环境变量设置（`*_ui.py` 固定使用 8088）。`redesign_ui.py` 与 `topic_replies.py` 需要带【示例】标记的论坛示例帖，先在测试库执行一次 `php yii design/forum`；`topic_replies.py` 优先读取 `ADMIN_USERNAME`/`ADMIN_PASSWORD` 环境变量。`tests/upload_acceptance.py` 默认 `http://127.0.0.1:8098`，需要 `ADMIN_PASSWORD` 环境变量，并在项目根目录运行（会检查并清理自己上传的文件）。
 
 ## 设计与交付
 

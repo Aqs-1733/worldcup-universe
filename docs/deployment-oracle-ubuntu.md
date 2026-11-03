@@ -35,7 +35,8 @@ MariaDB 10.7 起 `ROW_NUMBER` 是保留字，原 `source_records.row_number` 列
    echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
    ```
 2. 网络：在 VCN 的 Security List（或 NSG）添加入站规则 TCP 80、443（来源 0.0.0.0/0）。Oracle 的 Ubuntu 镜像自带 iptables 规则会拒绝 80/443，`deploy.sh --open-firewall` 会插入放行规则并用 `netfilter-persistent` 保存。
-3. 域名：把 A 记录指向实例公网 IP。Let's Encrypt 不给纯 IP 签证书。没有域名时，可先用 `http://<公网IP>` 冒烟测试（此时 Cookie 不带 Secure），或使用指向该 IP 的免费动态域名。
+3. 域名：把 A 记录指向实例公网 IP。Let's Encrypt 不给纯 IP 签证书。没有域名时，可先用 `http://<公网IP>` 浏览页面做冒烟测试，或使用指向该 IP 的免费动态域名。
+   **HTTPS 生效前不要在公网用真实管理员密码登录**：生产环境（`APP_ENV=production`）对非本机的 HTTP 请求直接拒绝登录和注册（返回 403，表单禁用并提示改用 https://）。确需提前进入后台时，用 SSH 隧道从本机访问：`ssh -L 8080:127.0.0.1:80 ubuntu@<公网IP>`，再打开 `http://127.0.0.1:8080/login`（请求来自服务器本机，密码只经过加密的 SSH 通道）。`.env` 的 `ALLOW_INSECURE_LOGIN=1` 可解除限制，仅用于明知风险的纯 HTTP 演示，公网服务器保持为空。
 
 ## 4. 一键部署（首次）
 
@@ -58,7 +59,7 @@ sudo bash scripts/deploy.sh --install-packages --open-firewall \
 6. 以 `www-data` 运行 `php yii app/install`（建表、迁移、空库才导入体育种子、管理员只创建一次）和 `migrate/up`；全新库额外运行 `release/metadata` 写入团队成员与场馆中文名（之后不再运行，以免覆盖后台修改）；清缓存；`php yii media/check` 检查扩展和目录；
 7. 生成 PHP-FPM 独立池（上传上限取 `.env` 中最大值，`disable_functions` 禁止执行外部程序）、Nginx 站点、HTTPS 证书（webroot 方式，续期后自动 reload）；
 8. 安装并启用 `wcu-news-sync.timer`、`wcu-backup.timer`；
-9. 冒烟测试：`/` 必须 200，`/.env` 必须 404，否则脚本以失败退出。
+9. 冒烟测试：`/` 必须 200，`/.env` 必须 404，否则脚本以失败退出；尚无证书时提示“HTTPS 未配置、公网登录被拒绝”及 SSH 隧道用法。
 
 管理员账号：`.env` 中 `ADMIN_USERNAME`（默认 admin），初始密码：`sudo grep ADMIN_PASSWORD /var/www/worldcup-universe/.env`。账号建好后，再改 `.env` 不会修改已存密码哈希。
 
@@ -102,6 +103,8 @@ sudo -u www-data php yii media/prune            # 只列出无记录引用、超
 sudo -u www-data php yii media/prune --apply    # 确认后删除
 ```
 
+安全边界：只处理 `/uploads/年/月/32位十六进制名` 与 `data/<team|personal>/uploads/32位十六进制名`，其他文件（手工放入的、内置素材、`storage/uploads` 的 AI 私有上传）从不删除；1 小时内的新文件跳过；连接的库缺少上传相关表、或 `media_assets`/`players` 为空（连错库、空库、恢复未完成）时拒绝执行；维护模式（恢复进行中）拒绝 `--apply`。仍需注意：若连接的是另一份**有数据的旧库**，之后上传的文件会被判为孤立，所以请先看一遍不带 `--apply` 的列表；删除前的文件都在每日备份中。
+
 上传文件不在 Git 中，`git pull` 和重新部署都不会动它们，并由每日备份覆盖。
 
 ## 7. 新闻同步（systemd）
@@ -138,9 +141,18 @@ sudo bash scripts/restore.sh --db /var/backups/worldcup-universe/db-20261103-033
 sudo bash scripts/restore.sh --db ... --files ... --yes                              # 真正执行
 ```
 
-恢复脚本：没有 `--yes` 只做演练；执行前先把当前状态备份到 `pre-restore/`；暂停新闻定时器；导入数据库与文件并修正权限；最后执行 `migrate/up` 和清缓存（恢复旧备份后自动补齐新迁移）。`--keep-env` 保留当前 `.env`（换服务器、换数据库密码时使用）。
+恢复脚本：没有 `--yes` 只做演练。执行时按顺序：
 
-迁移到新服务器：新机执行第 4 节部署 → 把备份复制到新机 → `restore.sh --db … --files … --keep-env --yes`。若需要沿用旧会话，再把旧 `.env` 中的 `YII_COOKIE_VALIDATION_KEY` 写入新 `.env`。
+1. **停写**：`scripts/maintenance.sh on` 让 Nginx 对所有进入 PHP 的请求返回 503 维护页（静态资源照常），停止新闻与备份定时器并等待正在运行的同步结束，等待进行中的请求完成，然后停止 PHP-FPM，确保没有任何请求能写数据库或上传目录；
+2. 在停写状态下把当前数据备份到 `pre-restore/`（数据库与文件是同一时刻的）；
+3. 导入数据库与文件并修正权限，执行 `migrate/up` 和清缓存（恢复旧备份后自动补齐新迁移）；
+4. 启动 PHP-FPM、关闭维护模式、恢复定时器。
+
+任何一步失败时网站**保持维护状态**、定时器保持停止，避免对外提供数据库与文件不一致的数据；排除原因后重新执行恢复，或恢复 `pre-restore/` 中的安全备份，再 `sudo bash scripts/maintenance.sh off`。
+
+默认**保留当前 `.env`**（数据库凭据、Cookie 密钥不被备份覆盖，适合跨服务器恢复）；确需还原备份里的 `.env` 时加 `--with-env`。手动维护：`sudo bash scripts/maintenance.sh on|off|status`。
+
+迁移到新服务器：新机执行第 4 节部署 → 把备份复制到新机 → `restore.sh --db … --files … --yes`（默认保留新机 `.env`）。若需要沿用旧会话，再把旧 `.env` 中的 `YII_COOKIE_VALIDATION_KEY` 写入新 `.env`。
 
 ## 9. 日常更新与回滚
 
