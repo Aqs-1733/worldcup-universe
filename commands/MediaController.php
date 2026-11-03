@@ -31,7 +31,12 @@ final class MediaController extends Controller
      */
     public function actionPrune(): int
     {
-        $referenced=[]; $db=Yii::$app->db;
+        $referenced=[]; $db=Yii::$app->db; $db->schema->refresh();
+        // A wrong DB_DATABASE (or a half-restored one) would make every file look unused: refuse instead of guessing.
+        foreach(['media_assets','coursework_files','players','team_members'] as $required) {
+            if($db->schema->getTableSchema($required)===null) { $this->stderr("Table $required not found in {$db->dsn}; nothing done.\n"); return 1; }
+        }
+        if($this->apply && is_file(ROOT_PATH.'/storage/runtime/maintenance.flag')) { $this->stderr("Maintenance mode is on (restore in progress); nothing deleted.\n"); return 1; }
         foreach($db->schema->getTableSchemas() as $table) {
             if(in_array($table->name,['audit_logs','migration'],true)) { continue; }
             foreach($table->columns as $column) {
@@ -46,14 +51,21 @@ final class MediaController extends Controller
         $public=MediaUploadService::publicDir();
         if(is_dir($public)) { foreach(new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($public,\FilesystemIterator::SKIP_DOTS)) as $file) { $candidates[]=MediaUploadService::PUBLIC_URL.'/'.ltrim(str_replace('\\','/',substr($file->getPathname(),strlen($public))),'/'); } }
         foreach(['team','personal'] as $scope) { foreach(glob(ROOT_PATH.'/data/'.$scope.'/'.MediaUploadService::COURSEWORK_DIR.'/*')?:[] as $path) { $candidates[]='data/'.$scope.'/'.MediaUploadService::COURSEWORK_DIR.'/'.basename($path); } }
-        $orphans=0;
+        $orphans=[]; $managed=0;
         foreach($candidates as $value) {
             $path=MediaUploadService::managedPath($value);
-            if(!$path || isset($referenced[$value]) || filemtime($path)>time()-3600) { continue; }
-            $orphans++; $this->stdout(($this->apply?'DELETE ':'ORPHAN ').$value."\n");
+            if(!$path) { continue; } $managed++;
+            if(isset($referenced[$value]) || filemtime($path)>time()-3600) { continue; }
+            $orphans[$value]=$path;
+        }
+        if($this->apply && !$referenced && $managed>1 && count($orphans)===$managed) {
+            $this->stderr("All $managed upload files look unused and no record references any upload; this usually means the wrong or an empty database. Nothing deleted.\n"); return 1;
+        }
+        foreach($orphans as $value=>$path) {
+            $this->stdout(($this->apply?'DELETE ':'ORPHAN ').$value."\n");
             if($this->apply) { unlink($path); }
         }
-        $this->stdout(sprintf("%d referenced, %d orphaned%s.\n",count($referenced),$orphans,$this->apply||!$orphans?'':' (dry run; add --apply to delete)'));
+        $this->stdout(sprintf("%d referenced, %d orphaned%s.\n",count($referenced),count($orphans),$this->apply||!$orphans?'':' (dry run; add --apply to delete)'));
         return 0;
     }
 }
