@@ -20,7 +20,7 @@ final class m261103_000001_home_media_slots extends Migration
 
     public function safeDown()
     {
-        // Only rows still pointing at the built-in file are ours to remove; an administrator's replacement is kept.
-        foreach (self::SLOTS as $key=>[$path]) { $this->delete('{{%media_assets}}',['asset_key'=>$key,'path'=>$path]); }
+        // Only rows exactly as inserted are ours to remove; any administrator edit (file, caption, status) is kept.
+        foreach (self::SLOTS as $key=>[$path,$alt,$source,$license,$credit]) { $this->delete('{{%media_assets}}',['asset_key'=>$key,'path'=>$path,'alt_text'=>$alt,'source_url'=>$source,'license_name'=>$license,'credit'=>$credit,'status'=>'approved']); }
     }
 }
