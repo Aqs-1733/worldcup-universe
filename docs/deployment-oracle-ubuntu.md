@@ -23,11 +23,13 @@ systemd 定时器：wcu-news-sync.timer（每 10 分钟 php yii news/sync） · 
 
 ## 2. 数据库选择：必须 MariaDB 10.4+
 
-`data/install.sql` 在 `news_sources.rss_url`（VARCHAR 800）、`news_articles.source_url`、`source_files.source_path`（VARCHAR 900）上声明了 UNIQUE。utf8mb4 下超过 3072 字节，**MySQL 8 会报错 1071 无法建表**；MariaDB 10.4+ 用哈希实现长唯一键，正常安装（本次在 MariaDB 10.4.32 全新安装通过，在 MySQL 8.0.19 上复现了 1071 失败）。Ubuntu 22.04 自带 MariaDB 10.6，24.04 自带 10.11，`deploy.sh` 安装 `mariadb-server` 并在检测到 MySQL 时停止。为避免改动已有表结构，本次没有改动这些索引。
+`data/install.sql` 在 `news_sources.rss_url`（VARCHAR 800）、`news_articles.source_url`、`source_files.source_path`（VARCHAR 900）上声明了 UNIQUE。utf8mb4 下超过 3072 字节，**MySQL 8 会报错 1071 无法建表**；MariaDB 10.4+ 用哈希实现长唯一键，正常安装（本次在 MariaDB 10.4.32 全新安装通过，在 MySQL 8.0.19 上复现了 1071 失败）。Ubuntu 22.04 自带 MariaDB 10.6，24.04 自带 10.11，`deploy.sh` 安装 `mariadb-server`，检测到 MySQL 或低于 10.4 的 MariaDB 时停止。为避免改动已有表结构，本次没有改动这些索引。
+
+MariaDB 10.7 起 `ROW_NUMBER` 是保留字，原 `source_records.row_number` 列在 10.11 上全新安装会报 1064；已在 `install.sql` 中给该列名加反引号（对已有数据库无影响）。
 
 ## 3. Oracle Cloud 准备
 
-1. 创建实例：Ubuntu 22.04 或 24.04。Always Free 可选 VM.Standard.E2.1.Micro（1 GB 内存）或 Ampere A1（ARM，最多 4 核 24 GB）。1 GB 机型建议加 2 GB swap：
+1. 创建实例：推荐 **Ubuntu 24.04**（PHP 8.3 + MariaDB 10.11 + Nginx 1.24，已在该组合上实测全流程）；22.04 也可用。Always Free 可选 VM.Standard.E2.1.Micro（1 GB 内存）或 Ampere A1（ARM64，最多 4 核 24 GB；所用 apt 包与 Composer 依赖均无架构相关二进制，但未在 ARM64 上实测）。1 GB 机型建议加 2 GB swap：
    ```bash
    sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile
    echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
@@ -89,11 +91,11 @@ sudo bash scripts/deploy.sh --install-packages --open-firewall \
 | 新闻 | 封面（raw_payload_json.image） | 图片 | 新闻列表与详情；RSS 再同步会保留后台上传的封面 |
 | 课程交付 | storage_path | pdf/doc/docx/ppt/pptx/xlsx/zip/rar/7z/md/txt/mp4 ≤100 MB | `/team#downloads`，下载文件名为登记标题 |
 
-上传校验（`services/MediaUploadService.php`）：必须管理员 + CSRF；扩展名白名单；`finfo` 识别的 MIME 必须与扩展名一致；图片再用 `getimagesize` 校验并拒绝超过 4000 万像素或内含 `<?php`、`<script` 的文件；拒绝 SVG/HTML/JS 和任何位置出现 `.php` 等可执行扩展的文件名；保存为 32 位随机十六进制名，目录由程序决定，用户输入不参与路径；保存失败或表单校验失败会删除已存文件。大小上限由 `.env` 的 `UPLOAD_MAX_*_MB` 控制，Nginx `client_max_body_size` 与 PHP-FPM `post_max_size` 由部署脚本同步。
+上传校验（`services/MediaUploadService.php`）：必须管理员 + CSRF；扩展名白名单；`finfo` 识别的 MIME 必须与扩展名一致；图片再用 `getimagesize` 校验并拒绝超过 4000 万像素或内含 `<?php`、`<script` 的文件；拒绝 SVG/HTML/JS 和任何位置出现 `.php` 等可执行扩展的文件名；保存为 32 位随机十六进制名，目录由程序决定，用户输入不参与路径；保存失败或表单校验失败会删除已存文件。大小上限由 `.env` 的 `UPLOAD_MAX_*_MB` 控制，PHP-FPM `upload_max_filesize`/`post_max_size` 与 Nginx 中 `/admin/` 的 `client_max_body_size` 由部署脚本按最大值同步；其他路由（论坛、个人中心、AI 识图 ≤5 MB）固定 16 MB，匿名请求无法上传大体积数据。
 
 访问边界：`/uploads/` 是公开媒体，只放网页需要展示的文件；课程作业保存在 Web 根外，未勾选“前台可见”时访客无法下载（包括直接放进 `data/team` 的同名文件），管理员可在后台用“下载当前文件”查看。
 
-替换文件后旧文件不会立即删除（便于回滚）。清理孤立文件：
+替换文件后旧文件不会立即删除（便于回滚）。清理孤立文件（扫描所有表的文本字段，管理员粘贴到正文或其他字段的上传路径同样视为引用；`audit_logs` 除外；只处理程序生成的随机文件名）：
 
 ```bash
 sudo -u www-data php yii media/prune            # 只列出无记录引用、超过 1 小时的文件
@@ -121,7 +123,9 @@ Windows 本地开发仍可用原来的 `start_php.bat` / `scripts/start_news_wor
 每天 03:30 自动执行 `scripts/backup.sh`，保留 14 天：
 
 - `db-时间戳.sql.gz`：`mysqldump --single-transaction`（不锁表，含触发器/例程）；
-- `files-时间戳.tar.gz`：`public/uploads`、`data/team`、`data/personal`、`public/assets/media/videos`、`.env`。
+- `files-时间戳.tar.gz`：`public/uploads`（后台公开媒体）、`data/team`、`data/personal`（课程文件）、`storage/uploads`（AI 识图私有上传）、`public/assets/media/videos`（本地视频）、`.env`。
+
+备份目录权限 700、归档 600（含 `.env` 中的密钥，复制到机器外时请加密保存）。
 
 手动备份：`sudo bash scripts/backup.sh`（可设 `BACKUP_DIR`、`BACKUP_KEEP_DAYS`）。数据库密码通过 0600 临时配置文件传给 mysqldump，不出现在命令行或进程列表。
 
@@ -150,7 +154,7 @@ sudo bash scripts/deploy.sh          # 自动先备份，再装依赖、迁移�
 
 回滚代码（数据不变）：`git checkout <上一个提交或标签>` 后再运行 `sudo bash scripts/deploy.sh --skip-backup`。
 
-本次唯一的新迁移 `m261103_000001_home_media_slots` 只新增两条 `media_assets` 记录；回退它：`sudo -u www-data php yii migrate/down 1 --interactive=0`。回退只删除仍指向内置文件的记录，管理员替换过的不会被删除。
+本次唯一的新迁移 `m261103_000001_home_media_slots` 只新增两条 `media_assets` 记录；回退它：`sudo -u www-data php yii migrate/down 1 --interactive=0`。回退只删除与插入时完全一致的记录，管理员改过文件、说明或状态的记录会保留。
 
 回滚数据：使用 `pre-deploy/` 或每日备份，按第 8 节 `restore.sh` 恢复。
 
@@ -160,6 +164,12 @@ sudo bash scripts/deploy.sh          # 自动先备份，再装依赖、迁移�
 
 - 在 Oracle 控制台开放 80/443；配置域名 A 记录；
 - 首次登录后台后妥善保管 `ADMIN_PASSWORD`（建议之后从 `.env` 删除该行，管理员已存在时不再需要）；
+- 忘记或泄露管理员密码时，在服务器上重置（密码不进命令行历史，旧会话与“记住我”全部失效，操作写入审计日志）：
+  ```bash
+  cd /var/www/worldcup-universe
+  sudo -u www-data php yii app/reset-password admin              # 交互输入两次，不回显
+  sudo -u www-data php yii app/reset-password admin --generate   # 生成 20 位随机密码并只显示一次
+  ```
 - 如需 AI 功能，在 `.env` 填写 `ARK_API_KEY` 等（未填写时功能保持“未配置”状态，不伪造结果）；
 - 把 `/var/backups/worldcup-universe` 定期复制到实例之外（如 Oracle Object Storage 或本地），单机备份不能防止整机丢失；
 - 本地视频（`public/assets/media/videos/`，未纳入 Git）需要时用 `scp` 上传，或在后台“媒体资产”上传；
