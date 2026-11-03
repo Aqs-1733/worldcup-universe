@@ -54,25 +54,52 @@ if [[ $CONFIRM -ne 1 ]]; then echo "Dry run only. Re-run with --yes to overwrite
 
 # --- stop every writer: web (Nginx 503 + PHP-FPM stopped), timers, running sync/backup ---------------------------
 FPM_SERVICE="$(systemctl list-units --type=service --all --no-legend 'php*-fpm.service' 2>/dev/null | awk '{print $1}' | grep -m1 fpm || true)"
-CNF=""; DONE=0
+CNF=""; DONE=0; STAGE=prepare; PRE_DB=""; PRE_FILES=""
+# Already in maintenance (e.g. an earlier restore failed half-way): an early abort must not reopen the site.
+WAS_ON=0; [[ -f "$APP_DIR/storage/runtime/maintenance.flag" ]] && WAS_ON=1
+PRE_DIR="${BACKUP_DIR:-/var/backups/worldcup-universe}/pre-restore"
 finish() {
   [[ -n "$CNF" ]] && rm -f "$CNF"
+  # PHP-FPM may run again in every case: while the flag is set Nginx answers 503 before any request reaches it.
   [[ -n "$FPM_SERVICE" ]] && systemctl start "$FPM_SERVICE" 2>/dev/null
   if [[ $DONE -eq 1 ]]; then
     bash "$APP_DIR/scripts/maintenance.sh" off
+  elif [[ $STAGE == prepare && $WAS_ON -eq 1 ]]; then
+    echo "RESTORE ABORTED before any data was changed; maintenance was already on before this run and stays on." >&2
+  elif [[ $STAGE == prepare ]]; then
+    # Nothing was imported or extracted yet, so the live data is intact: abort cleanly and let the site back in.
+    rm -f "$APP_DIR/storage/runtime/maintenance.flag"; systemctl start wcu-news-sync.timer wcu-backup.timer 2>/dev/null
+    echo "RESTORE ABORTED before any data was changed (writers not confirmed stopped, or the safety backup failed)." >&2
+    echo "The site and timers are back as they were. Fix the cause shown above and run the restore again." >&2
   else
-    echo "RESTORE FAILED: the site stays in maintenance (503) and the timers stay stopped." >&2
-    echo "Fix the cause and re-run, or restore the safety backup in pre-restore/; then: sudo bash scripts/maintenance.sh off" >&2
+    echo "" >&2
+    echo "RESTORE FAILED WHILE DATA WAS BEING REPLACED: the database and/or upload folders may be only partly restored." >&2
+    echo "The site STAYS IN MAINTENANCE (503) and the timers stay stopped. Do not switch maintenance off now." >&2
+    if [[ -n "$PRE_DB" ]]; then
+      echo "Put back the state from just before this restore with the safety backup:" >&2
+      echo "  sudo bash $APP_DIR/scripts/restore.sh --db $PRE_DB --files $PRE_FILES --no-pre-backup --yes" >&2
+    else
+      echo "No safety backup was taken (--no-pre-backup); restore the newest good backup from ${PRE_DIR%/pre-restore}/ the same way." >&2
+    fi
+    echo "That restore switches maintenance off when it succeeds; only use 'scripts/maintenance.sh off' after checking the data." >&2
   fi
 }
 trap finish EXIT
+# maintenance.sh exits 4 when a sync, backup or PHP request is still running after its wait: abort, touch nothing.
 bash "$APP_DIR/scripts/maintenance.sh" on
-[[ -n "$FPM_SERVICE" ]] && systemctl stop "$FPM_SERVICE" && echo "Stopped $FPM_SERVICE: no PHP request can write any more."
+if [[ -n "$FPM_SERVICE" ]]; then
+  systemctl stop "$FPM_SERVICE"
+  ! pgrep -f 'php-fpm: pool worldcup-universe' >/dev/null || { echo "ERROR: PHP-FPM workers still alive after stopping $FPM_SERVICE." >&2; exit 4; }
+  echo "Stopped $FPM_SERVICE: no PHP request can write any more."
+fi
 
 if [[ $PRE_BACKUP -eq 1 ]]; then
   echo "Taking a safety backup of the current state first..."
-  BACKUP_DIR="${BACKUP_DIR:-/var/backups/worldcup-universe}/pre-restore" BACKUP_KEEP_DAYS=3650 bash "$APP_DIR/scripts/backup.sh"
+  BACKUP_DIR="$PRE_DIR" BACKUP_KEEP_DAYS=3650 bash "$APP_DIR/scripts/backup.sh"
+  PRE_DB="$(ls -t "$PRE_DIR"/db-*.sql.gz | head -n 1)"; PRE_FILES="$(ls -t "$PRE_DIR"/files-*.tar.gz | head -n 1)"
 fi
+
+STAGE=swap   # from here on a failure can leave data half-restored
 
 if [[ -n "$DB_FILE" ]]; then
   CNF="$(mktemp)"; chmod 600 "$CNF"

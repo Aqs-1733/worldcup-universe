@@ -105,6 +105,8 @@ sudo -u www-data php yii media/prune --apply    # 确认后删除
 
 安全边界：只处理 `/uploads/年/月/32位十六进制名` 与 `data/<team|personal>/uploads/32位十六进制名`，其他文件（手工放入的、内置素材、`storage/uploads` 的 AI 私有上传）从不删除；1 小时内的新文件跳过；连接的库缺少上传相关表、或 `media_assets`/`players` 为空（连错库、空库、恢复未完成）时拒绝执行；维护模式（恢复进行中）拒绝 `--apply`。仍需注意：若连接的是另一份**有数据的旧库**，之后上传的文件会被判为孤立，所以请先看一遍不带 `--apply` 的列表；删除前的文件都在每日备份中。
 
+`media/prune` 只能由管理员手动执行，部署脚本不会为它创建任何定时任务或自动清理。
+
 上传文件不在 Git 中，`git pull` 和重新部署都不会动它们，并由每日备份覆盖。
 
 ## 7. 新闻同步（systemd）
@@ -148,7 +150,10 @@ sudo bash scripts/restore.sh --db ... --files ... --yes                         
 3. 导入数据库与文件并修正权限，执行 `migrate/up` 和清缓存（恢复旧备份后自动补齐新迁移）；
 4. 启动 PHP-FPM、关闭维护模式、恢复定时器。
 
-任何一步失败时网站**保持维护状态**、定时器保持停止，避免对外提供数据库与文件不一致的数据；排除原因后重新执行恢复，或恢复 `pre-restore/` 中的安全备份，再 `sudo bash scripts/maintenance.sh off`。
+失败处理分两种：
+
+- **数据尚未改动时中止**：等待超时后仍有新闻同步、备份、手动 `yii news/sync` 或 PHP 请求在运行（`maintenance.sh` 以退出码 4 报告，等待时间由 `UNIT_WAIT_SECONDS`、`DRAIN_SECONDS` 调整），或 PHP-FPM 进程未退出、安全备份失败——脚本**不导入任何数据**，直接中止并恢复网站与定时器；若开始前已处于维护模式（例如上一次恢复失败），则保持维护模式。
+- **导入数据库或解压文件过程中失败**（例如 SQL 中途报错，数据库可能只导入了一部分）：网站**保持维护状态（503）**、定时器保持停止，脚本打印用 `pre-restore/` 安全备份回到恢复前状态的完整命令（`restore.sh --db … --files … --no-pre-backup --yes`，成功后自动退出维护）。确认数据无误之前不要手动执行 `maintenance.sh off`。
 
 默认**保留当前 `.env`**（数据库凭据、Cookie 密钥不被备份覆盖，适合跨服务器恢复）；确需还原备份里的 `.env` 时加 `--with-env`。手动维护：`sudo bash scripts/maintenance.sh on|off|status`。
 
