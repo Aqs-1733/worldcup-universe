@@ -24,18 +24,23 @@ final class MediaController extends Controller
         return $ok?0:1;
     }
 
-    /** Lists upload files that no database record references; --apply deletes them. Files younger than one hour are skipped. */
+    /**
+     * Lists upload files that no database record references; --apply deletes them. Files younger than one hour are skipped.
+     * Every text column of every table is searched (not only the upload fields), so a path an administrator pasted
+     * into an article body or another URL field still counts as used. audit_logs only records history and is ignored.
+     */
     public function actionPrune(): int
     {
-        $referenced=[];
-        foreach((require Yii::getAlias('@app/config/media-fields.php')) as $table=>$fields) {
-            foreach(array_keys($fields) as $field) {
-                if($field==='image') { continue; }
-                foreach((new \yii\db\Query())->select($field)->from($table)->where(['like',$field,'uploads/'])->column() as $value) { $referenced[(string)$value]=true; }
+        $referenced=[]; $db=Yii::$app->db;
+        foreach($db->schema->getTableSchemas() as $table) {
+            if(in_array($table->name,['audit_logs','migration'],true)) { continue; }
+            foreach($table->columns as $column) {
+                if(!in_array($column->type,['string','text','json','char'],true)) { continue; }
+                foreach((new \yii\db\Query())->select($column->name)->from($table->name)->where(['like',$column->name,'uploads'])->column() as $value) {
+                    preg_match_all('~/uploads/\d{4}/\d{2}/[a-f0-9]{32}\.[a-z0-9]{2,4}|data/(?:team|personal)/uploads/[a-f0-9]{32}\.[a-z0-9]{2,4}~',str_replace('\\/','/',(string)$value),$m);
+                    foreach($m[0] as $path) { $referenced[$path]=true; }
+                }
             }
-        }
-        foreach((new \yii\db\Query())->select('raw_payload_json')->from('news_articles')->where(['like','raw_payload_json','/uploads/'])->column() as $raw) {
-            $image=(json_decode((string)$raw,true)?:[])['image']??null; if(is_string($image)) { $referenced[$image]=true; }
         }
         $candidates=[];
         $public=MediaUploadService::publicDir();
