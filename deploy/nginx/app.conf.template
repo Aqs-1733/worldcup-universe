@@ -16,6 +16,17 @@ gzip_types text/plain text/css application/javascript application/json image/svg
 
 include /etc/nginx/snippets/worldcup-universe-headers.conf;
 
+# Maintenance (scripts/maintenance.sh on, used by scripts/restore.sh): every request that would reach PHP gets 503,
+# so nothing writes to the database or upload folders while they are being swapped. Static files stay readable.
+error_page 503 /maintenance.html;
+location = /maintenance.html {
+    root __APP_DIR__/deploy/nginx;
+    internal;
+    include /etc/nginx/snippets/worldcup-universe-headers.conf;
+    add_header Retry-After 300 always;
+    add_header Cache-Control "no-store" always;
+}
+
 # Dotfiles (.env, .git, .htaccess, .user.ini) are never served, wherever they appear.
 location ~ /\. { return 404; }
 
@@ -58,6 +69,7 @@ location / { try_files $uri /index.php$is_args$args; }
 # The exact /admin match keeps the dashboard URL as is (a fastcgi prefix location would 301 it to /admin/).
 location = /admin { try_files $uri /index.php$is_args$args; }
 location ^~ /admin/ {
+    if (-f __APP_DIR__/storage/runtime/maintenance.flag) { return 503; }
     client_max_body_size __BODY_MB__m;
     include fastcgi_params;
     fastcgi_param SCRIPT_FILENAME $document_root/index.php;
@@ -72,6 +84,7 @@ location ^~ /admin/ {
 }
 
 location = /index.php {
+    if (-f __APP_DIR__/storage/runtime/maintenance.flag) { return 503; }
     include fastcgi_params;
     fastcgi_param SCRIPT_FILENAME $document_root/index.php;
     fastcgi_param DOCUMENT_ROOT $document_root;
