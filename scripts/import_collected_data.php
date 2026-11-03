@@ -192,7 +192,7 @@ final class CollectedWorldCupImporter
 
             if ($extension === 'csv') {
                 $rowNumber = 0;
-                $stmt = $this->pdo->prepare('INSERT INTO source_records (source_file_id, row_number, entity_key, record_json) VALUES (?, ?, ?, ?)');
+                $stmt = $this->pdo->prepare('INSERT INTO source_records (source_file_id, `row_number`, entity_key, record_json) VALUES (?, ?, ?, ?)');
                 $this->pdo->beginTransaction();
                 try {
                     foreach ($this->csvRows($path) as $row) {
@@ -210,7 +210,7 @@ final class CollectedWorldCupImporter
             }
 
             $rows = $this->jsonRows($path);
-            $stmt = $this->pdo->prepare('INSERT INTO source_records (source_file_id, row_number, entity_key, record_json) VALUES (?, ?, ?, ?)');
+            $stmt = $this->pdo->prepare('INSERT INTO source_records (source_file_id, `row_number`, entity_key, record_json) VALUES (?, ?, ?, ?)');
             $this->pdo->beginTransaction();
             try {
                 foreach ($rows as $index => $row) {

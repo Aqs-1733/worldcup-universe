@@ -501,12 +501,12 @@ CREATE TABLE IF NOT EXISTS source_files (
 CREATE TABLE IF NOT EXISTS source_records (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   source_file_id BIGINT UNSIGNED NOT NULL,
-  row_number INT NOT NULL,
+  `row_number` INT NOT NULL,
   entity_key VARCHAR(160) NULL,
   record_json JSON NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT fk_source_records_file FOREIGN KEY (source_file_id) REFERENCES source_files(id) ON DELETE CASCADE,
-  UNIQUE KEY uniq_source_record_row (source_file_id, row_number),
+  UNIQUE KEY uniq_source_record_row (source_file_id, `row_number`),
   INDEX idx_source_records_entity (entity_key)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
