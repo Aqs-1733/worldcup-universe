@@ -30,7 +30,13 @@ def ck(result,label):
 def parsed(html):p=Nodes();p.feed(html);return p
 
 guest,member,admin=Client(),Client(),Client()
-for route,has_replies in [('/forum/35',False),('/forum/31',True)]:
+# The labelled examples come from `php yii design/forum` (run it once on the test database); the final-match topic
+# carries two example replies, the tactics topic none. IDs differ per database, so they are looked up by title.
+listing=guest.req('/forum')[2]
+def topic(title):
+    found=re.search(r'href="/forum/(\d+)"[^>]*>(?:(?!</a>).)*'+re.escape(title),listing,re.S)
+    ck(found,'labelled example topic listed: '+title);return '/forum/'+found[1]
+for route,has_replies in [(topic('西班牙与阿根廷，哪一组对位值得复盘？'),False),(topic('决赛这场球，你最想回看哪一段？'),True)]:
     r=guest.req(route);ck(r[0]==200,route+' HTTP 200');p=parsed(r[2])
     ck('topic-replies-panel' in p.classes,'detail reply card exists '+route)
     ck('empty' not in p.classes,'retired grey banner absent '+route)
@@ -61,9 +67,11 @@ ck(r[0]==400,'invalid quote remains rejected by server')
 r=member.post(f'/forum/{tid}/reply',{'body':'x','parent_id':rid})
 ck(r[0]==422 and 'form-errors' in r[2] and 'topic-reply-form' in r[2],'short reply renders validation in new component')
 env={}
-for line in (ROOT/'.env').read_text('utf-8-sig').splitlines():
-    if '=' in line and not line.startswith('#'):
-        k,v=line.split('=',1);env[k]=v.strip().strip('"\'')
+if (ROOT/'.env').is_file():
+    for line in (ROOT/'.env').read_text('utf-8-sig').splitlines():
+        if '=' in line and not line.startswith('#'):
+            k,v=line.split('=',1);env[k]=v.strip().strip('"\'')
+env.update({k:os.environ[k] for k in ('ADMIN_USERNAME','ADMIN_PASSWORD') if os.environ.get(k)})
 r=admin.post('/login',{'LoginForm[username]':env.get('ADMIN_USERNAME','admin'),'LoginForm[password]':env.get('ADMIN_PASSWORD','')})
 ck(r[0]==302,'existing administrator session')
 ck(admin.post('/admin/moderate',{'type':'thread','id':tid,'operation':'lock'})[0]==302,'lock disposable test topic')

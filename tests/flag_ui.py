@@ -16,7 +16,7 @@ class Tree(HTMLParser):
   while n.parent and n.tag!=t:n=n.parent
   if n.parent:self.at=n.parent
 opener=build_opener(ProxyHandler({})); errors=[];checked=0
-cases=[('/teams','nation-bottom',24,1),('/players','p-body',24,1),('/worldcup','fixture-row',104,2),('/worldcup','bracket-node',32,2),('/worldcup/standings','team-label',48,1)]
+cases=[('/teams','nation-bottom',24,1),('/players','p-body',24,1),('/worldcup','fixture-row',104,2),('/worldcup','bm-match',32,2),('/worldcup/standings','team-label',48,1)]
 for route,cls,count,flags in cases:
  t=Tree();t.feed(opener.open('http://127.0.0.1:8088'+route).read().decode());nodes=t.root.all(lambda n:n.cls(cls))
  if len(nodes)<count:errors.append(f'{route}: expected >= {count} {cls}, got {len(nodes)}')

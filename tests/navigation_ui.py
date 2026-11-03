@@ -22,7 +22,7 @@ class NoRedirect(HTTPRedirectHandler):
 base='http://127.0.0.1:8088';opener=build_opener(ProxyHandler({}))
 for path in ['/worldcup','/worldcup/standings','/teams','/players','/news','/forum','/countries']:
  p=Page();p.feed(opener.open(base+path,timeout=30).read().decode('utf-8'))
- assert len(p.links)==6,(path,p.links)
+ assert [x['href'] for x in p.links]==['/','/worldcup','/teams','/players','/news','/watch','/forum','/countries','/team'],(path,p.links)
  assert not any(x['text'].strip()=='数据' or x['href']=='/stats' for x in p.links),path
  if path.startswith('/worldcup'):
   assert [x['text'].strip() for x in p.links if x['active']]==['赛事'],path
@@ -30,4 +30,4 @@ for path in ['/worldcup','/worldcup/standings','/teams','/players','/news','/for
  if path=='/worldcup/standings':assert p.groups==12 and entries[0]['active']=='page'
 try:build_opener(ProxyHandler({}),NoRedirect()).open(base+'/stats');raise AssertionError('Legacy URL did not redirect')
 except HTTPError as e:assert e.code==301 and e.headers['Location']==base+'/worldcup/standings',(e.code,dict(e.headers))
-print('PASS navigation: 6 primary items; one standings entry; /stats -> 301 /worldcup/standings; 12 groups.')
+print('PASS navigation: 9 primary items in order; one standings entry; /stats -> 301 /worldcup/standings; 12 groups.')
