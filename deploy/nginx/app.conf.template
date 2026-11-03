@@ -4,7 +4,9 @@ root __APP_DIR__/public;
 index index.php;
 charset utf-8;
 server_tokens off;
-client_max_body_size __BODY_MB__m;
+# Public routes (forum, profile, AI image upload of at most 5 MB) never need large bodies; only /admin/ below accepts
+# the configured upload size, so anonymous clients cannot push hundreds of MB into temp storage.
+client_max_body_size 16m;
 client_body_timeout 300s;
 
 gzip on;
@@ -51,6 +53,21 @@ location = /robots.txt  { access_log off; log_not_found off; try_files $uri =204
 
 # Everything else is routed by Yii2's UrlManager through the front controller.
 location / { try_files $uri /index.php$is_args$args; }
+
+# Administrator forms carry media uploads up to the largest UPLOAD_MAX_*_MB; same front controller, larger body limit.
+location ^~ /admin/ {
+    client_max_body_size __BODY_MB__m;
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+    fastcgi_param SCRIPT_NAME /index.php;
+    fastcgi_param DOCUMENT_URI /index.php;
+    fastcgi_param DOCUMENT_ROOT $document_root;
+    fastcgi_pass unix:/run/php/worldcup-universe-fpm.sock;
+    fastcgi_hide_header X-Powered-By;
+    fastcgi_read_timeout 300s;
+    fastcgi_buffers 16 16k;
+    fastcgi_buffer_size 32k;
+}
 
 location = /index.php {
     include fastcgi_params;
