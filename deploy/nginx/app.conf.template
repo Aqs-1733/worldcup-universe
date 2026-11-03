@@ -55,6 +55,8 @@ location = /robots.txt  { access_log off; log_not_found off; try_files $uri =204
 location / { try_files $uri /index.php$is_args$args; }
 
 # Administrator forms carry media uploads up to the largest UPLOAD_MAX_*_MB; same front controller, larger body limit.
+# The exact /admin match keeps the dashboard URL as is (a fastcgi prefix location would 301 it to /admin/).
+location = /admin { try_files $uri /index.php$is_args$args; }
 location ^~ /admin/ {
     client_max_body_size __BODY_MB__m;
     include fastcgi_params;
