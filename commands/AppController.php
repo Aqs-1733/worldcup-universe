@@ -42,6 +42,36 @@ final class AppController extends Controller
         });
         $this->stdout("Administrator created.\n"); return 0;
     }
+    /** @var bool generate a random password instead of reading one from the terminal or STDIN */
+    public $generate=false;
+    public function options($actionID): array { return $actionID==='reset-password'?['generate']:parent::options($actionID); }
+    /**
+     * Sets a new password for an existing account: php yii app/reset-password admin [--generate].
+     * The password is read without echo (or from piped STDIN), never from argv; rotating auth_key ends every
+     * existing session and remember-me cookie of that account.
+     */
+    public function actionResetPassword(string $username): int
+    {
+        $user=User::findOne(['username'=>$username]);
+        if(!$user) { $this->stderr("No account named '$username'.\n"); return 1; }
+        $password=$this->generate?Yii::$app->security->generateRandomString(20):$this->readSecret('New password: ');
+        if(!$this->generate && stream_isatty(STDIN) && $this->readSecret('Repeat password: ')!==$password) { $this->stderr("Passwords do not match; nothing changed.\n"); return 1; }
+        if(strlen($password)<12 || strlen($password)>128) { $this->stderr("Password must be 12-128 characters; nothing changed.\n"); return 1; }
+        $user->password_hash=password_hash($password,PASSWORD_DEFAULT); $user->auth_key=Yii::$app->security->generateRandomString(48);
+        $user->save(false,['password_hash','auth_key']);
+        \app\services\AuditService::record('password_reset','users',(int)$user->id,['via'=>'console']);
+        $this->stdout("Password reset for '$username'".($user->isAdmin()?' (administrator)':'')."; existing sessions were signed out.\n");
+        if($this->generate) { $this->stdout("New password (shown once): $password\n"); }
+        return 0;
+    }
+    private function readSecret(string $label): string
+    {
+        $tty=stream_isatty(STDIN); $hide=$tty && DIRECTORY_SEPARATOR==='/';
+        if($tty) { $this->stdout($label); } if($hide) { shell_exec('stty -echo'); }
+        $value=rtrim((string)fgets(STDIN),"\r\n");
+        if($hide) { shell_exec('stty echo'); $this->stdout("\n"); }
+        return $value;
+    }
     public function actionAudit(): int
     {
         $counts=[]; foreach (Yii::$app->db->schema->getTableNames() as $table) { $counts[$table]=(int)(new \yii\db\Query())->from($table)->count('*',Yii::$app->db); }
