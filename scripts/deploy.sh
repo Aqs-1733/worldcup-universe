@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-# WorldCup Universe: idempotent one-command deployment on Ubuntu 22.04/24.04 (Oracle Cloud Always Free).
-# Installs/configures Nginx + PHP-FPM + MySQL, creates .env and the database account on first run, runs the Yii2
+# WorldCup Universe: idempotent one-command deployment on Ubuntu 24.04 (PHP 8.3, MariaDB 10.11; amd64 or arm64 /
+# Oracle Cloud Always Free Ampere A1). Ubuntu 22.04 (PHP 8.1, MariaDB 10.6) also works.
+# Installs/configures Nginx + PHP-FPM + MariaDB, creates .env and the database account on first run, runs the Yii2
 # installer and migrations, renders server config from deploy/, issues a Let's Encrypt certificate and enables the
 # news-sync and backup timers. Re-running it after `git pull` updates dependencies, schema and config in place.
 #
 #   sudo bash scripts/deploy.sh --install-packages --domain example.com --email you@example.com --open-firewall
 #   sudo bash scripts/deploy.sh                      # later updates (backup is taken before migrations)
 #
-# Options: --install-packages  apt install nginx, mysql-server, php-fpm and extensions, composer, certbot
+# Options: --install-packages  apt install nginx, mariadb-server, php-fpm and extensions, composer, certbot
 #          --domain NAME       public host name (needed for HTTPS); defaults to the server's address, HTTP only
 #          --email ADDRESS     Let's Encrypt account e-mail; together with --domain this requests a certificate
 #                              (certbot is run with --agree-tos: passing --email means you accept the LE terms)
@@ -28,7 +29,7 @@ while [[ $# -gt 0 ]]; do
     --skip-tls) SKIP_TLS=1; shift;;
     --open-firewall) OPEN_FIREWALL=1; shift;;
     --skip-backup) SKIP_BACKUP=1; shift;;
-    -h|--help) sed -n '2,20p' "$0"; exit 0;;
+    -h|--help) sed -n '2,21p' "$0"; exit 0;;
     *) echo "Unknown option: $1" >&2; exit 2;;
   esac
 done
@@ -39,6 +40,9 @@ die() { echo "ERROR: $*" >&2; exit 1; }
 [[ -f "$APP_DIR/yii" && -d "$APP_DIR/public" ]] || die "$APP_DIR is not the worldcup-universe checkout."
 [[ "$DOMAIN" =~ ^[A-Za-z0-9.-]*$ ]] || die "invalid --domain."
 OWNER="$(stat -c %U "$APP_DIR")"; [[ "$OWNER" != "root" ]] || OWNER="${SUDO_USER:-root}"
+# shellcheck disable=SC1091
+OS_ID="$(. /etc/os-release && echo "${ID:-} ${VERSION_ID:-}")"
+[[ "$OS_ID" == "ubuntu 24.04" ]] || echo "WARNING: tested target is Ubuntu 24.04; this host is '$OS_ID' ($(uname -m))." >&2
 
 env_get() {
   local line
@@ -106,6 +110,9 @@ if [[ "$DB_HOST" == "127.0.0.1" || "$DB_HOST" == "localhost" ]]; then
   # hash; MySQL 8 rejects them (3072-byte key limit), so the schema installs only on MariaDB.
   server_version="$(mysql --protocol=socket -uroot -N -e 'SELECT VERSION()')"
   [[ "$server_version" == *MariaDB* ]] || die "database server is '$server_version'; install mariadb-server (MySQL 8 cannot create data/install.sql's long unique keys)."
+  printf '%s
+10.4
+' "${server_version%%-*}" | sort -V -C -r || die "MariaDB 10.4+ required (found $server_version)."
   [[ -n "$DB_PASSWORD" ]] || { DB_PASSWORD="$(openssl rand -hex 20)"; env_set DB_PASSWORD "$DB_PASSWORD"; }
   sql_pw="${DB_PASSWORD//\'/\'\'}"
   # Ubuntu's root@localhost uses auth_socket, so this works from the root shell without a password.
