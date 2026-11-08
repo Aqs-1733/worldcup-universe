@@ -33,7 +33,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 [[ $EUID -eq 0 ]] || { echo "ERROR: run with sudo." >&2; exit 1; }
-mkdir -p "$STATE_DIR" "$LOG_DIR"; chmod 750 "$LOG_DIR"
+mkdir -p "$STATE_DIR" "$LOG_DIR"; chmod 750 "$LOG_DIR"; touch "$LOG"; chmod 640 "$LOG"
 exec > >(tee -a "$LOG") 2>&1
 log() { printf '%s %s\n' "$(date '+%F %T')" "$*"; }
 refuse() { log "REFUSED: $*"; exit 3; }
@@ -73,8 +73,9 @@ cleanup() { G worktree remove --force "$PRE" >/dev/null 2>&1 || true; rm -rf "$P
 trap cleanup EXIT
 G worktree add --quiet --detach "$PRE" "$NEW"
 bad=0
-while IFS= read -r f; do php -l "$PRE/$f" >/dev/null 2>&1 || { php -l "$PRE/$f" 2>&1 | head -2; bad=1; }; done < <(G -C "$PRE" ls-files '*.php')
-while IFS= read -r f; do bash -n "$PRE/$f" || bad=1; done < <(G -C "$PRE" ls-files '*.sh')
+while IFS= read -r f; do php -l "$PRE/$f" >/dev/null 2>&1 || { php -l "$PRE/$f" 2>&1 | head -n 2 || true; bad=1; }; done < <(G -C "$PRE" ls-files '*.php')
+# Only the operational scripts; archived notes under artifacts/ are not run by the deployment.
+while IFS= read -r f; do bash -n "$PRE/$f" 2>&1 || bad=1; done < <(G -C "$PRE" ls-files 'scripts/*.sh')
 [[ $bad -eq 0 ]] || { echo "$NEW" > "$FAILED_MARK"; refuse "pre-flight of ${NEW:0:7} failed (syntax errors above); production untouched."; }
 cleanup; trap - EXIT
 log "pre-flight passed"
