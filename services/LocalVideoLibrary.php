@@ -41,11 +41,16 @@ final class LocalVideoLibrary
         $bilibili=isset($e['bilibili'])&&preg_match('/^BV[0-9A-Za-z]{10}$/',(string)$e['bilibili'])?$e['bilibili']:null;
         $youtube=isset($e['youtube'])&&preg_match('/^[A-Za-z0-9_-]{11}$/',(string)$e['youtube'])?$e['youtube']:null;
         $provider=$local||$uploaded?'local':($bilibili?'bilibili':($youtube?'youtube':'missing'));
+        // config/video-playback.php records YouTube videos whose embedded player was tested and does not play: those show the
+        // cover with a link to the official page instead of an iframe that would only show an error.
+        $playback=$provider==='youtube'&&is_file(ROOT_PATH.'/config/video-playback.php')?((require ROOT_PATH.'/config/video-playback.php')['youtube:'.$youtube]??[]):[];
+        $external=!empty($playback['external']);
         return [
             'slug'=>$e['slug'],'title'=>$e['title'],'credit'=>$e['credit']??null,'commons'=>!empty($e['commons']),'subtitle'=>$e['subtitle']??'','type'=>$e['type']??'highlights','match_id'=>$e['match_id']??null,
             'file'=>$file,'src'=>$local?'/stream/'.rawurlencode($file):$uploaded,'poster'=>$poster?:'/assets/media/stadium-hero-v2.png',
             'provider'=>$provider,'bilibili'=>$bilibili,'youtube'=>$youtube,'source_url'=>$e['source_url']??($youtube?'https://www.youtube.com/watch?v='.$youtube:null),
-            'embed'=>match($provider){'bilibili'=>'https://player.bilibili.com/player.html?bvid='.$bilibili.'&autoplay=1&high_quality=1&danmaku=0','youtube'=>'https://www.youtube.com/embed/'.$youtube.'?autoplay=1&rel=0&playsinline=1',default=>null},
+            'embed'=>match($provider){'bilibili'=>'https://player.bilibili.com/player.html?bvid='.$bilibili.'&autoplay=1&high_quality=1&danmaku=0','youtube'=>$external?null:'https://www.youtube.com/embed/'.$youtube.'?autoplay=1&rel=0&playsinline=1',default=>null},
+            'external'=>$external,'notice'=>$playback['notice']??null,
         ];
     }
 }
