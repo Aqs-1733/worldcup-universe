@@ -1,0 +1,38 @@
+/* WorldCup Universe admin: grouped sidebar, current-page state, sticky location bar. Loaded after light-theme.css. */
+body .admin-sidebar{padding:24px 14px 40px;scrollbar-width:thin;scrollbar-color:#c9d5e3 transparent;overscroll-behavior:contain}
+body .admin-sidebar .brand{display:block;padding:0 12px;margin-bottom:12px}
+body .admin-sidebar .admin-back{font-size:12px;color:#7a8ea6;margin-bottom:6px}
+.admin-nav-group{margin:0;padding:10px 0 6px;border:0;border-top:1px solid #edf1f6}
+.admin-nav-group.is-static{border-top:0;padding-top:4px}
+.admin-nav-title{display:flex;align-items:center;justify-content:space-between;padding:6px 12px;font-size:11px;font-weight:800;letter-spacing:.08em;color:#8a9bb0;list-style:none;cursor:default}
+summary.admin-nav-title{cursor:pointer;border-radius:10px}
+summary.admin-nav-title::-webkit-details-marker{display:none}
+summary.admin-nav-title::after{content:"";width:7px;height:7px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s}
+details:not([open])>summary.admin-nav-title::after{transform:rotate(-45deg)}
+summary.admin-nav-title:hover{background:#f4f7fb;color:#506d8d}
+body .admin-sidebar .admin-nav-group a{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:1px 0;padding:8px 12px;border-radius:12px;font-size:13px;color:#506d8d;position:relative}
+.admin-nav-group a small{font-size:11px;font-weight:600;color:#9aabbe;font-variant-numeric:tabular-nums}
+.admin-nav-group a small.is-zero{color:#c3cdd8}
+/* Current page: filled pill plus an accent bar, readable without hovering. */
+body .admin-sidebar .admin-nav-group a.is-active{background:#f6e3e9;color:#a63a4d;font-weight:700}
+body .admin-sidebar .admin-nav-group a.is-active::before{content:"";position:absolute;left:-14px;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:#c2465a}
+body .admin-sidebar .admin-nav-group a.is-active small{color:#c2697a}
+.admin-nav-group.is-reserved .admin-nav-title{color:#a7b4c3}
+.admin-nav-note{margin:2px 12px 6px;font-size:11px;line-height:1.5;color:#98a8ba}
+/* Location bar follows the page, so the section and current table stay visible while scrolling long lists. */
+body .admin-top{position:sticky;top:12px;z-index:30;margin-top:12px;backdrop-filter:blur(10px);background:#ffffffeb}
+.admin-crumb{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:13px;color:#7a8ea6;min-width:0}
+.admin-crumb>*+*::before{content:"/";margin-right:8px;color:#c3cdd8}
+.admin-crumb a:hover{color:#a63a4d}
+.admin-crumb b{font-size:16px;color:#2b4768}
+.admin-user{margin-left:auto;font-size:12px;color:#7a8ea6}
+/* "＋ 新增记录" kept the inherited link colour on the red button. */
+body .admin-main .section-head>a.button{color:#fff;font-size:13px}
+.admin-empty-note{margin:0 0 16px;padding:14px 18px;border-radius:16px;background:#fff8e8;border:1px solid #f1dfb4;color:#7a5b16;font-size:13px;line-height:1.7}
+@media(max-width:900px){
+ body .admin-sidebar{padding:12px 14px}
+ .admin-nav-group{width:100%;padding:6px 0}
+ body .admin-sidebar .admin-nav-group a{display:inline-flex;margin:2px 4px 2px 0;padding:6px 10px;font-size:12px}
+ body .admin-sidebar .admin-nav-group a.is-active::before{display:none}
+ body .admin-top{top:0;margin-top:0;border-radius:0 0 16px 16px}
+}
