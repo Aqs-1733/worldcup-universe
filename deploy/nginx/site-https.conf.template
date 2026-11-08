@@ -6,7 +6,8 @@ server {
     server_tokens off;
 
     location ^~ /.well-known/acme-challenge/ { root /var/www/letsencrypt; default_type text/plain; }
-    location / { return 301 https://$host$request_uri; }
+    # Always the certificate name: a visitor typing the bare IP would otherwise land on a name mismatch.
+    location / { return 301 https://__SERVER_NAME__$request_uri; }
 }
 
 server {
