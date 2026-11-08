@@ -20,7 +20,9 @@
 .bracket-map .bm-chip.is-all{font-family:inherit;font-weight:700;padding:0 14px}
 .bracket-map .bm-chip.is-champion:not([aria-pressed=true]){border-color:#f2c75c88;color:var(--bm-gold)}
 .bm-scroll{overflow-x:auto;overflow-y:visible;padding:4px 8px 10px;margin:0 -8px;scrollbar-width:thin;scrollbar-color:#ffffff30 transparent;padding-bottom:10px}
-.bm-board{position:relative;display:grid;grid-template-columns:repeat(4,minmax(118px,1fr)) minmax(200px,1.35fr) repeat(4,minmax(118px,1fr));gap:0 28px;min-width:1240px}
+/* Columns shrink with the card so the whole map fits a desktop screen; only narrow screens keep the sideways scroll. */
+.bm-board{position:relative;display:grid;grid-template-columns:repeat(4,minmax(88px,1fr)) minmax(170px,1.3fr) repeat(4,minmax(88px,1fr));gap:0 clamp(8px,1.2vw,26px);min-width:0}
+@media(max-width:1100px){.bm-board{min-width:980px}}
 .bm-lines{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:0}
 .bm-lines path{fill:none;stroke:#ffffff2e;stroke-width:1.4;transition:stroke .35s,stroke-width .35s,opacity .35s}
 .bm-lines path.is-path{stroke:var(--bm-gold);stroke-width:2.6;filter:drop-shadow(0 0 6px #f2c75caa)}
@@ -75,3 +77,6 @@
 .bm-burst{position:absolute;left:0;top:0;pointer-events:none;z-index:3}
 .bracket-map .bm-chip.is-run{font-family:inherit;font-weight:700;padding:0 14px;border-color:#f2c75c88;color:var(--bm-gold)}
 .bracket-map.is-running .bm-chip.is-run{background:#f2c75c22}
+
+/* Laptop-height screens: tighter rows so the board fits under the sticky navigation without vertical scrolling. */
+@media(min-width:1101px) and (max-height:900px){.bm-slots{min-height:0}.bm-slot{padding:3px 0}.bm-match{padding:4px 8px 5px}.bm-team{height:19px}.bm-meta{margin-bottom:1px}.bm-round{margin-bottom:8px}.bm-trophy{width:48px}.bm-round-bronze{margin:14px 0 4px}}
