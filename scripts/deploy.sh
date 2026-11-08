@@ -42,7 +42,7 @@ die() { echo "ERROR: $*" >&2; exit 1; }
 OWNER="$(stat -c %U "$APP_DIR")"; [[ "$OWNER" != "root" ]] || OWNER="${SUDO_USER:-root}"
 # shellcheck disable=SC1091
 OS_ID="$(. /etc/os-release && echo "${ID:-} ${VERSION_ID:-}")"
-[[ "$OS_ID" == "ubuntu 24.04" ]] || echo "WARNING: tested target is Ubuntu 24.04; this host is '$OS_ID' ($(uname -m))." >&2
+[[ "$OS_ID" == "ubuntu 24.04" || "$OS_ID" == "ubuntu 22.04" ]] || echo "WARNING: tested targets are Ubuntu 24.04 / 22.04; this host is '$OS_ID' ($(uname -m))." >&2
 
 env_get() {
   local line
@@ -106,6 +106,12 @@ DB_USERNAME="$(env_get DB_USERNAME)"; DB_PASSWORD="$(env_get DB_PASSWORD)"
 [[ "$DB_DATABASE" =~ ^[A-Za-z0-9_]+$ && "$DB_USERNAME" =~ ^[A-Za-z0-9_]+$ ]] || die "DB_DATABASE / DB_USERNAME must be [A-Za-z0-9_]."
 if [[ "$DB_HOST" == "127.0.0.1" || "$DB_HOST" == "localhost" ]]; then
   systemctl enable --now mariadb >/dev/null 2>&1 || systemctl enable --now mysql >/dev/null 2>&1 || true
+  # Small-memory sizing and a loopback-only listener (deploy/mariadb/); restarted only when the file changes.
+  MARIADB_CNF=/etc/mysql/mariadb.conf.d/60-worldcup-universe.cnf
+  if [[ -d /etc/mysql/mariadb.conf.d ]] && ! cmp -s "$APP_DIR/deploy/mariadb/60-worldcup-universe.cnf" "$MARIADB_CNF"; then
+    install -m 644 "$APP_DIR/deploy/mariadb/60-worldcup-universe.cnf" "$MARIADB_CNF"
+    systemctl restart mariadb
+  fi
   # data/install.sql declares UNIQUE keys on VARCHAR(800/900) utf8mb4 columns. MariaDB 10.4+ enforces them with a
   # hash; MySQL 8 rejects them (3072-byte key limit), so the schema installs only on MariaDB.
   server_version="$(mysql --protocol=socket -uroot -N -e 'SELECT VERSION()')"

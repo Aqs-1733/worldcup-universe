@@ -1,0 +1,14 @@
+# WorldCup Universe - MariaDB sizing for a small single-server deployment (2 vCPU, ~2 GB RAM, shared with
+# Nginx + PHP-FPM). Installed by scripts/deploy.sh into /etc/mysql/mariadb.conf.d/ (Ubuntu 22.04 MariaDB 10.6,
+# 24.04 MariaDB 10.11). Raise innodb_buffer_pool_size on larger machines.
+[mysqld]
+# Never listen on a public interface; the application connects over 127.0.0.1 / the local socket only.
+bind-address            = 127.0.0.1
+innodb_buffer_pool_size = 256M
+innodb_log_file_size    = 64M
+max_connections         = 40
+performance_schema      = OFF
+table_open_cache        = 400
+tmp_table_size          = 32M
+max_heap_table_size     = 32M
+key_buffer_size         = 8M
