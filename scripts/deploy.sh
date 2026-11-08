@@ -37,6 +37,11 @@ done
 step() { printf '\n==> %s\n' "$*"; }
 die() { echo "ERROR: $*" >&2; exit 1; }
 [[ $EUID -eq 0 ]] || die "run with sudo."
+# One deployment at a time; scripts/update-production.sh takes this lock itself and sets WCU_DEPLOY_LOCK_HELD.
+if [[ -z "${WCU_DEPLOY_LOCK_HELD:-}" ]]; then
+  exec 9>/run/lock/wcu-deploy.lock
+  flock -n 9 || die "another deployment or update is running (/run/lock/wcu-deploy.lock)."
+fi
 [[ -f "$APP_DIR/yii" && -d "$APP_DIR/public" ]] || die "$APP_DIR is not the worldcup-universe checkout."
 [[ "$DOMAIN" =~ ^[A-Za-z0-9.-]*$ ]] || die "invalid --domain."
 OWNER="$(stat -c %U "$APP_DIR")"; [[ "$OWNER" != "root" ]] || OWNER="${SUDO_USER:-root}"
@@ -232,10 +237,12 @@ systemctl reload "$FPM_SERVICE"
 
 # ---------------------------------------------------------------------------------------------------------------
 step "systemd timers (news sync every 10 min, nightly backup)"
-for unit in wcu-news-sync.service wcu-backup.service; do render "$APP_DIR/deploy/systemd/$unit.template" > "/etc/systemd/system/$unit"; done
-install -m 644 "$APP_DIR/deploy/systemd/wcu-news-sync.timer" "$APP_DIR/deploy/systemd/wcu-backup.timer" /etc/systemd/system/
+for unit in wcu-news-sync.service wcu-backup.service wcu-update.service; do render "$APP_DIR/deploy/systemd/$unit.template" > "/etc/systemd/system/$unit"; done
+install -m 644 "$APP_DIR/deploy/systemd/wcu-news-sync.timer" "$APP_DIR/deploy/systemd/wcu-backup.timer" "$APP_DIR/deploy/systemd/wcu-update.timer" /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable --now wcu-news-sync.timer wcu-backup.timer >/dev/null
+# wcu-update.timer (auto-update from GitHub) is installed but only enabled by the operator:
+#   sudo systemctl enable --now wcu-update.timer
 
 # ---------------------------------------------------------------------------------------------------------------
 step "Smoke test"

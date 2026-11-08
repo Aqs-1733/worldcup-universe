@@ -46,6 +46,10 @@ echo "Target application: $APP_DIR"
 [[ -n "$FILES_FILE" ]] && echo "  files     ${members[*]}  <=  $FILES_FILE"
 [[ $WITH_ENV -eq 1 ]] || echo "  .env      kept as is (pass --with-env to restore the archived one)"
 if [[ $CONFIRM -ne 1 ]]; then echo "Dry run only. Re-run with --yes to overwrite the data above." >&2; exit 3; fi
+# Never swap data while scripts/deploy.sh or scripts/update-production.sh is running (and keep them out until done).
+exec 9>/run/lock/wcu-deploy.lock
+flock -n 9 || { echo "ERROR: a deployment or update is running (/run/lock/wcu-deploy.lock); retry when it has finished." >&2; exit 1; }
+export WCU_DEPLOY_LOCK_HELD=1
 
 [[ -z "$DB_FILE" || -r "$DB_FILE" ]] || { echo "ERROR: cannot read $DB_FILE" >&2; exit 1; }
 [[ -z "$FILES_FILE" || -r "$FILES_FILE" ]] || { echo "ERROR: cannot read $FILES_FILE" >&2; exit 1; }

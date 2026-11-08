@@ -1,0 +1,13 @@
+# WorldCup Universe - pull and deploy new commits of the tracked branch (scripts/update-production.sh).
+# Runs as root because scripts/deploy.sh renders Nginx/PHP-FPM/systemd config and restarts services; git itself runs
+# as the code owner. Shares /run/lock/wcu-deploy.lock with scripts/deploy.sh, so updates never overlap a deployment.
+[Unit]
+Description=WorldCup Universe production auto-update
+After=network-online.target mariadb.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash __APP_DIR__/scripts/update-production.sh
+TimeoutStartSec=30min
+Nice=5

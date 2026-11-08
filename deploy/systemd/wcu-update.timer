@@ -1,0 +1,14 @@
+# WorldCup Universe - check GitHub for new commits every 15 minutes. Installed by scripts/deploy.sh but NOT enabled:
+#   sudo systemctl enable --now wcu-update.timer      (disable: sudo systemctl disable --now wcu-update.timer)
+[Unit]
+Description=WorldCup Universe production auto-update timer
+
+[Timer]
+OnBootSec=10min
+OnCalendar=*:0/15
+RandomizedDelaySec=120
+Persistent=true
+Unit=wcu-update.service
+
+[Install]
+WantedBy=timers.target
