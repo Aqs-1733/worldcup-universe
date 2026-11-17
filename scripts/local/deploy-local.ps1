@@ -98,6 +98,9 @@ Step '1/7 检查 PHP（需要 8.1 及以上，扩展 pdo_mysql / mbstring / curl
 $candidates = New-Object System.Collections.Generic.List[string]
 if ($Php) { $candidates.Add($Php) }
 if ($env:WCU_PHP) { $candidates.Add($env:WCU_PHP) }
+# The PHP chosen on an earlier run (e.g. with -Php once) is used again, so later runs need no options.
+$phpRecord = Join-Path $RuntimeDir 'local-php.json'
+if (Test-Path -LiteralPath $phpRecord) { try { $candidates.Add((Get-Content -LiteralPath $phpRecord -Raw -Encoding UTF8 | ConvertFrom-Json).exe) } catch { } }
 Get-ChildItem -LiteralPath $Root -Directory -Filter 'php*' -ErrorAction SilentlyContinue | ForEach-Object { $candidates.Add((Join-Path $_.FullName 'php.exe')) }
 foreach ($x in @('C:\xampp\php\php.exe', 'D:\xampp\php\php.exe', 'E:\xampp\php\php.exe', 'C:\php\php.exe')) { $candidates.Add($x) }
 $onPath = Get-Command php.exe -ErrorAction SilentlyContinue; if ($onPath) { $candidates.Add($onPath.Source) }

@@ -41,12 +41,29 @@ if ($hasSodium -ne 'yes') { Fail "PHP（$PhpExe）没有 sodium 扩展，无法�
 Write-Host "==> 同步私有备份仓库 $Repo"
 $clone = Join-Path $Home2 'backup-repo'
 New-Item -ItemType Directory -Force -Path $Home2 | Out-Null
-if (-not (Test-Path -LiteralPath (Join-Path $clone '.git'))) {
-  & git clone -q "https://github.com/$Repo.git" $clone
-  if ($LASTEXITCODE -ne 0) { Fail "git clone 失败。" '请确认已用有权限的 GitHub 账号登录（例如运行 gh auth login 或在弹出的窗口中登录），且仓库名正确。' }
-} else {
-  & git -C $clone pull -q --ff-only
-  if ($LASTEXITCODE -ne 0) { Fail 'git pull 失败（网络或权限问题）。' }
+# Uses your own git settings first; if a configured proxy is not running, retries once without it for this command only.
+function Git-Sync([string[]]$noProxy) {
+  if (-not (Test-Path -LiteralPath (Join-Path $clone '.git'))) { & git @noProxy clone -q "https://github.com/$Repo.git" $clone }
+  else { & git @noProxy -C $clone pull -q --ff-only }
+  return $LASTEXITCODE
+}
+if ((Git-Sync @()) -ne 0) {
+  # Fallbacks, for this command only (your git config is never changed): WCU_GIT_PROXY, local proxy ports that are
+  # actually listening (7900 / 7897, the usual Clash ports on this team's machines), then a direct connection.
+  $tries = New-Object System.Collections.Generic.List[string]
+  if ($env:WCU_GIT_PROXY) { $tries.Add($env:WCU_GIT_PROXY) }
+  foreach ($port in 7900, 7897) {
+    $c = New-Object Net.Sockets.TcpClient; try { $c.Connect('127.0.0.1', $port); if ($c.Connected) { $tries.Add("http://127.0.0.1:$port") } } catch { } finally { $c.Close() }
+  }
+  $tries.Add('')
+  $rc = 1
+  foreach ($px in ($tries | Select-Object -Unique)) {
+    Write-Host ("    连接失败，改用{0}重试（不修改 git 配置）……" -f $(if ($px) { "代理 $px " } else { '直连' })) -ForegroundColor Yellow
+    if ((Test-Path -LiteralPath $clone) -and -not (Test-Path -LiteralPath (Join-Path $clone '.git\HEAD'))) { Remove-Item -LiteralPath $clone -Recurse -Force }
+    $rc = Git-Sync @('-c', "http.proxy=$px", '-c', "https.proxy=$px")
+    if ($rc -eq 0) { break }
+  }
+  if ($rc -ne 0) { Fail '无法从 GitHub 同步备份仓库。' '请检查网络/代理（可设置环境变量 WCU_GIT_PROXY=http://127.0.0.1:端口），并确认已用有权限的 GitHub 账号登录（例如 gh auth login），且仓库名正确。' }
 }
 if (-not $Snapshot) { $Snapshot = (Get-Content -LiteralPath (Join-Path $clone 'LATEST') -ErrorAction SilentlyContinue | Select-Object -First 1) }
 $snapDir = Join-Path $clone "snapshots\$Snapshot"
@@ -64,7 +81,7 @@ $tar = Join-Path $dest 'snapshot.tar'
 $parts = @($summary.parts | ForEach-Object { Join-Path $snapDir $_ })
 & $PhpExe @PhpArgs (Join-Path $Root 'scripts\backup-crypt.php') decrypt $SecretKey $tar @parts
 if ($LASTEXITCODE -ne 0) { Fail '解密失败（见上方原因）。' }
-$sha = (Get-FileHash -LiteralPath $tar -Algorithm SHA256).Hash.ToLowerInvariant()
+$fs = [IO.File]::OpenRead($tar); try { $sha = ([BitConverter]::ToString([Security.Cryptography.SHA256]::Create().ComputeHash($fs))).Replace('-', '').ToLowerInvariant() } finally { $fs.Dispose() }
 if ($sha -ne $summary.plain_sha256) { Remove-Item -LiteralPath $tar; Fail '解密结果的 SHA-256 与 summary.json 不一致。' }
 Ok "解密完成，SHA-256 一致（$([math]::Round((Get-Item -LiteralPath $tar).Length / 1MB, 1)) MB）"
 

@@ -46,7 +46,11 @@ umask 077; mkdir -p "$WORK/bundle"
 
 # 1. Database + files. Holding the news-sync lock keeps the dump and the row counts below from the same moment.
 echo "==> Backup (database, uploads, coursework, .env)"
-exec 8>/run/lock/wcu-news-sync.lock; flock -w 900 8 || { echo "ERROR: news sync still running after 15 min." >&2; exit 1; }
+# The lock file belongs to www-data (the sync runs as www-data); root may not open it for writing in the sticky /run/lock
+# (fs.protected_regular), and creating it as root would lock the sync out. Read-only is enough for flock.
+NEWS_LOCK=/run/lock/wcu-news-sync.lock
+[[ -e "$NEWS_LOCK" ]] || runuser -u www-data -- touch "$NEWS_LOCK"
+exec 8<"$NEWS_LOCK"; flock -w 900 8 || { echo "ERROR: news sync still running after 15 min." >&2; exit 1; }
 videos=never; [[ "$OFFSITE_INCLUDE_VIDEOS" == 1 ]] && videos=always
 BACKUP_DIR="$WORK/bundle" BACKUP_KEEP_DAYS=36500 BACKUP_VIDEOS=$videos APP_DIR="$APP_DIR" bash "$HERE/backup.sh"
 env_get() { local l; l="$(grep -E "^[[:space:]]*$1=" "$APP_DIR/.env" | tail -n1 || true)"; l="${l#*=}"; l="${l%$'\r'}"; l="${l#\"}"; l="${l%\"}"; printf '%s' "$l"; }

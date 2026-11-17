@@ -22,9 +22,16 @@ $Runtime = Join-Path $Root 'storage\runtime'
 function Fail([string]$m, [string]$hint = '') { Write-Host ''; Write-Host "[失败] $m" -ForegroundColor Red; if ($hint) { Write-Host $hint -ForegroundColor Yellow }; exit 1 }
 function Ok([string]$m) { Write-Host "    [OK] $m" -ForegroundColor Green }
 function Read-EnvFile([string]$path) { $m = @{}; foreach ($l in [IO.File]::ReadAllLines($path)) { if ($l -match '^\s*([A-Z0-9_]+)\s*=(.*)$') { $m[$Matches[1]] = $Matches[2].Trim().Trim('"').Trim("'") } }; return $m }
+# Dumps from MariaDB 10.5.25+/10.6.18+ (the server) start with "/*M!999999\- enable the sandbox mode */", which older
+# clients such as XAMPP's 10.4 reject; that first line only switches the client into sandbox mode and holds no data.
 function Gunzip([string]$src, [string]$dst) {
   $in = [IO.File]::OpenRead($src); $gz = New-Object IO.Compression.GZipStream($in, [IO.Compression.CompressionMode]::Decompress); $out = [IO.File]::Create($dst)
-  try { $gz.CopyTo($out) } finally { $out.Dispose(); $gz.Dispose(); $in.Dispose() }
+  try {
+    $head = New-Object byte[] 64; $n = 0; while ($n -lt 64) { $r = $gz.Read($head, $n, 64 - $n); if ($r -le 0) { break }; $n += $r }
+    $text = [Text.Encoding]::ASCII.GetString($head, 0, $n); $skip = 0
+    if ($text.StartsWith('/*M!999999\- enable the sandbox mode */')) { $skip = $text.IndexOf("`n") + 1 }
+    $out.Write($head, $skip, $n - $skip); $gz.CopyTo($out)
+  } finally { $out.Dispose(); $gz.Dispose(); $in.Dispose() }
 }
 
 # --- locate snapshot, local database and client -----------------------------------------------------------------
