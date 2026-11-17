@@ -242,6 +242,8 @@ sudo systemctl enable --now wcu-update.timer                # 启用自动更新
 
 日志中的结果关键字：`UPDATED`（成功）、`REFUSED`（拒绝，未改动）、`FAILED`（失败）、`ROLLED BACK`（已自动回滚）。
 
+同一份输出也保存在 systemd 日志中（`journalctl -u wcu-update -n 200`）；`update.log` 便于按时间查看历次更新，脚本退出前会等待日志写完，保证最后的结果行不会丢失。
+
 ---
 
 ## 6. Windows 一键本地部署
