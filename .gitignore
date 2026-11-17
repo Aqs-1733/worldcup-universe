@@ -51,3 +51,6 @@ data/personal/uploads/
 docs/*.pdf
 docs/*.pptx
 /互联网数据库开发*
+
+# Project-private MariaDB used by deploy-local.bat (local data, never committed)
+storage/local-db/

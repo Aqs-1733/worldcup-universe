@@ -22,3 +22,6 @@ artifacts/navigation/*.patch -whitespace
 *.woff2 binary
 # Server configuration templates are consumed on Linux as-is.
 deploy/** text eol=lf
+# Windows launchers keep CRLF wherever the source is checked out or zipped.
+*.bat text eol=crlf
+*.ps1 text eol=crlf
