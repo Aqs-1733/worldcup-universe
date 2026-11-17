@@ -81,7 +81,7 @@ cleanup; trap - EXIT
 log "pre-flight passed"
 
 # --- 5. backup ---------------------------------------------------------------------------------------------------------
-BACKUP_DIR=/var/backups/worldcup-universe/pre-update BACKUP_KEEP_DAYS=30 bash "$APP_DIR/scripts/backup.sh" \
+BACKUP_DIR=/var/backups/worldcup-universe/pre-update BACKUP_KEEP_DAYS=30 BACKUP_VIDEOS=never bash "$APP_DIR/scripts/backup.sh" \
   || refuse "backup failed; production untouched."
 BK_DB="$(ls -t /var/backups/worldcup-universe/pre-update/db-*.sql.gz | head -1)"
 BK_FILES="$(ls -t /var/backups/worldcup-universe/pre-update/files-*.tar.gz | head -1)"

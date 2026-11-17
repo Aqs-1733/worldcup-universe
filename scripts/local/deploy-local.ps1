@@ -125,10 +125,10 @@ $PhpArgs = New-Object System.Collections.Generic.List[string]
 $extDir = (& $PhpExe -r "echo ini_get('extension_dir');")   # PHP code uses single quotes: Windows PowerShell 5.1 strips inner double quotes
 if (-not (Test-Path -LiteralPath (Join-Path $extDir 'php_mbstring.dll'))) { $extDir = Join-Path $PhpDir 'ext'; $PhpArgs.Add('-d'); $PhpArgs.Add("extension_dir=$extDir") }
 $missing = @()
-foreach ($ext in @('pdo_mysql', 'mbstring', 'curl', 'fileinfo', 'openssl', 'simplexml', 'zip')) {
+foreach ($ext in @('pdo_mysql', 'mbstring', 'curl', 'fileinfo', 'openssl', 'simplexml', 'zip', 'sodium')) {
   if ($loaded -contains $ext) { continue }
   if (Test-Path -LiteralPath (Join-Path $extDir "php_$ext.dll")) { $PhpArgs.Add('-d'); $PhpArgs.Add("extension=$ext") }
-  elseif ($ext -ne 'zip') { $missing += $ext }
+  elseif ($ext -notin @('zip', 'sodium')) { $missing += $ext }   # zip: Composer only; sodium: backup decryption only
 }
 if ($missing) {
   Fail "PHP 缺少扩展：$($missing -join ', ')（$PhpExe）" "请在 $PhpDir\php.ini 中启用对应的 extension=... 行，或换用 XAMPP 8.2 自带的 PHP。"
@@ -136,6 +136,9 @@ if ($missing) {
 $check = (& $PhpExe @PhpArgs -r "foreach(['pdo_mysql','mbstring','curl','fileinfo','openssl'] as `$e){if(!extension_loaded(`$e)){echo `$e,' ';}}")
 if ($check) { Fail "PHP 扩展无法加载：$check" "检查 $extDir 中是否有对应的 php_*.dll，以及它们与 php.exe 的版本是否一致。" }
 $PhpArgs = [string[]]$PhpArgs.ToArray()
+# fetch-backup / restore-local reuse exactly this PHP and its extension switches.
+New-Item -ItemType Directory -Force -Path $RuntimeDir | Out-Null
+[System.IO.File]::WriteAllText((Join-Path $RuntimeDir 'local-php.json'), (@{ exe = $PhpExe; args = $PhpArgs } | ConvertTo-Json -Compress), (New-Object System.Text.UTF8Encoding($false)))
 Ok "PHP $PhpVersion  $PhpExe"
 if ($PhpArgs.Count) { Info "本项目临时启用扩展：$(($PhpArgs | Where-Object { $_ -like 'extension=*' }) -join ', ')" }
 

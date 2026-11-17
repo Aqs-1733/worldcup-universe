@@ -1,0 +1,13 @@
+# WorldCup Universe - encrypted off-site backup to a private GitHub repository (scripts/offsite-backup.sh).
+# Enabled by scripts/deploy.sh only when /etc/worldcup-universe/offsite.conf exists.
+[Unit]
+Description=WorldCup Universe encrypted off-site backup
+After=network-online.target mariadb.service wcu-backup.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash __APP_DIR__/scripts/offsite-backup.sh
+TimeoutStartSec=45min
+Nice=10
+IOSchedulingClass=idle

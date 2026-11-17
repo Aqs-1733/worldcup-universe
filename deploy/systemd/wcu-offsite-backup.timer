@@ -1,0 +1,12 @@
+# WorldCup Universe - nightly encrypted off-site backup, after the 03:30 local backup.
+[Unit]
+Description=WorldCup Universe off-site backup timer
+
+[Timer]
+OnCalendar=*-*-* 04:20:00
+RandomizedDelaySec=15min
+Persistent=true
+Unit=wcu-offsite-backup.service
+
+[Install]
+WantedBy=timers.target

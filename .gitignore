@@ -54,3 +54,6 @@ docs/*.pptx
 
 # Project-private MariaDB used by deploy-local.bat (local data, never committed)
 storage/local-db/
+
+# Decrypted production backups (fetch-backup.bat): real user data and secrets, never committed
+backups/

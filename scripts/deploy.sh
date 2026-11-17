@@ -163,7 +163,7 @@ chmod 755 "$APP_DIR/yii"
 # ---------------------------------------------------------------------------------------------------------------
 if [[ "$HAS_SCHEMA" == "1" && $SKIP_BACKUP -eq 0 ]]; then
   step "Pre-deployment backup"
-  BACKUP_DIR=/var/backups/worldcup-universe/pre-deploy BACKUP_KEEP_DAYS=30 bash "$APP_DIR/scripts/backup.sh"
+  BACKUP_DIR=/var/backups/worldcup-universe/pre-deploy BACKUP_KEEP_DAYS=30 BACKUP_VIDEOS=never bash "$APP_DIR/scripts/backup.sh"
 fi
 
 step "Composer dependencies"
@@ -237,10 +237,12 @@ systemctl reload "$FPM_SERVICE"
 
 # ---------------------------------------------------------------------------------------------------------------
 step "systemd timers (news sync every 10 min, nightly backup)"
-for unit in wcu-news-sync.service wcu-backup.service wcu-update.service; do render "$APP_DIR/deploy/systemd/$unit.template" > "/etc/systemd/system/$unit"; done
-install -m 644 "$APP_DIR/deploy/systemd/wcu-news-sync.timer" "$APP_DIR/deploy/systemd/wcu-backup.timer" "$APP_DIR/deploy/systemd/wcu-update.timer" /etc/systemd/system/
+for unit in wcu-news-sync.service wcu-backup.service wcu-update.service wcu-offsite-backup.service; do render "$APP_DIR/deploy/systemd/$unit.template" > "/etc/systemd/system/$unit"; done
+install -m 644 "$APP_DIR/deploy/systemd/wcu-news-sync.timer" "$APP_DIR/deploy/systemd/wcu-backup.timer" "$APP_DIR/deploy/systemd/wcu-update.timer"   "$APP_DIR/deploy/systemd/wcu-offsite-backup.timer" /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable --now wcu-news-sync.timer wcu-backup.timer >/dev/null
+# Off-site backup needs its keys and repository first (docs/deployment.md); without the config it stays off.
+if [[ -f /etc/worldcup-universe/offsite.conf ]]; then systemctl enable --now wcu-offsite-backup.timer >/dev/null; fi
 # wcu-update.timer (auto-update from GitHub) is installed but only enabled by the operator:
 #   sudo systemctl enable --now wcu-update.timer
 
