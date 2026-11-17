@@ -19,7 +19,8 @@
 #   OFFSITE_GIT_NAME=... OFFSITE_GIT_EMAIL=...
 set -euo pipefail
 
-APP_DIR="${APP_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"            # helper scripts next to this one
+APP_DIR="${APP_DIR:-$(cd "$HERE/.." && pwd)}"                    # the installation whose data is copied
 CONF=/etc/worldcup-universe/offsite.conf
 STATE_DIR=/var/lib/worldcup-universe; STATUS="$STATE_DIR/offsite-last.json"
 WORK_ROOT=/var/backups/worldcup-universe/offsite
@@ -47,7 +48,7 @@ umask 077; mkdir -p "$WORK/bundle"
 echo "==> Backup (database, uploads, coursework, .env)"
 exec 8>/run/lock/wcu-news-sync.lock; flock -w 900 8 || { echo "ERROR: news sync still running after 15 min." >&2; exit 1; }
 videos=never; [[ "$OFFSITE_INCLUDE_VIDEOS" == 1 ]] && videos=always
-BACKUP_DIR="$WORK/bundle" BACKUP_KEEP_DAYS=36500 BACKUP_VIDEOS=$videos APP_DIR="$APP_DIR" bash "$APP_DIR/scripts/backup.sh"
+BACKUP_DIR="$WORK/bundle" BACKUP_KEEP_DAYS=36500 BACKUP_VIDEOS=$videos APP_DIR="$APP_DIR" bash "$HERE/backup.sh"
 env_get() { local l; l="$(grep -E "^[[:space:]]*$1=" "$APP_DIR/.env" | tail -n1 || true)"; l="${l#*=}"; l="${l%$'\r'}"; l="${l#\"}"; l="${l%\"}"; printf '%s' "$l"; }
 DB="$(env_get DB_DATABASE)"; CNF="$WORK/my.cnf"; pw="$(env_get DB_PASSWORD)"; pw="${pw//\\/\\\\}"; pw="${pw//\"/\\\"}"
 printf '[client]\nhost=%s\nport=%s\nuser=%s\npassword="%s"\n' "$(env_get DB_HOST)" "$(env_get DB_PORT)" "$(env_get DB_USERNAME)" "$pw" > "$CNF"
@@ -60,7 +61,7 @@ uploads="$(find "$APP_DIR/public/uploads" "$APP_DIR/data/team/uploads" "$APP_DIR
 echo "==> Encrypt"
 ( cd "$WORK/bundle" && tar -cf "$WORK/snapshot.tar" --exclude='.videos-state' . )
 plain_sha="$(sha256sum "$WORK/snapshot.tar" | cut -c1-64)"; plain_bytes="$(stat -c %s "$WORK/snapshot.tar")"
-php "$APP_DIR/scripts/backup-crypt.php" encrypt "$OFFSITE_PUBLIC_KEY" "$WORK/snapshot.tar" "$WORK/snapshot.wcub"
+php "$HERE/backup-crypt.php" encrypt "$OFFSITE_PUBLIC_KEY" "$WORK/snapshot.tar" "$WORK/snapshot.wcub"
 rm -f "$WORK/snapshot.tar"
 mkdir -p "$WORK/out/$STAMP"; ( cd "$WORK/out/$STAMP" && split -b 45M -d -a 3 "$WORK/snapshot.wcub" backup.wcub.part- )
 parts="$(cd "$WORK/out/$STAMP" && ls backup.wcub.part-* | awk 'BEGIN{ORS=""} {printf "%s\"%s\"", (NR>1?",":""), $0}')"
