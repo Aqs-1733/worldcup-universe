@@ -14,11 +14,16 @@ php yii app/install
 php -S 127.0.0.1:8080 -t public public/index.php
 ```
 
-Windows 可运行 `setup.ps1` 完成环境检查、依赖安装和建库迁移，再运行 `start_php.bat`。安装命令保持已有账号/密码和体育记录不变；全新空库才导入随仓库提供的公开体育快照。数据库账号需要建库、建表和迁移权限；生产环境完成部署后可使用权限更小的运行账号。
+## 部署
 
-前台：`http://127.0.0.1:8080`，管理台：`http://127.0.0.1:8080/admin`。管理员从本地 `.env` 初始化，没有写死在前端。
+完整说明见 **[docs/deployment.md](docs/deployment.md)**（架构、公网部署、自动更新、本地部署、备份恢复、故障处理、验收结果）。
 
-**公网生产部署**（Oracle Cloud Ubuntu + Nginx + PHP-FPM + MariaDB，HTTPS、上传、新闻定时同步、备份恢复、回滚）：见 [docs/deployment-oracle-ubuntu.md](docs/deployment-oracle-ubuntu.md)，一键执行 `sudo bash scripts/deploy.sh --install-packages --domain <域名> --email <邮箱>`。
+- **正式网站**：https://worldcup-universe.dynv6.net/ （阿里云 ECS，Nginx + PHP-FPM + MariaDB，HTTPS；GitHub `main` 每 15 分钟自动安全更新）
+- **Windows 本地一键部署**：安装 XAMPP 8.2（PHP 8.1+、MariaDB 10.4+）后双击 `deploy-local.bat`，完成后访问 http://127.0.0.1:8080/ ；停止用 `stop-local.bat`。重复运行不会覆盖已有数据。
+- **备份**：服务器每日本机备份，并加密推送到 GitHub 私有仓库；`fetch-backup.bat` / `restore-local.bat` 在 Windows 上下载、验证和恢复。
+- **公网服务器部署/更新**：`sudo bash scripts/deploy.sh --install-packages --domain <域名> --email <邮箱>`；状态检查 `sudo bash scripts/status.sh`。
+
+本地前台 `http://127.0.0.1:8080`，管理台 `http://127.0.0.1:8080/admin`；管理员由 `.env` 初始化（本地部署脚本随机生成初始密码），没有写死在前端。
 
 后台“媒体资产、项目团队、球员、球队、新闻、课程交付”支持浏览器上传、预览与替换（`services/MediaUploadService.php`）；公开媒体保存在 `public/uploads/`，课程作业保存在 `data/<team|personal>/uploads/`，仅在记录“前台可见”时可下载。
 
@@ -79,7 +84,8 @@ php yii app/audit
 - `docs/v2-architecture.md`：需求、架构、模块/流程/ER 图、权限、页面与数据边界。
 - `docs/v2-database-dictionary.md`：实际迁移后数据库完整字典。
 - `docs/v2-api.md`：接口、状态码、CSRF 与请求示例。
-- `docs/v2-deployment.md`：全新安装、已有库升级、恢复与回滚。
+- `docs/deployment.md`：正式部署文档（公网、自动更新、本地一键部署、备份恢复、故障处理）。
+- `docs/v2-deployment.md`：数据采集与维护（官方快照、新闻、视频、迁移回退）。
 - `docs/v2-coursework.md`：逐条对照老师课件与设计方案，区分代码完成和最终课程材料。
 - `docs/v2-acceptance.md`、`artifacts/VERIFICATION.txt`：真实测试和回滚证据。
 

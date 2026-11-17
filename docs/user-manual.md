@@ -14,9 +14,9 @@
 1. 使用 `.env` 中的管理员账号登录。
 2. 进入 `/admin` 后可维护团队成员、球队、球员、赛程、新闻、发布内容、留言、国家资料、来源文件和数据校验记录。
 3. 在新闻页点击“联网刷新”可同步最新 RSS 新闻；失败时系统记录错误，不填假数据。
-4. 修改 `.env` 后可重新运行 `php scripts/install.php` 更新基础配置。
+4. 本地网站用 `deploy-local.bat` 部署和启动（可重复运行，不覆盖数据）；公网服务器见 `docs/deployment.md`。
 
-## 常用脚本
+## 常用脚本（早期数据导入工具；部署请用 deploy-local.bat / scripts/deploy.sh）
 
 ```powershell
 php scripts/install.php

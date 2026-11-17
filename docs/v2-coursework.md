@@ -39,7 +39,7 @@
 | 设计文档 PDF | `docs/design.md`、架构/流程/ER 图、`docs/v2-database-dictionary.md` | 待与最终页面和实际 schema 对齐后导出 |
 | 实现文档 PDF | `docs/implementation.md`、实际 Git 差异、迁移、官方数据证据 | 待写真实实现经过、成员贡献和最终测试结果 |
 | 用户手册 PDF | `docs/user-manual.md`、实际页面截图 | 待按最终导航、赛事分组、主队、论坛、后台流程更新 |
-| 部署文档 PDF | `docs/deployment.md`、实际初始化与回滚记录 | 待在干净环境复现并补实际成功截图；旧文档命令须先校验 |
+| 部署文档 PDF | `docs/deployment.md`（公网 + Windows 一键部署 + 备份恢复，含实际截图与验收结果） | 已在干净目录全新部署复现，并完成公网与恢复验证 |
 | 项目展示 PPT | `docs/presentation-outline.md` | 现有大纲不是 PPT 成品；待制作 `.pptx` 与对应 PDF |
 | 真人录屏 5–15 分钟 | `docs/demo-script.md` 作为提纲 | 待本人讲解并录制，覆盖运行、网页和 PPT；无录屏成品 |
 | 源码与数据库 | 项目源码、`data/install.sql`、迁移、公开数据种子 | 最终版本需实际测试、提交、推送并记录 SHA；本文不宣称已推送 |

@@ -4,7 +4,7 @@
 
 - 前端：PHP 模板、CSS、少量原生 JavaScript。
 - 后端：PHP 8.1+。
-- 数据库：MySQL 8.0+，PDO 访问。
+- 数据库：MariaDB 10.4+（生产 10.6），PDO / Yii2 ActiveRecord 访问；MySQL 8 无法创建 install.sql 中的长唯一键。
 - 外部数据：FIFA、ESPN、Wikipedia、RSS 新闻源。
 - 智能服务：火山方舟 ARK OpenAI 兼容接口，用于客服问答、解说和搜索总结。
 

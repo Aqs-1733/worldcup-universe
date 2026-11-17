@@ -1,8 +1,10 @@
-# 安装、采集与恢复
+# 数据采集与维护
 
-## 环境与全新安装
+> 部署（公网服务器、Windows 本地一键部署、备份与恢复）统一见 [deployment.md](deployment.md)。本文只说明数据的采集、导入与维护。
 
-PHP 8.1+，扩展 pdo_mysql、mbstring、curl、SimpleXML、fileinfo；Composer；MariaDB 10.4+（长唯一索引；MySQL 8 无法创建 install.sql 中的部分唯一键）。Linux 公网部署见 [deployment-oracle-ubuntu.md](deployment-oracle-ubuntu.md)。Python 的 pdfplumber 用于重新采集 FIFA PDF，网站运行本身不依赖 Python。
+## 环境与安装要点
+
+PHP 8.1+，扩展 pdo_mysql、mbstring、curl、SimpleXML、fileinfo；MariaDB 10.4+（长唯一索引；MySQL 8 无法创建 install.sql 中的部分唯一键）。Windows 请直接使用 `deploy-local.bat`，Linux 公网部署使用 `scripts/deploy.sh`，均见 [deployment.md](deployment.md)；下面是脚本内部执行的等价命令。Python 的 pdfplumber 用于重新采集 FIFA PDF，网站运行本身不依赖 Python。
 
 ```powershell
 Copy-Item .env.example .env
@@ -15,7 +17,7 @@ php -S 127.0.0.1:8080 -t public public/index.php
 
 Web 根目录只能是 public。安装执行基础 34 表、5 个增量迁移、公开种子、管理员初始化；升级后共 48 表（含迁移历史）。非空体育库跳过种子，重复安装不覆盖已有密码。公开种子不包含用户、会话、密钥或论坛测试内容。不要把 `.env`、storage/runtime 或数据库目录上传仓库。
 
-Windows 的 setup.ps1 / start_php.bat 提供同一流程；后者同时启动新闻进程。当前验收地址 127.0.0.1:8088 使用独立 MariaDB 3307，不是部署默认端口。
+Windows 的 `deploy-local.bat`（旧入口 setup.ps1 / start_php.bat 会转调它）执行同一流程，默认网站端口 8080、项目专用 MariaDB 端口 3317。本地新闻同步需要时手动运行 `php yii news/sync` 或 `scripts/start_news_worker.ps1`。
 
 ## 官方体育数据
 
@@ -42,13 +44,13 @@ powershell -File scripts/start_news_worker.ps1
 php yii video/seed
 ```
 
-新闻源固定 HTTPS 主机白名单、响应上限、超时、短摘要和原始来源；worker 每 300 秒轮询，可在本机进程日志查看同步结果。Linux 生产环境使用 systemd 定时器 `wcu-news-sync.timer`（每 10 分钟 `php yii news/sync`，flock + 文件锁防重复，见 deployment-oracle-ubuntu.md）。页面每分钟检查状态，有新增时给出刷新入口，不宣称瞬时推送。英文来源保留原标题，不伪造中文译文。
+新闻源固定 HTTPS 主机白名单、响应上限、超时、短摘要和原始来源；worker 每 300 秒轮询，可在本机进程日志查看同步结果。Linux 生产环境使用 systemd 定时器 `wcu-news-sync.timer`（每 10 分钟 `php yii news/sync`，flock + 文件锁防重复，见 deployment.md 第 4.3 节）。页面每分钟检查状态，有新增时给出刷新入口，不宣称瞬时推送。英文来源保留原标题，不伪造中文译文。
 
 视频仅 2026 年；发布时校验官方元数据。RTVE 的完整决赛需要官方账户和 DRM，嵌入的是公开播放器文档，不保存、代理或拆解受保护媒体流。现有证据证明元数据和 iframe 接入，未证明登录后流播放成功。
 
-## 备份、回滚与重新升级
+## 迁移回退与重新升级
 
-部署前保留完整代码版本、公开原始证据及数据库全量备份。使用数据库工具的凭据交互／受保护配置，不把密码写到 shell 参数或仓库。
+生产环境的备份与恢复见 deployment.md 第 7 节（本机每日备份、加密异地备份、`restore.sh`）。执行下面的迁移回退前，先确认已有全量备份。使用数据库工具的凭据交互／受保护配置，不把密码写到 shell 参数或仓库。
 
 ```powershell
 # 只在已备份、明确选中的库上执行

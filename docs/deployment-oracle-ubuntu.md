@@ -1,3 +1,5 @@
+> **历史适配方案。** 本文记录项目最初为 Oracle Cloud（Ubuntu 24.04）编写部署脚本时的说明，部分内容（Oracle 安全列表、iptables 放行、`ubuntu` 用户等）只适用于 Oracle。当前正式部署在阿里云 ECS，**以 [deployment.md](deployment.md) 为准**；脚本本身（`scripts/deploy.sh` 等）两者通用，后续新增的自动更新、异地加密备份、Windows 一键部署只在 deployment.md 中说明。
+
 # Oracle Cloud Always Free 生产部署（Ubuntu + Nginx + PHP-FPM + MariaDB）
 
 本文是课程“团队作业 5——部署文档”的服务器部分：从一台全新的 Oracle Cloud Ubuntu 实例，到 HTTPS 公网演示、文件上传、新闻定时同步、备份与恢复、回滚。网站仍是 PHP + Yii2 原生 MVC，部署只增加服务器配置与运维脚本，不改变业务路由和数据。
