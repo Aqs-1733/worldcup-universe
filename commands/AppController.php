@@ -80,14 +80,9 @@ final class AppController extends Controller
     }
     public function actionWelcome(): int
     {
-        $admin=User::findOne(['username'=>env('ADMIN_USERNAME','admin')]);
-        $category=\app\models\ForumCategory::findOne(['slug'=>'worldcup']);
-        if(!$admin || !$admin->isAdmin() || !$category) { return 1; }
-        $title='论坛使用说明';
-        if(\app\models\ForumThread::find()->where(['author_id'=>$admin->id,'title'=>$title])->exists()) { return 0; }
-        $thread=(new \app\services\ForumService())->saveThread($admin,['title'=>$title,'body'=>'在个人中心选择主队，关注球队与球员。发布主题时可关联球队和比赛，回复、点赞与收藏会保留在你的账号中。请理性讨论，遇到违规内容可提交举报。','category_id'=>$category->id]);
-        if($thread->hasErrors()) { return 1; } (new \app\services\ForumService())->moderate($admin,'thread',(int)$thread->id,'pin');
-        $this->stdout("Forum welcome guide published.\n"); return 0;
+        $result=(new \app\services\CommunitySeedService())->seed();
+        $this->stdout('Community fixtures ready '.json_encode($result,JSON_UNESCAPED_UNICODE)."\n");
+        return 0;
     }
     public function actionDictionary(): int
     {

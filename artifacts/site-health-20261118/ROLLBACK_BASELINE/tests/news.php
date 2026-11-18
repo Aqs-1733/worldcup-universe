@@ -1,0 +1,13 @@
+<?php
+/** Bounded RSS parser and live ingestion evidence checks; no test writes. */
+require dirname(__DIR__).'/vendor/autoload.php';require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';require dirname(__DIR__).'/app/bootstrap.php';$app=new yii\console\Application(require ROOT_PATH.'/config/console.php');
+$s=new app\services\NewsImportService();$xml='<rss xmlns:media="http://search.yahoo.com/mrss/"><channel><item><title>Team news</title><link>https://www.bbc.co.uk/sport/football/test</link><description>&lt;b&gt;Real excerpt&lt;/b&gt;</description><media:thumbnail url="https://ichef.bbci.co.uk/sample.jpg"/><category>Football</category></item><item><title>Unsafe</title><link>javascript:alert(1)</link></item></channel></rss>';
+$r=$s->parse($xml);if(count($r)!==1||$r[0]['image']!=='https://ichef.bbci.co.uk/sample.jpg'||$r[0]['summary']!=='Real excerpt'||$r[0]['categories']!==['Football'])throw new RuntimeException('RSS namespace and metadata regression');
+if($s->imageUrl('http://ichef.bbci.co.uk/x.jpg')||$s->imageUrl('https://127.0.0.1/x.jpg')||$s->imageUrl('javascript:alert(1)'))throw new RuntimeException('Image scheme/host validation regression');
+$large=$s->parse('<rss xmlns:media="http://search.yahoo.com/mrss/"><channel><item><title>Photo sizes</title><link>https://www.theguardian.com/football/example</link><media:content width="140" url="https://i.guim.co.uk/small.jpg"/><media:content width="700" url="https://i.guim.co.uk/large.jpg"/></item></channel></rss>');
+if($large[0]['image']!=='https://i.guim.co.uk/large.jpg')throw new RuntimeException('Largest publisher photo not selected');
+if(app\models\NewsArticle::find()->where(['status'=>'published','source_name'=>'赛事简报'])->exists())throw new RuntimeException('Generated briefs still public');
+$articles=app\models\NewsArticle::find()->where(['status'=>'published'])->andWhere(['not',['source_id'=>null]])->all();$images=0;$types=[];
+foreach($articles as $a){$raw=is_array($a->raw_payload_json)?$a->raw_payload_json:json_decode($a->raw_payload_json??'{}',true);if(($raw['kind']??'')==='publisher_rss'&&empty($raw['feed_sha256']))throw new RuntimeException('Missing feed hash');if($a->imageUrl)$images++;$types[$a->newsType]=true;}
+if(count($articles)<20||$images<5||count($types)<3)throw new RuntimeException('Live feed coverage incomplete');
+$good=app\models\NewsSource::find()->where(['is_enabled'=>1,'last_error'=>null])->count();if($good<2)throw new RuntimeException('Live publishers unavailable');echo 'PASS news: '.count($articles).' publisher articles; '.$images.' source images; '.count($types).' types; '.$good." sources synced; generated briefs not public.\n";

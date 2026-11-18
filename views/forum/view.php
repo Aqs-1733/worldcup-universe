@@ -2,6 +2,7 @@
 /** Topic detail, Tabler reply panel and native Yii2 member actions. */
 use yii\helpers\Html;
 use app\services\TeamUi;
+use app\services\AvatarUi;
 $this->title=$model->displayTitle;
 $user=Yii::$app->user->identity;
 $canEdit=$user&&((int)$user->id===(int)$model->author_id||$user->isAdmin());
@@ -16,10 +17,9 @@ $locked=$model->is_locked||$model->status!=='published';
     <?php if($model->team): ?><a href="/teams/<?= e($model->team->slug) ?>"><?= TeamUi::label($model->team) ?></a><?php endif ?>
     <?php if($model->is_locked): ?><span class="topic-pill">已锁定</span><?php endif ?>
     <?php if($model->status!=='published'): ?><span class="topic-pill"><?= e($model->status) ?></span><?php endif ?>
-    <?php if($model->isDemo): ?><span class="topic-pill demo-pill">示例帖</span><?php endif ?>
    </div>
    <h1><?= e($model->displayTitle) ?></h1>
-   <div class="topic-author"><span class="avatar" aria-hidden="true"><?= e(mb_substr($model->author?->displayName??'球迷',0,1)) ?></span><div><b><?= e($model->author?->displayName??'球迷') ?></b><time datetime="<?= e($model->created_at) ?>"><?= e(date('m月d日 H:i',strtotime($model->created_at))) ?></time></div><span class="topic-author-badge">楼主</span></div>
+   <div class="topic-author"><?= AvatarUi::render($model->author) ?><div><b><?= e($model->author?->displayName??'球迷') ?></b><time datetime="<?= e($model->created_at) ?>"><?= e(date('m月d日 H:i',strtotime($model->created_at))) ?></time></div><span class="topic-author-badge">楼主</span></div>
    <div class="thread-body"><?= nl2br(e($model->body)) ?></div>
    <?php if($model->match_id): ?><a class="topic-linked-match" href="/matches/<?= (int)$model->match_id ?>"><?= TeamUi::label($model->match?->homeTeam) ?><b><?= e($model->match?->home_score??'—') ?> : <?= e($model->match?->away_score??'—') ?></b><?= TeamUi::label($model->match?->awayTeam) ?><span>比赛详情 ↗</span></a><?php endif ?>
    <div class="thread-actions">
@@ -35,7 +35,7 @@ $locked=$model->is_locked||$model->status!=='published';
     <div class="list-group list-group-flush topic-reply-list">
      <?php foreach($provider->models as $index=>$r): ?>
       <article class="list-group-item topic-reply" id="reply-<?= (int)$r->id ?>">
-       <span class="avatar reply-avatar" aria-hidden="true"><?= e(mb_substr($r->user?->displayName??'球迷',0,1)) ?></span>
+       <?= AvatarUi::render($r->user,'reply-avatar') ?>
        <div class="reply-content">
         <div class="reply-byline"><b><?= e($r->user?->displayName??'球迷') ?></b><?php if((int)$r->user_id===(int)$model->author_id): ?><span class="topic-author-badge">楼主</span><?php endif ?><a class="reply-permalink" href="#reply-<?= (int)$r->id ?>" aria-label="第 <?= (int)$provider->pagination->offset+$index+1 ?> 条回复">#<?= (int)$provider->pagination->offset+$index+1 ?></a></div>
         <?php if($r->parent_id): ?><a class="reply-quote-ref" href="#reply-<?= (int)$r->parent_id ?>">↳ 引用回复 #<?= (int)$r->parent_id ?></a><?php endif ?>

@@ -27,13 +27,13 @@ final class SiteController extends BaseController
     public function actionDownloadFile(string $scope,string $name)
     {
         $path=\app\services\CourseworkLibrary::resolve($scope,$name);
-        if(!$path){ throw new \yii\web\NotFoundHttpException('文件不存在。'); }
+        if(!$path){ Yii::$app->response->statusCode=404; return $this->render('error',['status'=>404,'message'=>'文件不存在。']); }
         return Yii::$app->response->sendFile($path,basename($path),['inline'=>false]);
     }
     public function actionDownload(int $id)
     {
         $file=CourseworkFile::findOne(['id'=>$id,'is_visible'=>1]);
-        if (!$file || !($path=$file->resolvedPath())) { throw new \yii\web\NotFoundHttpException('文件尚未发布。'); }
+        if (!$file || !($path=$file->resolvedPath())) { Yii::$app->response->statusCode=404; return $this->render('error',['status'=>404,'message'=>'文件尚未发布。']); }
         // Uploaded copies carry a random name on disk; give the visitor the registered title instead.
         $name=preg_match('/^[a-f0-9]{32}\./',basename($path))?trim(preg_replace('/[\x00-\x1f\\\\\/:*?"<>|]+/u','_',$file->title)).'.'.pathinfo($path,PATHINFO_EXTENSION):basename($path);
         return Yii::$app->response->sendFile($path,$name,['inline'=>false]);

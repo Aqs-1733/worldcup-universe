@@ -30,13 +30,13 @@ def ck(result,label):
 def parsed(html):p=Nodes();p.feed(html);return p
 
 guest,member,admin=Client(),Client(),Client()
-# The labelled examples come from `php yii design/forum` (run it once on the test database); the final-match topic
-# carries two example replies, the tactics topic none. IDs differ per database, so they are looked up by title.
+# Community fixtures are created by `php yii community/seed` (or the compatible `php yii design/forum`).
+# IDs differ per database, so the public topics are located by title.
 listing=guest.req('/forum')[2]
 def topic(title):
     found=re.search(r'href="/forum/(\d+)"[^>]*>(?:(?!</a>).)*'+re.escape(title),listing,re.S)
-    ck(found,'labelled example topic listed: '+title);return '/forum/'+found[1]
-for route,has_replies in [(topic('西班牙与阿根廷，哪一组对位值得复盘？'),False),(topic('决赛这场球，你最想回看哪一段？'),True)]:
+    ck(found,'community topic listed: '+title);return '/forum/'+found[1]
+for route,has_replies in [(topic('日本队边路一启动，感觉小组赛要有节目'),True),(topic('阿根廷这十分钟后场出球，我先暂停呼吸'),True)]:
     r=guest.req(route);ck(r[0]==200,route+' HTTP 200');p=parsed(r[2])
     ck('topic-replies-panel' in p.classes,'detail reply card exists '+route)
     ck('empty' not in p.classes,'retired grey banner absent '+route)

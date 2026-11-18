@@ -1,0 +1,13 @@
+# WorldCup Universe — run the news sync every 10 minutes; Persistent catches up after downtime.
+[Unit]
+Description=WorldCup Universe news RSS sync timer
+
+[Timer]
+OnBootSec=3min
+OnCalendar=*:0/10
+RandomizedDelaySec=60
+Persistent=true
+Unit=wcu-news-sync.service
+
+[Install]
+WantedBy=timers.target

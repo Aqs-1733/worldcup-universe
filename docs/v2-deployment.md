@@ -44,9 +44,9 @@ powershell -File scripts/start_news_worker.ps1
 php yii video/seed
 ```
 
-新闻源固定 HTTPS 主机白名单、响应上限、超时、短摘要和原始来源；worker 每 300 秒轮询，可在本机进程日志查看同步结果。Linux 生产环境使用 systemd 定时器 `wcu-news-sync.timer`（每 10 分钟 `php yii news/sync`，flock + 文件锁防重复，见 deployment.md 第 4.3 节）。页面每分钟检查状态，有新增时给出刷新入口，不宣称瞬时推送。英文来源保留原标题，不伪造中文译文。
+新闻源固定 HTTPS 主机白名单、响应上限、超时、短摘要和原始来源。Linux 生产环境使用 systemd 定时器 `wcu-news-sync.timer`，每十分钟执行 `php yii news/sync`；flock 和文件锁避免重叠。同步至少完成一个来源时，本轮任务返回成功；失败来源保留错误并由下一轮重试。
 
-视频仅 2026 年；发布时校验官方元数据。RTVE 的完整决赛需要官方账户和 DRM，嵌入的是公开播放器文档，不保存、代理或拆解受保护媒体流。现有证据证明元数据和 iframe 接入，未证明登录后流播放成功。
+视频仅保留 2026 年内容。`/watch` 直接嵌入央视网的 2026 世界杯页面，未保留 YouTube、RTVE 或受地区／账户限制的播放器。站内不保存、代理或拆解媒体流。
 
 ## 迁移回退与重新升级
 
@@ -70,4 +70,4 @@ Remove-Item Env:DB_DATABASE
 
 UI／配置回滚演示只还原独立副本，不覆盖运行中的改好文件。命令和 SHA256 见 artifacts/VERIFICATION.txt。
 
-2026-10-22 浏览器实测：官方 iframe 标题和封面已加载；点击播放后，RTVE 返回所在地播放权限制（“Este contenido tiene restringidos los derechos de emisión en su ubicación”）。本站显示官方登录／地区限制提示，未播放成功，不绕过地区或 DRM 校验。
+2026-11-18 检查：两个央视网页面均返回 HTTP 200，响应头未设置 X-Frame-Options 或 frame-ancestors；/watch 页面仅输出站内 iframe。

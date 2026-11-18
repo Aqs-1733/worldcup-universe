@@ -13,7 +13,7 @@ $days=$span&&$span['first']?(int)((strtotime(substr($span['last'],0,10))-strtoti
 $stats=[[$count(app\models\Team::class),'支球队','NATIONS'],[count(require ROOT_PATH.'/config/venue-geo.php'),'座城市','HOST CITIES'],[$count(app\models\MatchGame::class),'场比赛','MATCHES'],[$days,'天','DAYS']];
 $heroVideo=!empty($cine['video'])&&app\services\LocalVideoLibrary::safeFile(basename($cine['video']))?'/stream/'.rawurlencode(basename($cine['video'])):null;
 // Admin-managed media (媒体资产) overrides the built-in design files; without an approved record the page is unchanged.
-$cine['stadiumImage']=app\models\MediaAsset::pathFor('home-stadium',$cine['stadiumImage']);$cine['finalImage']=app\models\MediaAsset::pathFor('home-final',$cine['finalImage']);
+$cine['stadiumImage']=app\models\MediaAsset::pathFor('home-hero',$cine['stadiumImage']);$cine['finalImage']=app\models\MediaAsset::pathFor('home-final',$cine['finalImage']);
 $uploadedHeroVideo=app\models\MediaAsset::pathFor('home-hero-video','');if($uploadedHeroVideo!==''&&app\services\MediaUploadService::isVideo($uploadedHeroVideo))$heroVideo=$uploadedHeroVideo;
 $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
 ?>
@@ -90,7 +90,7 @@ $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
   <div class="team-wall-copy"><span class="team-wall-kicker"><?= count($wallTeams) ?> 支球队 · 2026 美加墨</span><h2 id="team-wall-title" data-reveal-title>不同的球衣，<br>同样的热爱。</h2><a class="team-wall-link" href="/teams" data-magnetic>全部球队 ↗</a></div>
  </div>
 </section><?php endif ?>
-<?php $shelf=(new app\services\LocalVideoLibrary())->all();$lead=null;foreach($shelf as $s){if($s['provider']==='local'){$lead=$s;break;}}$lead??=$shelf[0]??null;$badge=['local'=>'本地视频','bilibili'=>'B站','youtube'=>'YouTube','missing'=>'待添加']; ?>
+<?php $shelf=(new app\services\LocalVideoLibrary())->all();$lead=null;foreach($shelf as $s){if($s['provider']==='local'){$lead=$s;break;}}$lead??=$shelf[0]??null;$badge=['local'=>'本地视频','missing'=>'待添加']; ?>
 <?= $this->render('_pitch',['type'=>'halfway']) ?>
 <?php if($lead): ?><section class="home-cinema" aria-labelledby="home-cinema-title">
  <a class="home-cinema-lead" href="/watch?clip=<?= e($lead['slug']) ?>#cinema" data-tilt>

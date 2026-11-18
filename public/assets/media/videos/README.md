@@ -4,7 +4,7 @@
 
 - 格式：H.264 + AAC 的 `.mp4`，或 `.webm`。文件名只用英文、数字、`-`、`_`、`.`。
 - 封面：放一张同名 `.jpg`/`.png`，例如 `semi-final-1.mp4` + `semi-final-1.jpg`。
-- 标题：自动用文件名；要中文标题、比赛关联或 B 站/YouTube 备用来源，在 `config/local-videos.php` 里加一条。
+- 标题：自动用文件名；要设置中文标题或比赛关联，在 `config/local-videos.php` 里加一条。
 - `final-highlights.mp4`：配置里已预留，对应决赛集锦条目。
 - `hero-loop.mp4`：首页第二幕的背景循环视频（建议 10–20 秒、无声、≤1080p、≤15MB）。
 

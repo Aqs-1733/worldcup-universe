@@ -32,7 +32,7 @@ class Nodes(HTMLParser):
         return out+[(left[3][0],self.final),(right[0][0],self.final)]
 
 forum=get('/forum')
-assert 'community-topic-list' in forum and forum.count('示例帖')>=6
+assert 'community-topic-list' in forum and all(title in forum for title in ['阿根廷这十分钟后场出球，我先暂停呼吸','西班牙的中场跑动到底谁在关灯后加班','日本队边路一启动，感觉小组赛要有节目','第一次去墨西哥城看球，座位和进场有什么坑','小组赛刚开两轮，出线公式已经写满草稿纸','凌晨场集合：别剧透，只聊看球感受'])
 assert 'topic-panel' in forum and 'community-aside' in forum and 'footer-inner' in forum
 tree=get('/worldcup');p=Nodes();p.feed(tree)
 assert len(p.match_ids)==len(set(p.match_ids))==32
@@ -64,4 +64,4 @@ for code,entry in manifest['teams'].items():
 assert verified==48
 comments=get('/teams/brazil')
 assert 'comment-card' in comments and 'comment-compose' in comments and '还没有已审核的留言' not in comments
-print('PASS redesign: 6 labelled example topics; 32 unique knockout-map matches / 30 verified winner edges; 48 working country details; 48 hashed 2026 squad photos; no individual team covers; new comment and footer components.')
+print('PASS redesign: 6 populated community topics; 32 unique knockout-map matches / 30 verified winner edges; 48 working country details; 48 hashed 2026 squad photos; no individual team covers; new comment and footer components.')

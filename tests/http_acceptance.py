@@ -31,7 +31,7 @@ try:
   status(guest.req(route),200,'public '+route)
  for route in ['/api/v1/home','/api/v1/teams','/api/v1/teams/argentina','/api/v1/players','/api/v1/players/1','/api/v1/matches','/api/v1/matches/1','/api/v1/standings','/api/v1/stats','/api/v1/news','/api/v1/countries','/api/v1/forum','/api/v1/bracket']:
   r=guest.req(route);status(r,200,route);ck('data' in json.loads(r[2]),route+' JSON envelope')
- r=guest.req('/watch');ck('https://www.rtve.es/drmn/embed/video/17162172/' in r[2] and '官方账号登录' in r[2],'2026 official iframe and publisher access state visible')
+ r=guest.req('/watch');status(r,200,'watch page');ck('https://tv.cctv.com/2026/07/19/VIDEW2kKmn8mNvv0WiJCl6Qx260719.shtml' in r[2] and '<iframe' in r[2] and 'youtube' not in r[2].lower() and 'rtve' not in r[2].lower(),'CCTV in-page player is available without third-party redirect')
  r=guest.req('/deliverables');status(r,301,'deliverables moved to the team page');ck(r[1]['Location'].endswith('/team#downloads'),'deliverables redirect target')
  r=guest.req('/stats');status(r,301,'old standalone data URL redirects');ck(r[1]['Location'].endswith('/worldcup/standings'),'canonical competition standings URL')
  status(guest.req('/teams/no-such-team'),404,'missing team')

@@ -207,7 +207,6 @@ INSERT INTO `team_members` (`id`, `name`, `student_no`, `role_name`, `bio`, `pho
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-INSERT INTO `match_videos` (`id`, `slug`, `title`, `tournament_year`, `stage`, `home_name`, `away_name`, `home_code`, `away_code`, `provider`, `provider_id`, `source_url`, `source_author`, `source_title`, `thumbnail_url`, `video_type`, `status`, `verified_at`, `created_at`, `updated_at`) VALUES (1,'2026-final-spain-argentina','西班牙 对 阿根廷 · 决赛完整回放',2026,'决赛','西班牙','阿根廷','ESP','ARG','rtve','17162172','https://www.rtve.es/play/videos/copa-mundial-de-la-fifa-2026/final-espana-argentina-completo-mundial-2026/17162172/','RTVE','Final | España - Argentina | Mundial FIFA 2026','https://img.rtve.es/imagenes/final-espana-argentina-mundial-fifa-2026/01784494770759.jpg','full_match','published','2026-10-21 23:56:08','2026-10-21 23:56:08','2026-10-21 23:56:08');
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

@@ -27,7 +27,7 @@
 - `config/globe-country-map.php`：NE_ID 到 country_code 的显式映射。英格兰／苏格兰保持独立。
 - `services/GlobeCountryService.php`、`controllers/ApiController.php`、`config/web.php`：`GET /api/v1/globe/{geo_key}`。所有球队／球员／比赛查询限制到已核验记录。
 - `views/countries.php`、`public/assets/js/globe-3d.js`、`country-panel.js`：相机、轮廓状态与国家资料面板；中断过期请求，避免快速选择造成面板错位。
-- `controllers/VideoController.php`、`models/MatchVideo.php`、`services/VideoVerificationService.php`、`views/catalog/videos.php`、`public/assets/js/official-player.js`：视频分类、对应类型核验和播放降级。
+- `controllers/VideoController.php`、`models/MatchVideo.php`、`services/VideoVerificationService.php`、`views/catalog/videos.php`：央视网站内嵌入与本地视频文件校验。
 
 ## 运行检查
 

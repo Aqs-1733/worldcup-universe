@@ -333,8 +333,6 @@ body .cinema-item:hover { color: var(--ink); background: #fff; }
 body .cinema-item.is-active { background: #fcecf1; border-color: #ebbdc9; }
 body .cinema-meta small { color: #7488a0; }
 body .cinema-list .cp-badge { background: #e9eff7; color: #607994; border-radius: 999px; }
-body .cinema-list .cp-badge-youtube { background: #fae9ed; color: #b34254; }
-body .cinema-list .cp-badge-bilibili { background: #f7eafa; color: #9f548f; }
 body .cinema-help summary { color: #405e7d; }
 body .cinema-status a { color: #b1495a; }
 body .cp { border-radius: 24px; box-shadow: 0 16px 38px #36567920; }

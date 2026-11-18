@@ -8,7 +8,6 @@ final class NewsController extends \yii\console\Controller
     {
         $n=\Yii::$app->db->createCommand()->update('news_articles',['status'=>'draft'],['source_name'=>'赛事简报'])->execute();
         \Yii::$app->db->createCommand()->update('news_articles',['status'=>'draft'],['and',['source_name'=>'Sky Sports Football'],['not like','source_url','https://www.skysports.com/football/%',false]])->execute();
-        foreach(\app\models\ForumThread::find()->where(['is_pinned'=>1])->all() as $thread) {if(str_starts_with($thread->title,'欢迎来到世界杯宇宙')){$thread->title='论坛使用说明';$thread->body='在个人中心选择主队，关注球队与球员。发布主题时可关联球队和比赛，回复、点赞与收藏会保留在你的账号中。请理性讨论，遇到违规内容可提交举报。';$thread->save(false);}}
         $this->stdout("PASS news curation: $n generated briefs retained as non-public drafts.\n");return 0;
     }
     public function actionConfigure(): int
@@ -26,7 +25,8 @@ final class NewsController extends \yii\console\Controller
         // Failed sources keep their message in news_sources.last_error; the next scheduled run retries them.
         $failed=array_column(array_filter($r['sources'],fn($s)=>$s['status']==='failed'),'name');
         if($failed) { \Yii::error('News sources failed: '.implode(', ',$failed),'news'); }
-        return $failed?1:0;
+        $successful=count($r['sources'])-count($failed);
+        return $successful>0?0:1;
     }
     public function actionWatch(int $interval=300,int $cycles=0): int
     {

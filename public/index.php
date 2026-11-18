@@ -9,6 +9,12 @@ if (PHP_SAPI === 'cli-server') {
     if ($path !== '/' && $file && is_file($file) && str_starts_with(str_replace('\\','/',$file),str_replace('\\','/',__DIR__).'/')) {
         return false;
     }
+    // The PHP built-in server replaces SCRIPT_FILENAME with a dotted route such as
+    // /downloads/team/file.pdf. Keep Yii's pretty-url request object anchored to
+    // this front controller for local acceptance and upload tests.
+    $_SERVER['SCRIPT_FILENAME']=__FILE__;
+    $_SERVER['SCRIPT_NAME']='/index.php';
+    $_SERVER['PHP_SELF']='/index.php';
 }
 
 $vendorAutoload = dirname(__DIR__) . '/vendor/autoload.php';

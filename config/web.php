@@ -43,7 +43,7 @@ return [
             'profile'=>'profile/index','profile/notifications'=>'profile/notifications','onboarding'=>'profile/index',
             'login'=>'auth/login','register'=>'auth/register','logout'=>'auth/logout',
             'commentary'=>'ai/index','vision'=>'ai/vision',
-            'team'=>'site/team','deliverables'=>'site/deliverables','downloads/<id:\d+>'=>'site/download','downloads/<scope:team|personal>/<name:[^/]+>'=>'site/download-file',
+            'team'=>'site/team','deliverables'=>'site/deliverables','downloads/<scope:team|personal>/<name:[^/]+>'=>'site/download-file','downloads/<id:\d+>'=>'site/download',
             'comments'=>'site/comment',
             'admin'=>'admin/index','admin/users'=>'admin/users','admin/users/<id:\d+>/status'=>'admin/user-status',
             'admin/moderate'=>'admin/moderate','admin/audit'=>'admin/audit',

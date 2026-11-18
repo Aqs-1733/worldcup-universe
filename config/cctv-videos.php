@@ -6,7 +6,6 @@ return [
         'title'=>'决赛将打响：西班牙与阿根廷争冠',
         'subtitle'=>'央视网《新闻直播间》 · 2026.07.19',
         'embed_url'=>'https://tv.cctv.com/2026/07/19/VIDEW2kKmn8mNvv0WiJCl6Qx260719.shtml',
-        'poster'=>'https://p5.img.cctvpic.com/fmspic/2026/07/19/',
     ],
     [
         'slug'=>'cctv-portugal-croatia-review','provider'=>'央视网','type'=>'赛后复盘',

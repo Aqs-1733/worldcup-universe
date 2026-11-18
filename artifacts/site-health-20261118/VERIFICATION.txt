@@ -1,0 +1,93 @@
+SITE HEALTH VERIFICATION
+DATE: 2026-11-18
+BRANCH: codex/site-health
+BASELINE_COMMIT: 743d287cca2572dce4a87f402c475a736073bf0a
+
+ARTIFACT PATHS
+MODIFIED_FILE: D:\Project114514\worldcup-universe\artifacts\site-health-20261118\MODIFIED_FILE
+DIFF_FILE: D:\Project114514\worldcup-universe\artifacts\site-health-20261118\DIFF_FILE
+VERIFICATION: D:\Project114514\worldcup-universe\artifacts\site-health-20261118\VERIFICATION.txt
+ROLLBACK: D:\Project114514\worldcup-universe\artifacts\site-health-20261118\ROLLBACK.sh
+
+CHANGED BRANCH/FIELDS
+BRANCH: codex/site-health
+video.provider: CCTV tv.cctv.com in-page iframe only; no YouTube, RTVE, third-party remote source, or remote match_videos record.
+news.sync: 中国新闻网·体育 RSS is enabled; a successful source update makes the scheduled sync successful; systemd timer uses OnCalendar=*:0/10 and flock.
+community.fixtures: six local-avatar users, six public discussions, ten visible replies and four likes; legacy example guide is hidden.
+venue.intro: all sixteen host venues expose a Chinese introduction and match count.
+download.route: dotted download URLs use the Yii entry script under the PHP built-in server; missing file response is 404.
+
+BASELINE
+COMMAND: D:\XAMPP\php\php.exe tests/backend.php
+INPUT: repository at baseline before this site-health update
+LITERAL OUTPUT/RESULT: PASS 42 database/service checks; all test writes rolled back.
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe tests/official.php
+INPUT: imported 2026 World Cup data
+LITERAL OUTPUT/RESULT: PASS 3048 official-source checks; 48 teams / 1248 players / 104 matches / 5323 lineups / 32 edges.
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe yii app/audit
+INPUT: baseline application database
+LITERAL OUTPUT/RESULT: users:1, forum_threads:7, forum_replies:2, match_videos:1, news_articles:171, news_sources:7, venues:32.
+EXIT STATUS: 0
+
+MODIFIED
+COMMAND: D:\XAMPP\php\php.exe tests/backend.php
+INPUT: completed site-health working tree and local database
+LITERAL OUTPUT/RESULT: PASS 47 database/service checks; all test writes rolled back.
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe tests/official.php
+INPUT: completed site-health working tree and local database
+LITERAL OUTPUT/RESULT: PASS 3048 official-source checks; 48 teams / 1248 players / 104 matches / 5323 lineups / 32 edges.
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe tests/news.php
+INPUT: publisher articles and configured news sources
+LITERAL OUTPUT/RESULT: PASS news: 146 publisher articles; 107 source images; 6 types; 1 sources synced; domestic refresh available; generated briefs not public.
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe tests/site_health.php
+INPUT: video, news, community, venue and timer state
+LITERAL OUTPUT/RESULT: PASS 27 site-health checks.
+EXIT STATUS: 0
+
+COMMAND: python tests/http_acceptance.py
+INPUT: http://127.0.0.1:8088
+LITERAL OUTPUT/RESULT: PASS 114 HTTP checks; prefix=qa_04275682
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe tests/cleanup.php qa_04275682
+INPUT: HTTP test fixture prefix qa_04275682
+LITERAL OUTPUT/RESULT: CLEANED 2 test members; prefix=qa_04275682
+EXIT STATUS: 0
+
+COMMAND: python tests/redesign_ui.py
+INPUT: public routes and rendered community, bracket, country, team-cover components
+LITERAL OUTPUT/RESULT: PASS redesign: 6 populated community topics; 32 unique knockout-map matches / 30 verified winner edges; 48 working country details; 48 hashed 2026 squad photos; no individual team covers; new comment and footer components.
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe tests/redesign_probe.php views/forum/index.php
+INPUT: forum index view
+LITERAL OUTPUT/RESULT: FORUM_COMPONENT=tabler-topics; COMMUNITY_FIXTURES=populated
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe tests/visual-v2.php
+INPUT: visual data surfaces
+LITERAL OUTPUT/RESULT: PASS 424 visual-v2 read-only data checks.
+EXIT STATUS: 0
+
+COMMAND: node --test tests/globe-data.test.mjs
+INPUT: local country map geometry
+LITERAL OUTPUT/RESULT: 4 passed; 0 failed.
+EXIT STATUS: 0
+
+ROLLBACK
+COMMAND: bash artifacts/site-health-20261118/ROLLBACK.sh artifacts/site-health-20261118/ROLLBACK_TEST_TARGET
+INPUT: a separate temporary copy containing the changed source paths; RESTORE_FILES.txt (40 paths); NEW_FILES.txt (12 paths).
+LITERAL OUTPUT/RESULT: RESTORED 40 baseline paths and removed 12 added paths in /mnt/d/Project114514/worldcup-universe/artifacts/site-health-20261118/ROLLBACK_TEST_TARGET
+EXIT STATUS: 0
+RESTORED STATUS: PASS rollback validation: restored=40 added-removed=12 hashes=origin/main
+POST-TEST STATUS: the temporary rollback target was deleted; the working tree remains changed.

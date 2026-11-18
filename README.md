@@ -50,12 +50,12 @@ public/       唯一 Web 根目录
 - 主队：一人最多一支，关注球队/球员可多选，不与屏蔽球队重叠。
 - 论坛：板块/球队筛选、主队看台、主题与回复、同主题引用、编辑/删除、幂等点赞/收藏、回复通知、举报与管理员审核。
 - 权限：只能修改自己的内容；管理员可以隐藏/恢复、锁定/解锁、置顶、处理举报；所有写操作校验 CSRF。
-- 新闻：保留来源、原文链接和发布时间，草稿不公开；原生 RSS 同步：`php yii news/sync`。
+- 新闻：保留来源、原文链接和发布时间，草稿不公开；原生 RSS 同步：`php yii news/sync`，生产环境由 `wcu-news-sync.timer` 每十分钟执行。
 - 赛事：2026 年一届，FIFA 官方名单 PDF 与比赛接口共 48 队、1,248 名球员、104 场比赛、5,323 条阵容记录、32 条已核验晋级关系。原始响应、时间与 SHA256 随仓库保存；比分是采集快照，不宣称实时推送。
 - 导航：赛事内统一提供赛程与晋级、小组积分、比赛回放；小组赛与积分按 A–L 组折叠。旧 `/stats` 永久跳转至 `/worldcup/standings`，不再重复开设数据栏目。
-- 新闻：7 个真实 RSS 来源，按类型和来源筛选，后台每 300 秒轮询；保留原文标题、短摘要、配图和原文链接，不把比赛结果自动拼成新闻。`powershell -File scripts/start_news_worker.ps1` 启动采集进程。
+- 新闻：RSS 同步保留原文标题、短摘要、配图和原文链接；每轮至少有一个来源同步成功即完成本轮，失败来源记录错误并在下一轮重试。
 - 页面：Arena、Tabler、Multiverse 组件及本地中文字体；各模块不同窄幅首图，球队相关内容显示国旗。56 张官方球员肖像已缓存，足球鼠标使用真实透明贴图。
-- 视频：`/watch` 收录经官方元数据核验的 2026 决赛完整回放，嵌入 RTVE 官方播放器；需官方账号登录，未验证登录后的受保护视频流。没有虚构 104 场可播放地址。
+- 视频：`/watch` 仅嵌入央视网可直接打开的 2026 世界杯页面，页面内切换播放源；不再保留 YouTube、RTVE 或其他无法在站内打开的外部播放器。
 - 媒体：真实场馆／城市摄影，作者与许可见 `/credits`；原图保留，部分展示使用 MediaWiki 官方 1280px 预览。
 - AI：文本/生图服务需配置自己的凭据；私有图片上传已实现，视觉模型分析尚未接入，不返回虚构结果。
 
@@ -65,6 +65,7 @@ public/       唯一 Web 根目录
 php tests/backend.php
 php tests/official.php
 php tests/news.php
+php tests/site_health.php
 python tests/http_acceptance.py
 python tests/upload_acceptance.py
 python tests/chinese_ui.py
@@ -77,7 +78,7 @@ node --test tests/globe-data.test.mjs
 php yii app/audit
 ```
 
-数据库测试会回滚写入；HTTP 测试会生成带 `qa_` 标记的临时账号。**使用专用测试数据库**，并按输出的精确前缀清理：`php tests/cleanup.php qa_XXXXXXXX`。测试服务器默认 `http://127.0.0.1:8088`，可用 `WCU_TEST_URL` 环境变量设置（`*_ui.py` 固定使用 8088）。`redesign_ui.py` 与 `topic_replies.py` 需要带【示例】标记的论坛示例帖，先在测试库执行一次 `php yii design/forum`；`topic_replies.py` 优先读取 `ADMIN_USERNAME`/`ADMIN_PASSWORD` 环境变量。`tests/upload_acceptance.py` 默认 `http://127.0.0.1:8098`，需要 `ADMIN_PASSWORD` 环境变量，并在项目根目录运行（会检查并清理自己上传的文件）。
+数据库测试会回滚写入；HTTP 测试会生成带 `qa_` 标记的临时账号。**使用专用测试数据库**，并按输出的精确前缀清理：`php tests/cleanup.php qa_XXXXXXXX`。测试服务器默认 `http://127.0.0.1:8088`，可用 `WCU_TEST_URL` 环境变量设置（`*_ui.py` 固定使用 8088）。`redesign_ui.py` 与 `topic_replies.py` 使用社区演示数据，先在测试库执行一次 `php yii community/seed`（兼容入口为 `php yii design/forum`）；`topic_replies.py` 优先读取 `ADMIN_USERNAME`/`ADMIN_PASSWORD` 环境变量。`tests/upload_acceptance.py` 默认 `http://127.0.0.1:8098`，需要 `ADMIN_PASSWORD` 环境变量，并在项目根目录运行（会检查并清理自己上传的文件）。
 
 ## 设计与交付
 
@@ -91,7 +92,7 @@ php yii app/audit
 
 4 位成员资料已按原个人作业核对。每人的实际贡献签认、最终 PDF/PPT 与本人录屏仍需本人确认补齐；交付清单逐项标注，不把代码说明冒充这些材料。
 
-2026-10-22 浏览器实测：官方 iframe 标题和封面已加载；点击播放后，RTVE 返回所在地播放权限制（“Este contenido tiene restringidos los derechos de emisión en su ubicación”）。本站显示官方登录／地区限制提示，未播放成功，不绕过地区或 DRM 校验。
+2026-11-18 检查：央视网两个 2026 页面均返回 HTTP 200，响应头未设置 X-Frame-Options 或 frame-ancestors 限制；/watch 只渲染站内 iframe。
 
 ## 2026-10-22 截图修订
 

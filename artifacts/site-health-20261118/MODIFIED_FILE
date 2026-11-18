@@ -1,0 +1,18 @@
+SITE-HEALTH MODIFIED FILE
+BRANCH: codex/site-health
+BASELINE_COMMIT: 743d287cca2572dce4a87f402c475a736073bf0a
+PREVIOUS_BRANCH_HEAD: 0730a13d81efe97fea9405f108c07dc5dc4026f1
+ORIGINAL_HASH_RECORD: ROLLBACK_BASELINE_SHA256SUMS.txt
+ORIGINAL_COPY: ROLLBACK_BASELINE/ (40 changed baseline paths)
+
+CHANGED FIELDS
+- 视频：watch 页面仅保留央视网 tv.cctv.com 的站内 iframe 播放源；删除 YouTube、RTVE 和外部视频目录记录。
+- 新闻：news/sync 至少有一个新闻源写入或更新时返回成功；中国新闻网体育 RSS 已启用；生产 timer 每 10 分钟调度并使用 flock 防重入。
+- 论坛：补充 6 个带本地 SVG 头像的测试账号、6 个公开主题、10 条回复、4 条点赞；隐藏旧示例说明。
+- 场馆：16 个主办场馆增加中文介绍与赛程数量。
+- 路由：修复 PHP 内置服务器访问带扩展名下载地址时错误解析脚本的问题，缺失下载返回 404。
+
+ROLLBACK MATERIAL
+- RESTORE_FILES.txt: 40 个应还原的已存在路径。
+- NEW_FILES.txt: 12 个应移除的新建源文件。
+- ROLLBACK.sh: 使用 ROLLBACK_BASELINE/ 恢复源文件并删除新增源文件。

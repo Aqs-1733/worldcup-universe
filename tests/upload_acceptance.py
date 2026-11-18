@@ -135,7 +135,7 @@ try:
     ck(second[0] in guest.text('/team')[2] and first[0] not in guest.text('/team')[2], '/team shows the replacement immediately')
 
     # --- home page media slot -------------------------------------------------------------------------------------
-    stadium = new_id(admin, 'media_assets', 'home-stadium')
+    stadium = new_id(admin, 'media_assets', 'home-hero')
     form = admin.text(f'/admin/media_assets/edit?id={stadium}')[2]
     original = re.search(r'name="Record\[path\]" value="([^"]+)"', form).group(1)
     fields = {f'Record[{k}]': v for k, v in re.findall(r'name="Record\[(\w+)\]" value="([^"]*)"', form)}
