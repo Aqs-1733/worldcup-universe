@@ -2,7 +2,7 @@
 /** Shared responsive Yii2 frontend layout and semantic navigation. */
 use yii\helpers\Html;
 $current='/'.Yii::$app->request->pathInfo;
-$nav=['/'=>'首页','/worldcup'=>'赛事','/teams'=>'球队','/players'=>'球员','/news'=>'新闻','/watch'=>'回放','/forum'=>'球迷论坛','/countries'=>'探索','/team'=>'团队'];
+$nav=['/'=>'首页','/worldcup'=>'赛事','/teams'=>'球队','/players'=>'球员','/news'=>'新闻','/watch'=>'赛事影像','/forum'=>'球迷论坛','/countries'=>'探索','/team'=>'团队'];
 if($current==='/stats'){$current='/worldcup';}
 $user=Yii::$app->user->identity;
 $asset=static fn(string $path):string=>e($path.'?v='.filemtime(ROOT_PATH.'/public'.$path));
@@ -24,7 +24,7 @@ $asset=static fn(string $path):string=>e($path.'?v='.filemtime(ROOT_PATH.'/publi
 <?php if($current==='/worldcup'): ?><link rel="stylesheet" href="<?= $asset('/assets/css/bracket-map.css') ?>"><script src="<?= $asset('/assets/js/bracket-route.js') ?>" defer></script><script src="<?= $asset('/assets/js/bracket-map.js') ?>" defer></script><?php endif ?>
 <?php if($current==='/team'): ?><link rel="stylesheet" href="<?= $asset('/assets/css/team.css') ?>"><?php endif ?>
 <?php if($current==='/countries'): ?><link rel="stylesheet" href="<?= $asset('/assets/css/globe-story.css') ?>"><script src="<?= $asset('/assets/js/country-panel.js') ?>" defer></script><?php endif ?>
-<?php if(str_starts_with(Yii::$app->request->pathInfo,'watch')): ?><link rel="stylesheet" href="<?= $asset('/assets/css/cinema-player.css') ?>"><script src="<?= $asset('/assets/js/official-player.js') ?>" defer></script><script src="<?= $asset('/assets/js/cinema-player.js') ?>" defer></script><?php endif ?>
+<?php if(str_starts_with(Yii::$app->request->pathInfo,'watch')): ?><link rel="stylesheet" href="<?= $asset('/assets/css/cinema-player.css') ?>"><script src="<?= $asset('/assets/js/cinema-player.js') ?>" defer></script><?php endif ?>
 <?php if($current==='/countries'): ?><script src="<?= $asset('/assets/vendor/globe.gl-2.46.2.min.js') ?>" defer></script><script src="<?= $asset('/assets/js/globe-3d.js') ?>" defer></script><?php endif ?>
 <link rel="stylesheet" href="<?= $asset('/assets/css/navigation-glass.css') ?>">
 <script src="<?= $asset('/assets/js/navigation-glass.js') ?>" defer></script>
