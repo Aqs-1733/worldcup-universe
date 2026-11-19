@@ -9,7 +9,7 @@ $config['components']['request']['scriptFile']=ROOT_PATH.'/public/index.php';
 $config['components']['request']['scriptUrl']='/index.php';
 $config['components']['request']['cookieValidationKey']=str_repeat('site-health-key',8);
 new yii\web\Application($config);
-use app\models\{CountryProfile,ForumReply,ForumThread,MatchVideo,NewsArticle,NewsSource,User,Venue};
+use app\models\{CountryProfile,ForumThread,MatchVideo,NewsArticle,NewsSource,User,Venue};
 $checks=[];
 function health(bool $condition,string $message): void { global $checks; if(!$condition) { throw new RuntimeException($message); } $checks[]=$message; }
 $videos=require ROOT_PATH.'/config/cctv-videos.php';
@@ -18,14 +18,9 @@ foreach($videos as $video) { health(parse_url($video['embed_url'],PHP_URL_HOST)=
 health(MatchVideo::find()->where(['<>','provider','local'])->count()===0,'no third-party remote video record remains');
 $watchView=(string)file_get_contents(ROOT_PATH.'/views/catalog/videos.php');
 health(!str_contains(strtolower($watchView),'youtube')&&!str_contains(strtolower($watchView),'rtve'),'watch view contains no unavailable provider');
-$members=['late-whistle'=>'补时别眨眼','offside-run'=>'越位也要冲','post-please'=>'球门柱保佑','group-math'=>'小组赛数学家','stand-seven'=>'看台第七码','night-match'=>'夜猫子看球'];
-foreach($members as $username=>$displayName) {
-    $user=User::findOne(['username'=>$username]);
-    health($user!==null&&$user->display_name===$displayName,'community user '.$username.' exists');
-    health($user!==null&&is_file(ROOT_PATH.'/public'.$user->avatar_url),'community avatar '.$username.' exists');
-}
-health(ForumThread::find()->where(['status'=>'published'])->andWhere(['author_id'=>User::find()->select('id')->where(['username'=>array_keys($members)])])->count()>=6,'seeded community discussions are published');
-health(ForumReply::find()->where(['user_id'=>User::find()->select('id')->where(['username'=>array_keys($members)])])->count()>=10,'seeded community replies are visible');
+$demoUsers=['late-whistle','offside-run','post-please','group-math','stand-seven','night-match'];
+health(User::find()->where(['username'=>$demoUsers])->count()===0,'no fabricated community accounts remain');
+health(ForumThread::find()->where(['or',['like','title','【示例】%',false],['title'=>'论坛使用说明']])->count()===0,'no generated forum guide remains');
 $chinanews=NewsSource::findOne(['rss_url'=>'https://www.chinanews.com.cn/rss/sports.xml']);
 health($chinanews!==null&&(int)$chinanews->is_enabled===1,'Chinese news RSS source enabled');
 health($chinanews!==null&&$chinanews->last_synced_at!==null,'Chinese news RSS has completed a refresh');

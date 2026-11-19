@@ -1,0 +1,105 @@
+# WorldCup Universe / 世界杯宇宙
+
+Yii2 原生 MVC + MySQL 的世界杯课程项目。当前开发包含赛事/球队/球员/国家探索、新闻、管理台，以及球迷论坛、主队选择、回复通知、点赞收藏与举报审核。
+
+## 快速启动
+
+需要 PHP 8.1+（pdo_mysql、mbstring、curl、SimpleXML、fileinfo）、Composer、MariaDB 10.4+（`data/install.sql` 在 VARCHAR(800/900) 上的唯一索引依赖 MariaDB 的长唯一键，MySQL 8 会报 1071 无法建表）。
+
+```powershell
+Copy-Item .env.example .env
+# 编辑 .env 的 DB_* 和 ADMIN_PASSWORD（至少 12 位，不提交到 Git）
+composer install --no-dev --prefer-dist
+php yii app/install
+php -S 127.0.0.1:8080 -t public public/index.php
+```
+
+## 部署
+
+完整说明见 **[docs/deployment.md](docs/deployment.md)**（架构、公网部署、自动更新、本地部署、备份恢复、故障处理、验收结果）。
+
+- **正式网站**：https://worldcup-universe.dynv6.net/ （阿里云 ECS，Nginx + PHP-FPM + MariaDB，HTTPS；GitHub `main` 每 15 分钟自动安全更新）
+- **Windows 本地一键部署**：安装 XAMPP 8.2（PHP 8.1+、MariaDB 10.4+）后双击 `deploy-local.bat`，完成后访问 http://127.0.0.1:8080/ ；停止用 `stop-local.bat`。重复运行不会覆盖已有数据。
+- **备份**：服务器每日本机备份，并加密推送到 GitHub 私有仓库；`fetch-backup.bat` / `restore-local.bat` 在 Windows 上下载、验证和恢复。
+- **公网服务器部署/更新**：`sudo bash scripts/deploy.sh --install-packages --domain <域名> --email <邮箱>`；状态检查 `sudo bash scripts/status.sh`。
+
+本地前台 `http://127.0.0.1:8080`，管理台 `http://127.0.0.1:8080/admin`；管理员由 `.env` 初始化（本地部署脚本随机生成初始密码），没有写死在前端。
+
+后台“媒体资产、项目团队、球员、球队、新闻、课程交付”支持浏览器上传、预览与替换（`services/MediaUploadService.php`）；公开媒体保存在 `public/uploads/`，课程作业保存在 `data/<team|personal>/uploads/`，仅在记录“前台可见”时可下载。
+
+## 原生架构
+
+```text
+controllers/  Yii2 Controller / AccessControl / CSRF
+models/       原有 34 表及论坛扩展的 ActiveRecord / rules / relations
+services/     查询聚合、事务、所有权校验、RSS同步、审计
+views/        Yii2 render，前后台独立 layout
+commands/     Yii2 Console 安装、审计、新闻同步
+migrations/   增量数据库升级与 down
+public/       唯一 Web 根目录
+ data/install.sql       基础 schema
+ data/sports-seed.sql   公开体育快照，不含用户/密钥/论坛测试内容
+ data/team/             团队交付
+ data/personal/         个人交付
+```
+
+核心请求不再调用 LegacyBridgeController / 自定义 PDO Repository / 自定义 View。历史采集适配工具保留在 `scripts/` 和 `app/`，不承担当前页面核心业务。
+
+## 主要流程
+
+- 主队：一人最多一支，关注球队/球员可多选，不与屏蔽球队重叠。
+- 论坛：板块/球队筛选、主队看台、主题与回复、同主题引用、编辑/删除、幂等点赞/收藏、回复通知、举报与管理员审核。
+- 权限：只能修改自己的内容；管理员可以隐藏/恢复、锁定/解锁、置顶、处理举报；所有写操作校验 CSRF。
+- 新闻：保留来源、原文链接和发布时间，草稿不公开；原生 RSS 同步：`php yii news/sync`，生产环境由 `wcu-news-sync.timer` 每十分钟执行。
+- 赛事：2026 年一届，FIFA 官方名单 PDF 与比赛接口共 48 队、1,248 名球员、104 场比赛、5,323 条阵容记录、32 条已核验晋级关系。原始响应、时间与 SHA256 随仓库保存；比分是采集快照，不宣称实时推送。
+- 导航：赛事内统一提供赛程与晋级、小组积分、比赛回放；小组赛与积分按 A–L 组折叠。旧 `/stats` 永久跳转至 `/worldcup/standings`，不再重复开设数据栏目。
+- 新闻：RSS 同步保留原文标题、短摘要、配图和原文链接；每轮至少有一个来源同步成功即完成本轮，失败来源记录错误并在下一轮重试。
+- 页面：Arena、Tabler、Multiverse 组件及本地中文字体；各模块不同窄幅首图，球队相关内容显示国旗。56 张官方球员肖像已缓存，足球鼠标使用真实透明贴图。
+- 视频：`/watch` 仅嵌入央视网可直接打开的 2026 世界杯页面，页面内切换播放源；不再保留 YouTube、RTVE 或其他无法在站内打开的外部播放器。
+- 媒体：真实场馆／城市摄影，作者与许可见 `/credits`；原图保留，部分展示使用 MediaWiki 官方 1280px 预览。
+- AI：文本/生图服务需配置自己的凭据；私有图片上传已实现，视觉模型分析尚未接入，不返回虚构结果。
+
+## 验证
+
+```powershell
+php tests/backend.php
+php tests/official.php
+php tests/news.php
+php tests/site_health.php
+python tests/http_acceptance.py
+python tests/upload_acceptance.py
+python tests/chinese_ui.py
+python tests/flag_ui.py
+python tests/navigation_ui.py
+python tests/redesign_ui.py
+python tests/team_photo_ui.py
+python tests/topic_replies.py
+node --test tests/globe-data.test.mjs
+php yii app/audit
+```
+
+数据库测试会回滚写入；HTTP 测试会生成带 `qa_` 标记的临时账号。**使用专用测试数据库**，并按输出的精确前缀清理：`php tests/cleanup.php qa_XXXXXXXX`。测试服务器默认 `http://127.0.0.1:8088`，可用 `WCU_TEST_URL` 环境变量设置（`*_ui.py` 固定使用 8088）。`redesign_ui.py` 与 `topic_replies.py` 使用社区演示数据，先在测试库执行一次 `php yii community/seed`（兼容入口为 `php yii design/forum`）；`topic_replies.py` 优先读取 `ADMIN_USERNAME`/`ADMIN_PASSWORD` 环境变量。`tests/upload_acceptance.py` 默认 `http://127.0.0.1:8098`，需要 `ADMIN_PASSWORD` 环境变量，并在项目根目录运行（会检查并清理自己上传的文件）。
+
+## 设计与交付
+
+- `docs/v2-architecture.md`：需求、架构、模块/流程/ER 图、权限、页面与数据边界。
+- `docs/v2-database-dictionary.md`：实际迁移后数据库完整字典。
+- `docs/v2-api.md`：接口、状态码、CSRF 与请求示例。
+- `docs/deployment.md`：正式部署文档（公网、自动更新、本地一键部署、备份恢复、故障处理）。
+- `docs/v2-deployment.md`：数据采集与维护（官方快照、新闻、视频、迁移回退）。
+- `docs/v2-coursework.md`：逐条对照老师课件与设计方案，区分代码完成和最终课程材料。
+- `docs/v2-acceptance.md`、`artifacts/VERIFICATION.txt`：真实测试和回滚证据。
+
+4 位成员资料已按原个人作业核对。每人的实际贡献签认、最终 PDF/PPT 与本人录屏仍需本人确认补齐；交付清单逐项标注，不把代码说明冒充这些材料。
+
+2026-11-18 检查：央视网两个 2026 页面均返回 HTTP 200，响应头未设置 X-Frame-Options 或 frame-ancestors 限制；/watch 只渲染站内 iframe。
+
+## 2026-10-22 截图修订
+
+- 论坛：采用 Tabler Card / List group / Avatar / Chat 组合，紧凑主题列表、板块卡片和主队侧栏。运行 `php yii design/forum` 可幂等添加 6 个明确标注的示例主题、2 条示例回复；均由现有管理员发布，不创建虚构球迷账号、点赞或热度。
+- 晋级图：改成原生 details 逐轮展开的来源树，32 场唯一节点、30 条胜者树边；季军赛独立展示，不重复整棵半决赛子树。可按队展开路线，无固定宽画布或双向内部滚动。
+- 球队封面：48/48 队均接入核实年份的 2026 世界杯阵容或赛前合照，包含 5 队足协发布、3 队摄影师开放授权图和 40 队出版方公开预览。保留原始图像字节、署名与水印，不用个人照片或其他年份合照代替；逐队来源、日期和 SHA256 见 `docs/v2-team-photo-sources.md`。
+- 帖子详情：回复列表、空状态、登录入口和会员编辑器统一为 Tabler 卡片；点击回复自动引用，支持取消引用，不再显示手填回复 ID。锁定、校验、所有权和 CSRF 仍由 Yii2 服务端处理。
+- 国家：48 张语义链接卡片、前端筛选／搜索、`/countries/{country_code}` 原生详情；中文展示标签不修改原始国家资料。
+- 留言：Tabler card/chat 形式，保留登录、CSRF、提交审核流程；页脚与页面／导航统一最大宽度及内边距。
+- 本轮验收与截图：`artifacts/redesign-20261022/VERIFICATION.txt`；页面回归：`python tests/redesign_ui.py`。

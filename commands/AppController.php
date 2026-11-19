@@ -80,8 +80,8 @@ final class AppController extends Controller
     }
     public function actionWelcome(): int
     {
-        $result=(new \app\services\CommunitySeedService())->seed();
-        $this->stdout('Community fixtures ready '.json_encode($result,JSON_UNESCAPED_UNICODE)."\n");
+        $result=(new \app\services\CommunitySeedService())->purgeDemoFixtures();
+        $this->stdout('Generated community fixtures removed '.json_encode($result,JSON_UNESCAPED_UNICODE)."\n");
         return 0;
     }
     public function actionDictionary(): int

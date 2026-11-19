@@ -1,0 +1,16 @@
+commands/AppController.php
+commands/CommunityController.php
+commands/DesignController.php
+services/CommunitySeedService.php
+tests/site_health.php
+tests/redesign_ui.py
+tests/topic_replies.py
+tests/redesign_probe.php
+README.md
+views/forum/index.php
+public/assets/avatars/补时别眨眼.svg
+public/assets/avatars/越位也要冲.svg
+public/assets/avatars/球门柱保佑.svg
+public/assets/avatars/小组赛数学家.svg
+public/assets/avatars/看台第七码.svg
+public/assets/avatars/夜猫子看球.svg

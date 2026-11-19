@@ -30,18 +30,9 @@ def ck(result,label):
 def parsed(html):p=Nodes();p.feed(html);return p
 
 guest,member,admin=Client(),Client(),Client()
-# Community fixtures are created by `php yii community/seed` (or the compatible `php yii design/forum`).
-# IDs differ per database, so the public topics are located by title.
+# The public forum starts empty; this test creates and removes its own topic.
 listing=guest.req('/forum')[2]
-def topic(title):
-    found=re.search(r'href="/forum/(\d+)"[^>]*>(?:(?!</a>).)*'+re.escape(title),listing,re.S)
-    ck(found,'community topic listed: '+title);return '/forum/'+found[1]
-for route,has_replies in [(topic('日本队边路一启动，感觉小组赛要有节目'),True),(topic('阿根廷这十分钟后场出球，我先暂停呼吸'),True)]:
-    r=guest.req(route);ck(r[0]==200,route+' HTTP 200');p=parsed(r[2])
-    ck('topic-replies-panel' in p.classes,'detail reply card exists '+route)
-    ck('empty' not in p.classes,'retired grey banner absent '+route)
-    ck(('topic-reply' in p.classes)==has_replies,'actual reply/empty state '+route)
-    ck('topic-compose-guest' in p.classes,'guest login footer '+route)
+ck('community-empty' in parsed(listing).classes,'empty community state is visible before registration')
 
 prefix='qa_'+os.urandom(4).hex()
 (ROOT/'storage/audit/topic-prefix.txt').write_text(prefix,encoding='utf-8')

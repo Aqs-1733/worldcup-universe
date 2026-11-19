@@ -1,0 +1,18 @@
+FORUM CLEANUP MODIFIED FILE
+BRANCH: codex/site-health
+BASELINE_COMMIT: 7766f3e90fd762401c712efae3abcf780a45ed34
+BASELINE_DATABASE_SHA256: F8A461ADE59A2478B0F44D95A8206623CA962659CBD50FED5E0919AAD5F3D9E0
+ORIGINAL_COPY: BASELINE/ source copies and BASELINE/database-before.sql
+
+CHANGED FIELDS
+- community fixtures: removed automatic demo-user, demo-thread, reply and reaction creation.
+- community cleanup: php yii community/clear-all removes local non-administrator demo accounts and all forum threads/replies.
+- deployment install: php yii app/install removes known retired fixture accounts and generated guide threads instead of reseeding them.
+- forum view: the public board starts with the normal empty-state and remains writable after a real registration.
+- assets: removed six retired synthetic avatar SVG files.
+- local data: after migration/import/configuration, the local database contains one administrator, zero forum threads, zero replies and zero likes; China News RSS completed a real refresh with seven articles.
+
+ROLLBACK MATERIAL
+- RESTORE_FILES.txt: 16 source paths restored by ROLLBACK.sh.
+- NEW_FILES.txt: no new source paths in this update.
+- BASELINE/database-before.sql: original local database snapshot.

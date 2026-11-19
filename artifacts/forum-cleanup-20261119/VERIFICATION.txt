@@ -1,0 +1,83 @@
+FORUM CLEANUP VERIFICATION
+DATE: 2026-11-19
+BRANCH: codex/site-health
+BASELINE_COMMIT: 7766f3e90fd762401c712efae3abcf780a45ed34
+
+ARTIFACT PATHS
+MODIFIED_FILE: D:\Project114514\worldcup-universe\artifacts\forum-cleanup-20261119\MODIFIED_FILE
+DIFF_FILE: D:\Project114514\worldcup-universe\artifacts\forum-cleanup-20261119\DIFF_FILE
+VERIFICATION: D:\Project114514\worldcup-universe\artifacts\forum-cleanup-20261119\VERIFICATION.txt
+ROLLBACK: D:\Project114514\worldcup-universe\artifacts\forum-cleanup-20261119\ROLLBACK.sh
+
+CHANGED BRANCH/FIELDS
+BRANCH: codex/site-health
+community.fixtures: automatic generated users/posts/replies/likes removed; compatibility seed command performs cleanup only.
+community.data: local forum has users=1 (administrator), threads=0, replies=0, likes=0.
+forum.ui: empty-state is visible and normal registration/post/reply flows remain covered by HTTP tests.
+assets.avatar: six retired synthetic avatar SVG files deleted.
+news.local: China News source enabled and the 2026-11-19 manual refresh saved 7 articles.
+
+BASELINE
+COMMAND: D:\XAMPP\php\php.exe yii app/audit
+INPUT: local database before migration and cleanup
+LITERAL OUTPUT/RESULT: forum tables were absent; users:1; news_articles:32; teams:48; players:1248; matches:104.
+EXIT STATUS: 0
+
+COMMAND: HTTP GET http://127.0.0.1:8088/forum
+INPUT: local website before the database migration was started
+LITERAL OUTPUT/RESULT: FORUM_HTTP=502
+EXIT STATUS: 0
+
+MODIFIED
+COMMAND: D:\XAMPP\php\php.exe yii app/install
+INPUT: existing local sports database and updated cleanup source
+LITERAL OUTPUT/RESULT: 7 migrations were applied. Existing sports records detected; bundled seed skipped. Generated community fixtures removed {"demo_users":0,"demo_threads":0,"demo_replies":0,"legacy_threads":0}
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe yii fifa/import data/official/20261021
+INPUT: bundled verified FIFA collection
+LITERAL OUTPUT/RESULT: PASS FIFA import: {"parser_version":2,"teams":48,"players":1248,"matches":104,"lineups":5323,"verified_edges":32,"standings":48,"portrait_urls":1248,"import_id":1,"manifest_sha256":"877a358226a9bf6f30bfea10607ce374ca766c9c26a56191118d5ff4736b5490"}
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe yii community/clear-all
+INPUT: current local forum tables
+LITERAL OUTPUT/RESULT: Community demo data cleared {"users_removed":0,"threads_removed":0,"replies_removed":0}
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe yii news/sync
+INPUT: enabled 中国新闻网 · 体育 RSS source
+LITERAL OUTPUT/RESULT: {"saved":7,"updated":0,"sources":[{"name":"中国新闻网 · 体育","saved":7,"updated":0,"status":"ok"}]}
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe tests/backend.php
+INPUT: migrated local application and empty forum
+LITERAL OUTPUT/RESULT: PASS 47 database/service checks; all test writes rolled back.
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe tests/official.php
+INPUT: imported official dataset
+LITERAL OUTPUT/RESULT: PASS 3048 official-source checks; 48 teams / 1248 players / 104 matches / 5323 lineups / 32 edges.
+EXIT STATUS: 0
+
+COMMAND: D:\XAMPP\php\php.exe tests/site_health.php
+INPUT: local video/news/community/venue configuration
+LITERAL OUTPUT/RESULT: PASS 15 site-health checks.
+EXIT STATUS: 0
+
+COMMAND: python tests/redesign_ui.py && D:\XAMPP\php\php.exe tests/redesign_probe.php views/forum/index.php && python tests/topic_replies.py
+INPUT: http://127.0.0.1:8088 with an empty forum
+LITERAL OUTPUT/RESULT: PASS redesign: empty community is ready for registered users; FORUM_COMPONENT=tabler-topics; COMMUNITY_FIXTURES=empty-ready; PASS 18 topic reply checks; guest/member/quoted/invalid/locked states.
+EXIT STATUS: 0
+
+COMMAND: SQL count query against local worldcup_universe
+INPUT: users, forum_threads, forum_replies, thread_likes
+LITERAL OUTPUT/RESULT: users 1; threads 0; replies 0; likes 0; remaining account admin.
+EXIT STATUS: 0
+
+ROLLBACK
+COMMAND: bash artifacts/forum-cleanup-20261119/ROLLBACK.sh artifacts/forum-cleanup-20261119/ROLLBACK_TEST_TARGET
+INPUT: a separate target copy containing the updated source files; RESTORE_FILES.txt (16 paths).
+LITERAL OUTPUT/RESULT: RESTORED 16 baseline paths and removed 0 added paths in artifacts/forum-cleanup-20261119/ROLLBACK_TEST_TARGET
+EXIT STATUS: 0
+RESTORED STATUS: PASS rollback validation: restored=16 added-removed=0 source hashes=BASELINE/SHA256SUMS.txt.
+POST-TEST STATUS: the active working tree remains changed; the independent rollback target contains the original source copies.
