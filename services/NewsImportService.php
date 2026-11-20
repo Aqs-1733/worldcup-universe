@@ -12,8 +12,9 @@ final class NewsImportService
         // the lock is shared by the systemd timer, the Windows worker and the admin refresh button.
         $mutex=new \yii\mutex\FileMutex(['fileMode'=>0664]);
         if(!$mutex->acquire('news-import')) {return ['saved'=>0,'updated'=>0,'busy'=>true,'sources'=>[]];}
-        $result=['saved'=>0,'updated'=>0,'sources'=>[]];
+        $result=['saved'=>0,'updated'=>0,'curated'=>0,'sources'=>[]];
         try {
+            $this->ensureFootballSources();
             foreach(NewsSource::find()->where(['is_enabled'=>1])->all() as $source) {
                 try {
                     $xml=$this->fetch((string)$source->rss_url);$items=$this->parse($xml);$saved=0;$updated=0;
@@ -21,7 +22,8 @@ final class NewsImportService
                     file_put_contents($folder.'/source-'.$source->id.'.xml',$xml,LOCK_EX);
                     foreach(array_slice($items,0,max(1,min(60,$perSource))) as $item) {
                         if(parse_url($item['url'],PHP_URL_HOST)==='www.skysports.com'&&!str_starts_with((string)parse_url($item['url'],PHP_URL_PATH),'/football/')) {continue;}
-                        // The Chinese publisher feed is already limited to sports. Keep every publisher item so the list does not stay on yesterday's football-only keywords when today's sports feed has fresh reports.
+                        // 中国新闻网的 RSS 是综合体育频道；只保留足球报道，其他来源本身为足球专栏。
+                        if($source->language_code==='zh-CN'&&!$this->isFootballText($item['title'])) {continue;}
                         $article=NewsArticle::findOne(['source_url'=>$item['url']]);$new=!$article;$article??=new NewsArticle();
                         if($new) {$article->source_id=$source->id;$article->source_name=$source->name;$article->status='published';$article->language_code=$source->language_code;$article->credibility_score=$source->trust_level;}
                         $article->title_original=mb_substr($item['title'],0,280);$article->summary_original=mb_substr($item['summary'],0,240);$article->published_at=$item['published_at'];$article->source_url=$item['url'];
@@ -38,8 +40,59 @@ final class NewsImportService
                     $source->last_error=mb_substr($e->getMessage(),0,1000);$source->save(false);$result['sources'][]=['name'=>$source->name,'status'=>'failed'];Yii::warning($e->getMessage(),'rss');
                 }
             }
+            $result['curated']=$this->curateDomesticNonFootball();
             return $result;
         } finally {$mutex->release('news-import');}
+    }
+    /** Ensures the only enabled feeds are current football feeds or the domestic sports feed filtered below. */
+    public function ensureFootballSources(): int
+    {
+        $definitions=[
+            ['name'=>'BBC Sport Football','url'=>'https://www.bbc.co.uk/sport/football','rss_url'=>'https://feeds.bbci.co.uk/sport/football/rss.xml','language_code'=>'en','trust_level'=>90],
+            ['name'=>'ESPN Soccer','url'=>'https://www.espn.com/soccer/','rss_url'=>'https://www.espn.com/espn/rss/soccer/news','language_code'=>'en','trust_level'=>88],
+            ['name'=>'中国新闻网 · 体育','url'=>'https://www.chinanews.com.cn/sports/','rss_url'=>'https://www.chinanews.com.cn/rss/sports.xml','language_code'=>'zh-CN','trust_level'=>95],
+        ];
+        $changed=0;
+        foreach($definitions as $attributes) {
+            $source=NewsSource::findOne(['rss_url'=>$attributes['rss_url']])??new NewsSource();
+            $source->setAttributes($attributes+['is_enabled'=>1]);
+            if($source->isNewRecord||$source->isAttributeChanged('name')||$source->isAttributeChanged('url')||$source->isAttributeChanged('language_code')||$source->isAttributeChanged('trust_level')||!(int)$source->is_enabled) {
+                if(!$source->save())throw new \RuntimeException(json_encode($source->errors,JSON_UNESCAPED_UNICODE));
+                $changed++;
+            }
+        }
+        NewsSource::updateAll(['is_enabled'=>0],[
+            'rss_url'=>[
+                'https://www.skysports.com/rss/12040',
+                'https://english.news.cn/rss/sports.xml',
+                'https://www.cbssports.com/rss/headlines/soccer/',
+                'https://www.theguardian.com/football/rss',
+                'https://rss.nytimes.com/services/xml/rss/nyt/Soccer.xml',
+            ],
+        ]);
+        return $changed;
+    }
+    /** Hides old imports from retired feeds and any domestic item whose headline is not football. */
+    public function curateDomesticNonFootball(): int
+    {
+        $enabledSourceIds=NewsSource::find()->select('id')->where(['is_enabled'=>1])->column();
+        $count=0;
+        if($enabledSourceIds) {
+            $count+=NewsArticle::updateAll(['status'=>'draft'],['and',['status'=>'published'],['not',['source_id'=>null]],['not',['source_id'=>$enabledSourceIds]]]);
+        }
+        $sourceIds=NewsSource::find()->select('id')->where(['language_code'=>'zh-CN','is_enabled'=>1])->column();
+        foreach(NewsArticle::find()->where(['source_id'=>$sourceIds,'status'=>'published'])->each(100) as $article) {
+            if(!$this->isFootballText($article->title_original)) {
+                $article->status='draft';
+                $article->save(false,['status']);
+                $count++;
+            }
+        }
+        return $count;
+    }
+    private function isFootballText(string $text): bool
+    {
+        return preg_match('/足球|世界杯|国足|男足|女足|欧冠|欧联|英超|西甲|意甲|德甲|中超|梅西|C罗|巴萨|皇马|曼联|切尔西|阿森纳|利物浦/u',$text)===1;
     }
     public function parse(string $xml): array
     {
@@ -76,7 +129,7 @@ final class NewsImportService
     {
         $allowed=['feeds.bbci.co.uk','www.espn.com','www.theguardian.com','www.cbssports.com','rss.nytimes.com','www.skysports.com','www.chinanews.com.cn'];
         if(parse_url($url,PHP_URL_SCHEME)!=='https'||!in_array(strtolower((string)parse_url($url,PHP_URL_HOST)),$allowed,true))throw new \RuntimeException('RSS host is not in the configured source allowlist');
-        $curl=curl_init($url);$body='';curl_setopt_array($curl,[CURLOPT_TIMEOUT=>20,CURLOPT_CONNECTTIMEOUT=>5,CURLOPT_PROTOCOLS=>CURLPROTO_HTTPS,CURLOPT_FOLLOWLOCATION=>false,CURLOPT_USERAGENT=>'WorldCupUniverse-CourseProject/2.0',CURLOPT_WRITEFUNCTION=>function($c,$data)use(&$body){if(strlen($body)+strlen($data)>2097152)return 0;$body.=$data;return strlen($data);}]+(PHP_OS_FAMILY==='Windows'&&defined('CURLSSLOPT_NATIVE_CA')?[CURLOPT_SSL_OPTIONS=>CURLSSLOPT_NATIVE_CA]:[]));
+        $curl=curl_init($url);$body='';curl_setopt_array($curl,[CURLOPT_TIMEOUT=>30,CURLOPT_CONNECTTIMEOUT=>10,CURLOPT_PROTOCOLS=>CURLPROTO_HTTPS,CURLOPT_FOLLOWLOCATION=>false,CURLOPT_USERAGENT=>'WorldCupUniverse-CourseProject/2.0',CURLOPT_WRITEFUNCTION=>function($c,$data)use(&$body){if(strlen($body)+strlen($data)>2097152)return 0;$body.=$data;return strlen($data);}]+(PHP_OS_FAMILY==='Windows'&&defined('CURLSSLOPT_NATIVE_CA')?[CURLOPT_SSL_OPTIONS=>CURLSSLOPT_NATIVE_CA]:[]));
         $ok=curl_exec($curl);$status=(int)curl_getinfo($curl,CURLINFO_RESPONSE_CODE);$error=curl_error($curl);curl_close($curl);if(!$ok||$status!==200)throw new \RuntimeException('RSS request failed: HTTP '.$status.' '.$error);return $body;
     }
     private function assignTags(NewsArticle $article): void
