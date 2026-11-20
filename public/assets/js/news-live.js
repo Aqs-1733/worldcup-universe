@@ -1,7 +1,27 @@
-/* News worker polls publishers; this page checks for newly stored articles without blocking navigation. */
+/* Keep the news list aware of publisher updates without caching old status data. */
 (() => {
- const bar=document.querySelector('[data-news-live]');if(!bar)return;
- let latest=null;
- async function check(){if(document.hidden)return;try{const r=await fetch('/news/status',{credentials:'same-origin',cache:'no-store'});if(!r.ok)return;const data=await r.json();if(latest!==null&&data.latest>latest)bar.querySelector('[data-news-new]').hidden=false;latest??=data.latest;bar.querySelector('[data-news-updated]').textContent=data.updated||'—';}catch{}}
- bar.querySelector('[data-news-reload]')?.addEventListener('click',()=>location.reload());check();setInterval(check,60000);
+  const bar = document.querySelector('[data-news-live]');
+  if (!bar) return;
+
+  const notice = bar.querySelector('[data-news-new]');
+  const timestamp = bar.querySelector('[data-news-updated]');
+  let revision = null;
+
+  async function check() {
+    if (document.hidden) return;
+    try {
+      const response = await fetch('/news/status', {credentials: 'same-origin', cache: 'no-store'});
+      if (!response.ok) return;
+      const data = await response.json();
+      const nextRevision = data.revision || `${data.updated || ''}:${data.latest || 0}`;
+      if (revision !== null && nextRevision !== revision) notice.hidden = false;
+      revision = nextRevision;
+      timestamp.textContent = data.updated || '—';
+    } catch (_) {
+      // The list remains usable while a status request is temporarily unavailable.
+    }
+  }
+
+  check();
+  setInterval(check, 60000);
 })();

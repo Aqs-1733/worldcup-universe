@@ -21,7 +21,7 @@ final class NewsImportService
                     file_put_contents($folder.'/source-'.$source->id.'.xml',$xml,LOCK_EX);
                     foreach(array_slice($items,0,max(1,min(60,$perSource))) as $item) {
                         if(parse_url($item['url'],PHP_URL_HOST)==='www.skysports.com'&&!str_starts_with((string)parse_url($item['url'],PHP_URL_PATH),'/football/')) {continue;}
-                        if($source->language_code==='zh-CN'&&!preg_match('/足球|世界杯|国足|男足|女足|欧冠|欧联|英超|西甲|意甲|德甲|中超|梅西|C罗|巴萨|皇马|曼联|切尔西|阿森纳|利物浦/u',$item['title'].' '.$item['summary'])) {continue;}
+                        // The Chinese publisher feed is already limited to sports. Keep every publisher item so the list does not stay on yesterday's football-only keywords when today's sports feed has fresh reports.
                         $article=NewsArticle::findOne(['source_url'=>$item['url']]);$new=!$article;$article??=new NewsArticle();
                         if($new) {$article->source_id=$source->id;$article->source_name=$source->name;$article->status='published';$article->language_code=$source->language_code;$article->credibility_score=$source->trust_level;}
                         $article->title_original=mb_substr($item['title'],0,280);$article->summary_original=mb_substr($item['summary'],0,240);$article->published_at=$item['published_at'];$article->source_url=$item['url'];
