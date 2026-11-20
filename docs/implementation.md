@@ -1,52 +1,64 @@
-# 世界杯宇宙 实现文档
+# 互联网数据库世界杯网站实现文档
 
-2026 世界杯资料与球迷社区课程团队项目
+## 1 项目内容
 
-代码版本：`main` 分支 `4348c69`
+世界杯宇宙使用 PHP 8.2、Yii2 和 MySQL/MariaDB 编写。网站围绕 2026 世界杯资料组织前台页面和后台维护页面。前台提供赛事、球队、球员、新闻、国家资料、场馆、视频和球迷论坛；后台维护赛事资料、新闻、论坛内容、用户状态和课程文件。
 
-团队成员：崔迪 2412439    梁靖泽 2412852    蒋林瀞 2413507    王麒萱 2412096
+### 1.1 前台页面
 
-撰写人：王麒萱（2412096）
+球队页面列出 48 支参赛队伍，卡片显示国旗和队伍照片。进入详情页可以阅读阵容、赛程和球队资料。球员页面保存号码、位置、出生日期、俱乐部、身高和国家队数据，并关联所属队伍。
 
-## 1 项目实现概述
+赛事页面保存 104 场比赛，按小组赛和淘汰赛阶段显示。比赛卡片和淘汰赛图同时显示双方国旗、比分、开球时间和比赛阶段。积分页面从 standings 表读取各队场次、胜平负、净胜球和积分。国家页面保存参赛国家的首都、语言、货币和坐标，场馆页面保存举办城市和场馆介绍。
 
-系统名称为世界杯宇宙，使用 PHP、Yii2 和 MySQL/MariaDB 实现。前台包括赛事、球队、球员、新闻、国家探索、视频和球迷论坛；后台包含赛事资料、新闻、留言、课程材料和审核记录的维护入口。文档所列代码以 main 分支 4348c69 为准，运行数据记录于 2026 年 11 月 20 日。
+新闻页面从 RSS 或 Atom 来源写入新闻标题、摘要、原文链接、发布时间和标签。页面保留新闻来源链接。视频页面使用 CCTV 官方视频地址，页面内嵌播放组件。个人中心支持注册用户选择主队、关注球队和球员。
 
-文档依据仓库源码、data/official/20261021 保存的原始快照、Git 提交记录和运行结果编写，内容包括数据采集、数据入库、Yii2 MVC 页面、用户交互、后台管理和测试。
+球迷论坛提供发主题、回复、点赞、收藏和举报功能。发布和回复需要登录。论坛初始数据不放置示例用户和示例讨论，数据库保留管理员账号，主题和回复由注册用户发布。
 
-| 项目项 | 实现内容 |
-| --- | --- |
-| 技术栈 | PHP 8.2、Yii2、MySQL/MariaDB、原生 JavaScript、CSS |
-| 应用入口 | public/index.php |
-| 数据库入口 | data/install.sql，增量调整放在 migrations/ |
-| 团队材料目录 | data/team/ |
-| 个人材料目录 | data/personal/ |
-| 版本控制 | GitHub 仓库 Aqs-1733/worldcup-universe，main 分支 |
+### 1.2 后台页面
 
-## 2 开发过程
+后台入口为 /admin。管理员可以维护球队、球员、比赛、新闻、标签、用户和论坛审核记录。后台修改新闻标签、处理举报、调整用户状态和删除内容时写入 audit_logs。课程文件下载只允许访问 data/team 和 data/personal 中的文件。
 
-### 2.1 代码仓库和目录约定
+## 2 数据采集和数据库
 
-项目将公开页面、后台页面、数据脚本和课程材料放在不同目录。Web 服务的根目录是 public，控制器、模型、服务和视图按 Yii2 的目录习惯组织。课程要求中的 SQL 文件放在 data/install.sql，团队交付和个人交付分别放在 data/team/ 与 data/personal/。
+### 2.1 世界杯资料采集
 
-| 目录 | 内容 |
-| --- | --- |
-| config/ | 应用配置、路由、数据库连接和后台可维护表的白名单。 |
-| controllers/ | 请求入口，负责参数读取、登录状态和页面跳转。 |
-| models/ | ActiveRecord 模型、表字段规则和关联关系。 |
-| services/ | 赛事导入、论坛权限、新闻同步、审计和素材校验等业务处理。 |
-| views/ | 前台、后台和公共布局模板。 |
-| commands/ | Yii2 控制台命令，例如 FIFA 快照导入和新闻同步。 |
-| migrations/ | 在基础表结构之外执行的增量变更。 |
-| tests/ | 数据库、官方数据、HTTP、导航和界面回归检查。 |
+使用 scripts/fetch_fifa.py 读取 FIFA 公开接口和官方名单 PDF。脚本只访问 api.fifa.com 和 fdp.fifa.org 两个 HTTPS 域名。下载内容同时保存原始文件、请求地址、下载时间、HTTP 状态和 SHA256。名单 PDF 包含 48 页，每页对应一支队伍；每队保存 26 名球员。赛程数据保存 104 场比赛和 104 份比赛详情。
 
-### 2.2 数据采集和快照保存
+采集文件保存到 data/official/20261021。目录中的 normalized.json 保存整理后的球队、球员、比赛和阵容数据，manifest.json 保存数量和哈希。导入前读取 manifest.json，比较 normalized.json 与各来源文件的 SHA256，并限制来源域名。
 
-赛事资料通过 scripts/fetch_fifa.py 从 FIFA 公开接口和官方名单 PDF 获取。脚本只接受 api.fifa.com 与 fdp.fifa.org 两个 HTTPS 域名，下载后同时保存响应文件、元数据和 SHA256。名单 PDF 按 48 页解析，每支队伍要求得到 26 名球员；赛程要求覆盖 104 场比赛。任一数量、球队编号或哈希不符合预期时，脚本停止生成导入快照。
+### 2.2 数据导入
 
-采集完成后，data/official/20261021/ 保存 normalized.json、manifest.json、比赛详情和名单来源文件。命令 php yii fifa/import data/official/20261021 会先核验 manifest 中的哈希和来源域名，再在一个数据库事务中写入球队、球员、比赛、积分、阵容和晋级关系。导入服务把旧的官方标记置空，再写入导入标记，最后提交事务并刷新缓存。
+执行 php yii fifa/import data/official/20261021 导入官方快照。服务在数据库事务中写入 teams、players、matches、standings、match_lineups、match_stats、match_events 和 player_statistics。导入前清除这些表中旧的 official_import_id，再写入新的 official_import_id 和 source_synced_at。事务提交后刷新缓存。
 
-**代码 1 赛事导入命令 commands/FifaController.php**
+导入结果保存 48 支球队、1,248 名球员、104 场比赛、5,323 条官方阵容和 32 条已核验晋级关系。球员照片地址来自官方比赛详情，球队国旗地址和参赛国家资料一同写入数据库。
+
+### 2.3 新闻数据
+
+news_sources 保存新闻来源名称、首页地址、RSS 地址、语言和启用状态。php yii news/sync 读取启用来源，过滤不安全链接，保存新闻标题、摘要、来源链接和发布时间。中国新闻网体育 RSS 已写入新闻来源表。同步结果写入 news_articles 和 news_article_tags，页面按发布时间和标签读取记录。
+
+### 2.4 数据库结构
+
+基础建表语句位于 data/install.sql，migrations 目录保存增量迁移。数据库有 48 张表。teams、players、matches、standings 和 match_lineups 保存赛事主体数据；country_profiles、venues 和 media_assets 保存国家、场馆和媒体资料；users、roles、user_roles、fan_profiles 和 fan_preferences 保存账号和个人偏好；forum_threads、forum_replies、thread_likes、thread_bookmarks 和 forum_reports 保存论坛数据；news_sources、news_articles、tags 和 news_article_tags 保存新闻数据。
+
+执行 php yii app/install 时，程序导入基础表结构并执行 Yii2 迁移。已有赛事记录时保留原有球队、球员和比赛数据。角色表写入管理员和普通用户两个角色，标签表写入比赛内容、战术分析、球队动态、球迷内容、娱乐内容和二创内容。
+
+## 3 程序结构
+
+### 3.1 目录安排
+
+config 保存应用配置、数据库连接和路由规则。controllers 保存前台和后台控制器。models 保存 ActiveRecord 模型和字段规则。services 保存官方数据导入、新闻同步、论坛权限、审计和媒体路径处理。views 保存前台、后台和公共布局。commands 保存 Yii2 控制台命令。tests 保存数据库、官方数据和 HTTP 测试。public/index.php 作为 Web 入口加载 Composer、Yii2 和应用配置。
+
+### 3.2 MVC 模块
+
+球队资料模块使用 TeamController、Team、Player、MatchGame 和 CatalogService，视图位于 views/catalog/teams.php 和 views/catalog/team.php。赛事模块使用 MatchController、MatchGame、Standing、MatchProgression 和 CatalogService，页面包括赛程、比赛详情、积分和淘汰赛图。
+
+论坛模块使用 ForumController、ForumThread、ForumReply 和 ForumService。控制器接收请求并返回页面，服务层处理主题、回复、点赞、收藏、举报和审核。后台模块使用 AdminController、AuditService 和 ActiveRecord 模型，后台视图位于 views/admin-v2。
+
+## 4 主要实现
+
+### 4.1 官方快照导入
+
+控制台命令接收快照目录，调用 OfficialFifaSyncService。服务返回的报告写入命令行，报告中包含球队、球员、比赛、阵容和晋级关系数量。
 
 ```php
 public function actionImport(string $folder): int
@@ -58,63 +70,17 @@ public function actionImport(string $folder): int
 }
 ```
 
-新闻模块从 news_sources 表读取 RSS 或 Atom 来源，由 php yii news/sync 同步。新闻记录保存来源名称、原文链接、发布时间、摘要和标签；页面展示时仍保留来源链接。
+OfficialFifaSyncService 读取 manifest.json 后，比较队伍数、球员数、比赛数和来源文件哈希。服务使用 beginTransaction 开启事务，写入结束后提交事务。
 
-### 2.3 数据库初始化和增量修改
+### 4.2 论坛回复
 
-data/install.sql 用于建立基础库，migrations/ 保留后续的结构调整。项目运行时使用 ActiveRecord 访问数据表，业务修改放在数据库事务中。审计命令统计到 48 张表，表数量符合课程设计要求。
-
-| 数据范围 | 审计结果 2026-11-20 |
-| --- | --- |
-| 参赛球队 | 48 |
-| 球员 | 1,248 |
-| 比赛 | 104 |
-| 已核验晋级关系 | 32 |
-| 国家资料 | 48 |
-| 新闻来源 | 8 |
-| 新闻文章 | 39 |
-| 论坛主题和回复 | 0 个主题、0 条回复 |
-
-### 2.4 Yii2 请求和页面实现
-
-public/index.php 只负责加载 Composer、Yii2 和应用配置。config/web.php 设置 URL 规则，将 /teams、/players、/worldcup、/news、/forum、/countries、/watch 和 /admin 等路径映射到对应控制器。请求对象开启 CSRF 校验；会话 Cookie 采用 HttpOnly 与 SameSite=Lax 配置。
-
-**代码 2 应用入口 public/index.php**
-
-```php
-require $vendorAutoload;
-require $yiiBootstrap;
-require dirname(__DIR__) . '/app/bootstrap.php';
-header('X-Backend: Yii2');
-
-$config = require dirname(__DIR__) . '/config/web.php';
-(new yii\web\Application($config))->run();
-```
-
-球队页面由 TeamController 读取 CatalogService 返回的数据提供器，详情页同时查询该球队的球员、比赛和已审核留言。控制器只组织请求参数和视图数据，查询和业务规则放在模型与服务层。
-
-**代码 3 球队列表控制器 controllers/TeamController.php**
-
-```php
-public function actionIndex()
-{
-    return $this->render('/catalog/teams', [
-        'provider' => (new CatalogService())->teams(Yii::$app->request->get())
-    ]);
-}
-```
-
-论坛模块由 ForumController 和 ForumService 共同处理。未登录用户可以浏览公开主题，发布、回复、点赞、收藏和举报经过 AccessControl、POST 校验和 CSRF 校验。回复、主题删除、举报和审核在服务层继续检查登录用户与内容所有者的关系。
-
-**代码 4 回复入口 controllers/ForumController.php**
+ForumController 的回复入口只接受 POST 请求。控制器把登录用户、主题编号和表单内容交给 ForumService。服务层验证回复内容、主题状态和父回复关系。验证错误时页面返回 422 状态；写入成功后跳转到新回复位置。
 
 ```php
 public function actionReply(int $id)
 {
     $this->posted();
-    $reply = (new ForumService())->reply(
-        $this->actor(), $id, Yii::$app->request->post()
-    );
+    $reply = (new ForumService())->reply($this->actor(), $id, Yii::$app->request->post());
     if ($reply->hasErrors()) {
         Yii::$app->response->statusCode = 422;
         return $this->showThread((new ForumService())->readable($id, $this->actor()), $reply);
@@ -123,59 +89,30 @@ public function actionReply(int $id)
 }
 ```
 
-### 2.5 后台、文件和审计记录
+论坛服务把作者编号写入回复记录，不接收表单中的 author_id。编辑和删除主题时比较登录用户与主题作者，管理员拥有审核权限。举报记录关联提交用户、主题和处理结果。
 
-后台入口为 /admin。AdminController 对可维护表使用 config/v2-tables.php 中的白名单，普通用户访问后台会被权限过滤器拦截。删除、新闻标签修改、用户状态调整和审核操作会写入 audit_logs。课程文件的下载路径经过模型校验，文件范围限制在 data/team/ 和 data/personal/。
+### 4.3 新闻同步
 
-## 3 MVC 对应关系
+NewsController 的 sync 命令调用 NewsImportService。服务读取每个启用来源，解析 RSS 或 Atom 条目，删除 HTML 标签并过滤 script、data 和 protocol-relative 链接。同步记录保存来源名称、发布时间、原文链接和标签。
 
-系统包含球队资料、赛事与积分、球迷论坛和后台维护四组 MVC 模块。每组模块均由控制器接收请求、模型或服务处理数据、视图输出页面。
+### 4.4 安装和权限
 
-| 功能 | Controller | Model 或 Service | View |
-| --- | --- | --- | --- |
-| 球队资料 | TeamController | Team、Player、MatchGame、CatalogService | views/catalog/teams.php、team.php |
-| 赛事与积分 | MatchController | MatchGame、Standing、MatchProgression、CatalogService | views/catalog/matches.php、match.php、stats.php |
-| 球迷论坛 | ForumController | ForumThread、ForumReply、ForumService | views/forum/index.php、view.php、edit.php |
-| 后台维护 | AdminController | ActiveRecord 模型、AuditService、ForumService | views/admin-v2/index.php、table.php、edit.php |
+AppController 的 install 命令读取 data/install.sql，使用 SqlFileService 分割 SQL 语句并执行建表。命令随后执行 Yii2 迁移，创建角色和默认标签。注册接口创建 User 和 FanProfile，普通注册账号不写入管理员角色。登录状态使用 HttpOnly 和 SameSite=Lax Cookie，提交表单使用 CSRF 校验。
 
-### 3.1 团队分工
+## 5 团队协作记录
 
-| 成员 | 主要负责内容 |
-| --- | --- |
-| 蒋林瀞 2413507 | 统筹与后台管理模块 |
-| 崔迪 2412439 | 前台信息架构 |
-| 梁靖泽 2412852 | 赛事内容模块 |
-| 王麒萱 2412096 | 界面原型与实现文档 |
+### 5.1 分工
 
-## 4 Git 协作记录
+蒋林瀞负责统筹和后台管理模块。崔迪负责前台信息架构。梁靖泽负责赛事内容模块。王麒萱负责界面原型和实现文档。
 
-项目使用 Git 管理版本。2026 年 11 月 20 日查看 main 分支，代码版本为 4348c69。下表摘自仓库 Git 日志。
+### 5.2 Git 记录
 
-| 日期 | 提交 | Git 署名 | 提交内容 |
-| --- | --- | --- | --- |
-| 2026-10-22 | f1eb216 | Aqs-1733 | 重建 Yii2 和 MySQL 的世界杯数据项目。 |
-| 2026-10-22 | 3230fc8 | Aqs-1733 | 补充 2026 队伍合照和论坛回复界面。 |
-| 2026-10-24 | 0fcd233 | Skylar-Jiang | 加入首页、淘汰赛图、地球叙事和本地视频栏目。 |
-| 2026-10-24 | b4560a1 | changluei | 统一亮色页面并加入球员动作交互。 |
-| 2026-10-28 | f662c11 | Skylar-Jiang | 修正淘汰赛连接线、新闻采集 SSL 和球队卡片。 |
-| 2026-10-31 | 1e46d90 | Skylar-Jiang | 加入跨页面视图过渡。 |
-| 2026-11-18 | 0730a13 | Aqs-1733 | 替换无法播放的视频来源。 |
-| 2026-11-18 | 7766f3e | Aqs-1733 | 补充站点健康检查并整理社区数据。 |
-| 2026-11-19 | 4348c69 | Aqs-1733 | 清除论坛中的生成式示例内容。 |
+仓库使用 Git 管理代码。2026 年 10 月 22 日的 f1eb216 建立 Yii2 和 MySQL 的世界杯数据项目。3230fc8 补充 2026 队伍合照和论坛回复界面。0fcd233 加入首页、淘汰赛图、地球叙事和本地视频栏目。b4560a1 调整亮色页面并加入球员动作交互。f662c11 修正淘汰赛连接线、新闻采集 SSL 和球队卡片。
 
-Git 记录保留了代码修改的时间、署名和说明。使用 git log --oneline --decorate 与 git show <提交号> 可以查看修改的文件。
+2026 年 11 月的 0730a13 替换无法播放的远程视频来源。7766f3e 增加站点健康测试并整理社区数据。4348c69 删除论坛中的生成式示例账号、帖子和回复。Git 日志保存每次提交的署名、时间、说明和改动文件。
 
-## 5 运行结果和检查
+## 6 运行结果
 
-运行时使用 D:/XAMPP/php/php.exe 执行数据库和官方数据检查，数据库端口为 3310。后端测试在事务中创建临时记录，结束后回滚。下表记录 2026 年 11 月 20 日的输出。
+本地环境使用 D:/XAMPP/php/php.exe 和 MariaDB，数据库端口为 3310。执行 php yii app/install 后，输出显示 7 个迁移已写入，已有赛事记录保留。执行 php yii fifa/import data/official/20261021 后，输出 48 支球队、1,248 名球员、104 场比赛、5,323 条阵容和 32 条晋级关系。
 
-| 检查项 | 执行命令 | 结果 |
-| --- | --- | --- |
-| 后端业务与权限 | php tests/backend.php | 47 项通过，测试写入已回滚。 |
-| FIFA 快照 | php tests/official.php | 3,048 项通过；48 队、1,248 球员、104 场、5,323 条官方阵容、32 条晋级边。 |
-| 站点健康检查 | php tests/site_health.php | 15 项通过，检查视频、新闻、论坛、国家资料和场馆资料。 |
-| 数据库审计 | php yii app/audit | 返回 48 张表及球队、球员、比赛、新闻、论坛等数据计数。 |
-
-官方数据检查会核对 data/official/20261021/manifest.json 中的 SHA256、来源域名、球队和球员字段、比赛字段、阵容数量和晋级关系。后端测试覆盖注册、主队选择、论坛所有权、举报审核、媒体路径、课程文件下载和 SQL 解析等流程。
-
-新闻文章和比赛比分来自同步数据或快照。新闻数量随同步结果变化，比赛结果按采集快照展示。
+执行 php tests/backend.php，输出 47 项数据库和服务测试通过，测试写入回滚。执行 php tests/official.php，输出 3,048 项官方数据测试通过。执行 php tests/site_health.php，输出 15 项站点健康测试通过，结果包含 CCTV 官方视频来源、新闻刷新、空论坛状态、48 个国家资料和 16 个主办场馆介绍。执行 php yii app/audit，数据库返回 48 张表、48 支球队、1,248 名球员、104 场比赛、39 篇新闻、0 个论坛主题和 0 条论坛回复。
