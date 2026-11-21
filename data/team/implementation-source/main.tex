@@ -52,7 +52,6 @@ views/ & 前台页面、管理员页面、通用布局和局部模板\\\midrule
 commands/ & 安装、数据导入、审计及新闻同步命令\\\midrule
 migrations/ & 数据库结构和展示数据的版本化迁移\\\midrule
 data/ & 安装 SQL、体育种子、来源快照及课程材料\\\midrule
-tests/ & PHP、HTTP、界面与数据一致性测试\\\midrule
 scripts/ 与 deploy/ & 生产安装、自动更新、备份及系统服务配置\\\midrule
 \bottomrule\caption{主要工程目录}\end{longtable}
 
@@ -290,8 +289,6 @@ $stamp = ['source_synced_at' => $now,
 \end{lstlisting}
 \Needspace{7\baselineskip}
 \subsection{赛事数据记录}
-仓库测试脚本 tests/official.php 以官方快照为基线，逐项比对数据库中的 48 支球队、1248 名球员、104 场比赛、5323 条阵容以及 32 条经核验的晋级边。校验还涉及球队编码、洲足联、比赛时间、比分、球员号码与照片来源主机。
-
 比赛比分和阵容记录对应已归档的官方接口响应。导入脚本依据 official\_import\_id 管理比赛统计、事件和球员统计的来源状态，公开页面按来源记录筛选。
 
 \section{球队资料}
@@ -1038,10 +1035,10 @@ public function actionSync(): int
 \end{lstlisting}
 
 \section{Git 提交记录}
-项目使用 Git 维护代码版本，通过 GitHub main 分支汇集开发提交。提交 cf285427 更新了新闻同步命令、新闻导入服务、测试脚本和页面视图；3d37b678 修改新闻刷新逻辑及前端脚本。其他提交涉及论坛页面整理、视频目录和交付文件。主要提交与修改文件列于下表。
+项目使用 Git 维护代码版本，通过 GitHub main 分支汇集开发提交。提交 cf285427 更新了新闻同步命令、新闻导入服务和页面视图；3d37b678 修改新闻刷新逻辑及前端脚本。其他提交涉及论坛页面整理、视频目录和交付文件。主要提交与修改文件列于下表。
 
 \begin{longtable}{>{\raggedright\arraybackslash}p{.28\textwidth}>{\raggedright\arraybackslash}p{.64\textwidth}}\toprule 项目 & 说明\\\midrule\endfirsthead\toprule 项目 & 说明\\\midrule\endhead
-cf285427 & 修改 commands/NewsController.php、services/NewsImportService.php、tests/news.php 和新闻视图\\\midrule
+cf285427 & 修改 commands/NewsController.php、services/NewsImportService.php 和新闻视图\\\midrule
 3d37b678 & 修改新闻控制器、新闻同步服务与 news-live.js\\\midrule
 1346165b & 更新 docs/implementation.md 及 data/team 内实现文档 PDF、DOCX\\\midrule
 8f8f0217 & 更新实现文档交付文件与 Markdown 原稿\\\midrule
@@ -1069,89 +1066,17 @@ cf285427 & 修改 commands/NewsController.php、services/NewsImportService.php�
 后台管理 & controllers/AdminController.php；models/AuditLog.php 等；views/admin-v2/\\\midrule
 新闻 & controllers/NewsController.php；models/NewsArticle.php；views/catalog/news.php；services/NewsImportService.php\\\midrule
 \bottomrule\caption{主要 MVC 文件对应表}\end{longtable}
-\section{业务验证脚本}
-项目使用 tests/backend.php、tests/official.php、tests/news.php、tests/site\_health.php 运行后端测试，分别覆盖账户与论坛操作、官方数据、新闻记录和网站入口。另用 HTTP 测试脚本验证请求与响应，界面脚本测试导航、中文文字、国旗资源和论坛回复。
-
-数据库相关测试需要使用专门测试库，HTTP 脚本可能建立 qa\_ 前缀的临时账号。执行完成后应采用 tests/cleanup.php 按准确前缀清理，避免把测试数据带入正式公开数据库。
-
-\begin{longtable}{>{\raggedright\arraybackslash}p{.28\textwidth}>{\raggedright\arraybackslash}p{.64\textwidth}}\toprule 项目 & 说明\\\midrule\endfirsthead\toprule 项目 & 说明\\\midrule\endhead
-tests/backend.php & 账号、偏好、论坛等业务逻辑与事务\\\midrule
-tests/official.php & 官方来源文件哈希、体育数据行数、字段与重复导入\\\midrule
-tests/news.php & 新闻同步、去重、来源与状态\\\midrule
-tests/site\_health.php & 服务器入口和基础页面健康\\\midrule
-tests/http\_acceptance.py & 浏览器外部 HTTP 行为与访问状态\\\midrule
-tests/upload\_acceptance.py & 媒体上传、文件访问边界与清理\\\midrule
-tests/chinese\_ui.py & 中文页面显示\\\midrule
-tests/flag\_ui.py & 国旗显示\\\midrule
-tests/navigation\_ui.py & 导航与积分入口\\\midrule
-tests/topic\_replies.py & 主题回复流程和测试数据清理\\\midrule
-tests/globe-data.test.mjs & 地球数据与前端逻辑\\\midrule
-\bottomrule\caption{测试脚本与对应范围}\end{longtable}
-
-\Needspace{16\baselineskip}
-\noindent\textbf{tests/backend.php：注册、论坛和权限测试关键语句}\par\vspace{2pt}
-\begin{lstlisting}
-$tx=$app->db->beginTransaction();
-try {
-    $reg=new RegisterForm([
-        'username'=>'bad name','email'=>'invalid','password'=>'short'
-    ]);
-    check(!$reg->validate(),
-        'registration rejects invalid credentials');
-    // 使用随机后缀建立测试账号
-    $suffix=bin2hex(random_bytes(4));
-    $reg=new RegisterForm([
-        'username'=>'test_'.$suffix,
-        'email'=>$suffix.'@example.org',
-        'password'=>'Passphrase-2026-test',
-        'display_name'=>'测试球迷'
-    ]);
-    $a=$reg->register();
-    check($a instanceof User,
-        'native registration writes User and FanProfile');
-    check(!$a->isAdmin(),
-        'registration grants no administrator role');
-    // 其他论坛与权限断言同样放在事务内执行
-} finally {
-    $tx->rollBack();
-}
-\end{lstlisting}
-
-\Needspace{7\baselineskip}
-\subsection{官方数据测试}
-执行 tests/official.php 会重新读取归档目录的 normalized.json 和 manifest.json，并对每个原始来源文件运行 hash\_file。测试再从数据库查询已绑定 official\_import\_id 的球队、球员、比赛和阵容，对照完整性数量。
-
-测试脚本逐项比较球队编码、比赛号、开球时间、比分、球衣号码及球员资料。再次导入相同来源清单，检查返回值中的 reused=true；再利用事务模拟编辑球队官方字段，比较 official\_import\_id 的变化。
-
-\Needspace{16\baselineskip}
-\noindent\textbf{tests/official.php：公开数据规模断言}\par\vspace{2pt}
-\begin{lstlisting}
-foreach ([
-    'teams' => 48,
-    'players' => 1248,
-    'matches' => 104,
-    'match_lineups' => 5323,
-    'standings' => 48,
-] as $table => $count) {
-    officialCheck((int)(new yii\db\Query())
-        ->from($table)
-        ->where(['not', ['official_import_id' => null]])
-        ->count() === $count, $table.' official count');
-}
-// 数据与官方来源绑定，测试仅计入带导入凭证的记录。
-\end{lstlisting}
-\Needspace{7\baselineskip}
-\subsection{页面功能对应}
+\section{页面功能对应}
 前台以赛事、球队、国家、新闻、论坛及个人中心组成主要访问路径，后台负责数据编辑和社区管理。页面控制器分别读取业务记录并把查询结果传入对应视图。
 
-赛事页面可按阶段筛选比赛，球队页面支持名称搜索，论坛页面可以创建主题并回复，管理员界面提供数据编辑入口。tests 目录中按数据导入、账号行为、HTTP 返回状态和界面导航划分测试脚本。
+赛事页面可按阶段筛选比赛，球队页面支持名称搜索，论坛页面可以创建主题并回复，管理员界面提供数据编辑入口。
 
 \section{实现总结}
 世界杯宇宙围绕赛事资料建立了统一的数据库。球队、球员、比赛、阵容和积分通过主外键关联，浏览者可从赛程进入比赛详情，再进入球队或球员资料。国家探索、新闻和回放页面补充赛事相关内容，前台按照不同场景提供搜索、筛选和分页。
 
 账号注册使用模型校验、密码哈希及会话认证。用户设置主队、关注球队和球员时，使用事务更新个人资料及关联表。论坛主题和回复按作者身份保存，回复通知随业务写入一同提交。管理员通过白名单控制数据维护范围，并记录关键操作的审计信息。
 
-体育数据使用官方来源采集快照和 SHA256 保存来源记录；新闻采集按来源同步并维护文章发布状态。工程还配有数据库安装、增量迁移、Windows 本地启动、公网部署和测试脚本，便于按照同一份源码运行各业务模块。
+体育数据使用官方来源采集快照和 SHA256 保存来源记录；新闻采集按来源同步并维护文章发布状态。工程还配有数据库安装、增量迁移、Windows 本地启动和公网部署，便于按照同一份源码运行各业务模块。
 
 \section{主要文件索引}
 \begin{longtable}{p{.31\textwidth}p{.60\textwidth}}\toprule 路径 & 内容\\\midrule\endfirsthead\toprule 路径 & 内容\\\midrule\endhead
@@ -1164,7 +1089,6 @@ commands/ & 数据安装、体育数据导入、新闻同步命令\\\midrule
 migrations/ & Yii2 数据库增量迁移\\\midrule
 data/install.sql & 数据库基础建表语句\\\midrule
 data/official/20261021/ & 体育数据来源文件、采集清单和规范化数据\\\midrule
-tests/ & 业务逻辑、数据一致性、HTTP 和前端界面测试\\\midrule
 \bottomrule\caption{工程主要文件}\end{longtable}
 
 \section{参考资料}
