@@ -299,6 +299,12 @@ $stamp = ['source_synced_at' => $now,
 
 球队卡片包含国旗、队名和相关照片；球队详情关联球员阵容与赛事记录。球员详情保存号码、位置、出生日期、身高、俱乐部等已采集属性。部分球员统计字段仍为空值，页面保留已采集字段的内容。
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{screenshots/teams.jpg}
+\caption{参赛球队页面}
+\end{figure}
+
 \Needspace{16\baselineskip}
 \noindent\textbf{controllers/TeamController.php：球队详情关联查询}\par\vspace{2pt}
 \begin{lstlisting}
@@ -325,6 +331,12 @@ public function actionView(string $id)
 赛事页以 MatchController 为页面入口。比赛记录使用 home\_team\_id、away\_team\_id 关联球队，使用 starts\_at、stage、status 等条件筛选。小组赛和淘汰赛分别呈现，积分页按 A 至 L 小组组织 standings 数据。
 
 晋级图读取 match\_progressions 中 is\_verified=1 的关系，根据来源比赛、目标比赛、目标位置以及胜者或负者标识组织节点。前端可展开不同轮次；待确定的比赛队伍按照 FIFA 赛程来源保留占位标记。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{screenshots/fixtures.jpg}
+\caption{赛程与晋级页面}
+\end{figure}
 
 \Needspace{16\baselineskip}
 \noindent\textbf{controllers/MatchController.php：赛程分组及筛选}\par\vspace{2pt}
@@ -501,6 +513,12 @@ Yii::$app->db->createCommand()
 论坛按板块、球队和关键词筛选主题，默认只查询 published 状态。列表同时计算可见回复数和点赞数，并根据置顶、最近活动时间及 ID 排序。页面顶部可进入个人主队讨论和本人发布的主题。
 
 查询通过 ActiveDataProvider 分页，每页 20 条。主题列表预加载作者、主队和分类信息，减少逐条读取关联记录的数据库查询。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{screenshots/forum.jpg}
+\caption{球迷论坛页面}
+\end{figure}
 
 \Needspace{16\baselineskip}
 \noindent\textbf{controllers/ForumController.php：主题查询与排序}\par\vspace{2pt}
@@ -765,6 +783,12 @@ try {
 
 生产环境使用定时器执行新闻同步，README 给出的配置周期为每 10 分钟。普通用户打开新闻页时直接查询数据库中的文章。管理员可在后台触发刷新，服务器定时器也会按计划同步来源。
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{screenshots/news.jpg}
+\caption{足球新闻页面}
+\end{figure}
+
 
 \Needspace{16\baselineskip}
 \noindent\textbf{services/CatalogService.php：新闻筛选及来源交错排序}\par\vspace{2pt}
@@ -929,6 +953,12 @@ private function page(ActiveDataProvider $p): array
 
 前台部分交互依赖 JavaScript，国家页中的 3D 地球对 WebGL 有要求；与其平行的国家列表链接仍可用于普通浏览器。项目复用 Arena、Tabler 和 Multiverse 的样式组件，并在站点资源中保存相关字体和脚本。
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{screenshots/home.jpg}
+\caption{网站首页}
+\end{figure}
+
 \Needspace{7\baselineskip}
 \subsection{表单反馈}
 发布主题、填写注册表单、编辑用户资料和管理后台记录均由对应模型校验属性。控制器把字段错误交给视图呈现，用户可在原页面修改内容。成功的创建或保存通常使用重定向，减少表单重复提交。
@@ -1080,36 +1110,6 @@ foreach ([
 
 赛事页面可按阶段筛选比赛，球队页面支持名称搜索，论坛页面可以创建主题并回复，管理员界面提供数据编辑入口。tests 目录中按数据导入、账号行为、HTTP 返回状态和界面导航划分测试脚本。
 
-\section{网站页面截图}
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{screenshots/home.jpg}
-\caption{网站首页}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{screenshots/fixtures.jpg}
-\caption{赛程与晋级页面}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{screenshots/teams.jpg}
-\caption{参赛球队页面}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{screenshots/forum.jpg}
-\caption{球迷论坛页面}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{screenshots/news.jpg}
-\caption{足球新闻页面}
-\end{figure}
 \section{实现总结}
 世界杯宇宙围绕赛事资料建立了统一的数据库。球队、球员、比赛、阵容和积分通过主外键关联，浏览者可从赛程进入比赛详情，再进入球队或球员资料。国家探索、新闻和回放页面补充赛事相关内容，前台按照不同场景提供搜索、筛选和分页。
 
