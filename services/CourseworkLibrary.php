@@ -29,6 +29,34 @@ final class CourseworkLibrary
         }
         return $out;
     }
+    /**
+     * 部署时调用：把 data/team、data/personal 目录里（随 GitHub 提交的）还没登记的作业文件登记到“课程交付”表，
+     * 并删除指向这两个目录、但文件已经不存在的登记。后台上传的文件（uploads/ 子目录）和管理员设置的“前台可见”不会被改动。
+     * @return array{added:int,removed:int}
+     */
+    public static function syncFolder(): array
+    {
+        $added=0;$removed=0;
+        foreach(array_keys(self::SCOPES) as $scope){
+            // 1. 文件已从仓库删除（或不是作业文件，如 README.md）的登记：删除
+            foreach(CourseworkFile::find()->where(['scope'=>$scope])->all() as $file){
+                $name=substr((string)$file->storage_path,strlen('data/'.$scope.'/'));
+                if(str_starts_with((string)$file->storage_path,'data/'.$scope.'/uploads/')||str_contains($name,'/'))continue;
+                if(!self::allowed($name)||!is_file(ROOT_PATH.'/data/'.$scope.'/'.$name)){$file->delete();$removed++;}
+            }
+            // 2. 目录里有、表里没有的文件：新增登记，标题用文件名，默认前台可见
+            $dir=ROOT_PATH.'/data/'.$scope;
+            foreach(is_dir($dir)?scandir($dir):[] as $name){
+                if(!self::allowed($name)||!is_file($dir.'/'.$name))continue;
+                $path='data/'.$scope.'/'.$name;
+                if(CourseworkFile::find()->where(['storage_path'=>$path])->exists())continue;
+                $file=new CourseworkFile(['scope'=>$scope,'title'=>mb_substr(pathinfo($name,PATHINFO_FILENAME),0,200),'storage_path'=>$path,'is_visible'=>1]);
+                if(!$file->save())throw new \RuntimeException($path.': '.json_encode($file->errors,JSON_UNESCAPED_UNICODE));
+                $added++;
+            }
+        }
+        return ['added'=>$added,'removed'=>$removed];
+    }
     public static function allowed(string $name): bool
     {
         // Folder READMEs are instructions for the team, not coursework.

@@ -30,8 +30,17 @@ final class AppController extends Controller
         if (Yii::$app->runAction('news/configure') !== 0) { return 1; }
         // 初始数据里停用来源的旧新闻转为草稿，前台只显示当前启用来源的足球新闻
         if (Yii::$app->runAction('news/curate') !== 0) { return 1; }
+        // 把随仓库提交到 data/team、data/personal 的作业文件登记到后台“课程交付”
+        if ($this->actionCourseworkSync() !== 0) { return 1; }
         $this->stdout("Schema and native Yii2 migrations installed; existing records preserved.\n");
         $result=$this->actionAdmin(); if($result===0) { $this->actionWelcome(); } return $result;
+    }
+    /** php yii app/coursework-sync：同步 data/team、data/personal 目录与“课程交付”表 */
+    public function actionCourseworkSync(): int
+    {
+        $r=\app\services\CourseworkLibrary::syncFolder();
+        $this->stdout("PASS coursework sync: {$r['added']} added, {$r['removed']} removed.\n");
+        return 0;
     }
     public function actionAdmin(): int
     {

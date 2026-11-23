@@ -82,7 +82,9 @@ try:
  status(guest.req('/news/'+str(nid)),404,'draft article not public')
  status(admin.post('/admin/news_articles/delete',{'id':nid}),302,'news delete')
  status(guest.req('/news/'+str(nid)),404,'deleted article remains unavailable')
- status(admin.req('/downloads/1'),200,'registered coursework download')
+ # 取团队页上第一个已登记作业的下载链接（部署时 app/coursework-sync 会登记 data/team、data/personal 中的文件）
+ m=re.search(r'href="(/downloads/\d+)"',guest.req('/team')[2]);ck(bool(m),'team page links a registered coursework file')
+ if m:status(admin.req(m.group(1)),200,'registered coursework download')
  uid=b.session()['user']['id'];status(admin.post(f'/admin/users/{uid}/status',{'status':'disabled'}),302,'admin disables member')
  ck(b.session()['user'] is None,'disabled member session invalidated on next request')
  status(a.post('/logout'),302,'POST logout');ck(a.session()['user'] is None,'logout clears identity')
