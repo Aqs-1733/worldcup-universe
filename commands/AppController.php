@@ -28,6 +28,8 @@ final class AppController extends Controller
         foreach (['admin'=>'管理员','user'=>'普通用户'] as $name=>$label) { Yii::$app->db->createCommand()->upsert('roles',['name'=>$name,'label'=>$label],false)->execute(); }
         foreach (['match'=>'比赛内容','tactics'=>'战术分析','team'=>'球队动态','fan'=>'球迷内容','entertainment'=>'娱乐内容','fanmade'=>'二创内容'] as $slug=>$name) { Yii::$app->db->createCommand()->upsert('tags',['slug'=>$slug,'name_cn'=>$name],false)->execute(); }
         if (Yii::$app->runAction('news/configure') !== 0) { return 1; }
+        // 初始数据里停用来源的旧新闻转为草稿，前台只显示当前启用来源的足球新闻
+        if (Yii::$app->runAction('news/curate') !== 0) { return 1; }
         $this->stdout("Schema and native Yii2 migrations installed; existing records preserved.\n");
         $result=$this->actionAdmin(); if($result===0) { $this->actionWelcome(); } return $result;
     }
