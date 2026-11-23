@@ -10,7 +10,7 @@ final class CourseworkLibrary
     public const SCOPES=['team'=>'团队作业','personal'=>'个人作业'];
     public const EXT=['pdf','doc','docx','ppt','pptx','zip','rar','7z','md','txt','mp4','xlsx'];
 
-    /** @return array<string,list<array{title:string,url:string,ext:string,size:int,updated:int}>> */
+    /** @return array<string,list<array{title:string,url:string,ext:string,size:int,updated:int,student:string}>> */
     public function grouped(): array
     {
         $out=array_fill_keys(array_keys(self::SCOPES),[]);$seen=self::hidden();
@@ -51,6 +51,8 @@ final class CourseworkLibrary
     }
     private function item(string $title,string $url,string $path): array
     {
-        return ['title'=>$title,'url'=>$url,'ext'=>strtoupper(pathinfo($path,PATHINFO_EXTENSION)),'size'=>(int)filesize($path),'updated'=>(int)filemtime($path)];
+        // 从标题或文件名里找 7 位学号，团队页据此把个人作业归到对应成员名下
+        $student=preg_match('/(?<!\d)(\d{7})(?!\d)/',$title.' '.basename($path),$m)?$m[1]:'';
+        return ['title'=>$title,'url'=>$url,'ext'=>strtoupper(pathinfo($path,PATHINFO_EXTENSION)),'size'=>(int)filesize($path),'updated'=>(int)filemtime($path),'student'=>$student];
     }
 }

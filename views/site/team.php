@@ -15,10 +15,11 @@ $deliverables=array_map(static function(array $d) use($teamFiles){
 },$team['deliverables']??[]);
 $done=count(array_filter($deliverables,static fn($d)=>$d['file']));
 $size=static fn(int $b):string=>$b>=1048576?round($b/1048576,1).' MB':max(1,(int)round($b/1024)).' KB';
-$card=static function($m,bool $lead=false) use($duties): string{
+$tags=$team['tags']??[];
+$card=static function($m,bool $lead=false) use($duties,$tags): string{
  $school=trim(explode('·',(string)$m->bio)[0]);
  $avatar=$m->photo_url?'<img src="'.e(safe_url($m->photo_url)).'" alt="">':e(mb_substr($m->name,0,1));
- $chips='';foreach($duties[$m->student_no]??[] as $d)$chips.='<li>'.e($d).'</li>';
+ $chips='';foreach($tags[$m->student_no]??$duties[$m->student_no]??[] as $d)$chips.='<li>'.e($d).'</li>';
  return '<article class="team-card'.($lead?' is-captain':'').'"><span class="team-avatar">'.$avatar.'</span><div class="team-card-body">'
   .'<h3>'.e($m->name).($lead?'<span class="team-role">队长</span>':'').'</h3><p>'.e($school).' · '.e($m->student_no).'</p>'
   .($chips?'<ul class="team-duty-chips">'.$chips.'</ul>':'').'</div></article>';
@@ -53,7 +54,14 @@ $card=static function($m,bool $lead=false) use($duties): string{
  <div class="team-download-grid">
   <?php foreach(app\services\CourseworkLibrary::SCOPES as $scope=>$label): ?><section class="team-download-panel" aria-labelledby="dl-<?= e($scope) ?>">
    <h3 id="dl-<?= e($scope) ?>"><?= e($label) ?><span><?= count($files[$scope]??[]) ?></span></h3>
-   <?php if(!empty($files[$scope])): ?><ul><?php foreach($files[$scope] as $f): ?><li><a href="<?= e($f['url']) ?>" download><span class="team-ext"><?= e($f['ext']) ?></span><span class="team-file"><b><?= e($f['title']) ?></b><small><?= e($size($f['size'])) ?> · <?= e(date('Y.m.d',$f['updated'])) ?></small></span><span class="team-dl" aria-hidden="true">↓</span></a></li><?php endforeach ?></ul>
+   <?php if($scope==='personal'): ?><?php
+    // 个人作业按成员分组：文件标题或文件名里的学号决定归属，找不到学号的放到最后
+    $byStudent=[];foreach($files['personal']??[] as $f){$byStudent[$f['student']][]=$f;}
+    $groups=[];foreach(array_merge($captain?[$captain]:[],$others) as $m){$groups[]=['name'=>$m->name.' · '.$m->student_no,'files'=>$byStudent[$m->student_no]??[]];unset($byStudent[$m->student_no]);}
+    $rest=array_merge(...array_values($byStudent));if($rest){$groups[]=['name'=>'未标注学号','files'=>$rest];}
+   ?><?php foreach($groups as $g): ?><div class="team-person"><h4><?= e($g['name']) ?><span><?= count($g['files']) ?></span></h4>
+    <?php if($g['files']): ?><ul><?php foreach($g['files'] as $f): ?><li><a href="<?= e($f['url']) ?>" download><span class="team-ext"><?= e($f['ext']) ?></span><span class="team-file"><b><?= e($f['title']) ?></b><small><?= e($size($f['size'])) ?> · <?= e(date('Y.m.d',$f['updated'])) ?></small></span><span class="team-dl" aria-hidden="true">↓</span></a></li><?php endforeach ?></ul><?php else: ?><p class="team-empty">暂未上传</p><?php endif ?></div><?php endforeach ?>
+   <?php elseif(!empty($files[$scope])): ?><ul><?php foreach($files[$scope] as $f): ?><li><a href="<?= e($f['url']) ?>" download><span class="team-ext"><?= e($f['ext']) ?></span><span class="team-file"><b><?= e($f['title']) ?></b><small><?= e($size($f['size'])) ?> · <?= e(date('Y.m.d',$f['updated'])) ?></small></span><span class="team-dl" aria-hidden="true">↓</span></a></li><?php endforeach ?></ul>
    <?php else: ?><p class="team-empty">暂无文件</p><?php endif ?>
   </section><?php endforeach ?>
  </div>

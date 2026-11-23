@@ -34,7 +34,7 @@ th .team-role{margin:0 0 0 8px;vertical-align:middle;font-size:11px;padding:2px 
 /* 分工表第三列：每人负责的 MVC 文件 */
 .team-mvc div{display:flex;gap:8px;align-items:baseline;margin:2px 0;font-size:13px}
 .team-mvc b{flex:none;width:1.4em;color:#e51b2b;font-weight:800}
-.team-matrix thead th:first-child{width:7.5em}
+.team-matrix thead th:first-child{width:10.5em}
 .team-matrix thead th:nth-child(3){width:40%}
 .team-mvc code{font:12px/1.5 Consolas,monospace;color:#41556a;white-space:normal;overflow-wrap:anywhere;background:none;padding:0}
 .team-matrix{table-layout:fixed}
@@ -74,3 +74,9 @@ th .team-role{margin:0 0 0 8px;vertical-align:middle;font-size:11px;padding:2px 
 @media(max-width:1100px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){.team-hero{flex-direction:column;align-items:flex-start}.team-download-grid,.team-duties-body{grid-template-columns:1fr}}
 @media(max-width:560px){.team-grid{grid-template-columns:1fr}.team-card{flex-direction:row;align-items:flex-start}}
+/* 个人作业按成员分组 */
+.team-person+.team-person{margin-top:14px;padding-top:14px;border-top:1px dashed #e6ebf0}
+.team-person h4{display:flex;align-items:center;gap:8px;margin:0 0 6px;font-size:15px;font-weight:800;color:#2b3b4c}
+.team-person h4 span{font-size:11px;padding:3px 8px;border-radius:999px;background:#f1f4f7;color:#5d6d7e}
+.team-person .team-empty{margin:4px 0 0;padding:8px 12px;font-size:13px;text-align:left;min-height:0}
+.team-matrix tbody th .team-role{margin-left:6px}
