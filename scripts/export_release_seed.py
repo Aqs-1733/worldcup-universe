@@ -1,3 +1,5 @@
+# 文件作用：导出公开的赛事数据为 data/sports-seed.sql，不包含用户、密钥和论坛测试内容。
+# 作者：梁靖泽_2412852
 """Export only public, verified release data; never users, secrets, sessions or test posts."""
 from pathlib import Path
 import argparse,os,subprocess,hashlib,re

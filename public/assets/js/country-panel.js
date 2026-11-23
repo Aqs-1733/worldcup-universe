@@ -1,4 +1,7 @@
-/* Database details share the selected stable map key; stale fetches never replace a later selection. */
+/*
+ * 文件作用：点击地球上的国家后加载并显示国家详情面板。
+ * 作者：崔迪_2412439
+ */
 (() => {
  const root=document.querySelector('[data-globe-3d]'),panel=document.querySelector('[data-country-panel]');if(!root||!panel)return;
  const picker=panel.querySelector('[data-globe-country-picker]'),content=panel.querySelector('[data-country-panel-content]');let request=null;

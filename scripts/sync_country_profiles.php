@@ -1,5 +1,8 @@
 <?php
-/** WorldCup Universe: scripts/sync_country_profiles.php; course project source. */
+/**
+ * 文件作用：同步国家资料（首都、人口、地区等）到 country_profiles 表。
+ * 作者：崔迪_2412439
+ */
 
 declare(strict_types=1);
 

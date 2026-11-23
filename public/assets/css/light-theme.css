@@ -1,4 +1,6 @@
-/* Shared light palette. The .cine-hero opening and its animation are intentionally untouched. */
+/*
+ * 文件作用：全站浅色主题配色。
+ */
 :root {
   --paper: #f5f7fb;
   --surface: #fff;

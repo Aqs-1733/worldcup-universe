@@ -1,4 +1,7 @@
-/* Pitch markings (views/site/_pitch.php); pitch-lines.js draws them with the scroll. */
+/*
+ * 文件作用：球场线条装饰样式。
+ * 作者：崔迪_2412439
+ */
 .pitch-lines { display: block; fill: none; stroke: #c3d2e3; stroke-width: 1.6; stroke-linecap: round; overflow: visible; }
 .pitch-lines * { vector-effect: non-scaling-stroke; }
 .pitch-lines .pitch-spot { fill: #c3d2e3; stroke: none; transform-box: fill-box; transform-origin: center; }

@@ -1,4 +1,7 @@
 <?php
-/** Account-state management never exposes password hashes or authentication keys. */
+/**
+ * 文件作用：后台视图：用户账号状态管理，不显示密码哈希。
+ * 作者：蒋林瀞_2413507
+ */
 ?>
 <h1>用户管理</h1><div class="table-scroll"><table><thead><tr><th>用户</th><th>邮箱</th><th>角色</th><th>状态</th><th>操作</th></tr></thead><tbody><?php foreach($provider->models as $user): ?><tr><td><?= e($user->username) ?> / <?= e($user->displayName) ?></td><td><?= e($user->email) ?></td><td><?= e(implode('、',array_map(fn($r)=>$r->label,$user->roles))) ?></td><td><?= e($user->status) ?></td><td><?php if(!$user->isAdmin()): ?><form method="post" action="/admin/users/<?= (int)$user->id ?>/status"><?= csrf_field() ?><input type="hidden" name="status" value="<?= $user->status==='active'?'disabled':'active' ?>"><button><?= $user->status==='active'?'停用账号':'启用账号' ?></button></form><?php else: ?><span>管理员由部署命令维护</span><?php endif ?></td></tr><?php endforeach ?></tbody></table></div><?= yii\widgets\LinkPager::widget(['pagination'=>$provider->pagination]) ?>

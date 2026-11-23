@@ -1,5 +1,8 @@
 <?php
-/** Native login form renders Yii validation feedback and CSRF token. */
+/**
+ * 文件作用：视图：登录页面。
+ * 作者：王麒萱_2412096
+ */
 use yii\helpers\Html;
 $this->title='账号登录';
 ?>

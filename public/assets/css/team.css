@@ -1,4 +1,6 @@
-/* /team: members, division of labour, coursework downloads. */
+/*
+ * 文件作用：团队页样式：成员卡片、分工表、交付进度和作业下载。
+ */
 .team-hero{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;padding:56px 0 34px;border-bottom:1px solid #dde3ea;margin-bottom:40px}
 .team-hero h1{font:900 clamp(34px,4vw,58px)/1.15 var(--wcu-zh);color:#152331;margin:0 0 12px;letter-spacing:.01em}
 .team-hero p{margin:0;color:#66778a;font-size:15px}
@@ -22,13 +24,23 @@ th .team-role{margin:0 0 0 8px;vertical-align:middle;font-size:11px;padding:2px 
 .team-section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px}
 .team-section-head h2{font:900 clamp(26px,2.6vw,38px)/1.2 var(--wcu-zh);color:#152331;margin:0}
 .team-duties{margin-bottom:70px}
-.team-duties-body{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:22px;align-items:start}
+.team-duties-body{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(250px,1fr);gap:22px;align-items:start}
 .team-matrix{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid #e6ebf0;border-radius:18px;overflow:hidden;box-shadow:0 14px 40px #1a2a3a0f}
 .team-matrix th,.team-matrix td{padding:18px 22px;text-align:left;border-bottom:1px solid #eef2f5;font-size:15px;color:#2b3b4c}
 .team-matrix thead th{font-size:12px;color:#7d8c9b;font-weight:700;letter-spacing:.1em;background:#f8fafb}
 .team-matrix tbody th{font-weight:800;white-space:nowrap;width:9em}
 .team-matrix tr:last-child th,.team-matrix tr:last-child td{border-bottom:0}
 .team-muted{color:#a0acb8}
+/* 分工表第三列：每人负责的 MVC 文件 */
+.team-mvc div{display:flex;gap:8px;align-items:baseline;margin:2px 0;font-size:13px}
+.team-mvc b{flex:none;width:1.4em;color:#e51b2b;font-weight:800}
+.team-matrix thead th:first-child{width:7.5em}
+.team-matrix thead th:nth-child(3){width:40%}
+.team-mvc code{font:12px/1.5 Consolas,monospace;color:#41556a;white-space:normal;overflow-wrap:anywhere;background:none;padding:0}
+.team-matrix{table-layout:fixed}
+.team-matrix td{white-space:normal;vertical-align:top}
+/* 手机上分工表改成逐行堆叠 */
+@media(max-width:700px){.team-matrix,.team-matrix tbody,.team-matrix tr,.team-matrix tbody th,.team-matrix td{display:block;width:auto}.team-matrix thead{display:none}.team-matrix tbody th{padding:16px 18px 4px;border-bottom:0}.team-matrix td{padding:4px 18px 12px}.team-matrix tr{border-bottom:1px solid #eef2f5}}
 .team-progress{padding:24px;border-radius:18px;background:#fff;border:1px solid #e6ebf0;box-shadow:0 14px 40px #1a2a3a0f}
 .team-progress-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
 .team-progress-head b{font:800 44px/1 var(--wcu-num,'Anton');color:#152331}

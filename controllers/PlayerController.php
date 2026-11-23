@@ -1,5 +1,8 @@
 <?php
-/** Native player search/filter/detail controller. */
+/**
+ * 文件作用：球员控制器：球员搜索、筛选和球员详情。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\controllers;
 use app\models\{Player,Team};

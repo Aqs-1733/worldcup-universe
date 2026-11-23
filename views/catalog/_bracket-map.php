@@ -1,5 +1,8 @@
 <?php
-/** Symmetric knockout map. Layout follows the verified winner edges back from the final, so every connector is a real progression. */
+/**
+ * 文件作用：局部视图：对称的淘汰赛对阵图，连线来自已核验的晋级关系。
+ * 作者：梁靖泽_2412852
+ */
 use app\services\{ImmersiveService,TeamUi};
 use yii\helpers\Json;
 $byId=[];$incoming=[];$final=null;$bronze=null;

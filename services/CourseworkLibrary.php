@@ -1,5 +1,7 @@
 <?php
-/** Coursework downloads: files registered in the admin "课程交付" table plus any file dropped into data/team or data/personal. */
+/**
+ * 文件作用：课程作业下载：列出 data/team、data/personal 下的文件和后台登记的作业，并校验下载路径。
+ */
 declare(strict_types=1);
 namespace app\services;
 use app\models\CourseworkFile;

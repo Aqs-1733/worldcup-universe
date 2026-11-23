@@ -1,5 +1,7 @@
 <?php
-/** Native Yii2 ActiveRecord: comments; field validation and relational integrity. */
+/**
+ * 文件作用：模型：comments 表（页面留言），含审核状态。
+ */
 declare(strict_types=1);
 namespace app\models;
 

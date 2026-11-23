@@ -1,5 +1,8 @@
 <?php
-/** WorldCup Universe: scripts/sync_news.php; course project source. */
+/**
+ * 文件作用：命令行同步新闻（旧入口，现在推荐 php yii news/sync）。
+ * 作者：梁靖泽_2412852
+ */
 
 declare(strict_types=1);
 

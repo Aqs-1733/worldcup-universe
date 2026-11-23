@@ -1,5 +1,7 @@
 <?php
-/** Correct the homepage team member name on existing installations. */
+/**
+ * 文件作用：数据库迁移：修正已安装数据库中的团队成员姓名。
+ */
 declare(strict_types=1);
 use yii\db\Migration;
 

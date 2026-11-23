@@ -1,3 +1,6 @@
+/*
+ * 文件作用：全站动效：平滑滚动、滚动出现、磁吸按钮、卡片倾斜。
+ */
 /* Site-wide motion layer: smooth scroll, scroll reveals, magnetic buttons and tilt cards.
    Everything is progressive: without JS or with reduced motion the page is fully static and usable. */
 (() => {

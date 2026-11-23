@@ -61,3 +61,5 @@ backups/
 # 文档草稿、测试截图和验收记录只保存在本地，不提交（正式文档以 PDF 放在 data/team/）
 docs/
 artifacts/
+__pycache__/
+*.pyc

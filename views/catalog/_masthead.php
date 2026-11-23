@@ -1,4 +1,8 @@
 <?php
+/**
+ * 文件作用：局部视图：各栏目页面顶部的场馆照片头图。
+ * 作者：崔迪_2412439
+ */
 /** Arena-style photographic page cover; the image depicts a venue, not a match report.
     The dusk, lamp and beam layers play a one-off floodlights-on intro (cover-intro.css). */
 $photoSrc=is_file(ROOT_PATH.'/public/assets/media/photos/display/'.$photo.'.jpg')?'/assets/media/photos/display/'.$photo.'.jpg':'/assets/media/photos/'.$photo.'.jpg'; ?>

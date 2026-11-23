@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: coaches; field validation and relational integrity. */
+/**
+ * 文件作用：模型：coaches 表（球队主教练）。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\models;
 

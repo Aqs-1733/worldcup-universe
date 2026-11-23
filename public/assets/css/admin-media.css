@@ -1,4 +1,7 @@
-/* WorldCup Universe admin: upload field, current-file preview and list thumbnails. */
+/*
+ * 文件作用：后台样式：上传控件、当前文件预览和列表缩略图。
+ * 作者：蒋林瀞_2413507
+ */
 .media-upload{display:flex;flex-direction:column;gap:8px;margin-top:8px}
 .media-upload input[type=file]{padding:8px;border:1px dashed #9aa6b8;border-radius:6px;background:#f7f9fc;font-size:13px}
 .media-upload small{font-size:11px;color:#64708a}

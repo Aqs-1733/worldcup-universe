@@ -1,5 +1,7 @@
 <?php
-/** No third-party playback URLs are seeded into the public catalogue. */
+/**
+ * 文件作用：控制台命令 video/*：维护比赛视频目录，不写入第三方播放地址。
+ */
 declare(strict_types=1);
 namespace app\commands;
 final class VideoController extends \yii\console\Controller

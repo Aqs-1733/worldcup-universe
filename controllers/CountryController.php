@@ -1,5 +1,8 @@
 <?php
-/** Globe and accessible country-list read models use Yii2 AR. */
+/**
+ * 文件作用：国家探索控制器：3D 地球页、国家列表与国家详情。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\controllers;
 use app\models\{CountryProfile,Venue,Team};

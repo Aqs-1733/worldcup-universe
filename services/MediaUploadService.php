@@ -1,5 +1,8 @@
 <?php
-/** Administrator uploads: allowlisted type, sniffed MIME, size cap, random name, fixed storage roots. */
+/**
+ * 文件作用：后台上传服务：检查扩展名和真实 MIME、限制大小、随机文件名、固定保存目录。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\services;
 use Yii;

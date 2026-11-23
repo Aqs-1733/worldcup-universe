@@ -1,5 +1,8 @@
 <?php
-/** Compact data for the story modes of the 3D globe: who qualified, how far they went, and where they played. */
+/**
+ * 文件作用：3D 地球“故事模式”数据：哪些国家晋级、走了多远、在哪里比赛。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\services;
 use app\models\{CountryProfile,MatchGame,Team};

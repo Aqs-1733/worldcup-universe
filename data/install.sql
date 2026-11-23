@@ -1,3 +1,5 @@
+-- 文件作用：建库建表脚本：创建 worldcup_universe 数据库及全部数据表（含表注释、外键）。
+-- 作者：王麒萱_2412096
 CREATE DATABASE IF NOT EXISTS `worldcup_universe`
   DEFAULT CHARACTER SET utf8mb4
   DEFAULT COLLATE utf8mb4_unicode_ci;

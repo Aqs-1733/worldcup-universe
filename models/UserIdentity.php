@@ -1,5 +1,8 @@
 <?php
-/** Yii2 session identity; roles come from the existing user_roles relation. */
+/**
+ * 文件作用：登录身份类：实现 Yii2 IdentityInterface，角色来自 user_roles 表。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\models;
 

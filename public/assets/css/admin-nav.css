@@ -1,4 +1,7 @@
-/* WorldCup Universe admin: grouped sidebar, current-page state, sticky location bar. Loaded after light-theme.css. */
+/*
+ * 文件作用：后台样式：分组侧边栏、当前页高亮、顶部位置栏。
+ * 作者：蒋林瀞_2413507
+ */
 body .admin-sidebar{padding:24px 14px 40px;scrollbar-width:thin;scrollbar-color:#c9d5e3 transparent;overscroll-behavior:contain}
 body .admin-sidebar .brand{display:block;padding:0 12px;margin-bottom:12px}
 body .admin-sidebar .admin-back{font-size:12px;color:#7a8ea6;margin-bottom:6px}

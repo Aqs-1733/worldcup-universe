@@ -1,4 +1,6 @@
-/* Site-wide motion helpers and type tokens. */
+/*
+ * 文件作用：全站动效辅助样式与字体变量。
+ */
 :root{--wcu-zh:'WCU Serif SC','Noto Serif SC','Songti SC','STSong',serif;--wcu-num:'WCU Big Shoulders','Anton',Impact,sans-serif;--wcu-label:'WCU Barlow Cond','Mulish',sans-serif}
 html.motion-on{scroll-behavior:auto}
 .reveal-mask{display:inline-block;vertical-align:bottom;max-width:100%;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}

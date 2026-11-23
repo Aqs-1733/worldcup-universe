@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: players; field validation and relational integrity. */
+/**
+ * 文件作用：模型：players 表（球员：姓名、位置、号码、所属球队、肖像）。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\models;
 

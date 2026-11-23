@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: tournament_stages; field validation and relational integrity. */
+/**
+ * 文件作用：模型：tournament_stages 表（赛事阶段：小组赛、32 强……决赛）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

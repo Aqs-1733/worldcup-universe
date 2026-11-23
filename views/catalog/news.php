@@ -1,5 +1,8 @@
 <?php
-/** Live publisher feed with type pills, source filter and a non-blocking update indicator. */
+/**
+ * 文件作用：视图：新闻列表页，支持类型和来源筛选，显示同步状态。
+ * 作者：梁靖泽_2412852
+ */
 $this->title='足球新闻';$activeTag=Yii::$app->request->get('tag','');$typeLabels=['match'=>'赛事报道','tactics'=>'战术分析','team'=>'球队动态','fan'=>'球迷现场','entertainment'=>'场外花絮','worldcup'=>'世界杯'];
 $stories=$provider->models;
 // A real publisher photo leads the magazine; text-only reports remain ordinary cards.

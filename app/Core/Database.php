@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: app/Core/Database.php; course project source. */
+/**
+ * 文件作用：PDO 数据库连接单例，供 scripts/ 下的采集、翻译等命令行脚本使用。
+ */
 
 declare(strict_types=1);
 

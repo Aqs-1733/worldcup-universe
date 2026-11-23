@@ -1,3 +1,7 @@
+/*
+ * 文件作用：球场线条随滚动逐笔绘制。
+ * 作者：崔迪_2412439
+ */
 /* Pitch markings draw themselves stroke by stroke once they come into view, then stay complete.
    (They used to follow the scrollbar, which left a half-drawn line on screen whenever the reader stopped scrolling.)
    Without GSAP or with reduced motion everything stays fully drawn. */

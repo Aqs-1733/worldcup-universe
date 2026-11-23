@@ -1,3 +1,5 @@
+// 文件作用：Node 测试：3D 地球地图数据的坐标和颜色。
+// 作者：崔迪_2412439
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';

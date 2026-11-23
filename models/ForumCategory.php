@@ -1,5 +1,8 @@
 <?php
-/** Forum board definition. */
+/**
+ * 文件作用：模型：forum_categories 表（论坛板块）。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\models;
 class ForumCategory extends Record

@@ -1,5 +1,7 @@
 <?php
-/** Official-source provenance is additive; legacy snapshots remain quarantined. */
+/**
+ * 文件作用：数据库迁移：新增官方数据来源与导入凭证相关字段。
+ */
 declare(strict_types=1);
 use yii\db\Migration;
 final class m261021_000004_official_sources extends Migration

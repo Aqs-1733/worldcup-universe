@@ -1,5 +1,7 @@
 <?php
-/** Register the home page's built-in images as 媒体资产 so administrators can replace them; existing rows are left alone. */
+/**
+ * 文件作用：数据库迁移：把首页内置图片登记为“媒体资产”，管理员可在后台替换。
+ */
 declare(strict_types=1);
 use yii\db\Migration;
 

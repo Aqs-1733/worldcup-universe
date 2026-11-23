@@ -1,5 +1,8 @@
 <?php
-/** Optional player action demos; buttons also work with touch and keyboard input. */
+/**
+ * 文件作用：局部视图：球员动作互动演示。
+ * 作者：崔迪_2412439
+ */
 $sceneId='player-action-'.preg_replace('/[^a-z0-9-]/i','',$instance??'profile');
 ?>
 <div class="player-playground" data-player-playground hidden>

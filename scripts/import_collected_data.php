@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: scripts/import_collected_data.php; course project source. */
+/**
+ * 文件作用：把早期采集的数据导入数据库（历史采集工具）。
+ */
 
 declare(strict_types=1);
 

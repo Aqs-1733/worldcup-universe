@@ -1,4 +1,7 @@
-/* Flip tiles for score digits (split-flap.js): a two-tone panel with a centre seam; each change drops the tile in. */
+/*
+ * 文件作用：比分翻牌样式。
+ * 作者：梁靖泽_2412852
+ */
 .flap {
   display: inline-block; position: relative; min-width: .74em; padding: 0 .1em; text-align: center; line-height: 1.18;
   font-variant-numeric: tabular-nums; border-radius: .14em; transform-origin: 50% 0;

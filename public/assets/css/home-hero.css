@@ -1,4 +1,7 @@
-/* Home only. All tunnel composition rules live here; copy/image/crop in presentation.php. */
+/*
+ * 文件作用：首页球员通道头图样式。
+ * 作者：崔迪_2412439
+ */
 /* Local Google Fonts subset for the heading; same OFL as fonts/OFL-ZCOOL.txt. */
 @font-face{font-family:'WCU Hero QingKe';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/wcu-hero-qingke.ttf') format('truetype')}
 .home-tunnel{background:#070b0b}

@@ -1,5 +1,8 @@
 <?php
-/** Model-schema form: safe attributes, enum choices, browser uploads with preview, and validation feedback. */
+/**
+ * 文件作用：后台视图：通用新增/编辑表单，支持枚举下拉、文件上传预览和校验提示。
+ * 作者：蒋林瀞_2413507
+ */
 use yii\helpers\Html;
 use app\services\MediaUploadService;
 $schema=$model::getTableSchema();

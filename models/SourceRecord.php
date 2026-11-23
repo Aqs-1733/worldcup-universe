@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: source_records; field validation and relational integrity. */
+/**
+ * 文件作用：模型：source_records 表（每条导入记录对应的原始来源）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

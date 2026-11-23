@@ -1,5 +1,8 @@
 <?php
-/** Each match occurs once in the championship ancestry; leaf links remain accessible. */
+/**
+ * 文件作用：局部视图：晋级树的一个分支（递归渲染）。
+ * 作者：梁靖泽_2412852
+ */
 if(!isset($byId[$id])||isset($seen[$id])||$depth>6)return;
 $seen[$id]=true;$game=$byId[$id];$children=$incoming[$id]??[];
 ?>

@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 authentication controller and validated form models. */
+/**
+ * 文件作用：账号控制器：注册、登录、退出。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\controllers;
 use app\models\{LoginForm,RegisterForm};

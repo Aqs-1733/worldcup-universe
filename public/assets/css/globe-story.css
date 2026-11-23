@@ -1,4 +1,7 @@
-/* Story modes for the /countries globe. Loaded after edition.css. */
+/*
+ * 文件作用：3D 地球故事模式样式。
+ * 作者：崔迪_2412439
+ */
 .edition-explorer .globe-card-3d{background:radial-gradient(75% 65% at 50% 45%,#2a5d8f 0%,#143252 55%,#0b1d31 100%);isolation:isolate}
 .globe-card-3d::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;background-image:radial-gradient(1px 1px at 12% 18%,#fff,transparent),radial-gradient(1px 1px at 72% 12%,#fff,transparent),radial-gradient(1.5px 1.5px at 85% 62%,#cfe3ff,transparent),radial-gradient(1px 1px at 33% 78%,#fff,transparent),radial-gradient(1px 1px at 55% 40%,#fff8,transparent),radial-gradient(1px 1px at 8% 66%,#fff,transparent),radial-gradient(1.5px 1.5px at 92% 28%,#fff,transparent),radial-gradient(1px 1px at 46% 90%,#fff9,transparent);background-size:420px 420px}
 .globe-card-3d .globe-stage{height:640px;z-index:1}

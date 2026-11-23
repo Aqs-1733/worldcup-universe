@@ -1,4 +1,6 @@
-/* Accessible manual player chapters and source-derived SVG bracket routes. */
+/*
+ * 文件作用：球员专题章节切换与晋级路线 SVG。
+ */
 (() => {
   const tabs = [...document.querySelectorAll('[data-spotlight-tab]')];
   const activate = index => {

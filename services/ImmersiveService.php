@@ -1,5 +1,8 @@
 <?php
-/** Read-only data for the motion-led home page; every fact still comes from verified records. */
+/**
+ * 文件作用：首页动效区所需的数据（球队、球员、比分），全部来自数据库。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\services;
 use app\models\{MatchGame,Player};

@@ -1,3 +1,7 @@
+/*
+ * 文件作用：球员卡片的全息光泽效果。
+ * 作者：崔迪_2412439
+ */
 /* Holographic foil on player cards: the existing glare layer becomes a rainbow foil that slides with the pointer
    (--glare-x/--glare-y come from motion-core's tilt), plus fine diagonal streaks and a bright hotspot.
    Hover-only, so touch screens and reduced motion keep the plain card. */

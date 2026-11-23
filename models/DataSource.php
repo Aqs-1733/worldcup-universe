@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: data_sources; field validation and relational integrity. */
+/**
+ * 文件作用：模型：data_sources 表（数据来源登记）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

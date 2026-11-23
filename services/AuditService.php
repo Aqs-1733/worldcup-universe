@@ -1,5 +1,8 @@
 <?php
-/** Append-only application audit events; secrets and raw passwords are excluded. */
+/**
+ * 文件作用：审计服务：记录后台和关键操作，不记录密码等敏感信息。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\services;
 use Yii;

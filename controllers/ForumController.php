@@ -1,5 +1,8 @@
 <?php
-/** Forum HTTP workflow: authentication, CSRF and service-level ownership checks. */
+/**
+ * 文件作用：球迷论坛控制器：主题列表、发帖、回复、编辑删除、点赞收藏和举报，写操作都要求登录并校验 CSRF。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\controllers;
 use app\models\{ForumThread,ForumReply,ForumCategory,Team,MatchGame};
@@ -9,10 +12,13 @@ use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 final class ForumController extends BaseController
 {
+    // 除了浏览列表和主题详情，其他操作都要求登录
     public function behaviors(): array { return ['access'=>['class'=>AccessControl::class,'except'=>['index','view'],'rules'=>[['allow'=>true,'roles'=>['@']]]]]; }
     public function actionIndex()
     {
+        // 主题列表：顺便统计回复数和点赞数，只显示已发布的主题
         $q=ForumThread::find()->alias('t')->select(['t.*','reply_count'=>new \yii\db\Expression("(SELECT COUNT(*) FROM forum_replies r WHERE r.thread_id=t.id AND r.status='visible')"),'like_count'=>new \yii\db\Expression('(SELECT COUNT(*) FROM thread_likes l WHERE l.thread_id=t.id)')])->with(['author.profile.mainTeam','team','category'])->where(['t.status'=>'published']);
+        // 按板块、球队、标题关键字、“我的主题”和“主队看台”筛选
         $q->andFilterWhere(['t.category_id'=>Yii::$app->request->get('category'),'t.team_id'=>Yii::$app->request->get('team_id')]);
         if ($search=Yii::$app->request->get('q')) { $q->andWhere(['like','t.title',mb_substr((string)$search,0,160)]); }
         if (Yii::$app->request->get('mine')==='1') { $q->andWhere(['t.author_id'=>$this->actor()->id]); }
@@ -26,6 +32,7 @@ final class ForumController extends BaseController
     }
     public function actionCreate() { return $this->editThread(null); }
     public function actionEdit(int $id) { return $this->editThread($id); }
+    // 删除主题/回复：posted() 要求必须是 POST 请求，归属检查在 ForumService 里做
     public function actionDelete(int $id) { $this->posted(); (new ForumService())->remove($this->actor(),'thread',$id); return $this->redirect('/forum'); }
     public function actionDeleteReply(int $id) { $this->posted(); $reply=ForumReply::findOne($id); if (!$reply) { throw new \yii\web\NotFoundHttpException(); } (new ForumService())->remove($this->actor(),'reply',$id); return $this->redirect('/forum/'.$reply->thread_id); }
     public function actionEditReply(int $id)
@@ -33,12 +40,14 @@ final class ForumController extends BaseController
         $this->posted(); $reply=(new ForumService())->editReply($this->actor(),$id,(string)Yii::$app->request->post('body',''));
         Yii::$app->session->setFlash($reply->hasErrors()?'error':'success',$reply->hasErrors()?implode(' ',$reply->getFirstErrors()):'回复已更新。'); return $this->redirect('/forum/'.$reply->thread_id.'#reply-'.$id);
     }
+    // 发表回复：校验失败时返回 422 并保留用户已经填写的内容
     public function actionReply(int $id)
     {
         $this->posted(); $reply=(new ForumService())->reply($this->actor(),$id,Yii::$app->request->post());
         if ($reply->hasErrors()) { Yii::$app->response->statusCode=422; return $this->showThread((new ForumService())->readable($id,$this->actor()),$reply); }
         return $this->redirect('/forum/'.$id.'#reply-'.$reply->id);
     }
+    // 点赞和收藏共用 collection()，重复提交不会重复计数
     public function actionLike(int $id) { return $this->collection($id,'like'); }
     public function actionBookmark(int $id) { return $this->collection($id,'bookmark'); }
     public function actionReport(int $id)
@@ -50,6 +59,7 @@ final class ForumController extends BaseController
     private function editThread(?int $id)
     {
         $actor=$this->actor(); $model=$id?(new ForumService())->readable($id,$actor):new ForumThread();
+        // 只有作者本人或管理员可以编辑
         if ($id && (int)$model->author_id!==(int)$actor->id && !$actor->isAdmin()) { throw new \yii\web\ForbiddenHttpException(); }
         if (Yii::$app->request->isPost) { $model=(new ForumService())->saveThread($actor,Yii::$app->request->post(),$id); if (!$model->hasErrors()) { return $this->redirect('/forum/'.$model->id); } Yii::$app->response->statusCode=422; }
         return $this->render('edit',['model'=>$model,'categories'=>ForumCategory::find()->orderBy('sort_order')->all(),'teams'=>Team::find()->andWhere(['not',['official_import_id'=>null]])->orderBy('name_original')->all(),'matches'=>MatchGame::find()->with(['homeTeam','awayTeam'])->where(['not',['official_import_id'=>null]])->orderBy(['starts_at'=>SORT_DESC])->limit(150)->all()]);

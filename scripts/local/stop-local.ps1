@@ -1,4 +1,6 @@
-﻿<#
+﻿# 文件作用：Windows 停止本地网站和项目专用数据库（由 stop-local.bat 调用）。
+# 作者：蒋林瀞_2413507
+<#
 WorldCup Universe - 停止本地网站（由 stop-local.bat 调用）。
   stop-local.bat            停止 PHP 网站和项目专用 MariaDB（数据保留在 storage\local-db，下次启动继续使用）
   stop-local.bat -KeepDb    只停止网站

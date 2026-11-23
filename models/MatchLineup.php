@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: match_lineups; field validation and relational integrity. */
+/**
+ * 文件作用：模型：match_lineups 表（比赛首发与替补名单）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

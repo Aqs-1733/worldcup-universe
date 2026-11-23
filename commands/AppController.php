@@ -1,5 +1,7 @@
 <?php
-/** Deployment and audit commands use the same Yii2 DB component as the website. */
+/**
+ * 文件作用：控制台命令 app/*：安装数据库（app/install）、数据审计（app/audit）、导出数据库字典等。
+ */
 declare(strict_types=1);
 namespace app\commands;
 use app\models\{User,Role};
@@ -95,6 +97,6 @@ final class AppController extends Controller
             foreach($table->foreignKeys as $fk) { $target=array_shift($fk); $text.="\n外键：`".implode('`,`',array_keys($fk))."` → `{$target}` (`".implode('`,`',array_values($fk))."`)。\n"; }
             $text.="\n";
         }
-        file_put_contents(Yii::getAlias('@app/docs/v2-database-dictionary.md'),$text); $this->stdout("Database dictionary generated.\n"); return 0;
+        file_put_contents(Yii::getAlias('@app/storage/generated/database-dictionary.md'),$text); $this->stdout("Database dictionary generated.\n"); return 0;
     }
 }

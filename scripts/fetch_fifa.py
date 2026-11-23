@@ -1,3 +1,5 @@
+# 文件作用：官方数据采集脚本：请求 FIFA 公开接口、下载官方名单 PDF 并保存快照和哈希，不直接写数据库。
+# 作者：梁靖泽_2412852
 """Collect public FIFA responses and the official squad PDF; never writes the DB.
 
 Usage: python scripts/fetch_fifa.py [--resume DIR]

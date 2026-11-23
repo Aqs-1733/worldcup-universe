@@ -1,5 +1,7 @@
 <?php
-/** Course schema documentation: annotate only tables without existing comments. */
+/**
+ * 文件作用：数据库迁移：为还没有注释的数据表补充中文表注释。
+ */
 declare(strict_types=1);
 use yii\db\Migration;
 final class m261021_000003_table_comments extends Migration

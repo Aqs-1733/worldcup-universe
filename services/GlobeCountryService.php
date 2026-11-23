@@ -1,5 +1,8 @@
 <?php
-/** WorldCup Universe: services/GlobeCountryService.php; course project source. */
+/**
+ * 文件作用：3D 地球所需的国家数据（是否参赛、名次、颜色等）。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\services;
 use app\models\{CountryProfile,Team,Player,MatchGame};

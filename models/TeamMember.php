@@ -1,5 +1,7 @@
 <?php
-/** Native Yii2 ActiveRecord: team_members; field validation and relational integrity. */
+/**
+ * 文件作用：模型：team_members 表（项目团队成员：姓名、学号、角色）。
+ */
 declare(strict_types=1);
 namespace app\models;
 

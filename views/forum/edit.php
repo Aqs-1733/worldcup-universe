@@ -1,5 +1,8 @@
 <?php
-/** Topic compose/edit form; protected ownership is never submitted as fields. */
+/**
+ * 文件作用：视图：发帖/编辑主题表单。
+ * 作者：蒋林瀞_2413507
+ */
 use yii\helpers\Html;
 $this->title=$model->isNewRecord?'发起讨论':'编辑讨论';
 ?>

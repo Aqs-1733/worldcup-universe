@@ -1,5 +1,8 @@
 <?php
-/** Server-rendered player chapters, progressively enhanced with manual tab controls. */
+/**
+ * 文件作用：局部视图：球员专题章节（可切换）。
+ * 作者：崔迪_2412439
+ */
 $showcase=array_slice($players,0,3);$presentation=require ROOT_PATH.'/config/presentation.php';$instance=$instance??'featured';
 ?>
 <?php if($showcase): ?><section class="spotlight edition-spotlight" data-player-spotlight aria-label="主推球员" style="--spotlight-duration:<?= (int)$presentation['motion']['spotlightDuration'] ?>ms">

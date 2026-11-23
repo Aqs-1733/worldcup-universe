@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: user_blocked_teams; field validation and relational integrity. */
+/**
+ * 文件作用：模型：user_blocked_teams 表（用户屏蔽的球队）。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\models;
 

@@ -1,4 +1,7 @@
-/* Home only: pinned cinematic hero, score ticker and player rail. Loaded after home-hero.css. */
+/*
+ * 文件作用：首页开场动效、比分滚动条和球员横向列表样式。
+ * 作者：崔迪_2412439
+ */
 :root{--cine-ink:#05080a;--cine-gold:#f2c75c;--cine-gold-2:#ffe7a3;--cine-red:#e51b2b;--cine-line:#ffffff26;--cine-display:var(--wcu-num);--cine-zh:var(--wcu-zh);--cine-label:var(--wcu-label)}
 html,body{overflow-x:clip}
 .home-cine{background:#f4f5f7}

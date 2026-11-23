@@ -1,3 +1,4 @@
+# 文件作用：界面测试：论坛、晋级图、国家页等改版后的页面与资源。
 """Actual HTTP/asset checks for the six screenshot-driven redesign requests."""
 from pathlib import Path
 from html.parser import HTMLParser

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# 文件作用：把 backup.sh 生成的备份恢复到 .env 指定的数据库。
+# 作者：蒋林瀞_2413507
 # WorldCup Universe: restore a backup made by scripts/backup.sh into the database named in .env.
 # Usage:
 #   sudo bash scripts/restore.sh --db /var/backups/worldcup-universe/db-YYYYmmdd-HHMMSS.sql.gz \

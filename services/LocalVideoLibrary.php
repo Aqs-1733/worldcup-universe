@@ -1,5 +1,8 @@
 <?php
 /**
+ * 文件作用：本地视频库：扫描并校验本地视频文件。
+ */
+/**
  * /watch renders only verified CCTV.com pages or local files in this deployment.
  * Local shelf entries are listed only after their file or approved uploaded asset exists.
  */

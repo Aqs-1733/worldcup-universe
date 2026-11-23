@@ -1,3 +1,5 @@
 <?php
-/** No cross-origin player is published. /watch plays only locally available files. */
+/**
+ * 文件作用：视频播放策略配置：只播放本地已有的文件。
+ */
 return [];

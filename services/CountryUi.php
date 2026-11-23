@@ -1,5 +1,8 @@
 <?php
-/** Chinese presentation labels; original country-source values remain untouched. */
+/**
+ * 文件作用：国家名称的中文显示标签。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\services;
 final class CountryUi

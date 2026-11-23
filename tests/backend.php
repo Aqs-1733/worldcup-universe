@@ -1,5 +1,7 @@
 <?php
-/** Database-backed service regression; all test content is rolled back. */
+/**
+ * 文件作用：后端测试：注册登录、权限、偏好互斥、论坛引用、点赞幂等、事务回滚（测试数据全部回滚）。
+ */
 declare(strict_types=1);
 require dirname(__DIR__).'/vendor/autoload.php';
 require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';

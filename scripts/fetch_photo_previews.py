@@ -1,3 +1,4 @@
+# 文件作用：缓存 Commons 生成的 1280px 预览图，保留原图与署名。
 """Cache publisher-generated Commons 1280px previews; retain untouched originals and attribution."""
 from pathlib import Path
 import json,urllib.request,time,hashlib

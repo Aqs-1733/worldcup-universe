@@ -1,3 +1,7 @@
+/*
+ * 文件作用：首页球队墙样式。
+ * 作者：崔迪_2412439
+ */
 /* Home team wall: an edge-to-edge, tilted wall of every squad photo whose columns drift up and down without end.
    It spans the full window width and fades into the page at top and bottom, so it has no visible frame.
    Compositor-only CSS animation; paused off screen (team-wall.js), per column on hover, and off for reduced motion. */

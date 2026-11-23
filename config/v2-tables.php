@@ -1,5 +1,8 @@
 <?php
-/** WorldCup Universe: explicit model registry for native Yii2 administration. */
+/**
+ * 文件作用：后台可管理的数据表白名单：表名、对应模型、中文名称。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 
 return [

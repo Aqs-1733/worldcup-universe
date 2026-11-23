@@ -1,5 +1,8 @@
 <?php
-/** Publisher-feed list, status and user-triggered refresh. */
+/**
+ * 文件作用：新闻控制器：新闻列表、新闻详情、同步状态查询和手动刷新。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\controllers;
 

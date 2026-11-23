@@ -1,5 +1,8 @@
 <?php
-/** Reply record; same-thread parent validation also runs in the write service. */
+/**
+ * 文件作用：模型：forum_replies 表（主题回复），引用的回复必须属于同一主题。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\models;
 class ForumReply extends Record

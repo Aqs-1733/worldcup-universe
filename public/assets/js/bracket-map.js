@@ -1,3 +1,7 @@
+/*
+ * 文件作用：对阵图脚本：按晋级关系画连线，悬停/点击时高亮某队的晋级路线。
+ * 作者：梁靖泽_2412852
+ */
 /* Symmetric bracket: draws connectors from the verified edges, animates them in, and traces a team's path on hover/click.
    After the entrance a comet runs the champion's route to the final (replayable from the 冠军之路 chip). */
 (() => {

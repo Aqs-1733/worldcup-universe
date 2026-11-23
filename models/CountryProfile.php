@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: country_profiles; field validation and relational integrity. */
+/**
+ * 文件作用：模型：country_profiles 表（国家资料：首都、人口、地区等）。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\models;
 

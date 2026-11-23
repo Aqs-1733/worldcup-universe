@@ -1,3 +1,4 @@
+-- 文件作用：早期建表脚本，仅供 scripts/import_collected_data.php 历史采集工具使用；正式安装使用 data/install.sql。
 CREATE DATABASE IF NOT EXISTS `worldcup_universe`
   DEFAULT CHARACTER SET utf8mb4
   DEFAULT COLLATE utf8mb4_unicode_ci;

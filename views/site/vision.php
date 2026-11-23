@@ -1,5 +1,7 @@
 <?php
-/** Private image intake is clearly separated from unconfigured model analysis. */
+/**
+ * 文件作用：视图：图片上传识别页（模型分析尚未接入）。
+ */
 use yii\helpers\Html;
 $this->title='图像工作室';
 ?>

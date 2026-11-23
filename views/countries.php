@@ -1,4 +1,9 @@
-<?php /** Compact country cover and navigable directory. */ $this->title='国家与主办城市'; ?>
+<?php
+/**
+ * 文件作用：视图：国家探索页，3D 地球和国家目录。
+ * 作者：崔迪_2412439
+ */
+$this->title='国家与主办城市'; ?>
 <?= $this->render('/catalog/_masthead',['heading'=>'国家与主办城市','photo'=>'vancouver','photoLabel'=>'温哥华城市全景','class'=>'countries-cover']) ?>
 <header class="edition-page-intro"><div><h2>转动世界，找到你的主队。</h2></div><a href="#country-list">浏览国家目录 ↓</a></header>
 <script type="application/json" data-globe-story><?= yii\helpers\Json::htmlEncode((new app\services\GlobeStoryService())->payload()) ?></script>

@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: match_events; field validation and relational integrity. */
+/**
+ * 文件作用：模型：match_events 表（比赛事件：进球、红黄牌、换人）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

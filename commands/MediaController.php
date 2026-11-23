@@ -1,5 +1,8 @@
 <?php
-/** Upload storage maintenance: readiness check and dry-run-first cleanup of files no record points to. */
+/**
+ * 文件作用：控制台命令 media/*：检查上传目录是否可用，清理没有记录引用的上传文件（默认只预演）。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\commands;
 use app\services\MediaUploadService;

@@ -1,5 +1,8 @@
 <?php
-/** Topic detail, Tabler reply panel and native Yii2 member actions. */
+/**
+ * 文件作用：视图：主题详情页，显示正文、回复列表、引用回复和点赞/收藏/举报按钮。
+ * 作者：蒋林瀞_2413507
+ */
 use yii\helpers\Html;
 use app\services\TeamUi;
 use app\services\AvatarUi;
@@ -8,6 +11,7 @@ $user=Yii::$app->user->identity;
 $canEdit=$user&&((int)$user->id===(int)$model->author_id||$user->isAdmin());
 $locked=$model->is_locked||$model->status!=='published';
 ?>
+<?php /* 主题正文区：板块、球队标签、作者和正文 */ ?>
 <a class="back-link" href="/forum">← 球迷论坛</a>
 <div class="forum-layout community-detail community-scope">
  <div class="topic-detail-main">
@@ -29,6 +33,7 @@ $locked=$model->is_locked||$model->status!=='published';
     <?php if($canEdit): ?><a href="/forum/<?= (int)$model->id ?>/edit">编辑主题</a><form method="post" action="/forum/<?= (int)$model->id ?>/delete" data-confirm="确定删除这个主题？"><?= csrf_field() ?><button class="text-button">删除主题</button></form><?php endif ?>
    </div>
   </article>
+<?php /* 回复列表与回复表单（锁定的主题不能回复） */ ?>
   <section class="card topic-replies-panel" aria-labelledby="topic-replies-heading">
    <header class="card-header"><h2 id="topic-replies-heading">回复 <span class="reply-total"><?= (int)$provider->totalCount ?></span></h2><?php if(!$locked): ?><a href="#compose">参与讨论 ↘</a><?php endif ?></header>
    <?php if($provider->models): ?>
@@ -68,5 +73,6 @@ $locked=$model->is_locked||$model->status!=='published';
    </div>
   </section>
  </div>
+<?php /* 右侧操作栏：点赞、收藏、举报、编辑 */ ?>
  <aside class="forum-sidebar topic-detail-aside"><h3>主题操作</h3><a href="/forum/new" class="button">发起讨论 ↗</a><a class="topic-back-board" href="/forum?category=<?= (int)$model->category_id ?>">返回<?= e($model->category?->name) ?> →</a><?php if($user): ?><details class="report-panel"><summary>举报此主题</summary><form method="post" action="/forum/<?= (int)$model->id ?>/report"><?= csrf_field() ?><label>举报原因<textarea name="reason" required minlength="3" maxlength="500" rows="3"></textarea></label><button class="button small">提交举报</button></form></details><?php endif ?></aside>
 </div>

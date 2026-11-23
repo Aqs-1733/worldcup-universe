@@ -1,3 +1,6 @@
+/*
+ * 文件作用：页面切换过渡动画辅助脚本。
+ */
 /* Cross-page transition helper: the sweep is pure CSS (page-transition.css); this only names the image that should
    morph between a team/player card and that page's cover, and marks backward navigations so the sweep reverses.
    Loaded without defer so the pagereveal listener exists before the new page first renders. */

@@ -1,11 +1,15 @@
 <?php
-/** Native Yii2 ActiveRecord: matches; field validation and relational integrity. */
+/**
+ * 文件作用：模型：matches 表（比赛：时间、场馆、主客队、比分、阶段），并关联球队、场馆、阵容和事件。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 
 class MatchGame extends Record
 {
     public static function tableName(): string { return '{{%matches}}'; }
+    // 字段校验：阶段必填，状态只能是固定的几种，主客队和场馆必须真实存在
     public function rules(): array
     {
         return [
@@ -46,9 +50,11 @@ class MatchGame extends Record
             [['venue_id'], 'exist', 'targetClass' => Venue::class, 'targetAttribute' => ['venue_id' => 'id']],
         ];
     }
+    // 关联：主队、客队、场馆
     public function getHomeTeam() { return $this->hasOne(Team::class, ['id'=>'home_team_id']); }
     public function getAwayTeam() { return $this->hasOne(Team::class, ['id'=>'away_team_id']); }
     public function getVenue() { return $this->hasOne(Venue::class, ['id'=>'venue_id']); }
+    // 关联：技术统计、比赛事件、出场阵容（只取官方导入的数据）
     public function getStats() { return $this->hasMany(MatchStat::class, ['match_id'=>'id'])->andWhere(['not',['official_import_id'=>null]]); }
     public function getEvents() { return $this->hasMany(MatchEvent::class, ['match_id'=>'id'])->andWhere(['not',['official_import_id'=>null]]); }
     public function getLineups() { return $this->hasMany(MatchLineup::class, ['match_id'=>'id'])->andWhere(['not',['official_import_id'=>null]]); }

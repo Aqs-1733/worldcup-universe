@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: user_roles; field validation and relational integrity. */
+/**
+ * 文件作用：模型：user_roles 表（用户与角色的关联）。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\models;
 

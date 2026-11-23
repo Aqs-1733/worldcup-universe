@@ -1,3 +1,4 @@
+# 文件作用：HTTP 验收测试：全站页面状态码、接口结构、错误返回 4xx。
 """Real HTTP acceptance tests for the local Yii2/MySQL application."""
 import json, os, re, sys, time, urllib.request, urllib.error, urllib.parse, http.cookiejar
 from pathlib import Path

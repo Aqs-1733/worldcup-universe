@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: match_stats; field validation and relational integrity. */
+/**
+ * 文件作用：模型：match_stats 表（比赛技术统计）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

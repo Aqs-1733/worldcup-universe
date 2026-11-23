@@ -1,5 +1,7 @@
 <?php
-/** Yii2 web composition root. Every public/admin business route is native MVC. */
+/**
+ * 文件作用：Yii2 网站应用配置：组件、会话、CSRF、URL 路由规则。
+ */
 declare(strict_types=1);
 
 $runtime=dirname(__DIR__).'/storage/runtime';

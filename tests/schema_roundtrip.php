@@ -1,5 +1,7 @@
 <?php
-/** Full install and migrate down/up in an explicitly dedicated restore database. */
+/**
+ * 文件作用：数据库测试：在专用测试库中完整安装、迁移回退再升级。
+ */
 declare(strict_types=1);
 require dirname(__DIR__).'/vendor/autoload.php';
 require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';

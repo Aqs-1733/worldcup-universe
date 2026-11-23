@@ -1,5 +1,8 @@
 <?php
-/** WorldCup Universe: app/Services/NewsSyncService.php; course project source. */
+/**
+ * 文件作用：旧版新闻同步服务，供 scripts/sync_news.php、translate_news.php 命令行脚本调用。
+ * 作者：梁靖泽_2412852
+ */
 
 declare(strict_types=1);
 

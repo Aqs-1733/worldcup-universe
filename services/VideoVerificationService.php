@@ -1,5 +1,8 @@
 <?php
 /**
+ * 文件作用：检查视频来源是否可以在站内播放。
+ */
+/**
  * No remote-media verifier remains in use. Entries in the public shelf are verified
  * by LocalVideoLibrary::safeFile() before they are rendered or streamed.
  */

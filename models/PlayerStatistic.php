@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: player_statistics; field validation and relational integrity. */
+/**
+ * 文件作用：模型：player_statistics 表（球员数据统计）。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\models;
 

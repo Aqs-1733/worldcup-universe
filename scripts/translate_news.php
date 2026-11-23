@@ -1,5 +1,8 @@
 <?php
-/** WorldCup Universe: scripts/translate_news.php; course project source. */
+/**
+ * 文件作用：调用翻译服务把新闻标题、摘要翻译成中文。
+ * 作者：梁靖泽_2412852
+ */
 
 declare(strict_types=1);
 

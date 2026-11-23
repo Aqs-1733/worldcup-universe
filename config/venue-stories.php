@@ -1,5 +1,8 @@
 <?php
-/** Short venue notes shown with the official 2026 fixture locations. */
+/**
+ * 文件作用：赛程页显示的球场简介。
+ * 作者：梁靖泽_2412852
+ */
 return [
  'BC Place Vancouver'=>'可开合屋顶场馆，位于温哥华市中心，是加拿大赛区的比赛地点之一。',
  'Mexico City Stadium'=>'墨西哥城赛区的比赛场地，城市高海拔和密集看台让这里的比赛氛围很有辨识度。',

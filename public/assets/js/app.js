@@ -1,3 +1,6 @@
+/*
+ * 文件作用：前台公共脚本：主题切换、菜单等基础交互。
+ */
 (() => {
   const root = document.documentElement;
   const savedTheme = localStorage.getItem('worldcup-theme');

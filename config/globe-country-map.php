@@ -1,4 +1,8 @@
 <?php
+/**
+ * 文件作用：3D 地球的地图编号（Natural Earth NE_ID）与数据库国家代码的对照表。
+ * 作者：崔迪_2412439
+ */
 /** Natural Earth 5.1.2 NE_ID -> database country_code, explicitly reviewed.
  * England/Scotland are map units, not a name-based or FIFA-code inference.
  * Cape Verde/Curaçao have no polygon at 110m; the database picker still supports them.

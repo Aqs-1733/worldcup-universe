@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: app/Services/ArkClient.php; course project source. */
+/**
+ * 文件作用：火山方舟（Ark）大模型接口客户端，AI 功能的文本/生图请求通过它发送。
+ */
 
 declare(strict_types=1);
 

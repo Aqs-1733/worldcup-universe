@@ -1,5 +1,7 @@
 <?php
-/** Native common controller; framework handles request, CSRF, session and views. */
+/**
+ * 文件作用：所有网页控制器的基类：公共布局和通用方法。
+ */
 declare(strict_types=1);
 namespace app\controllers;
 use Yii;

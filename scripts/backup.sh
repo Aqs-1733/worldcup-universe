@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# 文件作用：服务器备份脚本：一致性导出数据库，并打包网站写入的所有文件。
+# 作者：蒋林瀞_2413507
 # WorldCup Universe: consistent backup of the MySQL database and every file the website writes.
 #   db-<timestamp>.sql.gz     mysqldump --single-transaction of DB_DATABASE (no DROP DATABASE; restores into any name)
 #   files-<timestamp>.tar.gz  public/uploads (administrator media), data/team + data/personal (coursework, incl. their

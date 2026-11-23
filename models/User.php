@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: users; field validation and relational integrity. */
+/**
+ * 文件作用：模型：users 表（用户账号）。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\models;
 

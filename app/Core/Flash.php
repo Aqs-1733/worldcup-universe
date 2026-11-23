@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: app/Core/Flash.php; course project source. */
+/**
+ * 文件作用：一次性提示消息（flash）的读写工具。
+ */
 
 declare(strict_types=1);
 

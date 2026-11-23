@@ -1,5 +1,8 @@
 <?php
-/** Player card with official FIFA portrait; grid views use a resized thumbnail and fall back to a number plate if the image fails. */
+/**
+ * 文件作用：局部视图：球员卡片（官方肖像，加载失败时显示号码）。
+ * 作者：崔迪_2412439
+ */
 $position=['GK'=>'守门员','DF'=>'后卫','MF'=>'中场','FW'=>'前锋'];
 $thumb=\app\services\PortraitAsset::thumb($model->photo_url,420);
 ?>

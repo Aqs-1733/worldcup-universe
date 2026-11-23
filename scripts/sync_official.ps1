@@ -1,3 +1,5 @@
+﻿# 文件作用：Windows 下先运行 fetch_fifa.py 采集，完成后再导入数据库。
+# 作者：梁靖泽_2412852
 param([string]$Python='python', [string]$Php='php')
 $ErrorActionPreference='Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)

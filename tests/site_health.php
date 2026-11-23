@@ -1,5 +1,7 @@
 <?php
-/** Persistent site-health checks for the public content that needs real data. */
+/**
+ * 文件作用：站点健康检查：首页、新闻、视频等需要真实数据的内容是否正常。
+ */
 declare(strict_types=1);
 require dirname(__DIR__).'/vendor/autoload.php';
 require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';

@@ -1,4 +1,7 @@
-/* Home-only enhancement. Links and content remain usable without JavaScript. */
+/*
+ * 文件作用：首页球员通道头图的交互增强。
+ * 作者：崔迪_2412439
+ */
 (() => {
  const hero=document.querySelector('.tunnel-hero');
  if(!hero)return;

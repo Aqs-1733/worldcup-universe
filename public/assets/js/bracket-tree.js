@@ -1,4 +1,7 @@
-/* Progressive winner-path tree; native details provide the no-JS and keyboard baseline. */
+/*
+ * 文件作用：晋级树展开/收起脚本。
+ * 作者：梁靖泽_2412852
+ */
 (() => {
  const root=document.querySelector('[data-bracket-tree]');if(!root)return;
  const branches=[...root.querySelectorAll('[data-match]')],picker=root.querySelector('[data-bracket-team]'),status=root.querySelector('[data-tree-status]');

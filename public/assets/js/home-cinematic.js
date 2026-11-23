@@ -1,3 +1,7 @@
+/*
+ * 文件作用：首页开场动效：预加载、三段式场景、比分滚动条和球员横向列表。
+ * 作者：崔迪_2412439
+ */
 /* Home only: preloader, pinned three-scene hero, score ticker and horizontal player rail.
    Without GSAP or with reduced motion the scenes render stacked and every link still works. */
 (() => {

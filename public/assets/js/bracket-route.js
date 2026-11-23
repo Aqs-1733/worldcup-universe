@@ -1,4 +1,7 @@
-/* The highlighted journey is constrained to the verified edges provided by Yii2. */
+/*
+ * 文件作用：晋级路线高亮脚本。
+ * 作者：梁靖泽_2412852
+ */
 (() => {
  const root=document.querySelector('[data-bracket-route]');if(!root)return;
  const {matches,rounds,edges}=JSON.parse(root.querySelector('[data-route-data]').textContent);

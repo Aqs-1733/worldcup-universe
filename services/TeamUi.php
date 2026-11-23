@@ -1,5 +1,8 @@
 <?php
-/** Shared, escaped national-team presentation; every named team carries its flag. */
+/**
+ * 文件作用：球队名称+国旗的统一 HTML 输出。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\services;
 use yii\helpers\Html;

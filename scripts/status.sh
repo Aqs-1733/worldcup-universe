@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# 文件作用：服务器状态一览：服务、证书、备份、更新、磁盘等。
+# 作者：蒋林瀞_2413507
 # WorldCup Universe: one-screen production health report.   sudo bash scripts/status.sh
 # Exit 0 when everything looks fine, 1 when something needs attention (listed at the end under "ATTENTION").
 set -uo pipefail

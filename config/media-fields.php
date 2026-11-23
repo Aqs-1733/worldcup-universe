@@ -1,5 +1,9 @@
 <?php
 /**
+ * 文件作用：后台哪些表的哪些字段支持上传文件（图片、PDF 等）的配置。
+ * 作者：蒋林瀞_2413507
+ */
+/**
  * WorldCup Universe: admin fields that accept a browser upload in addition to a typed URL/path.
  * table => [field => allowed kinds]. 'coursework' stores privately under data/<scope>/uploads.
  * news_articles.image is virtual: it is written into raw_payload_json.image, which the news cards read.

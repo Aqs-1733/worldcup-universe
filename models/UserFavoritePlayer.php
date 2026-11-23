@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: user_favorite_players; field validation and relational integrity. */
+/**
+ * 文件作用：模型：user_favorite_players 表（用户关注的球员）。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\models;
 

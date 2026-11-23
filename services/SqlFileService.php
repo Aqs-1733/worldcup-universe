@@ -1,5 +1,7 @@
 <?php
-/** Split trusted deployment SQL without breaking quoted semicolons or escapes. */
+/**
+ * 文件作用：拆分并执行 SQL 文件（正确处理引号里的分号和注释），安装数据库时使用。
+ */
 declare(strict_types=1);
 namespace app\services;
 final class SqlFileService

@@ -1,4 +1,6 @@
-﻿<#
+﻿# 文件作用：Windows 下载并校验服务器的加密备份（由 fetch-backup.bat 调用）。
+# 作者：蒋林瀞_2413507
+<#
 WorldCup Universe - 下载并解密生产环境的异地备份（由 fetch-backup.bat 调用）。
 
   fetch-backup.bat                                   取最新一份

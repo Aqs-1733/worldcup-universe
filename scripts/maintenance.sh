@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# 文件作用：恢复数据前停止所有写入进程，恢复后再放开（维护模式）。
+# 作者：蒋林瀞_2413507
 # WorldCup Universe: stop every writer before data is swapped (scripts/restore.sh), and let it back in afterwards.
 #   sudo bash scripts/maintenance.sh on       # Nginx answers 503 for every PHP route, timers stopped, requests drained
 #   sudo bash scripts/maintenance.sh off      # site and timers back

@@ -1,5 +1,8 @@
 <?php
-/** Optional local cache of unchanged official portrait bytes; the database keeps its source URL. */
+/**
+ * 文件作用：球员官方肖像的本地缓存路径处理。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\services;
 final class PortraitAsset

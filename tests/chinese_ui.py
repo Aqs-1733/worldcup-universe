@@ -1,3 +1,4 @@
+# 文件作用：界面测试：各页面的中文标题是否正确。
 """Rendered route-level Chinese heading regression (no browser simulation)."""
 import re
 import urllib.request

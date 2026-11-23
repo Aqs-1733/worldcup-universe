@@ -1,4 +1,7 @@
-/* Pointer light stays within the glass surface and respects motion preferences. */
+/*
+ * 文件作用：导航栏玻璃效果：光斑跟随鼠标。
+ * 作者：崔迪_2412439
+ */
 (() => {
   const surface = document.querySelector('#site-header .nav-inner');
   const opening = document.querySelector('[data-cine-hero]');

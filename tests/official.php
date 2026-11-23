@@ -1,5 +1,8 @@
 <?php
-/** Compare every published sports row with the bundled raw official responses. */
+/**
+ * 文件作用：官方数据测试：快照哈希、外键一致、球队/球员/比赛数量、晋级来源。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 require dirname(__DIR__).'/vendor/autoload.php';
 require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';

@@ -1,5 +1,8 @@
 <?php
 /**
+ * 文件作用：本地视频文件与比赛的对应配置。
+ */
+/**
  * Local, openly licensed 2026 supporting footage used by /watch.
  * The page lists a clip only when the matching local file has been downloaded.
  */

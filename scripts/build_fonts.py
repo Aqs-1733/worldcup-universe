@@ -1,3 +1,4 @@
+# 文件作用：从开源字体源文件生成网站使用的中文字体子集（可选）。
 """Build project-local webfonts from the original OFL sources (optional design task)."""
 from pathlib import Path
 import sys,re,urllib.request

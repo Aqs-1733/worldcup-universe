@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: news_articles; field validation and relational integrity. */
+/**
+ * 文件作用：模型：news_articles 表（新闻：标题、摘要、原文链接、来源、发布时间）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

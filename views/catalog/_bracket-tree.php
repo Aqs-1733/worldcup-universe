@@ -1,5 +1,8 @@
 <?php
-/** Progressive native-details tree follows the verified winner edges, not visual row order. */
+/**
+ * 文件作用：局部视图：可逐轮展开的晋级树。
+ * 作者：梁靖泽_2412852
+ */
 $byId=[];$incoming=[];$final=null;$bronze=null;
 foreach($matches as $game){$byId[(int)$game->id]=$game;if($game->stage==='决赛')$final=$game;if($game->stage==='季军赛')$bronze=$game;}
 foreach($links as $edge){if($edge['outcome']==='winner')$incoming[(int)$edge['to_match_id']][]=(int)$edge['from_match_id'];}

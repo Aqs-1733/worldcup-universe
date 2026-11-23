@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: fan_preferences; field validation and relational integrity. */
+/**
+ * 文件作用：模型：fan_preferences 表（球迷偏好设置）。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\models;
 

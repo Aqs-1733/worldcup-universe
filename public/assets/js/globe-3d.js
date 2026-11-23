@@ -1,3 +1,7 @@
+/*
+ * 文件作用：国家探索页的 3D 地球：绘制地图、旋转缩放、点击选择国家。
+ * 作者：崔迪_2412439
+ */
 (() => {
   const root = document.querySelector('[data-globe-3d]');
   if (!root) return;

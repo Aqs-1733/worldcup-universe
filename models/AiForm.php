@@ -1,5 +1,7 @@
 <?php
-/** Validated optional AI request; image generation requires explicit opt-in. */
+/**
+ * 文件作用：表单模型：AI 请求参数校验，生图需要用户明确勾选。
+ */
 declare(strict_types=1);
 namespace app\models;
 use yii\base\Model;

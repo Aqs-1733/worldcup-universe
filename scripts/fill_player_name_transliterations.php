@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: scripts/fill_player_name_transliterations.php; course project source. */
+/**
+ * 文件作用：为球员补充中文译名。
+ */
 
 declare(strict_types=1);
 

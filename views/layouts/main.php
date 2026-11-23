@@ -1,5 +1,8 @@
 <?php
-/** Shared responsive Yii2 frontend layout and semantic navigation. */
+/**
+ * 文件作用：布局：前台页面公共布局（导航栏、页脚、公共脚本）。
+ * 作者：崔迪_2412439
+ */
 use yii\helpers\Html;
 $current='/'.Yii::$app->request->pathInfo;
 $nav=['/'=>'首页','/worldcup'=>'赛事','/teams'=>'球队','/players'=>'球员','/news'=>'新闻','/watch'=>'赛事影像','/forum'=>'球迷论坛','/countries'=>'探索','/team'=>'团队'];

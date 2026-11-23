@@ -1,4 +1,6 @@
-/* Controls for local video files shown in the /watch shelf. */
+/*
+ * 文件作用：/watch 视频播放器控制脚本。
+ */
 (() => {
   const root = document.querySelector('[data-cinema]');
   if (!root) return;

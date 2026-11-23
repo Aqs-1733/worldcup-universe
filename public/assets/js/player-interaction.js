@@ -1,4 +1,7 @@
-/* Portrait-relative hit areas and short action replays; no changes to player records. */
+/*
+ * 文件作用：球员肖像上的动作互动演示。
+ * 作者：崔迪_2412439
+ */
 (() => {
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;

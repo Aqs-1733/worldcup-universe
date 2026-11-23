@@ -1,5 +1,7 @@
 <?php
-/** A dormant administrative record type. Public playback never accepts remote publishers. */
+/**
+ * 文件作用：模型：match_videos 表（比赛视频，后台保留的记录类型）。
+ */
 declare(strict_types=1);
 namespace app\models;
 final class MatchVideo extends Record

@@ -1,5 +1,7 @@
 <?php
-/** Additive migration: preserve all 34 existing business tables and records. */
+/**
+ * 文件作用：数据库迁移：新增球迷论坛相关表（板块、主题、回复、点赞、收藏、举报、通知等）。
+ */
 declare(strict_types=1);
 
 use yii\db\Migration;

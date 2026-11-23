@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# 文件作用：服务器自动更新：拉取 GitHub main 最新提交，备份、预检、健康检查，失败自动回滚。
+# 作者：蒋林瀞_2413507
 # WorldCup Universe: update production to the newest commit of the tracked GitHub branch (default main).
 #
 #   sudo bash scripts/update-production.sh            # update if origin/main has new commits, otherwise exit 0

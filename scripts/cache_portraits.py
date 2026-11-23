@@ -1,3 +1,5 @@
+# 文件作用：缓存部分 FIFA 官方球员肖像到本地（不修改图片内容）。
+# 作者：崔迪_2412439
 """Cache selected official FIFA portrait bytes unchanged.
 
 Input: read-only Yii2 export in storage/design-assets/portrait-sources.json.

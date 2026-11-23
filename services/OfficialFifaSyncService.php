@@ -1,5 +1,8 @@
 <?php
-/** FIFA-only ingestion: validate raw evidence, preserve public IDs, quarantine legacy rows. */
+/**
+ * 文件作用：官方数据导入服务：校验 FIFA 原始快照，在事务中写入球队、球员、比赛和晋级关系。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\services;
 use Yii;

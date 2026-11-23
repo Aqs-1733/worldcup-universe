@@ -1,3 +1,5 @@
+# 文件作用：校验或重新下载 48 支球队的 2026 世界杯合照。
+# 作者：崔迪_2412439
 """Verify or re-fetch the complete 48-team 2026 World Cup photograph catalogue.
 
 Default: offline byte/dimension/year/caption/evidence/visual-review verification.

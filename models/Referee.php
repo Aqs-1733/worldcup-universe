@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: referees; field validation and relational integrity. */
+/**
+ * 文件作用：模型：referees 表（裁判）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

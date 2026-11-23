@@ -1,5 +1,8 @@
 <?php
-/** Player explorer with real database search, team and position filters. */
+/**
+ * 文件作用：视图：球员列表页，支持搜索、按球队和位置筛选。
+ * 作者：崔迪_2412439
+ */
 $this->title='球员名单';
 ?>
 <header class="edition-page-intro"><div><h1>他们，让比赛成为故事。</h1></div><a href="#player-directory">探索全部球员 ↓</a></header>

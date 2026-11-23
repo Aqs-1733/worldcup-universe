@@ -1,3 +1,4 @@
+# 文件作用：从 Wikimedia Commons 采集场馆、城市照片及作者和授权信息。
 """Collect attributed, high-resolution venue/city photographs from Commons.
 
 Run once when curating the design library, not on page requests. Original image

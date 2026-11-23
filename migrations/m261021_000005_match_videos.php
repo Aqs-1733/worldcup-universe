@@ -1,5 +1,7 @@
 <?php
-/** Legacy catalogue table retained for administration; public playback uses only checked sources. */
+/**
+ * 文件作用：数据库迁移：比赛视频表的调整。
+ */
 declare(strict_types=1);
 use yii\db\Migration;
 final class m261021_000005_match_videos extends Migration

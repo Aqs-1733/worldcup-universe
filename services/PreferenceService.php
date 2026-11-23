@@ -1,5 +1,8 @@
 <?php
-/** One transaction replaces a member's main team and followed/blocked entities. */
+/**
+ * 文件作用：偏好服务：在一个事务中保存用户的主队、关注和屏蔽设置。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\services;
 use app\models\{FanProfile,Team,Player,User};

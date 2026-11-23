@@ -1,3 +1,5 @@
+# 文件作用：用已核验的 2026 球队合照生成首页“球队墙”的小尺寸 WebP 图片。
+# 作者：崔迪_2412439
 """Builds the small WebP tiles used by the home page team wall from the verified 2026 squad photos.
 
 Every team gets a 360px tile. Run from the project root: python scripts/build_team_wall.py

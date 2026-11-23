@@ -1,5 +1,8 @@
 <?php
-/** Tabler card/list-group community layout with populated member discussions. */
+/**
+ * 文件作用：视图：论坛首页，板块、主题列表和主队看台。
+ * 作者：蒋林瀞_2413507
+ */
 use app\services\TeamUi;
 use app\services\AvatarUi;
 use app\models\ForumThread;

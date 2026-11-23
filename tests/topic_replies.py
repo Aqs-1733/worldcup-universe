@@ -1,3 +1,5 @@
+# 文件作用：HTTP 测试：主题详情页的回复、引用、锁定等状态。
+# 作者：蒋林瀞_2413507
 """Real HTTP checks for the redesigned topic detail, including member/locked states."""
 from pathlib import Path
 from html.parser import HTMLParser

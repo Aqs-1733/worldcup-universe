@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: news_article_tags; field validation and relational integrity. */
+/**
+ * 文件作用：模型：news_article_tags 表（新闻与标签的关联）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

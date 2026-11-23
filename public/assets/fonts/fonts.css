@@ -1,3 +1,6 @@
+/*
+ * 文件作用：本地中文/英文字体声明。
+ */
 @font-face{font-family:'WCU Sans';font-style:normal;font-weight:100 900;font-display:swap;src:url('/assets/fonts/wcu-sans.woff2') format('woff2')}
 @font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/wcu-anton-400.woff2') format('woff2')}
 @font-face{font-family:'Mulish';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/wcu-mulish-400.woff2') format('woff2')}

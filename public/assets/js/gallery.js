@@ -1,4 +1,6 @@
-/* Native, keyboard-accessible photo dialog; no autoplay or third-party lightbox. */
+/*
+ * 文件作用：照片放大查看弹窗（支持键盘操作）。
+ */
 (() => {
  const dialog=document.querySelector('[data-photo-dialog]');if(!dialog||!dialog.showModal)return;
  let trigger=null;

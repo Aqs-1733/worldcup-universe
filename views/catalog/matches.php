@@ -1,10 +1,15 @@
 <?php
-/** Round-based fixtures and explicit validated progression links. */
+/**
+ * 文件作用：视图：赛程与晋级页，按轮次分组列出比赛，并显示淘汰赛对阵图。
+ * 作者：梁靖泽_2412852
+ */
 $this->title='赛事中心';
 ?>
 <?= $this->render('_masthead',['heading'=>'赛程与比分','photo'=>'sofi','photoLabel'=>'洛杉矶体育场','number'=>'104','class'=>'matches-cover']) ?>
 <?= $this->render('_competition-nav',['active'=>'fixtures']) ?>
+<?php /* 淘汰赛对阵图 */ ?>
 <?= $this->render('_bracket-map',['matches'=>$bracketMatches,'links'=>$links]) ?>
+<?php /* 比赛赛程：小组赛按组折叠，淘汰赛按轮次排列 */ ?>
 <section class="section fixture-directory" data-accordion-set><div class="section-head"><h2>比赛赛程</h2><div class="accordion-tools"><button type="button" data-expand-groups="true">全部展开</button><button type="button" data-expand-groups="false">全部收起</button></div></div>
 <form class="filter-bar" method="get"><label>比赛轮次<select name="stage"><option value="">全部轮次</option><?php foreach($stages as $stage): ?><option <?= Yii::$app->request->get('stage')===$stage?'selected':'' ?>><?= e($stage) ?></option><?php endforeach ?></select></label><label>球队<select data-team-select name="team_id"><option value="">全部球队</option><?php foreach($teams as $t): ?><option value="<?= (int)$t->id ?>" data-flag="<?= e(\app\services\TeamUi::url($t)) ?>" <?= Yii::$app->request->get('team_id')==$t->id?'selected':'' ?>><?= e($t->name) ?></option><?php endforeach ?></select></label><label>状态<select name="status"><option value="">全部状态</option><?php foreach(['scheduled'=>'未开始','finished'=>'已结束','live'=>'进行中','postponed'=>'延期'] as $key=>$label): ?><option value="<?= e($key) ?>" <?= Yii::$app->request->get('status')===$key?'selected':'' ?>><?= e($label) ?></option><?php endforeach ?></select></label><button class="button">筛选</button></form>
 <div class="group-accordions"><?php foreach($groupFixtures as $name=>$games): ?><?php $members=array_values(array_filter($teams,fn($t)=>$t->group_name===$name)); ?><details class="group-accordion accordion-item" data-group <?= $name===array_key_first($groupFixtures)?'open':'' ?>><?= $this->render('_group-summary',['name'=>$name,'members'=>$members,'countLabel'=>count($games).' 场比赛']) ?><div class="group-content"><?php foreach($games as $m): ?><?= $this->render('_fixture-row',['model'=>$m]) ?><?php endforeach ?></div></details><?php endforeach ?></div>

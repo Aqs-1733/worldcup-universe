@@ -1,5 +1,7 @@
 <?php
-/** Shared Yii2 model behaviour, never a parallel PDO repository. */
+/**
+ * 文件作用：所有 ActiveRecord 模型的公共基类：时间戳等共用行为。
+ */
 declare(strict_types=1);
 namespace app\models;
 

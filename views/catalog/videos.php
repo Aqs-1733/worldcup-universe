@@ -1,5 +1,7 @@
 <?php
-/** Domestic official iframe plus only present local files. */
+/**
+ * 文件作用：视图：比赛回放页（/watch）。
+ */
 $this->title='赛事影像';
 $localSelected=isset($selected['provider']) && $selected['provider']==='local';
 ?>

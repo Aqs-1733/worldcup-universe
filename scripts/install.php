@@ -1,5 +1,7 @@
 <?php
-/** Backward-compatible CLI entry now delegates to the native Yii2 installer. */
+/**
+ * 文件作用：兼容旧说明的安装入口，实际调用 Yii2 的 app/install 命令。
+ */
 declare(strict_types=1);
 require dirname(__DIR__).'/vendor/autoload.php';
 require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';

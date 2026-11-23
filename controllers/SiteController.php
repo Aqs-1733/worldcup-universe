@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: controllers/SiteController.php; course project source. */
+/**
+ * 文件作用：站点控制器：首页、搜索、团队页、课程作业下载、版权说明和错误页。
+ */
 
 declare(strict_types=1);
 

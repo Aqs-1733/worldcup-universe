@@ -1,5 +1,8 @@
 <?php
-/** Motion-led opening: tunnel → stadium → champion. Real results remain in the sections below. */
+/**
+ * 文件作用：视图：网站首页（球员通道→球场→冠军的动效开场，以及赛事、球队、新闻等板块）。
+ * 作者：崔迪_2412439
+ */
 use app\services\{ImmersiveService,TeamUi};
 $this->title='世界杯宇宙';
 $presentation=require ROOT_PATH.'/config/presentation.php';$cover=$presentation['home'];$cine=$presentation['cinematic'];

@@ -1,5 +1,8 @@
 <?php
-/** Clickable country directory lands on a real Yii2 detail route. */
+/**
+ * 文件作用：视图：国家详情页。
+ * 作者：崔迪_2412439
+ */
 use app\services\CountryUi;
 $name=CountryUi::name($country);$this->title=$name.'国家资料';$code=strtoupper($country['country_code']);
 $map=$country['latitude']!==null&&$country['longitude']!==null?'https://www.openstreetmap.org/?mlat='.(float)$country['latitude'].'&mlon='.(float)$country['longitude'].'#map=5/'.(float)$country['latitude'].'/'.(float)$country['longitude']:null;

@@ -1,5 +1,8 @@
 <?php
-/** Moderation report with a bounded, plain-text reason. */
+/**
+ * 文件作用：模型：forum_reports 表（举报记录），举报理由为纯文本并限制长度。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\models;
 class ForumReport extends Record

@@ -1,4 +1,7 @@
-/* A transparent frame keeps the capsule's rounded corners open to the page. */
+/*
+ * 文件作用：顶部玻璃导航栏样式。
+ * 作者：崔迪_2412439
+ */
 :root { --nav-clearance: 96px; }
 
 #site-header {

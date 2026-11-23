@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: app/Core/Env.php; course project source. */
+/**
+ * 文件作用：读取项目根目录 .env 配置文件，提供 env() 取值。
+ */
 
 declare(strict_types=1);
 

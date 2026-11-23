@@ -1,5 +1,8 @@
 <?php
-/** One real team's knockout journey. Connectors require explicit verified progression edges. */
+/**
+ * 文件作用：局部视图：某支球队的淘汰赛晋级路线。
+ * 作者：梁靖泽_2412852
+ */
 use yii\helpers\Json;
 $games=[];$rounds=[];$teamIds=[];$championId=null;
 foreach($matches as $game){

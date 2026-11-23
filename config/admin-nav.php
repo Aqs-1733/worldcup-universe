@@ -1,5 +1,8 @@
 <?php
-/** Administrative sidebar groups. Every table key must exist in config/v2-tables.php (the model whitelist). */
+/**
+ * 文件作用：后台侧边栏分组配置；每个表名都必须在 config/v2-tables.php 白名单中。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 
 return [

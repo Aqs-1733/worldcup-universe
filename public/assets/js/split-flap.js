@@ -1,3 +1,7 @@
+/*
+ * 文件作用：比分翻牌动画。
+ * 作者：梁靖泽_2412852
+ */
 /* Split-flap scores: each digit sits on a flip tile and, when the score scrolls into view, rattles through a few
    numbers like an odometer before landing on the real value. Dashes and colons stay as they are; reduced motion
    leaves scores untouched. */

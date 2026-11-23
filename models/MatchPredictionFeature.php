@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: match_prediction_features; field validation and relational integrity. */
+/**
+ * 文件作用：模型：match_prediction_features 表（比赛预测特征，预留）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: app/Services/HttpClient.php; course project source. */
+/**
+ * 文件作用：基于 cURL 的简单 HTTP 客户端，采集脚本用来请求外部接口。
+ */
 
 declare(strict_types=1);
 

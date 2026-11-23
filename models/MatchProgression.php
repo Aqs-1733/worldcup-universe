@@ -1,5 +1,8 @@
 <?php
-/** Explicit bracket edges: no position-based assumptions or invented matches. */
+/**
+ * 文件作用：模型：match_progressions 表（淘汰赛晋级关系：哪场比赛的胜者进入哪场）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 class MatchProgression extends Record

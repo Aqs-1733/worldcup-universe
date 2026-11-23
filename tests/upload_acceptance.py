@@ -1,3 +1,5 @@
+# 文件作用：HTTP 测试：后台上传的类型与大小限制、访问控制和前台显示。
+# 作者：蒋林瀞_2413507
 """Real HTTP acceptance tests for administrator uploads, access control and front-end display.
 
 Run against a server backed by a dedicated test database only, from the project root on the same machine

@@ -1,4 +1,6 @@
-/* Midnight matchday: a complete frontend visual system, not a homepage-only skin. */
+/*
+ * 文件作用：深色比赛日视觉风格样式。
+ */
 :root{--paper:#081622;--surface:#102435;--ink:#eef3f6;--muted:#acbbc7;--line:#ffffff24;--brand:#194b69;--lime:#ddfb76;--gold:#e7cc85;--radius:3px;color-scheme:dark}
 body{background:radial-gradient(ellipse at 90% 15%,#143c5544,transparent 55%),var(--paper)}
 i{color:var(--gold)}.masthead{background:#040e17;color:#a1b6c6}.site-header{background:#081622eb;backdrop-filter:blur(18px)}.brand-symbol{background:#d9f777;color:#081622}.navigation a[aria-current]{text-decoration-color:var(--lime)}.account-nav{color:#ccd7df}.page-shell{padding-bottom:90px}

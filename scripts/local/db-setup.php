@@ -1,5 +1,9 @@
 <?php
 /**
+ * 文件作用：Windows 本地部署辅助脚本：创建数据库与账号、写入 .env。
+ * 作者：蒋林瀞_2413507
+ */
+/**
  * WorldCup Universe local deployment helper (called by scripts/local/deploy-local.ps1).
  * Creates the application database and its own account on a MariaDB 10.4+ server, idempotently.
  * Every value comes from environment variables, so no password ever appears on a command line:

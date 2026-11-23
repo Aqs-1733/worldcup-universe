@@ -1,5 +1,8 @@
 <?php
-/** Publish a complete, hash-verified official collection with a single DB transaction. */
+/**
+ * 文件作用：控制台命令 fifa/import：校验官方数据快照的哈希后，在一个事务内导入球队、球员、比赛等数据。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\commands;
 use app\services\OfficialFifaSyncService;

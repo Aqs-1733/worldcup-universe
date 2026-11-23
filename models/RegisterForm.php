@@ -1,5 +1,8 @@
 <?php
-/** Registration input cannot mass-assign administrator roles or identity keys. */
+/**
+ * 文件作用：表单模型：注册校验，不能通过表单给自己设置管理员角色。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\models;
 

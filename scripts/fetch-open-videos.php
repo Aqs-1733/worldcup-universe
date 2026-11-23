@@ -1,5 +1,8 @@
 <?php
 /**
+ * 文件作用：采集可公开播放的比赛视频信息。
+ */
+/**
  * Downloads the openly licensed clips listed in config/local-videos.php (entries with a 'commons' title)
  * from Wikimedia Commons into public/assets/media/videos/, plus a poster frame for each.
  * Usage: php scripts/fetch-open-videos.php [--force]

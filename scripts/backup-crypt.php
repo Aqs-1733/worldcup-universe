@@ -1,5 +1,9 @@
 <?php
 /**
+ * 文件作用：异地备份加密工具：用一次性密钥分块加密备份，再用团队公钥封装密钥；也负责解密。
+ * 作者：蒋林瀞_2413507
+ */
+/**
  * WorldCup Universe: public-key encryption for off-site backups (PHP sodium; same tool on the server and on Windows).
  *
  *   php scripts/backup-crypt.php keygen  <secret-key-out> <public-key-out>

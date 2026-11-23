@@ -1,5 +1,8 @@
 <?php
-/** Editorial choices; all sports facts continue to come from the database. */
+/**
+ * 文件作用：页面展示用的编辑配置（首页图片、文案、裁切等），赛事数据仍然来自数据库。
+ * 作者：崔迪_2412439
+ */
 return [
  'home'=>[
   'image'=>'/assets/media/photos/tunnel-hero.png','imageAlt'=>'球员背影穿过暗色通道，走向灯光明亮的足球场',

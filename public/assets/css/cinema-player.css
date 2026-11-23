@@ -1,4 +1,6 @@
-/* /watch video shelf and custom player. */
+/*
+ * 文件作用：/watch 视频列表与播放器样式。
+ */
 .cinema{position:relative;width:100vw;left:50%;margin-left:-50vw;padding:60px 4.5% 50px;margin-block:30px 50px;background:radial-gradient(60% 70% at 30% 0%,#1b2c42,transparent 70%),#070c13;color:#e8eef3}
 .cinema-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:26px}
 .cinema-head .edition-kicker{color:#f2c75c}

@@ -1,4 +1,7 @@
-/* Player chapters: manual tabs plus a gentle auto-advance (paused on hover/focus) and GSAP transitions when available. */
+/*
+ * 文件作用：球员专题章节切换与过渡动画。
+ * 作者：崔迪_2412439
+ */
 (() => {
  const gsap=window.gsap,reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  const interval=7000;

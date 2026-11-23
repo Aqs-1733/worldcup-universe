@@ -1,4 +1,7 @@
-/* Body-aware action scenes, scoped to player showcases and profile portraits. */
+/*
+ * 文件作用：球员动作互动演示样式。
+ * 作者：崔迪_2412439
+ */
 .player-playground {
   --action-kit: #bf4356;
   --action-shorts: #314e54;

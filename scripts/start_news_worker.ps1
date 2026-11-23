@@ -1,3 +1,5 @@
+﻿# 文件作用：Windows 下循环运行新闻同步的后台进程。
+# 作者：梁靖泽_2412852
 param([int]$Interval=300)
 # Native Yii2 publisher polling process, independent of HTTP requests.
 $ErrorActionPreference='Stop'

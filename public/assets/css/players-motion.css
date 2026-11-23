@@ -1,4 +1,7 @@
-/* /players: card directory and animated spotlight. Loaded after edition.css. */
+/*
+ * 文件作用：球员列表卡片与专题动效样式。
+ * 作者：崔迪_2412439
+ */
 .edition-player-directory.player-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;perspective:1400px}
 .edition-player-directory.player-grid .player,.edition-player-directory.player-grid .player:nth-child(5n+1),.edition-player-directory.player-grid .player:nth-child(5n+2){--c1:#1d3550;--c2:#0b1522;grid-column:auto;position:relative;display:flex;flex-direction:column;border:0;border-radius:18px;overflow:hidden;background:linear-gradient(170deg,var(--c1),var(--c2));color:#fff;box-shadow:0 18px 40px #0a14202e;transition:box-shadow .4s}
 .edition-player-directory .player[data-pos=GK]{--c1:#4a3a17;--c2:#160f05}

@@ -1,5 +1,8 @@
 <?php
-/** Native console commands for scheduled and manual football-news synchronization. */
+/**
+ * 文件作用：控制台命令 news/sync：定时或手动同步足球新闻 RSS。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\commands;
 

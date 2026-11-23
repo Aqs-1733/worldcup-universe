@@ -1,3 +1,5 @@
+# 文件作用：界面测试：48 支球队卡片和详情页的合照能正常显示。
+# 作者：崔迪_2412439
 """All 48 rendered team cards/details and served image bytes, not just manifest counters."""
 from pathlib import Path
 from html.parser import HTMLParser

@@ -1,5 +1,8 @@
 <?php
-/** Removes bundled demo accounts and fabricated forum content; it never creates pseudo-user posts. */
+/**
+ * 文件作用：清理旧版本自带的演示账号和示例帖子，不生成虚假用户内容。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\services;
 use app\models\{ForumReply,ForumThread,User};

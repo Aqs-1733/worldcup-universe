@@ -1,3 +1,5 @@
+# 文件作用：界面测试：球队名称旁是否都显示国旗。
+# 作者：崔迪_2412439
 """Rendered team/flag coverage without a browser; no database writes."""
 from html.parser import HTMLParser
 from urllib.request import build_opener, ProxyHandler

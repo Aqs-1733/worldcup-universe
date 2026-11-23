@@ -1,5 +1,8 @@
 <?php
-/** WorldCup Universe: scripts/fill_derived_data.php; course project source. */
+/**
+ * 文件作用：根据比赛结果补充派生数据（积分、统计等）。
+ * 作者：梁靖泽_2412852
+ */
 
 declare(strict_types=1);
 

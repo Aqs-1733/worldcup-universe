@@ -1,5 +1,8 @@
 <?php
-/** Login validation with generic errors and bounded cache-backed throttling. */
+/**
+ * 文件作用：表单模型：登录校验，错误提示不区分账号或密码，并限制尝试频率。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\models;
 

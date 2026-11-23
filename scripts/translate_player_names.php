@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: scripts/translate_player_names.php; course project source. */
+/**
+ * 文件作用：调用翻译服务生成球员中文译名。
+ */
 
 declare(strict_types=1);
 

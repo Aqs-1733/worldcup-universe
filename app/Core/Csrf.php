@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: app/Core/Csrf.php; course project source. */
+/**
+ * 文件作用：CSRF 令牌工具类，供命令行之外的旧表单辅助函数使用；网页请求的 CSRF 由 Yii2 负责。
+ */
 
 declare(strict_types=1);
 

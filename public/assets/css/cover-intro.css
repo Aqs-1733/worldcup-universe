@@ -1,3 +1,6 @@
+/*
+ * 文件作用：内页头图的灯光开场动画样式。
+ */
 /* Inner-page cover intro: the stadium starts at dusk, the floodlight lamps flicker on, two beams sweep the stands,
    then the lights come up to the normal light cover and the title rises character by character.
    Pure CSS from first paint; with reduced motion the extra layers stay hidden and the cover is static. */

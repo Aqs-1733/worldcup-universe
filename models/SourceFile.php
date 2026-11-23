@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: source_files; field validation and relational integrity. */
+/**
+ * 文件作用：模型：source_files 表（导入时使用的原始文件及其哈希）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

@@ -1,3 +1,5 @@
+# 文件作用：界面测试：赛事中心导航结构，旧的 /stats 地址会跳转。
+# 作者：梁靖泽_2412852
 """The competition centre owns standings; its old independent URL only redirects."""
 from html.parser import HTMLParser
 from urllib.request import build_opener,ProxyHandler,HTTPRedirectHandler

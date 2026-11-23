@@ -1,5 +1,8 @@
 <?php
-/** Transactional forum use cases. Controllers never trust posted owner/status IDs. */
+/**
+ * 文件作用：论坛业务服务：发帖、回复、点赞、收藏、举报、审核，在事务中执行并校验作者归属。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\services;
 

@@ -1,5 +1,8 @@
 <?php
-/** Separate administrative layout; all pages remain protected by AccessControl. */
+/**
+ * 文件作用：布局：后台页面公共布局（侧边栏、顶部栏）。
+ * 作者：蒋林瀞_2413507
+ */
 use yii\helpers\Html;
 $registry=require Yii::getAlias('@app/config/v2-tables.php');
 $nav=require Yii::getAlias('@app/config/admin-nav.php');

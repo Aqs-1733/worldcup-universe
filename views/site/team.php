@@ -1,10 +1,13 @@
 <?php
-/** Team homepage: members (captain first), course division of labour and coursework downloads. */
+/**
+ * 文件作用：视图：团队页，显示成员、课程分工、负责的 MVC 文件和团队/个人作业下载。
+ */
 $this->title='项目团队';
 $captain=null;$others=[];
 foreach($members as $m){if(!$captain&&$m->role_name==='队长'){$captain=$m;continue;}$others[]=$m;}
 if(!$captain&&$others){$captain=array_shift($others);}
 $duties=$team['duties']??[];
+$mvc=$team['mvc']??[];
 $teamFiles=$files['team']??[];
 $deliverables=array_map(static function(array $d) use($teamFiles){
  $hit=null;foreach($teamFiles as $f){if(mb_stripos($f['title'],$d['match'])!==false){$hit=$f;break;}}
@@ -34,8 +37,8 @@ $card=static function($m,bool $lead=false) use($duties): string{
  <div class="team-section-head"><h2>课程分工</h2></div>
  <div class="team-duties-body">
   <table class="team-matrix">
-   <thead><tr><th scope="col">成员</th><th scope="col">负责内容</th></tr></thead>
-   <tbody><?php foreach(array_merge($captain?[$captain]:[],$others) as $m): ?><tr><th scope="row"><?= e($m->name) ?><?php if($m->role_name==='队长'): ?><span class="team-role">队长</span><?php endif ?></th><td><?php $list=$duties[$m->student_no]??[]; ?><?= $list?e(implode('、',$list)):'<span class="team-muted">待补充</span>' ?></td></tr><?php endforeach ?></tbody>
+   <thead><tr><th scope="col">成员</th><th scope="col">负责内容</th><th scope="col">负责的 MVC 文件</th></tr></thead>
+   <tbody><?php foreach(array_merge($captain?[$captain]:[],$others) as $m): ?><tr><th scope="row"><?= e($m->name) ?><?php if($m->role_name==='队长'): ?><span class="team-role">队长</span><?php endif ?></th><td><?php $list=$duties[$m->student_no]??[]; ?><?= $list?e(implode('、',$list)):'<span class="team-muted">待补充</span>' ?></td><td class="team-mvc"><?php foreach($mvc[$m->student_no]??[] as $layer=>$path): ?><div><b><?= e($layer) ?></b><code><?= e($path) ?></code></div><?php endforeach ?></td></tr><?php endforeach ?></tbody>
   </table>
   <aside class="team-progress" aria-label="团队交付进度">
    <div class="team-progress-head"><b><?= $done ?><i>/<?= count($deliverables) ?></i></b><span>截止 <?= e(str_replace('-','.',$team['deadline']??'')) ?></span></div>

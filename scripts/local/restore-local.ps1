@@ -1,4 +1,6 @@
-﻿<#
+﻿# 文件作用：Windows 把下载的备份恢复到本地数据库（由 restore-local.bat 调用）。
+# 作者：蒋林瀞_2413507
+<#
 WorldCup Universe - 在 Windows 本地恢复生产备份（由 restore-local.bat 调用；备份先用 fetch-backup.bat 下载解密）。
 
   restore-local.bat -Snapshot 20261118-042355                  验证模式（默认）：导入到独立的 worldcup_universe_restorecheck
@@ -47,7 +49,7 @@ $EnvFile = Join-Path $Root '.env'
 if (-not (Test-Path -LiteralPath $EnvFile)) { Fail '本地网站还没有部署。' '请先运行 deploy-local.bat。' }
 $cfg = Read-EnvFile $EnvFile
 $binFile = Join-Path $Runtime 'local-mariadb.bin'
-if ($cfg['WCU_LOCAL_DB'] -ne 'private' -or -not (Test-Path -LiteralPath $binFile)) { Fail '本脚本使用 deploy-local.bat 创建的项目专用 MariaDB。' '如果你连接的是自己的数据库服务器，请参照 docs/deployment.md 手动导入。' }
+if ($cfg['WCU_LOCAL_DB'] -ne 'private' -or -not (Test-Path -LiteralPath $binFile)) { Fail '本脚本使用 deploy-local.bat 创建的项目专用 MariaDB。' '如果你连接的是自己的数据库服务器，请参照 data/team 中的部署文档手动导入。' }
 $Bin = (Get-Content -LiteralPath $binFile | Select-Object -First 1)
 $mysql = Join-Path $Bin 'mysql.exe'; $dump = Join-Path $Bin 'mysqldump.exe'
 $port = $cfg['DB_PORT']

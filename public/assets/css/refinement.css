@@ -1,4 +1,6 @@
-/* 2026 community and progressive explorer refinement. */
+/*
+ * 文件作用：论坛社区与页脚等细节调整样式。
+ */
 /* Footer content is aligned to the same capped shell as the navigation and pages. */
 .site-footer{display:block!important;padding:0!important}.site-footer .footer-inner{width:100%;max-width:1480px;margin:0 auto;padding:58px var(--space) 24px;display:grid;grid-template-columns:minmax(0,1.7fr) 1fr 1fr;gap:42px}.footer-inner>div{min-width:0}.footer-inner .footer-brand{display:inline-block;font-size:40px;line-height:1.2}.footer-inner>div>p{font-size:12px;margin-top:22px}.footer-inner>div:not(.footer-bottom)>b{display:block;margin-bottom:22px;font-size:13px}.footer-inner>div:not(:first-child,.footer-bottom)>a{display:block;margin:0 0 14px;font-size:12px}.footer-inner .footer-bottom{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:15px;padding-top:24px;margin-top:10px;border-top:1px solid #ffffff1a;font-size:10px}.footer-bottom a{display:inline}
 /* Tabler community overview: a compact directory and a topic list, rather than oversized empty cards. */

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# 文件作用：Ubuntu 服务器一键部署脚本：安装 Nginx、PHP-FPM、MariaDB，配置 HTTPS、定时任务并启动网站，可重复执行。
+# 作者：蒋林瀞_2413507
 # WorldCup Universe: idempotent one-command deployment on Ubuntu 24.04 (PHP 8.3, MariaDB 10.11; amd64 or arm64 /
 # Oracle Cloud Always Free Ampere A1). Ubuntu 22.04 (PHP 8.1, MariaDB 10.6) also works.
 # Installs/configures Nginx + PHP-FPM + MariaDB, creates .env and the database account on first run, runs the Yii2
@@ -82,7 +84,7 @@ FPM_SERVICE="php${PHP_VERSION}-fpm"; FPM_POOL_DIR="/etc/php/${PHP_VERSION}/fpm/p
 [[ -d "$FPM_POOL_DIR" ]] || die "$FPM_POOL_DIR not found; install php${PHP_VERSION}-fpm."
 
 # www-data must be able to reach the code (Ubuntu home directories are 0750).
-sudo -u www-data test -r "$APP_DIR/public/index.php" || die "www-data cannot read $APP_DIR; deploy under /var/www (see docs/deployment-oracle-ubuntu.md)."
+sudo -u www-data test -r "$APP_DIR/public/index.php" || die "www-data cannot read $APP_DIR; deploy under /var/www (see the deployment guide in data/team)."
 
 # ---------------------------------------------------------------------------------------------------------------
 step "Environment file"
@@ -241,7 +243,7 @@ for unit in wcu-news-sync.service wcu-backup.service wcu-update.service wcu-offs
 install -m 644 "$APP_DIR/deploy/systemd/wcu-news-sync.timer" "$APP_DIR/deploy/systemd/wcu-backup.timer" "$APP_DIR/deploy/systemd/wcu-update.timer"   "$APP_DIR/deploy/systemd/wcu-offsite-backup.timer" /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable --now wcu-news-sync.timer wcu-backup.timer >/dev/null
-# Off-site backup needs its keys and repository first (docs/deployment.md); without the config it stays off.
+# Off-site backup needs its keys and repository first (部署文档 in data/team); without the config it stays off.
 if [[ -f /etc/worldcup-universe/offsite.conf ]]; then systemctl enable --now wcu-offsite-backup.timer >/dev/null; fi
 # wcu-update.timer (auto-update from GitHub) is installed but only enabled by the operator:
 #   sudo systemctl enable --now wcu-update.timer

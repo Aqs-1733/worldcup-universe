@@ -1,5 +1,7 @@
 <?php
-/** Only regular files under data/team or data/personal can be downloaded. */
+/**
+ * 文件作用：模型：coursework_files 表（课程作业登记），只允许下载 data/team、data/personal 下的文件。
+ */
 declare(strict_types=1);
 namespace app\models;
 class CourseworkFile extends Record

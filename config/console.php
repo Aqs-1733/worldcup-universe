@@ -1,5 +1,7 @@
 <?php
-/** Yii2 console application: installation, migrations, audit and administration. */
+/**
+ * 文件作用：Yii2 控制台应用配置：安装、迁移、审计、同步等命令。
+ */
 declare(strict_types=1);
 return [
     'id'=>'worldcup-console','basePath'=>dirname(__DIR__),'vendorPath'=>dirname(__DIR__).'/vendor',

@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: config/db.php; course project source. */
+/**
+ * 文件作用：数据库连接配置，从 .env 读取主机、库名、账号和密码。
+ */
 
 declare(strict_types=1);
 

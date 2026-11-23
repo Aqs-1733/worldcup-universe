@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: admin_posts; field validation and relational integrity. */
+/**
+ * 文件作用：模型：admin_posts 表（后台发布的公告/资讯），含字段校验与关联。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\models;
 

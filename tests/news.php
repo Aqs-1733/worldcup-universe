@@ -1,5 +1,8 @@
 <?php
-/** Bounded RSS parser and current publisher-feed checks; no test writes. */
+/**
+ * 文件作用：新闻测试：RSS 解析、来源白名单、脚本注入过滤、图片域名校验。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 require dirname(__DIR__).'/vendor/autoload.php';
 require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';

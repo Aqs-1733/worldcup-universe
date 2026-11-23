@@ -1,3 +1,5 @@
+-- 文件作用：初始赛事数据：由已核验的 2026 FIFA 官方数据导出，不含用户与密钥。
+-- 作者：梁靖泽_2412852
 -- Public course snapshot; generated from verified 2026 FIFA data and publisher RSS.
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS=0;

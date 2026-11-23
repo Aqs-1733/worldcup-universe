@@ -1,5 +1,7 @@
 <?php
-/** CCTV.com pages checked on 2026-11-18: HTTP 200, no X-Frame-Options or frame-ancestors restriction. */
+/**
+ * 文件作用：/watch 页面使用的央视网 2026 世界杯视频页面列表。
+ */
 return [
     [
         'slug'=>'cctv-final-preview','provider'=>'央视网','type'=>'赛事报道',

@@ -1,4 +1,7 @@
-/* Editorial edition. Photography/copy: config/presentation.php. Visual tokens here. */
+/*
+ * 文件作用：国家、球员等栏目页的编辑版式样式。
+ * 作者：崔迪_2412439
+ */
 .edition-country-portrait{position:relative;display:grid;place-items:center;height:110px;overflow:hidden}.edition-country-portrait>span{font:30px 'Mulish';color:#a8b9c8}.edition-country-portrait>span[hidden]{display:none}.edition-country-portrait>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom}
 @media(max-width:700px){.edition-country-portrait{height:90px}.edition-country-portrait>span{font-size:24px}}
 .edition-teams-directory.nations-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:24px}.edition-teams-directory .squad-card{grid-column:span 2;border-radius:0!important;box-shadow:none!important}.edition-teams-directory .squad-card:nth-child(5n+1),.edition-teams-directory .squad-card:nth-child(5n+2){grid-column:span 3}.edition-teams-directory .squad-cover{height:clamp(210px,20vw,290px)}.edition-teams-directory .squad-card:nth-child(5n+1) .squad-cover,.edition-teams-directory .squad-card:nth-child(5n+2) .squad-cover{height:330px}.edition-teams-directory .squad-photo{transition:transform .35s}.edition-teams-directory .squad-card:hover .squad-photo{transform:scale(1.025)}

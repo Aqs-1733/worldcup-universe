@@ -1,5 +1,8 @@
 <?php
-/** Media usage requires a recorded source, licence and approval. */
+/**
+ * 文件作用：模型：media_assets 表（媒体资产：图片来源、授权与审核状态）。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\models;
 class MediaAsset extends Record

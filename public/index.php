@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: public/index.php; course project source. */
+/**
+ * 文件作用：网站唯一入口：加载 Composer 与 Yii2，读取 config/web.php 并运行应用。
+ */
 
 declare(strict_types=1);
 

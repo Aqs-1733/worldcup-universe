@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: app/bootstrap.php; course project source. */
+/**
+ * 文件作用：公共引导文件：定义项目根目录、自动加载 App 命名空间、读取 .env，并提供 e()、url()、flag_html() 等视图常用的辅助函数。
+ */
 
 declare(strict_types=1);
 

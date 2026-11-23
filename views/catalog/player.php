@@ -1,5 +1,8 @@
 <?php
-/** Cinematic official athlete profile; missing tournament data stays blank. */
+/**
+ * 文件作用：视图：球员详情页。
+ * 作者：崔迪_2412439
+ */
 $this->title=$model->name;
 ?>
 <a class="back-link" href="/players">← 球员名单 / 球员资料</a>

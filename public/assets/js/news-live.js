@@ -1,4 +1,7 @@
-/* Keep the news list aware of publisher updates without caching old status data. */
+/*
+ * 文件作用：新闻页定时查询同步状态，有新新闻时提示刷新。
+ * 作者：梁靖泽_2412852
+ */
 (() => {
   const bar = document.querySelector('[data-news-live]');
   if (!bar) return;

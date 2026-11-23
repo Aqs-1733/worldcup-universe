@@ -1,5 +1,8 @@
 <?php
-/** Console maintenance commands for clearing old bundled community fixtures. */
+/**
+ * 文件作用：控制台命令 community/*：清理旧版本遗留的演示论坛数据。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\commands;
 final class CommunityController extends \yii\console\Controller

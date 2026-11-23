@@ -1,4 +1,6 @@
-﻿<#
+﻿# 文件作用：Windows 一键本地部署：检查 PHP 和 MariaDB、建库、初始化数据并启动网站（由 deploy-local.bat 调用）。
+# 作者：蒋林瀞_2413507
+<#
 WorldCup Universe - Windows 一键本地部署与启动（由项目根目录的 deploy-local.bat 调用）。
 
   deploy-local.bat                         默认：项目专用 MariaDB（端口 3317）+ 网站 http://127.0.0.1:8080

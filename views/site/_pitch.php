@@ -1,4 +1,8 @@
 <?php
+/**
+ * 文件作用：局部视图：随滚动绘制的球场线条装饰。
+ * 作者：崔迪_2412439
+ */
 /** Pitch markings drawn by scroll (pitch-lines.js): 'halfway' and 'box' are home section dividers, 'full' sits behind the footer.
     Every stroke uses pathLength="1" so one dash animation fits any length; 'full' is a 105 × 68 m pitch at 10 units per metre. */
 $type??='halfway';

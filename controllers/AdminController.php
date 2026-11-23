@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 administrator CRUD with allowlisted models and immutable audit log. */
+/**
+ * 文件作用：后台管理控制器：仪表盘、白名单表的增删改查、用户管理、举报审核和操作审计，只有管理员能访问。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\controllers;
 use app\models\{User,AuditLog,ForumReport};
@@ -10,13 +13,16 @@ use yii\filters\AccessControl;
 use yii\web\{NotFoundHttpException,BadRequestHttpException,UploadedFile};
 final class AdminController extends BaseController
 {
-    public $layout='admin';
+    public $layout='admin'; // 后台使用单独的布局
+    // 只有已登录且是管理员的用户能访问后台
     public function behaviors(): array { return ['access'=>['class'=>AccessControl::class,'rules'=>[['allow'=>true,'roles'=>['@'],'matchCallback'=>fn()=>Yii::$app->user->identity->isAdmin()]]]]; }
+    // 仪表盘：统计每张白名单表的记录数，列出最近 10 条待处理举报
     public function actionIndex(): string
     {
         $counts=[]; foreach ($this->registry() as $table=>[$label,$class]) { $counts[$table]=['label'=>$label,'count'=>(int)$class::find()->count()]; }
         return $this->render('/admin-v2/index',['counts'=>$counts,'reports'=>ForumReport::find()->where(['status'=>'open'])->orderBy(['id'=>SORT_DESC])->limit(10)->all()]);
     }
+    // 数据表列表：entry() 只接受白名单里的表名；有关键字时在所有文本字段里模糊搜索
     public function actionTable(string $table): string
     {
         [$label,$class]=$this->entry($table); $q=$class::find()->orderBy(['id'=>SORT_DESC]);
@@ -26,6 +32,7 @@ final class AdminController extends BaseController
     public function actionCreate(string $table) { return $this->edit($table,null); }
     public function actionEdit(string $table,?int $id=null) { return $this->edit($table,$id??(int)Yii::$app->request->get('id')); }
     public function actionSave(string $table) { $this->posted(); return $this->edit($table,empty(Yii::$app->request->post('id'))?null:(int)Yii::$app->request->post('id')); }
+    // 删除记录：论坛内容不能直接删，要走审核；删除和写审计放在同一个事务里
     public function actionDelete(string $table)
     {
         $this->posted(); [$label,$class]=$this->entry($table); if(in_array($table,['forum_threads','forum_replies','forum_reports'],true)) { throw new BadRequestHttpException('论坛内容请使用审核操作。'); }
@@ -41,6 +48,7 @@ final class AdminController extends BaseController
         $file=\app\models\CourseworkFile::findOne((int)Yii::$app->request->get('id')); if(!$file || !($path=$file->resolvedPath())) { throw new NotFoundHttpException('文件不存在。'); }
         return Yii::$app->response->sendFile($path,basename($path),['inline'=>false]);
     }
+    // 审核操作（隐藏/恢复、锁定、置顶、处理举报），具体逻辑在 ForumService
     public function actionModerate()
     {
         $this->posted(); (new ForumService())->moderate($this->actor(),(string)Yii::$app->request->post('type'),(int)Yii::$app->request->post('id'),(string)Yii::$app->request->post('operation'));
@@ -48,6 +56,7 @@ final class AdminController extends BaseController
     }
     public function actionAudit(): string { return $this->render('/admin-v2/audit',['provider'=>new ActiveDataProvider(['query'=>AuditLog::find()->orderBy(['id'=>SORT_DESC]),'pagination'=>['pageSize'=>30],'sort'=>false])]); }
     public function actionUsers(): string { return $this->render('/admin-v2/users',['provider'=>new ActiveDataProvider(['query'=>User::find()->with('roles')->orderBy(['id'=>SORT_DESC]),'pagination'=>['pageSize'=>30],'sort'=>false])]); }
+    // 启用/停用用户账号，管理员不能停用自己
     public function actionUserStatus(int $id)
     {
         $this->posted(); $actor=$this->actor();

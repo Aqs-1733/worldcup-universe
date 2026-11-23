@@ -1,5 +1,7 @@
 <?php
-/** Register the credited venue photograph and member write-rate indexes. */
+/**
+ * 文件作用：数据库迁移：登记首页场馆照片，并为会员写操作添加索引。
+ */
 declare(strict_types=1);
 use yii\db\Migration;
 final class m261021_000002_presentation_and_indexes extends Migration

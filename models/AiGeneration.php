@@ -1,5 +1,7 @@
 <?php
-/** Native Yii2 ActiveRecord: ai_generations; field validation and relational integrity. */
+/**
+ * 文件作用：模型：ai_generations 表（AI 生成记录）。
+ */
 declare(strict_types=1);
 namespace app\models;
 

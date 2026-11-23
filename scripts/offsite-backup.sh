@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# 文件作用：异地备份：把每日备份加密后推送到 GitHub 私有仓库。
+# 作者：蒋林瀞_2413507
 # WorldCup Universe: encrypted off-site copy of the production data in a PRIVATE GitHub repository.
 #
 #   sudo bash scripts/offsite-backup.sh             # run once now (wcu-offsite-backup.timer runs it nightly)
@@ -26,7 +28,7 @@ STATE_DIR=/var/lib/worldcup-universe; STATUS="$STATE_DIR/offsite-last.json"
 WORK_ROOT=/var/backups/worldcup-universe/offsite
 PUSH=1; [[ "${1:-}" == "--no-push" ]] && PUSH=0
 [[ $EUID -eq 0 ]] || { echo "ERROR: run with sudo." >&2; exit 1; }
-[[ -r "$CONF" ]] || { echo "ERROR: $CONF missing; off-site backup is not configured (see docs/deployment.md)." >&2; exit 1; }
+[[ -r "$CONF" ]] || { echo "ERROR: $CONF missing; off-site backup is not configured (see the deployment guide in data/team)." >&2; exit 1; }
 # shellcheck disable=SC1090
 source "$CONF"
 : "${OFFSITE_REPO:?}" "${OFFSITE_SSH_KEY:?}" "${OFFSITE_PUBLIC_KEY:?}"
@@ -98,7 +100,7 @@ mkdir -p "$REPO/snapshots"; mv "$WORK/out/$STAMP" "$REPO/snapshots/"; printf '%s
 Written nightly by the production server (`scripts/offsite-backup.sh` in the application repository). Every
 `snapshots/<time>/backup.wcub.part-*` set is one encrypted bundle (database dump, uploaded files, coursework, `.env`);
 `summary.json` holds non-sensitive metadata (sizes, row counts, checksum). Without the team's secret key the parts are
-unreadable. To restore on Windows run `fetch-backup.bat` from the application, see docs/deployment.md.
+unreadable. To restore on Windows run `fetch-backup.bat` from the application, see the deployment guide in data/team.
 MD
 keep="$(ls -1 "$REPO/snapshots" | sort | head -n -"$OFFSITE_KEEP" || true)"
 for old in $keep; do git -C "$REPO" rm -rq "snapshots/$old"; done

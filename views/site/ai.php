@@ -1,5 +1,7 @@
 <?php
-/** Optional AI studio with configuration feedback, text output and image opt-in. */
+/**
+ * 文件作用：视图：AI 工作室页面。
+ */
 use yii\helpers\Html;
 $this->title='智能解说';
 ?>

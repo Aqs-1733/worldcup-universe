@@ -1,5 +1,8 @@
 <?php
-/** Live publisher RSS/Atom ingestion, safe metadata, source snapshots and bounded excerpts. */
+/**
+ * 文件作用：新闻导入服务：抓取 RSS/Atom，过滤不安全内容，按原文链接去重后入库。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\services;
 use app\models\{NewsArticle,NewsSource,Tag};

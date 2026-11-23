@@ -1,5 +1,7 @@
 <?php
-/** Delete only explicitly identified disposable HTTP test users and their content. */
+/**
+ * 文件作用：清理 HTTP 测试产生的 qa_ 前缀测试账号及其内容。
+ */
 declare(strict_types=1);
 require dirname(__DIR__).'/vendor/autoload.php';
 require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';

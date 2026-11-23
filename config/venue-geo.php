@@ -1,5 +1,8 @@
 <?php
-/** Public stadium coordinates for the 16 host venues, keyed by the official venue name in the database. */
+/**
+ * 文件作用：16 座主办球场的经纬度，按数据库中的官方场馆名对应。
+ * 作者：梁靖泽_2412852
+ */
 return [
  'BC Place Vancouver'=>['lat'=>49.2768,'lng'=>-123.1120,'city'=>'温哥华','country'=>'CAN'],
  'Mexico City Stadium'=>['lat'=>19.3029,'lng'=>-99.1505,'city'=>'墨西哥城','country'=>'MEX'],

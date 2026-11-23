@@ -1,5 +1,7 @@
 <?php
-/** Versioned JSON read/write facade over the same native Yii2 services. */
+/**
+ * 文件作用：JSON 接口控制器（/api/v1/...）：球队、球员、比赛、论坛等列表与写操作，统一返回 data + pagination。
+ */
 declare(strict_types=1);
 namespace app\controllers;
 use app\models\{Team,Player,MatchGame,CountryProfile,ForumThread,ForumReply,ForumCategory,Notification};

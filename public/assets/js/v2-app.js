@@ -1,4 +1,6 @@
-/* Progressive enhancement only: core navigation, filtering and forms work without JS. */
+/*
+ * 文件作用：前台公共交互：移动端菜单、筛选、表单增强（不开 JS 也能正常使用）。
+ */
 (() => {
   const toggle = document.querySelector('[data-menu-toggle]');
   toggle?.addEventListener('click', () => {

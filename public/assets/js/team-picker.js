@@ -1,4 +1,7 @@
-/* Flag-bearing progressive select. Native form values and change events stay authoritative. */
+/*
+ * 文件作用：带国旗的球队下拉选择框（个人中心选主队时使用）。
+ * 作者：王麒萱_2412096
+ */
 (() => {
  document.querySelectorAll('select[data-team-select]').forEach((select,index)=>{
   const wrap=document.createElement('span');wrap.className='team-picker';select.before(wrap);wrap.append(select);

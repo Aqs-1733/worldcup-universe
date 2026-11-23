@@ -1,5 +1,7 @@
 <?php
-/** Optional AI integration stays behind native MVC and explicit user actions. */
+/**
+ * 文件作用：AI 工作室控制器：用户主动提交时才调用 AI 文本/生图服务。
+ */
 declare(strict_types=1);
 namespace app\controllers;
 use app\models\{AiForm,AiGeneration};

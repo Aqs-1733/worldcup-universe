@@ -1,5 +1,8 @@
 <?php
-/** Only photographed squads with explicit 2026 source evidence qualify as team covers. */
+/**
+ * 文件作用：球队封面照片：只使用有 2026 来源证明的球队合照。
+ * 作者：崔迪_2412439
+ */
 declare(strict_types=1);
 namespace app\services;
 final class TeamPhoto

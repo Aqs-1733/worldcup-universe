@@ -1,5 +1,7 @@
 <?php
-/** WorldCup Universe: app/Repositories/AppRepository.php; course project source. */
+/**
+ * 文件作用：采集脚本使用的数据仓库：封装对球队、球员、比赛、新闻等表的批量写入与查询。
+ */
 
 declare(strict_types=1);
 

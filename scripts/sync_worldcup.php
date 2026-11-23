@@ -1,5 +1,8 @@
 <?php
-/** Legacy command URL retained, but sports ingestion now exclusively uses official FIFA evidence. */
+/**
+ * 文件作用：旧的赛事同步入口，现在只使用 FIFA 官方数据。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 require dirname(__DIR__).'/vendor/autoload.php';
 require dirname(__DIR__).'/vendor/yiisoft/yii2/Yii.php';

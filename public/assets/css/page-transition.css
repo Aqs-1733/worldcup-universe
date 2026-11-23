@@ -1,3 +1,6 @@
+/*
+ * 文件作用：页面切换过渡动画样式。
+ */
 /* Cross-page transition: the old page is swept off by a diagonal scarlet band and the new page follows it in.
    The glass header stays put, and a team/player image morphs into the detail cover (names set by page-transition.js).
    Browsers without cross-document view transitions, or with reduced motion, simply navigate as before. */

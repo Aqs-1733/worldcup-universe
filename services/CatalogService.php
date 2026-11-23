@@ -1,5 +1,7 @@
 <?php
-/** Public read queries and paginated view models, separate from presentation. */
+/**
+ * 文件作用：前台查询服务：球队、球员、比赛、新闻等列表的搜索、筛选与分页。
+ */
 declare(strict_types=1);
 namespace app\services;
 use app\models\{Team,Player,MatchGame,Standing,PlayerStatistic,MatchProgression,NewsArticle,CountryProfile,TeamMember,AdminPost};

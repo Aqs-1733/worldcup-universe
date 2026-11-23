@@ -1,5 +1,8 @@
 <?php
-/** Native Yii2 ActiveRecord: venues; field validation and relational integrity. */
+/**
+ * 文件作用：模型：venues 表（比赛场馆：名称、城市、容量）。
+ * 作者：梁靖泽_2412852
+ */
 declare(strict_types=1);
 namespace app\models;
 

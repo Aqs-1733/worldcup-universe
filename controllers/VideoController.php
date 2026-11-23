@@ -1,5 +1,7 @@
 <?php
-/** /watch uses verified domestic official embeds and present local files only. */
+/**
+ * 文件作用：比赛回放控制器：/watch 页面，嵌入央视网官方页面和本地视频。
+ */
 declare(strict_types=1);
 namespace app\controllers;
 use Yii;

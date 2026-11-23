@@ -1,5 +1,7 @@
 <?php
-/** Prepare verified display metadata for the course release; no human contribution claims. */
+/**
+ * 文件作用：控制台命令 release/*：为发布版本准备已核验的展示元数据。
+ */
 declare(strict_types=1);
 namespace app\commands;
 final class ReleaseController extends \yii\console\Controller

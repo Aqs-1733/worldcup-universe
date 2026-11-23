@@ -1,4 +1,7 @@
-/* Home team wall: the column drift is pure CSS; this only pauses it while the wall is off screen. */
+/*
+ * 文件作用：首页球队墙：离开屏幕时暂停动画。
+ * 作者：崔迪_2412439
+ */
 (() => {
   const wall = document.querySelector('[data-team-wall]');
   if (!wall || !('IntersectionObserver' in window)) return;

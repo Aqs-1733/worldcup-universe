@@ -1,5 +1,8 @@
 <?php
-/** Native registration page does not expose role or identity-key fields. */
+/**
+ * 文件作用：视图：注册页面。
+ * 作者：王麒萱_2412096
+ */
 use yii\helpers\Html;
 $this->title='加入球迷论坛';
 ?>

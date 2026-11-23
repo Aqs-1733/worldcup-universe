@@ -1,11 +1,15 @@
 <?php
-/** Native Yii2 ActiveRecord: audit_logs; field validation and relational integrity. */
+/**
+ * 文件作用：模型：audit_logs 表（后台操作审计日志：谁、在什么时候、对哪条记录做了什么）。
+ * 作者：蒋林瀞_2413507
+ */
 declare(strict_types=1);
 namespace app\models;
 
 class AuditLog extends Record
 {
     public static function tableName(): string { return '{{%audit_logs}}'; }
+    // 动作名必填；detail_json 必须是合法 JSON；user_id 必须是存在的用户
     public function rules(): array
     {
         return [

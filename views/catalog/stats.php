@@ -1,5 +1,8 @@
 <?php
-/** Real MySQL statistics, with readable tables even without JavaScript. */
+/**
+ * 文件作用：视图：小组积分与数据统计页。
+ * 作者：梁靖泽_2412852
+ */
 $this->title='小组积分'; $groups=[]; foreach($standings as $s) { $groups[$s->group_name][]=$s; }
 ?>
 <?= $this->render('_masthead',['heading'=>'赛程与比分','photo'=>'sofi','photoLabel'=>'洛杉矶体育场','class'=>'matches-cover']) ?>

@@ -1,5 +1,7 @@
 <?php
-/** Native HTML5 player. Every listed item has a local, validated media file. */
+/**
+ * 文件作用：局部视图：视频列表与 HTML5 播放器。
+ */
 if(!$library||!$clip)return;
 $type=['highlights'=>'精彩片段','full_match'=>'完整比赛','moment'=>'现场影像'];
 ?>

@@ -1,5 +1,8 @@
 <?php
-/** Renders local or approved user avatar paths without trusting arbitrary markup. */
+/**
+ * 文件作用：输出用户头像（本地上传或默认头像）的 HTML。
+ * 作者：王麒萱_2412096
+ */
 declare(strict_types=1);
 namespace app\services;
 use app\models\User;
