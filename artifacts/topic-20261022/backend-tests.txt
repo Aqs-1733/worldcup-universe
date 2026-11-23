@@ -1,3 +1,0 @@
-PASS 42 database/service checks; all test writes rolled back.
-  PASS existing sports data available
-  PASS registration rejects invalid credentials

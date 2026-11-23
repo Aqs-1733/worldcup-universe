@@ -16,7 +16,7 @@ php -S 127.0.0.1:8080 -t public public/index.php
 
 ## 部署
 
-完整说明见 **[docs/deployment.md](docs/deployment.md)**（架构、公网部署、自动更新、本地部署、备份恢复、故障处理、验收结果）。
+完整说明见 `data/team/` 下的《部署文档》PDF（架构、公网部署、自动更新、本地一键部署、备份恢复、故障处理）。
 
 - **正式网站**：https://worldcup-universe.dynv6.net/ （阿里云 ECS，Nginx + PHP-FPM + MariaDB，HTTPS；GitHub `main` 每 15 分钟自动安全更新）
 - **Windows 本地一键部署**：安装 XAMPP 8.2（PHP 8.1+、MariaDB 10.4+）后双击 `deploy-local.bat`，完成后访问 http://127.0.0.1:8080/ ；停止用 `stop-local.bat`。重复运行不会覆盖已有数据。
@@ -43,7 +43,7 @@ public/       唯一 Web 根目录
  data/personal/         个人交付
 ```
 
-核心请求不再调用 LegacyBridgeController / 自定义 PDO Repository / 自定义 View。历史采集适配工具保留在 `scripts/` 和 `app/`，不承担当前页面核心业务。
+网页请求全部走 Yii2 MVC。`app/` 只保留命令行采集脚本共用的数据库连接、HTTP 客户端和辅助函数（`app/bootstrap.php`），不承担页面业务。
 
 ## 主要流程
 
@@ -80,26 +80,15 @@ php yii app/audit
 
 数据库测试会回滚写入；HTTP 测试会生成带 `qa_` 标记的临时账号。**使用专用测试数据库**，并按输出的精确前缀清理：`php tests/cleanup.php qa_XXXXXXXX`。测试服务器默认 `http://127.0.0.1:8088`，可用 `WCU_TEST_URL` 环境变量设置（`*_ui.py` 固定使用 8088）。`redesign_ui.py` 与 `topic_replies.py` 从空白论坛开始创建并清理各自的测试数据；`topic_replies.py` 优先读取 `ADMIN_USERNAME`/`ADMIN_PASSWORD` 环境变量。`tests/upload_acceptance.py` 默认 `http://127.0.0.1:8098`，需要 `ADMIN_PASSWORD` 环境变量，并在项目根目录运行（会检查并清理自己上传的文件）。
 
-## 设计与交付
+## 课程交付
 
-- `docs/v2-architecture.md`：需求、架构、模块/流程/ER 图、权限、页面与数据边界。
-- `docs/v2-database-dictionary.md`：实际迁移后数据库完整字典。
-- `docs/v2-api.md`：接口、状态码、CSRF 与请求示例。
-- `docs/deployment.md`：正式部署文档（公网、自动更新、本地一键部署、备份恢复、故障处理）。
-- `docs/v2-deployment.md`：数据采集与维护（官方快照、新闻、视频、迁移回退）。
-- `docs/v2-coursework.md`：逐条对照老师课件与设计方案，区分代码完成和最终课程材料。
-- `docs/v2-acceptance.md`、`artifacts/VERIFICATION.txt`：真实测试和回滚证据。
+- 团队作业（需求、设计、实现、用户手册、部署文档等）放在 `data/team/`，个人作业放在 `data/personal/`；网站“项目团队”页（`/team`）提供下载链接，并列出成员分工与每人负责的 MVC 文件。
+- 数据库建表脚本：`data/install.sql`；初始赛事数据：`data/sports-seed.sql`。
+- 每个源码文件开头都有中文注释头，说明文件作用；按分工能确定作者的文件注明了“姓名_学号”。
 
-4 位成员资料已按原个人作业核对。每人的实际贡献签认、最终 PDF/PPT 与本人录屏仍需本人确认补齐；交付清单逐项标注，不把代码说明冒充这些材料。
-
-2026-11-18 检查：央视网两个 2026 页面均返回 HTTP 200，响应头未设置 X-Frame-Options 或 frame-ancestors 限制；/watch 只渲染站内 iframe。
-
-## 2026-10-22 截图修订
-
-- 论坛：采用 Tabler Card / List group / Avatar / Chat 组合，紧凑主题列表、板块卡片和主队侧栏。运行 `php yii design/forum` 可幂等添加 6 个明确标注的示例主题、2 条示例回复；均由现有管理员发布，不创建虚构球迷账号、点赞或热度。
-- 晋级图：改成原生 details 逐轮展开的来源树，32 场唯一节点、30 条胜者树边；季军赛独立展示，不重复整棵半决赛子树。可按队展开路线，无固定宽画布或双向内部滚动。
-- 球队封面：48/48 队均接入核实年份的 2026 世界杯阵容或赛前合照，包含 5 队足协发布、3 队摄影师开放授权图和 40 队出版方公开预览。保留原始图像字节、署名与水印，不用个人照片或其他年份合照代替；逐队来源、日期和 SHA256 见 `docs/v2-team-photo-sources.md`。
-- 帖子详情：回复列表、空状态、登录入口和会员编辑器统一为 Tabler 卡片；点击回复自动引用，支持取消引用，不再显示手填回复 ID。锁定、校验、所有权和 CSRF 仍由 Yii2 服务端处理。
-- 国家：48 张语义链接卡片、前端筛选／搜索、`/countries/{country_code}` 原生详情；中文展示标签不修改原始国家资料。
-- 留言：Tabler card/chat 形式，保留登录、CSRF、提交审核流程；页脚与页面／导航统一最大宽度及内边距。
-- 本轮验收与截图：`artifacts/redesign-20261022/VERIFICATION.txt`；页面回归：`python tests/redesign_ui.py`。
+| 成员 | 学号 | 负责内容 |
+|---|---|---|
+| 蒋林瀞（队长） | 2413507 | 项目统筹与进度；后台管理与内容审核；球迷论坛；服务器部署、自动更新与备份 |
+| 王麒萱 | 2412096 | 界面原型与视觉规范；账号注册登录；个人中心与回复通知；数据库全套设计 |
+| 崔迪 | 2412439 | 前台信息架构与导航；首页、球队与球员页面；国家探索与 3D 地球 |
+| 梁靖泽 | 2412852 | 赛事内容模块；官方数据采集与导入；赛程、积分与晋级对阵图；新闻同步 |

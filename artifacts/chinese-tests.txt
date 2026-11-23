@@ -1,1 +1,0 @@
-PASS 14 Chinese UI routes; functional Chinese headings; rejected slogans absent.
