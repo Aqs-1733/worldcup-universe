@@ -90,7 +90,8 @@
     return;
   }
 
-  fetch('/assets/data/globe/natural-earth-admin0-map-units-110m.web.geojson')
+  // 每次向服务器确认地图是否更新（没变时只返回 304），避免浏览器用旧地图里已经不存在的国家编号
+  fetch('/assets/data/globe/natural-earth-admin0-map-units-110m.web.geojson', { cache: 'no-cache' })
     .then((response) => {
       if (!response.ok) throw new Error(`地图资源加载失败（${response.status}）`);
       return response.json();
