@@ -63,3 +63,7 @@ docs/
 artifacts/
 __pycache__/
 *.pyc
+
+# 后台删除的仓库作业文件清单（服务器本地数据，随备份保存）
+data/team/.removed.json
+data/personal/.removed.json

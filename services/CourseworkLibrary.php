@@ -23,7 +23,7 @@ final class CourseworkLibrary
             $dir=ROOT_PATH.'/data/'.$scope;
             foreach(is_dir($dir)?scandir($dir):[] as $name){
                 $path=$dir.'/'.$name;
-                if(!self::allowed($name)||!is_file($path)||isset($seen[str_replace('\\','/',realpath($path))]))continue;
+                if(!self::allowed($name)||!is_file($path)||isset($seen[str_replace('\\','/',realpath($path))])||self::isRemoved($scope,$name))continue;
                 $out[$scope][]=$this->item(pathinfo($name,PATHINFO_FILENAME),'/downloads/'.$scope.'/'.rawurlencode($name),$path);
             }
         }
@@ -47,7 +47,7 @@ final class CourseworkLibrary
             // 2. 目录里有、表里没有的文件：新增登记，标题用文件名，默认前台可见
             $dir=ROOT_PATH.'/data/'.$scope;
             foreach(is_dir($dir)?scandir($dir):[] as $name){
-                if(!self::allowed($name)||!is_file($dir.'/'.$name))continue;
+                if(!self::allowed($name)||!is_file($dir.'/'.$name)||self::isRemoved($scope,$name))continue;
                 $path='data/'.$scope.'/'.$name;
                 if(CourseworkFile::find()->where(['storage_path'=>$path])->exists())continue;
                 $file=new CourseworkFile(['scope'=>$scope,'title'=>mb_substr(pathinfo($name,PATHINFO_FILENAME),0,200),'storage_path'=>$path,'is_visible'=>1]);
@@ -56,6 +56,35 @@ final class CourseworkLibrary
             }
         }
         return ['added'=>$added,'removed'=>$removed];
+    }
+
+    /**
+     * 后台删除课程交付后调用，让删除真正生效：
+     * - 后台上传的文件（uploads/ 子目录）：连同文件一起删除；
+     * - 随 GitHub 仓库提交的文件：服务器上不能改仓库（否则自动更新会拒绝），所以把文件名和内容哈希记到
+     *   data/<scope>/.removed.json，团队页、下载链接和部署同步都会跳过它；仓库里换成新版本（内容不同）时会重新出现。
+     */
+    public static function remove(CourseworkFile $file): void
+    {
+        $path=(string)$file->storage_path;
+        if(str_starts_with($path,'data/'.$file->scope.'/uploads/')){(new MediaUploadService())->discard($path);return;}
+        $name=basename($path);$full=ROOT_PATH.'/data/'.$file->scope.'/'.$name;
+        if(!isset(self::SCOPES[$file->scope])||!is_file($full))return;
+        $list=self::removedList($file->scope);$list[$name]=hash_file('sha256',$full);
+        file_put_contents(self::removedFile($file->scope),json_encode($list,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE),LOCK_EX);
+    }
+    /** 这个仓库文件是否已在后台删除（文件内容和删除时一样） */
+    public static function isRemoved(string $scope,string $name): bool
+    {
+        $hash=self::removedList($scope)[$name]??null;$full=ROOT_PATH.'/data/'.$scope.'/'.$name;
+        return $hash!==null&&is_file($full)&&hash_file('sha256',$full)===$hash;
+    }
+    private static function removedFile(string $scope): string { return ROOT_PATH.'/data/'.$scope.'/.removed.json'; }
+    private static function removedList(string $scope): array
+    {
+        $f=self::removedFile($scope);
+        $list=is_file($f)?json_decode((string)file_get_contents($f),true):[];
+        return is_array($list)?$list:[];
     }
     public static function allowed(string $name): bool
     {
@@ -67,6 +96,7 @@ final class CourseworkLibrary
         if(!isset(self::SCOPES[$scope])||!self::allowed($name))return null;
         $base=realpath(ROOT_PATH.'/data/'.$scope);$path=realpath(ROOT_PATH.'/data/'.$scope.'/'.$name);
         if(!$base||!$path||!is_file($path)||!str_starts_with(str_replace('\\','/',$path),str_replace('\\','/',$base).'/'))return null;
+        if(self::isRemoved($scope,basename($path)))return null;
         // A file the administrator registered and then hid stays private even though it sits in the folder.
         return isset(self::hidden()[str_replace('\\','/',$path)])?null:$path;
     }

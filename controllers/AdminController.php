@@ -37,7 +37,10 @@ final class AdminController extends BaseController
     {
         $this->posted(); [$label,$class]=$this->entry($table); if(in_array($table,['forum_threads','forum_replies','forum_reports'],true)) { throw new BadRequestHttpException('论坛内容请使用审核操作。'); }
         $id=(int)Yii::$app->request->post('id'); $model=$class::findOne($id); if(!$model) { throw new NotFoundHttpException(); }
-        try { Yii::$app->db->transaction(function()use($model,$id,$table) { $model->delete(); AuditService::record('admin.delete',$table,$id); }); Yii::$app->session->setFlash('success','记录已删除。'); }
+        try { Yii::$app->db->transaction(function()use($model,$id,$table) { $model->delete(); AuditService::record('admin.delete',$table,$id); });
+            // 课程交付：删除记录后把文件也一并处理，保证前台不再出现
+            if($model instanceof \app\models\CourseworkFile) { \app\services\CourseworkLibrary::remove($model); }
+            Yii::$app->session->setFlash('success','记录已删除。'); }
         catch(\yii\db\IntegrityException $e) { Yii::$app->session->setFlash('error','该记录仍被其他数据引用，请先处理关联记录。'); }
         return $this->redirect('/admin/'.$table);
     }
