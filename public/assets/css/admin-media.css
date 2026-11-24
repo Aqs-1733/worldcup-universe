@@ -10,3 +10,8 @@
 .media-preview-new[hidden]{display:none}
 .media-current{font-size:13px}
 .media-thumb{display:block;max-width:96px;max-height:64px;margin:4px 0;border-radius:4px;border:1px solid #dce2ec;object-fit:cover}
+
+/* 课程交付表单：文件和标题占整行；切换为团队作业时隐藏“所属成员” */
+.admin-form .form-wide{grid-column:1/-1}
+.admin-form label[hidden]{display:none}
+.admin-form .coursework-visible{grid-column:1/-1;font-size:13px;font-weight:600}

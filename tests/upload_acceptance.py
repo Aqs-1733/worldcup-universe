@@ -175,9 +175,13 @@ try:
     ck(s == 302 and s2 == 200 and data.startswith(b'%PDF'), 'published coursework downloadable')
     ck(urllib.parse.quote(prefix) in h.get('Content-Disposition', '') or prefix in h.get('Content-Disposition', ''), 'download is named after the registered title')
     ck(prefix + ' 部署文档' in guest.text('/team')[2], 'published coursework listed on /team')
+    # 直接放进 data/team 的文件由 app/coursework-sync（部署时自动执行）登记，再在后台设为隐藏
     stray.write_bytes(PDF)
-    s, _, _ = admin.form('/admin/coursework_files/save', {'Record[scope]': 'team', 'Record[title]': prefix + ' stray', 'Record[storage_path]': f'data/team/{stray.name}', 'Record[is_visible]': '0'})
-    created.append(('coursework_files', new_id(admin, 'coursework_files', prefix + ' stray')))
+    import subprocess
+    subprocess.run([os.environ.get('PHP_BIN', 'php'), str(ROOT / 'yii'), 'app/coursework-sync'], cwd=ROOT, check=True, capture_output=True)
+    sid = new_id(admin, 'coursework_files', stray.stem); created.append(('coursework_files', sid))
+    s, _, _ = admin.form('/admin/coursework_files/save', {'id': str(sid), 'Record[title]': stray.stem, 'Record[is_visible]': '0'})
+    ck(s == 302, 'synced repository file can be hidden in the admin')
     ck(guest.req('/downloads/team/' + stray.name)[0] == 404, 'hidden record also blocks the dropped-in file route')
 
     print('\n'.join('  PASS ' + c for c in checks))

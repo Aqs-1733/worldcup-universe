@@ -41,6 +41,19 @@ final class AdminController extends BaseController
         catch(\yii\db\IntegrityException $e) { Yii::$app->session->setFlash('error','该记录仍被其他数据引用，请先处理关联记录。'); }
         return $this->redirect('/admin/'.$table);
     }
+    /** 课程交付保存前的整理：新增必须上传文件；标题为空时用文件名；个人作业标题里没有学号时补上“(学号_姓名)” */
+    private function prepareCoursework(\app\models\CourseworkFile $model,array &$uploadErrors): void
+    {
+        $file=UploadedFile::getInstanceByName('upload[storage_path]');
+        if($model->isNewRecord && (string)$model->storage_path==='' && !isset($uploadErrors['storage_path'])) { $uploadErrors['storage_path']='请选择要上传的文件。'; }
+        $model->title=trim((string)$model->title);
+        if($model->title==='' && $file && $file->error===UPLOAD_ERR_OK) { $model->title=mb_substr($file->baseName,0,200); }
+        $no=(string)Yii::$app->request->post('member','');
+        if($model->scope==='personal' && $no!=='' && !str_contains($model->title,$no)) {
+            $member=\app\models\TeamMember::findOne(['student_no'=>$no]);
+            if($member) { $model->title=mb_substr($model->title.'('.$no.'_'.$member->name.')',0,200); }
+        }
+    }
     /** Administrators can open any registered coursework file, including ones not yet visible to the public. */
     public function actionFile(string $table)
     {
@@ -79,6 +92,8 @@ final class AdminController extends BaseController
         if(Yii::$app->request->isPost) {
             $payload=Yii::$app->request->post('Record',[]); if(!is_array($payload)) { throw new BadRequestHttpException(); }
             if($table==='news_articles') { $payload['tagIds']=Yii::$app->request->post('tag_ids',[]); }
+            // 课程交付：存储位置只由上传决定，已保存的记录不能改类型
+            if($table==='coursework_files') { unset($payload['storage_path']); if(!$model->isNewRecord) { unset($payload['scope']); } }
             $model->setAttributes($payload);
             if($table==='admin_posts' && !$id) { $model->author_id=$this->actor()->id; }
             // A browser upload replaces whatever URL/path was typed for the same field.
@@ -88,16 +103,18 @@ final class AdminController extends BaseController
                 try { $value=$kinds===['coursework']?$uploader->storeCoursework($file,(string)$model->scope):$uploader->storePublic($file,$kinds); $stored[$field]=$value; $this->setMediaValue($model,$field,$value); }
                 catch(\InvalidArgumentException|\RuntimeException $e) { $uploadErrors[$field]=$e->getMessage(); }
             }
+            if($table==='coursework_files') { $this->prepareCoursework($model,$uploadErrors); }
             if($model->validate() && !$uploadErrors) {
                 try { Yii::$app->db->transaction(function()use($model,$table,$id,$stored) { $changed=array_keys($model->getDirtyAttributes()); if(!$model->save(false)) {throw new \DomainException(implode(' ',$model->getFirstErrors())?:'记录未保存。');} if($table==='news_articles') { Yii::$app->db->createCommand()->delete('news_article_tags',['article_id'=>$model->id])->execute(); foreach(array_unique($model->tagIds) as $tagId) { Yii::$app->db->createCommand()->insert('news_article_tags',['article_id'=>$model->id,'tag_id'=>$tagId])->execute(); } } AuditService::record($id?'admin.update':'admin.create',$table,(int)$model->id,['fields'=>$changed]+($stored?['uploads'=>$stored]:[])); }); Yii::$app->session->setFlash('success',$stored?'已保存，上传文件已生效，前台读取同一 MySQL 数据。':'已保存，前台读取同一 MySQL 数据。'); return $this->redirect('/admin/'.$table); }
                 catch(\yii\db\IntegrityException $e) { $model->addError('id','记录重复或关联条件未满足。'); }
                 catch(\DomainException $e) { $model->addError('source_url',$e->getMessage()); }
             }
-            foreach($uploadErrors as $field=>$message) { $model->addError($field,$message); }
+            foreach($uploadErrors as $field=>$message) { $model->clearErrors($field); $model->addError($field,$message); }
             // The record was not saved, so files stored during this request would be orphans.
             foreach($stored as $value) { $uploader->discard($value); }
             Yii::$app->response->statusCode=422;
         }
+        if($table==='coursework_files') { return $this->render('/admin-v2/coursework',['table'=>$table,'label'=>$label,'model'=>$model,'members'=>\app\models\TeamMember::find()->orderBy(['sort_order'=>SORT_ASC,'id'=>SORT_ASC])->all()]); }
         return $this->render('/admin-v2/edit',['table'=>$table,'label'=>$label,'model'=>$model,'tags'=>$table==='news_articles'?\app\models\Tag::find()->all():[],'media'=>$media]);
     }
     /** @return array<string,list<string>> upload-capable fields of one table */
