@@ -14,6 +14,34 @@ const coordinateCount = (coordinates) => coordinates.reduce(
   0,
 );
 
+const containsPoint = (geometry, [longitude, latitude]) => {
+  const inRing = (ring) => {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [x, y] = ring[i];
+      const [previousX, previousY] = ring[j];
+      if ((y > latitude) !== (previousY > latitude)
+        && longitude < (previousX - x) * (latitude - y) / (previousY - y) + x) inside = !inside;
+    }
+    return inside;
+  };
+  const polygons = geometry.type === 'Polygon' ? [geometry.coordinates] : geometry.coordinates;
+  return polygons.some(([outer, ...holes]) => inRing(outer) && !holes.some(inRing));
+};
+
+test('all map datasets group the mainland and Taiwan into one China feature', async () => {
+  for (const path of [mapPath, webMapPath, renderMapPath]) {
+    const map = JSON.parse(await readFile(path, 'utf8'));
+    const china = map.features.filter((feature) => feature.properties.ISO_A3 === 'CHN');
+    assert.equal(china.length, 1, `${path}: expected one China feature`);
+    assert.ok(!map.features.some((feature) => feature.properties.ISO_A3 === 'TWN'
+      || feature.properties.NE_ID === 1159321335), `${path}: unexpected separate feature`);
+    assert.equal(china[0].properties.NAME_ZH, '中国');
+    assert.ok(containsPoint(china[0].geometry, [116.4074, 39.9042]), `${path}: Beijing must remain in China`);
+    assert.ok(containsPoint(china[0].geometry, [121.5654, 25.0330]), `${path}: Taipei must be in the same China feature`);
+  }
+});
+
 test('local Natural Earth map units provide clickable real-world country features', async () => {
   const source = await readFile(mapPath, 'utf8');
   const map = JSON.parse(source);
