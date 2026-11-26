@@ -13,12 +13,16 @@
 .team-card:hover{transform:translateY(-4px);box-shadow:0 22px 50px #1a2a3a1c}
 .team-avatar{flex:none;width:72px;height:72px;border-radius:20px;display:grid;place-items:center;overflow:hidden;background:#f6e3e6;color:#b4293a;font:900 30px/1 var(--wcu-zh)}
 .team-avatar img{width:100%;height:100%;object-fit:cover}
+.team-card-body{min-width:0}
 .team-card h3{display:flex;align-items:center;gap:10px;font:900 24px/1.25 var(--wcu-zh);color:#152331;margin:0 0 6px}
 .team-card p{margin:0;color:#6b7b8c;font-size:14px}
 .team-card .team-role,.team-matrix .team-role{display:inline-block;font-family:var(--font,system-ui),sans-serif;padding:3px 9px;border-radius:999px;background:#fbe9ec;color:#b4293a;border:1px solid #f1c4cc;font-size:12px;font-weight:700;line-height:1.4;letter-spacing:.1em}
 th .team-role{margin:0 0 0 8px;vertical-align:middle;font-size:11px;padding:2px 8px}
 .team-duty-chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:14px 0 0}
 .team-duty-chips li{padding:5px 11px;border-radius:999px;background:#f1f4f7;color:#3d4d5e;font-size:12px;font-weight:600}
+.team-introduction{margin-top:16px;padding-top:14px;border-top:1px solid #e6ebf0}
+.team-introduction h4{margin:0 0 4px;color:#3d4d5e;font-size:13px;font-weight:700}
+.team-card .team-introduction p{color:#41556a;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65}
 .team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
 
 .team-section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px}
@@ -62,17 +66,17 @@ th .team-role{margin:0 0 0 8px;vertical-align:middle;font-size:11px;padding:2px 
 .team-download-panel h3{display:flex;align-items:center;gap:10px;font:900 24px/1.2 var(--wcu-zh);color:#152331;margin:0 0 16px}
 .team-download-panel h3 span{font:700 12px/1 var(--wcu-label,sans-serif);padding:5px 9px;border-radius:999px;background:#f1f4f7;color:#5d6d7e}
 .team-download-panel ul{list-style:none;margin:0;padding:0}
-.team-download-panel li a{display:grid;grid-template-columns:52px 1fr 40px;gap:14px;align-items:center;padding:12px;border-radius:14px;color:#152331;transition:background .25s}
+.team-download-panel li a{display:grid;grid-template-columns:52px minmax(0,1fr) 40px;gap:14px;align-items:center;padding:12px;border-radius:14px;color:#152331;transition:background .25s}
 .team-download-panel li a:hover{background:#f5f7f9}
 .team-ext{height:52px;border-radius:12px;display:grid;place-items:center;background:#152331;color:#f2c75c;font:700 12px/1 var(--wcu-label,sans-serif);letter-spacing:.06em}
-.team-file b{display:block;font-size:15px;font-weight:700;margin-bottom:3px}
+.team-file b{display:block;font-size:15px;font-weight:700;margin-bottom:3px;overflow-wrap:anywhere}
 .team-file small{color:#8795a3;font-size:12px}
 .team-dl{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#f1f4f7;font-weight:700;transition:background .25s,color .25s}
 .team-download-panel li a:hover .team-dl{background:#e51b2b;color:#fff}
 .team-empty{margin:0;padding:34px 0;text-align:center;color:#a0acb8;border:1px dashed #dde3ea;border-radius:14px}
 
 @media(max-width:1100px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:900px){.team-hero{flex-direction:column;align-items:flex-start}.team-download-grid,.team-duties-body{grid-template-columns:1fr}}
+@media(max-width:900px){.team-hero{flex-direction:column;align-items:flex-start}.team-download-grid,.team-duties-body{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:560px){.team-grid{grid-template-columns:1fr}.team-card{flex-direction:row;align-items:flex-start}}
 /* 个人作业按成员分组 */
 .team-person+.team-person{margin-top:14px;padding-top:14px;border-top:1px dashed #e6ebf0}

@@ -119,22 +119,41 @@ try:
     s, _, body = admin.form('/admin/coursework_files/save', {'Record[scope]': 'team', 'Record[title]': prefix + ' traversal', 'Record[storage_path]': 'data/team/../../.env', 'Record[is_visible]': '1'})
     ck(s == 422, 'coursework storage_path with ../ rejected')
 
-    # --- team member photo: upload, front-end display, replace -----------------------------------------------------
-    s, h, _ = admin.form('/admin/team_members/save', {'Record[name]': prefix, 'Record[role_name]': 'QA 成员', 'Record[student_no]': prefix, 'Record[sort_order]': '98', 'Record[is_visible]': '1'}, {'upload[photo_url]': ('member.png', png(4, 4, (10, 120, 200)), 'image/png')})
+    # --- team member profile: edit, front-end display, replace -----------------------------------------------------
+    ck('<h1>GeminaiLong</h1>' in guest.text('/team')[2], '/team shows the new team name')
+    school = '验收学院'
+    profile = {'Record[name]': prefix, 'Record[role_name]': 'QA 成员', 'Record[student_no]': prefix, 'Record[bio]': school, 'Record[sort_order]': '98', 'Record[is_visible]': '1'}
+    s, h, _ = admin.form('/admin/team_members/save', profile, {'upload[photo_url]': ('member.png', png(4, 4, (10, 120, 200)), 'image/png')})
     ck(s == 302, 'team member created with uploaded photo')
     member = new_id(admin, 'team_members', prefix); created.append(('team_members', member))
-    edit = admin.text(f'/admin/team_members/edit?id={member}')[2]
+    edit_path = f'/admin/team_members/edit?id={member}'
+    edit = admin.text(edit_path)[2]
+    ck('自我介绍' in edit and '成员头像' in edit and '<textarea name="Record[self_introduction]"' in edit, 'admin edit form labels the introduction and avatar')
     first = sorted(uploads_in(edit))
     ck(len(first) == 1 and 'media-preview' in edit, 'admin edit form previews the stored photo')
     s, h, data = guest.req(first[0])
     ck(s == 200 and h.get('Content-Type', '').startswith('image/png') and data[:8] == b'\x89PNG\r\n\x1a\n', 'uploaded photo is publicly served as image/png')
     ck(re.fullmatch(r'/uploads/\d{4}/\d{2}/[a-f0-9]{32}\.png', first[0]) is not None, 'stored under a random 32-hex name')
-    ck(first[0] in guest.text('/team')[2], '/team shows the uploaded member photo')
+    team_page = guest.text('/team')[2]
+    ck(first[0] in team_page and f'{school} · {prefix}' in team_page and '暂未填写' in team_page, '/team shows the avatar, school and empty introduction')
     ck(first[0] in guest.text('/')[2], 'home page member card shows the uploaded photo')
-    s, _, _ = admin.form('/admin/team_members/save', {'id': str(member), 'Record[name]': prefix, 'Record[role_name]': 'QA 成员', 'Record[student_no]': prefix, 'Record[sort_order]': '98', 'Record[is_visible]': '1'}, {'upload[photo_url]': ('member2.png', png(5, 5, (0, 160, 60)), 'image/png')})
-    second = sorted(uploads_in(admin.text(f'/admin/team_members/edit?id={member}')[2]))
+    profile['Record[photo_url]'] = first[0]
+    before = upload_count()
+    replacement = {'upload[photo_url]': ('member2.png', png(5, 5, (0, 160, 60)), 'image/png')}
+    s, _, retry = admin.form(edit_path, profile | {'Record[self_introduction]': '字' * 501}, replacement)
+    ck(s == 422 and upload_count() == before and uploads_in(retry) == set(first), 'invalid introduction keeps the previous avatar when retrying')
+    introduction = '你好，我是团队成员。\n第二行 <b>测试</b>'
+    escaped_intro = '你好，我是团队成员。\n第二行 &lt;b&gt;测试&lt;/b&gt;'
+    s, _, _ = admin.form(edit_path, profile | {'Record[self_introduction]': introduction}, replacement)
+    edit = admin.text(edit_path)[2]
+    second = sorted(uploads_in(edit))
     ck(s == 302 and len(second) == 1 and second != first, 'photo replaced by a second upload')
-    ck(second[0] in guest.text('/team')[2] and first[0] not in guest.text('/team')[2], '/team shows the replacement immediately')
+    team_page = guest.text('/team')[2]
+    ck(second[0] in team_page and first[0] not in team_page, '/team shows the replacement immediately')
+    ck(escaped_intro in edit and escaped_intro in team_page and f'{school} · {prefix}' in team_page, 'multiline introduction is saved and escaped separately from school')
+    s, _, _ = admin.form(edit_path, {'Record[self_introduction]': '  \n  ', 'Record[photo_url]': ''})
+    team_page = guest.text('/team')[2]
+    ck(s == 302 and escaped_intro not in team_page and second[0] not in team_page and '<span class="team-avatar" aria-hidden="true">q</span>' in team_page, 'clearing the introduction and avatar restores the defaults')
 
     # --- home page media slot -------------------------------------------------------------------------------------
     stadium = new_id(admin, 'media_assets', 'home-hero')

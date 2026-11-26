@@ -100,10 +100,15 @@ final class AdminController extends BaseController
             $model->setAttributes($payload);
             if($table==='admin_posts' && !$id) { $model->author_id=$this->actor()->id; }
             // A browser upload replaces whatever URL/path was typed for the same field.
-            $uploader=new MediaUploadService(); $stored=[]; $uploadErrors=[];
+            $uploader=new MediaUploadService(); $stored=[]; $uploadErrors=[]; $submittedMedia=[];
             foreach($media as $field=>$kinds) {
                 $file=UploadedFile::getInstanceByName('upload['.$field.']'); if(!$file || $file->error===UPLOAD_ERR_NO_FILE) { continue; }
-                try { $value=$kinds===['coursework']?$uploader->storeCoursework($file,(string)$model->scope):$uploader->storePublic($file,$kinds); $stored[$field]=$value; $this->setMediaValue($model,$field,$value); }
+                try {
+                    $value=$kinds===['coursework']?$uploader->storeCoursework($file,(string)$model->scope):$uploader->storePublic($file,$kinds);
+                    $stored[$field]=$value;
+                    if($model->hasAttribute($field)) { $submittedMedia[$field]=$model->$field; }
+                    $this->setMediaValue($model,$field,$value);
+                }
                 catch(\InvalidArgumentException|\RuntimeException $e) { $uploadErrors[$field]=$e->getMessage(); }
             }
             if($table==='coursework_files') { $this->prepareCoursework($model,$uploadErrors); }
@@ -115,6 +120,7 @@ final class AdminController extends BaseController
             foreach($uploadErrors as $field=>$message) { $model->clearErrors($field); $model->addError($field,$message); }
             // The record was not saved, so files stored during this request would be orphans.
             foreach($stored as $value) { $uploader->discard($value); }
+            $model->setAttributes($submittedMedia,false);
             Yii::$app->response->statusCode=422;
         }
         if($table==='coursework_files') { return $this->render('/admin-v2/coursework',['table'=>$table,'label'=>$label,'model'=>$model,'members'=>\app\models\TeamMember::find()->orderBy(['sort_order'=>SORT_ASC,'id'=>SORT_ASC])->all()]); }
